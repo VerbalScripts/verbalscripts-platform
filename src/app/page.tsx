@@ -187,7 +187,7 @@ const resources = [
 
       <div className="mx-auto max-w-2xl lg:text-center">
           <h2 className="text-base font-semibold leading-7 text-indigo-600">
-            You did'nt Hear it from us
+              You did{ "'"}nt Hear it from us
           </h2>
           <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
           Trusted by over 4,000 clients worldwide
@@ -231,9 +231,9 @@ const resources = [
         <div className="bg-gray-300">
           <div className='py-24 px-6 sm:py-32 lg:px-8'>
             <div className="mx-auto max-w-2xl lg:text-center">
-          <h2 className="text-base font-semibold leading-7 text-indigo-600">
-            You did'nt Hear it from us
-          </h2>
+          {/* <h2 className="text-base font-semibold leading-7 text-indigo-600">
+            You did{ "'"}nt Hear it from us
+          </h2> */}
           <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
           Shaping the Future of Human Powered Transcription
           </p>
@@ -286,7 +286,7 @@ const resources = [
               Experts Transcription to Ensure Quality Service
             </h2>
             <p className="mt-6 text-lg leading-8 text-gray-700">
-                    Our transcriptionists are able to pick up the slack where machine can't. The highly accurate, quality end result that a living
+                    Our transcriptionists are able to pick up the slack where machine can{ "'"}t. The highly accurate, quality end result that a living
                     person can produce is simply unbeatable, and our curated network of experts is trained uniqely for each unique customer, no matter the scale - our workforce can 
                     support even the largest project.
                     </p>
