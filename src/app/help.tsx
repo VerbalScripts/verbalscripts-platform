@@ -10,7 +10,7 @@ export default function Example() {
                 Summer styles are finally here
               </h1>
               <p className="mt-4 text-xl text-gray-500">
-                This year, our new summer collection will shelter you from the harsh elements of a world that doesn't care
+                This year, our new summer collection will shelter you from the harsh elements of a world that doesn{ "'"}t care
                 if you live or die.
               </p>
             </div>
@@ -2030,7 +2030,7 @@ export default function Example() {
         <div className="border-b border-gray-900/10 pb-12">
           <h2 className="text-base font-semibold leading-7 text-gray-900">Notifications</h2>
           <p className="mt-1 text-sm leading-6 text-gray-600">
-            We'll always let you know about important changes, but you pick what else you want to hear about.
+            We{ "'"}ll always let you know about important changes, but you pick what else you want to hear about.
           </p>
 
           <div className="mt-10 space-y-10">
@@ -2882,7 +2882,7 @@ export default function Example() {
             type="submit"
             className="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
-            Let's talk
+            Let{ "'"}s talk
           </button>
         </div>
       </form>

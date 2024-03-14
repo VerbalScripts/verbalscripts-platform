@@ -36,6 +36,8 @@ yarn-error.log*
 next-env.d.ts
 
 
-yarn.lock
+yarn.*
 
 src/app/help.tsx
+src/app/files/*
+src/app/about/*

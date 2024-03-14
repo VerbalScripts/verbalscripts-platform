@@ -64,7 +64,7 @@ export default function Page() {
                 Tip: {' '}
             </span>
         <span className='text-base text-gray-700'>
-                Hold the 'Shift' or 'Command' key in the file select dialog to upload multiple files.
+                Hold the { "'"}Shift{ "'"} or { "'"}Command{ "'"} key in the file select dialog to upload multiple files.
 
               </span>
         </div>
