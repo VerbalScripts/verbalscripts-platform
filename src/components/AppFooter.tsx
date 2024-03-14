@@ -9,7 +9,7 @@ export default function AppFooter({ services, resources, solutions}: NavLabelPro
 
 
 <div className="relative isolate overflow-hidden  pt-16 sm:pt-24 lg:pt-32">
-      <div className="mx-auto max-w-8xl px-6 lg:px-10">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto flex flex-col md:flex-row   md:justify-between md:items-end border-b border-gray-300/10 pb-12 mb-8">
           <div className="lg:max-w-lg">
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Stay in the know.</h2>
