@@ -15,7 +15,7 @@ export default function Page() {
     <div className="bg-white"
       
     >
-      <AppHeader/>
+      {/* <AppHeader/> */}
 
 
 
