@@ -37,8 +37,8 @@ export default function Home () {
 
 
   useEffect( () => {
-    window.addEventListener( 'scroll', ( event: Event ) => {
-      if ( event.target?.scrollingElement?.scrollTop > 150 ) {
+    window.addEventListener( 'scroll', ( event: any ) => {
+      if ( event.target && event.target?.scrollingElement?.scrollTop > 150 ) {
         // show header & scroll top
         setShowHeader(true)
       }
@@ -410,7 +410,7 @@ const resources = [
 
 
 
-        <AppFooter services={services} resources={resources} solutions={solutions} />
+        <AppFooter services={services} resources={resources} showHeader={showHeader} solutions={solutions} />
 
       </div>
     )
