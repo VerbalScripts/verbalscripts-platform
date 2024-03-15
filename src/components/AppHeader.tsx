@@ -3,6 +3,8 @@ import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react'
 import {
   Bars3Icon,
   XMarkIcon,
+  ComputerDesktopIcon,
+  UserIcon
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
@@ -14,30 +16,38 @@ function classNames(...classes: string[]) {
 
 
 
-export default function AppHeader({solutions, resources, services}: NavLabelProp) {
+export default function AppHeader({solutions, resources, services, showHeader}: NavLabelProp) {
   const [ open, setOpen ] = useState( false );
 
   return (
-    <header className="bg-white relative z-20">
-        <p className="hidden md:flex  h-8 items-center  justify-end gap-6 bg-indigo-500 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
-    <a
+    <>
+    
+        <div className='mx-auto  max-w-7xl relative z-50'>
+        <p className="hidden  md:flex  h-10 items-center  justify-end gap-6 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
+        <a
                   href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base  leading-7 text-white hover:text-gray-100"
+                  className="-mx-3 flex items-center gap-x-5 rounded-lg px-3 py-2.5 text-base  leading-7 text-white hover:text-gray-100"
                 >
-               <span aria-hidden="true">→</span>    Log as Freelancer
+                           <ComputerDesktopIcon className="h-5 w-5" aria-hidden="true" />
+                     Freelancer Sign In
+
         </a>
         
           <a
                   href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base  leading-7 text-white hover:text-gray-100"
+                  className="-mx-3 flex items-center gap-x-5 rounded-lg px-3 py-2.5 text-base  leading-7 text-white hover:text-gray-100"
                 >
-               <span aria-hidden="true">→</span>    Log as client
+            <UserIcon className="h-5 w-5" aria-hidden="true" />
+                Customer Login
                 </a>
-  </p>
+
+          </p>
+        </div>
+    <header className="bg-white relative z-20">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
-            <span className="text-gray-900 font-bold text-lg">VerbalScripts</span>
+            <span className="text-gray-800 font-bold text-3xl">VerbalScripts</span>
            
           </a>
         </div>
@@ -57,12 +67,12 @@ export default function AppHeader({solutions, resources, services}: NavLabelProp
       
 
         <Popover.Group  className="hidden lg:flex lg:gap-x-8">
-        <a href="/" className="text-sm font-semibold leading-6 text-gray-900">
+        <a href="/" className="text-md font-semibold leading-6 text-gray-900">
             Home
           </a>
 
           <Popover  className="relative">
-            <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
+            <Popover.Button className="flex items-center gap-x-1 text-md font-semibold leading-6 text-gray-900">
               Services
               <ChevronDownIcon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
             </Popover.Button>
@@ -113,7 +123,7 @@ export default function AppHeader({solutions, resources, services}: NavLabelProp
           </Popover>
 
            <Popover  className="relative">
-            <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
+            <Popover.Button className="flex items-center gap-x-1 text-md font-semibold leading-6 text-gray-900">
               Solutions
               <ChevronDownIcon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
             </Popover.Button>
@@ -163,11 +173,11 @@ export default function AppHeader({solutions, resources, services}: NavLabelProp
             </Transition>
           </Popover>
 
-          <a href="/freelancers" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/freelancers" className="text-md font-semibold leading-6 text-gray-900">
             Freelancers
           </a>
            <Popover  className="relative">
-            <Popover.Button className="flex items-center gap-x-4 text-sm font-semibold leading-6 text-gray-900">
+            <Popover.Button className="flex items-center gap-x-4 text-md font-semibold leading-6 text-gray-900">
               Resources
               <ChevronDownIcon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
             </Popover.Button>
@@ -218,12 +228,12 @@ export default function AppHeader({solutions, resources, services}: NavLabelProp
           </Popover>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-5">
-          <a href="#" className=" text-sm font-semibold ring-2 ring-inset px-4 py-2 ring-indigo-500 hover:ring-indigo-500/10 text-indigo-500 rounded-md">
-           Order Now
-          </a>
 
-          <a href="#" className=" text-sm font-semibold  px-4 py-2 bg-indigo-500 hover:bg-indigo-700/10  rounded-md text-gray-100">
+          <a href="#" className=" text-lg font-semibold  px-4 py-2 bg-indigo-600 transition hover:scale-125  rounded-md text-gray-100">
            Get a Qoute
+          </a>
+          <a href="#" className=" text-lg font-semibold ring-2 ring-inset px-4 py-2 ring-indigo-500 hover:ring-indigo-400 text-indigo-500 hover:text-indigo-400 rounded-md">
+           Order Now
           </a>
         </div>
       </nav>
@@ -349,21 +359,22 @@ export default function AppHeader({solutions, resources, services}: NavLabelProp
                   href="#"
                   className="-mx-3 block rounded-md ring-2 ring-inset ring-indigo-500  px-3 py-1.5 text-base font-semibold leading-7 text-indigo-500 hover:ring-indigo-400 hover:text-indigo-400"
                 >
-                  Login as Freelancer
+                 Freelancer Sign In
                 </a>
 
                   <a
                   href="#"
                   className="-mx-3 inline-block rounded-md  bg-indigo-500  px-3 py-1.5 text-base font-semibold leading-7 text-white hover:bg-indigo-400 hover:text-gray-200"
                 >
-                  Login as Client
+                  Client Login
                 </a>
               </div>
             </div>
           </div>
           </Dialog.Panel>
       </Dialog>
-    </header>
+      </header>
+      </>
   )
 }
 

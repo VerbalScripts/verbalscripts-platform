@@ -6,6 +6,9 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --swiper-pagination-bullet-size: 20px;
+  --swiper-pagination-bottom: 20px;
+  --swiper-pagination-color: rgb(249 115 22);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -46,4 +49,14 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+
+/* edit pagination */
+
+.swiper-pagination {
+  z-index: 30;
+}
+.swiper-button-next,.swiper-button-prev {
+  display: none !important;
 }

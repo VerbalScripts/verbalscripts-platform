@@ -1,21 +1,61 @@
 import React from 'react'
+import {
+  ArrowPathIcon,
+  Bars3Icon,
+  CloudArrowUpIcon,
+  ChartPieIcon,
+  CursorArrowRaysIcon,
+  FingerPrintIcon,
+  SquaresPlusIcon,
+  NewspaperIcon,
+  AcademicCapIcon,
+  LockClosedIcon,
+  XMarkIcon,
+  CalendarDaysIcon, HandRaisedIcon,
+  LinkIcon
+} from '@heroicons/react/24/outline'
 
-export default function AppFooter({ services, resources, solutions}: NavLabelProp) {
+
+export default function AppFooter({ services, solutions}: NavLabelProp) {
 
 
       
   return (
-
-
-
-<div className="relative isolate overflow-hidden  pt-16 sm:pt-24 lg:pt-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <div className="relative isolate overflow-hidden  pt-16 sm:pt-24 lg:pt-32">
+      <div className="mx-auto max-w-7xl xl:max-w-6xl px-6 lg:px-8 xl:px-22">
         <div className="mx-auto flex flex-col md:flex-row   md:justify-between md:items-end border-b border-gray-300/10 pb-12 mb-8">
           <div className="lg:max-w-lg">
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Stay in the know.</h2>
-            <p className="mt-4 text-lg leading-8 text-gray-300">
-              Get Discount coupons and updated from VerbalScripts
+            <p className="mt-4 text-lg leading-8 text-gray-200">
+              Get Discount coupons and updates from VerbalScripts
             </p>
+
+            <div className='flex items-center mt-5 gap-x-3'>
+              <a href=""
+              className="text-center mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-500"
+              >
+                    <LinkIcon className="h-6 w-6 text-white" aria-hidden="true" />
+              </a>
+
+               <a href=""
+              className="text-center mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-500"
+              >
+                    <LinkIcon className="h-6 w-6 text-white" aria-hidden="true" />
+              </a>
+
+
+               <a href=""
+              className="text-center mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-500"
+              >
+                    <LinkIcon className="h-6 w-6 text-white" aria-hidden="true" />
+              </a>
+
+               <a href=""
+              className="text-center mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-500"
+              >
+                    <LinkIcon className="h-6 w-6 text-white" aria-hidden="true" />
+              </a>
+            </div>
            
           </div>
 
@@ -34,7 +74,7 @@ export default function AppFooter({ services, resources, solutions}: NavLabelPro
               />
               <button
                 type="submit"
-                className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-lg font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
               >
                 Subscribe
               </button>
@@ -55,39 +95,39 @@ export default function AppFooter({ services, resources, solutions}: NavLabelPro
         
           <div className='flex flex-col'>
             <a href="#" className="-m-1.5 mb-3 p-1.5">
-              <span className="text-gray-300 font-bold text-lg">VerbalScripts</span>
+              <span className="text-white font-bold text-2xl">VerbalScripts</span>
             
             </a>
 
             <a href="#" className="-m-1.5 p-1.5">
-              <span className="text-gray-400  text-base">Get a Quote</span>
-            
-            </a>
-
-
-            <a href="#" className="-m-1.5 p-1.5">
-              <span className="text-gray-400  text-base">Order Now</span>
+              <span className="text-gray-300  text-base">Get a Quote</span>
             
             </a>
 
 
             <a href="#" className="-m-1.5 p-1.5">
-              <span className="text-gray-400 text-base">sales@verbalscripts.com</span>
+              <span className="text-gray-300  text-base">Order Now</span>
+            
+            </a>
+
+
+            <a href="mailto:sales@verbalscripts.com" className="-m-1.5 p-1.5">
+              <span className="text-gray-300 text-base">sales@verbalscripts.com</span>
             
             </a>
 
             <a href="#" className="-m-1.5 p-1.5">
-              <span className="text-gray-400 text-base">44, Tehama st. Fransisco</span>
+              <span className="text-gray-300 text-base hover:text-yellow-400">44, Tehama st. Fransisco</span>
+            
+            </a>
+
+            <a href="tel:+1 (800) 275-5513" className="-m-1.5 p-1.5">
+              <span className="text-gray-300  text-base hover:text-yellow-400">+1 (800) 275-5513</span>
             
             </a>
 
             <a href="#" className="-m-1.5 p-1.5">
-              <span className="text-gray-400  text-base">+1 (800) 275-5513</span>
-            
-            </a>
-
-            <a href="#" className="-m-1.5 p-1.5">
-              <span className="text-gray-400  text-base">Contact Us</span>
+              <span className="text-gray-300  text-base hover:text-yellow-400">Contact Us</span>
             
             </a>
 
@@ -95,7 +135,7 @@ export default function AppFooter({ services, resources, solutions}: NavLabelPro
 
           <div className='flex flex-col'>
             <a href="#" className="-m-1.5 mb-3  p-1.5">
-              <span className="text-gray-300 font-bold text-lg">Services</span>
+              <span className="text-gray-100 font-bold text-lg">Services</span>
             
             </a>
 
@@ -103,7 +143,7 @@ export default function AppFooter({ services, resources, solutions}: NavLabelPro
             {
               services.map(item=>
               <a key={item.name} href="#" className="-m-1.5 p-1.5">
-                <span className="text-gray-400  text-base">{item.name}</span>
+                <span className="text-gray-300  text-base hover:text-yellow-400">{item.name}</span>
             
               </a>)
             }
@@ -115,14 +155,14 @@ export default function AppFooter({ services, resources, solutions}: NavLabelPro
 
           <div className='flex flex-col'>
             <a href="#" className="-m-1.5 mb-3 p-1.5">
-              <span className="text-gray-300 font-bold text-base">Industry Solutions</span>
+              <span className="text-gray-100 font-bold text-lg">Industry Solutions</span>
             
             </a>
 
             {
               solutions.map(item=>
               <a key={item.name} href="#" className="-m-1.5 p-1.5">
-                <span className="text-gray-400  text-base">{item.name}</span>
+                <span className="text-gray-300  text-base hover:text-yellow-400">{item.name}</span>
             
               </a>)
             }
@@ -134,30 +174,32 @@ export default function AppFooter({ services, resources, solutions}: NavLabelPro
 
           <div className='flex flex-col'>
             <a href="#" className="-m-1.5 mb-3 p-1.5">
-              <span className="text-gray-300 font-bold text-base">Resources</span>
+              <span className="text-gray-100 font-bold text-lg">Resources</span>
             
             </a>
 
 
             <a href="#" className="-m-1.5 p-1.5">
-              <span className="text-gray-400 text-base">Freelancers</span>
+              <span className="text-gray-300 text-base hover:text-yellow-400">Freelancers</span>
             
             </a>
             <a href="#" className="-m-1.5 p-1.5">
-              <span className="text-gray-400 text-base">Faqs</span>
+              <span className="text-gray-300 text-base hover:text-yellow-400">Faqs</span>
             
             </a>
             <a href="#" className="-m-1.5 p-1.5">
-              <span className="text-gray-400 text-base">Support</span>
-            
+              <span className="text-gray-300 text-base hover:text-yellow-400">Terms & conditions</span>
+            </a>
+            <a href="#" className="-m-1.5 p-1.5">
+              <span className="text-gray-300 text-base hover:text-yellow-400">Privacy policy</span>
             </a>
 
             <a href="#" className="-m-1.5 mt-5 p-1.5">
-            <span className="text-gray-300 font-bold text-base">For Freelancers</span>
+            <span className="text-gray-100 font-bold text-lg">For Freelancers</span>
             </a>
 
 
-            <a href="#" className="my-2.5 rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+            <a href="#" className="my-2.5 rounded-md bg-indigo-500 px-3.5 py-2.5 text-lg font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
             Join Us
             </a>
 
@@ -166,7 +208,7 @@ export default function AppFooter({ services, resources, solutions}: NavLabelPro
       </dl>
 
 
-      <div className='flex justify-center text-gray-400 py-4 text-sm'>
+      <div className='flex justify-center text-gray-300 py-4 text-sm'>
         &copy; VerbalScripts 2024. All rights reserved.
       </div>
       

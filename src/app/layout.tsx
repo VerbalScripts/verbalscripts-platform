@@ -5,8 +5,8 @@ import "./globals.css";
 // const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "VerbalScribe",
-  description: "web portfolio",
+  title: "VerbalScripts",
+  description: "A world leader in generating near perfect audio and video using both AI and Human Expertise.",
 };
 
 export default function RootLayout({

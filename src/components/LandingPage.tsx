@@ -20,7 +20,7 @@ export default function LandingPage() {
         }}
       />
     </div>
-    <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+    <div className="max-w-3xl py-32 sm:py-48 lg:py-32 md:mx-40">
       {/* <div className="hidden sm:mb-8 sm:flex sm:justify-center">
         <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-100 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
           Announcing our next round of funding.{' '}
@@ -30,23 +30,22 @@ export default function LandingPage() {
           </a>
         </div>
       </div> */}
-      <div className="text-center">
+      <div className="text-left">
         <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
-          Accurate transcriptions delivered for you
+          The Gold Standard in Audio & Video Transcription
         </h1>
-        {/* <p className="mt-6 text-lg leading-8 text-gray-600">
-          Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet
-          fugiat veniam occaecat fugiat aliqua.
-        </p> */}
-        <div className="mt-10 flex items-center justify-center gap-x-6">
+        <p className="mt-6 text-2xl leading-8 text-gray-200">
+         We deliver the most accurate transcriptions at competitive rates due to a combination of the latest in AI, paired with our trained & experienced transcriber network.
+        </p>
+        <div className="mt-10 flex flex-col md:flex-row items-start md:items-center justify-start gap-6">
           <a
             href="#"
-            className="rounded-md bg-indigo-600 px-7 py-3 text-lg font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="rounded-md bg-indigo-600 px-7 py-3 text-lg font-bold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
-            Order Now
+            Our Transcription Services
           </a>
-          <a href="#" className="text-lg font-semibold leading-6 text-white">
-            Learn more <span aria-hidden="true">→</span>
+          <a href="#" className="text-lg font-bold leading-6 text-white">
+           Our Industry Solutions
           </a>
         </div>
       </div>
