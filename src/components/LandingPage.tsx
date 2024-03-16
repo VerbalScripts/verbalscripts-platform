@@ -31,12 +31,12 @@ export default function LandingPage() {
         </p>
         <div className="mt-10 flex flex-col md:flex-row items-start md:items-center justify-start gap-6">
           <a
-            href="#"
+            href="/services"
             className="rounded-md bg-indigo-600 px-7 py-3 text-lg font-bold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
             Our Transcription Services
           </a>
-          <a href="#" className="text-lg underline underline-offset-8 font-bold leading-6 text-white">
+          <a href="/solutions" className="text-lg underline underline-offset-8 font-bold leading-6 text-white">
            Our Industry Solutions
           </a>
         </div>

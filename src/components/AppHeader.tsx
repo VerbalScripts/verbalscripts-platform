@@ -16,12 +16,12 @@ function classNames(...classes: string[]): string {
 
 interface HeaderProps extends NavLabelProp {
    heightOffset: number,
-
+   showQuote: Function
 }
 
 
 
-export default function AppHeader({solutions, resources, services, heightOffset}: HeaderProps) {
+export default function AppHeader({solutions, resources, services,showQuote, heightOffset}: HeaderProps) {
   const [ open, setOpen ] = useState( false );
 
 
@@ -69,7 +69,7 @@ export default function AppHeader({solutions, resources, services, heightOffset}
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
-            <span className="text-gray-800 font-bold text-2xl md:text-3xl">VerbalScripts</span>
+            <span className="text-gray-800 font-bold text-2xl">VerbalScripts</span>
            
           </a>
         </div>
@@ -251,7 +251,7 @@ export default function AppHeader({solutions, resources, services, heightOffset}
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-5">
 
-          <a href="#" className=" text-lg font-semibold  px-4 py-2 bg-indigo-600 transition text-center  hover:-translate-y-1 hover:shadow-xl rounded-md text-gray-100">
+          <a href="#" onClick={()=> showQuote(true)} className=" text-lg font-semibold  px-4 py-2 bg-indigo-600 transition text-center  hover:-translate-y-1 hover:shadow-xl rounded-md text-gray-100">
            Get a Qoute
           </a>
           <a href="#" className=" text-lg font-semibold ring-1 ring-inset px-4 py-2 ring-indigo-500 hover:ring-indigo-400 text-indigo-500 hover:text-indigo-400 rounded-md">

@@ -28,12 +28,14 @@ import AppHeader from '@/components/AppHeader'
 import LandingPage from "@/components/LandingPage";
 import AppFooter from '@/components/AppFooter';
 import Testimonials from '@/components/Testimonials';
+import GetAQuoteModal from '@/components/GetAQuoteModal';
 
 
 export default function Home () {
   
   const [ heightOffset, setOffsetHeight ] = useState( 0 )
-
+  // open slide over
+  const [open, setOpen] = useState(false)
 
   useEffect( () => {
     window.addEventListener( 'scroll', ( event: any ) => {
@@ -133,10 +135,11 @@ const resources = [
       <div className="bg-zinc-800"
       
       >
-        <AppHeader resources={resources} solutions={solutions} services={services} heightOffset={heightOffset } />
+        <AppHeader showQuote={setOpen} resources={resources} solutions={solutions} services={services} heightOffset={heightOffset } />
         <LandingPage/>
   
-
+        <GetAQuoteModal open={open} setOpen={setOpen} />
+        
         <div className="bg-white  py-32 md:py-24">
         <div className="mx-auto max-w-7xl xl:max-w-6xl px-6 lg:px-8 xl:px-22">
 
@@ -389,12 +392,12 @@ const resources = [
               <a href="#" className="text-lg font-semibold leading-6 text-white px-6 py-3.5 ring-2 ring-inset ring-white rounded-md transition hover:-translate-y-1 hover:shadow-2xl">
                 Order Now
               </a>
-              <a
-                href="#"
+              <button
+                      onClick={() => setOpen(true)}
                 className="rounded-md bg-orange-500 px-6 py-3.5 text-lg font-semibold text-white transition hover:-translate-y-1 hover:shadow-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
                 Get a Qoute
-              </a>
+              </button>
             </div>
           </div>
           <div className="hidden md:block relative mt-16 h-80 lg:mt-8 pr-10">
