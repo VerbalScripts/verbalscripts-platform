@@ -25,13 +25,15 @@ import {
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 
 import AppHeader from '@/components/AppHeader'
-import LandingPage from "@/components/LandingPage";
+import GetAQuoteModal from "@/components/GetAQuoteModal";
 import AppFooter from '@/components/AppFooter';
 
 
 export default function Page () {
   
   const [ heightOffset, setOffsetHeight ] = useState( 0 )
+  // slide over
+  const [open, slideOpen] = useState(false)
 
 
   useEffect( () => {
@@ -81,7 +83,9 @@ const resources = [
       <div className="bg-zinc-800"
       
       >
-        <AppHeader resources={resources} solutions={solutions} services={services} heightOffset={heightOffset } />
+        <AppHeader showQuote={slideOpen} resources={resources} solutions={solutions} services={services} heightOffset={heightOffset } />
+         
+        <GetAQuoteModal open={open} setOpen={slideOpen} />
         <div className="relative bg-teal-600 h-auto isolate px-6 pt-14 lg:px-8">
     
       
