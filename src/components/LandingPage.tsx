@@ -2,11 +2,11 @@ import React from 'react'
 
 export default function LandingPage() {
   return (
-    <div className="relative h-auto isolate px-6 pt-14 lg:px-8">
+    <div className="relative bg--600 h-auto isolate px-6 pt-14 lg:px-8 landing-page">
     
-      <video className='absolute top-0 right-0 left-0 w-full -z-20 h-full object-cover'  loop autoPlay>
+      {/* <video className='absolute top-0 right-0 left-0 w-full -z-20 h-full object-cover'  loop autoPlay>
         <source src="landing_prodution.mp4" type='video/mp4' />
-      </video>
+      </video> */}
       <div className="landing-page-video-wrapper"></div>
     <div
       className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -20,21 +20,13 @@ export default function LandingPage() {
         }}
       />
     </div>
-    <div className="max-w-3xl py-32 sm:py-48 lg:py-32 md:mx-40">
-      {/* <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-        <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-100 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-          Announcing our next round of funding.{' '}
-          <a href="#" className="font-semibold text-indigo-600">
-            <span className="absolute inset-0" aria-hidden="true" />
-            Read more <span aria-hidden="true">&rarr;</span>
-          </a>
-        </div>
-      </div> */}
+    <div className="max-w-3xl pb-48 pt-0 md:py-32 lg:py-32 md:mx-20 lg:mx-40">
+      
       <div className="text-left">
         <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
           The Gold Standard in Audio & Video Transcription
         </h1>
-        <p className="mt-6 text-2xl leading-8 text-gray-200">
+        <p className="mt-6 text-2xl leading-8 text-gray-100">
          We deliver the most accurate transcriptions at competitive rates due to a combination of the latest in AI, paired with our trained & experienced transcriber network.
         </p>
         <div className="mt-10 flex flex-col md:flex-row items-start md:items-center justify-start gap-6">
@@ -44,7 +36,7 @@ export default function LandingPage() {
           >
             Our Transcription Services
           </a>
-          <a href="#" className="text-lg font-bold leading-6 text-white">
+          <a href="#" className="text-lg underline underline-offset-8 font-bold leading-6 text-white">
            Our Industry Solutions
           </a>
         </div>

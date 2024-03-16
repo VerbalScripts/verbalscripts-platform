@@ -9,21 +9,41 @@ import {
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
 
-function classNames(...classes: string[]) {
+function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ')
 }
 
 
+interface HeaderProps extends NavLabelProp {
+   heightOffset: number,
+
+}
 
 
-export default function AppHeader({solutions, resources, services, showHeader}: NavLabelProp) {
+
+export default function AppHeader({solutions, resources, services, heightOffset}: HeaderProps) {
   const [ open, setOpen ] = useState( false );
+
+
+  useEffect( () => {
+    if ( heightOffset > 200 ) {
+        document.querySelector("header")?.classList.add('fixed', "top-0", "animate-nav-bottom", "shadow-lg")
+      document.querySelector( "header" )?.classList.remove( 'relative','animate-nav-top' )
+      
+    } else {
+        document.querySelector("header")?.classList.remove('fixed', "top-0", "animate-nav-bottom")
+        document.querySelector("header")?.classList.add('relative', "animate-nav-top")
+      
+    }
+  })
+  
+
 
   return (
     <>
     
-        <div className='mx-auto  max-w-7xl relative z-50'>
-        <p className="hidden  md:flex  h-10 items-center  justify-end gap-6 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
+        <div className='mx-auto  max-w-7xl relative z-30'>
+        <p className="hidden relative z-50 md:flex  h-10 items-center  justify-end gap-6 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
         <a
                   href="#"
                   className="-mx-3 flex items-center gap-x-5 rounded-lg px-3 py-2.5 text-base  leading-7 text-white hover:text-gray-100"
@@ -32,6 +52,8 @@ export default function AppHeader({solutions, resources, services, showHeader}: 
                      Freelancer Sign In
 
         </a>
+
+          |
         
           <a
                   href="#"
@@ -43,11 +65,11 @@ export default function AppHeader({solutions, resources, services, showHeader}: 
 
           </p>
         </div>
-    <header className="bg-white relative z-20">
+      <header className={classNames('bg-white', 'relative', 'transition', 'w-full', 'z-30')}>
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <a href="#" className="-m-1.5 p-1.5">
-            <span className="text-gray-800 font-bold text-3xl">VerbalScripts</span>
+            <span className="text-gray-800 font-bold text-2xl md:text-3xl">VerbalScripts</span>
            
           </a>
         </div>
@@ -66,7 +88,7 @@ export default function AppHeader({solutions, resources, services, showHeader}: 
 
       
 
-        <Popover.Group  className="hidden lg:flex lg:gap-x-8">
+        <Popover.Group  className="hidden lg:flex lg:gap-x-5">
         <a href="/" className="text-md font-semibold leading-6 text-gray-900">
             Home
           </a>
@@ -137,12 +159,12 @@ export default function AppHeader({solutions, resources, services, showHeader}: 
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel  className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5">
-                <div className="p-4">
+              <Popover.Panel  className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-xl overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5">
+                <div className="p-4 w-full grid  grid-cols-1 gap-x-8 gap-y-3 lg:grid-cols-2">
                   {solutions.map((item) => (
                     <div
                       key={item.name}
-                      className="group relative flex items-center gap-x-4 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50"
+                      className="group relative flex items-center gap-x-4 rounded-md p-4 text-sm leading-6 hover:bg-gray-50"
                     >
                       <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
                         <item.icon className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
@@ -152,7 +174,7 @@ export default function AppHeader({solutions, resources, services, showHeader}: 
                           {item.name}
                           <span className="absolute inset-0" />
                         </a>
-                        <p className=" text-gray-600">{item.description}</p>
+                        <p className=" text-gray-600 line-clamp-2">{item.description}</p>
                       </div>
                     </div>
                   ))}
@@ -229,10 +251,10 @@ export default function AppHeader({solutions, resources, services, showHeader}: 
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-5">
 
-          <a href="#" className=" text-lg font-semibold  px-4 py-2 bg-indigo-600 transition hover:scale-125  rounded-md text-gray-100">
+          <a href="#" className=" text-lg font-semibold  px-4 py-2 bg-indigo-600 transition text-center  hover:-translate-y-1 hover:shadow-xl rounded-md text-gray-100">
            Get a Qoute
           </a>
-          <a href="#" className=" text-lg font-semibold ring-2 ring-inset px-4 py-2 ring-indigo-500 hover:ring-indigo-400 text-indigo-500 hover:text-indigo-400 rounded-md">
+          <a href="#" className=" text-lg font-semibold ring-1 ring-inset px-4 py-2 ring-indigo-500 hover:ring-indigo-400 text-indigo-500 hover:text-indigo-400 rounded-md">
            Order Now
           </a>
         </div>
@@ -268,14 +290,14 @@ export default function AppHeader({solutions, resources, services, showHeader}: 
               <div className="space-y-2 py-6">
                 <a
                   href="/"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-xl font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Home
                 </a>
                 <Disclosure as="div" className="-mx-3">
                   {({ open }) => (
                     <>
-                      <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                      <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-xl font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                         Services
                         <ChevronDownIcon
                           className={classNames(open ? 'rotate-180' : '', 'h-5 w-5 flex-none')}
@@ -288,7 +310,7 @@ export default function AppHeader({solutions, resources, services, showHeader}: 
                             key={item.name}
                             as="a"
                             href={item.href}
-                            className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                            className="block rounded-lg py-2 pl-6 pr-3 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                           >
                             {item.name}
                           </Disclosure.Button>
@@ -300,7 +322,7 @@ export default function AppHeader({solutions, resources, services, showHeader}: 
                 <Disclosure as="div" className="-mx-3">
                   {({ open }) => (
                     <>
-                      <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                      <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-xl font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                         Solutions
                         <ChevronDownIcon
                           className={classNames(open ? 'rotate-180' : '', 'h-5 w-5 flex-none')}
@@ -308,12 +330,12 @@ export default function AppHeader({solutions, resources, services, showHeader}: 
                         />
                       </Disclosure.Button>
                       <Disclosure.Panel className="mt-2 space-y-2">
-                        {[...services].map((item) => (
+                        {[...solutions].map((item) => (
                           <Disclosure.Button
                             key={item.name}
                             as="a"
                             href={item.href}
-                            className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                            className="block rounded-lg py-2 pl-6 pr-3 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                           >
                             {item.name}
                           </Disclosure.Button>
@@ -324,14 +346,14 @@ export default function AppHeader({solutions, resources, services, showHeader}: 
                 </Disclosure>
                 <a
                   href="/freelancers"
-                  className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  className="-mx-3 block rounded-lg px-3 py-2 text-xl font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Freelancers
                 </a>
                 <Disclosure as="div" className="-mx-3">
                   {({ open }) => (
                     <>
-                      <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                      <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-xl font-semibold leading-7 text-gray-900 hover:bg-gray-50">
                         Resources
                         <ChevronDownIcon
                           className={classNames(open ? 'rotate-180' : '', 'h-5 w-5 flex-none')}
@@ -344,36 +366,79 @@ export default function AppHeader({solutions, resources, services, showHeader}: 
                             key={item.name}
                             as="a"
                             href={item.href}
-                            className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                            className="block rounded-lg py-2 pl-6 pr-3 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                           >
                             {item.name}
                           </Disclosure.Button>
                         ))}
-                      </Disclosure.Panel>
+                        </Disclosure.Panel>
+                        
                     </>
-                  )}
-                </Disclosure>
+                    )}
+                    
+                  </Disclosure>
+                  <div className='border-b py-2 border-gray-200'>
+
+                  </div>
+                  <a
+                  href="/freelancers"
+                  className="-mx-3 block underline underline-offset-2 rounded-lg px-3 py-2 text-xl font-semibold leading-7 text-orange-500 hover:bg-gray-50"
+                >
+                  Request a Quote
+                        </a>
+                        <a
+                  href="/freelancers"
+                  className="-mx-3 underline underline-offset-2 block rounded-lg px-3 py-2 text-xl font-semibold leading-7 text-orange-500 hover:bg-gray-50"
+                >
+                  Order Now
+                  </a>
+                  
+
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2  gap-y-3 md:gap-x-10 divide-x divide-gray-900/5 bg-gray-50">
-                <a
+              <div className="grid grid-cols-1 md:grid-cols-1  gap-y-3 md:gap-x-10 divide-x divide-gray-900/5 bg-gray-50">
+                  <div>
+                    <a
                   href="#"
-                  className="-mx-3 block rounded-md ring-2 ring-inset ring-indigo-500  px-3 py-1.5 text-base font-semibold leading-7 text-indigo-500 hover:ring-indigo-400 hover:text-indigo-400"
+                  className="-mx-3 block text-center rounded-md ring-1 ring-inset ring-indigo-500  px-3 py-3.5 text-xl font-semibold leading-7 text-indigo-500 hover:ring-indigo-400 hover:text-indigo-400"
                 >
                  Freelancer Sign In
                 </a>
+                </div>
 
-                  <a
+                  <div>
+                      <a
                   href="#"
-                  className="-mx-3 inline-block rounded-md  bg-indigo-500  px-3 py-1.5 text-base font-semibold leading-7 text-white hover:bg-indigo-400 hover:text-gray-200"
+                  className="-mx-3 block text-center rounded-md  bg-indigo-500  px-3 py-3.5 text-xl font-semibold leading-7 text-white hover:bg-indigo-400 hover:text-gray-200"
                 >
-                  Client Login
+                  Customer Login
                 </a>
+                </div>
               </div>
             </div>
           </div>
           </Dialog.Panel>
       </Dialog>
       </header>
+
+      <div className='md:hidden bg-white fixed bottom-0 left-0 right-0 flex  justify-center px-3 py-8 z-30 shadow-2xl gap-x-5'>
+        <div className='max-w-7xl'>
+          <a
+              href="#"
+              className="rounded-md ring-1 ring-inset ring-indigo-500  px-6 py-4 text-xl font-semibold leading-7 text-indigo-500 hover:ring-indigo-400 hover:text-indigo-400"
+            >
+              Get a Qoute
+            </a>
+            </div>
+
+              <div>
+                  <a
+              href="#"
+              className="rounded-md  bg-indigo-500  px-6 py-4 text-xl font-semibold leading-7 text-white hover:bg-indigo-400 hover:text-gray-200"
+            >
+              Order Now
+            </a>
+        </div>
+      </div>
       </>
   )
 }

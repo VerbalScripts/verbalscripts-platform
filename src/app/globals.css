@@ -23,6 +23,10 @@ html {
   scroll-behavior: smooth;
 }
 
+* {
+  /* font-family: 'Open Sans'; */
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -59,4 +63,47 @@ body {
 }
 .swiper-button-next,.swiper-button-prev {
   display: none !important;
+}
+
+/* animate nav */
+
+.animate-nav-bottom {
+  animation:  wiggle_nav_bottom 1s ease-in-out forwards;
+}
+
+.animate-nav-top {
+  animation: wiggle_nav_top .5s ease-in-out forwards;
+}
+
+@keyframes wiggle_nav_bottom {
+  0% {
+    transform: translateY(-100px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes wiggle_nav_top{
+   0% {
+    transform: translateY(0px);
+   }
+    50% {
+      transform: translateY(-100px);
+    }
+            100% {
+              transform: translateY(0px);
+            }
+}
+
+.landing-page {
+  background: linear-gradient(
+    60deg,
+      transparent,
+      rgb(0,0,0,.8)),
+      url('/freelancer-work-from-home-image.webp') no-repeat;
+      background-size: cover;
+      background-position: top right;
+
 }
