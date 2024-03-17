@@ -1,7 +1,5 @@
-import React from 'react'
+import React from 'react';
 
 export default function LandingSideNavigation() {
-  return (
-    <div>LandingSideNavigation</div>
-  )
+  return <div>LandingSideNavigation</div>;
 }

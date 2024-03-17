@@ -37,8 +37,6 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-
-
 .landing-page-video-wrapper::after {
   content: '';
   position: absolute;
@@ -46,7 +44,7 @@ body {
   left: 0;
   right: 0;
   z-index: -10;
-  background: rgb(0,0,0,.6);
+  background: rgb(0, 0, 0, 0.6);
 }
 
 @layer utilities {
@@ -55,24 +53,24 @@ body {
   }
 }
 
-
 /* edit pagination */
 
 .swiper-pagination {
   z-index: 30;
 }
-.swiper-button-next,.swiper-button-prev {
+.swiper-button-next,
+.swiper-button-prev {
   display: none !important;
 }
 
 /* animate nav */
 
 .animate-nav-bottom {
-  animation:  wiggle_nav_bottom 1s ease-in-out forwards;
+  animation: wiggle_nav_bottom 1s ease-in-out forwards;
 }
 
 .animate-nav-top {
-  animation: wiggle_nav_top .5s ease-in-out forwards;
+  animation: wiggle_nav_top 0.5s ease-in-out forwards;
 }
 
 @keyframes wiggle_nav_bottom {
@@ -85,25 +83,24 @@ body {
   }
 }
 
-@keyframes wiggle_nav_top{
-   0% {
+@keyframes wiggle_nav_top {
+  0% {
     transform: translateY(0px);
-   }
-    50% {
-      transform: translateY(-100px);
-    }
-            100% {
-              transform: translateY(0px);
-            }
+  }
+  50% {
+    transform: translateY(-100px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 .landing-page {
-  background: linear-gradient(
-    60deg,
-      transparent,
-      rgb(0,0,0,.8)),
-      url('/freelancer-work-from-home-image.webp') no-repeat;
-      background-size: cover;
-      background-position: top right;
-
+  background:
+    linear-gradient(60deg, transparent, rgb(0, 0, 0, 0.8)),
+    url('/freelancer-work-from-home-image.webp') no-repeat;
+  background-size: cover;
+  background-position: top right;
 }
+
+
