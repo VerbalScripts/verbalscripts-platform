@@ -1,25 +1,8 @@
 import React from 'react';
-import {
-  ArrowPathIcon,
-  Bars3Icon,
-  CloudArrowUpIcon,
-  ChartPieIcon,
-  CursorArrowRaysIcon,
-  FingerPrintIcon,
-  SquaresPlusIcon,
-  NewspaperIcon,
-  AcademicCapIcon,
-  LockClosedIcon,
-  XMarkIcon,
-  CalendarDaysIcon,
-  HandRaisedIcon,
-  LinkIcon,
-} from '@heroicons/react/24/outline';
 
 import {
   LogoLinkedin,
   LogoFacebook,
-  LogoDiscord,
   LogoApple,
   LogoGithub,
   LogoInstagram,

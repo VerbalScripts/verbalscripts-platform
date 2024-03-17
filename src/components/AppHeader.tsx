@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { Fragment, useState, useEffect } from 'react';
 import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react';
 import {
@@ -14,7 +15,7 @@ function classNames(...classes: string[]): string {
 
 interface HeaderProps extends NavLabelProp {
   heightOffset: number;
-  showQuote: Function;
+  showQuote: (arg0: boolean) => void;
 }
 
 export default function AppHeader({
@@ -252,7 +253,7 @@ export default function AppHeader({
               >
                 <Popover.Panel className='absolute -left-8 top-full z-10 mt-3 w-screen max-w-sm overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5'>
                   <div className='p-4'>
-                    {resources.map((item) => (
+                    {resources.map((item: unknown) => (
                       <div
                         key={item.name}
                         className='group relative flex items-center gap-x-2 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50'

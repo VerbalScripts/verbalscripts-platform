@@ -2,14 +2,10 @@
 
 import React, { useEffect } from 'react';
 
-import Image from 'next/image';
 import { useState } from 'react';
-import { Dialog } from '@headlessui/react';
 
 import {
   ArrowPathIcon,
-  Bars3Icon,
-  CloudArrowUpIcon,
   ChartPieIcon,
   CursorArrowRaysIcon,
   FingerPrintIcon,
@@ -19,15 +15,10 @@ import {
   MicrophoneIcon,
   PowerIcon,
   ChartBarIcon,
-  HandRaisedIcon,
-  CurrencyDollarIcon,
 } from '@heroicons/react/24/outline';
 
-import {
-  ChevronDownIcon,
-  PhoneIcon,
-  PlayCircleIcon,
-} from '@heroicons/react/20/solid';
+
+
 
 import AppHeader from '@/components/AppHeader';
 import GetAQuoteModal from '@/components/GetAQuoteModal';

@@ -1,8 +1,14 @@
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint'],
+  plugins: ['@typescript-eslint', 'unused-imports'],
   extends: ['eslint:recommended', 'next/core-web-vitals', 'prettier'],
+  rules: {
+    'unused-imports/no-unused-imports': 'error', // Enable with 'error' for fixes
+    semi: 'error', // Add other rules here as needed (e.g., semicolons)
+    quotes: ['error', 'single'], // Enforce single quotes
+    'no-console': 'warn', // Warn for console logs (adjust severity)
+  },
   overrides: [
     {
       files: ['*.ts', '*.tsx'],

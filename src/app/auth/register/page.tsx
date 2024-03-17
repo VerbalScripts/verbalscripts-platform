@@ -3,7 +3,6 @@
 import { useEffect } from 'react';
 
 import SignInForm from '@/components/SignInForm';
-import Image from 'next/image';
 
 export default function Login() {
   useEffect(() => {});

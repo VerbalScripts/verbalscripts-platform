@@ -1,12 +1,6 @@
 import { Fragment, useState, useEffect } from 'react';
-import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react';
-import {
-  Bars3Icon,
-  XMarkIcon,
-  ComputerDesktopIcon,
-  UserIcon,
-} from '@heroicons/react/24/outline';
-import { ChevronDownIcon } from '@heroicons/react/20/solid';
+import { Dialog, Popover } from '@headlessui/react';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
 function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ');
@@ -16,12 +10,7 @@ interface HeaderProps extends NavLabelProp {
   heightOffset: number;
 }
 
-export default function Freelanc({
-  solutions,
-  resources,
-  services,
-  heightOffset,
-}: HeaderProps) {
+export default function Freelanc({ heightOffset }: HeaderProps) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {

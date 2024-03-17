@@ -1,9 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 type Product = {
-  id: Number;
+  id: number;
   imageSrc: string;
   imageAlt: string;
   name: string;

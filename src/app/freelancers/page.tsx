@@ -2,14 +2,10 @@
 
 import React, { useEffect } from 'react';
 
-import Image from 'next/image';
 import { useState } from 'react';
-import { Dialog } from '@headlessui/react';
 
 import {
   ArrowPathIcon,
-  Bars3Icon,
-  CloudArrowUpIcon,
   ChartPieIcon,
   CursorArrowRaysIcon,
   FingerPrintIcon,
@@ -19,18 +15,11 @@ import {
   MicrophoneIcon,
   PowerIcon,
   ChartBarIcon,
-  LockClosedIcon,
-  CurrencyDollarIcon,
   ClockIcon,
   CalendarIcon,
 } from '@heroicons/react/24/outline';
 
-import {
-  ChevronDownIcon,
-  PhoneIcon,
-  PlayCircleIcon,
-  StarIcon,
-} from '@heroicons/react/20/solid';
+import { StarIcon } from '@heroicons/react/20/solid';
 
 import FreelancingHeader from '@/components/FreelancingHeader';
 import AppFooter from '@/components/AppFooter';
