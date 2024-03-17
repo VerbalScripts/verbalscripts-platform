@@ -122,7 +122,6 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
                             </div>
                           </div>
 
-
                           <div>
                             <button
                               type='submit'
