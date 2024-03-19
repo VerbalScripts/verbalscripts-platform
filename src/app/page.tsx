@@ -280,7 +280,7 @@ export default function Home() {
             <div className='relative isolate  pt-16 sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:items-center lg:gap-x-20 lg:px-24 lg:pt-0'>
               <div className='mx-auto max-w-xl  lg:mx-0 lg:flex-auto lg:py-32'>
                 <h2 className='text-2xl font-bold  text-gray-800 sm:text-4xl'>
-                  Combining Technology and Human Expertise
+                  Collaborative Intelligence
                 </h2>
                 <p className='mt-6 text-lg leading-8 text-gray-700'>
                   We built our transcription process end end-to-end to take

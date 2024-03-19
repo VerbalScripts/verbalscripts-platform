@@ -20,7 +20,7 @@ export default function LandingPage() {
         />
       </div>
       <div className='max-w-7xl pb-48 pt-0 md:py-32 lg:py-20 md:mx-20 lg:mx-36 md:flex md:justify-between'>
-        <div className='text-left md:max-w-2xl lg:max-w-xl relative z-10'>
+        <div className='text-left md:max-w-2xl lg:max-w-xl xl:max-w-2xl relative z-10'>
           <h1 className='text-4xl md:text-5xl font-bold  text-white lg:text-5xl'>
             The Gold Standard in Audio & Video Transcription
           </h1>
@@ -48,7 +48,7 @@ export default function LandingPage() {
         <div className='hidden lg:block  relative'>
           <img
             src='login-page.svg'
-            className='absolute z-5 -top-16 -right-24 max-w-none top-0   lg:w-[30rem] xl:w-[30rem]'
+            className='absolute z-5  lg:-top-16 xl:-top-28 -right-24 max-w-none top-0   lg:w-[30rem] xl:w-[30rem]'
             alt='landing-page'
           />
         </div>
