@@ -21,134 +21,133 @@ import {
 } from '@heroicons/react/24/outline';
 
 export default function AppFooter() {
- const services: Array<NavLabel> = [
-   {
-     name: 'Transcription',
-     description: 'Get a better understanding of your traffic',
-     href: '#',
-     icon: ChartPieIcon,
-   },
-   {
-     name: 'Translation',
-     description: 'Speak directly to your customers',
-     href: '#',
-     icon: CursorArrowRaysIcon,
-     subtitle: 'Accurate translation in any language',
-     features: [
-       'Fast Delivery',
-       'Unrivaled Accuracy',
-       'Lowest Priced Anywhere',
-     ],
-     price: '0.11$ per word',
-   },
-   {
-     name: 'Legal Transcription',
-     description: 'Your customers’ data will be safe and secure',
-     href: '#',
-     icon: FingerPrintIcon,
-     subtitle: 'Industry best speech-to-text transcription software',
-     features: [
-       'Fast Delivery',
-       'Unrivaled Accuracy',
-       'Lowest Priced Anywhere',
-     ],
-     price: '0.07$ per minute',
-   },
-   {
-     name: 'AI Datasets',
-     description: 'Connect with third-party tools',
-     href: '#',
-     icon: SquaresPlusIcon,
-     subtitle: 'Create custom datasets for AI model training',
-     features: [
-       'Customized styles, tagging and speaker names',
-       'Timestamps to the millisecond',
-       'Transcription formats for any AI system',
-       'Highly secure platform & confidential data',
-       'Annotation services available',
-     ],
-     price: '2.00$ per minute',
-   },
-   {
-     name: 'Data Annotation',
-     description: 'Build strategic funnels that will convert',
-     href: '#',
-     icon: ArrowPathIcon,
-     subtitle: 'Data Labeling customized to your needs',
-     features: [
-       'Enhance your artifical intelligence',
-       'Global network of experts',
-       'Highest quality annotated data',
-     ],
-     price: '0.10$ per task',
-   },
- ];
+  const services: Array<NavLabel> = [
+    {
+      name: 'Transcription',
+      description: 'Get a better understanding of your traffic',
+      href: '#',
+      icon: ChartPieIcon,
+    },
+    {
+      name: 'Translation',
+      description: 'Speak directly to your customers',
+      href: '#',
+      icon: CursorArrowRaysIcon,
+      subtitle: 'Accurate translation in any language',
+      features: [
+        'Fast Delivery',
+        'Unrivaled Accuracy',
+        'Lowest Priced Anywhere',
+      ],
+      price: '0.11$ per word',
+    },
+    {
+      name: 'Legal Transcription',
+      description: 'Your customers’ data will be safe and secure',
+      href: '#',
+      icon: FingerPrintIcon,
+      subtitle: 'Industry best speech-to-text transcription software',
+      features: [
+        'Fast Delivery',
+        'Unrivaled Accuracy',
+        'Lowest Priced Anywhere',
+      ],
+      price: '0.07$ per minute',
+    },
+    {
+      name: 'AI Datasets',
+      description: 'Connect with third-party tools',
+      href: '#',
+      icon: SquaresPlusIcon,
+      subtitle: 'Create custom datasets for AI model training',
+      features: [
+        'Customized styles, tagging and speaker names',
+        'Timestamps to the millisecond',
+        'Transcription formats for any AI system',
+        'Highly secure platform & confidential data',
+        'Annotation services available',
+      ],
+      price: '2.00$ per minute',
+    },
+    {
+      name: 'Data Annotation',
+      description: 'Build strategic funnels that will convert',
+      href: '#',
+      icon: ArrowPathIcon,
+      subtitle: 'Data Labeling customized to your needs',
+      features: [
+        'Enhance your artifical intelligence',
+        'Global network of experts',
+        'Highest quality annotated data',
+      ],
+      price: '0.10$ per task',
+    },
+  ];
 
- const solutions: Array<NavLabel> = [
-   {
-     name: 'Court and Legal',
-     description:
-       'We convert audio/video content into transcripts quickly and securing to save law firms, investigators, police force, or research firms time and money.',
-     href: '/legal',
-     icon: NewspaperIcon,
-   },
-   {
-     name: 'Medical Research',
-     description:
-       'We have experienced, dedicated teams of workers who specialize in healthcare related content who provide accurate and confidential transcriptions for both our Medical and HIPAA-compliant services.',
-     href: '/medical',
-     icon: ChartPieIcon,
-   },
-   {
-     name: 'Corporate and business',
-     description:
-       'Customized for your large volume needs, including a variety of enterprise security requirements.',
-     href: '/enterprise',
-     icon: ArrowPathIcon,
-   },
-   {
-     name: 'AI Machine Learning',
-     description:
-       'The very best in human intelligence requires top quality training data for speech NLP and computer vision models.',
-     href: '/ai',
-     icon: FingerPrintIcon,
-   },
-   {
-     name: 'Education',
-     description:
-       'Fast, easy lecture and dissertation transcripts for students or faculty, compatible with NVivo and other research platforms.',
-     href: '/academic',
-     icon: AcademicCapIcon,
-   },
-   {
-     name: 'Digital and online learning',
-     description:
-       'Transcription that is perfect for all types of qualitative research needs, including focus groups, surveys and in-depth interviews.',
-     href: '/market-research',
-     icon: ChartBarIcon,
-   },
+  const solutions: Array<NavLabel> = [
+    {
+      name: 'Court and Legal',
+      description:
+        'We convert audio/video content into transcripts quickly and securing to save law firms, investigators, police force, or research firms time and money.',
+      href: '/legal',
+      icon: NewspaperIcon,
+    },
+    {
+      name: 'Medical Research',
+      description:
+        'We have experienced, dedicated teams of workers who specialize in healthcare related content who provide accurate and confidential transcriptions for both our Medical and HIPAA-compliant services.',
+      href: '/medical',
+      icon: ChartPieIcon,
+    },
+    {
+      name: 'Corporate and business',
+      description:
+        'Customized for your large volume needs, including a variety of enterprise security requirements.',
+      href: '/enterprise',
+      icon: ArrowPathIcon,
+    },
+    {
+      name: 'AI Machine Learning',
+      description:
+        'The very best in human intelligence requires top quality training data for speech NLP and computer vision models.',
+      href: '/ai',
+      icon: FingerPrintIcon,
+    },
+    {
+      name: 'Education',
+      description:
+        'Fast, easy lecture and dissertation transcripts for students or faculty, compatible with NVivo and other research platforms.',
+      href: '/academic',
+      icon: AcademicCapIcon,
+    },
+    {
+      name: 'Digital and online learning',
+      description:
+        'Transcription that is perfect for all types of qualitative research needs, including focus groups, surveys and in-depth interviews.',
+      href: '/market-research',
+      icon: ChartBarIcon,
+    },
 
-   {
-     name: 'Consulting',
-     description:
-       'Fast transcription and research data to meet due diligence and management consulting research needs.',
-     href: '/consulting',
-     icon: SquaresPlusIcon,
-   },
-   {
-     name: 'Media Production',
-     description: 'Automated speech recognition & analytics for call centers',
-     href: '/call-centers',
-     icon: MicrophoneIcon,
-   },
-   {
-     name: 'Government',
-     description: 'Automated speech recognition & analytics for call centers',
-     href: '/call-centers',
-     icon: MicrophoneIcon,
-   },
- ];
-
+    {
+      name: 'Consulting',
+      description:
+        'Fast transcription and research data to meet due diligence and management consulting research needs.',
+      href: '/consulting',
+      icon: SquaresPlusIcon,
+    },
+    {
+      name: 'Media Production',
+      description: 'Automated speech recognition & analytics for call centers',
+      href: '/call-centers',
+      icon: MicrophoneIcon,
+    },
+    {
+      name: 'Government',
+      description: 'Automated speech recognition & analytics for call centers',
+      href: '/call-centers',
+      icon: MicrophoneIcon,
+    },
+  ];
 
   return (
     <div className='relative isolate overflow-hidden pb-36 md:pb-0 pt-16 sm:pt-24 lg:pt-32'>
