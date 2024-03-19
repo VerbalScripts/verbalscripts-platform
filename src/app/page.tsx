@@ -313,7 +313,7 @@ export default function Home() {
       </div>
 
       {/* testimonials */}
-      <div className='bg-indigo-900'>
+      <div className='bg-indigo-600'>
         <div className='mx-auto max-w-8xl '>
           <div className='relative isolate   px-6 pt-16 sm:rounded-3xl sm:px-16 md:pt-24 md:px-24 lg:flex lg:items-center lg:gap-x-20 lg:px-36 lg:pt-0'>
             <div className='mx-auto  lg:max-w-xl  lg:mx-0 lg:flex-auto lg:py-32'>
