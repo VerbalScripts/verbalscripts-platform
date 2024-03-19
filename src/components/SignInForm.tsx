@@ -1,14 +1,26 @@
-import React, { FormEvent } from 'react';
+import React, { FormEvent, useState } from 'react';
+import { Eye, EyeOff } from 'react-ionicons';
+
+function classNames(...classes: string[]): string {
+  return classes.filter(Boolean).join(' ');
+}
 
 export default function SIgnInForm() {
   const validation = {};
+
+  const [loading, setLoading] = useState(false);
+  const [is_visible, toggleVisible] = useState(true);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
 
-    console.log('submitting ...');
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+
   };
 
   return (
@@ -32,7 +44,7 @@ export default function SIgnInForm() {
             type='email'
             autoComplete='email'
             required
-            className='block w-full rounded-md border-3 py-4 px-2 text-gray-600 shadow-sm ring-2 ring-inset ring-indigo-400 placeholder:text-grey-900  md:text-xl focus:ring-2 focus:ring-inset  focus:ring-dark sm:text-sm sm:leading-6'
+            className='block w-full rounded-md border-3 py-4 px-4 text-gray-600 shadow-sm ring-1 ring-inset ring-indigo-400 placeholder:text-grey-900  md:text-xl focus:ring-2 focus:ring-inset  focus:ring-dark sm:text-sm sm:leading-6'
           />
         </div>
       </div>
@@ -43,24 +55,39 @@ export default function SIgnInForm() {
         >
           Password
         </label>
-        <div className='mt-2'>
+        <div className='mt-2 relative'>
           <input
-            id='email'
-            name='email'
-            type='email'
-            autoComplete='email'
+            id='password'
+            name='password'
+            type={is_visible ? 'password' : 'text'}
+            autoComplete='password'
             required
-            className='block w-full rounded-md border-3 py-4 px-2 text-gray-600 shadow-sm ring-2 ring-inset ring-indigo-400 placeholder:text-grey-900  md:text-xl focus:ring-2 focus:ring-inset  focus:ring-dark sm:text-sm sm:leading-6'
+            className='block w-full rounded-md border-3  py-4 px-4 text-gray-600 shadow-sm ring-1 ring-inset ring-indigo-400 placeholder:text-grey-900  md:text-xl focus:ring-2 focus:ring-inset  focus:ring-dark sm:text-sm sm:leading-6'
           />
+          <span
+            className='absolute top-4 right-4 cursor-pointer'
+            onClick={() => toggleVisible(!is_visible)}
+          >
+            {is_visible ? <EyeOff height={'30px'} /> : <Eye height={'30px'} />}
+          </span>
+        </div>
+
+        <div className='flex justify-end py-2'>
+          <a
+            href='#'
+            className='font-semibold text-md underline underline-offset-2 text-indigo-600 hover:text-indigo-500'
+          >
+            Forgot password?
+          </a>
         </div>
       </div>
 
       <div>
         <button
           type='submit'
-          className='flex w-full justify-center rounded-md bg-indigo-600 px-3 py-5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+          className='flex w-full  justify-center rounded-full bg-indigo-600 px-3 py-4 text-xl font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
         >
-          SIGN IN
+          Sign In
         </button>
       </div>
     </form>

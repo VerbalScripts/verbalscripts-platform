@@ -80,10 +80,9 @@ export default function AppHeader({
           aria-label='Global'
         >
           <div className='flex lg:flex-1'>
-            <a href='#' className='-m-1.5 p-1.5'>
-              <span className='text-gray-800 font-bold text-2xl'>
-                VerbalScripts
-              </span>
+            <a href='#' className='-m-1.5 p-1.5 text-3xl font-bold'>
+              <span>Verbal</span>
+              <span className='text-orange-500 italic'>Scripts</span>
             </a>
           </div>
           <div className='flex lg:hidden'>

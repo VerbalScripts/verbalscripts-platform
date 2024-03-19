@@ -102,3 +102,11 @@ body {
   background-size: cover;
   background-position: top right;
 }
+
+
+.login-img {
+    background:
+        linear-gradient(280deg, transparent, rgb(0, 0, 0, 1)),
+        url('/macintosh-4556368.jpg') no-repeat;
+      background-size: cover;
+}
