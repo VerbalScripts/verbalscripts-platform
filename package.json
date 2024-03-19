@@ -35,7 +35,7 @@
     "eslint-plugin-unused-imports": "^3.1.0",
     "postcss": "^8",
     "prettier": "^3.2.5",
-    "react-ionicons": "^4.2.1",
+    "react-ionicons": "^1.4.6",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
   }
