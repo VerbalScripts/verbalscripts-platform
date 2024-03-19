@@ -1,21 +1,8 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useRef } from 'react';
 
 import { useState } from 'react';
-
-import {
-  ArrowPathIcon,
-  ChartPieIcon,
-  CursorArrowRaysIcon,
-  FingerPrintIcon,
-  SquaresPlusIcon,
-  NewspaperIcon,
-  AcademicCapIcon,
-  MicrophoneIcon,
-  PowerIcon,
-  ChartBarIcon,
-} from '@heroicons/react/24/outline';
 
 import AppHeader from '@/components/AppHeader';
 import GetAQuoteModal from '@/components/GetAQuoteModal';
@@ -26,161 +13,11 @@ export default function Page() {
   // slide over
   const [open, slideOpen] = useState(false);
 
-  useEffect(() => {
-    window.addEventListener('scroll', (event: any) => {
-      event.target.scrollingElement.scrollTop &&
-        setOffsetHeight(event.target.scrollingElement.scrollTop);
-    });
-  });
+  const onBodyScroll = (event: React.UIEvent<HTMLElement>) => {
+    setOffsetHeight((event.target as HTMLElement).scrollTop);
+  };
 
-  const services = [
-    {
-      name: 'Transcription',
-      description: 'Get a better understanding of your traffic',
-      href: '#',
-      icon: ChartPieIcon,
-    },
-    {
-      name: 'Translation',
-      description: 'Speak directly to your customers',
-      href: '#',
-      icon: CursorArrowRaysIcon,
-      subtitle: 'Accurate translation in any language',
-      features: [
-        'Fast Delivery',
-        'Unrivaled Accuracy',
-        'Lowest Priced Anywhere',
-      ],
-      price: '0.11$ per word',
-    },
-    {
-      name: 'Machine Transcription',
-      description: 'Your customers’ data will be safe and secure',
-      href: '#',
-      icon: FingerPrintIcon,
-      subtitle: 'Industry best speech-to-text transcription software',
-      features: [
-        'Fast Delivery',
-        'Unrivaled Accuracy',
-        'Lowest Priced Anywhere',
-      ],
-      price: '0.07$ per minute',
-    },
-    {
-      name: 'AI Datasets',
-      description: 'Connect with third-party tools',
-      href: '#',
-      icon: SquaresPlusIcon,
-      subtitle: 'Create custom datasets for AI model training',
-      features: [
-        'Customized styles, tagging and speaker names',
-        'Timestamps to the millisecond',
-        'Transcription formats for any AI system',
-        'Highly secure platform & confidential data',
-        'Annotation services available',
-      ],
-      price: '2.00$ per minute',
-    },
-    {
-      name: 'Data Annotation',
-      description: 'Build strategic funnels that will convert',
-      href: '#',
-      icon: ArrowPathIcon,
-      subtitle: 'Data Labeling customized to your needs',
-      features: [
-        'Enhance your artifical intelligence',
-        'Global network of experts',
-        'Highest quality annotated data',
-      ],
-      price: '0.10$ per task',
-    },
-  ];
-
-  const solutions = [
-    {
-      name: 'Medical & Research',
-      description:
-        'We have experienced, dedicated teams of workers who specialize in healthcare related content who provide accurate and confidential transcriptions for both our Medical and HIPAA-compliant services.',
-      href: '/medical',
-      icon: ChartPieIcon,
-    },
-    {
-      name: 'Legal',
-      description:
-        'We convert audio/video content into transcripts quickly and securing to save law firms, investigators, police force, or research firms time and money.',
-      href: '/legal',
-      icon: NewspaperIcon,
-    },
-    {
-      name: 'AI Machine Learning',
-      description:
-        'The very best in human intelligence requires top quality training data for speech NLP and computer vision models.',
-      href: '/ai',
-      icon: FingerPrintIcon,
-    },
-    {
-      name: 'Education',
-      description:
-        'Fast, easy lecture and dissertation transcripts for students or faculty, compatible with NVivo and other research platforms.',
-      href: '/academic',
-      icon: AcademicCapIcon,
-    },
-    {
-      name: 'Market Research',
-      description:
-        'Transcription that is perfect for all types of qualitative research needs, including focus groups, surveys and in-depth interviews.',
-      href: '/market-research',
-      icon: ChartBarIcon,
-    },
-    {
-      name: 'Enterprise',
-      description:
-        'Customized for your large volume needs, including a variety of enterprise security requirements.',
-      href: '/enterprise',
-      icon: ArrowPathIcon,
-    },
-    {
-      name: 'Technology',
-      description:
-        'Analyze interviews, focus groups, and data mine content to turn your qualitative audio content into quantitative text.',
-      href: '/technology',
-      icon: PowerIcon,
-    },
-    {
-      name: 'Consulting',
-      description:
-        'Fast transcription and research data to meet due diligence and management consulting research needs.',
-      href: '/consulting',
-      icon: SquaresPlusIcon,
-    },
-    {
-      name: 'Call Centers',
-      description: 'Automated speech recognition & analytics for call centers',
-      href: '/call-centers',
-      icon: MicrophoneIcon,
-    },
-  ];
-
-  const resources = [
-    {
-      name: 'FAQs',
-      description: 'Frequently Asked Qustions',
-      href: '/faqs',
-      icon: ChartPieIcon,
-    },
-    {
-      name: 'Terms & Conditions',
-      description: 'View terms and conditions',
-      href: '/terms-and-conditions',
-      icon: ChartPieIcon,
-    },
-    {
-      name: 'Policies',
-      description: 'check valid policies',
-      href: '/policies',
-      icon: ChartPieIcon,
-    },
-  ];
+  const solutions = useRef<Array<NavLabel>>([]);
 
   const features = [
     {
@@ -216,12 +53,13 @@ export default function Page() {
   ];
 
   return (
-    <div className='bg-zinc-800'>
+    <div
+      className='bg-zinc-800 max-h-screen overflow-y-scroll relative'
+      onScroll={onBodyScroll}
+    >
       <AppHeader
         showQuote={slideOpen}
-        resources={resources}
-        solutions={solutions}
-        services={services}
+        dataPush={solutions}
         heightOffset={heightOffset}
       />
 
@@ -305,7 +143,7 @@ export default function Page() {
 
         <div className='mx-auto pt-16 max-w-3xl sm:pt-20 lg:pt-24 lg:max-w-5xl'>
           <dl className='mx-auto grid max-w-none px-6 grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-7xl xl:max-w-7xl lg:grid-cols-2 lg:gap-y-16'>
-            {[...solutions].map((feature) => (
+            {[...solutions.current].map((feature) => (
               <a
                 href={'/solutions' + feature.href}
                 key={feature.name}
@@ -436,11 +274,7 @@ export default function Page() {
         </div>
       </div>
 
-      <AppFooter
-        services={services}
-        resources={resources}
-        solutions={solutions}
-      />
+      <AppFooter />
     </div>
   );
 }

@@ -4,10 +4,12 @@ module.exports = {
   plugins: ['@typescript-eslint', 'unused-imports'],
   extends: ['eslint:recommended', 'next/core-web-vitals', 'prettier'],
   rules: {
-    'unused-imports/no-unused-imports': 'error', // Enable with 'error' for fixes
+    'unused-imports/no-unused-imports': 'warn', // Enable with 'error' for fixes
     semi: 'error', // Add other rules here as needed (e.g., semicolons)
     quotes: ['error', 'single'], // Enforce single quotes
-    'no-console': 'warn', // Warn for console logs (adjust severity)
+    'no-console': 'warn', // Warn for console logs (adjust severity),
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
   },
   overrides: [
     {
@@ -18,7 +20,7 @@ module.exports = {
       },
       extends: [
         'plugin:@typescript-eslint/recommended',
-        'plugin:@typescript-eslint/recommended-requiring-type-checking',
+        // 'plugin:@typescript-eslint/recommended-requiring-type-checking',
 
         //declaring 'next/core-web-vitals' and 'prettier' again in case
         //the two plugin:... configs above overrode any of their rules

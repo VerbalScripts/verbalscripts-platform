@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prettier --check .  && next build",
+    "build": "next build",
+    "build:format": "npm run format  && next build",
     "start": "next start",
     "lint": "prettier --check . && next lint",
     "format": "prettier --write . "

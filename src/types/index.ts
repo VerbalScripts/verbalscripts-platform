@@ -1,11 +1,20 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+
 type NavLabel = {
   name: string;
   href: string;
   description: string;
-  icon: unknown;
+  icon: React.ElementType;
+  subtitle?: string;
+  features?: Array<string>;
+  price?: string;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+interface NavItemProp {
+  label: NavLabel;
+}
+
 interface NavLabelProp {
   solutions: Array<NavLabel>;
   resources: Array<NavLabel>;
@@ -19,12 +28,9 @@ type Testimony = {
   occupation: string;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface TestimonyProp {
   testimonials: Array<Testimony>;
 }
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 type FreelancerTestimony = {
   description: string;
   name: string;
@@ -32,3 +38,12 @@ type FreelancerTestimony = {
   state: string;
   years: string;
 };
+
+type ParterLogo = {
+  name: string;
+  imgUrl: string;
+};
+
+interface LogoComponentProp {
+  partners: Array<ParterLogo>;
+}

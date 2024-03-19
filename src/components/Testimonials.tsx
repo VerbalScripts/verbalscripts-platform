@@ -41,7 +41,7 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
           modules={[Autoplay, Pagination, Navigation]}
           className='w-full h-96'
         >
-          {testimonials.map((testimony: any, index: number) => (
+          {testimonials.map((testimony: Testimony, index: number) => (
             <SwiperSlide key={testimony.name + index}>
               <figure className='mt-10'>
                 <blockquote className='text-center text-xl font-semibold leading-8 text-gray-300 sm:text-2xl sm:leading-9'>

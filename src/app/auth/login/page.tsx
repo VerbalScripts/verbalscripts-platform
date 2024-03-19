@@ -3,13 +3,14 @@
 import { useEffect } from 'react';
 import SignInForm from '@/components/SignInForm';
 import { LogoApple, LogoGoogle } from 'react-ionicons';
+import Link from 'next/link';
 
 export default function Login() {
   useEffect(() => {});
 
   return (
     <div className='bg-white  grid lg:grid-cols-2'>
-      <div className='hidden h-screen lg:flex md:flex-col backdrop-blur-lg login-img'>
+      <div className='hidden h-screen lg:flex md:flex-col md:justify-between backdrop-blur-lg login-img'>
         <div className='flex justify-start text-4xl text-white font-bold py-10 leading-10 px-10'>
           <a href='/'>
             <span>Verbal</span>
@@ -19,11 +20,11 @@ export default function Login() {
 
         <div className='py-24 px-20'>
           <div className='max-w-md'>
-            <p className='text-3xl lg:text-4xl text-gray-100 mb-4 leading-[3.5rem]'>
+            <p className='text-4xl text-semibold lg:text-4xl text-gray-100 mb-4 leading-[3.5rem]'>
               Welcome to VerbalScripts WorkHub
             </p>
 
-            <p className='text-gray-300 text-xl lg:text-2xl '>
+            <p className='text-gray-100 text-xl lg:text-2xl '>
               Work flexibly from anywhere on a variety of work including
               transcription, translation, annotation and subtitling
             </p>
@@ -62,16 +63,16 @@ export default function Login() {
 
           <p className='mt-10 text-center text-md text-gray-500'>
             Not a member?{' '}
-            <a
+            <Link
               href='/auth/register'
               className='font-semibold leading-6 text-indigo-600 hover:text-indigo-500'
             >
               Register Now
-            </a>
+            </Link>
           </p>
         </div>
         <div className='mx-auto text-sm text-gray-600 max-w-md mb-3 text-center'>
-          This site is protected by reCAPTCHA and the Google{' '}
+          This site is protected by reCAPTCHA and the VerbalScripts{' '}
           <span className='underline'> Privacy Policy</span> and{'  '}
           <span className='underline'> Terms of Service</span> apply.
         </div>

@@ -4,7 +4,7 @@ import { XMarkIcon } from '@heroicons/react/24/outline';
 
 interface SliderOverProp {
   open: boolean;
-  setOpen: Function;
+  setOpen: (arg0: boolean) => void;
 }
 
 export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {

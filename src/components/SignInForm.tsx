@@ -1,26 +1,21 @@
 import React, { FormEvent, useState } from 'react';
 import { Eye, EyeOff } from 'react-ionicons';
 
-function classNames(...classes: string[]): string {
-  return classes.filter(Boolean).join(' ');
-}
-
 export default function SIgnInForm() {
-  const validation = {};
+  // const validation = {};
 
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [is_visible, toggleVisible] = useState(true);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const formData = new FormData(event.currentTarget);
+    // const formData = new FormData(event.currentTarget);
 
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-
+    // setLoading(true);
+    // setTimeout(() => {
+    //   setLoading(false);
+    // }, 2000);
   };
 
   return (

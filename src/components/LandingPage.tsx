@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function LandingPage() {
   return (
-    <div className='relative bg--600 h-auto isolate px-6 pt-14 lg:px-8 landing-page'>
+    <div className='relative bg--600 h-auto isolate px-6 pt-14 lg:px-8 bg-indigo-500 landing-page'>
       {/* <video className='absolute top-0 right-0 left-0 w-full -z-20 h-full object-cover'  loop autoPlay>
         <source src="landing_prodution.mp4" type='video/mp4' />
       </video> */}
@@ -19,12 +19,12 @@ export default function LandingPage() {
           }}
         />
       </div>
-      <div className='max-w-3xl pb-48 pt-0 md:py-32 lg:py-32 md:mx-20 lg:mx-40'>
-        <div className='text-left'>
-          <h1 className='text-4xl font-bold tracking-tight text-white sm:text-6xl'>
+      <div className='max-w-7xl pb-48 pt-0 md:py-32 lg:py-20 md:mx-20 lg:mx-36 md:flex md:justify-between'>
+        <div className='text-left md:max-w-2xl lg:max-w-xl relative z-10'>
+          <h1 className='text-4xl md:text-5xl font-bold  text-white lg:text-5xl'>
             The Gold Standard in Audio & Video Transcription
           </h1>
-          <p className='mt-6 text-2xl leading-8 text-gray-100'>
+          <p className='mt-6 text-xl leading-8 text-gray-100'>
             We deliver the most accurate transcriptions at competitive rates due
             to a combination of the latest in AI, paired with our trained &
             experienced transcriber network.
@@ -34,15 +34,23 @@ export default function LandingPage() {
               href='/services'
               className='rounded-md bg-indigo-600 px-7 py-3 text-lg font-bold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
             >
-              Our Transcription Services
+              Services
             </a>
             <a
               href='/solutions'
               className='text-lg underline underline-offset-8 font-bold leading-6 text-white'
             >
-              Our Industry Solutions
+              Industry Solutions
             </a>
           </div>
+        </div>
+
+        <div className='hidden lg:block  relative'>
+          <img
+            src='login-page.svg'
+            className='absolute z-5 -top-16 -right-24 max-w-none top-0   lg:w-[30rem] xl:w-[30rem]'
+            alt='landing-page'
+          />
         </div>
       </div>
       <div

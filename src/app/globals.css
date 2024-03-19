@@ -95,18 +95,10 @@ body {
   }
 }
 
-.landing-page {
-  background:
-    linear-gradient(60deg, transparent, rgb(0, 0, 0, 0.8)),
-    url('/freelancer-work-from-home-image.webp') no-repeat;
-  background-size: cover;
-  background-position: top right;
-}
-
-
 .login-img {
-    background:
-        linear-gradient(280deg, transparent, rgb(0, 0, 0, 1)),
-        url('/macintosh-4556368.jpg') no-repeat;
-      background-size: cover;
+  background:
+    linear-gradient(to bottom, transparent, rgb(0, 0, 0, 0.8)),
+    linear-gradient(to top, transparent, rgb(0, 0, 0, 0.4)),
+    url('/login-page.svg') no-repeat top right;
+  background-size: cover;
 }

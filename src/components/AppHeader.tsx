@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect, MutableRefObject } from 'react';
 import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react';
 import {
   Bars3Icon,
@@ -9,23 +9,185 @@ import {
 } from '@heroicons/react/24/outline';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 
+import {
+  ArrowPathIcon,
+  ChartPieIcon,
+  CursorArrowRaysIcon,
+  FingerPrintIcon,
+  SquaresPlusIcon,
+  NewspaperIcon,
+  AcademicCapIcon,
+  MicrophoneIcon,
+  ChartBarIcon,
+} from '@heroicons/react/24/outline';
+import NavItem from './NavItem';
+import Link from 'next/link';
+
 function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ');
 }
 
-interface HeaderProps extends NavLabelProp {
+interface HeaderProps {
   heightOffset: number;
   showQuote: (arg0: boolean) => void;
+  dataPush?: MutableRefObject<NavLabel[]>;
 }
 
 export default function AppHeader({
-  solutions,
-  resources,
-  services,
   showQuote,
+  dataPush,
   heightOffset,
 }: HeaderProps) {
   const [open, setOpen] = useState(false);
+
+  const services: Array<NavLabel> = [
+    {
+      name: 'Transcription',
+      description: 'Get a better understanding of your traffic',
+      href: '#',
+      icon: ChartPieIcon,
+    },
+    {
+      name: 'Translation',
+      description: 'Speak directly to your customers',
+      href: '#',
+      icon: CursorArrowRaysIcon,
+      subtitle: 'Accurate translation in any language',
+      features: [
+        'Fast Delivery',
+        'Unrivaled Accuracy',
+        'Lowest Priced Anywhere',
+      ],
+      price: '0.11$ per word',
+    },
+    {
+      name: 'Legal Transcription',
+      description: 'Your customers’ data will be safe and secure',
+      href: '#',
+      icon: FingerPrintIcon,
+      subtitle: 'Industry best speech-to-text transcription software',
+      features: [
+        'Fast Delivery',
+        'Unrivaled Accuracy',
+        'Lowest Priced Anywhere',
+      ],
+      price: '0.07$ per minute',
+    },
+    {
+      name: 'AI Datasets',
+      description: 'Connect with third-party tools',
+      href: '#',
+      icon: SquaresPlusIcon,
+      subtitle: 'Create custom datasets for AI model training',
+      features: [
+        'Customized styles, tagging and speaker names',
+        'Timestamps to the millisecond',
+        'Transcription formats for any AI system',
+        'Highly secure platform & confidential data',
+        'Annotation services available',
+      ],
+      price: '2.00$ per minute',
+    },
+    {
+      name: 'Data Annotation',
+      description: 'Build strategic funnels that will convert',
+      href: '#',
+      icon: ArrowPathIcon,
+      subtitle: 'Data Labeling customized to your needs',
+      features: [
+        'Enhance your artifical intelligence',
+        'Global network of experts',
+        'Highest quality annotated data',
+      ],
+      price: '0.10$ per task',
+    },
+  ];
+
+  const solutions: Array<NavLabel> = [
+    {
+      name: 'Court and Legal',
+      description:
+        'We convert audio/video content into transcripts quickly and securing to save law firms, investigators, police force, or research firms time and money.',
+      href: '/legal',
+      icon: NewspaperIcon,
+    },
+    {
+      name: 'Medical Research',
+      description:
+        'We have experienced, dedicated teams of workers who specialize in healthcare related content who provide accurate and confidential transcriptions for both our Medical and HIPAA-compliant services.',
+      href: '/medical',
+      icon: ChartPieIcon,
+    },
+    {
+      name: 'Corporate and business',
+      description:
+        'Customized for your large volume needs, including a variety of enterprise security requirements.',
+      href: '/enterprise',
+      icon: ArrowPathIcon,
+    },
+    {
+      name: 'AI Machine Learning',
+      description:
+        'The very best in human intelligence requires top quality training data for speech NLP and computer vision models.',
+      href: '/ai',
+      icon: FingerPrintIcon,
+    },
+    {
+      name: 'Education',
+      description:
+        'Fast, easy lecture and dissertation transcripts for students or faculty, compatible with NVivo and other research platforms.',
+      href: '/academic',
+      icon: AcademicCapIcon,
+    },
+    {
+      name: 'Digital and online learning',
+      description:
+        'Transcription that is perfect for all types of qualitative research needs, including focus groups, surveys and in-depth interviews.',
+      href: '/market-research',
+      icon: ChartBarIcon,
+    },
+
+    {
+      name: 'Consulting',
+      description:
+        'Fast transcription and research data to meet due diligence and management consulting research needs.',
+      href: '/consulting',
+      icon: SquaresPlusIcon,
+    },
+    {
+      name: 'Media Production',
+      description: 'Automated speech recognition & analytics for call centers',
+      href: '/call-centers',
+      icon: MicrophoneIcon,
+    },
+    {
+      name: 'Government',
+      description: 'Automated speech recognition & analytics for call centers',
+      href: '/call-centers',
+      icon: MicrophoneIcon,
+    },
+  ];
+
+  const resources: Array<NavLabel> = [
+    {
+      name: 'FAQs',
+      description: 'Frequently Asked Qustions',
+      href: '/faqs',
+      icon: ChartPieIcon,
+    },
+    {
+      name: 'Terms & Conditions',
+      description: 'View terms and conditions',
+      href: '/terms-and-conditions',
+      icon: ChartPieIcon,
+    },
+    {
+      name: 'Policies',
+      description: 'check valid policies',
+      href: '/policies',
+      icon: ChartPieIcon,
+    },
+  ];
 
   useEffect(() => {
     if (heightOffset > 200) {
@@ -43,6 +205,8 @@ export default function AppHeader({
         .querySelector('header')
         ?.classList.add('relative', 'animate-nav-top');
     }
+
+    if (dataPush) dataPush.current = solutions;
   });
 
   return (
@@ -96,17 +260,17 @@ export default function AppHeader({
             </button>
           </div>
 
-          <Popover.Group className='hidden lg:flex lg:gap-x-5'>
-            <a
+          <Popover.Group className='hidden lg:flex lg:gap-x-1'>
+            <Link
               href='/'
-              className='text-md font-semibold leading-6 text-gray-900'
+              className='text-md font-semibold px-4 py-1 leading-6 text-gray-900 transition hover:bg-orange-100'
             >
               Home
-            </a>
+            </Link>
 
             <Popover className='relative'>
-              <Popover.Button className='flex items-center gap-x-1 text-md font-semibold leading-6 text-gray-900'>
-                Services
+              <Popover.Button className='flex px-4 py-1 items-center gap-x-1 text-md font-semibold leading-6 text-gray-900'>
+                Industry
                 <ChevronDownIcon
                   className='h-5 w-5 flex-none text-gray-400'
                   aria-hidden='true'
@@ -124,28 +288,8 @@ export default function AppHeader({
               >
                 <Popover.Panel className='absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5'>
                   <div className='p-4'>
-                    {services.map((item) => (
-                      <div
-                        key={item.name}
-                        className='group relative flex items-center gap-x-4 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50'
-                      >
-                        <div className='flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white'>
-                          <item.icon
-                            className='h-6 w-6 text-gray-600 group-hover:text-indigo-600'
-                            aria-hidden='true'
-                          />
-                        </div>
-                        <div className='flex-auto'>
-                          <a
-                            href={item.href}
-                            className='block font-semibold text-gray-900'
-                          >
-                            {item.name}
-                            <span className='absolute inset-0' />
-                          </a>
-                          <p className=' text-gray-600'>{item.description}</p>
-                        </div>
-                      </div>
+                    {services.map((item: NavLabel) => (
+                      <NavItem key={item.name} label={item} />
                     ))}
                   </div>
                   {/* <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
@@ -165,7 +309,7 @@ export default function AppHeader({
             </Popover>
 
             <Popover className='relative'>
-              <Popover.Button className='flex items-center gap-x-1 text-md font-semibold leading-6 text-gray-900'>
+              <Popover.Button className='flex px-4 py-1 items-center gap-x-1 text-md font-semibold leading-6 text-gray-900'>
                 Solutions
                 <ChevronDownIcon
                   className='h-5 w-5 flex-none text-gray-400'
@@ -184,30 +328,8 @@ export default function AppHeader({
               >
                 <Popover.Panel className='absolute -left-8 top-full z-10 mt-3 w-screen max-w-xl overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5'>
                   <div className='p-4 w-full grid  grid-cols-1 gap-x-8 gap-y-3 lg:grid-cols-2'>
-                    {solutions.map((item) => (
-                      <div
-                        key={item.name}
-                        className='group relative flex items-center gap-x-4 rounded-md p-4 text-sm leading-6 hover:bg-gray-50'
-                      >
-                        <div className='flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white'>
-                          <item.icon
-                            className='h-6 w-6 text-gray-600 group-hover:text-indigo-600'
-                            aria-hidden='true'
-                          />
-                        </div>
-                        <div className='flex-auto'>
-                          <a
-                            href={item.href}
-                            className='block font-semibold text-gray-900'
-                          >
-                            {item.name}
-                            <span className='absolute inset-0' />
-                          </a>
-                          <p className=' text-gray-600 line-clamp-2'>
-                            {item.description}
-                          </p>
-                        </div>
-                      </div>
+                    {solutions.map((item: NavLabel) => (
+                      <NavItem key={item.name} label={item} />
                     ))}
                   </div>
                   {/* <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
@@ -226,14 +348,8 @@ export default function AppHeader({
               </Transition>
             </Popover>
 
-            <a
-              href='/freelancers'
-              className='text-md font-semibold leading-6 text-gray-900'
-            >
-              Freelancers
-            </a>
             <Popover className='relative'>
-              <Popover.Button className='flex items-center gap-x-4 text-md font-semibold leading-6 text-gray-900'>
+              <Popover.Button className='flex px-4 py-1 items-center gap-x-4 text-md font-semibold leading-6 text-gray-900'>
                 Resources
                 <ChevronDownIcon
                   className='h-5 w-5 flex-none text-gray-400'
@@ -252,28 +368,8 @@ export default function AppHeader({
               >
                 <Popover.Panel className='absolute -left-8 top-full z-10 mt-3 w-screen max-w-sm overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5'>
                   <div className='p-4'>
-                    {resources.map((item: unknown) => (
-                      <div
-                        key={item.name}
-                        className='group relative flex items-center gap-x-2 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50'
-                      >
-                        <div className='flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white'>
-                          <item.icon
-                            className='h-6 w-6 text-gray-600 group-hover:text-indigo-600'
-                            aria-hidden='true'
-                          />
-                        </div>
-                        <div className='flex-auto'>
-                          <a
-                            href={item.href}
-                            className='block font-semibold text-gray-900'
-                          >
-                            {item.name}
-                            <span className='absolute inset-0' />
-                          </a>
-                          <p className=' text-gray-600'>{item.description}</p>
-                        </div>
-                      </div>
+                    {resources.map((item: NavLabel) => (
+                      <NavItem key={item.name} label={item} />
                     ))}
                   </div>
                   {/* <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
@@ -291,6 +387,12 @@ export default function AppHeader({
                 </Popover.Panel>
               </Transition>
             </Popover>
+            <Link
+              href='/freelancers'
+              className='text-md font-semibold rounded-md leading-6 py-1 px-4 text-gray-900 transition hover:bg-orange-100'
+            >
+              Jobs
+            </Link>
           </Popover.Group>
           <div className='hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-5'>
             <button

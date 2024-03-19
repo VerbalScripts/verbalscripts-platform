@@ -6,7 +6,7 @@ function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ');
 }
 
-interface HeaderProps extends NavLabelProp {
+interface HeaderProps {
   heightOffset: number;
 }
 
