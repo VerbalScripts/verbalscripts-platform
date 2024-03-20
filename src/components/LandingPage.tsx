@@ -19,8 +19,8 @@ export default function LandingPage() {
           }}
         />
       </div>
-      <div className='max-w-7xl pb-48 pt-0 md:py-32 lg:py-20 md:mx-20 lg:mx-36 md:flex md:justify-between'>
-        <div className='text-left md:max-w-2xl lg:max-w-xl xl:max-w-2xl relative z-10'>
+      <div className='max-w-7xl pb-48 pt-0 md:py-32 lg:py-20 md:mx-20 lg:mx-36 xl:mx-20 md:flex md:justify-between'>
+        <div className='text-left md:max-w-2xl lg:max-w-xl xl:max-w-xl relative z-10'>
           <h1 className='text-4xl md:text-5xl font-bold  text-white lg:text-5xl'>
             The Gold Standard in Audio & Video Transcription
           </h1>

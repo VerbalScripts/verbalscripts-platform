@@ -1,20 +1,19 @@
-import React, { FormEvent, useState } from 'react'
+import React, { FormEvent, useState } from 'react';
 import { Eye, EyeOff } from 'react-ionicons';
 
-export default function ResetAccount () {
+export default function ResetAccount() {
   const [is_visible, toggleVisible] = useState(true);
 
-  
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-      event.preventDefault();
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
-      // const formData = new FormData(event.currentTarget);
+    // const formData = new FormData(event.currentTarget);
 
-      // setLoading(true);
-      // setTimeout(() => {
-      //   setLoading(false);
-      // }, 2000);
-    };
+    // setLoading(true);
+    // setTimeout(() => {
+    //   setLoading(false);
+    // }, 2000);
+  };
   return (
     <>
       {' '}

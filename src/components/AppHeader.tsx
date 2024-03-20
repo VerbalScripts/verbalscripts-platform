@@ -44,13 +44,13 @@ export default function AppHeader({
     {
       name: 'Transcription',
       description: 'Get a better understanding of your traffic',
-      href: '#',
+      href: '/services/transcription',
       icon: ChartPieIcon,
     },
     {
       name: 'Translation',
       description: 'Speak directly to your customers',
-      href: '#',
+      href: '/services/translation',
       icon: CursorArrowRaysIcon,
       subtitle: 'Accurate translation in any language',
       features: [
@@ -63,7 +63,7 @@ export default function AppHeader({
     {
       name: 'Legal Transcription',
       description: 'Your customers’ data will be safe and secure',
-      href: '#',
+      href: '/services/legal',
       icon: FingerPrintIcon,
       subtitle: 'Industry best speech-to-text transcription software',
       features: [
@@ -76,7 +76,7 @@ export default function AppHeader({
     {
       name: 'AI Datasets',
       description: 'Connect with third-party tools',
-      href: '#',
+      href: '/services/ai',
       icon: SquaresPlusIcon,
       subtitle: 'Create custom datasets for AI model training',
       features: [
@@ -91,7 +91,7 @@ export default function AppHeader({
     {
       name: 'Data Annotation',
       description: 'Build strategic funnels that will convert',
-      href: '#',
+      href: '/services/annotation',
       icon: ArrowPathIcon,
       subtitle: 'Data Labeling customized to your needs',
       features: [
@@ -108,42 +108,42 @@ export default function AppHeader({
       name: 'Court and Legal',
       description:
         'We convert audio/video content into transcripts quickly and securing to save law firms, investigators, police force, or research firms time and money.',
-      href: '/legal',
+      href: '/solutions/legal',
       icon: NewspaperIcon,
     },
     {
       name: 'Medical Research',
       description:
         'We have experienced, dedicated teams of workers who specialize in healthcare related content who provide accurate and confidential transcriptions for both our Medical and HIPAA-compliant services.',
-      href: '/medical',
+      href: '/solutions/medical',
       icon: ChartPieIcon,
     },
     {
       name: 'Corporate and business',
       description:
         'Customized for your large volume needs, including a variety of enterprise security requirements.',
-      href: '/enterprise',
+      href: '/solutions/enterprise',
       icon: ArrowPathIcon,
     },
     {
       name: 'AI Machine Learning',
       description:
         'The very best in human intelligence requires top quality training data for speech NLP and computer vision models.',
-      href: '/ai',
+      href: '/solutions/ai',
       icon: FingerPrintIcon,
     },
     {
       name: 'Education',
       description:
         'Fast, easy lecture and dissertation transcripts for students or faculty, compatible with NVivo and other research platforms.',
-      href: '/academic',
+      href: '/solutions/academic',
       icon: AcademicCapIcon,
     },
     {
       name: 'Digital and online learning',
       description:
         'Transcription that is perfect for all types of qualitative research needs, including focus groups, surveys and in-depth interviews.',
-      href: '/market-research',
+      href: '/solutions/market-research',
       icon: ChartBarIcon,
     },
 
@@ -151,19 +151,19 @@ export default function AppHeader({
       name: 'Consulting',
       description:
         'Fast transcription and research data to meet due diligence and management consulting research needs.',
-      href: '/consulting',
+      href: '/solutions/consulting',
       icon: SquaresPlusIcon,
     },
     {
       name: 'Media Production',
       description: 'Automated speech recognition & analytics for call centers',
-      href: '/call-centers',
+      href: '/solutions/call-centers',
       icon: MicrophoneIcon,
     },
     {
       name: 'Government',
       description: 'Automated speech recognition & analytics for call centers',
-      href: '/call-centers',
+      href: '/solutions/call-centers',
       icon: MicrophoneIcon,
     },
   ];
