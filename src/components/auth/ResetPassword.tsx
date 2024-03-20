@@ -1,7 +1,7 @@
 import React, { FormEvent, useState } from 'react';
 import { Eye, EyeOff } from 'react-ionicons';
 
-export default function SIgnInForm() {
+export default function ResetPassword() {
   // const validation = {};
 
   // const [loading, setLoading] = useState(false);

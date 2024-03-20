@@ -102,3 +102,21 @@ body {
     url('/login-page.svg') no-repeat top right;
   background-size: cover;
 }
+
+
+.animate-auth {
+  animation: slide-up .8s ease-in-out forwards;
+  opacity: 0;
+}
+
+@keyframes slide-up {
+   0% {
+    transform: translateX(100px);
+    opacity: 0;
+   }
+  
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
