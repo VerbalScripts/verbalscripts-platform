@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React, { FormEvent, useState } from 'react';
-import { Eye, EyeOff, LogoApple, LogoGoogle } from 'react-ionicons';
+import { Eye, EyeOff, LogoGoogle } from 'react-ionicons';
 
 export default function SIgnInForm() {
   // const validation = {};
@@ -21,34 +21,14 @@ export default function SIgnInForm() {
 
   return (
     <>
-      <div className='flex lg:hidden justify-start text-3xl  md:text-4xl text-gray-700 font-bold py-10 leading-10'>
-        <a href='/'>
-          <span>Verbal</span>
-          <span className='text-orange-500 italic'>Scripts</span>
-        </a>
-      </div>
-      <div className='mx-auto max-w-md  pt-10 md:pt-20   lg:pt-24'>
-        <div className='mb-10 md:mb-16 text-center  md:text-left text-3xl md:text-4xl font-bold text-gray-700'>
+      <div className='mx-auto max-w-md'>
+        <div className='mb-10 md:mb-16 text-left text-4xl font-bold text-gray-700'>
           Sign In
         </div>
-
-        <div className='mb-3 cursor-pointer flex w-full items-center ring-1 ring-gray-500  justify-center rounded-full  py-3 md:py-4 text-lg font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
-          <LogoGoogle />{' '}
-          <span className='ml-3  text-gray-600'>Continue with Google</span>
-        </div>
-
-        <a
-          href='#'
-          className='mb-3 flex cursor-pointer w-full items-center ring-1 ring-gray-500  transition justify-center rounded-full py-3 md:py-4 text-lg font-semibold leading-6 text-white shadow- hover:ring-2 hover:ring-gray-700  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-gray-800'
-        >
-          <LogoApple />{' '}
-          <span className='ml-3  text-gray-600'>Continue with Apple</span>
-        </a>
       </div>
 
-      <div className='mx-auto max-w-md border-b border-gray-300 my-10'></div>
       <form
-        className='space-y-6 mx-auto max-w-md'
+        className='mx-auto max-w-md'
         onSubmit={handleSubmit}
         action='#'
         method='POST'
@@ -118,7 +98,16 @@ export default function SIgnInForm() {
           </button>
         </div>
       </form>
-      <div className='mb-28'>
+
+      <div className='mx-auto max-w-md border-b border-gray-300 my-10'></div>
+      <div className='mx-auto max-w-md'>
+        <div className='mb-3 cursor-pointer flex w-full items-center ring-1 ring-gray-500  justify-center rounded-full  py-3 md:py-4 text-lg font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
+          <LogoGoogle />{' '}
+          <span className='ml-3  text-gray-600'>Continue with Google</span>
+        </div>
+      </div>
+
+      <div className='mb-16'>
         <p className='mt-10 text-center text-md text-gray-500'>
           Not a member?{' '}
           <Link

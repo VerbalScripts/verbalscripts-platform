@@ -1,22 +1,11 @@
 import {
-  PhoneIcon,
-  PaintBrushIcon,
-  InboxIcon,
-  TagIcon,
-  SpeakerWaveIcon,
-  ShareIcon,
   RocketLaunchIcon,
-  HomeIcon,
   CheckBadgeIcon,
-  FolderIcon,
-  DocumentIcon,
   ClockIcon,
   FolderOpenIcon,
   Squares2X2Icon,
-  CreditCardIcon,
   CurrencyDollarIcon,
   FolderPlusIcon,
-  CogIcon,
   ArchiveBoxIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';

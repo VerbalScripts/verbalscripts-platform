@@ -4,11 +4,12 @@ import '../globals.css';
 import DashboardNavigation from '@/components/DashboardNavigation';
 import DashboardHeader from '@/components/DashboardHeader';
 import NextNprogress from '@/lib/NextNprogress';
+import { Suspense } from 'react';
 
 // const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'VerbalScripts: Dashboard',
+  title: 'VerbalScripts | Dashboard',
   description:
     'TranscribeMe offers fast, affordable, and highly accurate human transcription, translation, data annotation, and AI dataset services customized for your needs.',
 };
@@ -20,7 +21,9 @@ export default function DashboardLayout({
 }>) {
   return (
     <section className='relative bg-white'>
-      <NextNprogress />
+      <Suspense>
+        <NextNprogress />
+      </Suspense>
       <DashboardHeader />
       <div>
         <div className='grid grid-flow-col'>

@@ -138,12 +138,6 @@ export default function DashboardHeader() {
             </Link>
           </Popover.Group>
           <div className='hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-5'>
-            <button
-              onClick={() => showQuote(true)}
-              className=' text-lg font-semibold  px-4 py-2 bg-indigo-600 transition text-center  hover:-translate-y-1 hover:shadow-xl rounded-md text-gray-100'
-            >
-              Get a Qoute
-            </button>
             <a
               href='#'
               className=' text-lg font-semibold ring-1 ring-inset px-4 py-2 ring-indigo-500 hover:ring-indigo-400 text-indigo-500 hover:text-indigo-400 rounded-md'

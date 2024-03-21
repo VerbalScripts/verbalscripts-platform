@@ -1,3 +1,5 @@
+import { ArrowLeftCircleIcon } from '@heroicons/react/24/outline';
+import Link from 'next/link';
 import React, { FormEvent } from 'react';
 
 export default function ForgotPassword() {
@@ -18,15 +20,20 @@ export default function ForgotPassword() {
 
   return (
     <>
-      <div className='flex lg:hidden justify-start text-3xl  md:text-4xl text-gray-700 font-bold py-10 leading-10'>
-        <a href='/'>
-          <span>Verbal</span>
-          <span className='text-orange-500 italic'>Scripts</span>
-        </a>
-      </div>
-      <div className='mx-auto max-w-md  pt-10 md:pt-20   lg:pt-24'>
-        <div className='mb-10 md:mb-16 text-center  md:text-left text-3xl md:text-4xl font-bold text-gray-700'>
-          Enter Email Address
+      <div className='mx-auto max-w-md'>
+        <Link
+          href='/auth/login'
+          className='mb-8 flex items-center font-semibold text-gray-500'
+        >
+          <ArrowLeftCircleIcon className='h-10 w-10' />
+          <span className='ml-5 text-xl'>Back</span>
+        </Link>
+
+        <div className='mb-5 md:mb-4 text-left text-4xl font-bold text-gray-700'>
+          Need to Reset Your Password ?
+        </div>
+        <div className='mb-10 md:mb-8 text-left text-lg  text-gray-500'>
+          We will send password reset instructions if your account exists.
         </div>
       </div>
       <form

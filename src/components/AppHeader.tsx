@@ -46,15 +46,15 @@ export default function AppHeader({
 }: HeaderProps) {
   const [open, setOpen] = useState(false);
   let timeout: ReturnType<typeof setTimeout>;
-  const timeoutDuration: number = 400;
+  const timeoutDuration: number = 100;
 
   // control popover
   const [menuOpen, setMenuOpen] = useState(false); // reset state on startup
 
-  const buttonRef = useRef<HTMLButtonElement>();
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
-  const toggleMenu = (open: boolean) => {
-    setMenuOpen(!open);
+  const toggleMenu = (open?: boolean) => {
+    setMenuOpen(!menuOpen);
     // toggle menu by clicking button ref
     buttonRef?.current?.click();
   };
@@ -71,13 +71,16 @@ export default function AppHeader({
     timeout = setTimeout(() => toggleMenu(open), timeoutDuration);
   };
 
-  const handleClick = (open: boolean) => {
-    setMenuOpen(!open);
-    clearTimeout(timeout);
-  };
+  // const handleClick = (open: boolean) => {
+  //   setMenuOpen(!open);
+  //   clearTimeout(timeout);
+  // };
 
   const handleClickOutside = (event: Event) => {
-    if (buttonRef?.current && !buttonRef?.current?.contains(event.target)) {
+    if (
+      buttonRef?.current &&
+      !buttonRef?.current?.contains(event.target as Node)
+    ) {
       event.stopPropagation();
     }
   };
@@ -212,6 +215,12 @@ export default function AppHeader({
 
   const resources: Array<NavLabel> = [
     {
+      name: 'About Us',
+      description: 'Frequently Asked Qustions',
+      href: '/about-us',
+      icon: ChartPieIcon,
+    },
+    {
       name: 'FAQs',
       description: 'Frequently Asked Qustions',
       href: '/faqs',
@@ -320,34 +329,36 @@ export default function AppHeader({
               onMouseLeave={() => onHover(open, 'onMouseLeave')}
               className='relative'
             >
-              <Popover.Button
-                ref={buttonRef}
-                className='flex px-4 py-1 items-center gap-x-1 text-md font-semibold leading-6 text-gray-900'
-              >
-                Industry
-                <ChevronDownIcon
-                  className='h-5 w-5 flex-none text-gray-400'
-                  aria-hidden='true'
-                />
-              </Popover.Button>
+              {({ open }) => (
+                <>
+                  <Popover.Button
+                    ref={buttonRef}
+                    className='flex px-4 py-1 items-center gap-x-1 text-md font-semibold leading-6 text-gray-900'
+                  >
+                    Industry
+                    <ChevronDownIcon
+                      className='h-5 w-5 flex-none text-gray-400'
+                      aria-hidden='true'
+                    />
+                  </Popover.Button>
 
-              <Transition
-                show={open}
-                as={Fragment}
-                enter='transition ease-out duration-200'
-                enterFrom='opacity-0 translate-y-1'
-                enterTo='opacity-100 translate-y-0'
-                leave='transition ease-in duration-150'
-                leaveFrom='opacity-100 translate-y-0'
-                leaveTo='opacity-0 translate-y-1'
-              >
-                <Popover.Panel className='absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5'>
-                  <div className='p-4'>
-                    {services.map((item: NavLabel) => (
-                      <NavItem key={item.name} label={item} />
-                    ))}
-                  </div>
-                  {/* <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
+                  <Transition
+                    show={open}
+                    as={Fragment}
+                    enter='transition ease-out duration-200'
+                    enterFrom='opacity-0 translate-y-1'
+                    enterTo='opacity-100 translate-y-0'
+                    leave='transition ease-in duration-150'
+                    leaveFrom='opacity-100 translate-y-0'
+                    leaveTo='opacity-0 translate-y-1'
+                  >
+                    <Popover.Panel className='absolute -left-8 top-4 z-10 mt-3 w-screen max-w-md overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5'>
+                      <div className='p-4'>
+                        {services.map((item: NavLabel) => (
+                          <NavItem key={item.name} label={item} />
+                        ))}
+                      </div>
+                      {/* <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
                   {callsToAction.map((item) => (
                     <a
                       key={item.name}
@@ -359,35 +370,40 @@ export default function AppHeader({
                     </a>
                   ))}
                 </div> */}
-                </Popover.Panel>
-              </Transition>
+                    </Popover.Panel>
+                  </Transition>
+                </>
+              )}
             </Popover>
 
             <Popover className='relative'>
-              <Popover.Button className='flex px-4 py-1 items-center gap-x-1 text-md font-semibold leading-6 text-gray-900'>
-                Solutions
-                <ChevronDownIcon
-                  className='h-5 w-5 flex-none text-gray-400'
-                  aria-hidden='true'
-                />
-              </Popover.Button>
+              {({ open }) => (
+                <>
+                  <Popover.Button className='flex px-4 py-1 items-center gap-x-1 text-md font-semibold leading-6 text-gray-900'>
+                    Solutions
+                    <ChevronDownIcon
+                      className='h-5 w-5 flex-none text-gray-400'
+                      aria-hidden='true'
+                    />
+                  </Popover.Button>
 
-              <Transition
-                as={Fragment}
-                enter='transition ease-out duration-200'
-                enterFrom='opacity-0 translate-y-1'
-                enterTo='opacity-100 translate-y-0'
-                leave='transition ease-in duration-150'
-                leaveFrom='opacity-100 translate-y-0'
-                leaveTo='opacity-0 translate-y-1'
-              >
-                <Popover.Panel className='absolute -left-8 top-full z-10 mt-3 w-screen max-w-xl overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5'>
-                  <div className='p-4 w-full grid  grid-cols-1 gap-x-8 gap-y-3 lg:grid-cols-2'>
-                    {solutions.map((item: NavLabel) => (
-                      <NavItem key={item.name} label={item} />
-                    ))}
-                  </div>
-                  {/* <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
+                  <Transition
+                    show={open}
+                    as={Fragment}
+                    enter='transition ease-out duration-200'
+                    enterFrom='opacity-0 translate-y-1'
+                    enterTo='opacity-100 translate-y-0'
+                    leave='transition ease-in duration-150'
+                    leaveFrom='opacity-100 translate-y-0'
+                    leaveTo='opacity-0 translate-y-1'
+                  >
+                    <Popover.Panel className='absolute -left-8 top-4 z-10 mt-3 w-screen max-w-xl overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5'>
+                      <div className='p-4 w-full grid  grid-cols-1 gap-x-8 gap-y-3 lg:grid-cols-2'>
+                        {solutions.map((item: NavLabel) => (
+                          <NavItem key={item.name} label={item} />
+                        ))}
+                      </div>
+                      {/* <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
                   {callsToAction.map((item) => (
                     <a
                       key={item.name}
@@ -399,35 +415,40 @@ export default function AppHeader({
                     </a>
                   ))}
                 </div> */}
-                </Popover.Panel>
-              </Transition>
+                    </Popover.Panel>
+                  </Transition>
+                </>
+              )}
             </Popover>
 
             <Popover className='relative'>
-              <Popover.Button className='flex px-4 py-1 items-center gap-x-4 text-md font-semibold leading-6 text-gray-900'>
-                Resources
-                <ChevronDownIcon
-                  className='h-5 w-5 flex-none text-gray-400'
-                  aria-hidden='true'
-                />
-              </Popover.Button>
+              {({ open }) => (
+                <>
+                  <Popover.Button className='flex px-4 py-1 items-center gap-x-1 text-md font-semibold leading-6 text-gray-900'>
+                    Company
+                    <ChevronDownIcon
+                      className='h-5 w-5 flex-none text-gray-400'
+                      aria-hidden='true'
+                    />
+                  </Popover.Button>
 
-              <Transition
-                as={Fragment}
-                enter='transition ease-out duration-200'
-                enterFrom='opacity-0 translate-y-1'
-                enterTo='opacity-100 translate-y-0'
-                leave='transition ease-in duration-150'
-                leaveFrom='opacity-100 translate-y-0'
-                leaveTo='opacity-0 translate-y-1'
-              >
-                <Popover.Panel className='absolute -left-8 top-full z-10 mt-3 w-screen max-w-sm overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5'>
-                  <div className='p-4'>
-                    {resources.map((item: NavLabel) => (
-                      <NavItem key={item.name} label={item} />
-                    ))}
-                  </div>
-                  {/* <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
+                  <Transition
+                    show={open}
+                    as={Fragment}
+                    enter='transition ease-out duration-200'
+                    enterFrom='opacity-0 translate-y-1'
+                    enterTo='opacity-100 translate-y-0'
+                    leave='transition ease-in duration-150'
+                    leaveFrom='opacity-100 translate-y-0'
+                    leaveTo='opacity-0 translate-y-1'
+                  >
+                    <Popover.Panel className='absolute -left-10 top-full z-10 mt-3 w-screen max-w-sm overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5'>
+                      <div className='p-4'>
+                        {resources.map((item: NavLabel) => (
+                          <NavItem key={item.name} label={item} />
+                        ))}
+                      </div>
+                      {/* <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
                   {callsToAction.map((item) => (
                     <a
                       key={item.name}
@@ -439,14 +460,16 @@ export default function AppHeader({
                     </a>
                   ))}
                 </div> */}
-                </Popover.Panel>
-              </Transition>
+                    </Popover.Panel>
+                  </Transition>
+                </>
+              )}
             </Popover>
             <Link
-              href='/freelancers'
+              href='/contact-us'
               className='text-md font-semibold rounded-md leading-6 py-1 px-4 text-gray-900 transition hover:bg-orange-100'
             >
-              Jobs
+              Contact
             </Link>
           </Popover.Group>
           <div className='hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-5'>
@@ -544,17 +567,12 @@ export default function AppHeader({
                       </>
                     )}
                   </Disclosure>
-                  <a
-                    href='/freelancers'
-                    className='-mx-3 block rounded-lg px-3 py-2 text-xl font-semibold leading-7 text-gray-900 hover:bg-gray-50'
-                  >
-                    Freelancers
-                  </a>
+
                   <Disclosure as='div' className='-mx-3'>
                     {({ open }) => (
                       <>
                         <Disclosure.Button className='flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-xl font-semibold leading-7 text-gray-900 hover:bg-gray-50'>
-                          Resources
+                          Company
                           <ChevronDownIcon
                             className={classNames(
                               open ? 'rotate-180' : '',
@@ -578,6 +596,7 @@ export default function AppHeader({
                       </>
                     )}
                   </Disclosure>
+
                   <div className='border-b py-2 border-gray-200'></div>
                   <a
                     href='/freelancers'
@@ -586,7 +605,7 @@ export default function AppHeader({
                     Request a Quote
                   </a>
                   <a
-                    href='/freelancers'
+                    href='/dashboard'
                     className='-mx-3 underline underline-offset-2 block rounded-lg px-3 py-2 text-xl font-semibold leading-7 text-orange-500 hover:bg-gray-50'
                   >
                     Order Now
@@ -604,10 +623,10 @@ export default function AppHeader({
 
                   <div>
                     <a
-                      href='#'
+                      href='/auth/login'
                       className='-mx-3 block text-center rounded-md  bg-indigo-500  px-3 py-3.5 text-xl font-semibold leading-7 text-white hover:bg-indigo-400 hover:text-gray-200'
                     >
-                      Customer Login
+                      Customer Sign In
                     </a>
                   </div>
                 </div>
