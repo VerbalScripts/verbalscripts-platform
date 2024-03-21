@@ -1,4 +1,3 @@
-
 // // IMAGE TILES
 // export default function Example() {
 //     return (
@@ -81,7 +80,7 @@
 //                     </div>
 //                   </div>
 //                 </div>
-  
+
 //                 <a
 //                   href="#"
 //                   className="inline-block rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-center font-medium text-white hover:bg-indigo-700"
@@ -95,7 +94,6 @@
 //       </div>
 //     )
 //   }
-  
 
 // //   PRODUCT FEATURES WITH IMAGE GRID
 // const features = [
@@ -106,7 +104,7 @@
 //     { name: 'Includes', description: 'Wood card tray and 3 refill packs' },
 //     { name: 'Considerations', description: 'Made from natural materials. Grain and color vary with each item.' },
 //   ]
-  
+
 //   export default function Example() {
 //     return (
 //       <div className="bg-white">
@@ -117,7 +115,7 @@
 //               The walnut wood card tray is precision milled to perfectly fit a stack of Focus cards. The powder coated
 //               steel divider separates active cards from new ones, or can be used to archive important task lists.
 //             </p>
-  
+
 //             <dl className="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
 //               {features.map((feature) => (
 //                 <div key={feature.name} className="border-t border-gray-200 pt-4">
@@ -154,12 +152,11 @@
 //     )
 //   }
 
-  
 // //   PRODUCT QUICK VIEWS
 
 // /*
 //   This example requires some changes to your config:
-  
+
 //   ```
 //   // tailwind.config.js
 //   module.exports = {
@@ -409,13 +406,11 @@
 //   )
 // }
 
-
 // // CATEGORY FILTERS
-
 
 // /*
 //   This example requires some changes to your config:
-  
+
 //   ```
 //   // tailwind.config.js
 //   module.exports = {
@@ -728,9 +723,7 @@
 //   )
 // }
 
-
 // // PRODUCT CART
-
 
 // import { Fragment, useState } from 'react'
 // import { Dialog, Transition } from '@headlessui/react'
@@ -891,13 +884,11 @@
 //   )
 // }
 
-
 // // PRODUCT LIST
-
 
 // /*
 //   This example requires some changes to your config:
-  
+
 //   ```
 //   // tailwind.config.js
 //   module.exports = {
@@ -944,13 +935,13 @@
 //     },
 //     // More products...
 //   ]
-  
+
 //   export default function Example() {
 //     return (
 //       <div className="bg-white">
 //         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
 //           <h2 className="sr-only">Products</h2>
-  
+
 //           <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
 //             {products.map((product) => (
 //               <a key={product.id} href={product.href} className="group">
@@ -971,12 +962,11 @@
 //     )
 //   }
 
-
 // // PRODUCT OVERVIEWS
 
 // /*
 //   This example requires some changes to your config:
-  
+
 //   ```
 //   // tailwind.config.js
 //   module.exports = {
@@ -1307,12 +1297,11 @@
 //   )
 // }
 
-
 // // CAT PREVIEWS
 
 // /*
 //   This example requires some changes to your config:
-  
+
 //   ```
 //   // tailwind.config.js
 //   module.exports = {
@@ -1347,14 +1336,14 @@
 //       href: '#',
 //     },
 //   ]
-  
+
 //   export default function Example() {
 //     return (
 //       <div className="bg-gray-100">
 //         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 //           <div className="mx-auto max-w-2xl py-16 sm:py-24 lg:max-w-none lg:py-32">
 //             <h2 className="text-2xl font-bold text-gray-900">Collections</h2>
-  
+
 //             <div className="mt-6 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-6 lg:space-y-0">
 //               {callouts.map((callout) => (
 //                 <div key={callout.name} className="group relative">
@@ -1380,7 +1369,6 @@
 //       </div>
 //     )
 //   }
-
 
 // // DROPDOWNS
 
@@ -1474,9 +1462,7 @@
 //   )
 // }
 
-
 // // SLIDE OVERS
-
 
 // import { Fragment, useState } from 'react'
 // import { Dialog, Transition } from '@headlessui/react'
@@ -1551,7 +1537,6 @@
 //     </Transition.Root>
 //   )
 // }
-
 
 // // DIALOGS
 
@@ -1634,8 +1619,6 @@
 //     </Transition.Root>
 //   )
 // }
-
-
 
 // // HEADER
 
@@ -1793,12 +1776,11 @@
 //   )
 // }
 
-
 // // FORM LAYOUTS
 
 // /*
 //   This example requires some changes to your config:
-  
+
 //   ```
 //   // tailwind.config.js
 //   module.exports = {
@@ -2145,12 +2127,11 @@
 //   )
 // }
 
-
 // // SIGN IN / REG
 
 // /*
 //   This example requires some changes to your config:
-  
+
 //   ```
 //   // tailwind.config.js
 //   module.exports = {
@@ -2167,7 +2148,7 @@
 //       <>
 //         {/*
 //           This example requires updating your template:
-  
+
 //           ```
 //           <html class="h-full bg-white">
 //           <body class="h-full">
@@ -2184,7 +2165,7 @@
 //               Sign in to your account
 //             </h2>
 //           </div>
-  
+
 //           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
 //             <form className="space-y-6" action="#" method="POST">
 //               <div>
@@ -2202,7 +2183,7 @@
 //                   />
 //                 </div>
 //               </div>
-  
+
 //               <div>
 //                 <div className="flex items-center justify-between">
 //                   <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
@@ -2225,7 +2206,7 @@
 //                   />
 //                 </div>
 //               </div>
-  
+
 //               <div>
 //                 <button
 //                   type="submit"
@@ -2235,7 +2216,7 @@
 //                 </button>
 //               </div>
 //             </form>
-  
+
 //             <p className="mt-10 text-center text-sm text-gray-500">
 //               Not a member?{' '}
 //               <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
@@ -2249,7 +2230,6 @@
 //   }
 
 // //   FLAYOUT MENUS
-
 
 // import { Fragment } from 'react'
 // import { Popover, Transition } from '@headlessui/react'
@@ -2328,11 +2308,10 @@
 //   )
 // }
 
-
 // // SIDE BY SIDE WITH DETAS
 // /*
 //   This example requires some changes to your config:
-  
+
 //   ```
 //   // tailwind.config.js
 //   module.exports = {
@@ -2413,8 +2392,6 @@
 //   )
 // }
 
-
-
 // // CENTERED GRID
 
 // import { ArrowPathIcon, CloudArrowUpIcon, FingerPrintIcon, LockClosedIcon } from '@heroicons/react/24/outline'
@@ -2479,7 +2456,6 @@
 //     </div>
 //   )
 // }
-
 
 // // LANDING PAGE
 
@@ -2643,9 +2619,7 @@
 //   )
 // }
 
-
 // // LOGO CLOUDS
-
 
 // export default function Example() {
 //     return (
@@ -2698,10 +2672,9 @@
 
 // //   CONTACT SECTIONS
 
-
 // /*
 //   This example requires some changes to your config:
-  
+
 //   ```
 //   // tailwind.config.js
 //   module.exports = {
@@ -2890,7 +2863,6 @@
 //   )
 // }
 
-
 // // CONTENT SECTIONS WITH STICKY CONTENT
 // import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/react/20/solid'
 
@@ -2996,7 +2968,6 @@
 //   )
 // }
 
-
 // // FOOTER BLOG PREVIEW
 
 // const posts = [
@@ -3019,7 +2990,7 @@
 //     },
 //     // More posts...
 //   ]
-  
+
 //   export default function Example() {
 //     return (
 //       <div className="bg-white py-24 sm:py-32">
@@ -3073,7 +3044,6 @@
 //     )
 //   }
 
-  
 // //   STATS
 
 // const stats = [
@@ -3081,7 +3051,7 @@
 //     { id: 2, name: 'Assets under holding', value: '$119 trillion' },
 //     { id: 3, name: 'New users annually', value: '46,000' },
 //   ]
-  
+
 //   export default function Example() {
 //     return (
 //       <div className="bg-white py-24 sm:py-32">
@@ -3101,7 +3071,6 @@
 //     )
 //   }
 
-  
 // //   HEADER SECTION WITH STATS
 
 // const links = [
@@ -3116,7 +3085,7 @@
 //     { name: 'Hours per week', value: '40' },
 //     { name: 'Paid time off', value: 'Unlimited' },
 //   ]
-  
+
 //   export default function Example() {
 //     return (
 //       <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
@@ -3178,10 +3147,7 @@
 //       </div>
 //     )
 //   }
-  
 
-
-  
 //   import { Fragment, useRef, useState } from 'react'
 // import { Dialog, Transition } from '@headlessui/react'
 // import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
@@ -3262,8 +3228,6 @@
 //   )
 // }
 
-
-
 // // CTA
 // export default function Example() {
 //   return (
@@ -3319,9 +3283,7 @@
 //   )
 // }
 
-
 // // SLIDE OVERS
-
 
 // import { Fragment, useState } from 'react'
 // import { Dialog, Transition } from '@headlessui/react'
@@ -3397,9 +3359,7 @@
 //   )
 // }
 
-
 // // DIALOG
-
 
 // import { Fragment, useRef, useState } from 'react'
 // import { Dialog, Transition } from '@headlessui/react'
@@ -3479,4 +3439,99 @@
 //       </Dialog>
 //     </Transition.Root>
 //   )
+// }
+
+// MENU CLICK
+
+// import { Fragment } from 'react';
+// import { Menu, Transition } from '@headlessui/react';
+// import { ChevronDownIcon } from '@heroicons/react/20/solid';
+
+// function classNames(...classes) {
+//   return classes.filter(Boolean).join(' ');
+// }
+
+// export default function Example() {
+//   return (
+//     <Menu as='div' className='relative inline-block text-left'>
+//       <div>
+//         <Menu.Button className='inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50'>
+//           Options
+//           <ChevronDownIcon
+//             className='-mr-1 h-5 w-5 text-gray-400'
+//             aria-hidden='true'
+//           />
+//         </Menu.Button>
+//       </div>
+
+//       <Transition
+//         as={Fragment}
+//         enter='transition ease-out duration-100'
+//         enterFrom='transform opacity-0 scale-95'
+//         enterTo='transform opacity-100 scale-100'
+//         leave='transition ease-in duration-75'
+//         leaveFrom='transform opacity-100 scale-100'
+//         leaveTo='transform opacity-0 scale-95'
+//       >
+//         <Menu.Items className='absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+//           <div className='py-1'>
+//             <Menu.Item>
+//               {({ active }) => (
+//                 <a
+//                   href='#'
+//                   className={classNames(
+//                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+//                     'block px-4 py-2 text-sm',
+//                   )}
+//                 >
+//                   Account settings
+//                 </a>
+//               )}
+//             </Menu.Item>
+//             <Menu.Item>
+//               {({ active }) => (
+//                 <a
+//                   href='#'
+//                   className={classNames(
+//                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+//                     'block px-4 py-2 text-sm',
+//                   )}
+//                 >
+//                   Support
+//                 </a>
+//               )}
+//             </Menu.Item>
+//             <Menu.Item>
+//               {({ active }) => (
+//                 <a
+//                   href='#'
+//                   className={classNames(
+//                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+//                     'block px-4 py-2 text-sm',
+//                   )}
+//                 >
+//                   License
+//                 </a>
+//               )}
+//             </Menu.Item>
+//             <form method='POST' action='#'>
+//               <Menu.Item>
+//                 {({ active }) => (
+//                   <button
+//                     type='submit'
+//                     className={classNames(
+//                       active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+//                       'block w-full px-4 py-2 text-left text-sm',
+//                     )}
+//                   >
+//                     Sign out
+//                   </button>
+//                 )}
+//               </Menu.Item>
+//             </form>
+//           </div>
+//         </Menu.Items>
+//       </Transition>
+//     </Menu>
+//   );
 // }

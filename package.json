@@ -18,6 +18,8 @@
     "animejs": "^3.2.2",
     "graphql": "^16.8.1",
     "next": "14.1.0",
+    "next-seo": "^6.5.0",
+    "nextjs-progressloader": "^1.2.0",
     "react": "^18",
     "react-dom": "^18",
     "swiper": "^11.0.6"

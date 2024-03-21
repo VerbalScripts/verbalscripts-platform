@@ -19,9 +19,9 @@ export default function LandingPage() {
           }}
         />
       </div>
-      <div className='max-w-7xl pb-48 pt-0 md:py-32 lg:py-20 md:mx-20 lg:mx-36 xl:mx-20 md:flex md:justify-between'>
-        <div className='text-left md:max-w-2xl lg:max-w-xl xl:max-w-xl relative z-10'>
-          <h1 className='text-4xl md:text-5xl font-bold  text-white lg:text-5xl'>
+      <div className='max-w-7xl pb-40 pt-16 md:py-32 lg:py-20 md:mx-20 lg:mx-20 xl:mx-28 md:flex md:justify-between'>
+        <div className='text-left md:max-w-2xl lg:max-w-2xl xl:max-w-3xl relative z-10'>
+          <h1 className='text-4xl md:text-5xl font-bold  text-white lg:text-5xl xl:text-6xl'>
             The Gold Standard in Audio & Video Transcription
           </h1>
           <p className='mt-6 text-xl leading-8 text-gray-100'>
@@ -32,7 +32,7 @@ export default function LandingPage() {
           <div className='mt-10 flex flex-col md:flex-row items-start md:items-center justify-start gap-6'>
             <a
               href='/services'
-              className='rounded-md bg-indigo-600 px-7 py-3 text-lg font-bold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+              className='rounded-md bg-orange-500 px-7 py-3 text-lg font-bold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
             >
               Services
             </a>
@@ -48,7 +48,7 @@ export default function LandingPage() {
         <div className='hidden lg:block  relative'>
           <img
             src='login-page.svg'
-            className='absolute z-5  lg:-top-16 xl:-top-28 -right-24 max-w-none top-0   lg:w-[30rem] xl:w-[30rem]'
+            className='absolute z-5  lg:-top-16 xl:-top-28 -right-24 xl:-right-5 max-w-none top-0   lg:w-[30rem] xl:w-[30rem]'
             alt='landing-page'
           />
         </div>

@@ -1,5 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import React, { Fragment, useState, useEffect, MutableRefObject } from 'react';
+import React, {
+  Fragment,
+  useState,
+  MutableRefObject,
+  useRef,
+  useEffect,
+} from 'react';
 import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react';
 import {
   Bars3Icon,
@@ -39,6 +45,42 @@ export default function AppHeader({
   heightOffset,
 }: HeaderProps) {
   const [open, setOpen] = useState(false);
+  let timeout: ReturnType<typeof setTimeout>;
+  const timeoutDuration: number = 400;
+
+  // control popover
+  const [menuOpen, setMenuOpen] = useState(false); // reset state on startup
+
+  const buttonRef = useRef<HTMLButtonElement>();
+
+  const toggleMenu = (open: boolean) => {
+    setMenuOpen(!open);
+    // toggle menu by clicking button ref
+    buttonRef?.current?.click();
+  };
+
+  // add delay before opening menu
+  const onHover = (open: boolean, action: string) => {
+    // if menu is open = close || close = open
+    if (
+      (!open && !menuOpen && action == 'onMouseEnter') ||
+      (!open && !menuOpen && action == 'onMouseLeave')
+    )
+      // clear delay
+      clearTimeout(timeout);
+    timeout = setTimeout(() => toggleMenu(open), timeoutDuration);
+  };
+
+  const handleClick = (open: boolean) => {
+    setMenuOpen(!open);
+    clearTimeout(timeout);
+  };
+
+  const handleClickOutside = (event: Event) => {
+    if (buttonRef?.current && !buttonRef?.current?.contains(event.target)) {
+      event.stopPropagation();
+    }
+  };
 
   const services: Array<NavLabel> = [
     {
@@ -207,6 +249,11 @@ export default function AppHeader({
     }
 
     if (dataPush) dataPush.current = solutions;
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
   });
 
   return (
@@ -268,8 +315,15 @@ export default function AppHeader({
               Home
             </Link>
 
-            <Popover className='relative'>
-              <Popover.Button className='flex px-4 py-1 items-center gap-x-1 text-md font-semibold leading-6 text-gray-900'>
+            <Popover
+              onMouseEnter={() => onHover(open, 'onMouseEnter')}
+              onMouseLeave={() => onHover(open, 'onMouseLeave')}
+              className='relative'
+            >
+              <Popover.Button
+                ref={buttonRef}
+                className='flex px-4 py-1 items-center gap-x-1 text-md font-semibold leading-6 text-gray-900'
+              >
                 Industry
                 <ChevronDownIcon
                   className='h-5 w-5 flex-none text-gray-400'
@@ -278,6 +332,7 @@ export default function AppHeader({
               </Popover.Button>
 
               <Transition
+                show={open}
                 as={Fragment}
                 enter='transition ease-out duration-200'
                 enterFrom='opacity-0 translate-y-1'
@@ -402,7 +457,7 @@ export default function AppHeader({
               Get a Qoute
             </button>
             <a
-              href='#'
+              href='/dashboard'
               className=' text-lg font-semibold ring-1 ring-inset px-4 py-2 ring-indigo-500 hover:ring-indigo-400 text-indigo-500 hover:text-indigo-400 rounded-md'
             >
               Order Now
