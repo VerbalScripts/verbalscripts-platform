@@ -13,7 +13,7 @@ export default function Login() {
 
   return (
     <div className='bg-white md:bg-gray-200 min-h-screen  overflow-x-hidden'>
-      <AuthHeader />
+      <AuthHeader route={params.type} />
 
       <div className='mx-auto max-w-xl my-10 md:my-20 rounded-lg flex flex-col justify-between px-5 bg-white'>
         <div className='py-16'>

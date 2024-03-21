@@ -1,16 +1,17 @@
 import { Fragment, useState } from 'react';
 import { Dialog, Popover } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import Link from 'next/link';
 
 function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ');
 }
 
-// interface HeaderProps {
-//   heightOffset: number;
-// }
+interface HeaderProps {
+  route: string;
+}
 
-export default function AuthHeader() {
+export default function AuthHeader({ route }: HeaderProps) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -33,7 +34,7 @@ export default function AuthHeader() {
           aria-label='Global'
         >
           <div className='flex lg:flex-1'>
-            <a href='#' className='-m-1.5 p-1.5'>
+            <a href='/' className='-m-1.5 p-1.5'>
               <span className='text-gray-800 font-bold text-2xl'>
                 VerbalScripts
               </span>
@@ -51,18 +52,39 @@ export default function AuthHeader() {
           </div>
 
           <Popover.Group className='hidden lg:flex md:items-center lg:gap-x-8'>
-            <a
-              href='/'
-              className='text-md font-semibold leading-6 text-gray-900'
-            >
-              Joining VerbalScripts
-            </a>
-            <a
-              href='/'
-              className='text-md font-semibold leading-6 text-gray-900'
-            >
-              What’s Work Like?
-            </a>
+            {route == 'login' ? (
+              <div>
+                <span className='text-gray-800'>New User ? </span>{' '}
+                <Link
+                  href='/auth/login'
+                  className='text-md font-semibold leading-6 text-indigo-500 underline'
+                >
+                  Create Account
+                </Link>
+              </div>
+            ) : route == 'register' ? (
+              <div>
+                <span className='text-gray-800'>
+                  Already have an account ?{' '}
+                </span>{' '}
+                <Link
+                  href='/auth/login'
+                  className='text-md font-semibold leading-6 text-indigo-500 underline'
+                >
+                  Sign In
+                </Link>
+              </div>
+            ) : (
+              <div>
+                <span className='text-gray-800'>New User ? </span>{' '}
+                <Link
+                  href='/auth/register'
+                  className='text-md font-semibold leading-6 text-indigo-500 underline'
+                >
+                  Create Account
+                </Link>
+              </div>
+            )}
           </Popover.Group>
         </nav>
 

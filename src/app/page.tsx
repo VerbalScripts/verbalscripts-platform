@@ -245,7 +245,7 @@ export default function Home() {
                   </div>
                   {feature.name}
                 </dt>
-                <dd className='mt-1 text-lg leading-7 text-gray-600'>
+                <dd className='mt-1 text-lg leading-7 text-gray-200'>
                   {feature.description}
                 </dd>
               </a>
