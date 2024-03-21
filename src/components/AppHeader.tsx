@@ -53,7 +53,7 @@ export default function AppHeader({
 
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  const toggleMenu = (open?: boolean) => {
+  const toggleMenu = () => {
     setMenuOpen(!menuOpen);
     // toggle menu by clicking button ref
     buttonRef?.current?.click();
@@ -68,7 +68,7 @@ export default function AppHeader({
     )
       // clear delay
       clearTimeout(timeout);
-    timeout = setTimeout(() => toggleMenu(open), timeoutDuration);
+    timeout = setTimeout(() => toggleMenu(), timeoutDuration);
   };
 
   // const handleClick = (open: boolean) => {

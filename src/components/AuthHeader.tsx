@@ -63,8 +63,6 @@ export default function AuthHeader() {
             >
               What’s Work Like?
             </a>
-
-           
           </Popover.Group>
         </nav>
 

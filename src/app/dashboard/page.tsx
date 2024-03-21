@@ -1,9 +1,10 @@
 import React from 'react';
+import FileEmpty from '@/components/FileEmpty';
 
 export default function page() {
   return (
     <div>
-      <img src='login-page.svg' className='h-80 w-80' alt='' />
+      <FileEmpty />
     </div>
   );
 }

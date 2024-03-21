@@ -234,12 +234,12 @@ export default function Home() {
               <a
                 href='#'
                 key={feature.name}
-                className='relative pl-16 transition bg-white hover:bg-white/5 hover:-translate-y-5 hover:ring-1 hover:ring-white/10 rounded-lg p-4'
+                className='relative pl-16 transition  hover:bg-white/5 hover:-translate-y-5 hover:ring-1 hover:ring-white/10 rounded-lg p-4'
               >
-                <dt className='text-xl font-semibold leading-7 text-gray-700'>
+                <dt className='text-xl font-semibold leading-7 text-white'>
                   <div className='absolute left-2 top-4 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600'>
                     <feature.icon
-                      className='h-6 w-6 text-white'
+                      className='h-6 w-6 text-gray-200'
                       aria-hidden='true'
                     />
                   </div>
