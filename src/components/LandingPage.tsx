@@ -31,7 +31,7 @@ export default function LandingPage() {
         <div className='mt-10 flex flex-col md:flex-row items-start md:items-center justify-center gap-6'>
           <a
             href='/services'
-            className='rounded-full bg-orange-500 px-12 py-3 text-2xl font-bold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+            className='rounded-full bg-orange-500 px-12 py-3 text-2xl transition font-bold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600'
           >
             Services
           </a>

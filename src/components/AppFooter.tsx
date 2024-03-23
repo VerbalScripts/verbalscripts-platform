@@ -3,7 +3,6 @@ import React from 'react';
 import {
   LogoLinkedin,
   LogoFacebook,
-  LogoApple,
   LogoGithub,
   LogoInstagram,
 } from 'react-ionicons';
@@ -208,8 +207,6 @@ export default function AppFooter() {
                   aria-hidden='true'
                 />
               </a>
-
-            
             </div>
           </div>
 

@@ -27,7 +27,6 @@ import {
   ChartBarIcon,
 } from '@heroicons/react/24/outline';
 import NavItem from './NavItem';
-import Link from 'next/link';
 
 function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ');
@@ -87,13 +86,13 @@ export default function AppHeader({
 
   const services: Array<NavLabel> = [
     {
-      name: 'Transcription',
+      name: 'Transcription & Live Captioning',
       description: 'Get a better understanding of your traffic',
       href: '/services/transcription',
       icon: ChartPieIcon,
     },
     {
-      name: 'Translation',
+      name: 'Video and Audio Transcription services',
       description: 'Speak directly to your customers',
       href: '/services/translation',
       icon: CursorArrowRaysIcon,
@@ -106,7 +105,7 @@ export default function AppHeader({
       price: '0.11$ per word',
     },
     {
-      name: 'Legal Transcription',
+      name: 'Closed Captioning',
       description: 'Your customers’ data will be safe and secure',
       href: '/services/legal',
       icon: FingerPrintIcon,
@@ -119,7 +118,7 @@ export default function AppHeader({
       price: '0.07$ per minute',
     },
     {
-      name: 'AI Datasets',
+      name: 'Audio description',
       description: 'Connect with third-party tools',
       href: '/services/ai',
       icon: SquaresPlusIcon,
@@ -134,7 +133,20 @@ export default function AppHeader({
       price: '2.00$ per minute',
     },
     {
-      name: 'Data Annotation',
+      name: 'Legal Transcription',
+      description: 'Build strategic funnels that will convert',
+      href: '/services/annotation',
+      icon: ArrowPathIcon,
+      subtitle: 'Data Labeling customized to your needs',
+      features: [
+        'Enhance your artifical intelligence',
+        'Global network of experts',
+        'Highest quality annotated data',
+      ],
+      price: '0.10$ per task',
+    },
+    {
+      name: 'Self service solutions',
       description: 'Build strategic funnels that will convert',
       href: '/services/annotation',
       icon: ArrowPathIcon,
@@ -150,32 +162,25 @@ export default function AppHeader({
 
   const solutions: Array<NavLabel> = [
     {
-      name: 'Court and Legal',
+      name: 'Court reporting & Legal',
       description:
         'We convert audio/video content into transcripts quickly and securing to save law firms, investigators, police force, or research firms time and money.',
       href: '/solutions/legal',
       icon: NewspaperIcon,
     },
     {
-      name: 'Medical Research',
-      description:
-        'We have experienced, dedicated teams of workers who specialize in healthcare related content who provide accurate and confidential transcriptions for both our Medical and HIPAA-compliant services.',
-      href: '/solutions/medical',
-      icon: ChartPieIcon,
-    },
-    {
-      name: 'Corporate and business',
+      name: 'Corporate & general business',
       description:
         'Customized for your large volume needs, including a variety of enterprise security requirements.',
       href: '/solutions/enterprise',
-      icon: ArrowPathIcon,
+      icon: ChartBarIcon,
     },
     {
-      name: 'AI Machine Learning',
+      name: 'Media production',
       description:
         'The very best in human intelligence requires top quality training data for speech NLP and computer vision models.',
       href: '/solutions/ai',
-      icon: FingerPrintIcon,
+      icon: NewspaperIcon,
     },
     {
       name: 'Education',
@@ -185,29 +190,16 @@ export default function AppHeader({
       icon: AcademicCapIcon,
     },
     {
-      name: 'Digital and online learning',
+      name: 'Digital & online learning',
       description:
         'Transcription that is perfect for all types of qualitative research needs, including focus groups, surveys and in-depth interviews.',
       href: '/solutions/market-research',
       icon: ChartBarIcon,
     },
-
-    {
-      name: 'Consulting',
-      description:
-        'Fast transcription and research data to meet due diligence and management consulting research needs.',
-      href: '/solutions/consulting',
-      icon: SquaresPlusIcon,
-    },
-    {
-      name: 'Media Production',
-      description: 'Automated speech recognition & analytics for call centers',
-      href: '/solutions/call-centers',
-      icon: MicrophoneIcon,
-    },
     {
       name: 'Government',
-      description: 'Automated speech recognition & analytics for call centers',
+      description:
+        'Making live events, meetings, ad campaigns and press briefings more accessible and actionable.',
       href: '/solutions/call-centers',
       icon: MicrophoneIcon,
     },
@@ -216,26 +208,20 @@ export default function AppHeader({
   const resources: Array<NavLabel> = [
     {
       name: 'About Us',
-      description: 'Frequently Asked Qustions',
+      description: 'Who we are',
       href: '/about-us',
       icon: ChartPieIcon,
     },
     {
       name: 'FAQs',
-      description: 'Frequently Asked Qustions',
+      description: 'Frequently asked questions',
       href: '/faqs',
       icon: ChartPieIcon,
     },
     {
-      name: 'Terms & Conditions',
-      description: 'View terms and conditions',
-      href: '/terms-and-conditions',
-      icon: ChartPieIcon,
-    },
-    {
-      name: 'Policies',
-      description: 'check valid policies',
-      href: '/policies',
+      name: 'legal',
+      description: 'Review terms of usage, policies',
+      href: '/legal',
       icon: ChartPieIcon,
     },
   ];
@@ -317,12 +303,12 @@ export default function AppHeader({
           </div>
 
           <Popover.Group className='hidden lg:flex lg:gap-x-1 lg:items-center'>
-            <Link
+            <a
               href='/'
               className='text-md font-semibold px-2 py-1 leading-6 text-gray-900 transition hover:bg-orange-100'
             >
               Home
-            </Link>
+            </a>
 
             <Popover
               onMouseEnter={() => onHover(open, 'onMouseEnter')}
@@ -335,7 +321,7 @@ export default function AppHeader({
                     ref={buttonRef}
                     className='flex px-2 py-1 items-center gap-x-1 text-md font-semibold leading-6 text-gray-900'
                   >
-                    Services
+                    Solutions
                     <ChevronDownIcon
                       className='h-5 w-5 flex-none text-gray-400'
                       aria-hidden='true'
@@ -352,9 +338,9 @@ export default function AppHeader({
                     leaveFrom='opacity-100 translate-y-0'
                     leaveTo='opacity-0 translate-y-1'
                   >
-                    <Popover.Panel className='absolute -left-8 top-4 z-10 mt-3 w-screen max-w-md overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5'>
-                      <div className='p-4'>
-                        {services.map((item: NavLabel) => (
+                    <Popover.Panel className='absolute -left-8 top-4 z-10 mt-3 w-screen max-w-xl overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5'>
+                      <div className='p-4 w-full grid  grid-cols-1 gap-x-8 gap-y-3 lg:grid-cols-2'>
+                        {solutions.map((item: NavLabel) => (
                           <NavItem key={item.name} label={item} />
                         ))}
                       </div>
@@ -399,7 +385,7 @@ export default function AppHeader({
                   >
                     <Popover.Panel className='absolute -left-8 top-4 z-10 mt-3 w-screen max-w-xl overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5'>
                       <div className='p-4 w-full grid  grid-cols-1 gap-x-8 gap-y-3 lg:grid-cols-2'>
-                        {solutions.map((item: NavLabel) => (
+                        {services.map((item: NavLabel) => (
                           <NavItem key={item.name} label={item} />
                         ))}
                       </div>
@@ -465,12 +451,12 @@ export default function AppHeader({
                 </>
               )}
             </Popover>
-            <Link
+            <a
               href='/contact-us'
               className='text-md font-semibold rounded-md leading-6 py-1 px-2 text-gray-900 transition hover:bg-orange-100'
             >
               Contact
-            </Link>
+            </a>
             <button
               onClick={() => showQuote(true)}
               className=' text-lg font-semibold  px-5 py-2 bg-indigo-600 transition text-center  hover:-translate-y-1 hover:shadow-xl rounded-full text-gray-100'
@@ -478,7 +464,7 @@ export default function AppHeader({
               Get a Qoute
             </button>
             <a
-              href='/dashboard'
+              href='/upload-files'
               className='ml-1 text-lg font-semibold ring-1 ring-inset px-5 py-2 ring-indigo-500 hover:ring-indigo-400 text-indigo-500 hover:text-indigo-400 rounded-full'
             >
               Order Now
