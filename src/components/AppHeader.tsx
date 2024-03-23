@@ -300,7 +300,7 @@ export default function AppHeader({
           aria-label='Global'
         >
           <div className='flex lg:flex-1'>
-            <a href='#' className='-m-1.5 p-1.5 text-3xl font-bold'>
+            <a href='#' className='-m-1.5 p-1.5 text-2xl font-bold'>
               <span className='text-gray-800'>Verbal</span>
               <span className='text-orange-500 italic'>Scripts</span>
             </a>
@@ -316,10 +316,10 @@ export default function AppHeader({
             </button>
           </div>
 
-          <Popover.Group className='hidden lg:flex lg:gap-x-1'>
+          <Popover.Group className='hidden lg:flex lg:gap-x-1 lg:items-center'>
             <Link
               href='/'
-              className='text-md font-semibold px-4 py-1 leading-6 text-gray-900 transition hover:bg-orange-100'
+              className='text-md font-semibold px-2 py-1 leading-6 text-gray-900 transition hover:bg-orange-100'
             >
               Home
             </Link>
@@ -333,9 +333,9 @@ export default function AppHeader({
                 <>
                   <Popover.Button
                     ref={buttonRef}
-                    className='flex px-4 py-1 items-center gap-x-1 text-md font-semibold leading-6 text-gray-900'
+                    className='flex px-2 py-1 items-center gap-x-1 text-md font-semibold leading-6 text-gray-900'
                   >
-                    Industry
+                    Services
                     <ChevronDownIcon
                       className='h-5 w-5 flex-none text-gray-400'
                       aria-hidden='true'
@@ -379,8 +379,8 @@ export default function AppHeader({
             <Popover className='relative'>
               {({ open }) => (
                 <>
-                  <Popover.Button className='flex px-4 py-1 items-center gap-x-1 text-md font-semibold leading-6 text-gray-900'>
-                    Solutions
+                  <Popover.Button className='flex px-2 py-1 items-center gap-x-1 text-md font-semibold leading-6 text-gray-900'>
+                    Services
                     <ChevronDownIcon
                       className='h-5 w-5 flex-none text-gray-400'
                       aria-hidden='true'
@@ -424,7 +424,7 @@ export default function AppHeader({
             <Popover className='relative'>
               {({ open }) => (
                 <>
-                  <Popover.Button className='flex px-4 py-1 items-center gap-x-1 text-md font-semibold leading-6 text-gray-900'>
+                  <Popover.Button className='flex px-2 py-1 items-center gap-x-1 text-md font-semibold leading-6 text-gray-900'>
                     Company
                     <ChevronDownIcon
                       className='h-5 w-5 flex-none text-gray-400'
@@ -467,25 +467,24 @@ export default function AppHeader({
             </Popover>
             <Link
               href='/contact-us'
-              className='text-md font-semibold rounded-md leading-6 py-1 px-4 text-gray-900 transition hover:bg-orange-100'
+              className='text-md font-semibold rounded-md leading-6 py-1 px-2 text-gray-900 transition hover:bg-orange-100'
             >
               Contact
             </Link>
-          </Popover.Group>
-          <div className='hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-5'>
             <button
               onClick={() => showQuote(true)}
-              className=' text-lg font-semibold  px-4 py-2 bg-indigo-600 transition text-center  hover:-translate-y-1 hover:shadow-xl rounded-md text-gray-100'
+              className=' text-lg font-semibold  px-5 py-2 bg-indigo-600 transition text-center  hover:-translate-y-1 hover:shadow-xl rounded-full text-gray-100'
             >
               Get a Qoute
             </button>
             <a
               href='/dashboard'
-              className=' text-lg font-semibold ring-1 ring-inset px-4 py-2 ring-indigo-500 hover:ring-indigo-400 text-indigo-500 hover:text-indigo-400 rounded-md'
+              className='ml-1 text-lg font-semibold ring-1 ring-inset px-5 py-2 ring-indigo-500 hover:ring-indigo-400 text-indigo-500 hover:text-indigo-400 rounded-full'
             >
               Order Now
             </a>
-          </div>
+          </Popover.Group>
+          {/* <div className='hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-5'></div> */}
         </nav>
 
         <Dialog as='div' className='lg:hidden' onClose={setOpen} open={open}>

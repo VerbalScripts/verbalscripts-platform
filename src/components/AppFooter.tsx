@@ -164,7 +164,7 @@ export default function AppFooter() {
             <div className='flex items-center mt-5 gap-x-3'>
               <a
                 href=''
-                className='text-center mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-500'
+                className='text-center mb-3 flex h-12 w-12 items-center justify-center'
               >
                 <LogoInstagram
                   color={'#fff'}
@@ -175,7 +175,7 @@ export default function AppFooter() {
               </a>
               <a
                 href=''
-                className='text-center mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-500'
+                className='text-center mb-3 flex h-12 w-12 items-center justify-center'
               >
                 <LogoLinkedin
                   color={'#fff'}
@@ -187,7 +187,7 @@ export default function AppFooter() {
 
               <a
                 href=''
-                className='text-center mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-500'
+                className='text-center mb-3 flex h-12 w-12 items-center justify-center'
               >
                 <LogoFacebook
                   color={'#fff'}
@@ -199,7 +199,7 @@ export default function AppFooter() {
 
               <a
                 href=''
-                className='text-center mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-500'
+                className='text-center mb-3 flex h-12 w-12 items-center justify-center'
               >
                 <LogoGithub
                   color={'#fff'}
@@ -209,17 +209,7 @@ export default function AppFooter() {
                 />
               </a>
 
-              <a
-                href=''
-                className='text-center mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-500'
-              >
-                <LogoApple
-                  color={'#fff'}
-                  width={'25px'}
-                  height={'25px'}
-                  aria-hidden='true'
-                />
-              </a>
+            
             </div>
           </div>
 
