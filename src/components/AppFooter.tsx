@@ -22,15 +22,22 @@ import {
 export default function AppFooter() {
   const services: Array<NavLabel> = [
     {
-      name: 'Transcription',
-      description: 'Get a better understanding of your traffic',
-      href: '#',
-      icon: ChartPieIcon,
+      name: 'Legal Transcription',
+      description: 'Build strategic funnels that will convert',
+      href: '/services/annotation',
+      icon: ArrowPathIcon,
+      subtitle: 'Data Labeling customized to your needs',
+      features: [
+        'Enhance your artifical intelligence',
+        'Global network of experts',
+        'Highest quality annotated data',
+      ],
+      price: '0.10$ per task',
     },
     {
-      name: 'Translation',
+      name: 'Video and Audio Transcription services',
       description: 'Speak directly to your customers',
-      href: '#',
+      href: '/services/translation',
       icon: CursorArrowRaysIcon,
       subtitle: 'Accurate translation in any language',
       features: [
@@ -41,9 +48,28 @@ export default function AppFooter() {
       price: '0.11$ per word',
     },
     {
-      name: 'Legal Transcription',
+      name: 'General Transcription',
+      description: 'Build strategic funnels that will convert',
+      href: '/services/annotation',
+      icon: ArrowPathIcon,
+      subtitle: 'Data Labeling customized to your needs',
+      features: [
+        'Enhance your artifical intelligence',
+        'Global network of experts',
+        'Highest quality annotated data',
+      ],
+      price: '0.10$ per task',
+    },
+    {
+      name: 'Transcription & Live Captioning',
+      description: 'Get a better understanding of your traffic',
+      href: '/services/transcription',
+      icon: ChartPieIcon,
+    },
+    {
+      name: 'Medical Transcription',
       description: 'Your customers’ data will be safe and secure',
-      href: '#',
+      href: '/services/legal',
       icon: FingerPrintIcon,
       subtitle: 'Industry best speech-to-text transcription software',
       features: [
@@ -54,9 +80,9 @@ export default function AppFooter() {
       price: '0.07$ per minute',
     },
     {
-      name: 'AI Datasets',
+      name: 'Academic & Conference Transcription',
       description: 'Connect with third-party tools',
-      href: '#',
+      href: '/services/ai',
       icon: SquaresPlusIcon,
       subtitle: 'Create custom datasets for AI model training',
       features: [
@@ -68,82 +94,49 @@ export default function AppFooter() {
       ],
       price: '2.00$ per minute',
     },
-    {
-      name: 'Data Annotation',
-      description: 'Build strategic funnels that will convert',
-      href: '#',
-      icon: ArrowPathIcon,
-      subtitle: 'Data Labeling customized to your needs',
-      features: [
-        'Enhance your artifical intelligence',
-        'Global network of experts',
-        'Highest quality annotated data',
-      ],
-      price: '0.10$ per task',
-    },
   ];
 
   const solutions: Array<NavLabel> = [
     {
-      name: 'Court and Legal',
+      name: 'Court reporting & Legal',
       description:
         'We convert audio/video content into transcripts quickly and securing to save law firms, investigators, police force, or research firms time and money.',
-      href: '/legal',
+      href: '/solutions/legal',
       icon: NewspaperIcon,
     },
     {
-      name: 'Medical Research',
-      description:
-        'We have experienced, dedicated teams of workers who specialize in healthcare related content who provide accurate and confidential transcriptions for both our Medical and HIPAA-compliant services.',
-      href: '/medical',
-      icon: ChartPieIcon,
-    },
-    {
-      name: 'Corporate and business',
+      name: 'Corporate & general business',
       description:
         'Customized for your large volume needs, including a variety of enterprise security requirements.',
-      href: '/enterprise',
-      icon: ArrowPathIcon,
+      href: '/solutions/enterprise',
+      icon: ChartBarIcon,
     },
     {
-      name: 'AI Machine Learning',
+      name: 'Media production',
       description:
         'The very best in human intelligence requires top quality training data for speech NLP and computer vision models.',
-      href: '/ai',
-      icon: FingerPrintIcon,
+      href: '/solutions/ai',
+      icon: NewspaperIcon,
     },
     {
       name: 'Education',
       description:
         'Fast, easy lecture and dissertation transcripts for students or faculty, compatible with NVivo and other research platforms.',
-      href: '/academic',
+      href: '/solutions/academic',
       icon: AcademicCapIcon,
     },
     {
-      name: 'Digital and online learning',
+      name: 'Digital & online learning',
       description:
         'Transcription that is perfect for all types of qualitative research needs, including focus groups, surveys and in-depth interviews.',
-      href: '/market-research',
+      href: '/solutions/market-research',
       icon: ChartBarIcon,
-    },
-
-    {
-      name: 'Consulting',
-      description:
-        'Fast transcription and research data to meet due diligence and management consulting research needs.',
-      href: '/consulting',
-      icon: SquaresPlusIcon,
-    },
-    {
-      name: 'Media Production',
-      description: 'Automated speech recognition & analytics for call centers',
-      href: '/call-centers',
-      icon: MicrophoneIcon,
     },
     {
       name: 'Government',
-      description: 'Automated speech recognition & analytics for call centers',
-      href: '/call-centers',
+      description:
+        'Making live events, meetings, ad campaigns and press briefings more accessible and actionable.',
+      href: '/solutions/call-centers',
       icon: MicrophoneIcon,
     },
   ];
@@ -257,7 +250,7 @@ export default function AppFooter() {
                 <span className='text-gray-300  text-lg'>Get a Quote</span>
               </a>
 
-              <a href='#' className='-m-1.5 p-1.5'>
+              <a href='/upload-files' className='-m-1.5 p-1.5'>
                 <span className='text-gray-300  text-lg'>Order Now</span>
               </a>
 
@@ -285,7 +278,7 @@ export default function AppFooter() {
                 </span>
               </a>
 
-              <a href='#' className='-m-1.5 p-1.5 leading-7'>
+              <a href='/contact-us' className='-m-1.5 p-1.5 leading-7'>
                 <span className='text-gray-300  text-lg hover:text-yellow-400'>
                   Contact Us
                 </span>
@@ -311,7 +304,7 @@ export default function AppFooter() {
             <div className='flex flex-col'>
               <a href='#' className='-m-1.5 mb-3 p-1.5'>
                 <span className='text-gray-100 font-bold text-lg'>
-                  Industry Solutions
+                  Solutions
                 </span>
               </a>
 
@@ -331,17 +324,17 @@ export default function AppFooter() {
                 </span>
               </a>
 
-              <a href='#' className='-m-1.5 p-1.5'>
+              <a href='/freelancers' className='-m-1.5 p-1.5'>
                 <span className='text-gray-300 text-lg hover:text-yellow-400'>
-                  Freelancers
+                  Start working
                 </span>
               </a>
-              <a href='#' className='-m-1.5 p-1.5'>
+              <a href='/contact-us' className='-m-1.5 p-1.5'>
                 <span className='text-gray-300 text-lg hover:text-yellow-400'>
                   Customer Support
                 </span>
               </a>
-              <a href='#' className='-m-1.5 p-1.5'>
+              <a href='/faqs' className='-m-1.5 p-1.5'>
                 <span className='text-gray-300 text-lg hover:text-yellow-400'>
                   Faqs
                 </span>
@@ -353,12 +346,14 @@ export default function AppFooter() {
                 </span>
               </a>
 
-              <a
-                href='#'
-                className='my-2.5 inline-block rounded-md bg-indigo-500 px-3.5 py-2.5 text-lg font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500'
-              >
-                Join Us
-              </a>
+              <div className='mt-5'>
+                <a
+                  href='/freelancers'
+                  className=' rounded-full px-16 bg-indigo-500  py-2.5 text-lg font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500'
+                >
+                  Join Us
+                </a>
+              </div>
             </div>
           </dl>
 
@@ -381,11 +376,6 @@ export default function AppFooter() {
             <a href='#' className='px-1.5 md:border-r border-gray-300'>
               <span className='text-gray-300  hover:text-yellow-400'>
                 Freelancer Worker Privacy
-              </span>
-            </a>
-            <a href='#' className='px-1.5 md:border-r border-gray-300'>
-              <span className='text-gray-300  hover:text-yellow-400'>
-                HIPAA Compliance
               </span>
             </a>
           </div>

@@ -133,6 +133,20 @@ export default function Page() {
                 ></input>
                 Select File
               </label>
+
+              <label
+                htmlFor='raw_file'
+                className='mt-28 px-8 py-2.5 rounded-full bg-indigo-500 text-xl text-white font-semibold cursor-pointer'
+              >
+                <input
+                  type='file'
+                  id='raw_file'
+                  name='raw_folder'
+                  className='hidden'
+                  web
+                ></input>
+                Select Folder
+              </label>
             </div>
 
             <div className='flex sm:flex-wrap gap-3'>

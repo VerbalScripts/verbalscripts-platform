@@ -86,10 +86,17 @@ export default function AppHeader({
 
   const services: Array<NavLabel> = [
     {
-      name: 'Transcription & Live Captioning',
-      description: 'Get a better understanding of your traffic',
-      href: '/services/transcription',
-      icon: ChartPieIcon,
+      name: 'Legal Transcription',
+      description: 'Build strategic funnels that will convert',
+      href: '/services/annotation',
+      icon: ArrowPathIcon,
+      subtitle: 'Data Labeling customized to your needs',
+      features: [
+        'Enhance your artifical intelligence',
+        'Global network of experts',
+        'Highest quality annotated data',
+      ],
+      price: '0.10$ per task',
     },
     {
       name: 'Video and Audio Transcription services',
@@ -105,7 +112,26 @@ export default function AppHeader({
       price: '0.11$ per word',
     },
     {
-      name: 'Closed Captioning',
+      name: 'General Transcription',
+      description: 'Build strategic funnels that will convert',
+      href: '/services/annotation',
+      icon: ArrowPathIcon,
+      subtitle: 'Data Labeling customized to your needs',
+      features: [
+        'Enhance your artifical intelligence',
+        'Global network of experts',
+        'Highest quality annotated data',
+      ],
+      price: '0.10$ per task',
+    },
+    {
+      name: 'Transcription & Live Captioning',
+      description: 'Get a better understanding of your traffic',
+      href: '/services/transcription',
+      icon: ChartPieIcon,
+    },
+    {
+      name: 'Medical Transcription',
       description: 'Your customers’ data will be safe and secure',
       href: '/services/legal',
       icon: FingerPrintIcon,
@@ -118,7 +144,7 @@ export default function AppHeader({
       price: '0.07$ per minute',
     },
     {
-      name: 'Audio description',
+      name: 'Academic & Conference Transcription',
       description: 'Connect with third-party tools',
       href: '/services/ai',
       icon: SquaresPlusIcon,
@@ -131,32 +157,6 @@ export default function AppHeader({
         'Annotation services available',
       ],
       price: '2.00$ per minute',
-    },
-    {
-      name: 'Legal Transcription',
-      description: 'Build strategic funnels that will convert',
-      href: '/services/annotation',
-      icon: ArrowPathIcon,
-      subtitle: 'Data Labeling customized to your needs',
-      features: [
-        'Enhance your artifical intelligence',
-        'Global network of experts',
-        'Highest quality annotated data',
-      ],
-      price: '0.10$ per task',
-    },
-    {
-      name: 'Self service solutions',
-      description: 'Build strategic funnels that will convert',
-      href: '/services/annotation',
-      icon: ArrowPathIcon,
-      subtitle: 'Data Labeling customized to your needs',
-      features: [
-        'Enhance your artifical intelligence',
-        'Global network of experts',
-        'Highest quality annotated data',
-      ],
-      price: '0.10$ per task',
     },
   ];
 

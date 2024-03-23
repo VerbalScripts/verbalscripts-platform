@@ -4,11 +4,7 @@ import React, { useEffect, useRef } from 'react';
 
 import { useState } from 'react';
 
-import {
-  ArrowPathIcon,
-  LockClosedIcon,
-  CurrencyDollarIcon,
-} from '@heroicons/react/24/outline';
+import Image from 'next/image';
 
 import AppHeader from '@/components/AppHeader';
 import LandingPage from '@/components/LandingPage';
@@ -84,22 +80,22 @@ export default function Home() {
       name: 'Transcribe with High Accuracy',
       description:
         'Turn any audio to text with industry leading accuracy and the best transcription models on the market.',
-      icon: LockClosedIcon,
-      imgUrl: 'confidential',
+
+      imgUrl: '/icons/accuracy.png',
     },
     {
       name: 'One Click Submission and Fast Processing',
       description:
         'Simply give a us a link or upload your file and your will be ready in a matter of minutes',
-      icon: ArrowPathIcon,
-      imgUrl: 'compliant',
+
+      imgUrl: '/icons/upload.png',
     },
     {
       name: 'Affordable Solutions',
       description:
         'The quality and workflow we have built enable us to deliver the highest quality data consistently at low prices.',
-      icon: CurrencyDollarIcon,
-      imgUrl: 'affordable',
+
+      imgUrl: '/icons/affordable.png',
     },
   ];
 
@@ -128,6 +124,15 @@ export default function Home() {
       imgUrl:
         'https://tailwindui.com/img/logos/158x48/statamic-logo-gray-900.svg',
     },
+    {
+      name: 'Reform',
+      imgUrl:
+        'https://tailwindui.com/img/logos/158x48/reform-logo-gray-900.svg',
+    },
+    {
+      name: 'Tuple',
+      imgUrl: 'https://tailwindui.com/img/logos/158x48/tuple-logo-gray-900.svg',
+    },
   ];
 
   return (
@@ -144,8 +149,8 @@ export default function Home() {
 
       <GetAQuoteModal open={open} setOpen={setOpen} />
 
-      <div className=' py-32 md:py-10' style={{ backgroundColor: '#f9f8f2' }}>
-        <div className='mx-auto max-w-7xl xl:max-w-8xl px-6 lg:px-8 xl:px-10'>
+      <div className=' py-10 md:py-5' style={{ backgroundColor: '#f9f8f2' }}>
+        <div className='mx-auto max-w-full xl:max-w-8xl px-6 lg:px-8 xl:px-10'>
           {/* <h2 className='text-center text-lg font-semibold leading-8 text-gray-900'>
             Trusted by the world’s most innovative teams
           </h2> */}
@@ -166,11 +171,11 @@ export default function Home() {
         </div>
       </div>
 
-      <div className='bg-white py-32 md:py-24'>
+      <div className='bg-white py-20 md:py-24'>
         <div className='mx-auto max-w-7xl px-6 lg:px-8'>
-          <div className='mx-auto max-w-4xl lg:text-center'>
+          <div className='mx-auto max-w-4xl md:text-center'>
             {/* <h2 className="text-base font-semibold leading-7 text-indigo-600">What we do</h2> */}
-            <p className='mt-2 text-5xl font-bold  text-gray-900'>
+            <p className='mt-2 text-4xl md:text-5xl font-bold  text-gray-900'>
               Benefits of Choosing VerbalScripts
             </p>
             <p className='mx-auto max-w-2xl mt-6 text-lg leading-8 text-gray-600'>
@@ -179,7 +184,7 @@ export default function Home() {
             </p>
           </div>
           <div className='mx-auto mt-16 max-w-7xl sm:mt-20 lg:mt-24 lg:max-w-8xl'>
-            <dl className='grid max-w-full grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-y-16'>
+            <dl className='grid max-w-full content-center grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-y-16'>
               {features.map((feature) => (
                 <div
                   key={feature.name}
@@ -187,15 +192,18 @@ export default function Home() {
                   style={{ backgroundColor: '#f9f8f2' }}
                 >
                   <dt className='flex flex-col items-center text-base font-semibold leading-7 text-gray-900'>
-                    <div className='mb-5 flex h-16 w-16 items-center justify-center rounded-lg bg-indigo-500'>
-                      <feature.icon
-                        className='h-10 w-10 text-white'
-                        aria-hidden='true'
-                      />
-                    </div>
-                    <span className='text-2xl text-center'>{feature.name}</span>
+                    <Image
+                      className='mb-5'
+                      alt={feature.name}
+                      src={feature.imgUrl}
+                      height={110}
+                      width={110}
+                    />
+                    <span className='text-[1.35rem] text-center'>
+                      {feature.name}
+                    </span>
                   </dt>
-                  <dd className='text-lg text-left mt-2 text-md leading-6 text-gray-600'>
+                  <dd className='text-lg text-center mt-2 text-md leading-6 text-gray-600'>
                     {feature.description}
                   </dd>
                 </div>
@@ -210,8 +218,8 @@ export default function Home() {
         <div className='mx-auto max-w-8xl '>
           <div className='relative isolate   px-6 pt-16 sm:rounded-3xl sm:px-16 md:pt-24 md:px-24 lg:flex lg:items-center lg:gap-x-20 lg:px-36 lg:pt-0'>
             <div className='mx-auto  lg:max-w-xl  lg:mx-0 lg:flex-auto lg:py-32'>
-              <h2 className='text-5xl font-bold  text-gray-100'>
-                Transcription Industry Solutions
+              <h2 className='text-4xl md:text-5xl font-bold  text-gray-100'>
+                Services
               </h2>
               <p className='mt-6 text-lg  leading-7 text-gray-200'>
                 The way we think about data is changing; and now more than ever
@@ -225,11 +233,11 @@ export default function Home() {
                 requirements you may need.
               </p>
             </div>
-            <div className='relative mt-16 h-80 lg:mt-8'>
+            <div className='relative mb-44 md:mb-32 mt-16 h-80 lg:mt-8'>
               <img
                 className='absolute left-0 top-0 w-[28rem] md:w-[32rem] max-w-none rounded-m'
                 src='transcription-service.webp'
-                alt='App screenshot'
+                alt='Service Image'
               />
             </div>
           </div>
@@ -264,7 +272,7 @@ export default function Home() {
         <div className='flex justify-center py-32'>
           <a
             href='/solutions'
-            className='rounded-md  bg-orange-500 px-7 py-3 text-lg font-bold text-white shadow-sm transition hover:translate-x-1 hover:shadow-md hover:bg-orange-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+            className='rounded-full  bg-orange-500 px-8 py-3.5 text-lg font-bold text-white shadow-sm transition  hover:shadow-md hover:bg-orange-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
           >
             View all industry solutions
           </a>
@@ -276,11 +284,11 @@ export default function Home() {
 
       <div className='bg-white'>
         <div className='py-24 px-6 sm:py-32 lg:px-8'>
-          <div className='mx-auto max-w-2xl text-center'>
+          <div className='mx-auto max-w-2xl text-left md:text-center'>
             {/* <h2 className="text-base font-semibold leading-7 text-indigo-600">
             You did{ "'"}nt Hear it from us
           </h2> */}
-            <p className='mt-2 text-5xl font-bold  text-gray-900'>
+            <p className='mt-2 text-4xl md:text-5xl font-bold  text-gray-900'>
               4-step Process for Concistent Results
             </p>
             <p className='mx-auto max-w-2xl mt-6 text-lg leading-8 text-gray-600'>
@@ -289,9 +297,9 @@ export default function Home() {
           </div>
           <div className='mx-auto max-w-8xl py-10'>
             <div className='relative isolate  sm:rounded-3xl sm:px-16  lg:flex lg:items-center lg:gap-x-20 lg:px-24'>
-              <div className='relative md:-mt-16 h-80  min-w-[35rem]'>
+              <div className='hidden lg:block relative md:-mt-16 h-80 lg:min-w-[24rem]   xl:min-w-[35rem]'>
                 <img
-                  className='absolute left-0 top-0 w-[20rem] md:w-[32rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10'
+                  className='absolute left-0 top-0 w-[20rem] md:w-[28rem]  xl:w-[32rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10'
                   src='ai-transcription-service.webp'
                   alt='Ai Powered'
                 />
@@ -300,8 +308,8 @@ export default function Home() {
               <div className='mx-auto  lg:mx-0 lg:flex-auto '>
                 <div className='flex flex-col  items-start gap-x-3 gap-y-3  mt-5'>
                   <div className='flex'>
-                    <div className=' flex flex-col  gap-y-5 items-center'>
-                      <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/50 text-white'>
+                    <div className=' flex flex-col  gap-y-5 items-center '>
+                      <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/5 text-indigo-500 font-bold'>
                         1
                       </span>
                       <span className='h-20 border-r-2 border-dashed  border-gray-300'></span>
@@ -320,7 +328,7 @@ export default function Home() {
 
                   <div className='flex'>
                     <div className=' flex flex-col  gap-y-5  items-center'>
-                      <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/50 text-white'>
+                      <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/5 text-indigo-500 font-bold'>
                         2
                       </span>
                       <span className='h-20 border-r-2 border-dashed  border-gray-300'></span>
@@ -339,7 +347,7 @@ export default function Home() {
 
                   <div className='flex'>
                     <div className=' flex flex-col  gap-y-5  items-center'>
-                      <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/50 text-white'>
+                      <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/5 text-indigo-500 font-bold'>
                         3
                       </span>
                       <span className='h-20 border-r-2 border-dashed  border-gray-300'></span>
@@ -358,12 +366,12 @@ export default function Home() {
 
                   <div className='flex'>
                     <div className=' flex items-center'>
-                      <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/50 text-white'>
+                      <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/5 text-indigo-500 font-bold'>
                         4
                       </span>
                     </div>
                     <br />
-                    <div className='ml-5   max-w-md'>
+                    <div className='ml-5  max-w-md'>
                       <div className='leading-8 text-gray-800 font-semibold text-2xl mb-3'>
                         Quality Check
                       </div>
@@ -431,8 +439,8 @@ export default function Home() {
           </svg>
           <div className='mx-auto  xl:max-w-full px-6 lg:px-8 xl:px-14'>
             <div className='relative isolate py-24   px-6   sm:px-16 md:py-10  lg:flex lg:items-center lg:gap-x-20 lg:px-24 lg:pt-0'>
-              <div className='mx-auto  max-w-2xl text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left'>
-                <h2 className='text-5xl font-bold  text-white '>
+              <div className='w-[30rem] text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left'>
+                <h2 className='text-4xl md:text-5xl font-bold  text-white '>
                   Ready to succeed with our Transcription Solutions
                 </h2>
                 <p className='mt-6 text-xl leading-8 text-gray-100'>
@@ -456,7 +464,7 @@ export default function Home() {
               </div>
               <div className='hidden lg:block relative mt-16 h-80 lg:-mt-8 pr-10'>
                 <img
-                  className=' w-[32rem] max-w-none'
+                  className='lg:w-[28rem] xl:w-[32rem] max-w-none'
                   src='transcription-service.webp'
                   alt='Ready to Succeed with our transcription service'
                 />
@@ -467,9 +475,9 @@ export default function Home() {
       </div>
 
       <div className='bg-white'>
-        <div className='mx-auto max-w-8xl md:py-28 py-16  sm:px-6  lg:px-8'>
-          <div className='relative isolate   px-6 sm:pt-16 sm:rounded-3xl sm:px-16  md:flex md:items-center  lg:gap-x-20 lg:px-24 lg:pt-0'>
-            <div className='hidden lg:block relative min-w-[35rem] -mt-32 h-80 lg:mt-8'>
+        <div className='mx-auto max-w-8xl lg:py-28 py-16  sm:px-6  lg:px-8'>
+          <div className='relative isolate   px-6  sm:rounded-3xl sm:px-16  md:flex md:items-center  lg:gap-x-20 lg:px-24 lg:pt-0'>
+            <div className='hidden lg:block relative md:min-w-[28rem] lg:min-w-[35rem] -mt-32 h-80 lg:mt-8'>
               <img
                 className='w-[20rem] md:w-[26rem] max-w-none'
                 src='login-page.svg'
@@ -478,8 +486,8 @@ export default function Home() {
             </div>
 
             <div className='lg:mx-0 max-w-xl lg:flex  flex-col  text-left'>
-              <h2 className='text-4xl mt-0 md:mt-20 lg:mt-0 font-bold  text-gray-700 sm:text-5xl'>
-                Become a Freelancer Today
+              <h2 className='text-4xl mt-0 md:mt-20 lg:mt-0 font-bold  text-gray-900 md:text-5xl'>
+                Want to become a freelancer
               </h2>
               <p className='mt-6 text-lg leading-8 text-gray-700'>
                 We have the industry’s best rates!
@@ -488,7 +496,7 @@ export default function Home() {
               <div className='flex flex-col md:flex-row items-start gap-x-3 gap-y-5 md:gap-y-0 mt-5'>
                 <div className='flex md:block'>
                   <div className=' flex flex-col md:flex-row gap-y-5 md:gap-y-0 items-center'>
-                    <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/50 text-white'>
+                    <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/5 text-indigo-500 font-bold'>
                       1
                     </span>
                     <span className='h-24 border-r-2 border-dashed md:h-0 md:ml-2 md:w-48 lg:w-32 md:border-b-2 border-gray-300'></span>
@@ -501,7 +509,7 @@ export default function Home() {
 
                 <div className='flex md:block'>
                   <div className=' flex flex-col md:flex-row gap-y-5 md:gap-y-0 items-center'>
-                    <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/50 text-white'>
+                    <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/5 text-indigo-500 font-bold'>
                       2
                     </span>
                     <span className='h-24 border-r-2 border-dashed md:h-0 md:ml-2 md:w-48 lg:w-32  md:border-b-2 border-gray-300'></span>
@@ -514,7 +522,7 @@ export default function Home() {
 
                 <div className='flex md:block'>
                   <div className=' flex items-center'>
-                    <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/50 text-white'>
+                    <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/5 text-indigo-500 font-bold'>
                       3
                     </span>
                   </div>
