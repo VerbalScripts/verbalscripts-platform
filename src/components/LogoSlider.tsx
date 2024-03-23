@@ -1,12 +1,11 @@
 import React from 'react';
 
-import { Swiper,  SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
 import { Autoplay } from 'swiper/modules';
 
 export default function LogoSlider({ partners }: LogoComponentProp) {
-
   return (
     <>
       <div className='hidden md:flex items-start flex-wrap md:flex-nowrap my-0 md:my-8 gap-x-10 swiper-container'>
