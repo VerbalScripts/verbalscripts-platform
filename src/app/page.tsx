@@ -12,12 +12,13 @@ import AppFooter from '@/components/AppFooter';
 import Testimonials from '@/components/Testimonials';
 import GetAQuoteModal from '@/components/GetAQuoteModal';
 import LogoSlider from '@/components/LogoSlider';
+import CallToActionBanner from '@/components/CallToActionBanner';
 
 export default function Home() {
   const [heightOffset, setOffsetHeight] = useState(0);
   // open slide over
   const [open, setOpen] = useState(false);
-
+ 
   useEffect(() => {
     const callToActionObserver = new IntersectionObserver(
       (sections) => {
@@ -217,7 +218,7 @@ export default function Home() {
       <div className='bg-indigo-600'>
         <div className='mx-auto max-w-8xl '>
           <div className='relative isolate   px-6 pt-16 sm:rounded-3xl sm:px-16 md:pt-24 md:px-24 lg:flex lg:items-center lg:gap-x-20 lg:px-36 lg:pt-0'>
-            <div className='mx-auto  lg:max-w-xl  lg:mx-0 lg:flex-auto lg:py-32'>
+            <div className='mx-auto  lg:max-w-[24rem]   xl:max-w-[28rem] lg:mx-0 lg:flex-auto lg:py-32'>
               <h2 className='text-4xl md:text-5xl font-bold  text-gray-100'>
                 Services
               </h2>
@@ -297,9 +298,9 @@ export default function Home() {
           </div>
           <div className='mx-auto max-w-8xl py-10'>
             <div className='relative isolate  sm:rounded-3xl sm:px-16  lg:flex lg:items-center lg:gap-x-20 lg:px-24'>
-              <div className='hidden lg:block relative md:-mt-16 h-80 lg:min-w-[24rem]   xl:min-w-[35rem]'>
+              <div className='hidden lg:block relative md:-mt-16 h-80 lg:min-w-[24rem]   xl:min-w-[25rem]'>
                 <img
-                  className='absolute left-0 top-0 w-[20rem] md:w-[28rem]  xl:w-[32rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10'
+                  className='absolute left-0 top-0 w-[20rem] md:w-[23rem]  xl:w-[24rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10'
                   src='ai-transcription-service.webp'
                   alt='Ai Powered'
                 />
@@ -384,6 +385,15 @@ export default function Home() {
                 </div>
               </div>
             </div>
+
+            <div className='flex justify-center py-32'>
+              <a
+                href='/solutions'
+                className='rounded-full ring-1 ring-indigo-500 ring-inset  bg-indigo-500 px-8 py-3.5 text-lg font-bold text-white shadow-sm transition  hover:shadow-md hover:text-gray-800 hover:bg-white hover:rind focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+              >
+                Place Order Now
+              </a>
+            </div>
           </div>
 
           {/* <div className='mx-auto max-w-8xl '>
@@ -416,68 +426,13 @@ export default function Home() {
         </div>
       </div>
 
-      <div className='bg-white relative isolate'>
-        <div className='bg-indigo-600 relative overflow-hidden transition transform-gpu'>
-          <svg
-            viewBox='0 0 1024 1024'
-            className='absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] sm:left-full sm:-ml-80 lg:left-1/2 lg:ml-0 lg:-translate-x-1/2 lg:translate-y-0'
-            aria-hidden='true'
-          >
-            <circle
-              cx={512}
-              cy={512}
-              r={512}
-              fill='url(#759c1415-0410-454c-8f7c-9a820de03641)'
-              fillOpacity='0.7'
-            />
-            <defs>
-              <radialGradient id='759c1415-0410-454c-8f7c-9a820de03641'>
-                <stop stopColor='#7775D6' />
-                <stop offset={1} stopColor='#E935C1' />
-              </radialGradient>
-            </defs>
-          </svg>
-          <div className='mx-auto  xl:max-w-full px-6 lg:px-8 xl:px-14'>
-            <div className='relative isolate py-24   px-6   sm:px-16 md:py-10  lg:flex lg:items-center lg:gap-x-20 lg:px-24 lg:pt-0'>
-              <div className='w-[30rem] text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left'>
-                <h2 className='text-4xl md:text-5xl font-bold  text-white '>
-                  Ready to succeed with our Transcription Solutions
-                </h2>
-                <p className='mt-6 text-xl leading-8 text-gray-100'>
-                  Click the order now button to get started today or request a
-                  quote if your project is complex.
-                </p>
-                <div className='mt-10 flex items-center flex-wrap justify-center gap-6 lg:justify-start'>
-                  <a
-                    href='#'
-                    className='text-xl font-semibold leading-6 text-white px-8 py-3.5 ring-1  ring-gray-200 rounded-full transition hover:-translate-y-1 hover:shadow-2xl'
-                  >
-                    Order Now
-                  </a>
-                  <button
-                    onClick={() => setOpen(true)}
-                    className='rounded-full bg-orange-500 px-8 py-3.5 text-xl font-semibold text-white transition hover:-translate-y-1 hover:shadow-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white'
-                  >
-                    Get a Qoute
-                  </button>
-                </div>
-              </div>
-              <div className='hidden lg:block relative mt-16 h-80 lg:-mt-8 pr-10'>
-                <img
-                  className='lg:w-[28rem] xl:w-[32rem] max-w-none'
-                  src='transcription-service.webp'
-                  alt='Ready to Succeed with our transcription service'
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+
+      <CallToActionBanner fn={setOpen} />
 
       <div className='bg-white'>
         <div className='mx-auto max-w-8xl lg:py-28 py-16  sm:px-6  lg:px-8'>
           <div className='relative isolate   px-6  sm:rounded-3xl sm:px-16  md:flex md:items-center  lg:gap-x-20 lg:px-24 lg:pt-0'>
-            <div className='hidden lg:block relative md:min-w-[28rem] lg:min-w-[35rem] -mt-32 h-80 lg:mt-8'>
+            <div className='hidden lg:block relative md:min-w-[28rem] lg:min-w-[35rem] xl:min-w-[28rem] -mt-32 h-80'>
               <img
                 className='w-[20rem] md:w-[26rem] max-w-none'
                 src='login-page.svg'

@@ -203,7 +203,7 @@ export default function AppFooter() {
             </div>
           </div>
 
-          <div className='mt-6 flex  gap-x-4'>
+          <div className='mt-6 flex flex-col md:flex-row  gap-5 '>
             <label htmlFor='email-address' className='sr-only'>
               Email address
             </label>
@@ -213,12 +213,12 @@ export default function AppFooter() {
               type='email'
               autoComplete='email'
               required
-              className='min-w-0 max-w-md  flex-auto rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
+              className='w-full min-w-80 lg:min-w-2xl  flex-auto rounded-md border-0 bg-white/5 px-3.5 py-3.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
               placeholder='Enter your email'
             />
             <button
               type='submit'
-              className='flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-lg font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500'
+              className='flex-none max-w-40 md:max-w-none rounded-full bg-indigo-600 px-7 py-2.5 text-lg font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500'
             >
               Subscribe
             </button>
@@ -349,7 +349,7 @@ export default function AppFooter() {
               <div className='mt-5'>
                 <a
                   href='/freelancers'
-                  className=' rounded-full px-16 bg-indigo-500  py-2.5 text-lg font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500'
+                  className=' rounded-full px-16 bg-indigo-600  py-2.5 text-lg font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500'
                 >
                   Join Us
                 </a>

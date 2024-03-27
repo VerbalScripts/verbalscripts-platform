@@ -583,17 +583,17 @@ export default function AppHeader({
                   </Disclosure>
 
                   <div className='border-b py-2 border-gray-200'></div>
-                  <a
-                    href='/freelancers'
+                  <button
+                    onClick={() => showQuote(true)}
                     className='-mx-3 block underline underline-offset-2 rounded-lg px-3 py-2 text-xl font-semibold leading-7 text-orange-500 hover:bg-gray-50'
                   >
                     Request a Quote
-                  </a>
+                  </button>
                   <a
-                    href='/dashboard'
+                    href='/upload-files'
                     className='-mx-3 underline underline-offset-2 block rounded-lg px-3 py-2 text-xl font-semibold leading-7 text-orange-500 hover:bg-gray-50'
                   >
-                    Order Now
+                    Place Order
                   </a>
                 </div>
                 <div className='grid grid-cols-1 md:grid-cols-1  gap-y-3 md:gap-x-10 divide-x divide-gray-900/5 bg-gray-50'>
@@ -623,18 +623,18 @@ export default function AppHeader({
 
       <div className='md:hidden bg-white fixed bottom-0 left-0 right-0 flex  justify-center px-3 py-8 z-30 shadow-2xl gap-x-5'>
         <div className='max-w-7xl'>
-          <a
-            href='#'
-            className='rounded-md ring-1 ring-inset ring-indigo-500  px-6 py-4 text-xl font-semibold leading-7 text-indigo-500 hover:ring-indigo-400 hover:text-indigo-400'
+          <button
+            onClick={() => showQuote(true)}
+            className='-mt-4 rounded-full ring-1 ring-inset ring-indigo-500  px-6 py-4 text-xl font-semibold leading-7 text-indigo-500 hover:ring-indigo-400 hover:text-indigo-400'
           >
             Get a Qoute
-          </a>
+          </button>
         </div>
 
         <div>
           <a
-            href='#'
-            className='rounded-md  bg-indigo-500  px-6 py-4 text-xl font-semibold leading-7 text-white hover:bg-indigo-400 hover:text-gray-200'
+            href='/upload-files'
+            className='rounded-full  bg-indigo-500  px-6 py-4 text-xl font-semibold leading-7 text-white hover:bg-indigo-400 hover:text-gray-200'
           >
             Order Now
           </a>
