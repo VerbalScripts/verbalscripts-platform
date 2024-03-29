@@ -56,7 +56,7 @@ export default function AuthHeader({ route }: HeaderProps) {
               <div>
                 <span className='text-gray-800'>New User ? </span>{' '}
                 <Link
-                  href='/auth/login'
+                  href='/auth/register'
                   className='text-md font-semibold leading-6 text-indigo-500 underline'
                 >
                   Create Account

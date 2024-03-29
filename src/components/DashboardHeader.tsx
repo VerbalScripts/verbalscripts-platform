@@ -6,9 +6,14 @@ import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 
-import { ArrowPathIcon, SquaresPlusIcon } from '@heroicons/react/24/outline';
+import {
+  ArrowPathIcon,
+  SquaresPlusIcon,
+  PlusIcon,
+} from '@heroicons/react/24/outline';
 import NavItem from './NavItem';
 import Link from 'next/link';
+import DashDialogMenu from './DashDialogMenu';
 
 function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ');
@@ -16,37 +21,6 @@ function classNames(...classes: string[]): string {
 
 export default function DashboardHeader() {
   const [open, setOpen] = useState(false);
-
-  const services: Array<NavLabel> = [
-    {
-      name: 'AI Datasets',
-      description: 'Connect with third-party tools',
-      href: '/services/ai',
-      icon: SquaresPlusIcon,
-      subtitle: 'Create custom datasets for AI model training',
-      features: [
-        'Customized styles, tagging and speaker names',
-        'Timestamps to the millisecond',
-        'Transcription formats for any AI system',
-        'Highly secure platform & confidential data',
-        'Annotation services available',
-      ],
-      price: '2.00$ per minute',
-    },
-    {
-      name: 'Data Annotation',
-      description: 'Build strategic funnels that will convert',
-      href: '/services/annotation',
-      icon: ArrowPathIcon,
-      subtitle: 'Data Labeling customized to your needs',
-      features: [
-        'Enhance your artifical intelligence',
-        'Global network of experts',
-        'Highest quality annotated data',
-      ],
-      price: '0.10$ per task',
-    },
-  ];
 
   return (
     <>
@@ -82,68 +56,16 @@ export default function DashboardHeader() {
             </button>
           </div>
 
-          <Popover.Group className='hidden lg:flex lg:gap-x-1'>
-            <Link
-              href='/'
-              className='text-md font-semibold px-4 py-1 leading-6 text-gray-900 transition hover:bg-orange-100'
-            >
-              Home
-            </Link>
-
-            <Popover className='relative'>
-              <Popover.Button className='flex px-4 py-1 items-center gap-x-1 text-md font-semibold leading-6 text-gray-900'>
-                Industry
-                <ChevronDownIcon
-                  className='h-5 w-5 flex-none text-gray-400'
-                  aria-hidden='true'
-                />
-              </Popover.Button>
-
-              <Transition
-                as={Fragment}
-                enter='transition ease-out duration-200'
-                enterFrom='opacity-0 translate-y-1'
-                enterTo='opacity-100 translate-y-0'
-                leave='transition ease-in duration-150'
-                leaveFrom='opacity-100 translate-y-0'
-                leaveTo='opacity-0 translate-y-1'
-              >
-                <Popover.Panel className='absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5'>
-                  <div className='p-4'>
-                    {services.map((item: NavLabel) => (
-                      <NavItem key={item.name} label={item} />
-                    ))}
-                  </div>
-                  {/* <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
-                  {callsToAction.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
-                    >
-                      <item.icon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
-                      {item.name}
-                    </a>
-                  ))}
-                </div> */}
-                </Popover.Panel>
-              </Transition>
-            </Popover>
-
-            <Link
-              href='/freelancers'
-              className='text-md font-semibold rounded-md leading-6 py-1 px-4 text-gray-900 transition hover:bg-orange-100'
-            >
-              Jobs
-            </Link>
-          </Popover.Group>
           <div className='hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-5'>
             <a
               href='#'
-              className=' text-lg font-semibold ring-1 ring-inset px-4 py-2 ring-indigo-500 hover:ring-indigo-400 text-indigo-500 hover:text-indigo-400 rounded-md'
+              className='flex items-center text-md font-semibold ring-1 ring-inset text-white px-3.5 py-1.5 bg-indigo-500 hover:bg-white hover:ring-indigo-400 hover:text-indigo-500 rounded-full'
             >
-              Order Now
+              <PlusIcon className='h-6 w-6' aria-hidden='true' />
+
+              <span>Add File</span>
             </a>
+            <DashDialogMenu />
           </div>
         </nav>
 

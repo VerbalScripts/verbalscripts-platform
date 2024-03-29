@@ -17,6 +17,8 @@
     "@reduxjs/toolkit": "^2.1.0",
     "@rpldy/uploady": "^1.8.0",
     "animejs": "^3.2.2",
+    "flowbite": "^2.3.0",
+    "flowbite-react": "^0.7.5",
     "graphql": "^16.8.1",
     "next": "14.1.0",
     "next-seo": "^6.5.0",

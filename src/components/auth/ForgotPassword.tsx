@@ -56,7 +56,7 @@ export default function ForgotPassword() {
               type='email'
               autoComplete='email'
               required
-              className='block w-full rounded-md border-3 py-4 px-4 text-gray-600 shadow-sm ring-1 ring-inset ring-indigo-400 placeholder:text-grey-900  md:text-xl focus:ring-2 focus:ring-inset  focus:ring-dark sm:text-sm sm:leading-6'
+              className='block w-full rounded-md border-3 py-2.5 px-3 text-gray-600 shadow-sm ring-1 ring-inset ring-indigo-400 placeholder:text-grey-900  md:text-xl focus:ring-2 focus:ring-inset  focus:ring-dark sm:text-sm sm:leading-6'
             />
           </div>
         </div>

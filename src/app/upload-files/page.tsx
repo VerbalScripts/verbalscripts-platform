@@ -2,6 +2,7 @@
 
 import AppFooter from '@/components/AppFooter';
 import AppHeader from '@/components/AppHeader';
+import FileSelectionTab from '@/components/FileSelectionTab';
 import FileUploadOptions from '@/components/FileUploadOptions';
 import GetAQuoteModal from '@/components/GetAQuoteModal';
 import React, { useRef, useState } from 'react';
@@ -45,6 +46,15 @@ export default function Page() {
           <p className='mt-2 text-3xl font-bold  text-gray-900'>
             Ready to try our service out. Go ahead and upload your file.
           </p>
+
+          <div className='mt-10'>
+            <div className='mt-10'>
+           
+             
+              <FileSelectionTab />
+            </div>
+          </div>
+
           <div className='mt-10'>
             <div className='mt-10'>
               <div className='flex items-center gap-x-4 mb-5'>
