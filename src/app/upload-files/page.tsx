@@ -3,7 +3,6 @@
 import AppFooter from '@/components/AppFooter';
 import AppHeader from '@/components/AppHeader';
 import FileSelectionTab from '@/components/FileSelectionTab';
-import FileUploadOptions from '@/components/FileUploadOptions';
 import GetAQuoteModal from '@/components/GetAQuoteModal';
 import DropboxUpload from '@/components/uploadOptions/DropboxUpload';
 import GoogleUpload from '@/components/uploadOptions/GoogleUpload';

@@ -2,9 +2,7 @@ import {
   RocketLaunchIcon,
   CheckBadgeIcon,
   ClockIcon,
-  FolderOpenIcon,
   Squares2X2Icon,
-  CurrencyDollarIcon,
   FolderPlusIcon,
   ArchiveBoxIcon,
 } from '@heroicons/react/24/outline';

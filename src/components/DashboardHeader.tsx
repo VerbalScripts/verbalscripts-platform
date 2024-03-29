@@ -1,15 +1,13 @@
 'use client';
 
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import { Dialog } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
 import { PlusIcon } from '@heroicons/react/24/outline';
 import DashDialogMenu from './DashDialogMenu';
 import { classNames } from '@/utils/classNames';
-
-
 
 export default function DashboardHeader() {
   const [open, setOpen] = useState(false);
