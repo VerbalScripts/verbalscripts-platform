@@ -1,19 +1,15 @@
 'use client';
 
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import React, { Fragment, useState } from 'react';
-import { Dialog, Disclosure } from '@headlessui/react';
+import React, {  useState } from 'react';
+import { Dialog } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import { ChevronDownIcon } from '@heroicons/react/20/solid';
 
-import {
-  PlusIcon,
-} from '@heroicons/react/24/outline';
+import { PlusIcon } from '@heroicons/react/24/outline';
 import DashDialogMenu from './DashDialogMenu';
+import { classNames } from '@/utils/classNames';
 
-function classNames(...classes: string[]): string {
-  return classes.filter(Boolean).join(' ');
-}
+
 
 export default function DashboardHeader() {
   const [open, setOpen] = useState(false);
@@ -22,13 +18,7 @@ export default function DashboardHeader() {
     <>
       <header
         className={classNames(
-          'bg-white',
-          'relative',
-          'transition',
-          'w-full',
-          'z-30',
-          'border-b',
-          'border-gray-200',
+          'bg-white relative transition w-full z-30 border-b border-gray-200',
         )}
       >
         <nav
