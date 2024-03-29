@@ -69,14 +69,11 @@ export default function DashboardNavigation() {
     },
   ];
 
-
-
   return (
     <div className='min-w-md px-6 py-5 border-r border-gray-300  min-h-screen'>
       {appRoutes.map((item) => (
         <NavigationItemLink key={item.name} item={item} />
       ))}
-      
     </div>
   );
 }

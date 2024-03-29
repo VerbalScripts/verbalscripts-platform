@@ -4,14 +4,12 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { classNames } from '@/utils/classNames';
 
-
 interface HeaderProps {
   route: string;
 }
 
 export default function AuthHeader({ route }: HeaderProps) {
   const [open, setOpen] = useState(false);
-
 
   return (
     <>

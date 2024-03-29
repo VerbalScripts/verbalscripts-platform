@@ -2,18 +2,17 @@ import { classNames } from '@/utils/classNames';
 import Image from 'next/image';
 import React, { useState } from 'react';
 
-
 interface FileSelectionTabProps {
   callback: (arg0: string) => void;
 }
 
 export default function FileSelectionTab({ callback }: FileSelectionTabProps) {
-  const [ activeTab, setActiveTab ] = useState<string>( 'local-file' );
-  
- const switchTab = ( id: string ) => {
-      setActiveTab(id)
-      callback(id);
-  }
+  const [activeTab, setActiveTab] = useState<string>('local-file');
+
+  const switchTab = (id: string) => {
+    setActiveTab(id);
+    callback(id);
+  };
 
   const options = [
     {

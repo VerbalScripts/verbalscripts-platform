@@ -1,13 +1,10 @@
-import React from 'react'
-
+import React from 'react';
 
 interface CallToActionBannerProps {
   fn: (arg0: boolean) => void;
 }
 
-export default function CallToActionBanner({ fn } : CallToActionBannerProps) {
-   
-
+export default function CallToActionBanner({ fn }: CallToActionBannerProps) {
   return (
     <div className='bg-white relative isolate'>
       <div className='bg-indigo-600 relative overflow-hidden transition transform-gpu'>

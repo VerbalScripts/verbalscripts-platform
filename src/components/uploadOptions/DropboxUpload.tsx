@@ -1,7 +1,5 @@
-import React from 'react'
+import React from 'react';
 
 export default function DropboxUpload() {
-  return (
-    <div>DropboxUpload</div>
-  )
+  return <div>DropboxUpload</div>;
 }

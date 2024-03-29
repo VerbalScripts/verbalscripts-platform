@@ -2,17 +2,13 @@
 
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React, { Fragment, useState } from 'react';
-import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react';
+import { Dialog, Disclosure } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 
 import {
-  ArrowPathIcon,
-  SquaresPlusIcon,
   PlusIcon,
 } from '@heroicons/react/24/outline';
-import NavItem from './NavItem';
-import Link from 'next/link';
 import DashDialogMenu from './DashDialogMenu';
 
 function classNames(...classes: string[]): string {
@@ -92,34 +88,6 @@ export default function DashboardHeader() {
                   >
                     Home
                   </a>
-                  <Disclosure as='div' className='-mx-3'>
-                    {({ open }) => (
-                      <>
-                        <Disclosure.Button className='flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-xl font-semibold leading-7 text-gray-900 hover:bg-gray-50'>
-                          Services
-                          <ChevronDownIcon
-                            className={classNames(
-                              open ? 'rotate-180' : '',
-                              'h-5 w-5 flex-none',
-                            )}
-                            aria-hidden='true'
-                          />
-                        </Disclosure.Button>
-                        <Disclosure.Panel className='mt-2 space-y-2'>
-                          {[...services].map((item) => (
-                            <Disclosure.Button
-                              key={item.name}
-                              as='a'
-                              href={item.href}
-                              className='block rounded-lg py-2 pl-6 pr-3 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50'
-                            >
-                              {item.name}
-                            </Disclosure.Button>
-                          ))}
-                        </Disclosure.Panel>
-                      </>
-                    )}
-                  </Disclosure>
                   <a
                     href='/freelancers'
                     className='-mx-3 block rounded-lg px-3 py-2 text-xl font-semibold leading-7 text-gray-900 hover:bg-gray-50'
