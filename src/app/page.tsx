@@ -5,6 +5,7 @@ import React, { useEffect, useRef } from 'react';
 import { useState } from 'react';
 
 import Image from 'next/image';
+import Script from 'next/script';
 
 import AppHeader from '@/components/AppHeader';
 import LandingPage from '@/components/LandingPage';
@@ -18,7 +19,7 @@ export default function Home() {
   const [heightOffset, setOffsetHeight] = useState(0);
   // open slide over
   const [open, setOpen] = useState(false);
- 
+
   useEffect(() => {
     const callToActionObserver = new IntersectionObserver(
       (sections) => {
@@ -141,6 +142,10 @@ export default function Home() {
       className='bg-zinc-800 max-h-screen overflow-y-scroll overflow-x-hidden relative'
       onScroll={onBodyScroll}
     >
+      <Script
+        src='https://fw-cdn.com/11485930/4150032.js'
+        strategy='lazyOnload'
+      />
       <AppHeader
         showQuote={setOpen}
         dataPush={solutions}
@@ -390,7 +395,7 @@ export default function Home() {
               <a
                 href='/solutions'
                 className='rounded-full ring-1 ring-indigo-500 ring-inset  bg-indigo-500 px-8 py-3.5 text-lg font-bold text-white shadow-sm transition  hover:shadow-md hover:text-gray-800 hover:bg-white hover:rind focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
-              > 
+              >
                 Place Order Now
               </a>
             </div>
@@ -425,7 +430,6 @@ export default function Home() {
           </div> */}
         </div>
       </div>
-
 
       <CallToActionBanner fn={setOpen} />
 

@@ -20,6 +20,7 @@
     "flowbite": "^2.3.0",
     "flowbite-react": "^0.7.5",
     "graphql": "^16.8.1",
+    "jszip": "^3.10.1",
     "next": "14.1.0",
     "next-seo": "^6.5.0",
     "nextjs-progressloader": "^1.2.0",

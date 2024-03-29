@@ -2,10 +2,8 @@ import { Fragment, useState } from 'react';
 import { Dialog, Popover } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import { classNames } from '@/utils/classNames';
 
-function classNames(...classes: string[]): string {
-  return classes.filter(Boolean).join(' ');
-}
 
 interface HeaderProps {
   route: string;
@@ -13,6 +11,7 @@ interface HeaderProps {
 
 export default function AuthHeader({ route }: HeaderProps) {
   const [open, setOpen] = useState(false);
+
 
   return (
     <>
