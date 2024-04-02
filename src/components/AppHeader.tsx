@@ -244,7 +244,7 @@ export default function AppHeader({
             className='-mx-3 flex items-center gap-x-5 rounded-lg px-3 py-2.5 text-base  transition leading-7 text-white hover:text-orange-400'
           >
             <ComputerDesktopIcon className='h-5 w-5' aria-hidden='true' />
-            Freelancer Sign In
+            Transcriber Login
           </a>
           |
           <a
@@ -252,7 +252,7 @@ export default function AppHeader({
             className='-mx-3 flex items-center gap-x-5 rounded-lg px-3 py-2.5 text-base transition leading-7 text-white hover:text-orange-400'
           >
             <UserIcon className='h-5 w-5' aria-hidden='true' />
-            Customer Login
+            Client Login
           </a>
         </p>
       </div>
@@ -586,7 +586,7 @@ export default function AppHeader({
                       href='#'
                       className='-mx-3 block text-center rounded-md ring-1 ring-inset ring-indigo-500  px-3 py-3.5 text-xl font-semibold leading-7 text-indigo-500 hover:ring-indigo-400 hover:text-indigo-400'
                     >
-                      Freelancer Sign In
+                      Transcriber Sign In
                     </a>
                   </div>
 
@@ -595,7 +595,7 @@ export default function AppHeader({
                       href='/auth/login'
                       className='-mx-3 block text-center rounded-md  bg-indigo-500  px-3 py-3.5 text-xl font-semibold leading-7 text-white hover:bg-indigo-400 hover:text-gray-200'
                     >
-                      Customer Sign In
+                      Customer In
                     </a>
                   </div>
                 </div>
@@ -605,20 +605,20 @@ export default function AppHeader({
         </Dialog>
       </header>
 
-      <div className='md:hidden bg-white fixed bottom-0 left-0 right-0 flex  justify-center px-3 py-8 z-30 shadow-2xl gap-x-5'>
+      <div className='md:hidden bg-white fixed bottom-0 left-0 right-0 flex  justify-center px-3 py-4 z-30 shadow-2xl gap-x-5'>
         <div className='max-w-7xl'>
           <button
             onClick={() => showQuote(true)}
-            className='-mt-4 rounded-full ring-1 ring-inset ring-indigo-500  px-6 py-4 text-xl font-semibold leading-7 text-indigo-500 hover:ring-indigo-400 hover:text-indigo-400'
+            className=' rounded-full ring-1 ring-inset ring-indigo-500  px-6 py-2.5 text-xl font-semibold leading-7 text-indigo-500 hover:ring-indigo-400 hover:text-indigo-400'
           >
             Get a Qoute
           </button>
         </div>
 
-        <div>
+        <div className='mt-2'>
           <a
             href='/upload-files'
-            className='rounded-full  bg-indigo-500  px-6 py-4 text-xl font-semibold leading-7 text-white hover:bg-indigo-400 hover:text-gray-200'
+            className='rounded-full  bg-indigo-500  px-6 py-2.5 text-xl font-semibold leading-7 text-white hover:bg-indigo-400 hover:text-gray-200'
           >
             Order Now
           </a>

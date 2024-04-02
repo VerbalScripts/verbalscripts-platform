@@ -50,14 +50,14 @@ export default function LogoSlider({ partners }: LogoComponentProp) {
               }}
               spaceBetween={10}
               modules={[Autoplay]}
-              slidesPerView={3}
+              slidesPerView={2}
               className='mySwiper md:hidden py-10'
             >
               {partners.map((item: ParterLogo) => (
                 <SwiperSlide key={item.name}>
                   <img
                     key={item.name}
-                    className='max-h-12 min-w-[40rem] object-contain'
+                    className='max-h-12 min-w-[30rem] object-contain'
                     src={item.imgUrl}
                     alt={item.name}
                   />

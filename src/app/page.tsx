@@ -79,23 +79,23 @@ export default function Home() {
 
   const features = [
     {
-      name: 'Transcribe with High Accuracy',
+      name: 'Precise Transcription Guaranteed',
       description:
-        'Turn any audio to text with industry leading accuracy and the best transcription models on the market.',
+        'We ensure accurate transcription delivered on time by transcribing, reviewing and profreading',
 
       imgUrl: '/icons/accuracy.png',
     },
     {
-      name: 'One Click Submission and Fast Processing',
+      name: 'One Click Submission, Fast Processing',
       description:
-        'Simply give a us a link or upload your file and your will be ready in a matter of minutes',
+        'Simply give a us a link or upload your file and your will be ready to start working on it in a matter of minutes',
 
       imgUrl: '/icons/upload.png',
     },
     {
       name: 'Affordable Solutions',
       description:
-        'The quality and workflow we have built enable us to deliver the highest quality data consistently at low prices.',
+        'The quality and workflow we have built enable us to deliver the highest quality transcripts concistency at the best industry rates',
 
       imgUrl: '/icons/affordable.png',
     },
@@ -129,8 +129,7 @@ export default function Home() {
               Benefits of Choosing VerbalScripts
             </p>
             <p className='mx-auto max-w-2xl mt-6 text-lg leading-8 text-gray-600'>
-              Why we are the best platform for transcription to improve your
-              speed, privacy and quality service.
+              We are the best platform for accelerated speed, enhanced privacy, top notch-quality, and cost effective-solution;
             </p>
           </div>
           <div className='mx-auto mt-16 max-w-7xl sm:mt-20 lg:mt-24 lg:max-w-8xl'>
@@ -400,10 +399,10 @@ export default function Home() {
 
             <div className='lg:mx-0 max-w-xl lg:flex  flex-col  text-left'>
               <h2 className='text-4xl mt-0 md:mt-20 lg:mt-0 font-bold  text-gray-900 md:text-5xl'>
-                Want to become a Transcriptionist
+                Want to join our team of skilled Transcriptionist
               </h2>
               <p className='mt-6 text-lg leading-8 text-gray-700'>
-                We have the industry’s best rates!
+                Got the experience we need? We are looking for you.
               </p>
 
               <div className='flex flex-col md:flex-row items-start gap-x-3 gap-y-5 md:gap-y-0 mt-5'>
@@ -429,7 +428,7 @@ export default function Home() {
                   </div>
                   <br />
                   <div className='ml-5 md:-ml-5 leading-8 text-gray-600 font-semibold text-xl max-w-sm'>
-                    Connect Your <br></br> Paypal
+                    Submit required documents 
                   </div>
                 </div>
 
@@ -441,7 +440,7 @@ export default function Home() {
                   </div>
                   <br />
                   <div className='ml-5 md:-ml-5 leading-8 text-gray-600 font-semibold text-xl max-w-sm'>
-                    Take the <br></br> Entrance Exam.
+                    Take the Entrance Exams.
                   </div>
                 </div>
               </div>
@@ -451,7 +450,7 @@ export default function Home() {
                   href='/auth/login'
                   className='my-2.5 inline-block rounded-full hover:bg-indigo-500 hover:text-white hover:ring-0 transition focus:ring-4 focus:ring-indigo-300  ring-1 ring-indigo-500 px-8 py-2.5 text-xl font-semibold text-indigo-500 transition shadow-sm '
                 >
-                  Join Us Now
+                 Become a Transcriber!
                 </a>
               </div>
             </div>
