@@ -263,18 +263,12 @@ export default function AppFooter() {
                 </span>
               </a>
 
-              <a href='#' className='-m-1.5 p-1.5 leading-7'>
-                <span className='text-gray-300 text-lg hover:text-yellow-400'>
-                  44, Tehama st. Fransisco
-                </span>
-              </a>
-
               <a
                 href='tel:+1 (800) 275-5513'
                 className='-m-1.5 p-1.5 leading-7'
               >
                 <span className='text-gray-300  text-lg hover:text-yellow-400'>
-                  +1 (800) 275-5513
+                  +1 (727) 966-8531
                 </span>
               </a>
 
@@ -293,7 +287,7 @@ export default function AppFooter() {
               </a>
 
               {services.map((item) => (
-                <a key={item.name} href='#' className='-m-1.5 p-1.5 '>
+                <a key={item.name} href={item.href} className='-m-1.5 p-1.5 '>
                   <span className='text-gray-300  text-lg hover:text-yellow-400'>
                     {item.name}
                   </span>
@@ -309,7 +303,7 @@ export default function AppFooter() {
               </a>
 
               {solutions.map((item) => (
-                <a key={item.name} href='#' className='-m-1.5 p-1.5'>
+                <a key={item.name} href={item.href} className='-m-1.5 p-1.5'>
                   <span className='text-gray-300  text-lg hover:text-yellow-400'>
                     {item.name}
                   </span>
@@ -323,12 +317,6 @@ export default function AppFooter() {
                   Resources
                 </span>
               </a>
-
-              <a href='/freelancers' className='-m-1.5 p-1.5'>
-                <span className='text-gray-300 text-lg hover:text-yellow-400'>
-                  Start working
-                </span>
-              </a>
               <a href='/contact-us' className='-m-1.5 p-1.5'>
                 <span className='text-gray-300 text-lg hover:text-yellow-400'>
                   Customer Support
@@ -340,20 +328,7 @@ export default function AppFooter() {
                 </span>
               </a>
 
-              <a href='#' className='-m-1.5 mt-5 p-1.5'>
-                <span className='text-gray-100 font-bold text-lg'>
-                  For Freelancers
-                </span>
-              </a>
-
-              <div className='mt-5'>
-                <a
-                  href='/freelancers'
-                  className=' rounded-full px-16 bg-indigo-600  py-2.5 text-lg font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500'
-                >
-                  Join Us
-                </a>
-              </div>
+           
             </div>
           </dl>
 

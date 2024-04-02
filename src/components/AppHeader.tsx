@@ -270,7 +270,7 @@ export default function AppHeader({
           aria-label='Global'
         >
           <div className='flex lg:flex-1'>
-            <a href='#' className='-m-1.5 p-1.5 text-2xl font-bold'>
+            <a href='/' className='-m-1.5 p-1.5 text-2xl font-bold'>
               <span className='text-gray-800'>Verbal</span>
               <span className='text-orange-500 italic'>Scripts</span>
             </a>
@@ -305,7 +305,7 @@ export default function AppHeader({
                     ref={buttonRef}
                     className='flex px-2 py-1 items-center gap-x-1 text-md font-semibold leading-6 text-gray-900'
                   >
-                    Solutions
+                    Industries
                     <ChevronDownIcon
                       className='h-5 w-5 flex-none text-gray-400'
                       aria-hidden='true'
@@ -512,7 +512,7 @@ export default function AppHeader({
                     {({ open }) => (
                       <>
                         <Disclosure.Button className='flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-xl font-semibold leading-7 text-gray-900 hover:bg-gray-50'>
-                          Solutions
+                          Industries
                           <ChevronDownIcon
                             className={classNames(
                               open ? 'rotate-180' : '',

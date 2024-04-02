@@ -263,7 +263,9 @@ export default function LocalFileUpload() {
           onDragOver={dragOverHandler}
           className={classNames(
             'relative w-full rounded-xl border-2 transition-all duration-200 border-dashed bg-white   h-[13rem]',
-            dragEnter ? 'border-indigo-500 bg-gray-900' : 'border-gray-300',
+            dragEnter
+              ? 'border-indigo-500 bg-gray-300'
+              : '',
           )}
         >
           <div className='flex flex-col h-full  items-center justify-center'>
@@ -390,7 +392,7 @@ export default function LocalFileUpload() {
           <button
             type='submit'
             disabled={loading}
-            className='py-2.5 px-4 disabled:bg-indigo-500 bg-indigo-600 rounded-full font-semibold cursor-pointer '
+            className='py-2.5 px-4 text-white disabled:bg-indigo-500 bg-indigo-600 rounded-full font-semibold cursor-pointer '
           >
             {loading ? 'Processing' : 'Upload'}
           </button>

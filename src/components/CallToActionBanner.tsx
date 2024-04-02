@@ -31,7 +31,7 @@ export default function CallToActionBanner({ fn }: CallToActionBannerProps) {
           <div className='relative isolate py-24   px-6   sm:px-16 md:py-10  lg:flex lg:items-center lg:gap-x-20 lg:px-24 lg:pt-0'>
             <div className='md:min-w-[28rem] lg:min-w-[30rem]  lg:mx-0 lg:flex-auto lg:py-24 lg:text-left'>
               <h2 className='text-4xl md:text-[2.8rem] font-bold leading-10  text-white '>
-                Are you ready Boom with our Transcription Service
+                Are you ready to Succeed with our Transcription Service
               </h2>
               <p className='mt-6 text-xl leading-8 text-gray-100'>
                 Click the order now button to get started today or request a

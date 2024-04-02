@@ -12,7 +12,7 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 export default function Testimonials({ testimonials }: TestimonyProp) {
   return (
     <section
-      className='relative px-6 py-14 sm:py-32 lg:px-8'
+      className='relative px-6 py-14 sm:py-20 lg:px-8'
       style={{ backgroundColor: '#f9f8f2' }}
     >
       <div className='absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] opacity-20' />
@@ -20,7 +20,7 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
 
       <div className='mx-auto max-w-2xl lg:text-center'>
         <p className='mt-2 text-4xl font-bold   text-gray-900 sm:text-5xl'>
-          What people are saying about VerbalScribe
+          What are people saying about VerbalScribe
         </p>
         {/* <p className="mt-6 text-lg leading-8 text-gray-600">
             Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a elementum

@@ -31,6 +31,7 @@ export default function Page() {
   return (
     <div
       className='bg-zinc-800 max-h-screen overflow-y-scroll overflow-x-hidden relative'
+  
       onScroll={onBodyScroll}
     >
       <AppHeader

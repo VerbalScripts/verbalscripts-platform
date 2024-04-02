@@ -243,7 +243,7 @@ export default function Home() {
       {/* validation section */}
 
       <div className='bg-white'>
-        <div className='py-20 px-6 md:py-24 lg:px-8'>
+        <div className='py-20 px-6 md:py-20 lg:px-8'>
           <div className='mx-auto max-w-2xl text-left md:text-center'>
             {/* <h2 className="text-base font-semibold leading-7 text-indigo-600">
             You did{ "'"}nt Hear it from us
@@ -255,7 +255,7 @@ export default function Home() {
               Human driven transcription process.
             </p>
           </div>
-          <div className='mx-auto max-w-8xl py-10'>
+          <div className='mx-auto max-w-8xl py-2'>
             <div className='relative isolate  sm:rounded-3xl sm:px-16  lg:flex lg:items-center lg:gap-x-20 lg:px-24'>
               <div className='hidden lg:block relative md:-mt-16 h-80 lg:min-w-[24rem]   xl:min-w-[25rem]'>
                 <img
@@ -269,17 +269,17 @@ export default function Home() {
                 <div className='flex flex-col  items-start gap-x-3 gap-y-3  mt-5'>
                   <div className='flex'>
                     <div className=' flex flex-col  gap-y-5 items-center '>
-                      <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/5 text-indigo-500 font-bold'>
+                      <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/30 text-indigo-500 font-bold'>
                         1
                       </span>
-                      <span className='h-20 border-r-2 border-dashed  border-gray-300'></span>
+                      <span className='h-14 border-r-2 border-dashed  border-gray-300'></span>
                     </div>
                     <br />
                     <div className='ml-5  max-w-md'>
-                      <div className='leading-8 text-gray-800 font-semibold text-2xl mb-3'>
+                      <div className='leading-8 text-gray-800 font-semibold text-xl mb-3'>
                         Transcribe
                       </div>
-                      <p className='text-gray-600 text-lg'>
+                      <p className='text-gray-600 text-md'>
                         Files are split into small chunks and types by our
                         certified transcribers.
                       </p>
@@ -288,17 +288,17 @@ export default function Home() {
 
                   <div className='flex'>
                     <div className=' flex flex-col  gap-y-5  items-center'>
-                      <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/5 text-indigo-500 font-bold'>
+                      <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/30 text-indigo-700 font-bold'>
                         2
                       </span>
-                      <span className='h-20 border-r-2 border-dashed  border-gray-300'></span>
+                      <span className='h-14 border-r-2 border-dashed  border-gray-300'></span>
                     </div>
                     <br />
                     <div className='ml-5  max-w-md'>
-                      <div className='leading-8 text-gray-800 font-semibold text-2xl mb-3'>
+                      <div className='leading-8 text-gray-800 font-semibold text-xl mb-3'>
                         Review
                       </div>
-                      <p className='text-gray-600 text-lg'>
+                      <p className='text-gray-600 text-md'>
                         Reviewers checks the parts, add speaker tracking and
                         timestamps.
                       </p>
@@ -307,17 +307,17 @@ export default function Home() {
 
                   <div className='flex'>
                     <div className=' flex flex-col  gap-y-5  items-center'>
-                      <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/5 text-indigo-500 font-bold'>
+                      <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/30 text-indigo-500 font-bold'>
                         3
                       </span>
-                      <span className='h-20 border-r-2 border-dashed  border-gray-300'></span>
+                      <span className='h-14 border-r-2 border-dashed  border-gray-300'></span>
                     </div>
                     <br />
                     <div className='ml-5  max-w-md'>
-                      <div className='leading-8 text-gray-800 font-semibold text-2xl mb-3'>
+                      <div className='leading-8 text-gray-800 font-semibold text-xl mb-3'>
                         Proofreading
                       </div>
-                      <p className='text-gray-600 text-lg'>
+                      <p className='text-gray-600 text-md'>
                         Parts are collated and the combined transcript is
                         proofreading for concistency and accuracy.
                       </p>
@@ -326,16 +326,16 @@ export default function Home() {
 
                   <div className='flex'>
                     <div className=' flex items-center'>
-                      <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/5 text-indigo-500 font-bold'>
+                      <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/30 text-indigo-500 font-bold'>
                         4
                       </span>
                     </div>
                     <br />
                     <div className='ml-5  max-w-md'>
-                      <div className='leading-8 text-gray-800 font-semibold text-2xl mb-3'>
+                      <div className='leading-8 text-gray-800 font-semibold text-xl mb-3'>
                         Quality Check
                       </div>
-                      <p className='text-gray-600 text-lg'>
+                      <p className='text-gray-600 text-md'>
                         Accuracy is assesed, the files alternates between
                         Proofreading and Quality till accuracy is 99% +.
                       </p>
@@ -345,7 +345,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className='flex justify-center mt-32'>
+            <div className='flex justify-center mt-16 md:mr-16'>
               <a
                 href='/solutions'
                 className='rounded-full ring-1 ring-indigo-500 ring-inset focus:ring-4 focus:ring-indigo-300  bg-indigo-500 px-8 py-3.5 text-lg font-bold text-white shadow-sm transition  hover:shadow-md hover:bg-indigo-400 hover:rind focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-indigo-300'
@@ -400,7 +400,7 @@ export default function Home() {
 
             <div className='lg:mx-0 max-w-xl lg:flex  flex-col  text-left'>
               <h2 className='text-4xl mt-0 md:mt-20 lg:mt-0 font-bold  text-gray-900 md:text-5xl'>
-                Want to become a freelancer
+                Want to become a Transcriptionist
               </h2>
               <p className='mt-6 text-lg leading-8 text-gray-700'>
                 We have the industry’s best rates!
@@ -409,7 +409,7 @@ export default function Home() {
               <div className='flex flex-col md:flex-row items-start gap-x-3 gap-y-5 md:gap-y-0 mt-5'>
                 <div className='flex md:block'>
                   <div className=' flex flex-col md:flex-row gap-y-5 md:gap-y-0 items-center'>
-                    <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/5 text-indigo-500 font-bold'>
+                    <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/30 text-indigo-500 font-bold'>
                       1
                     </span>
                     <span className='h-24 border-r-2 border-dashed md:h-0 md:ml-2 md:w-48 lg:w-32 md:border-b-2 border-gray-300'></span>
@@ -422,7 +422,7 @@ export default function Home() {
 
                 <div className='flex md:block'>
                   <div className=' flex flex-col md:flex-row gap-y-5 md:gap-y-0 items-center'>
-                    <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/5 text-indigo-500 font-bold'>
+                    <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/30 text-indigo-500 font-bold'>
                       2
                     </span>
                     <span className='h-24 border-r-2 border-dashed md:h-0 md:ml-2 md:w-48 lg:w-32  md:border-b-2 border-gray-300'></span>
@@ -435,7 +435,7 @@ export default function Home() {
 
                 <div className='flex md:block'>
                   <div className=' flex items-center'>
-                    <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/5 text-indigo-500 font-bold'>
+                    <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/30 text-indigo-500 font-bold'>
                       3
                     </span>
                   </div>
@@ -446,12 +446,12 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className='block mt-10'>
+              <div className='block mt-4'>
                 <a
-                  href='#'
-                  className='my-2.5 inline-block rounded-full ring-1 ring-indigo-500 px-8 py-2.5 text-xl font-semibold text-indigo-500 transition shadow-sm hover:shadow-xl hover:-translate-y-1 '
+                  href='/auth/login'
+                  className='my-2.5 inline-block rounded-full hover:bg-indigo-500 hover:text-white hover:ring-0 transition focus:ring-4 focus:ring-indigo-300  ring-1 ring-indigo-500 px-8 py-2.5 text-xl font-semibold text-indigo-500 transition shadow-sm '
                 >
-                  Become a Freelancer
+                  Join Us Now
                 </a>
               </div>
             </div>

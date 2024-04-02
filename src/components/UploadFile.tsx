@@ -11,11 +11,11 @@ export default function UploadFile() {
   const [activeTab, setActiveTab] = useState<string>();
 
   return (
-    <section className='bg-white'>
+    <section style={{ backgroundColor: '#f9f8f2' }}>
       <div className=' py-14 md:py-14'>
         <div className='mx-auto max-w-xl'>
           <p className='text-center text-3xl font-bold  text-gray-900'>
-            Upload your files to place an new order.
+            Upload your files to place a new order.
           </p>
 
           <div className='mt-10'>
