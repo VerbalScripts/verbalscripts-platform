@@ -21,12 +21,12 @@ export default function LandingPage() {
       </div>
       <div className='max-w-7xl md:py-20 py-20 md:mx-10 lg:mx-20 xl:mx-28 flex flex-col items-start md:items-center  text-left lg:text-center'>
         <h1 className='max-w-6xl lg:max-w-4xl xl:max-w-5xl relative z-10 text-5xl font-bold  text-white lg:text-5xl xl:text-6xl'>
-          Stop struggling, Start understanding. Ditch the Mumbles.
+          Transcription Mastery: Unmatched Accuracy and Effieciency. Every Time.
         </h1>
         <p className='md:max-w-2xl lg:max-w-3xl xl:max-w-4xl relative z-10 mt-6 text-xl leading-8 text-gray-50'>
-          We deliver the most accurate transcriptions at competitive rates due
-          to a combination of the latest in AI, paired with our trained &
-          experienced transcriber network.
+          With you in mind always, we delivery accurate transcripts through our
+          experienced transcriptionists. Count on us to alwsays exceed your
+          expectations, project after project at an affordable rate.
         </p>
         <div className='mt-10 flex flex-col md:flex-row items-start md:items-center justify-center gap-6'>
           <a
