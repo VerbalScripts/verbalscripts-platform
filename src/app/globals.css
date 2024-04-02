@@ -129,3 +129,10 @@ body {
     var(--swiper-pagination-color) 159.67%
   );
 }
+
+@media (max-width: 767px) {
+  #fc_frame {
+    bottom: 85px !important;
+  }
+  
+}
