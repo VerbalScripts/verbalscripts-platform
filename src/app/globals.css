@@ -9,6 +9,8 @@
   --swiper-pagination-bullet-size: 20px;
   --swiper-pagination-bottom: 20px;
   --swiper-pagination-color: rgb(249 115 22);
+  --white: #fff;
+  --white: red;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -118,4 +120,12 @@ body {
     transform: translateX(0);
     opacity: 1;
   }
+}
+
+.landing-blur {
+  background: linear-gradient(
+    86deg,
+    var(--white) 27.65%,
+    var(--swiper-pagination-color) 159.67%
+  );
 }

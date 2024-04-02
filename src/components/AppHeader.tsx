@@ -21,10 +21,6 @@ import {
   CursorArrowRaysIcon,
   FingerPrintIcon,
   SquaresPlusIcon,
-  NewspaperIcon,
-  AcademicCapIcon,
-  MicrophoneIcon,
-  ChartBarIcon,
 } from '@heroicons/react/24/outline';
 import NavItem from './NavItem';
 
@@ -166,52 +162,40 @@ export default function AppHeader({
       description:
         'We convert audio/video content into transcripts quickly and securing to save law firms, investigators, police force, or research firms time and money.',
       href: '/solutions/legal',
-      icon: NewspaperIcon,
+      imgUrl: '/icons/legal-document.png',
     },
     {
       name: 'Corporate & general business',
       description:
         'Customized for your large volume needs, including a variety of enterprise security requirements.',
       href: '/solutions/enterprise',
-      icon: ChartBarIcon,
+      imgUrl: '/icons/paper.png',
     },
     {
       name: 'Media production',
       description:
         'The very best in human intelligence requires top quality training data for speech NLP and computer vision models.',
       href: '/solutions/ai',
-      icon: NewspaperIcon,
-    },
-    {
-      name: 'Education',
-      description:
-        'Fast, easy lecture and dissertation transcripts for students or faculty, compatible with NVivo and other research platforms.',
-      href: '/solutions/academic',
-      icon: AcademicCapIcon,
+      imgUrl: '/icons/video-editor.png',
     },
     {
       name: 'Digital & online learning',
       description:
-        'Transcription that is perfect for all types of qualitative research needs, including focus groups, surveys and in-depth interviews.',
-      href: '/solutions/market-research',
-      icon: ChartBarIcon,
+        'Fast, easy lecture and dissertation transcripts for students or faculty, compatible with NVivo and other research platforms.',
+      href: '/solutions/education',
+      imgUrl: '/icons/online-learning.png',
     },
+
     {
       name: 'Government',
       description:
         'Making live events, meetings, ad campaigns and press briefings more accessible and actionable.',
-      href: '/solutions/call-centers',
-      icon: MicrophoneIcon,
+      href: '/solutions/government',
+      imgUrl: '/icons/policy.png',
     },
   ];
 
   const resources: Array<NavLabel> = [
-    {
-      name: 'About Us',
-      description: 'Who we are',
-      href: '/about-us',
-      icon: ChartPieIcon,
-    },
     {
       name: 'FAQs',
       description: 'Frequently asked questions',

@@ -11,7 +11,7 @@ export default function DashDialogMenu() {
       <div>
         <Menu.Button className='inline-flex  hover:bg-gray-50'>
           <img
-            src='vercel.svg'
+            src='/icons/user-icon.jpg'
             className='ring-1 ring-gray-300 object-cover rounded-full h-8 w-8'
             alt=''
           />

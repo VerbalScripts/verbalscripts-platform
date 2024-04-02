@@ -5,12 +5,24 @@ type NavLabel = {
   name: string;
   href: string;
   description: string;
-  icon: React.ElementType;
+  icon?: React.ElementType;
   subtitle?: string;
   features?: Array<string>;
   price?: string;
+  imgUrl?: string;
 };
 
+type AccordionpProps = {
+  children: React.ReactNode;
+  title: string;
+  id: string;
+  active?: boolean;
+};
+
+type FaqsProp = {
+  title: string;
+  content: string;
+};
 interface NavItemProp {
   label: NavLabel;
 }

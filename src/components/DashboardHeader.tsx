@@ -3,14 +3,22 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React, { useState } from 'react';
 import { Dialog } from '@headlessui/react';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import {
+  Bars3Icon,
+  BellAlertIcon,
+  XMarkIcon,
+} from '@heroicons/react/24/outline';
 
 import { PlusIcon } from '@heroicons/react/24/outline';
 import DashDialogMenu from './DashDialogMenu';
 import { classNames } from '@/utils/classNames';
+import { SearchOutline } from 'react-ionicons';
 
 export default function DashboardHeader() {
   const [open, setOpen] = useState(false);
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // const SearchForFile = (event: KeyboardEventHandler<HTMLInputElement>) => {};
 
   return (
     <>
@@ -23,12 +31,6 @@ export default function DashboardHeader() {
           className='mx-auto flex  items-center justify-between px-6 py-4 lg:px-8'
           aria-label='Global'
         >
-          <div className='flex lg:flex-1'>
-            <a href='#' className='-m-1.5 p-1.5 text-3xl font-bold'>
-              <span>Verbal</span>
-              <span className='text-orange-500 italic'>Scripts</span>
-            </a>
-          </div>
           <div className='flex lg:hidden'>
             <button
               type='button'
@@ -40,15 +42,38 @@ export default function DashboardHeader() {
             </button>
           </div>
 
+          <div className='relative'>
+            <input
+              id='email-address'
+              name='email'
+              type='email'
+              autoComplete='email'
+              required
+              className='w-full min-w-80 lg:min-w-2xl  flex-auto rounded-full border border-gray-300 bg-white/5 px-3.5 py-2.5 text-gray-700 font-semibold shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
+              placeholder='Find a file'
+            />
+            <span className='absolute right-[1rem] top-[0.6rem]'>
+              <SearchOutline color={'black'} />
+            </span>
+          </div>
+
           <div className='hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-5'>
             <a
-              href='#'
-              className='flex items-center text-md font-semibold ring-1 ring-inset text-white px-3.5 py-1.5 bg-indigo-500 hover:bg-white hover:ring-indigo-400 hover:text-indigo-500 rounded-full'
+              href='/dashboard/upload'
+              className='flex items-center text-md font-semibold ring-1 ring-inset text-white px-3.5 py-1.5 focus:ring-4 focus:ring-indigo-300 bg-indigo-500 hover:bg-white hover:ring-indigo-400 hover:text-indigo-500 rounded-full'
             >
               <PlusIcon className='h-6 w-6' aria-hidden='true' />
 
-              <span>Add File</span>
+              <span>Add Service</span>
             </a>
+
+            <a
+              href='/dashboard/notifications'
+              className='flex items-center text-md font-semibold  text-gray-700 px-3.5 py-1.5 focus:ring-4 focus:ring-indigo-300 hover:bg-white hover:ring-indigo-400 hover:text-indigo-500 rounded-full'
+            >
+              <BellAlertIcon className='h-6 w-6' aria-hidden='true' />
+            </a>
+
             <DashDialogMenu />
           </div>
         </nav>

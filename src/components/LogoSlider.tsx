@@ -8,7 +8,7 @@ import { Autoplay } from 'swiper/modules';
 export default function LogoSlider({ partners }: LogoComponentProp) {
   return (
     <>
-      <div className='hidden md:flex items-start flex-wrap md:flex-nowrap my-0 md:my-8 gap-x-10 swiper-container'>
+      <div className='hidden md:flex items-start flex-wrap md:flex-nowrap my-0 md:my-4 gap-x-10 swiper-container'>
         <div className='w-full md:max-w-full'>
           <div className='block'>
             <Swiper
@@ -20,14 +20,14 @@ export default function LogoSlider({ partners }: LogoComponentProp) {
               }}
               spaceBetween={20}
               modules={[Autoplay]}
-              slidesPerView={4}
+              slidesPerView={5}
               className='mySwiper md:hidden py-10'
             >
               {partners.map((item: ParterLogo) => (
                 <SwiperSlide key={item.name}>
                   <img
                     key={item.name}
-                    className='max-h-12 min-w-[50rem] object-contain'
+                    className='max-h-12 min-w-[30rem] object-contain'
                     src={item.imgUrl}
                     alt={item.name}
                   />
@@ -50,14 +50,14 @@ export default function LogoSlider({ partners }: LogoComponentProp) {
               }}
               spaceBetween={10}
               modules={[Autoplay]}
-              slidesPerView={2}
+              slidesPerView={3}
               className='mySwiper md:hidden py-10'
             >
               {partners.map((item: ParterLogo) => (
                 <SwiperSlide key={item.name}>
                   <img
                     key={item.name}
-                    className='max-h-12 min-w-[50rem] object-contain'
+                    className='max-h-12 min-w-[40rem] object-contain'
                     src={item.imgUrl}
                     alt={item.name}
                   />

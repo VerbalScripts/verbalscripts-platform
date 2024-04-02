@@ -29,6 +29,7 @@
     "swiper": "^11.0.6"
   },
   "devDependencies": {
+    "@types/gapi.auth2": "^0.0.60",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

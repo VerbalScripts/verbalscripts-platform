@@ -1,14 +1,27 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
 export default function NavItem({ label }: NavItemProp) {
-  return (
-    <div className='group relative flex items-center gap-x-4 rounded-md p-4 text-sm leading-6 hover:bg-orange-100'>
-      <div className='flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white'>
+  function RenderNavItem({ label }: NavItemProp) {
+    if (label.icon != undefined) {
+      return (
         <label.icon
           className='h-6 w-6 text-gray-600 group-hover:text-indigo-600'
           aria-hidden='true'
         />
+      );
+    } else if (label.imgUrl != undefined) {
+      return (
+        <Image src={label.imgUrl} alt={label.name} height={35} width={35} />
+      );
+    }
+  }
+
+  return (
+    <div className='group relative flex items-center gap-x-4 rounded-md p-4 text-sm leading-6 hover:bg-orange-100'>
+      <div className='flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white'>
+        <RenderNavItem label={label} />
       </div>
       <div className='flex-auto'>
         <Link href={label.href} className='block font-semibold text-gray-900'>

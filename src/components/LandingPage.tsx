@@ -21,25 +21,25 @@ export default function LandingPage() {
       </div>
       <div className='max-w-7xl md:py-20 py-20 md:mx-10 lg:mx-20 xl:mx-28 flex flex-col items-start md:items-center  text-left lg:text-center'>
         <h1 className='max-w-6xl lg:max-w-4xl xl:max-w-5xl relative z-10 text-5xl font-bold  text-white lg:text-5xl xl:text-6xl'>
-          The Gold Standard in Audio & Video Transcription
+          Stop struggling, Start understanding. Ditch the Mumbles.
         </h1>
-        <p className='md:max-w-2xl lg:max-w-3xl xl:max-w-4xl relative z-10 mt-6 text-xl leading-8 text-gray-100'>
+        <p className='md:max-w-2xl lg:max-w-3xl xl:max-w-4xl relative z-10 mt-6 text-xl leading-8 text-gray-50'>
           We deliver the most accurate transcriptions at competitive rates due
           to a combination of the latest in AI, paired with our trained &
           experienced transcriber network.
         </p>
         <div className='mt-10 flex flex-col md:flex-row items-start md:items-center justify-center gap-6'>
           <a
-            href='/services'
+            href='/solutions'
             className='rounded-full bg-orange-500 px-12 py-3 text-2xl transition font-bold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600'
           >
-            Services
+            Solutions
           </a>
           <a
-            href='/solutions'
+            href='/services'
             className='text-lg underline underline-offset-8 font-bold leading-6 text-white'
           >
-            Industry Solutions
+            Our Services
           </a>
         </div>
       </div>

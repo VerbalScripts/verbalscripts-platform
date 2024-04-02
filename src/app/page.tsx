@@ -12,8 +12,8 @@ import LandingPage from '@/components/LandingPage';
 import AppFooter from '@/components/AppFooter';
 import Testimonials from '@/components/Testimonials';
 import GetAQuoteModal from '@/components/GetAQuoteModal';
-import LogoSlider from '@/components/LogoSlider';
 import CallToActionBanner from '@/components/CallToActionBanner';
+import PopularPartner from '@/components/PopularPartner';
 
 export default function Home() {
   const [heightOffset, setOffsetHeight] = useState(0);
@@ -101,42 +101,6 @@ export default function Home() {
     },
   ];
 
-  const TrustedClients = [
-    {
-      name: 'Transistor',
-      imgUrl:
-        'https://tailwindui.com/img/logos/158x48/transistor-logo-gray-900.svg',
-    },
-    {
-      name: 'Reform',
-      imgUrl:
-        'https://tailwindui.com/img/logos/158x48/reform-logo-gray-900.svg',
-    },
-    {
-      name: 'Tuple',
-      imgUrl: 'https://tailwindui.com/img/logos/158x48/tuple-logo-gray-900.svg',
-    },
-    {
-      name: 'Savvycal',
-      imgUrl:
-        'https://tailwindui.com/img/logos/158x48/savvycal-logo-gray-900.svg',
-    },
-    {
-      name: 'Statamic',
-      imgUrl:
-        'https://tailwindui.com/img/logos/158x48/statamic-logo-gray-900.svg',
-    },
-    {
-      name: 'Reform',
-      imgUrl:
-        'https://tailwindui.com/img/logos/158x48/reform-logo-gray-900.svg',
-    },
-    {
-      name: 'Tuple',
-      imgUrl: 'https://tailwindui.com/img/logos/158x48/tuple-logo-gray-900.svg',
-    },
-  ];
-
   return (
     <div
       className='bg-zinc-800 max-h-screen overflow-y-scroll overflow-x-hidden relative'
@@ -155,27 +119,7 @@ export default function Home() {
 
       <GetAQuoteModal open={open} setOpen={setOpen} />
 
-      <div className=' py-10 md:py-5' style={{ backgroundColor: '#f9f8f2' }}>
-        <div className='mx-auto max-w-full xl:max-w-8xl px-6 lg:px-8 xl:px-10'>
-          {/* <h2 className='text-center text-lg font-semibold leading-8 text-gray-900'>
-            Trusted by the world’s most innovative teams
-          </h2> */}
-          <div className='mx-auto   sm:max-w-xl  lg:mx-0 lg:max-w-none'>
-            <LogoSlider partners={TrustedClients} />
-          </div>
-          {/* <div className='mx-auto mt-10 grid  grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5 '>
-           
-            <img
-              className='col-span-2 max-h-12 w-full object-contain lg:col-span-1'
-              src='https://tailwindui.com/img/logos/158x48/tuple-logo-gray-900.svg'
-              alt='Tuple'
-              width={158}
-              height={48}
-            />
-          
-          </div> */}
-        </div>
-      </div>
+      <PopularPartner />
 
       <div className='bg-white py-20 md:py-24'>
         <div className='mx-auto max-w-7xl px-6 lg:px-8'>
@@ -190,7 +134,7 @@ export default function Home() {
             </p>
           </div>
           <div className='mx-auto mt-16 max-w-7xl sm:mt-20 lg:mt-24 lg:max-w-8xl'>
-            <dl className='grid max-w-full content-center grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-y-16'>
+            <dl className='grid max-w-none  md:px-16 lg:px-20 xl:px-36 content-center grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-y-16'>
               {features.map((feature) => (
                 <div
                   key={feature.name}
@@ -220,14 +164,14 @@ export default function Home() {
       </div>
 
       {/* testimonials */}
-      <div className='bg-indigo-600'>
+      <div className='bg-indigo-500'>
         <div className='mx-auto max-w-8xl '>
           <div className='relative isolate   px-6 pt-16 sm:rounded-3xl sm:px-16 md:pt-24 md:px-24 lg:flex lg:items-center lg:gap-x-20 lg:px-36 lg:pt-0'>
             <div className='mx-auto  lg:max-w-[24rem]   xl:max-w-[28rem] lg:mx-0 lg:flex-auto lg:py-32'>
               <h2 className='text-4xl md:text-5xl font-bold  text-gray-100'>
-                Services
+                Solutions
               </h2>
-              <p className='mt-6 text-lg  leading-7 text-gray-200'>
+              <p className='mt-6 text-xl  leading-7 text-gray-50'>
                 The way we think about data is changing; and now more than ever
                 industry leaders are counting on accurate, reliable
                 transcription and data annotation for their business.
@@ -249,25 +193,35 @@ export default function Home() {
           </div>
         </div>
 
-        <div className='mx-auto mt-16 max-w-full sm:mt-20 lg:mt-24'>
-          <dl className='mx-auto grid max-w-none px-6 grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-7xl xl:max-w-7xl lg:grid-cols-3 lg:gap-y-16'>
+        <div className='mx-auto mt-16 max-w-8xl sm:mt-20 lg:mt-24'>
+          <dl className='mx-auto grid max-w-none px-6 md:px-16 lg:px-20 xl:px-36 grid-cols-1 md:grid-cols-2 gap-8 lg:max-w-7xl xl:max-w-7xl lg:grid-cols-3 lg:gap-y-16'>
             {[...solutions.current.slice(0, 6)].map((feature) => (
               <a
-                href='#'
+                href={'/solutions/' + feature.href}
                 key={feature.name}
-                className='relative pl-16 h-60 transition  hover:bg-white/5 hover:-translate-y-2 hover:ring-1 hover:ring-white/10 rounded-lg p-4'
+                className='relative h-80 transition flex flex-col justify-center items-center hover:bg-white/5 hover:-translate-y-2 hover:ring-1 hover:ring-white/10 rounded-lg p-4'
                 style={{ backgroundColor: '#f9f8f2' }}
               >
-                <dt className='text-2xl font-semibold leading-7 text-gray-800'>
-                  <div className='absolute left-2 top-4 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600'>
-                    <feature.icon
-                      className='h-6 w-6 text-gray-200'
-                      aria-hidden='true'
-                    />
+                <dt className=''>
+                  <div className='flex  items-center justify-center '>
+                    {feature.icon != undefined ? (
+                      <feature.icon
+                        className='h-6 w-6 text-gray-200'
+                        aria-hidden='true'
+                      />
+                    ) : feature.imgUrl != undefined ? (
+                      <img
+                        className='mb-5 w-[5rem]'
+                        alt={feature.name}
+                        src={feature.imgUrl}
+                      />
+                    ) : null}
                   </div>
-                  {feature.name}
                 </dt>
-                <dd className='mt-1 text-lg leading-7 text-gray-700'>
+                <dd className='text-2xl text-center font-semibold leading-7 text-gray-800'>
+                  {feature.name}
+                </dd>
+                <dd className='mt-1 text-lg  text-center leading-7 text-gray-700 line-clamp-4'>
                   {feature.description}
                 </dd>
               </a>
@@ -278,9 +232,9 @@ export default function Home() {
         <div className='flex justify-center py-32'>
           <a
             href='/solutions'
-            className='rounded-full  bg-orange-500 px-8 py-3.5 text-lg font-bold text-white shadow-sm transition  hover:shadow-md hover:bg-orange-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+            className='rounded-full  bg-yellow-400 px-8 py-3.5 text-lg font-bold text-white shadow-sm transition  hover:shadow-md hover:bg-yellow-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
           >
-            View all industry solutions
+            View all solutions
           </a>
         </div>
       </div>
@@ -289,7 +243,7 @@ export default function Home() {
       {/* validation section */}
 
       <div className='bg-white'>
-        <div className='py-24 px-6 sm:py-32 lg:px-8'>
+        <div className='py-20 px-6 md:py-24 lg:px-8'>
           <div className='mx-auto max-w-2xl text-left md:text-center'>
             {/* <h2 className="text-base font-semibold leading-7 text-indigo-600">
             You did{ "'"}nt Hear it from us
@@ -391,10 +345,10 @@ export default function Home() {
               </div>
             </div>
 
-            <div className='flex justify-center py-32'>
+            <div className='flex justify-center mt-32'>
               <a
                 href='/solutions'
-                className='rounded-full ring-1 ring-indigo-500 ring-inset  bg-indigo-500 px-8 py-3.5 text-lg font-bold text-white shadow-sm transition  hover:shadow-md hover:text-gray-800 hover:bg-white hover:rind focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+                className='rounded-full ring-1 ring-indigo-500 ring-inset focus:ring-4 focus:ring-indigo-300  bg-indigo-500 px-8 py-3.5 text-lg font-bold text-white shadow-sm transition  hover:shadow-md hover:bg-indigo-400 hover:rind focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-indigo-300'
               >
                 Place Order Now
               </a>

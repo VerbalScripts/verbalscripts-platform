@@ -151,10 +151,18 @@ export default function Page() {
               >
                 <dt className='text-xl font-semibold leading-7 text-gray-800'>
                   <div className='absolute left-2 top-4 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-600'>
-                    <feature.icon
-                      className='h-6 w-6 text-white'
-                      aria-hidden='true'
-                    />
+                    {feature.icon != undefined ? (
+                      <feature.icon
+                        className='h-6 w-6 text-white'
+                        aria-hidden='true'
+                      />
+                    ) : feature.imgUrl != undefined ? (
+                      <img
+                        src={feature.imgUrl}
+                        className='h-6 w-6 text-white'
+                        aria-hidden='true'
+                      />
+                    ) : null}
                   </div>
                   {feature.name}
                 </dt>
