@@ -129,11 +129,12 @@ export default function Home() {
               Benefits of Choosing VerbalScripts
             </p>
             <p className='mx-auto max-w-2xl mt-6 text-lg leading-8 text-gray-600'>
-              We are the best platform for accelerated speed, enhanced privacy, top notch-quality, and cost effective-solution;
+              We are the best platform for accelerated speed, enhanced privacy,
+              top notch-quality, and cost effective-solution;
             </p>
           </div>
-          <div className='mx-auto mt-16 max-w-7xl sm:mt-20 lg:mt-24 lg:max-w-8xl'>
-            <dl className='grid max-w-none  md:px-16 lg:px-20 xl:px-36 content-center grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-y-16'>
+          <div className='mx-auto mt-16 max-w-7xl sm:mt-20 lg:mt-24 lg:max-w-7xl'>
+            <dl className='grid max-w-none  md:px-16 lg:px-20 xl:px-32 content-center grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-y-16'>
               {features.map((feature) => (
                 <div
                   key={feature.name}
@@ -428,7 +429,7 @@ export default function Home() {
                   </div>
                   <br />
                   <div className='ml-5 md:-ml-5 leading-8 text-gray-600 font-semibold text-xl max-w-sm'>
-                    Submit required documents 
+                    Submit required documents
                   </div>
                 </div>
 
@@ -450,7 +451,7 @@ export default function Home() {
                   href='/auth/login'
                   className='my-2.5 inline-block rounded-full hover:bg-indigo-500 hover:text-white hover:ring-0 transition focus:ring-4 focus:ring-indigo-300  ring-1 ring-indigo-500 px-8 py-2.5 text-xl font-semibold text-indigo-500 transition shadow-sm '
                 >
-                 Become a Transcriber!
+                  Become a Transcriber!
                 </a>
               </div>
             </div>
