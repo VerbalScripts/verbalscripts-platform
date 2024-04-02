@@ -400,7 +400,7 @@ export default function Home() {
 
             <div className='lg:mx-0 max-w-xl lg:flex  flex-col  text-left'>
               <h2 className='text-4xl mt-0 md:mt-20 lg:mt-0 font-bold  text-gray-900 md:text-5xl'>
-                Want to join our team of skilled Transcriptionist
+                Want to join our team of skilled Transcriptionists
               </h2>
               <p className='mt-6 text-lg leading-8 text-gray-700'>
                 Got the experience we need? We are looking for you.
