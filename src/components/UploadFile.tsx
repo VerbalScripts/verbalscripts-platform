@@ -12,9 +12,9 @@ export default function UploadFile() {
 
   return (
     <section style={{ backgroundColor: '#f9f8f2' }}>
-      <div className=' py-14 md:py-14'>
+      <div className=' py-14 md:py-14 px-3 md:px-0'>
         <div className='mx-auto max-w-xl'>
-          <p className='text-center text-3xl font-bold  text-gray-900'>
+          <p className='text-center text-2xl md:text-3xl font-bold  text-gray-900'>
             Upload your files to place a new order.
           </p>
 
@@ -26,32 +26,40 @@ export default function UploadFile() {
 
           {/* tabs playground */}
 
-          <section className='min-h-96'>
-            {activeTab == 'local-file' ? (
-              <LocalFileUpload />
-            ) : activeTab == 'google-drive' ? (
-              <GoogleUpload />
-            ) : activeTab == 'vimeo' ? (
-              <VimeoUpload />
-            ) : activeTab == 'dropbox' ? (
-              <DropboxUpload />
-            ) : activeTab == 'link' ? (
-              <LinkUpload />
-            ) : (
-              <LocalFileUpload />
-            )}
-          </section>
+          {
+            <section className='min-h-96'>
+              {activeTab == 'local-file' ? (
+                <LocalFileUpload />
+              ) : activeTab == 'google-drive' ? (
+                <GoogleUpload />
+              ) : activeTab == 'vimeo' ? (
+                <VimeoUpload />
+              ) : activeTab == 'dropbox' ? (
+                <DropboxUpload />
+              ) : activeTab == 'link' ? (
+                <LinkUpload />
+              ) : (
+                <LocalFileUpload />
+              )}
+            </section>
+          }
 
-          <div className='flex items-center justify-between'>
+          <div className='flex flex-wrap items-center justify-between gap-y-5'>
             <p className='mt-2 text-2xl font-bold  text-gray-800'>
               Need help ?
             </p>
-            <div className='flex items-center gap-x-3'>
-              <a href='/contact-us' className='rounded-full border px-5 py-2.5'>
+            <div className='flex items-center gap-x-3 '>
+              <a
+                href='/contact-us'
+                className='rounded-full border ring-1 ring-indigo-500 text-indigo-500 font-semibold text-lg px-5 py-1.5 focus:ring-4 focus:ring-indigo-300'
+              >
                 Contact Us
               </a>
 
-              <a href='#' className='rounded-full border px-5 py-2.5'>
+              <a
+                href='#'
+                className='rounded-full border px-5 ring-1 ring-indigo-500 text-indigo-500 font-semibold text-lg py-1.5 focus:ring-4 focus:ring-indigo-300'
+              >
                 Let{"'"}s chat
               </a>
             </div>

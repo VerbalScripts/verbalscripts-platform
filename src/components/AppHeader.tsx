@@ -586,7 +586,7 @@ export default function AppHeader({
                       href='#'
                       className='-mx-3 block text-center rounded-md ring-1 ring-inset ring-indigo-500  px-3 py-3.5 text-xl font-semibold leading-7 text-indigo-500 hover:ring-indigo-400 hover:text-indigo-400'
                     >
-                      Transcriber Sign In
+                      Transcriber Login
                     </a>
                   </div>
 
@@ -595,7 +595,7 @@ export default function AppHeader({
                       href='/auth/login'
                       className='-mx-3 block text-center rounded-md  bg-indigo-500  px-3 py-3.5 text-xl font-semibold leading-7 text-white hover:bg-indigo-400 hover:text-gray-200'
                     >
-                      Customer In
+                      Client Login
                     </a>
                   </div>
                 </div>

@@ -263,16 +263,14 @@ export default function LocalFileUpload() {
           onDragOver={dragOverHandler}
           className={classNames(
             'relative w-full rounded-xl border-2 transition-all duration-200 border-dashed bg-white   h-[13rem]',
-            dragEnter
-              ? 'border-indigo-500 bg-gray-300'
-              : '',
+            dragEnter ? 'border-indigo-500 bg-gray-300' : '',
           )}
         >
           <div className='flex flex-col h-full  items-center justify-center'>
             {/* <img src='upload.png' alt='' className='absolute top-6  w-32' /> */}
 
             <div className='text-gray-800 text-center leading-8'>
-              <span className='text-3xl'>
+              <span className='text-2xl md:text-3xl'>
                 Drag and Drop files here or <br></br>
               </span>
               <span>
@@ -388,11 +386,11 @@ export default function LocalFileUpload() {
           ))}
         </div>
 
-        <div className='my-10 text-center flex justify-end'>
+        <div className='my-5 md:my-10 text-center flex justify-center  md:justify-end'>
           <button
             type='submit'
             disabled={loading}
-            className='py-2.5 px-4 text-white disabled:bg-indigo-500 bg-indigo-600 rounded-full font-semibold cursor-pointer '
+            className='py-2.5 px-8 md:px-4 text-lg text-white disabled:bg-indigo-500 bg-indigo-600 rounded-full font-semibold cursor-pointer '
           >
             {loading ? 'Processing' : 'Upload'}
           </button>
