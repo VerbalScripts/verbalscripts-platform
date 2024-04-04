@@ -19,9 +19,14 @@ export default function FileSelectionTab({ callback }: FileSelectionTabProps) {
 
   const options = [
     {
-      title: 'Local  Upload',
+      title: 'Upload',
       logoUrl: '/icons/upload.png',
       id: 'local-file',
+    },
+    {
+      title: 'Link',
+      logoUrl: '/icons/link.png',
+      id: 'link',
     },
     {
       title: 'Google Drive',
@@ -32,6 +37,16 @@ export default function FileSelectionTab({ callback }: FileSelectionTabProps) {
       title: 'Dropbox',
       logoUrl: '/icons/dropbox.png',
       id: 'dropbox',
+    },
+    {
+      title: 'One Drive',
+      logoUrl: '/icons/one-drive.png',
+      id: 'one-drive',
+    },
+    {
+      title: 'Youtube',
+      logoUrl: '/icons/youtube.png',
+      id: 'youtube',
     },
     {
       title: 'Vimeo',
@@ -52,15 +67,15 @@ export default function FileSelectionTab({ callback }: FileSelectionTabProps) {
             <a
               href={'#' + option.id}
               className={classNames(
-                'h-12  flex justify-center   transition-all duration-300 ease-out items-center ring-1 ring-inset ring-transparent   text-lg text-gray-900 rounded-full  hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group',
+                'h-10  flex justify-center   transition-all duration-300 ease-out items-center ring-1 ring-inset ring-transparent   text-lg text-gray-900 rounded-full  hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group',
                 activeTab == option.id
                   ? 'bg-gray-300 px-3 w-48 md:w-auto'
-                  : 'w-20',
+                  : 'w-10',
               )}
             >
               <Image
-                height={30}
-                width={30}
+                height={28}
+                width={28}
                 src={option.logoUrl}
                 alt={option.title}
               />
