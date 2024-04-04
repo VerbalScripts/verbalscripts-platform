@@ -1,5 +1,6 @@
 import React, { FormEvent, useState } from 'react';
-import { Eye, EyeOff } from 'react-ionicons';
+import { EyeSlashIcon } from '@heroicons/react/20/solid';
+import { EyeIcon } from '@heroicons/react/24/outline';
 
 export default function ResetPassword() {
   // const validation = {};
@@ -25,7 +26,7 @@ export default function ResetPassword() {
       action='#'
       method='POST'
     >
-      <div className='my-4'>
+      <div className='my-2'>
         <label
           htmlFor='email'
           className='block text-md font-medium leading-6 text-gray-600'
@@ -43,7 +44,7 @@ export default function ResetPassword() {
           />
         </div>
       </div>
-      <div className='my-4'>
+      <div className='my-2'>
         <label
           htmlFor='email'
           className='block text-md font-medium leading-6 text-gray-600'
@@ -63,7 +64,7 @@ export default function ResetPassword() {
             className='absolute top-4 right-4 cursor-pointer'
             onClick={() => toggleVisible(!is_visible)}
           >
-            {is_visible ? <EyeOff height={'30px'} /> : <Eye height={'30px'} />}
+            {is_visible ? <EyeIcon height={'30px'} /> : <EyeSlashIcon height={'30px'} />}
           </span>
         </div>
 

@@ -27,7 +27,7 @@ export default function CallToActionBanner({ fn }: CallToActionBannerProps) {
             </radialGradient>
           </defs>
         </svg>
-        <div className='mx-auto  xl:max-w-full px-6 lg:px-8 xl:px-14'>
+        <div className='mx-auto max-w-7xl px-6 lg:px-8 xl:px-14'>
           <div className='relative isolate py-24   px-6   sm:px-16 md:py-10  lg:flex lg:items-center lg:gap-x-20 lg:px-24 lg:pt-0'>
             <div className='md:min-w-[28rem] lg:min-w-[30rem]  lg:mx-0 lg:flex-auto lg:py-24 lg:text-left'>
               <h2 className='text-4xl md:text-[2.8rem] font-bold leading-10  text-white '>

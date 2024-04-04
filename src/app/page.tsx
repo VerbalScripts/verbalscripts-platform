@@ -165,11 +165,11 @@ export default function Home() {
 
       {/* testimonials */}
       <div className='bg-indigo-500'>
-        <div className='mx-auto max-w-8xl '>
+        <div className='mx-auto max-w-7xl '>
           <div className='relative isolate   px-6 pt-16 sm:rounded-3xl sm:px-16 md:pt-24 md:px-24 lg:flex lg:items-center lg:gap-x-20 lg:px-36 lg:pt-0'>
             <div className='mx-auto  lg:max-w-[24rem]   xl:max-w-[28rem] lg:mx-0 lg:flex-auto lg:py-32'>
               <h2 className='text-4xl md:text-5xl font-bold  text-gray-100'>
-                Solutions
+                Our Services
               </h2>
               <p className='mt-6 text-xl  leading-7 text-gray-50'>
                 The way we think about data is changing; and now more than ever
@@ -255,7 +255,7 @@ export default function Home() {
               Human driven transcription process.
             </p>
           </div>
-          <div className='mx-auto max-w-8xl py-2'>
+          <div className='mx-auto max-w-7xl py-2'>
             <div className='relative isolate  sm:rounded-3xl sm:px-16  lg:flex lg:items-center lg:gap-x-20 lg:px-24'>
               <div className='hidden lg:block relative md:-mt-16 h-80 lg:min-w-[24rem]   xl:min-w-[25rem]'>
                 <img
@@ -388,7 +388,7 @@ export default function Home() {
       <CallToActionBanner fn={setOpen} />
 
       <div className='bg-white'>
-        <div className='mx-auto max-w-8xl lg:py-28 py-16  sm:px-6  lg:px-8'>
+        <div className='mx-auto max-w-7xl lg:py-28 py-16  sm:px-6  lg:px-8'>
           <div className='relative isolate   px-6  sm:rounded-3xl sm:px-16  md:flex md:items-center  lg:gap-x-20 lg:px-24 lg:pt-0'>
             <div className='hidden lg:block relative md:min-w-[28rem] lg:min-w-[35rem] xl:min-w-[28rem] -mt-32 h-80'>
               <img

@@ -65,7 +65,7 @@ export default function PopularPartner() {
 
   return (
     <div className=' py-10 md:py-5' style={{ backgroundColor: '#f9f8f2' }}>
-      <div className='mx-auto max-w-full xl:max-w-8xl px-6 lg:px-8 xl:px-10'>
+      <div className='mx-auto max-w-7xl xl:max-w-8xl px-6 lg:px-8 xl:px-10'>
         {/* <h2 className='text-center text-lg font-semibold leading-8 text-gray-900'>
             Trusted by the world’s most innovative teams
           </h2> */}

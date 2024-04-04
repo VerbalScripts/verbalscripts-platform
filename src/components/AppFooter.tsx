@@ -1,11 +1,11 @@
 import React from 'react';
 
-import {
-  LogoLinkedin,
-  LogoFacebook,
-  LogoGithub,
-  LogoInstagram,
-} from 'react-ionicons';
+// import {
+//   LogoLinkedin,
+//   LogoFacebook,
+//   LogoGithub,
+//   LogoInstagram,
+// } from 'react-ionicons';
 
 import {
   ArrowPathIcon,
@@ -18,6 +18,13 @@ import {
   MicrophoneIcon,
   ChartBarIcon,
 } from '@heroicons/react/24/outline';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faXTwitter,
+  faFacebook,
+  faGithub,
+  faLinkedin,
+} from '@fortawesome/free-brands-svg-icons';
 
 export default function AppFooter() {
   const services: Array<NavLabel> = [
@@ -158,47 +165,27 @@ export default function AppFooter() {
                 href=''
                 className='text-center mb-3 flex h-12 w-12 items-center justify-center'
               >
-                <LogoInstagram
-                  color={'#fff'}
-                  width={'25px'}
-                  height={'25px'}
-                  aria-hidden='true'
-                />
+                <FontAwesomeIcon icon={faLinkedin} className='h-6 w-6' />
               </a>
               <a
                 href=''
                 className='text-center mb-3 flex h-12 w-12 items-center justify-center'
               >
-                <LogoLinkedin
-                  color={'#fff'}
-                  width={'25px'}
-                  height={'25px'}
-                  aria-hidden='true'
-                />
+                <FontAwesomeIcon icon={faXTwitter} className='h-6 w-6' />
               </a>
 
               <a
                 href=''
                 className='text-center mb-3 flex h-12 w-12 items-center justify-center'
               >
-                <LogoFacebook
-                  color={'#fff'}
-                  width={'25px'}
-                  height={'25px'}
-                  aria-hidden='true'
-                />
+                <FontAwesomeIcon icon={faFacebook} className='h-6 w-6' />
               </a>
 
               <a
                 href=''
                 className='text-center mb-3 flex h-12 w-12 items-center justify-center'
               >
-                <LogoGithub
-                  color={'#fff'}
-                  width={'25px'}
-                  height={'25px'}
-                  aria-hidden='true'
-                />
+                <FontAwesomeIcon icon={faGithub} className='h-6 w-6' />
               </a>
             </div>
           </div>
@@ -327,8 +314,6 @@ export default function AppFooter() {
                   Faqs
                 </span>
               </a>
-
-           
             </div>
           </dl>
 

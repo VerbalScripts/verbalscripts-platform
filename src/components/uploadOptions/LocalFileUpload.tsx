@@ -1,8 +1,11 @@
 import { bytesToMB } from '@/utils/bytesToMb';
 import { classNames } from '@/utils/classNames';
+import { faRedo } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import React, { DragEvent, useState } from 'react';
-import { ArrowRedoCircle } from 'react-ionicons';
+
+
 
 export default function LocalFileUpload() {
   const allowedExtensions = [
@@ -181,7 +184,7 @@ export default function LocalFileUpload() {
     // reset progress
     setProgress((prev: ProgressTracker[]) => {
       const _updated = [...prev];
-      _updated[index] = {
+      _updated[ index ] = {
         percentage: '0',
         isComplete: false,
         error: '',
@@ -191,7 +194,8 @@ export default function LocalFileUpload() {
     });
   };
 
-  function dropHandler(ev: DragEvent) {
+  function dropHandler ( ev: DragEvent ) {
+    // console.log('goeat');
     console.log('File(s) dropped');
 
     // Prevent default behavior (Prevent file from being opened)
@@ -346,7 +350,7 @@ export default function LocalFileUpload() {
                       onClick={() => retryUpload(index)}
                     >
                       <span className='sr-only'>Remove Selected File</span>
-                      <ArrowRedoCircle color={'#000'} height={10} width={10} />
+                      <FontAwesomeIcon icon={faRedo} color={'#000'} height={10} width={10} />
                     </button>
                   ) : (
                     <button

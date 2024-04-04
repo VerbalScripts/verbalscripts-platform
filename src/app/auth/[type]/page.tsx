@@ -15,8 +15,8 @@ export default function Login() {
     <div className='bg-white md:bg-gray-200 min-h-screen  overflow-x-hidden'>
       <AuthHeader route={params.type} />
 
-      <div className='mx-auto max-w-xl my-10 md:my-20 rounded-lg flex flex-col justify-between px-5 bg-white'>
-        <div className='py-16'>
+      <div className='mx-auto max-w-md my-10 md:my-20 rounded-lg flex flex-col justify-between px-8 bg-white'>
+        <div className='py-14'>
           {params.type == 'login' ? (
             <SignInForm />
           ) : params.type == 'register' ? (

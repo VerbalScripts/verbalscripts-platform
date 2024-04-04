@@ -12,7 +12,8 @@ import {
 import { PlusIcon } from '@heroicons/react/24/outline';
 import DashDialogMenu from './DashDialogMenu';
 import { classNames } from '@/utils/classNames';
-import { SearchOutline } from 'react-ionicons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 export default function DashboardHeader() {
   const [open, setOpen] = useState(false);
@@ -28,7 +29,7 @@ export default function DashboardHeader() {
         )}
       >
         <nav
-          className='mx-auto flex  items-center justify-between px-6 py-4 lg:px-8'
+          className='mx-auto flex  items-center justify-between px-6 py-2 lg:px-8'
           aria-label='Global'
         >
           <div className='flex lg:hidden'>
@@ -53,7 +54,7 @@ export default function DashboardHeader() {
               placeholder='Find a file'
             />
             <span className='absolute right-[1rem] top-[0.6rem]'>
-              <SearchOutline color={'black'} />
+              <FontAwesomeIcon icon={faSearch} color={'gray'} />
             </span>
           </div>
 

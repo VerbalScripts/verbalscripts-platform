@@ -1,5 +1,6 @@
+import { EyeSlashIcon } from '@heroicons/react/20/solid';
+import { EyeIcon } from '@heroicons/react/24/outline';
 import React, { FormEvent, useState } from 'react';
-import { Eye, EyeOff } from 'react-ionicons';
 
 export default function ResetAccount() {
   const [is_visible, toggleVisible] = useState(true);
@@ -56,9 +57,9 @@ export default function ResetAccount() {
               onClick={() => toggleVisible(!is_visible)}
             >
               {is_visible ? (
-                <EyeOff height={'30px'} />
+                <EyeIcon height={'30px'} />
               ) : (
-                <Eye height={'30px'} />
+                <EyeSlashIcon height={'30px'} />
               )}
             </span>
           </div>
@@ -85,9 +86,9 @@ export default function ResetAccount() {
               onClick={() => toggleVisible(!is_visible)}
             >
               {is_visible ? (
-                <EyeOff height={'30px'} />
+                <EyeIcon height={'30px'} />
               ) : (
-                <Eye height={'30px'} />
+                <EyeSlashIcon height={'30px'} />
               )}
             </span>
           </div>

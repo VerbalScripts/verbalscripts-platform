@@ -1,18 +1,42 @@
 import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 
+interface menuRoute {
+  label: string;
+  href?: string;
+  isProtected: boolean;
+}
 export default function DashDialogMenu() {
+  const menuRoutes: menuRoute[] = [
+    {
+      label: ' Account settings',
+      href: '/dashboard/account',
+      isProtected: true,
+    },
+    {
+      label: 'Support',
+      href: '/dashboard/support',
+      isProtected: false,
+    },
+    {
+      label: 'Orders',
+      href: '/dashboard/orders',
+      isProtected: false,
+    },
+  ];
   return (
     <Menu as='div' className='relative inline-block text-left'>
       <div>
-        <Menu.Button className='inline-flex  hover:bg-gray-50'>
+        <Menu.Button className='inline-flex  rounded-full h-8 w-8 overflow-hidden ring-gray-300'>
           <img
             src='/icons/user-icon.jpg'
-            className='ring-1 ring-gray-300 object-cover rounded-full h-8 w-8'
+            className='ring-1  object-cover'
             alt=''
           />
         </Menu.Button>
@@ -27,58 +51,42 @@ export default function DashDialogMenu() {
         leaveFrom='transform opacity-100 scale-100'
         leaveTo='transform opacity-0 scale-95'
       >
-        <Menu.Items className='absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
-          <div className='py-1'>
-            <Menu.Item>
-              {({ active }) => (
-                <a
-                  href='#'
-                  className={classNames(
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm',
-                  )}
-                >
-                  Account settings
-                </a>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <a
-                  href='#'
-                  className={classNames(
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm',
-                  )}
-                >
-                  Support
-                </a>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <a
-                  href='#'
-                  className={classNames(
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm',
-                  )}
-                >
-                  License
-                </a>
-              )}
-            </Menu.Item>
+        <Menu.Items className='absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-gray-50 shadow-lg focus:outline-none'>
+          <div className='py-1 px-2'>
+            <div className='py-3 px-4 text-gray-700 border-b border-gray-200 mb-2'>
+              <span className='font-bold'>Guest User</span> - This is a
+              temporary account, please login to save your uploads.
+            </div>
+            {menuRoutes.map((route) => (
+              <Menu.Item key={route.label}>
+                {({ active }) => (
+                  <a
+                    href={route.href}
+                    className={classNames(
+                      active
+                        ? 'bg-gray-100 text-gray-900 dark:text-white'
+                        : 'text-gray-700 dark:text-gray-200',
+                      'block hover:bg-indigo-500/5 text-gray-600 px-4 py-2 text-md font-semibold rounded-full',
+                    )}
+                  >
+                    {route.label}
+                  </a>
+                )}
+              </Menu.Item>
+            ))}
+
             <form method='POST' action='#'>
               <Menu.Item>
-                {({ active }) => (
+                {() => (
                   <button
                     type='submit'
                     className={classNames(
-                      active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                      'block w-full px-4 py-2 text-left text-sm',
+                      'block w-full px-4 py-2 text-left text-gray-600 font-semibold text-md',
+                      'mt-1 border-t border-gray-200 flex items-center',
                     )}
                   >
-                    Sign out
+                    <FontAwesomeIcon icon={faSignOutAlt} color={'gray'} />
+                    <span className='ml-3'>Sign out</span>
                   </button>
                 )}
               </Menu.Item>

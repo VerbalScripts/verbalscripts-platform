@@ -16,6 +16,8 @@ import {
 import Link from 'next/link';
 import React from 'react';
 
+import { usePathname } from 'next/navigation';
+
 type NavItem = {
   name: string;
   icon: React.ElementType;
@@ -33,7 +35,12 @@ function NavigationItemLink({ item, expanded }: NavItemProp) {
     <div key={item.name} className='mb-3'>
       <Link
         href={item.href}
-        className='flex items-center gap-x-4 px-3 py-2.5 font-semibold  text-gray-600 rounded-full hover:bg-indigo-500/5'
+        className={classNames(
+          'flex items-center gap-x-4 px-3 py-2.5 font-semibold  text-gray-600 rounded-full ',
+          usePathname() == item.href
+            ? 'bg-indigo-500 text-white'
+            : 'hover:bg-indigo-500/5',
+        )}
       >
         <item.icon
           className={classNames(

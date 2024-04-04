@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import React, { FormEvent, useState } from 'react';
-import { Eye, EyeOff, LogoGoogle } from 'react-ionicons';
+import { EyeSlashIcon } from '@heroicons/react/20/solid';
+import { EyeIcon } from '@heroicons/react/24/outline';
+import GoogleIcon from '../GoogleIcon';
 
 export default function SignUpForm() {
   // const validation = {};
@@ -22,7 +24,7 @@ export default function SignUpForm() {
   return (
     <>
       <div className='mx-auto max-w-md'>
-        <div className='mb-10 md:mb-16 text-left text-4xl font-bold text-gray-700'>
+        <div className='mb-10 md:mb-10 text-left text-4xl font-bold text-gray-700'>
           Join Us
         </div>
         <form
@@ -31,7 +33,7 @@ export default function SignUpForm() {
           action='#'
           method='POST'
         >
-          <div className='grid grid-cols-1 lg:grid-cols-2 items-center gap-x-4'>
+          <div className='grid grid-cols-1 lg:grid-cols-2 items-center gap-x-2'>
             <div className=''>
               <label
                 htmlFor='first'
@@ -57,7 +59,7 @@ export default function SignUpForm() {
               >
                 Last Name
               </label>
-              <div className='mt-2'>
+              <div className='mt-1.5'>
                 <input
                   id='last'
                   name='last'
@@ -69,7 +71,7 @@ export default function SignUpForm() {
               </div>
             </div>
           </div>
-          <div className='my-4'>
+          <div className='my-1.5'>
             <label
               htmlFor='company_name'
               className='block text-md font-medium leading-6 text-gray-600'
@@ -86,14 +88,14 @@ export default function SignUpForm() {
               />
             </div>
           </div>
-          <div className='my-4'>
+          <div className='my-1.5'>
             <label
               htmlFor='email'
               className='block text-md font-medium leading-6 text-gray-600'
             >
               Email address
             </label>
-            <div className='mt-2'>
+            <div className='mt-1.5'>
               <input
                 id='email'
                 name='email'
@@ -104,7 +106,7 @@ export default function SignUpForm() {
               />
             </div>
           </div>
-          <div className='my-4'>
+          <div className='my-1.5'>
             <label
               htmlFor='email'
               className='block text-md font-medium leading-6 text-gray-600'
@@ -125,9 +127,9 @@ export default function SignUpForm() {
                 onClick={() => toggleVisible(!is_visible)}
               >
                 {is_visible ? (
-                  <EyeOff height={'30px'} />
+                  <EyeIcon height={'30px'} />
                 ) : (
-                  <Eye height={'30px'} />
+                  <EyeSlashIcon height={'30px'} />
                 )}
               </span>
             </div>
@@ -144,15 +146,15 @@ export default function SignUpForm() {
         </form>
       </div>
 
-      <div className='mx-auto max-w-md border-b border-gray-300 my-10'></div>
+      <div className='mx-auto max-w-md border-b border-gray-300 my-5'></div>
 
       <div className='mx-auto max-w-md '>
         <div className='mb-3 cursor-pointer flex w-full items-center ring-1 ring-gray-500  justify-center rounded-full  py-2.5 md:py-2.5 text-lg font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
-          <LogoGoogle />{' '}
+          <GoogleIcon />{' '}
           <span className='ml-3  text-gray-600'>Continue with Google</span>
         </div>
       </div>
-      <div className='mb-16'>
+      <div className='mb-5'>
         <p className='mt-10 text-center text-md text-gray-500'>
           Already a member?{' '}
           <Link
