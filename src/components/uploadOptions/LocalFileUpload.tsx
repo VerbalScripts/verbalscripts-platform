@@ -5,8 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import React, { DragEvent, useState } from 'react';
 
-
-
 export default function LocalFileUpload() {
   const allowedExtensions = [
     'mp3',
@@ -184,7 +182,7 @@ export default function LocalFileUpload() {
     // reset progress
     setProgress((prev: ProgressTracker[]) => {
       const _updated = [...prev];
-      _updated[ index ] = {
+      _updated[index] = {
         percentage: '0',
         isComplete: false,
         error: '',
@@ -194,7 +192,7 @@ export default function LocalFileUpload() {
     });
   };
 
-  function dropHandler ( ev: DragEvent ) {
+  function dropHandler(ev: DragEvent) {
     // console.log('goeat');
     console.log('File(s) dropped');
 
@@ -350,7 +348,12 @@ export default function LocalFileUpload() {
                       onClick={() => retryUpload(index)}
                     >
                       <span className='sr-only'>Remove Selected File</span>
-                      <FontAwesomeIcon icon={faRedo} color={'#000'} height={10} width={10} />
+                      <FontAwesomeIcon
+                        icon={faRedo}
+                        color={'#000'}
+                        height={10}
+                        width={10}
+                      />
                     </button>
                   ) : (
                     <button

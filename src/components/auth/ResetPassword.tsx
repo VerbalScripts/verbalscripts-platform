@@ -64,7 +64,11 @@ export default function ResetPassword() {
             className='absolute top-4 right-4 cursor-pointer'
             onClick={() => toggleVisible(!is_visible)}
           >
-            {is_visible ? <EyeIcon height={'30px'} /> : <EyeSlashIcon height={'30px'} />}
+            {is_visible ? (
+              <EyeIcon height={'30px'} />
+            ) : (
+              <EyeSlashIcon height={'30px'} />
+            )}
           </span>
         </div>
 
