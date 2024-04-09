@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 const initialState = {
   folders: [], // store user directories
   selectedFolderId: null, // follow currently selected folder
-  files: Array<string>, // store user directories
+  files: [], // store user directories
 };
 
 const uploadsSlice = createSlice({
@@ -11,12 +11,12 @@ const uploadsSlice = createSlice({
   initialState,
   reducers: {
     createFolder() {},
-    updateFiles ( state, action: PayloadAction<string[]> ) {
-      state.files = action.payload
+    updateFiles(state, action: PayloadAction<[]>) {
+      state.files = action.payload;
     },
   },
 });
 
 export default uploadsSlice.reducer;
 
-export const {updateFiles } = uploadsSlice.actions;
+export const { updateFiles } = uploadsSlice.actions;

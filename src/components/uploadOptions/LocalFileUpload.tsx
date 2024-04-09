@@ -4,10 +4,10 @@ import { faRedo } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import React, { DragEvent, useState } from 'react';
-import { useAppDispatch } from '@/store/hooks';
+// import { useAppDispatch } from '@/store/hooks';
 
 import JSZip from 'jszip';
-import { updateFiles } from '@/store/features/uploadsSlice';
+// import { updateFiles } from '@/store/features/uploadsSlice';
 
 export default function LocalFileUpload() {
   const allowedExtensions = [
@@ -136,14 +136,14 @@ export default function LocalFileUpload() {
   };
 
   useState(() => {
-    if (
-      progress &&
-      progress.filter((item) => item.isComplete).length == progress.length
-    ) {
-      // redirect page
-      console.log('uploeaded al files.');
-    }
-  }, [progress]);
+    // if (
+    //   progress &&
+    //   progress.filter((item) => item.isComplete).length == progress.length
+    // ) {
+    //   // redirect page
+    //   console.log('uploeaded al files.');
+    // }
+  });
 
   const prepareFilesForUpload = (_prepFiles: File[]) => {
     setFiles((_prevFiles: File[]) => {
@@ -167,14 +167,13 @@ export default function LocalFileUpload() {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
-    console.log('sending ...');
     if (files.length == 0) return false;
 
     // console.log(files);
     // add to store and redirect to dashboard
     uploadFiles(files);
 
-    useAppDispatch(updateFiles(Array.from(files)));
+    // useAppDispatch(updateFiles(Array.from(files)));
 
     updateImageDisplay(files);
     setLoading(true);

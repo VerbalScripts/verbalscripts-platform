@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import FileEmpty from '@/components/FileEmpty';
 
 // import type { Metadata } from 'next';
-import { useAppSelector } from '@/store/hooks';
+// import { useAppSelector } from '@/store/hooks';
 
 // export const metadata: Metadata = {
 //   title: 'VerbalScripts | Dashboard',
@@ -13,8 +13,7 @@ import { useAppSelector } from '@/store/hooks';
 // };
 
 export default function Page() {
-  const authState = useAppSelector((state) => state.auth.isAuth);
-
+  // const authState = useAppSelector((state) => state.auth.isAuth);
 
   return (
     <div>
