@@ -272,7 +272,7 @@ export default function AppHeader({
           <div className='flex lg:flex-1'>
             <a href='/' className='-m-1.5 p-1.5 text-2xl font-bold'>
               <span className='text-gray-800'>Verbal</span>
-              <span className='text-orange-500 italic'>Scripts</span>
+              <span className='text-orange-400'>Scripts</span>
             </a>
           </div>
           <div className='flex lg:hidden'>

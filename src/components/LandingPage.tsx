@@ -35,7 +35,7 @@ export default function LandingPage() {
 
       <div className='mx-auto max-w-7xl  md:py-16 lg:py-28 xl:py-32 py-20 md:mx-10 lg:mx-20 xl:mx-28 flex flex-col items-start md:items-center  text-left lg:text-center'>
         <h1 className='max-w-6xl lg:max-w-4xl xl:max-w-5xl relative z-10 text-5xl font-bold  text-white lg:text-5xl xl:text-6xl'>
-          Transcription Mastery: Unmatched Accuracy & Effieciency, Every Time.
+          Transcription Mastery: Unmatched Accuracy & Efficiency, Every Time.
         </h1>
         <p className='hidden md:block md:max-w-2xl lg:max-w-3xl xl:max-w-4xl relative z-10 mt-6 text-xl leading-8 text-gray-50'>
           With you in mind always, we delivery accurate transcripts through our
@@ -45,7 +45,7 @@ export default function LandingPage() {
         <div className='mt-10 flex flex-col md:flex-row items-start md:items-center justify-center gap-6'>
           <a
             href='/solutions'
-            className='rounded-full bg-orange-500 px-12 py-3 text-2xl transition font-bold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600'
+            className='rounded-full bg-orange-400 px-12 py-3 text-2xl transition font-bold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600'
           >
             Solutions
           </a>
