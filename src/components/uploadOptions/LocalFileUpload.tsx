@@ -4,6 +4,10 @@ import { faRedo } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import React, { DragEvent, useState } from 'react';
+import { useAppDispatch } from '@/store/hooks';
+
+import JSZip from 'jszip';
+import { updateFiles } from '@/store/features/uploadsSlice';
 
 export default function LocalFileUpload() {
   const allowedExtensions = [
@@ -17,35 +21,34 @@ export default function LocalFileUpload() {
     'mkv',
   ];
 
-  // function updateImageDisplay() {
-  //   const zip = new JSZip();
-  //   const files = Array.from(input.files);
+  function updateImageDisplay(files: File[]) {
+    const zip = new JSZip();
 
-  //   files.forEach((file) => {
-  //     zip.file(file.webkitRelativePath, file);
-  //     console.log(file.webkitRelativePath);
-  //   });
-  //   zip
-  //     .generateAsync({ type: 'blob' }, function updateCallback(metadata) {
-  //       console.log('progression: ' + metadata.percent.toFixed(2) + ' %');
-  //       if (metadata.currentFile) {
-  //         console.log('current file = ' + metadata.currentFile);
-  //       }
-  //     })
-  //     .then(function (content) {
-  //       console.log(content);
-  //       const formData = new FormData();
-  //       formData.append('folderzip', content);
-  //       fetch('https://codesandbox.io/s/still-morning-udjvz', {
-  //         method: 'POST',
-  //         body: formData,
-  //       })
-  //         .then((response) => {
-  //           console.log(response);
-  //         })
-  //         .catch((e) => console.log(e));
-  //     });
-  // }
+    files.forEach((file) => {
+      zip.file(file.webkitRelativePath, file);
+      console.log(file.webkitRelativePath);
+    });
+    zip
+      .generateAsync({ type: 'blob' }, function updateCallback(metadata) {
+        console.log('progression: ' + metadata.percent.toFixed(2) + ' %');
+        if (metadata.currentFile) {
+          console.log('current file = ' + metadata.currentFile);
+        }
+      })
+      .then(function (content) {
+        console.log(content);
+        const formData = new FormData();
+        formData.append('folderzip', content);
+        fetch('https://codesandbox.io/s/still-morning-udjvz', {
+          method: 'POST',
+          body: formData,
+        })
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((e) => console.log(e));
+      });
+  }
 
   function uploadFiles(files: File[]) {
     for (let i = 0; i < files.length; i++) {
@@ -132,6 +135,16 @@ export default function LocalFileUpload() {
     prepareFilesForUpload(Array.from(target.files));
   };
 
+  useState(() => {
+    if (
+      progress &&
+      progress.filter((item) => item.isComplete).length == progress.length
+    ) {
+      // redirect page
+      console.log('uploeaded al files.');
+    }
+  }, [progress]);
+
   const prepareFilesForUpload = (_prepFiles: File[]) => {
     setFiles((_prevFiles: File[]) => {
       const files: File[] = [];
@@ -154,13 +167,17 @@ export default function LocalFileUpload() {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
-    console.log('senfing ...');
+    console.log('sending ...');
     if (files.length == 0) return false;
 
-    console.log(files);
-
-    setLoading(true);
+    // console.log(files);
+    // add to store and redirect to dashboard
     uploadFiles(files);
+
+    useAppDispatch(updateFiles(Array.from(files)));
+
+    updateImageDisplay(files);
+    setLoading(true);
   };
 
   const removeFile = (index: number) => {
@@ -316,6 +333,17 @@ export default function LocalFileUpload() {
           </div>
         </div>
 
+        {files.length > 0 ? (
+          <div className='mt-5 mb-3 ml-3 flex items-center'>
+            <span className='text-md text-gray-800 md:text-2xl'>
+              Local Files
+            </span>
+            <span className='ml-5 text-gray-800 flex text-md items-center font-semibold justify-center rounded-full bg-gray-300 h-10 w-10'>
+              {files.length}
+            </span>
+          </div>
+        ) : null}
+
         <div className='flex flex-col gap-y-2 mt-5'>
           {files.map((file: File, index: number) => (
             <div
@@ -344,21 +372,19 @@ export default function LocalFileUpload() {
                   {progress[index].failed ? (
                     <button
                       type='button'
-                      className='-m-1.5 rounded-md p-2.5 text-gray-700'
+                      className='-m-1.5 rounded-full bg-gray-300 p-2 text-gray-700'
                       onClick={() => retryUpload(index)}
                     >
                       <span className='sr-only'>Remove Selected File</span>
                       <FontAwesomeIcon
                         icon={faRedo}
-                        color={'#000'}
-                        height={10}
-                        width={10}
+                        className='h-6 w-6 text-gray-700'
                       />
                     </button>
                   ) : (
                     <button
                       type='button'
-                      className='-m-1.5 rounded-md p-2.5 text-gray-700 cursor-pointer'
+                      className='-m-1.5 rounded-full bg-gray-300 p-2 text-gray-700 cursor-pointer'
                       onClick={() => removeFile(index)}
                     >
                       <span className='sr-only'>Remove Selected File</span>

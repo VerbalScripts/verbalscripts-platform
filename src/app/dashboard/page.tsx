@@ -15,9 +15,6 @@ import { useAppSelector } from '@/store/hooks';
 export default function Page() {
   const authState = useAppSelector((state) => state.auth.isAuth);
 
-  useEffect(() => {
-    console.log(authState);
-  }, [authState]);
 
   return (
     <div>

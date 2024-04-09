@@ -2,14 +2,9 @@ import React from 'react';
 
 export default function LinkUpload() {
   return (
-    <div>
-      <div className='flex items-center gap-x-4'>
-        <div className='flex items-center justify-center bg-slate-800 px-5 text-gray-100 py-1.5 rounded-full font-semibold'>
-          Option 2
-        </div>
-        <div className='text-slate-800 font-bold text-xl'>
-          Add a link to your file.
-        </div>
+    <div className='my-10'>
+      <div className='text-slate-800 font-bold text-xl'>
+        Add a link to your file.
       </div>
 
       <form action='#' method='POST' className=''>
@@ -27,11 +22,13 @@ export default function LinkUpload() {
                 type='text'
                 name='first-name'
                 id='first-name'
+                placeholder='http:// or https://example.com/my-file.txt'
                 autoComplete='given-name'
-                className='md:w-3/4 rounded-md border-0 px-3.5 py-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+                className='md:w-3/4 rounded-md border-0 px-3.5 py-3.5 text-gray-800 text-lg shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 placeholder:text-md focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
               />
-
-              <button className='bg-indigo-500 text-white text-xl font-semibold rounded-full py-1.5 px-4 '>
+            </div>
+            <div className='my-5'>
+              <button className='bg-indigo-500 text-white text-xl font-semibold rounded-full py-2.5 px-4 '>
                 Upload Now
               </button>
             </div>

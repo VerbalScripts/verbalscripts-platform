@@ -8,7 +8,7 @@ import VimeoUpload from '@/components/uploadOptions/VimeoUpload';
 import FileSelectionTab from '@/components/FileSelectionTab';
 
 export default function UploadFile() {
-  const [activeTab, setActiveTab] = useState<string>();
+  const [activeTab, setActiveTab] = useState<string>('local-file');
 
   return (
     <section style={{ backgroundColor: '#f9f8f2' }}>
@@ -39,7 +39,7 @@ export default function UploadFile() {
               ) : activeTab == 'link' ? (
                 <LinkUpload />
               ) : (
-                <LocalFileUpload />
+                <LinkUpload />
               )}
             </section>
           }

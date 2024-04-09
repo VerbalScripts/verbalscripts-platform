@@ -67,10 +67,10 @@ export default function FileSelectionTab({ callback }: FileSelectionTabProps) {
             <a
               href={'#' + option.id}
               className={classNames(
-                'h-10  flex justify-center   transition-all duration-300 ease-out items-center ring-1 ring-inset ring-transparent   text-lg text-gray-900 rounded-full  hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group',
+                'h-12  flex justify-center   transition-all duration-300 ease-out items-center ring-1 ring-inset ring-transparent   text-lg text-gray-900 rounded-full  hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group',
                 activeTab == option.id
                   ? 'bg-gray-300 px-3 w-48 md:w-auto'
-                  : 'w-10',
+                  : 'w-12',
               )}
             >
               <Image

@@ -1,9 +1,9 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState = {
   folders: [], // store user directories
   selectedFolderId: null, // follow currently selected folder
-  files: [], // store user directories
+  files: Array<string>, // store user directories
 };
 
 const uploadsSlice = createSlice({
@@ -11,7 +11,12 @@ const uploadsSlice = createSlice({
   initialState,
   reducers: {
     createFolder() {},
+    updateFiles ( state, action: PayloadAction<string[]> ) {
+      state.files = action.payload
+    },
   },
 });
 
 export default uploadsSlice.reducer;
+
+export const {updateFiles } = uploadsSlice.actions;
