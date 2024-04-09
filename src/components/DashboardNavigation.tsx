@@ -2,21 +2,22 @@
 
 import { classNames } from '@/utils/classNames';
 import { Disclosure } from '@headlessui/react';
-import { CogIcon } from '@heroicons/react/20/solid';
+import { ArrowUpOnSquareStackIcon, CogIcon } from '@heroicons/react/20/solid';
 import {
   RocketLaunchIcon,
   CheckBadgeIcon,
   ClockIcon,
   Squares2X2Icon,
-  FolderPlusIcon,
-  ArchiveBoxIcon,
   ChevronDownIcon,
   UserIcon,
+  ArrowLeftEndOnRectangleIcon,
+  QuestionMarkCircleIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import React from 'react';
 
 import { usePathname } from 'next/navigation';
+import AppTitle from './AppTitle';
 
 type NavItem = {
   name: string;
@@ -40,6 +41,7 @@ function NavigationItemLink({ item, expanded }: NavItemProp) {
           usePathname() == item.href
             ? 'bg-indigo-500 text-white'
             : 'hover:bg-indigo-500/5',
+          expanded ? '' : 'justify-center',
         )}
       >
         <item.icon
@@ -70,7 +72,7 @@ export default function DashboardNavigation({
 
     {
       name: 'Upload',
-      icon: FolderPlusIcon,
+      icon: ArrowUpOnSquareStackIcon,
       href: '/dashboard/upload',
     },
 
@@ -103,29 +105,31 @@ export default function DashboardNavigation({
 
   const bottomRoutes: Array<NavItem> = [
     {
-      name: 'Help and Information',
-      icon: FolderPlusIcon,
-      href: '/dashboard/faqs',
+      name: 'Help Center',
+      icon: QuestionMarkCircleIcon,
+      href: '/dashboard/help',
     },
 
     {
       name: 'Log out',
-      icon: ArchiveBoxIcon,
+      icon: ArrowLeftEndOnRectangleIcon,
       href: '/auth/deauth',
     },
   ];
   // const [open, setOpen] = useState(false);
 
   return (
-    <aside className=' px-8 py-5 border-r border-gray-300  min-h-screen flex flex-col justify-between'>
+    <aside
+      className={classNames(
+        'py-5 border-r border-gray-300  min-h-screen flex flex-col justify-between max-h-screen overflow-x-hidden overflow-y-auto',
+        expanded ? 'px-8' : 'px-1',
+      )}
+    >
       {/* title */}
 
       <div>
-        <div className='flex lg:flex-1 mb-16'>
-          <a href='/' className='-m-1.5 p-1.5 text-2xl text-gray-700 font-bold'>
-            <span>Verbal</span>
-            <span className='text-orange-500 italic'>Scripts</span>
-          </a>
+        <div className={classNames(expanded ? 'block' : 'hidden')}>
+          <AppTitle />
         </div>
         {appRoutes.map((item) => {
           if (typeof item.routes != 'undefined' && item.routes.length > 0) {
@@ -178,7 +182,7 @@ export default function DashboardNavigation({
       <div>
         <div
           className={classNames(
-            'bg-indigo-500/15 rounded-xl p-3 text-center',
+            'bg-indigo-500/15 rounded-xl px-2 py-4 text-center',
             expanded ? '' : 'hidden',
           )}
         >
@@ -188,7 +192,7 @@ export default function DashboardNavigation({
           <div className='mt-5'>
             <Link
               href='/auth/login'
-              className='rounded-full  px-4 py-1.5 bg-indigo-500 text-md font-semibold focus:ring-4 focus:outline-none focus:ring-indigo-300'
+              className='rounded-full  px-4 py-2.5 bg-indigo-500 text-md font-semibold focus:ring-4 focus:outline-none focus:ring-indigo-300'
             >
               Login
             </Link>

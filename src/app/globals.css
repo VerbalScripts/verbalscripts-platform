@@ -25,10 +25,6 @@ html {
   scroll-behavior: smooth;
 }
 
-* {
-  /* font-family: 'Open Sans'; */
-}
-
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -134,4 +130,18 @@ body {
   #fc_frame {
     bottom: 85px !important;
   }
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #776e6e #a3a3a3;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: orange;
 }

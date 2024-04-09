@@ -6,8 +6,9 @@ import DashboardHeader from '@/components/DashboardHeader';
 import NextNprogress from '@/lib/NextNprogress';
 import { Suspense, useState } from 'react';
 import { classNames } from '@/utils/classNames';
-import { ArrowLeftIcon } from '@heroicons/react/24/outline';
 import StoreProvider from '../StoreProvider';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 // add redux
 
@@ -22,7 +23,7 @@ export default function DashboardLayout({
 
   return (
     <StoreProvider>
-      <section className='min-h-screen' style={{ backgroundColor: '#fff' }}>
+      <section className='bg-white min-h-screen'>
         <Suspense>
           <NextNprogress />
         </Suspense>
@@ -30,17 +31,18 @@ export default function DashboardLayout({
           <div className='relative h-full'>
             <div
               className={classNames(
-                'absolute transition-all  duration-300 left-0 top-0',
-                expanded ? 'w-[16rem]' : 'w-[5rem]',
+                'absolute transition-all bg-white  duration-300 left-0 top-0',
+                expanded ? 'md:w-[16rem]' : 'md:w-[5rem]',
               )}
             >
               <button
                 onClick={() => setExpanded(!expanded)}
-                className='absolute bg-white top-[1.2rem] -right-[1rem] z-50 rounded-full p-2 border text-gray-700 border-gray-300'
+                className='absolute bg-white top-[1.2rem] -right-[1rem] z-50 rounded-full px-2 py-3 border text-gray-700 border-gray-300'
               >
-                <ArrowLeftIcon
+                <FontAwesomeIcon
+                  icon={faAngleRight}
                   className={classNames(
-                    'h-5 w-5 transition-all',
+                    'h-5 w-5 transition-all text-gray-800',
                     expanded ? '' : '-rotate-180',
                   )}
                 />
@@ -50,7 +52,7 @@ export default function DashboardLayout({
 
             <div
               className={classNames(
-                'absolute transition-all duration-300 top-0 right-0 ',
+                'absolute transition-all duration-300 top-0 right-0 max-h-screen overflow-y-auto',
                 expanded ? 'w-[calc(100%-16rem)]' : 'w-[calc(100%-5rem)]',
               )}
             >

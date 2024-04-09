@@ -4,6 +4,9 @@ const headerSlice = createSlice({
   name: 'auth',
   initialState: {
     isAuth: false,
+    user: null,
+    error: null,
+    loading: false,
   },
   reducers: {
     setAuthState(state, action: PayloadAction<boolean>) {

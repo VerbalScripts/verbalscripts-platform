@@ -1,15 +1,13 @@
-import { bytesToMB } from '@/utils/bytesToMb';
 import { classNames } from '@/utils/classNames';
-import { faRedo } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { XMarkIcon } from '@heroicons/react/24/outline';
 import React, { DragEvent, useState } from 'react';
-// import { useAppDispatch } from '@/store/hooks';
+import { useRouter } from 'next/navigation';
 
 import JSZip from 'jszip';
-// import { updateFiles } from '@/store/features/uploadsSlice';
+import FileUploadProgress from './FileUploadProgress';
 
 export default function LocalFileUpload() {
+  const router = useRouter();
+
   const allowedExtensions = [
     'mp3',
     'wav',
@@ -21,147 +19,195 @@ export default function LocalFileUpload() {
     'mkv',
   ];
 
-  function updateImageDisplay(files: File[]) {
+  async function updateImageDisplay(files: File[]) {
     const zip = new JSZip();
 
+    // add files to zip
     files.forEach((file) => {
-      zip.file(file.webkitRelativePath, file);
-      console.log(file.webkitRelativePath);
+      zip.file(file.name, file);
+      console.log(file.name);
     });
-    zip
-      .generateAsync({ type: 'blob' }, function updateCallback(metadata) {
+
+    const zipContent = await zip.generateAsync(
+      { type: 'blob' },
+      function updateCallback(metadata) {
         console.log('progression: ' + metadata.percent.toFixed(2) + ' %');
         if (metadata.currentFile) {
           console.log('current file = ' + metadata.currentFile);
         }
-      })
-      .then(function (content) {
-        console.log(content);
-        const formData = new FormData();
-        formData.append('folderzip', content);
-        fetch('https://codesandbox.io/s/still-morning-udjvz', {
-          method: 'POST',
-          body: formData,
-        })
-          .then((response) => {
-            console.log(response);
-          })
-          .catch((e) => console.log(e));
-      });
-  }
+      },
+    );
 
-  function uploadFiles(files: File[]) {
-    for (let i = 0; i < files.length; i++) {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const fileExtension = files[i].name
-        .substring(files[i].name.lastIndexOf('.'))
-        .toLowerCase();
+    console.log(zipContent);
 
-      uploadFile(files[i], i);
-      // if (allowedExtensions.includes(fileExtension)) {
-      // } else {
-      //   alert('Invalid file type: ' + fileExtension);
-      // }
-    }
-  }
-
-  const uploadFile = (file: File, index: number) => {
     const formData = new FormData();
-    formData.append('folderzip', file);
+    formData.append('folderzip', zipContent);
+
     const xhr = new XMLHttpRequest();
+    // show modal
+    setOpen(true);
 
     xhr.upload.addEventListener('progress', function (event) {
-      console.log(event.lengthComputable);
-
       if (event.lengthComputable) {
         const percent = Math.round((event.loaded / event.total) * 100);
         console.log(percent);
-        // progressBar.style.width = percent + '%';
-        // progressBar.innerHTML = percent + '%';
-        setProgress((prev: ProgressTracker[]) => {
-          const _updated = [...prev];
-          _updated[index].percentage = percent.toString();
-          return _updated;
-        });
+        setProgress({ ...progress, percentage: `${percent}` });
       }
     });
 
     xhr.addEventListener('load', function () {
-      setProgress((prev: ProgressTracker[]) => {
-        const _updated = [...prev];
-        _updated[index].isComplete = true;
-        return _updated;
-      });
+      // route to a new page and update status
+      // setOpen(false);
+      router.push('/dashboard/pending?new=true');
+      console.log('Finished ....');
     });
 
     xhr.addEventListener('error', function () {
-      setProgress((prev: ProgressTracker[]) => {
-        const _updated = [...prev];
-        _updated[index].isComplete = true;
-        _updated[index].failed = true;
-        _updated[index].error = 'Upload Failed';
-        return _updated;
+      // setOpen( false );
+      setProgress({
+        ...progress,
+        failed: true,
+        error: 'Upload failed to complete. Retry Again!',
       });
+      console.log('Failed ?');
     });
 
-    console.log('uploading');
     xhr.open(
       'POST',
       'https://cb4bad80859144cda1497e4e545cf492.api.mockbin.io/',
       true,
     );
     xhr.send(formData);
-  };
-
-  interface ProgressTracker {
-    percentage: string;
-    isComplete: boolean;
-    failed: boolean;
-    error: string;
   }
+  // const config = {
+  //   headers: {
+  //     "Content-Type": "multipart/form-data",
+  //   },
+  //   onUploadProgress: function ( progressEvent: AxiosProgressEvent ) {
+  //     const percentCompleted = Math.round(
+  //       ( progressEvent.loaded * 100 ) / progressEvent.total,
+  //     );
+  //     console.log( percentCompleted );
+  //   },
+  // };
+
+  // const response = await axios.post(
+  //   'https://cb4bad80859144cda1497e4e545cf492.api.mockbin.io/',
+  //   formData,
+  //   config,
+  // );
+
+  // console.log(response);
+
+  // function uploadFiles(files: File[]) {
+  //   for (let i = 0; i < files.length; i++) {
+  //     // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  //     const fileExtension = files[i].name
+  //       .substring(files[i].name.lastIndexOf('.'))
+  //       .toLowerCase();
+
+  //     uploadFile(files[i], i);
+  //     // if (allowedExtensions.includes(fileExtension)) {
+  //     // } else {
+  //     //   alert('Invalid file type: ' + fileExtension);
+  //     // }
+  //   }
+  // }
+
+  // const uploadFile = (file: File, index: number) => {
+  //   const formData = new FormData();
+  //   formData.append('folderzip', file);
+  //   const xhr = new XMLHttpRequest();
+
+  //   xhr.upload.addEventListener('progress', function (event) {
+  //     console.log(event.lengthComputable);
+
+  //     if (event.lengthComputable) {
+  //       const percent = Math.round((event.loaded / event.total) * 100);
+  //       console.log(percent);
+  //       // progressBar.style.width = percent + '%';
+  //       // progressBar.innerHTML = percent + '%';
+  //       setProgress((prev: ProgressTracker[]) => {
+  //         const _updated = [...prev];
+  //         _updated[index].percentage = percent.toString();
+  //         return _updated;
+  //       });
+  //     }
+  //   });
+
+  //   xhr.addEventListener('load', function () {
+  //     setProgress((prev: ProgressTracker[]) => {
+  //       const _updated = [...prev];
+  //       _updated[index].isComplete = true;
+  //       return _updated;
+  //     });
+  //   });
+
+  //   xhr.addEventListener('error', function () {
+  //     setProgress((prev: ProgressTracker[]) => {
+  //       const _updated = [...prev];
+  //       _updated[index].isComplete = true;
+  //       _updated[index].failed = true;
+  //       _updated[index].error = 'Upload Failed';
+  //       return _updated;
+  //     });
+  //   });
+
+  //   console.log('uploading');
+  //   xhr.open(
+  //     'POST',
+  //     'https://cb4bad80859144cda1497e4e545cf492.api.mockbin.io/',
+  //     true,
+  //   );
+  //   xhr.send(formData);
+  // };
 
   const [files, setFiles] = useState<Array<File>>([]);
-  const [progress, setProgress] = useState<ProgressTracker[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [progress, setProgress] = useState<ProgressTracker>({
+    percentage: '0',
+    error: '',
+    failed: false,
+    isComplete: false,
+  });
   const [dragEnter, setDragEnter] = useState<boolean>(false);
 
-  const FilesUploadForm = (event: React.FormEvent<HTMLInputElement>) => {
+  const [open, setOpen] = useState(false);
+
+  const FilesUploadForm = async (event: React.FormEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement & {
       files: FileList;
     };
 
     if (target.files.length == 0) return;
 
-    prepareFilesForUpload(Array.from(target.files));
+    await prepareFilesForUpload(Array.from(target.files));
   };
 
-  useState(() => {
-    // if (
-    //   progress &&
-    //   progress.filter((item) => item.isComplete).length == progress.length
-    // ) {
-    //   // redirect page
-    //   console.log('uploeaded al files.');
-    // }
-  });
+  const retryUpload = async () => {
+    await prepareFilesForUpload(files);
+  };
 
-  const prepareFilesForUpload = (_prepFiles: File[]) => {
+  const prepareFilesForUpload = async (_prepFiles: File[]) => {
     setFiles((_prevFiles: File[]) => {
       const files: File[] = [];
       _prepFiles.forEach((file: File) => files.push(file));
       return [..._prevFiles, ...files];
     });
 
+    // add files
+
+    await updateImageDisplay(files);
+
     // init trackers
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    _prepFiles.forEach((_file: File) =>
-      setProgress((prev: ProgressTracker[]) => {
-        return [
-          ...prev,
-          { percentage: '0', isComplete: false, error: '', failed: false },
-        ];
-      }),
-    );
+    // _prepFiles.forEach((_file: File) =>
+    //   setProgress((prev: ProgressTracker[]) => {
+    //     return [
+    //       ...prev,
+    //       { percentage: '0', isComplete: false, error: '', failed: false },
+    //     ];
+    //   }),
+    // );
   };
 
   const handleSubmit = (event: React.FormEvent) => {
@@ -171,41 +217,12 @@ export default function LocalFileUpload() {
 
     // console.log(files);
     // add to store and redirect to dashboard
-    uploadFiles(files);
+    // uploadFiles(files);
 
     // useAppDispatch(updateFiles(Array.from(files)));
 
-    updateImageDisplay(files);
-    setLoading(true);
-  };
-
-  const removeFile = (index: number) => {
-    setProgress((prev: ProgressTracker[]) => {
-      const _updated = [...prev];
-      _updated.splice(index, 1);
-      return _updated;
-    });
-    setFiles((prev: File[]) => {
-      const _updated = [...prev];
-      _updated.splice(index, 1);
-      return _updated;
-    });
-  };
-
-  const retryUpload = (index: number) => {
-    const file: File = files[index];
-    uploadFile(file, index);
-    // reset progress
-    setProgress((prev: ProgressTracker[]) => {
-      const _updated = [...prev];
-      _updated[index] = {
-        percentage: '0',
-        isComplete: false,
-        error: '',
-        failed: false,
-      };
-      return _updated;
-    });
+    // updateImageDisplay(files);
+    // setLoading(true);
   };
 
   function dropHandler(ev: DragEvent) {
@@ -238,7 +255,6 @@ export default function LocalFileUpload() {
       });
     }
 
-    console.log(_dataFiles);
     prepareFilesForUpload(_dataFiles);
   }
 
@@ -252,7 +268,6 @@ export default function LocalFileUpload() {
   function dragEnterHandler(ev: DragEvent) {
     // Prevent default behavior (Prevent file from being opened)
     ev.preventDefault();
-    console.log('File(s) in drop zone');
     setDragEnter(true);
   }
 
@@ -273,6 +288,12 @@ export default function LocalFileUpload() {
 
   return (
     <div className='my-10'>
+      <FileUploadProgress
+        retryUpload={retryUpload}
+        progress={progress}
+        open={open}
+        setOpen={setOpen}
+      />
       <form onSubmit={handleSubmit}>
         <div
           onDrop={dropHandler}
@@ -331,7 +352,7 @@ export default function LocalFileUpload() {
             </div>
           </div>
         </div>
-
+        {/* 
         {files.length > 0 ? (
           <div className='mt-5 mb-3 ml-3 flex items-center'>
             <span className='text-md text-gray-800 md:text-2xl'>
@@ -341,9 +362,9 @@ export default function LocalFileUpload() {
               {files.length}
             </span>
           </div>
-        ) : null}
+        ) : null} */}
 
-        <div className='flex flex-col gap-y-2 mt-5'>
+        {/* <div className='flex flex-col gap-y-2 mt-5'>
           {files.map((file: File, index: number) => (
             <div
               key={file.name}
@@ -392,8 +413,6 @@ export default function LocalFileUpload() {
                   )}
                 </div>
               </div>
-              {/* progress  bar */}
-              {/* progress label */}
               <div
                 className={classNames(
                   'flex items-center gap-x-3 px-2 justify-between overflow-hidden',
@@ -416,9 +435,9 @@ export default function LocalFileUpload() {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
 
-        <div className='my-5 md:my-10 text-center flex justify-center  md:justify-end'>
+        {/* <div className='my-5 md:my-10 text-center flex justify-center  md:justify-end'>
           <button
             type='submit'
             disabled={loading}
@@ -426,7 +445,7 @@ export default function LocalFileUpload() {
           >
             {loading ? 'Processing' : 'Upload'}
           </button>
-        </div>
+        </div> */}
       </form>
 
       <div className='my-10 text-center'>

@@ -12,6 +12,13 @@ type NavLabel = {
   imgUrl?: string;
 };
 
+interface ProgressTracker {
+  percentage: string;
+  isComplete: boolean;
+  failed: boolean;
+  error: string;
+}
+
 type AccordionpProps = {
   children: React.ReactNode;
   title: string;
