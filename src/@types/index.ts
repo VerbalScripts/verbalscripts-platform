@@ -25,6 +25,13 @@ interface OrderFile {
   status?: string;
 }
 
+interface OrderFolder {
+  label: string;
+  isAnonynous: boolean;
+  anonymousUserId?: string;
+  userId?: string;
+  id?: string;
+}
 interface ProgressTracker {
   percentage: string;
   isComplete: boolean;

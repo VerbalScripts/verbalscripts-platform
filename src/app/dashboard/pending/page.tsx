@@ -3,14 +3,10 @@
 import FileEmpty from '@/components/dashboard/FileEmpty';
 import React, { useEffect, useState } from 'react';
 import { Checkbox, Table } from 'flowbite-react';
-import axios, { AxiosHeaders, AxiosResponse } from 'axios';
-import { hostUrl } from '../../../../config';
-import { GetOrStoreAuthToken } from '@/utils/GetOrStoreAuthToken';
-import { v4 as uuid } from 'uuid';
 import TableMenuDropDown from '@/components/dashboard/TableMenuDropDown';
 import LoadSpinner from '@/components/dashboard/LoadSpinner';
 import { bytesToMB } from '@/utils/bytesToMb';
-import {  FolderPlusIcon } from '@heroicons/react/24/outline';
+import { DocumentIcon, FolderIcon, FolderPlusIcon } from '@heroicons/react/24/outline';
 import {
   ArrowUturnLeftIcon,
   ArrowUturnRightIcon,
@@ -19,12 +15,15 @@ import { ListBulletIcon, Squares2X2Icon } from '@heroicons/react/20/solid';
 import { classNames } from '@/utils/classNames';
 import FileUploadMenuOptions from '@/components/dashboard/FileUploadMenuOptions';
 import AddFolder from '@/components/modals/AddFolder';
+import AxiosProxy from '@/utils/AxiosProxy';
+import Link from 'next/link'
 
 interface PageSetupOptions {
   toggleView: 'grid' | 'list';
 }
 export default function Page() {
   const [orders, setOrders] = useState<OrderFile[]>([]);
+  const [folders, setFolders] = useState<OrderFolder[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [open, setOpen] = useState(false);
 
@@ -32,37 +31,43 @@ export default function Page() {
     toggleView: 'list',
   });
 
-  interface CustomHeaders extends AxiosHeaders {
-    'x-token'?: string;
-  }
-
-  useEffect(() => {
-    const fetchPendingOrders = async () => {
-      const token = GetOrStoreAuthToken();
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      const headers: CustomHeaders = {};
-      if (token) {
-        headers['Authorization'] = `Bearer ${token}`;
-      } else {
-        headers['x-token'] = uuid();
-      }
-
+  const fetchPendingOrders = async () => {
+    try {
       setLoading(true);
-
-      const response: AxiosResponse = await axios.get(`${hostUrl}/files`, {
-        headers,
-      });
-
+      const response = await AxiosProxy.get('/files');
       if (response.status == 200) {
         setOrders(response.data);
       }
       console.log(response);
+    } catch (error) {
+      console.log(error);
+    } finally {
       setLoading(false);
-    };
+    }
+  };
 
+  const fetchPendingFolderOrders = async () => {
+    try {
+      setLoading(true);
+      const response = await AxiosProxy.get('/folders');
+      if (response.status == 200) {
+        setFolders(response.data);
+      }
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    // fetchPendingOrders();
     if (orders.length == 0) {
       fetchPendingOrders();
+    }
+    if (folders.length == 0) {
+      fetchPendingFolderOrders();
     }
   }, []);
 
@@ -146,6 +151,35 @@ export default function Page() {
                 </Table.HeadCell>
               </Table.Head>
               <Table.Body className='divide-y'>
+                {folders.map((folder) => (
+                  <Table.Row
+                    key={folder.id}
+                    className='bg-white dark:border-gray-700 dark:bg-gray-800'
+                  >
+                    <Table.Cell className='px-4 py-2'>
+                      <Checkbox />
+                    </Table.Cell>
+                    <Table.Cell>
+                      <Link
+                        className='flex gap-x-3 items-center'
+                        href={'?folderId=' + folder.id}
+                      >
+                        <FolderIcon className='text-gray-700 h-8 w-8 items-center' />
+                        <span className='whitespace-nowrap font-medium text-gray-900 dark:text-white'>
+                          {folder.label}
+                        </span>
+                      </Link>
+                    </Table.Cell>
+                    <Table.Cell>--</Table.Cell>
+                    <Table.Cell>---</Table.Cell>
+                    <Table.Cell>---</Table.Cell>
+                    <Table.Cell>
+                      <div className='flex items-center gap-x-1'>
+                        <TableMenuDropDown />
+                      </div>
+                    </Table.Cell>
+                  </Table.Row>
+                ))}
                 {orders.map((order) => (
                   <Table.Row
                     key={order.fileId}
@@ -154,8 +188,11 @@ export default function Page() {
                     <Table.Cell className='px-4 py-2'>
                       <Checkbox />
                     </Table.Cell>
-                    <Table.Cell className='whitespace-nowrap font-medium text-gray-900 dark:text-white'>
-                      {order.label}
+                    <Table.Cell className='flex gap-x-3 items-center'>
+                      <DocumentIcon className='text-gray-700 h-7 w-7' />
+                      <span className='whitespace-nowrap font-medium text-gray-900 dark:text-white'>
+                        {order.label}
+                      </span>
                     </Table.Cell>
                     <Table.Cell>{bytesToMB(order.size)}</Table.Cell>
                     <Table.Cell>

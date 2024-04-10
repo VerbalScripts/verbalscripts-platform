@@ -1,6 +1,9 @@
-import { Fragment, useRef } from 'react';
+import { Fragment, useRef, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { FolderPlusIcon } from '@heroicons/react/24/outline';
+import AxiosProxy from '@/utils/AxiosProxy';
+import { Spinner } from 'flowbite-react';
+
 
 interface AddFolderProps {
   open: boolean;
@@ -9,6 +12,31 @@ interface AddFolderProps {
 
 export default function AddFolder({ open, setOpen }: AddFolderProps) {
   const cancelButtonRef = useRef(null);
+  const folderRef = useRef(null);
+
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const createFolderHttp = async () => {
+    try {
+      if ( folderRef.current?.value.length == 0 ) return;
+      const label = folderRef.current?.value;
+      setLoading(true)
+      const response = await AxiosProxy.post('/folders/create', {
+        label,
+      });
+      if (response.status == 201) {
+        console.log( response.data );
+        setOpen(false)
+      } else {
+        console.log('success');
+        console.log(response.data);
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -67,6 +95,7 @@ export default function AddFolder({ open, setOpen }: AddFolderProps) {
                           id='folder-name'
                           name='name'
                           type='text'
+                          ref={folderRef}
                           autoComplete='name'
                           required
                           placeholder='Enter name of folder '
@@ -79,13 +108,17 @@ export default function AddFolder({ open, setOpen }: AddFolderProps) {
                 <div className='bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6'>
                   <button
                     type='button'
+                    disabled={loading}
                     className='inline-flex w-full justify-center rounded-full bg-indigo-500 px-7 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 sm:ml-3 sm:w-auto'
-                    onClick={() => setOpen(false)}
+                    onClick={() => createFolderHttp()}
                   >
-                    Create
-                  </button>
+                    {!loading ? 'Create' : <div>
+                      <Spinner color={'pink'} />
+                    </div> }
+                   </button>
                   <button
                     type='button'
+                    disabled={loading}
                     className='mt-3 inline-flex w-full justify-center rounded-full bg-white px-3 py-2.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto'
                     onClick={() => setOpen(false)}
                     ref={cancelButtonRef}
