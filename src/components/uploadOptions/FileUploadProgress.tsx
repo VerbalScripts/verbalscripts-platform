@@ -21,18 +21,14 @@ export default function FileUploadProgress({
   open,
   retryUpload,
   progress,
-}: FileUploadProgressProps ) {
-  
-
+}: FileUploadProgressProps) {
   const router = useRouter();
 
+  const cancelButtonRef = useRef(null);
 
-  const cancelButtonRef = useRef( null );
-  
-    const GoToDashboard = () => {
-      router.push('/dashboard/pending?new=true');
-    };
-
+  const GoToDashboard = () => {
+    router.push('/dashboard/pending?new=true');
+  };
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -138,7 +134,11 @@ export default function FileUploadProgress({
                     >
                       <span>Upload Success Proceed</span>
                     </button>
-                  ) : null}
+                  ) : (
+                    <span className='text-gray-600 text-md'>
+                      {progress.statusText}
+                    </span>
+                  )}
                 </div>
               </Dialog.Panel>
             </Transition.Child>

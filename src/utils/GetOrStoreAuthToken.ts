@@ -1,6 +1,4 @@
-
-
-export const GetOrStoreAuthToken = ( utoken?: string ) => {
+export const GetOrStoreAuthToken = (utoken?: string) => {
   if (utoken) {
     localStorage.setItem('x-token', utoken);
     return true;

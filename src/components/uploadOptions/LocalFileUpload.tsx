@@ -33,11 +33,14 @@ export default function LocalFileUpload() {
     }));
 
     if (inputFiles.length == 0) {
-      setProgress((prevState) => ({
-        ...prevState,
-        error: 'Please select a file',
-      }));
+      return;
     }
+    setOpen(true);
+
+    setProgress((prevState) => ({
+      ...prevState,
+      statusText: 'Zipping files',
+    }));
 
     // add files to zip
     inputFiles.forEach((file) => {
@@ -53,7 +56,6 @@ export default function LocalFileUpload() {
         }
       },
     );
-
 
     const formData = new FormData();
     formData.append('folderzip', zipContent);
@@ -73,7 +75,6 @@ export default function LocalFileUpload() {
     const xhr = new XMLHttpRequest();
 
     // show modal
-    setOpen(true);
 
     xhr.upload.addEventListener('progress', function (event) {
       if (event.lengthComputable) {
@@ -88,24 +89,24 @@ export default function LocalFileUpload() {
 
     xhr.addEventListener('readystatechange', function () {
       // route to a new page and update status
-      
+
       if (this.readyState == 4 && this.status == 201) {
         //  setOpen(false);
-        const resp = JSON.parse( this.response )
-        if ( resp.token ) GetOrStoreAuthToken( resp.token );
-        
-      } 
+        const resp = JSON.parse(this.response);
+        if (resp.token) GetOrStoreAuthToken(resp.token);
+      }
     });
 
     xhr.addEventListener('load', function () {
       // route to a new page and update status
       // router.push('/dashboard/pending?new=true');
-        setProgress((prevState) => ({
-          ...prevState,
-          failed: false,
-          isComplete: true,
-          error: '',
-        }));
+      setProgress((prevState) => ({
+        ...prevState,
+        failed: false,
+        isComplete: true,
+        statusText: 'Finished',
+        error: '',
+      }));
       console.log('Finished ....');
     });
 
@@ -118,8 +119,12 @@ export default function LocalFileUpload() {
       }));
     });
 
-    xhr.open( 'POST', `${ hostUrl }/uploads/push`, true );
-    const access_token = GetOrStoreAuthToken()
+    xhr.open('POST', `${hostUrl}/uploads/push`, true);
+    setProgress((prevState) => ({
+      ...prevState,
+      statusText: 'Uploading ...',
+    }));
+    const access_token = GetOrStoreAuthToken();
     if (access_token == null) {
       xhr.setRequestHeader('x-token', uuid());
     } else {
@@ -132,6 +137,7 @@ export default function LocalFileUpload() {
     percentage: '0',
     error: '',
     failed: false,
+    statusText: '',
     isComplete: false,
   });
   const [dragEnter, setDragEnter] = useState<boolean>(false);
@@ -152,7 +158,6 @@ export default function LocalFileUpload() {
     await updateImageDisplay(files);
   };
 
-
   const FolderUploadForm = async (event: React.FormEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement & {
       files: FileList;
@@ -161,14 +166,11 @@ export default function LocalFileUpload() {
     if (target.files.length == 0) return;
 
     // await prepareFilesForUpload(Array.from(target.files));
-    console.log(target.files)
+    console.log(target.files);
   };
 
-
-  
-
   const updateFilesArray = (_prepFiles: File[]) => {
-     setFiles((_prevFiles: File[]) => {
+    setFiles((_prevFiles: File[]) => {
       const files: File[] = [];
       _prepFiles.forEach((file: File) => files.push(file));
       return [..._prevFiles, ...files];
@@ -179,9 +181,7 @@ export default function LocalFileUpload() {
     updateFilesArray(_prepFiles);
 
     await updateImageDisplay(_prepFiles);
-    
   };
-
 
   function dropHandler(ev: DragEvent) {
     // console.log('goeat');

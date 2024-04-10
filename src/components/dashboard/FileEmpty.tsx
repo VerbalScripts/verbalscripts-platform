@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function FileEmpty() {
   return (
-    <div className='flex flex-col items-center py-36'>
+    <div className='flex flex-col items-center py-10  md:py-36'>
       <div>
         <FolderIcon className='text-gray-300 h-20 w-20' />
       </div>{' '}

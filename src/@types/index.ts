@@ -12,11 +12,24 @@ type NavLabel = {
   imgUrl?: string;
 };
 
+interface OrderFile {
+  label: string;
+  size: number;
+  mimetype: string;
+  file_url: string;
+  isAnonynous: boolean;
+  fileId: string;
+  anonymousUserId?: string;
+  userId?: string;
+  id?: string;
+}
+
 interface ProgressTracker {
   percentage: string;
   isComplete: boolean;
   failed: boolean;
   error: string;
+  statusText: string;
 }
 
 type AccordionpProps = {

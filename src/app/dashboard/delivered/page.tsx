@@ -1,5 +1,5 @@
 import React from 'react';
-import FileEmpty from '@/components/FileEmpty';
+import FileEmpty from '@/components/dashboard/FileEmpty';
 
 import type { Metadata } from 'next';
 
