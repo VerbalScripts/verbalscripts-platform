@@ -8,7 +8,7 @@ import { Suspense, useState } from 'react';
 import { classNames } from '@/utils/classNames';
 import StoreProvider from '../StoreProvider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDoubleLeft } from '@fortawesome/free-solid-svg-icons';
 
 // add redux
 
@@ -31,18 +31,18 @@ export default function DashboardLayout({
           <div className='relative h-full'>
             <div
               className={classNames(
-                'absolute transition-all bg-white  duration-300 left-0 top-0',
-                expanded ? 'md:w-[16rem]' : 'md:w-[5rem]',
+                'absolute transition-all z-50 bg-white  duration-300 left-0 top-0',
+                expanded ? 'w-[16rem]' : 'w-[5rem]',
               )}
             >
               <button
                 onClick={() => setExpanded(!expanded)}
-                className='absolute bg-white top-[1.2rem] -right-[1rem] z-50 rounded-full px-2 py-3 border text-gray-700 border-gray-300'
+                className='absolute bg-white top-[3rem] -right-[1rem] z-50 rounded-full h-10 w-10 border text-gray-700 border-gray-300'
               >
                 <FontAwesomeIcon
-                  icon={faAngleRight}
+                  icon={faAngleDoubleLeft}
                   className={classNames(
-                    'h-5 w-5 transition-all text-gray-800',
+                    'h-5 w-5 transition-all text-gray-600 mt-1',
                     expanded ? '' : '-rotate-180',
                   )}
                 />
@@ -52,8 +52,10 @@ export default function DashboardLayout({
 
             <div
               className={classNames(
-                'absolute transition-all duration-300 top-0 right-0 max-h-screen overflow-y-auto',
-                expanded ? 'w-[calc(100%-16rem)]' : 'w-[calc(100%-5rem)]',
+                'absolute transition-all duration-300 top-0 right-0 max-h-screen overflow-x-auto overflow-y-auto',
+                expanded
+                  ? 'w-[calc(100%] md:w-[calc(100%-16rem)]'
+                  : 'w-[calc(100%-5rem)] md:w-[calc(100%-5rem)]',
               )}
             >
               <DashboardHeader />

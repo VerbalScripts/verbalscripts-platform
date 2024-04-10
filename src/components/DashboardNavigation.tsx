@@ -121,7 +121,7 @@ export default function DashboardNavigation({
   return (
     <aside
       className={classNames(
-        'py-5 border-r border-gray-300  min-h-screen flex flex-col justify-between max-h-screen overflow-x-hidden overflow-y-auto',
+        'py-5 border-r bg-white border-gray-300  min-h-screen flex flex-col justify-between max-h-screen overflow-x-hidden overflow-y-auto',
         expanded ? 'px-8' : 'px-1',
       )}
     >
@@ -131,6 +131,7 @@ export default function DashboardNavigation({
         <div className={classNames(expanded ? 'block' : 'hidden')}>
           <AppTitle />
         </div>
+        <div className={classNames(expanded ? 'hidden' : 'block py-10')}></div>
         {appRoutes.map((item) => {
           if (typeof item.routes != 'undefined' && item.routes.length > 0) {
             return (
@@ -182,7 +183,7 @@ export default function DashboardNavigation({
       <div>
         <div
           className={classNames(
-            'bg-indigo-500/15 rounded-xl px-2 py-4 text-center',
+            ' bg-indigo-500/15 rounded-xl px-2 py-4 text-center',
             expanded ? '' : 'hidden',
           )}
         >

@@ -40,13 +40,14 @@ export default function Page() {
       if (response.status == 200) {
         setOrders(response.data);
       }
+      console.log(response);
       setLoading(false);
     };
 
     if (orders.length == 0) {
       fetchPendingOrders();
     }
-  }, [orders]);
+  }, []);
 
   return (
     <div className='px-6 md:px-16 xl:px-16 py-8'>
