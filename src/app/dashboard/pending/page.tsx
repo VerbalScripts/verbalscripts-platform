@@ -10,6 +10,8 @@ import { v4 as uuid } from 'uuid';
 import TableMenuDropDown from '@/components/dashboard/TableMenuDropDown';
 import LoadSpinner from '@/components/dashboard/LoadSpinner';
 import { bytesToMB } from '@/utils/bytesToMb';
+import { ArrowUturnLeftIcon, FolderPlusIcon } from '@heroicons/react/24/outline';
+import { ArrowUturnRightIcon } from '@heroicons/react/16/solid';
 
 export default function Page() {
   const [orders, setOrders] = useState<OrderFile[]>([]);
@@ -57,12 +59,25 @@ export default function Page() {
         <FileEmpty />
       ) : (
         <div>
-          <div className='flex  justify-end mb-8'>
-            <button className='rounded-full bg-indigo-500 font-semibold px-4 py-2 text-white'>
-              Add Files
-            </button>
+          <div className='flex  justify-between mb-8 items-center'>
+            <div className='flex gap-x-2'>
+              <button className='rounded-md bg-indigo-200 font-semibold px-4 py-2  focus-within:ring-4 focus-within:ring-indigo-400'>
+                <ArrowUturnLeftIcon className=' h-5 w-5 text-indigo-500' />
+              </button>
+              <button className='rounded-md bg-indigo-200 font-semibold px-4 py-2  focus-within:ring-4 focus-within:ring-indigo-400'>
+                <ArrowUturnRightIcon className=' h-5 w-5 text-indigo-500' />
+              </button>
+            
+            </div>
+
+            <div className='flex items-center'>
+              <button className='flex gap-x-2 rounded-md bg-indigo-500 font-semibold px-4 py-2  focus-within:ring-4 focus-within:ring-indigo-400'>
+                <FolderPlusIcon className='h-5 w-5 text-white' />
+                <span className='text-white'>New Folder</span>
+              </button>
+            </div>
           </div>
-          <div className='overflow-x-auto'>
+          <div className='overflow-x-auto min-h-svh'>
             <Table hoverable>
               <Table.Head>
                 <Table.HeadCell className='p-4'>
