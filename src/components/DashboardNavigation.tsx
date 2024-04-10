@@ -121,7 +121,7 @@ export default function DashboardNavigation({
   return (
     <aside
       className={classNames(
-        'py-5 border-r bg-white border-gray-300  min-h-screen flex flex-col justify-between max-h-screen overflow-x-hidden overflow-y-auto',
+        'py-5 border-r bg-gray-100 border-gray-300  min-h-screen flex flex-col justify-between max-h-screen overflow-x-hidden overflow-y-auto',
         expanded ? 'px-8' : 'px-1',
       )}
     >

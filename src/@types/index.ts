@@ -22,6 +22,7 @@ interface OrderFile {
   anonymousUserId?: string;
   userId?: string;
   id?: string;
+  status?: string;
 }
 
 interface ProgressTracker {

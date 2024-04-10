@@ -6,7 +6,6 @@ import {
   BellAlertIcon,
 } from '@heroicons/react/24/outline';
 
-import { PlusIcon } from '@heroicons/react/24/outline';
 import DashDialogMenu from './DashDialogMenu';
 import { classNames } from '@/utils/classNames';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -16,7 +15,8 @@ import NotificationsPreview from './NotificationsPreview';
 export default function DashboardHeader() {
   // const [open, setOpen] = useState(false);
 
-  const [preview, setPreview] = useState(false);
+  const [ preview, setPreview ] = useState<boolean>( false );
+  const [openFolders, setOpenFolders] = useState<string[]>([])
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   // const SearchForFile = (event: KeyboardEventHandler<HTMLInputElement>) => {};
 
@@ -70,14 +70,14 @@ export default function DashboardHeader() {
           </div>
 
           <div className='hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-5'>
-            <a
+            {/* <a
               href='/dashboard/upload'
               className='flex items-center text-md font-semibold ring-1 ring-inset text-white px-3.5 py-1.5 focus:ring-4 focus:ring-indigo-300 bg-indigo-500 hover:bg-white hover:ring-indigo-400 hover:text-indigo-500 rounded-full'
             >
               <PlusIcon className='h-6 w-6' aria-hidden='true' />
 
               <span>Create New Order</span>
-            </a>
+            </a> */}
 
             <button
               // href='/dashboard/notifications'
