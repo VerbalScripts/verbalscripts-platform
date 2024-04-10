@@ -1,9 +1,14 @@
 import { Fragment, useRef } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
+import {
+  CheckBadgeIcon,
+  ExclamationTriangleIcon,
+} from '@heroicons/react/24/outline';
 import { classNames } from '@/utils/classNames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRedo } from '@fortawesome/free-solid-svg-icons';
+import { CloudArrowUpIcon } from '@heroicons/react/16/solid';
+import { useRouter } from 'next/navigation';
 
 interface FileUploadProgressProps {
   open: boolean;
@@ -16,8 +21,18 @@ export default function FileUploadProgress({
   open,
   retryUpload,
   progress,
-}: FileUploadProgressProps) {
-  const cancelButtonRef = useRef(null);
+}: FileUploadProgressProps ) {
+  
+
+  const router = useRouter();
+
+
+  const cancelButtonRef = useRef( null );
+  
+    const GoToDashboard = () => {
+      router.push('/dashboard/pending?new=true');
+    };
+
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -53,11 +68,23 @@ export default function FileUploadProgress({
               <Dialog.Panel className='relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg'>
                 <div className='bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4'>
                   <div className='sm:flex sm:items-center'>
-                    <div className='mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10'>
-                      <ExclamationTriangleIcon
-                        className='h-6 w-6 text-red-600'
-                        aria-hidden='true'
-                      />
+                    <div className='mx-auto flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-12 sm:w-12'>
+                      {progress.failed ? (
+                        <ExclamationTriangleIcon
+                          className='h-8 w-8 text-red-600'
+                          aria-hidden='true'
+                        />
+                      ) : progress.isComplete ? (
+                        <CheckBadgeIcon
+                          className='h-8 w-8 text-indigo-600'
+                          aria-hidden='true'
+                        />
+                      ) : (
+                        <CloudArrowUpIcon
+                          className='h-8 w-8 text-orange-300'
+                          aria-hidden='true'
+                        />
+                      )}
                     </div>
                     <div className='mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left'>
                       <Dialog.Title
@@ -79,8 +106,8 @@ export default function FileUploadProgress({
                           width: `${progress.percentage}%`,
                         }}
                         className={classNames(
-                          'absolute transition-all duration-150 top-0 bottom-0 rounded-xl left-0 w-0 bg-indigo-500 z-20',
-                          progress.failed ? 'bg-red-500' : '',
+                          'absolute transition-all duration-150 top-0 bottom-0 rounded-xl left-0 w-0  z-20',
+                          progress.failed ? 'bg-red-500' : 'bg-indigo-500',
                         )}
                       ></span>
                     </div>
@@ -90,30 +117,28 @@ export default function FileUploadProgress({
                     </div>
                   </div>
                 </div>
-                <div className='bg-gray-50 px-4 py-3 flex justify-center sm:px-6'>
-                  {
-                    progress.failed ? (
-                      <button
-                        type='button'
-                        className='-m-1.5 rounded-full bg-gray-300 p-2 text-gray-700'
-                        onClick={() => retryUpload()}
-                      >
-                        <span className='sr-only'>Remove Selected File</span>
-                        <FontAwesomeIcon
-                          icon={faRedo}
-                          className='h-6 w-6 text-gray-700'
-                        />
-                      </button>
-                    ) : null
-                    // <button
-                    //   type='button'
-                    //   className='-m-1.5 rounded-full bg-gray-300 p-2 text-gray-700 cursor-pointer'
-                    //   onClick={() => removeFile(index)}
-                    // >
-                    //   <span className='sr-only'>Remove Selected File</span>
-                    //   <XMarkIcon className='h-6 w-6' aria-hidden='true' />
-                    // </button>
-                  }
+                <div className='bg-gray-50 px-4 py-5 flex justify-center sm:px-6'>
+                  {progress.failed ? (
+                    <button
+                      type='button'
+                      className='-m-1.5 rounded-full bg-gray-300 p-2 text-gray-700'
+                      onClick={() => retryUpload()}
+                    >
+                      <span className='sr-only'>Remove Selected File</span>
+                      <FontAwesomeIcon
+                        icon={faRedo}
+                        className='h-6 w-6 text-gray-700'
+                      />
+                    </button>
+                  ) : progress.isComplete ? (
+                    <button
+                      type='button'
+                      className='-m-1.5 rounded-full bg-indigo-500 text-white font-semibold py-2 px-8 cursor-pointer'
+                      onClick={() => GoToDashboard()}
+                    >
+                      <span>Upload Success Proceed</span>
+                    </button>
+                  ) : null}
                 </div>
               </Dialog.Panel>
             </Transition.Child>

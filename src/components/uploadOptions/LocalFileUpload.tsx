@@ -1,12 +1,14 @@
 import { classNames } from '@/utils/classNames';
 import React, { DragEvent, useState } from 'react';
-import { useRouter } from 'next/navigation';
 
 import JSZip from 'jszip';
 import FileUploadProgress from './FileUploadProgress';
+import { hostUrl } from '../../../config';
+import { v4 as uuid } from 'uuid';
+import { GetOrStoreAuthToken } from '@/utils/GetOrStoreAuthToken';
 
 export default function LocalFileUpload() {
-  const router = useRouter();
+  // const router = useRouter();
 
   const allowedExtensions = [
     'mp3',
@@ -19,13 +21,27 @@ export default function LocalFileUpload() {
     'mkv',
   ];
 
-  async function updateImageDisplay(files: File[]) {
+  async function updateImageDisplay(inputFiles: File[]) {
     const zip = new JSZip();
 
+    // reset progress tracker
+    setProgress((prevState) => ({
+      ...prevState,
+      error: '',
+      percentage: '',
+      failed: false,
+    }));
+
+    if (inputFiles.length == 0) {
+      setProgress((prevState) => ({
+        ...prevState,
+        error: 'Please select a file',
+      }));
+    }
+
     // add files to zip
-    files.forEach((file) => {
+    inputFiles.forEach((file) => {
       zip.file(file.name, file);
-      console.log(file.name);
     });
 
     const zipContent = await zip.generateAsync(
@@ -38,12 +54,24 @@ export default function LocalFileUpload() {
       },
     );
 
-    console.log(zipContent);
 
     const formData = new FormData();
     formData.append('folderzip', zipContent);
 
+    // append files
+    inputFiles.forEach((item) => {
+      formData.append(
+        'files[]',
+        JSON.stringify({
+          label: item.name,
+          size: item.size,
+          mimetype: item.type,
+        }),
+      );
+    });
+
     const xhr = new XMLHttpRequest();
+
     // show modal
     setOpen(true);
 
@@ -51,117 +79,54 @@ export default function LocalFileUpload() {
       if (event.lengthComputable) {
         const percent = Math.round((event.loaded / event.total) * 100);
         console.log(percent);
-        setProgress({ ...progress, percentage: `${percent}` });
+        setProgress((prevState) => ({
+          ...prevState,
+          percentage: `${percent}`,
+        }));
       }
+    });
+
+    xhr.addEventListener('readystatechange', function () {
+      // route to a new page and update status
+      
+      if (this.readyState == 4 && this.status == 201) {
+        //  setOpen(false);
+        const resp = JSON.parse( this.response )
+        if ( resp.token ) GetOrStoreAuthToken( resp.token );
+        
+      } 
     });
 
     xhr.addEventListener('load', function () {
       // route to a new page and update status
-      // setOpen(false);
-      router.push('/dashboard/pending?new=true');
+      // router.push('/dashboard/pending?new=true');
+        setProgress((prevState) => ({
+          ...prevState,
+          failed: false,
+          isComplete: true,
+          error: '',
+        }));
       console.log('Finished ....');
     });
 
     xhr.addEventListener('error', function () {
       // setOpen( false );
-      setProgress({
-        ...progress,
+      setProgress((prevState) => ({
+        ...prevState,
         failed: true,
         error: 'Upload failed to complete. Retry Again!',
-      });
-      console.log('Failed ?');
+      }));
     });
 
-    xhr.open(
-      'POST',
-      'https://cb4bad80859144cda1497e4e545cf492.api.mockbin.io/',
-      true,
-    );
+    xhr.open( 'POST', `${ hostUrl }/uploads/push`, true );
+    const access_token = GetOrStoreAuthToken()
+    if (access_token == null) {
+      xhr.setRequestHeader('x-token', uuid());
+    } else {
+      xhr.setRequestHeader('Authorization', `Bearer ${access_token}`);
+    }
     xhr.send(formData);
   }
-  // const config = {
-  //   headers: {
-  //     "Content-Type": "multipart/form-data",
-  //   },
-  //   onUploadProgress: function ( progressEvent: AxiosProgressEvent ) {
-  //     const percentCompleted = Math.round(
-  //       ( progressEvent.loaded * 100 ) / progressEvent.total,
-  //     );
-  //     console.log( percentCompleted );
-  //   },
-  // };
-
-  // const response = await axios.post(
-  //   'https://cb4bad80859144cda1497e4e545cf492.api.mockbin.io/',
-  //   formData,
-  //   config,
-  // );
-
-  // console.log(response);
-
-  // function uploadFiles(files: File[]) {
-  //   for (let i = 0; i < files.length; i++) {
-  //     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  //     const fileExtension = files[i].name
-  //       .substring(files[i].name.lastIndexOf('.'))
-  //       .toLowerCase();
-
-  //     uploadFile(files[i], i);
-  //     // if (allowedExtensions.includes(fileExtension)) {
-  //     // } else {
-  //     //   alert('Invalid file type: ' + fileExtension);
-  //     // }
-  //   }
-  // }
-
-  // const uploadFile = (file: File, index: number) => {
-  //   const formData = new FormData();
-  //   formData.append('folderzip', file);
-  //   const xhr = new XMLHttpRequest();
-
-  //   xhr.upload.addEventListener('progress', function (event) {
-  //     console.log(event.lengthComputable);
-
-  //     if (event.lengthComputable) {
-  //       const percent = Math.round((event.loaded / event.total) * 100);
-  //       console.log(percent);
-  //       // progressBar.style.width = percent + '%';
-  //       // progressBar.innerHTML = percent + '%';
-  //       setProgress((prev: ProgressTracker[]) => {
-  //         const _updated = [...prev];
-  //         _updated[index].percentage = percent.toString();
-  //         return _updated;
-  //       });
-  //     }
-  //   });
-
-  //   xhr.addEventListener('load', function () {
-  //     setProgress((prev: ProgressTracker[]) => {
-  //       const _updated = [...prev];
-  //       _updated[index].isComplete = true;
-  //       return _updated;
-  //     });
-  //   });
-
-  //   xhr.addEventListener('error', function () {
-  //     setProgress((prev: ProgressTracker[]) => {
-  //       const _updated = [...prev];
-  //       _updated[index].isComplete = true;
-  //       _updated[index].failed = true;
-  //       _updated[index].error = 'Upload Failed';
-  //       return _updated;
-  //     });
-  //   });
-
-  //   console.log('uploading');
-  //   xhr.open(
-  //     'POST',
-  //     'https://cb4bad80859144cda1497e4e545cf492.api.mockbin.io/',
-  //     true,
-  //   );
-  //   xhr.send(formData);
-  // };
-
   const [files, setFiles] = useState<Array<File>>([]);
   const [progress, setProgress] = useState<ProgressTracker>({
     percentage: '0',
@@ -184,46 +149,39 @@ export default function LocalFileUpload() {
   };
 
   const retryUpload = async () => {
-    await prepareFilesForUpload(files);
+    await updateImageDisplay(files);
   };
 
-  const prepareFilesForUpload = async (_prepFiles: File[]) => {
-    setFiles((_prevFiles: File[]) => {
+
+  const FolderUploadForm = async (event: React.FormEvent<HTMLInputElement>) => {
+    const target = event.target as HTMLInputElement & {
+      files: FileList;
+    };
+
+    if (target.files.length == 0) return;
+
+    // await prepareFilesForUpload(Array.from(target.files));
+    console.log(target.files)
+  };
+
+
+  
+
+  const updateFilesArray = (_prepFiles: File[]) => {
+     setFiles((_prevFiles: File[]) => {
       const files: File[] = [];
       _prepFiles.forEach((file: File) => files.push(file));
       return [..._prevFiles, ...files];
     });
-
-    // add files
-
-    await updateImageDisplay(files);
-
-    // init trackers
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    // _prepFiles.forEach((_file: File) =>
-    //   setProgress((prev: ProgressTracker[]) => {
-    //     return [
-    //       ...prev,
-    //       { percentage: '0', isComplete: false, error: '', failed: false },
-    //     ];
-    //   }),
-    // );
   };
 
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
+  const prepareFilesForUpload = async (_prepFiles: File[]) => {
+    updateFilesArray(_prepFiles);
 
-    if (files.length == 0) return false;
-
-    // console.log(files);
-    // add to store and redirect to dashboard
-    // uploadFiles(files);
-
-    // useAppDispatch(updateFiles(Array.from(files)));
-
-    // updateImageDisplay(files);
-    // setLoading(true);
+    await updateImageDisplay(_prepFiles);
+    
   };
+
 
   function dropHandler(ev: DragEvent) {
     // console.log('goeat');
@@ -271,6 +229,10 @@ export default function LocalFileUpload() {
     setDragEnter(true);
   }
 
+  // const GoToDashboard = () => {
+  //   router.push('/dashboard/pending?new=true');
+  // }
+
   function dragLeaveHandler(ev: DragEvent) {
     // Prevent default behavior (Prevent file from being opened)
     ev.preventDefault();
@@ -294,7 +256,7 @@ export default function LocalFileUpload() {
         open={open}
         setOpen={setOpen}
       />
-      <form onSubmit={handleSubmit}>
+      <form>
         <div
           onDrop={dropHandler}
           onDragEnter={dragEnterHandler}
@@ -340,7 +302,7 @@ export default function LocalFileUpload() {
                     type='file'
                     name='folder_files'
                     id='folder_files'
-                    onChange={FilesUploadForm}
+                    onChange={FolderUploadForm}
                     className='hidden'
                     ref={ref}
                     multiple
