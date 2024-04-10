@@ -2,11 +2,8 @@
 
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React, { useState } from 'react';
-import { Dialog } from '@headlessui/react';
 import {
-  Bars3Icon,
   BellAlertIcon,
-  XMarkIcon,
 } from '@heroicons/react/24/outline';
 
 import { PlusIcon } from '@heroicons/react/24/outline';
@@ -17,7 +14,7 @@ import { classNames } from '@/utils/classNames';
 import NotificationsPreview from './NotificationsPreview';
 
 export default function DashboardHeader() {
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
 
   const [preview, setPreview] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -95,7 +92,6 @@ export default function DashboardHeader() {
           </div>
 
           <div className='flex w-full flex-1 justify-end gap-x-5 md:hidden'>
-
             {/* <AppTitle/> */}
 
             <button
