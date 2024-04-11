@@ -135,7 +135,7 @@ export default function Page() {
         fetchPendingFolderOrders();
       }
     }
-  }, [orders, folders]);
+  }, []);
 
   return (
     <div className='py-8'>
