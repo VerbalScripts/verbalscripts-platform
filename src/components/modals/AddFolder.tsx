@@ -4,7 +4,6 @@ import { FolderPlusIcon } from '@heroicons/react/24/outline';
 import AxiosProxy from '@/utils/AxiosProxy';
 import { Spinner } from 'flowbite-react';
 
-
 interface AddFolderProps {
   open: boolean;
   setOpen: (arg0: boolean) => void;
@@ -18,15 +17,28 @@ export default function AddFolder({ open, setOpen }: AddFolderProps) {
 
   const createFolderHttp = async () => {
     try {
-      if ( folderRef.current?.value.length == 0 ) return;
-      const label = folderRef.current?.value;
-      setLoading(true)
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      if (
+        folderRef.current != null &&
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        folderRef.current!.value &&
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        folderRef.current!.value.length == 0
+      )
+        return;
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      const label = folderRef.current!.value;
+      setLoading(true);
       const response = await AxiosProxy.post('/folders/create', {
         label,
       });
       if (response.status == 201) {
-        console.log( response.data );
-        setOpen(false)
+        console.log(response.data);
+        setOpen(false);
       } else {
         console.log('success');
         console.log(response.data);
@@ -112,10 +124,14 @@ export default function AddFolder({ open, setOpen }: AddFolderProps) {
                     className='inline-flex w-full justify-center rounded-full bg-indigo-500 px-7 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 sm:ml-3 sm:w-auto'
                     onClick={() => createFolderHttp()}
                   >
-                    {!loading ? 'Create' : <div>
-                      <Spinner color={'pink'} />
-                    </div> }
-                   </button>
+                    {!loading ? (
+                      'Create'
+                    ) : (
+                      <div>
+                        <Spinner color={'pink'} />
+                      </div>
+                    )}
+                  </button>
                   <button
                     type='button'
                     disabled={loading}

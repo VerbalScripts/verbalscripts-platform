@@ -2,9 +2,7 @@
 
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React, { useState } from 'react';
-import {
-  BellAlertIcon,
-} from '@heroicons/react/24/outline';
+import { BellAlertIcon } from '@heroicons/react/24/outline';
 
 import DashDialogMenu from './DashDialogMenu';
 import { classNames } from '@/utils/classNames';
@@ -15,8 +13,7 @@ import NotificationsPreview from './NotificationsPreview';
 export default function DashboardHeader() {
   // const [open, setOpen] = useState(false);
 
-  const [ preview, setPreview ] = useState<boolean>( false );
-  const [openFolders, setOpenFolders] = useState<string[]>([])
+  const [preview, setPreview] = useState<boolean>(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   // const SearchForFile = (event: KeyboardEventHandler<HTMLInputElement>) => {};
 

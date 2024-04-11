@@ -6,7 +6,11 @@ import { Checkbox, Table } from 'flowbite-react';
 import TableMenuDropDown from '@/components/dashboard/TableMenuDropDown';
 import LoadSpinner from '@/components/dashboard/LoadSpinner';
 import { bytesToMB } from '@/utils/bytesToMb';
-import { DocumentIcon, FolderIcon, FolderPlusIcon } from '@heroicons/react/24/outline';
+import {
+  DocumentIcon,
+  FolderIcon,
+  FolderPlusIcon,
+} from '@heroicons/react/24/outline';
 import {
   ArrowUturnLeftIcon,
   ArrowUturnRightIcon,
@@ -16,25 +20,70 @@ import { classNames } from '@/utils/classNames';
 import FileUploadMenuOptions from '@/components/dashboard/FileUploadMenuOptions';
 import AddFolder from '@/components/modals/AddFolder';
 import AxiosProxy from '@/utils/AxiosProxy';
-import Link from 'next/link'
+import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 interface PageSetupOptions {
   toggleView: 'grid' | 'list';
 }
+
+interface FolderTracker {
+  id: string;
+  label: string;
+}
 export default function Page() {
+  const router = useRouter();
+
   const [orders, setOrders] = useState<OrderFile[]>([]);
   const [folders, setFolders] = useState<OrderFolder[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [open, setOpen] = useState(false);
 
+  // track folders
+  const [folderArr, setFolderArr] = useState<FolderTracker[]>([
+    { id: '', label: '..' },
+  ]);
+  const [currentFolderIndex, setCurrentFolderIndex] = useState<number>(0);
+
+  // watch for query changes
+  const searchParams = useSearchParams();
+  const folderId = searchParams.get('folderId');
+
   const [pageSetup, setPageSetup] = useState<PageSetupOptions>({
     toggleView: 'list',
   });
 
-  const fetchPendingOrders = async () => {
+  const navForward = () => {
+    if (currentFolderIndex + 1 > folderArr.length) {
+      // update index
+      setCurrentFolderIndex(currentFolderIndex + 1);
+      router.push(`?folderId=${folderArr[currentFolderIndex + 1]['id']}`);
+    }
+  };
+  const navBack = () => {
+    console.log(currentFolderIndex);
+    if (folderArr.length > 1 && currentFolderIndex > 0) {
+      // update index
+      setCurrentFolderIndex(currentFolderIndex - 1);
+      setFolderArr((prevArr) => [...prevArr.slice(0, prevArr.length - 1)]);
+      router.push(`?folderId=${folderArr[currentFolderIndex - 1]['id']}`);
+    }
+  };
+
+  useEffect(() => {
+    if (folderId != null) {
+      fetchPendingOrders(folderId);
+      fetchPendingFolderOrders(folderId);
+    }
+  }, [folderId]);
+
+  const fetchPendingOrders = async (folderId?: string) => {
     try {
       setLoading(true);
-      const response = await AxiosProxy.get('/files');
+      const response = await AxiosProxy.get(
+        folderId ? `/files/folder/${folderId}` : '/files',
+      );
       if (response.status == 200) {
         setOrders(response.data);
       }
@@ -46,10 +95,23 @@ export default function Page() {
     }
   };
 
-  const fetchPendingFolderOrders = async () => {
+  const openFolder = (route: { id: string; label: string }) => {
+    // console.log(currentFolderIndex)
+    setFolderArr((prevArr) => [
+      ...prevArr,
+      { id: route.id, label: route.label },
+    ]);
+    // update count
+    setCurrentFolderIndex(currentFolderIndex + 1);
+    router.push(`?folderId=${route.id}`);
+  };
+
+  const fetchPendingFolderOrders = async (folderId?: string) => {
     try {
       setLoading(true);
-      const response = await AxiosProxy.get('/folders');
+      const response = await AxiosProxy.get(
+        folderId ? `/folders/${folderId}` : '/folders',
+      );
       if (response.status == 200) {
         setFolders(response.data);
       }
@@ -64,18 +126,22 @@ export default function Page() {
   useEffect(() => {
     // fetchPendingOrders();
     if (orders.length == 0) {
-      fetchPendingOrders();
+      if (folderId == null) {
+        fetchPendingOrders();
+      }
     }
     if (folders.length == 0) {
-      fetchPendingFolderOrders();
+      if (folderId == null) {
+        fetchPendingFolderOrders();
+      }
     }
-  }, []);
+  }, [orders, folders]);
 
   return (
     <div className='py-8'>
       {loading ? (
         <LoadSpinner />
-      ) : orders.length == 0 ? (
+      ) : orders.length == 0 && folderId == null ? (
         <FileEmpty />
       ) : (
         <div>
@@ -92,20 +158,41 @@ export default function Page() {
             </div>
             <div className='flex  justify-between mb-8 items-center'>
               <div className='flex gap-x-2'>
-                <button className='rounded-xl bg-indigo-100 font-semibold px-4 py-2  focus-within:ring-4 focus-within:ring-indigo-400'>
-                  <ArrowUturnLeftIcon className=' h-5 w-5 text-indigo-600' />
+                <button
+                  disabled={folderArr.length == 1 || loading}
+                  onClick={navBack}
+                  className='rounded-xl bg-indigo-100 font-semibold px-4 py-2 text-indigo-600  focus-within:ring-4 focus-within:ring-indigo-400 disabled:cursor-not-allowed disabled:text-indigo-300'
+                >
+                  <ArrowUturnLeftIcon className=' h-5 w-5' />
                 </button>
-                <button className='rounded-xl bg-indigo-100 font-semibold px-4 py-2  focus-within:ring-4 focus-within:ring-indigo-400'>
-                  <ArrowUturnRightIcon className=' h-5 w-5 text-indigo-600' />
+                <button
+                  onClick={navForward}
+                  disabled={
+                    currentFolderIndex + 1 == folderArr.length || loading
+                  }
+                  className='rounded-xl bg-indigo-100 font-semibold px-4 py-2 text-indigo-600  focus-within:ring-4 focus-within:ring-indigo-400 disabled:cursor-not-allowed  disabled:text-indigo-300'
+                >
+                  <ArrowUturnRightIcon className=' h-5 w-5 ' />
                 </button>
                 <div className='flex items-center gap-x-2'>
-                  <span className='text-gray-500 font-semibold'>..{' / '}</span>
-                  <span className='text-gray-500 font-semibold'>
-                    Happy {' / '}
-                  </span>
-                  <span className='text-gray-500 font-semibold'>
-                    Foxit-Jam{' / '}
-                  </span>
+                  {folderArr.map((track, index) => (
+                    <div key={track.id} className='flex'>
+                      <Link
+                        href={
+                          track.id == ''
+                            ? '/dashboard/pending'
+                            : `?folderId=${track.id}`
+                        }
+                        className='hover:underline text-gray-600 hover:text-indigo-500'
+                      >
+                        {' '}
+                        {track.label}
+                      </Link>
+                      <span className='text-gray-500 font-semibold'>
+                        {index + 1 == folderArr.length ? ' ' : '  /  '}{' '}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </div>
               {/* toggles */}
@@ -160,18 +247,20 @@ export default function Page() {
                       <Checkbox />
                     </Table.Cell>
                     <Table.Cell>
-                      <Link
-                        className='flex gap-x-3 items-center'
-                        href={'?folderId=' + folder.id}
+                      <div
+                        className=' cursor-pointer flex gap-x-3 items-center'
+                        onClick={() =>
+                          openFolder({ id: folder.id, label: folder.label })
+                        }
                       >
                         <FolderIcon className='text-gray-700 h-8 w-8 items-center' />
                         <span className='whitespace-nowrap font-medium text-gray-900 dark:text-white'>
                           {folder.label}
                         </span>
-                      </Link>
+                      </div>
                     </Table.Cell>
                     <Table.Cell>--</Table.Cell>
-                    <Table.Cell>---</Table.Cell>
+                    <Table.Cell>Folder</Table.Cell>
                     <Table.Cell>---</Table.Cell>
                     <Table.Cell>
                       <div className='flex items-center gap-x-1'>

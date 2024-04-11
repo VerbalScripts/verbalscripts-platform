@@ -85,7 +85,9 @@ export default function FileUploadMenuOptions() {
                       width={23}
                       alt={iupload.id}
                     />
-                    <span className='text-gray-600 font-semibold'>{iupload.title}</span>
+                    <span className='text-gray-600 font-semibold'>
+                      {iupload.title}
+                    </span>
                   </Link>
                 )}
               </Menu.Item>

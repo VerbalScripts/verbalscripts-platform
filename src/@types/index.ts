@@ -27,10 +27,10 @@ interface OrderFile {
 
 interface OrderFolder {
   label: string;
-  isAnonynous: boolean;
+  isAnonynous?: boolean;
   anonymousUserId?: string;
   userId?: string;
-  id?: string;
+  id: string;
 }
 interface ProgressTracker {
   percentage: string;

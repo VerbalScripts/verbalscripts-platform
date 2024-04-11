@@ -55,7 +55,6 @@ export default function TableMenuDropDown() {
             </Menu.Item>
           </div>
           <div className='py-1'>
-            
             <Menu.Item>
               {({ active }) => (
                 <a
@@ -84,7 +83,6 @@ export default function TableMenuDropDown() {
                 </a>
               )}
             </Menu.Item>
-           
           </div>
           <div className='py-1'>
             <Menu.Item>
