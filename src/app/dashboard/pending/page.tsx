@@ -23,6 +23,7 @@ import AxiosProxy from '@/utils/AxiosProxy';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
+import Head from 'next/head';
 
 interface PageSetupOptions {
   toggleView: 'grid' | 'list';
@@ -95,6 +96,17 @@ export default function Page() {
     }
   };
 
+  const reload = async () => {
+    if (folderId != null) {
+      await Promise.all([
+        fetchPendingFolderOrders(folderId),
+        fetchPendingOrders(folderId),
+      ]);
+    } else {
+      await Promise.all([fetchPendingFolderOrders(), fetchPendingOrders()]);
+    }
+  };
+
   const openFolder = (route: { id: string; label: string }) => {
     // console.log(currentFolderIndex)
     setFolderArr((prevArr) => [
@@ -135,22 +147,30 @@ export default function Page() {
         fetchPendingFolderOrders();
       }
     }
-  }, [orders, folders]);
+  }, []);
 
   return (
-    <div className='py-8'>
+    <div className='py-4'>
+      <Head>
+        <title>Verbal Dashboard | Pending Orders</title>
+        <meta
+          property='og:title'
+          content='Verbal Dashboard | Pending Orders'
+          key='title'
+        />
+      </Head>
       {loading ? (
         <LoadSpinner />
       ) : orders.length == 0 && folderId == null ? (
         <FileEmpty />
       ) : (
         <div>
-          <div className='px-6 md:px-16 xl:px-16 sticky top-1 z-50 bg-white py-3'>
+          <div className='px-6 md:px-16 xl:px-16 sticky top-1 z-50 bg-white py-1'>
             <div className='flex items-center justify-end gap-x-3'>
               <FileUploadMenuOptions />
               <button
                 onClick={() => setOpen(true)}
-                className='flex mb-5 gap-x-2 rounded-xl bg-indigo-900/10 font-semibold px-4 py-2  focus-within:ring-4 focus-within:ring-indigo-400'
+                className='flex mb-5 gap-x-2 rounded-xl bg-indigo-100 font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
               >
                 <FolderPlusIcon className='h-5 w-5 text-indigo-500' />
                 <span className='text-indigo-500'>New Folder</span>
@@ -161,7 +181,7 @@ export default function Page() {
                 <button
                   disabled={folderArr.length == 1 || loading}
                   onClick={navBack}
-                  className='rounded-xl bg-indigo-100 font-semibold px-4 py-2 text-indigo-600  focus-within:ring-4 focus-within:ring-indigo-400 disabled:cursor-not-allowed disabled:text-indigo-300'
+                  className='rounded-xl bg-indigo-100 font-semibold px-4 py-1.5 text-indigo-600  focus-within:ring-4 focus-within:ring-indigo-400 disabled:cursor-not-allowed disabled:text-indigo-300'
                 >
                   <ArrowUturnLeftIcon className=' h-5 w-5' />
                 </button>
@@ -241,9 +261,9 @@ export default function Page() {
                 {folders.map((folder) => (
                   <Table.Row
                     key={folder.id}
-                    className='bg-white dark:border-gray-700 dark:bg-gray-800'
+                    className='bg-white dark:border-gray-700 dark:bg-gray-800 py-2'
                   >
-                    <Table.Cell className='px-4 py-2'>
+                    <Table.Cell className='px-4 py-0'>
                       <Checkbox />
                     </Table.Cell>
                     <Table.Cell>
@@ -306,7 +326,7 @@ export default function Page() {
           </div>
 
           {/* add folder */}
-          <AddFolder open={open} setOpen={setOpen} />
+          <AddFolder reload={reload} open={open} setOpen={setOpen} />
         </div>
       )}
     </div>

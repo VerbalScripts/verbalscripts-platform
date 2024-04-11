@@ -4,11 +4,11 @@
 import React, { useState } from 'react';
 import { BellAlertIcon } from '@heroicons/react/24/outline';
 
-import DashDialogMenu from './DashDialogMenu';
+import DashDialogMenu from '../DashDialogMenu';
 import { classNames } from '@/utils/classNames';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import NotificationsPreview from './NotificationsPreview';
+import NotificationsPreview from '../NotificationsPreview';
 
 export default function DashboardHeader() {
   // const [open, setOpen] = useState(false);

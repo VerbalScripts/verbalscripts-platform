@@ -6,10 +6,11 @@ import { Spinner } from 'flowbite-react';
 
 interface AddFolderProps {
   open: boolean;
+  reload: () => Promise<void>;
   setOpen: (arg0: boolean) => void;
 }
 
-export default function AddFolder({ open, setOpen }: AddFolderProps) {
+export default function AddFolder({ open, setOpen, reload }: AddFolderProps) {
   const cancelButtonRef = useRef(null);
   const folderRef = useRef(null);
 
@@ -37,7 +38,8 @@ export default function AddFolder({ open, setOpen }: AddFolderProps) {
         label,
       });
       if (response.status == 201) {
-        console.log(response.data);
+        console.log( response.data );
+        await reload()
         setOpen(false);
       } else {
         console.log('success');

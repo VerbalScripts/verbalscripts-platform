@@ -61,23 +61,23 @@ export default function FileUploadProgress({
               leaveFrom='opacity-100 translate-y-0 sm:scale-100'
               leaveTo='opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95'
             >
-              <Dialog.Panel className='relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg'>
+              <Dialog.Panel className='relative transform overflow-hidden rounded-lg py-3 md:py-5  bg-white text-left shadow-xl transition-all sm:my-8 w-[30rem] sm:max-w-lg'>
                 <div className='bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4'>
                   <div className='sm:flex sm:items-center'>
-                    <div className='mx-auto flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-12 sm:w-12'>
+                    <div className='mx-auto flex h-20 w-20 md:h-14 md:w-14 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-12 sm:w-12'>
                       {progress.failed ? (
                         <ExclamationTriangleIcon
-                          className='h-8 w-8 text-red-600'
-                          aria-hidden='true'
+                          className='h-16 w-16 md:h-10 md:w-10 text-red-600'
+                          aria-hidden='true'  
                         />
                       ) : progress.isComplete ? (
                         <CheckBadgeIcon
-                          className='h-8 w-8 text-indigo-600'
+                          className='h-16 w-16 md:h-10 md:w-10 text-indigo-600'
                           aria-hidden='true'
                         />
                       ) : (
                         <CloudArrowUpIcon
-                          className='h-8 w-8 text-orange-300'
+                          className='h-16 w-16 md:h-10 md:w-10 text-orange-300'
                           aria-hidden='true'
                         />
                       )}

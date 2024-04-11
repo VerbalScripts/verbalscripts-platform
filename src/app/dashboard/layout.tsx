@@ -1,8 +1,8 @@
 'use client';
 // import { Inter } from "next/font/google";
 import '../globals.css';
-import DashboardNavigation from '@/components/DashboardNavigation';
-import DashboardHeader from '@/components/DashboardHeader';
+import DashboardNavigation from '@/components/dashboard/DashboardNavigation';
+import DashboardHeader from '@/components/dashboard/DashboardHeader';
 import NextNprogress from '@/lib/NextNprogress';
 import { Suspense, useState } from 'react';
 import { classNames } from '@/utils/classNames';
