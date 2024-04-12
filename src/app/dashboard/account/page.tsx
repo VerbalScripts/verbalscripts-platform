@@ -1,12 +1,10 @@
-'use client'
+'use client';
 
 import React from 'react';
 
-
 import ProfileSettings from '@/components/dashboard/ProfileSettings';
 import SecuritySettings from '@/components/dashboard/SecuritySettings';
-import Head from 'next/head'
-
+import Head from 'next/head';
 
 export default function Page() {
   return (
@@ -21,7 +19,6 @@ export default function Page() {
       </Head>
       <section className='relative px-6 py-14 sm:py-20 lg:px-24'>
         <div className='mx-auto max-w-3xl text-left'>
-        
           {/* profile update */}
 
           <ProfileSettings />

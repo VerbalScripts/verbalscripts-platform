@@ -21,6 +21,7 @@ import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 import Head from 'next/head';
 import TableView from '@/components/dashboard/FileView/TableView';
+import GridView from '@/components/dashboard/FileView/GridView';
 interface PageSetupOptions {
   toggleView: 'grid' | 'list';
 }
@@ -299,7 +300,15 @@ export default function Page() {
           </div>
 
           {pageSetup.toggleView == 'grid' ? (
-            <div></div>
+            <GridView
+              openFolder={openFolder}
+              selectedFiles={selectedFiles}
+              updatedSelectedFiles={updateSelectedFiles}
+              folders={folders}
+              callback={updateOrders}
+              showFolders={showFolders}
+              orders={orders}
+            />
           ) : (
             <TableView
               openFolder={openFolder}

@@ -142,7 +142,7 @@ export default function TableView({
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  const addSelected = ( event: ChangeEvent<HTMLInputElement>, id: string ) => {
+  const addSelected = (event: ChangeEvent<HTMLInputElement>, id: string) => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     if ((event.target as HTMLInputElement).checked) {

@@ -38,8 +38,8 @@ export default function AddFolder({ open, setOpen, reload }: AddFolderProps) {
         label,
       });
       if (response.status == 201) {
-        console.log( response.data );
-        await reload()
+        console.log(response.data);
+        await reload();
         setOpen(false);
       } else {
         console.log('success');

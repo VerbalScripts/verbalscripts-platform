@@ -68,7 +68,7 @@ export default function FileUploadProgress({
                       {progress.failed ? (
                         <ExclamationTriangleIcon
                           className='h-16 w-16 md:h-10 md:w-10 text-red-600'
-                          aria-hidden='true'  
+                          aria-hidden='true'
                         />
                       ) : progress.isComplete ? (
                         <CheckBadgeIcon

@@ -1,19 +1,23 @@
-import { EyeIcon, EyeSlashIcon, LockClosedIcon } from '@heroicons/react/24/outline';
+import {
+  EyeIcon,
+  EyeSlashIcon,
+  LockClosedIcon,
+} from '@heroicons/react/24/outline';
 import React, { FormEvent, useState } from 'react';
 
-export default function SecuritySettings () {
+export default function SecuritySettings() {
   const [is_visible, toggleVisible] = useState(true);
-    
-const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-  event.preventDefault();
 
-  // const formData = new FormData(event.currentTarget);
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
-  // setLoading(true);
-  // setTimeout(() => {
-  //   setLoading(false);
-  // }, 2000);
-};
+    // const formData = new FormData(event.currentTarget);
+
+    // setLoading(true);
+    // setTimeout(() => {
+    //   setLoading(false);
+    // }, 2000);
+  };
   return (
     <form onSubmit={handleSubmit}>
       <div className='space-y-12'>

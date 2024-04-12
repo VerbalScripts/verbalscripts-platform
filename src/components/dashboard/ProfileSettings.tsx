@@ -1,5 +1,5 @@
 import { UserIcon } from '@heroicons/react/24/outline';
-import React from 'react'
+import React from 'react';
 
 export default function ProfileSettings() {
   return (
