@@ -21,7 +21,7 @@ interface OrderFile {
   fileId: string;
   anonymousUserId?: string;
   userId?: string;
-  id?: string;
+  id: string;
   status?: string;
 }
 

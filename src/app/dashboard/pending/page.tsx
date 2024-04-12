@@ -2,29 +2,25 @@
 
 import FileEmpty from '@/components/dashboard/FileEmpty';
 import React, { useEffect, useState } from 'react';
-import { Checkbox, Table } from 'flowbite-react';
-import TableMenuDropDown from '@/components/dashboard/TableMenuDropDown';
 import LoadSpinner from '@/components/dashboard/LoadSpinner';
-import { bytesToMB } from '@/utils/bytesToMb';
-import {
-  DocumentIcon,
-  FolderIcon,
-  FolderPlusIcon,
-} from '@heroicons/react/24/outline';
+
+import { FolderPlusIcon } from '@heroicons/react/24/outline';
 import {
   ArrowUturnLeftIcon,
   ArrowUturnRightIcon,
 } from '@heroicons/react/16/solid';
 import { ListBulletIcon, Squares2X2Icon } from '@heroicons/react/20/solid';
 import { classNames } from '@/utils/classNames';
+import { Breadcrumb } from 'flowbite-react';
+
 import FileUploadMenuOptions from '@/components/dashboard/FileUploadMenuOptions';
 import AddFolder from '@/components/modals/AddFolder';
 import AxiosProxy from '@/utils/AxiosProxy';
-import Link from 'next/link';
+// import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 import Head from 'next/head';
-
+import TableView from '@/components/dashboard/FileView/TableView';
 interface PageSetupOptions {
   toggleView: 'grid' | 'list';
 }
@@ -41,6 +37,10 @@ export default function Page() {
   const [loading, setLoading] = useState<boolean>(true);
   const [open, setOpen] = useState(false);
 
+  // selected files
+  const [selectedFiles, setSelectedFiles] = useState<string[]>([]);
+
+  const [showFolders, setShowFolders] = useState<boolean>(false);
   // track folders
   const [folderArr, setFolderArr] = useState<FolderTracker[]>([
     { id: '', label: '..' },
@@ -54,6 +54,41 @@ export default function Page() {
   const [pageSetup, setPageSetup] = useState<PageSetupOptions>({
     toggleView: 'list',
   });
+
+  // toggle folder visibility
+  const toggleFolderShow = (
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    setShowFolders(!showFolders);
+  };
+
+  // updated selected files
+  const updateSelectedFiles = (
+    id: string,
+    remove: boolean,
+    clearAll: boolean,
+  ) => {
+    if (clearAll && remove) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      setSelectedFiles((prevFiles) => []);
+    }
+
+    if (clearAll && !remove) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      setSelectedFiles((_prevFiles) => [...orders.map((order) => order.id)]);
+    }
+
+    if (remove) {
+      setSelectedFiles((prevFiles) => [
+        ...prevFiles.filter((_id) => _id != id),
+      ]);
+    }
+
+    if (!remove) {
+      setSelectedFiles((prevFiles) => [...prevFiles, id]);
+    }
+  };
 
   const navForward = () => {
     if (currentFolderIndex + 1 > folderArr.length) {
@@ -81,7 +116,6 @@ export default function Page() {
 
   const fetchPendingOrders = async (folderId?: string) => {
     try {
-      setLoading(true);
       const response = await AxiosProxy.get(
         folderId ? `/files/folder/${folderId}` : '/files',
       );
@@ -91,8 +125,6 @@ export default function Page() {
       console.log(response);
     } catch (error) {
       console.log(error);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -105,6 +137,14 @@ export default function Page() {
     } else {
       await Promise.all([fetchPendingFolderOrders(), fetchPendingOrders()]);
     }
+  };
+
+  const updateOrders = (index: number) => {
+    setOrders((prevArr) => {
+      const update = prevArr;
+      update.splice(index, 1);
+      return [...update];
+    });
   };
 
   const openFolder = (route: { id: string; label: string }) => {
@@ -120,7 +160,6 @@ export default function Page() {
 
   const fetchPendingFolderOrders = async (folderId?: string) => {
     try {
-      setLoading(true);
       const response = await AxiosProxy.get(
         folderId ? `/folders/${folderId}` : '/folders',
       );
@@ -130,24 +169,22 @@ export default function Page() {
       console.log(response);
     } catch (error) {
       console.log(error);
-    } finally {
-      setLoading(false);
     }
+  };
+
+  const initialFeedsFetch = async () => {
+    setLoading(true);
+    await Promise.all([fetchPendingOrders(), fetchPendingFolderOrders()]);
+
+    setLoading(false);
   };
 
   useEffect(() => {
     // fetchPendingOrders();
-    if (orders.length == 0) {
-      if (folderId == null) {
-        fetchPendingOrders();
-      }
-    }
-    if (folders.length == 0) {
-      if (folderId == null) {
-        fetchPendingFolderOrders();
-      }
-    }
+    initialFeedsFetch();
   }, []);
+
+  // drag and drop files and folders
 
   return (
     <div className='py-4'>
@@ -195,28 +232,46 @@ export default function Page() {
                   <ArrowUturnRightIcon className=' h-5 w-5 ' />
                 </button>
                 <div className='flex items-center gap-x-2'>
-                  {folderArr.map((track, index) => (
-                    <div key={track.id} className='flex'>
-                      <Link
-                        href={
-                          track.id == ''
-                            ? '/dashboard/pending'
-                            : `?folderId=${track.id}`
-                        }
+                  <Breadcrumb
+                    aria-label='Solid background breadcrumb example'
+                    className='bg-gray-50 px-5 py-3 dark:bg-gray-800'
+                  >
+                    {folderArr.map((track) => (
+                      <Breadcrumb.Item
+                        key={track.id}
                         className='hover:underline text-gray-600 hover:text-indigo-500'
+                        href={`?folderId=${track.id}`}
                       >
-                        {' '}
                         {track.label}
-                      </Link>
-                      <span className='text-gray-500 font-semibold'>
-                        {index + 1 == folderArr.length ? ' ' : '  /  '}{' '}
-                      </span>
-                    </div>
-                  ))}
+                      </Breadcrumb.Item>
+                    ))}
+                  </Breadcrumb>
                 </div>
               </div>
               {/* toggles */}
-              <div className='flex gap-x-2'>
+              <div className='flex gap-x-2 items-center'>
+                <div className='flex gap-x-3 pr-3 border-r border-gray-400'>
+                  <div className=''>
+                    <label
+                      htmlFor='showFolders'
+                      className=' h-6 relative inline-block'
+                    >
+                      <input
+                        id='showFolders'
+                        type='checkbox'
+                        onChange={toggleFolderShow}
+                        className='w-11 h-0 cursor-pointer inline-block focus:outline-0 dark:focus:outline-0 border-0 dark:border-0 focus:ring-offset-transparent dark:focus:ring-offset-transparent focus:ring-transparent dark:focus:ring-transparent focus-within:ring-0 dark:focus-within:ring-0 focus:shadow-none dark:focus:shadow-none after:absolute before:absolute after:top-0 before:top-0  after:block before:inline-block before:rounded-full after:rounded-full after:content-[""] after:w-5 after:h-5 after:mt-0.5 after:ml-0.5 after:shadow-md after:duration-100
+                          before:content-[""] before:w-10 before:h-full before:shadow-[inset_0_0_#000] after:bg-white dark:after:bg-indigo-50
+                          before:bg-indigo-300 dark:before:bg-indigo-500   before:checked:bg-indigo-500 dark:before:checked:bg-indigo-500 checked:after:duration-300 checked:after:translate-x-4 disabled:after:bg-opacity-75 disabled:cursor-not-allowed disabled:checked:before:bg-opacity-40
+                              '
+                        checked={showFolders}
+                      />
+                    </label>
+                  </div>
+                  <span className='text-gray-500 font-semibold'>
+                    {showFolders ? 'Hide Folders' : 'Show Folders'}
+                  </span>
+                </div>
                 <button
                   onClick={() =>
                     setPageSetup({ ...pageSetup, toggleView: 'grid' })
@@ -242,88 +297,20 @@ export default function Page() {
               </div>
             </div>
           </div>
-          <div className='px-6 md:px-16 xl:px-16 overflow-x-auto min-h-svh'>
-            <Table hoverable>
-              <Table.Head>
-                <Table.HeadCell className='p-4'>
-                  <Checkbox />
-                </Table.HeadCell>
-                <Table.HeadCell>File Name</Table.HeadCell>
-                <Table.HeadCell>Size</Table.HeadCell>
-                <Table.HeadCell>Type</Table.HeadCell>
-                <Table.HeadCell>Status</Table.HeadCell>
-                <Table.HeadCell>Action</Table.HeadCell>
-                <Table.HeadCell>
-                  <span className='sr-only'>Edit</span>
-                </Table.HeadCell>
-              </Table.Head>
-              <Table.Body className='divide-y'>
-                {folders.map((folder) => (
-                  <Table.Row
-                    key={folder.id}
-                    className='bg-white dark:border-gray-700 dark:bg-gray-800 py-2'
-                  >
-                    <Table.Cell className='px-4 py-0'>
-                      <Checkbox />
-                    </Table.Cell>
-                    <Table.Cell>
-                      <div
-                        className=' cursor-pointer flex gap-x-3 items-center'
-                        onClick={() =>
-                          openFolder({ id: folder.id, label: folder.label })
-                        }
-                      >
-                        <FolderIcon className='text-gray-700 h-8 w-8 items-center' />
-                        <span className='whitespace-nowrap font-medium text-gray-900 dark:text-white'>
-                          {folder.label}
-                        </span>
-                      </div>
-                    </Table.Cell>
-                    <Table.Cell>--</Table.Cell>
-                    <Table.Cell>Folder</Table.Cell>
-                    <Table.Cell>---</Table.Cell>
-                    <Table.Cell>
-                      <div className='flex items-center gap-x-1'>
-                        <TableMenuDropDown />
-                      </div>
-                    </Table.Cell>
-                  </Table.Row>
-                ))}
-                {orders.map((order) => (
-                  <Table.Row
-                    key={order.fileId}
-                    className='bg-white dark:border-gray-700 dark:bg-gray-800'
-                  >
-                    <Table.Cell className='px-4 py-2'>
-                      <Checkbox />
-                    </Table.Cell>
-                    <Table.Cell className='flex gap-x-3 items-center'>
-                      <DocumentIcon className='text-gray-700 h-7 w-7' />
-                      <span className='whitespace-nowrap font-medium text-gray-900 dark:text-white'>
-                        {order.label}
-                      </span>
-                    </Table.Cell>
-                    <Table.Cell>{bytesToMB(order.size)}</Table.Cell>
-                    <Table.Cell>
-                      <span className='uppercase'>
-                        {order.mimetype.split('/')[1]}
-                      </span>
-                    </Table.Cell>
-                    <Table.Cell>
-                      <span className='capitalize bg-indigo-100 font-semibold text-indigo-500 px-3 py-2 rounded-xl'>
-                        {order.status}
-                      </span>
-                    </Table.Cell>
-                    <Table.Cell>
-                      <div className='flex items-center gap-x-1'>
-                        <TableMenuDropDown />
-                      </div>
-                    </Table.Cell>
-                  </Table.Row>
-                ))}
-              </Table.Body>
-            </Table>
-          </div>
+
+          {pageSetup.toggleView == 'grid' ? (
+            <div></div>
+          ) : (
+            <TableView
+              openFolder={openFolder}
+              selectedFiles={selectedFiles}
+              updatedSelectedFiles={updateSelectedFiles}
+              folders={folders}
+              callback={updateOrders}
+              showFolders={showFolders}
+              orders={orders}
+            />
+          )}
 
           {/* add folder */}
           <AddFolder reload={reload} open={open} setOpen={setOpen} />

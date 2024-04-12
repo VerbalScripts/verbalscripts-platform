@@ -4,7 +4,7 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
-    // "noImplicitAny": false,
+    "noImplicitAny": false,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
@@ -23,5 +23,8 @@
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "off" // Disables the rule entirely (not recommended)
+  }
 }

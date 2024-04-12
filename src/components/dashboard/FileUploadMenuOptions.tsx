@@ -73,7 +73,7 @@ export default function FileUploadMenuOptions() {
               <Menu.Item>
                 {({ active }) => (
                   <Link
-                    href='#'
+                    href={`/dashboard/upload?option=${iupload.id}`}
                     className={classNames(
                       active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                       'flex items-center gap-x-3 px-4 py-2.5 text-sm',

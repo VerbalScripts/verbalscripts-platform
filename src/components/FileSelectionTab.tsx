@@ -3,6 +3,7 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import { useSearchParams } from 'next/navigation';
 
 import { Autoplay } from 'swiper/modules';
 interface FileSelectionTabProps {
@@ -11,6 +12,18 @@ interface FileSelectionTabProps {
 
 export default function FileSelectionTab({ callback }: FileSelectionTabProps) {
   const [activeTab, setActiveTab] = useState<string>('local-file');
+
+  const searchParams = useSearchParams();
+  const uploadOption: string | null = searchParams.get('option');
+
+  useState(() => {
+    if (uploadOption != null) {
+      setActiveTab(uploadOption);
+      callback(uploadOption);
+    }
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+  }, [uploadOption]);
 
   const switchTab = (id: string) => {
     setActiveTab(id);
