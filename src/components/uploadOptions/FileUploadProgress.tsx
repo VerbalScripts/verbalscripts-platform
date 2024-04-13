@@ -6,7 +6,7 @@ import {
 } from '@heroicons/react/24/outline';
 import { classNames } from '@/utils/classNames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRedo } from '@fortawesome/free-solid-svg-icons';
+import { faLongArrowAltRight, faRedo } from '@fortawesome/free-solid-svg-icons';
 import { CloudArrowUpIcon } from '@heroicons/react/16/solid';
 import { useRouter } from 'next/navigation';
 
@@ -96,7 +96,7 @@ export default function FileUploadProgress({
                       'mt-3 w-full flex items-center gap-x-3 px-2 justify-between',
                     )}
                   >
-                    <div className='relative z-10 text-4xl w-full h-2 rounded-xl bg-gray-200'>
+                    <div className='relative z-10 text-4xl w-full h-2 rounded-xl bg-white'>
                       <span
                         style={{
                           width: `${progress.percentage}%`,
@@ -113,7 +113,7 @@ export default function FileUploadProgress({
                     </div>
                   </div>
                 </div>
-                <div className='bg-gray-50 px-4 py-5 flex justify-center sm:px-6'>
+                <div className='bg-white px-4 py-5 flex justify-center sm:px-6'>
                   {progress.failed ? (
                     <button
                       type='button'
@@ -132,7 +132,10 @@ export default function FileUploadProgress({
                       className='-m-1.5 rounded-full bg-indigo-500 text-white font-semibold py-2 px-8 cursor-pointer'
                       onClick={() => GoToDashboard()}
                     >
-                      <span>Upload Success Proceed</span>
+                        <span className='flex items-center gap-x-2'>Success 
+                          <FontAwesomeIcon icon={faLongArrowAltRight} className='text-white' />
+                          Order File(s)
+                      </span>
                     </button>
                   ) : (
                     <span className='text-gray-600 text-md'>

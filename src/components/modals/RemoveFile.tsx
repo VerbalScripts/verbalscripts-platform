@@ -1,18 +1,18 @@
 import { Fragment, useRef, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import { FolderPlusIcon } from '@heroicons/react/24/outline';
 import AxiosProxy from '@/utils/AxiosProxy';
 import { Spinner } from 'flowbite-react';
+import { TrashIcon } from '@heroicons/react/20/solid';
 
-interface AddFolderProps {
+interface RemoveFilesProps {
   open: boolean;
+  files: string[];
   reload: () => Promise<void>;
   setOpen: (arg0: boolean) => void;
 }
 
-export default function AddFolder({ open, setOpen, reload }: AddFolderProps) {
+export default function RemoveFile({ open, setOpen, files, reload }: RemoveFilesProps) {
   const cancelButtonRef = useRef(null);
-  const folderRef = useRef(null);
 
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -20,24 +20,13 @@ export default function AddFolder({ open, setOpen, reload }: AddFolderProps) {
     try {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      if (
-        folderRef.current != null &&
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        folderRef.current!.value &&
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        folderRef.current!.value.length == 0
-      )
-        return;
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      const label = folderRef.current!.value;
       setLoading(true);
-      const response = await AxiosProxy.post('/folders/create', {
-        label,
-      });
-      if (response.status == 201) {
+      const response = await AxiosProxy.post( '/files/delete',
+        {
+          files,
+        }
+      );
+      if (response.status == 200) {
         console.log(response.data);
         await reload();
         setOpen(false);
@@ -87,49 +76,34 @@ export default function AddFolder({ open, setOpen, reload }: AddFolderProps) {
                 <div className='bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4'>
                   <div className='sm:flex flex-col sm:items-center'>
                     <div className=' mb-5 mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-indigo-100 sm:mx-0 sm:h-20 sm:w-20'>
-                      <FolderPlusIcon
+                      <TrashIcon
                         className='h-10 w-10 text-indigo-500'
                         aria-hidden='true'
                       />
                     </div>
-                    <div className='text-center sm:ml-4 sm:mt-0 sm:text-left'>
+                    <div className=' sm:ml-4 sm:mt-0 sm:text-left'>
                       <Dialog.Title
                         as='h3'
-                        className='text-xl font-semibold leading-6 text-gray-700'
+                        className='text-center text-xl font-semibold leading-6 text-gray-700'
                       >
-                        Add Folder
+                      Are you Sure you want to delete these Files ?
                       </Dialog.Title>
-                      <div className='mt-2'>
-
+                      <div className='mt-2 text-center text-base text-gray-600'>
+                          Files deleted may not be recovered.
                       </div>
                     </div>
                   </div>
-                  <form className='space-y-6' action='#' method='POST'>
-                    <div>
-                      <div className='mt-2 w-full'>
-                        <input
-                          id='folder-name'
-                          name='name'
-                          type='text'
-                          ref={folderRef}
-                          autoComplete='name'
-                          required
-                          placeholder='Enter name of folder '
-                          className='block w-full rounded-md border-0 py-3.5 text-gray-600 shadow-sm text-md font-semibold ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
-                        />
-                      </div>
-                    </div>
-                  </form>
+                 
                 </div>
                 <div className='bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6'>
                   <button
                     type='button'
                     disabled={loading}
-                    className='inline-flex w-full justify-center rounded-xl bg-indigo-500 px-7 py-2.5  font-semibold text-white shadow-sm hover:bg-indigo-400 sm:ml-3 sm:w-auto'
+                    className='inline-flex w-full justify-center rounded-xl bg-red-400 px-7 py-2.5  font-semibold text-white shadow-sm hover:bg-red-200 sm:ml-3 sm:w-auto'
                     onClick={() => createFolderHttp()}
                   >
                     {!loading ? (
-                      'Create'
+                      'Delete'
                     ) : (
                       <div>
                         <Spinner color={'pink'} />
@@ -139,7 +113,7 @@ export default function AddFolder({ open, setOpen, reload }: AddFolderProps) {
                   <button
                     type='button'
                     disabled={loading}
-                    className='mt-3 inline-flex w-full justify-center rounded-xl px-3 py-2.5  font-semibold text-gray-800 shadow-sm   sm:mt-0 sm:w-auto'
+                    className='mt-3 inline-flex w-full justify-center rounded-xl bg-white px-3 py-2.5  font-semibold text-gray-800 shadow-sm   sm:mt-0 sm:w-auto'
                     onClick={() => setOpen(false)}
                     ref={cancelButtonRef}
                   >

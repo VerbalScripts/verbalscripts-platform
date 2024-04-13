@@ -4,12 +4,16 @@ import FileEmpty from '@/components/dashboard/FileEmpty';
 import React, { useEffect, useState } from 'react';
 import LoadSpinner from '@/components/dashboard/LoadSpinner';
 
-import { FolderPlusIcon } from '@heroicons/react/24/outline';
+import { FolderPlusIcon, TrashIcon } from '@heroicons/react/24/outline';
 import {
   ArrowUturnLeftIcon,
   ArrowUturnRightIcon,
 } from '@heroicons/react/16/solid';
-import { ListBulletIcon, Squares2X2Icon } from '@heroicons/react/20/solid';
+import {
+  CheckCircleIcon,
+  ListBulletIcon,
+  Squares2X2Icon,
+} from '@heroicons/react/20/solid';
 import { classNames } from '@/utils/classNames';
 import { Breadcrumb } from 'flowbite-react';
 
@@ -22,6 +26,8 @@ import { useRouter } from 'next/navigation';
 import Head from 'next/head';
 import TableView from '@/components/dashboard/FileView/TableView';
 import GridView from '@/components/dashboard/FileView/GridView';
+import RemoveFile from '@/components/modals/RemoveFile';
+import OrderNowModal from '@/components/modals/OrderNowModal';
 interface PageSetupOptions {
   toggleView: 'grid' | 'list';
 }
@@ -37,6 +43,8 @@ export default function Page() {
   const [folders, setFolders] = useState<OrderFolder[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [open, setOpen] = useState(false);
+  const [deleteFile, setDeleteFile] = useState(false);
+  const [orderNow, setOrderNow] = useState(false);
 
   // selected files
   const [selectedFiles, setSelectedFiles] = useState<string[]>([]);
@@ -214,7 +222,7 @@ export default function Page() {
                 <span className='text-indigo-500'>New Folder</span>
               </button>
             </div>
-            <div className='flex  justify-between mb-8 items-center'>
+            <div className='flex  justify-between items-center mb-4'>
               <div className='flex gap-x-2'>
                 <button
                   disabled={folderArr.length == 1 || loading}
@@ -250,6 +258,30 @@ export default function Page() {
                 </div>
               </div>
               {/* toggles */}
+
+              {/* manage selected files */}
+
+              {selectedFiles.length != 0 ? (
+                <div className='flex items-center gap-x-2 p-2 rounded-xl bg-indigo-100'>
+                  <button
+                    onClick={() => setOrderNow(true)}
+                    className='flex  gap-x-2 rounded-xl bg-indigo-500 font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
+                  >
+                    <CheckCircleIcon className='h-5 w-5 text-white' />
+                    <span className='text-white'>
+                      Order File({selectedFiles.length})
+                    </span>
+                  </button>
+                  <button
+                    onClick={() => setDeleteFile(true)}
+                    className='flex  gap-x-2 rounded-xl  font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
+                  >
+                    <TrashIcon className='h-5 w-5 text-red-400' />
+                    <span className='text-red-400'>Delete</span>
+                  </button>
+                </div>
+              ) : null}
+
               <div className='flex gap-x-2 items-center'>
                 <div className='flex gap-x-3 pr-3 border-r border-gray-400'>
                   <div className=''>
@@ -323,6 +355,18 @@ export default function Page() {
 
           {/* add folder */}
           <AddFolder reload={reload} open={open} setOpen={setOpen} />
+          <RemoveFile
+            reload={reload}
+            files={selectedFiles}
+            open={deleteFile}
+            setOpen={setDeleteFile}
+          />
+          <OrderNowModal
+            reload={reload}
+            files={selectedFiles}
+            open={orderNow}
+            setOpen={setOrderNow}
+          />
         </div>
       )}
     </div>
