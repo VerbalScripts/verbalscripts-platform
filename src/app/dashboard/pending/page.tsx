@@ -1,6 +1,5 @@
 'use client';
 
-import FileEmpty from '@/components/dashboard/FileEmpty';
 import React, { useEffect, useState } from 'react';
 import LoadSpinner from '@/components/dashboard/LoadSpinner';
 
