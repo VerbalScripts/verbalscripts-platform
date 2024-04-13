@@ -207,8 +207,6 @@ export default function Page() {
       </Head>
       {loading ? (
         <LoadSpinner />
-      ) : orders.length == 0 && folderId == null ? (
-        <FileEmpty />
       ) : (
         <div>
           <div className='px-6 md:px-16 xl:px-16 sticky top-1 z-50 bg-white py-1'>
