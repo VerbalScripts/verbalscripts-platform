@@ -99,9 +99,7 @@ export default function AddFolder({ open, setOpen, reload }: AddFolderProps) {
                       >
                         Add Folder
                       </Dialog.Title>
-                      <div className='mt-2'>
-
-                      </div>
+                      <div className='mt-2'></div>
                     </div>
                   </div>
                   <form className='space-y-6' action='#' method='POST'>

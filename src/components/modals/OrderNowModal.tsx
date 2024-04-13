@@ -1,57 +1,52 @@
-import { Fragment, useRef, useState } from 'react';
+import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import AxiosProxy from '@/utils/AxiosProxy';
+// import AxiosProxy from '@/utils/AxiosProxy';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 
 interface RemoveFilesProps {
   open: boolean;
-  files: string[];
-  reload: () => Promise<void>;
+  files?: string[];
+  reload?: () => Promise<void>;
   setOpen: (arg0: boolean) => void;
 }
 
-export default function OrderNowModal({
-  open,
-  setOpen,
-  files,
-  reload,
-}: RemoveFilesProps) {
-  const cancelButtonRef = useRef(null);
+export default function OrderNowModal({ open, setOpen }: RemoveFilesProps) {
+  //   const cancelButtonRef = useRef(null);
 
-  const [loading, setLoading] = useState<boolean>(false);
+  //   const [loading, setLoading] = useState<boolean>(false);
 
-  const createFolderHttp = async () => {
-    try {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      setLoading(true);
-      const response = await AxiosProxy.post('/files/delete', {
-        files,
-      });
-      if (response.status == 200) {
-        console.log(response.data);
-        await reload();
-        setOpen(false);
-      } else {
-        console.log('success');
-        console.log(response.data);
-      }
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  //   const createFolderHttp = async () => {
+  //     try {
+  //       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  //       // @ts-ignore
+  //       setLoading(true);
+  //       const response = await AxiosProxy.post('/files/delete', {
+  //         files,
+  //       });
+  //       if (response.status == 200) {
+  //         console.log(response.data);
+  //         await reload();
+  //         setOpen(false);
+  //       } else {
+  //         console.log('success');
+  //         console.log(response.data);
+  //       }
+  //     } catch (error) {
+  //       console.log(error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
   return (
-      <Transition.Root show={open} as={Fragment}>
+    <Transition.Root show={open} as={Fragment}>
       <Dialog as='div' className='relative z-[60]' onClose={setOpen}>
         <Transition.Child
           as={Fragment}
           enter='ease-in-out duration-300'
           enterFrom='opacity-0'
           enterTo='opacity-100'
-                  leave='ease-in-out duration-300'
+          leave='ease-in-out duration-300'
           leaveFrom='opacity-100'
           leaveTo='opacity-0'
         >
@@ -111,4 +106,3 @@ export default function OrderNowModal({
     </Transition.Root>
   );
 }
-

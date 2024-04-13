@@ -11,7 +11,12 @@ interface RemoveFilesProps {
   setOpen: (arg0: boolean) => void;
 }
 
-export default function RemoveFile({ open, setOpen, files, reload }: RemoveFilesProps) {
+export default function RemoveFile({
+  open,
+  setOpen,
+  files,
+  reload,
+}: RemoveFilesProps) {
   const cancelButtonRef = useRef(null);
 
   const [loading, setLoading] = useState<boolean>(false);
@@ -21,11 +26,9 @@ export default function RemoveFile({ open, setOpen, files, reload }: RemoveFiles
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       setLoading(true);
-      const response = await AxiosProxy.post( '/files/delete',
-        {
-          files,
-        }
-      );
+      const response = await AxiosProxy.post('/files/delete', {
+        files,
+      });
       if (response.status == 200) {
         console.log(response.data);
         await reload();
@@ -86,14 +89,13 @@ export default function RemoveFile({ open, setOpen, files, reload }: RemoveFiles
                         as='h3'
                         className='text-center text-xl font-semibold leading-6 text-gray-700'
                       >
-                      Are you Sure you want to delete these Files ?
+                        Are you Sure you want to delete these Files ?
                       </Dialog.Title>
                       <div className='mt-2 text-center text-base text-gray-600'>
-                          Files deleted may not be recovered.
+                        Files deleted may not be recovered.
                       </div>
                     </div>
                   </div>
-                 
                 </div>
                 <div className='bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6'>
                   <button

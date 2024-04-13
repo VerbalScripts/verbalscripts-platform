@@ -183,7 +183,7 @@ export default function LocalFileUpload() {
     await updateImageDisplay(_prepFiles);
   };
 
- async function dropHandler(ev: DragEvent) {
+  async function dropHandler(ev: DragEvent) {
     // console.log('goeat');
     console.log('File(s) dropped');
 
@@ -213,7 +213,7 @@ export default function LocalFileUpload() {
       });
     }
 
-   await prepareFilesForUpload(_dataFiles);
+    await prepareFilesForUpload(_dataFiles);
   }
 
   function dragOverHandler(ev: DragEvent) {

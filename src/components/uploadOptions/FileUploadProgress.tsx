@@ -132,9 +132,13 @@ export default function FileUploadProgress({
                       className='-m-1.5 rounded-full bg-indigo-500 text-white font-semibold py-2 px-8 cursor-pointer'
                       onClick={() => GoToDashboard()}
                     >
-                        <span className='flex items-center gap-x-2'>Success 
-                          <FontAwesomeIcon icon={faLongArrowAltRight} className='text-white' />
-                          Order File(s)
+                      <span className='flex items-center gap-x-2'>
+                        Success
+                        <FontAwesomeIcon
+                          icon={faLongArrowAltRight}
+                          className='text-white'
+                        />
+                        Order File(s)
                       </span>
                     </button>
                   ) : (
