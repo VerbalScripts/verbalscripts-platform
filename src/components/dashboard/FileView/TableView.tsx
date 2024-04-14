@@ -243,24 +243,24 @@ export default function TableView({
                   checked={isSelected(order.id)}
                 />
               </Table.Cell>
-              <Table.Cell className='flex gap-x-3 items-center'>
+              <Table.Cell className='flex gap-x-3 items-center py-2'>
                 <DocumentIcon className='text-gray-700 h-7 w-7' />
                 <span className='whitespace-nowrap font-medium text-gray-900 dark:text-white'>
                   {order.label}
                 </span>
               </Table.Cell>
-              <Table.Cell>{bytesToMB(order.size)}</Table.Cell>
-              <Table.Cell>
+              <Table.Cell className='py-2'>{bytesToMB(order.size)}</Table.Cell>
+              <Table.Cell className='py-2'>
                 <span className='uppercase'>
                   {order.mimetype.split('/')[1]}
                 </span>
               </Table.Cell>
-              <Table.Cell>
-                <span className='capitalize bg-indigo-100 font-semibold text-indigo-500 px-3 py-2 rounded-xl'>
+              <Table.Cell className='py-2'>
+                <span className='capitalize bg-indigo-100 text-sm text-indigo-500 px-3 py-1.5 rounded-xl'>
                   {order.status}
                 </span>
               </Table.Cell>
-              <Table.Cell>
+              <Table.Cell className='py-2'>
                 <div className='flex items-center gap-x-1'>
                   <TableMenuDropDown />
                 </div>

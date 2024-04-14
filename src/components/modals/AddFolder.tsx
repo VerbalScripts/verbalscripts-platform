@@ -39,16 +39,18 @@ export default function AddFolder({ open, setOpen, reload }: AddFolderProps) {
       });
       if (response.status == 201) {
         console.log(response.data);
-        await reload();
         setOpen(false);
       } else {
+        setOpen(false);
         console.log('success');
         console.log(response.data);
       }
     } catch (error) {
       console.log(error);
     } finally {
-      setLoading(false);
+      setLoading( false );
+      await reload();
+      
     }
   };
 

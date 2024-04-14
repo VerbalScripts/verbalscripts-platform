@@ -80,20 +80,14 @@ export default function Page() {
     if (clearAll && remove) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       setSelectedFiles((prevFiles) => []);
-    }
-
-    if (clearAll && !remove) {
+    } else if (clearAll && !remove) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      setSelectedFiles((_prevFiles) => [...orders.map((order) => order.id)]);
-    }
-
-    if (remove) {
+      setSelectedFiles((_prevFiles) => orders.map((order) => order.id));
+    } else if (remove) {
       setSelectedFiles((prevFiles) => [
         ...prevFiles.filter((_id) => _id != id),
       ]);
-    }
-
-    if (!remove) {
+    } else if (!remove) {
       setSelectedFiles((prevFiles) => [...prevFiles, id]);
     }
   };
@@ -233,14 +227,14 @@ export default function Page() {
                   disabled={
                     currentFolderIndex + 1 == folderArr.length || loading
                   }
-                  className='rounded-xl bg-indigo-100 font-semibold px-4 py-2 text-indigo-600  focus-within:ring-4 focus-within:ring-indigo-400 disabled:cursor-not-allowed  disabled:text-indigo-300'
+                  className='rounded-xl bg-indigo-100 font-semibold px-4 py-1.5 text-indigo-600  focus-within:ring-4 focus-within:ring-indigo-400 disabled:cursor-not-allowed  disabled:text-indigo-300'
                 >
                   <ArrowUturnRightIcon className=' h-5 w-5 ' />
                 </button>
                 <div className='flex items-center gap-x-2'>
                   <Breadcrumb
                     aria-label='Solid background breadcrumb example'
-                    className='bg-gray-50 px-5 py-3 dark:bg-gray-800'
+                    className='bg-gray-50 px-5 py-1.5 dark:bg-gray-800'
                   >
                     {folderArr.map((track) => (
                       <Breadcrumb.Item

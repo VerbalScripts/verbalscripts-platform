@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { classNames } from '@/utils/classNames';
-import { EllipsisVerticalIcon } from '@heroicons/react/24/outline';
+import { DocumentDuplicateIcon, EllipsisVerticalIcon, PencilSquareIcon, ShareIcon, TrashIcon } from '@heroicons/react/24/outline';
 
 interface TableMenuDropDownProps {
   isGrid?: boolean;
@@ -19,7 +19,7 @@ export default function TableMenuDropDown({ isGrid }: TableMenuDropDownProps) {
             />
           </Menu.Button>
         ) : (
-          <Menu.Button className='inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm  text-gray-700 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50'>
+          <Menu.Button className='inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-1 text-sm  text-gray-700 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50'>
             More
             <ChevronDownIcon
               className='-mr-1 h-5 w-5 text-gray-400'
@@ -46,10 +46,11 @@ export default function TableMenuDropDown({ isGrid }: TableMenuDropDownProps) {
                   href='#'
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm',
+                    'flex items-center gap-x-2 px-4 py-2 text-sm',
                   )}
                 >
-                  Edit
+                  <PencilSquareIcon className='h-5 w-5' />
+                  <span>Rename</span>
                 </a>
               )}
             </Menu.Item>
@@ -58,11 +59,29 @@ export default function TableMenuDropDown({ isGrid }: TableMenuDropDownProps) {
                 <a
                   href='#'
                   className={classNames(
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm',
+                    active ? ' bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'px-4 flex items-center gap-x-2 py-2 text-sm',
                   )}
                 >
-                  Duplicate
+                  <DocumentDuplicateIcon className='w-5 h-5' />
+                  <span>Duplicate</span>
+                </a>
+              )}
+            </Menu.Item>
+          </div>
+          
+          <div className='py-1'>
+            <Menu.Item>
+              {({ active }) => (
+                <a
+                  href='#'
+                  className={classNames(
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'px-4 flex items-center gap-x-2 py-2 text-sm',
+                  )}
+                >
+                  <ShareIcon className='h-5 w-5' />
+                  <span>Share</span>
                 </a>
               )}
             </Menu.Item>
@@ -74,40 +93,11 @@ export default function TableMenuDropDown({ isGrid }: TableMenuDropDownProps) {
                   href='#'
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm',
+                    'flex items-center gap-x-2 px-4 py-2 text-sm',
                   )}
                 >
-                  Move
-                </a>
-              )}
-            </Menu.Item>
-          </div>
-          <div className='py-1'>
-            <Menu.Item>
-              {({ active }) => (
-                <a
-                  href='#'
-                  className={classNames(
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm',
-                  )}
-                >
-                  Share
-                </a>
-              )}
-            </Menu.Item>
-          </div>
-          <div className='py-1'>
-            <Menu.Item>
-              {({ active }) => (
-                <a
-                  href='#'
-                  className={classNames(
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm',
-                  )}
-                >
-                  Delete
+                  <TrashIcon className='h-5 w-5' />
+                  <span>Delete</span>
                 </a>
               )}
             </Menu.Item>
