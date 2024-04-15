@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 
 import { useState } from 'react';
-
+import { NextSeo } from 'next-seo';
 import Image from 'next/image';
 import Script from 'next/script';
 
@@ -108,6 +108,11 @@ export default function Home() {
       className='bg-zinc-800 max-h-screen overflow-y-scroll overflow-x-hidden relative'
       onScroll={onBodyScroll}
     >
+      <NextSeo
+        title='VerbalScripts: Fast; Accurate Human Transcription Services'
+        description='VerbalScripts offers fast, affordable, and highly accurate human transcription, translation, data annotation, and AI dataset services customized for your needs.'
+        canonical='https://www.verbalscripts.com/'
+      />
       <Script
         src='https://fw-cdn.com/11485930/4150032.js'
         strategy='lazyOnload'

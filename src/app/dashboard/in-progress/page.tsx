@@ -27,6 +27,8 @@ import TableView from '@/components/dashboard/FileView/TableView';
 import GridView from '@/components/dashboard/FileView/GridView';
 import RemoveFile from '@/components/modals/RemoveFile';
 import OrderNowModal from '@/components/modals/OrderNowModal';
+import RenameFile from '@/components/modals/RenameFile';
+import RenameFolder from '@/components/modals/RenameFolder';
 interface PageSetupOptions {
   toggleView: 'grid' | 'list';
 }
@@ -41,9 +43,19 @@ export default function Page() {
   const [orders, setOrders] = useState<OrderFile[]>([]);
   const [folders, setFolders] = useState<OrderFolder[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+
+  // modal toggles
   const [open, setOpen] = useState(false);
   const [deleteFile, setDeleteFile] = useState(false);
   const [orderNow, setOrderNow] = useState(false);
+  const [openFileRename, setOpenFileRename] = useState(false);
+  const [openFolderRename, setOpenFolderRename] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [openRemoveFile, setOpenRemoveFile] = useState(false);
+
+  // setters
+  const [currentFile, setCurrentFile] = useState<string>('');
+  const [currentFolder, setCurrentFolder] = useState<string>('');
 
   // selected files
   const [selectedFiles, setSelectedFiles] = useState<string[]>([]);
@@ -63,6 +75,21 @@ export default function Page() {
     toggleView: 'list',
   });
 
+  const _renameFile = (id: string) => {
+    setOpenFileRename(true);
+    setCurrentFile(id);
+  };
+
+  const _renameFolder = (id: string) => {
+    setOpenFolderRename(true);
+    setCurrentFolder(id);
+  };
+
+  const _removeFile = (id: string) => {
+    setOpenRemoveFile(true);
+    setCurrentFolder(id);
+  };
+
   // toggle folder visibility
   const toggleFolderShow = (
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -80,20 +107,14 @@ export default function Page() {
     if (clearAll && remove) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       setSelectedFiles((prevFiles) => []);
-    }
-
-    if (clearAll && !remove) {
+    } else if (clearAll && !remove) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      setSelectedFiles((_prevFiles) => [...orders.map((order) => order.id)]);
-    }
-
-    if (remove) {
+      setSelectedFiles((_prevFiles) => orders.map((order) => order.id));
+    } else if (remove) {
       setSelectedFiles((prevFiles) => [
         ...prevFiles.filter((_id) => _id != id),
       ]);
-    }
-
-    if (!remove) {
+    } else if (!remove) {
       setSelectedFiles((prevFiles) => [...prevFiles, id]);
     }
   };
@@ -233,14 +254,14 @@ export default function Page() {
                   disabled={
                     currentFolderIndex + 1 == folderArr.length || loading
                   }
-                  className='rounded-xl bg-indigo-100 font-semibold px-4 py-2 text-indigo-600  focus-within:ring-4 focus-within:ring-indigo-400 disabled:cursor-not-allowed  disabled:text-indigo-300'
+                  className='rounded-xl bg-indigo-100 font-semibold px-4 py-1.5 text-indigo-600  focus-within:ring-4 focus-within:ring-indigo-400 disabled:cursor-not-allowed  disabled:text-indigo-300'
                 >
                   <ArrowUturnRightIcon className=' h-5 w-5 ' />
                 </button>
                 <div className='flex items-center gap-x-2'>
                   <Breadcrumb
                     aria-label='Solid background breadcrumb example'
-                    className='bg-gray-50 px-5 py-3 dark:bg-gray-800'
+                    className='bg-gray-50 px-5 py-1.5 dark:bg-gray-800'
                   >
                     {folderArr.map((track) => (
                       <Breadcrumb.Item
@@ -334,6 +355,9 @@ export default function Page() {
               selectedFiles={selectedFiles}
               updatedSelectedFiles={updateSelectedFiles}
               folders={folders}
+              renameFile={_renameFile}
+              renameFolder={_renameFolder}
+              removeFile={_removeFile}
               callback={updateOrders}
               showFolders={showFolders}
               orders={orders}
@@ -344,6 +368,9 @@ export default function Page() {
               selectedFiles={selectedFiles}
               updatedSelectedFiles={updateSelectedFiles}
               folders={folders}
+              renameFile={_renameFile}
+              renameFolder={_renameFolder}
+              removeFile={_removeFile}
               callback={updateOrders}
               showFolders={showFolders}
               orders={orders}
@@ -357,6 +384,18 @@ export default function Page() {
             files={selectedFiles}
             open={deleteFile}
             setOpen={setDeleteFile}
+          />
+          <RenameFile
+            fileId={currentFile}
+            reload={reload}
+            open={openFileRename}
+            setOpen={setOpenFileRename}
+          />
+          <RenameFolder
+            folderId={currentFolder}
+            reload={reload}
+            open={openFolderRename}
+            setOpen={setOpenFolderRename}
           />
           <OrderNowModal
             reload={reload}

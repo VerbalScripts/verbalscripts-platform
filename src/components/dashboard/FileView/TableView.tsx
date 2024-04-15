@@ -229,7 +229,7 @@ export default function TableView({
                   <div className='flex items-center gap-x-1'>
                     <TableMenuDropDown
                       remove={() => {}}
-                      rename={() => {}}
+                      rename={() => renameFolder(folder.id)}
                       duplicate={() => {}}
                       share={() => {}}
                     />

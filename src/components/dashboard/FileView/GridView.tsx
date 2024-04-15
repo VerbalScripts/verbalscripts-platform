@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 import AxiosProxy from '@/utils/AxiosProxy';
 
-interface TableViewProps {
+interface GridViewProps {
   folders: OrderFolder[];
   orders: OrderFile[];
   showFolders: boolean;
@@ -20,6 +20,9 @@ interface TableViewProps {
     clearAll: boolean,
   ) => void;
   selectedFiles: string[];
+  renameFile: (id: string) => void;
+  renameFolder: (id: string) => void;
+  removeFile: (id: string) => void;
 }
 
 export default function GridView({
@@ -29,8 +32,12 @@ export default function GridView({
   showFolders,
   updatedSelectedFiles,
   selectedFiles,
+  renameFile,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  renameFolder,
+  removeFile,
   callback,
-}: TableViewProps) {
+}: GridViewProps) {
   const [draggedRowIndex, setDraggedRowIndex] = useState<number | null>(null);
 
   // for setting dragged over folders
@@ -236,7 +243,13 @@ export default function GridView({
               </div>
 
               <div>
-                <TableMenuDropDown isGrid={true} />
+                <TableMenuDropDown
+                  remove={() => removeFile(order.id)}
+                  rename={() => renameFile(order.id)}
+                  duplicate={() => {}}
+                  share={() => {}}
+                  isGrid={true}
+                />
               </div>
             </div>
           </div>

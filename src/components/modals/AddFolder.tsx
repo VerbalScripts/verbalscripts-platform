@@ -48,9 +48,8 @@ export default function AddFolder({ open, setOpen, reload }: AddFolderProps) {
     } catch (error) {
       console.log(error);
     } finally {
-      setLoading( false );
+      setLoading(false);
       await reload();
-      
     }
   };
 

@@ -50,6 +50,7 @@ export default function Page() {
   const [orderNow, setOrderNow] = useState(false);
   const [openFileRename, setOpenFileRename] = useState(false);
   const [openFolderRename, setOpenFolderRename] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [openRemoveFile, setOpenRemoveFile] = useState(false);
 
   // setters
@@ -74,9 +75,9 @@ export default function Page() {
     toggleView: 'list',
   });
 
-  const _renameFile = ( id: string ) => {
-    setOpenFileRename( true );
-    setCurrentFile(id)
+  const _renameFile = (id: string) => {
+    setOpenFileRename(true);
+    setCurrentFile(id);
   };
 
   const _renameFolder = (id: string) => {
@@ -84,10 +85,10 @@ export default function Page() {
     setCurrentFolder(id);
   };
 
-    const _removeFile = (id: string) => {
-      setOpenRemoveFile(true);
-      setCurrentFolder(id);
-    };
+  const _removeFile = (id: string) => {
+    setOpenRemoveFile(true);
+    setCurrentFolder(id);
+  };
 
   // toggle folder visibility
   const toggleFolderShow = (
@@ -354,6 +355,9 @@ export default function Page() {
               selectedFiles={selectedFiles}
               updatedSelectedFiles={updateSelectedFiles}
               folders={folders}
+              renameFile={_renameFile}
+              renameFolder={_renameFolder}
+              removeFile={_removeFile}
               callback={updateOrders}
               showFolders={showFolders}
               orders={orders}

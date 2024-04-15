@@ -11,7 +11,12 @@ interface RenameFolderProps {
   setOpen: (arg0: boolean) => void;
 }
 
-export default function RenameFolder({ open, setOpen, folderId, reload }: RenameFolderProps) {
+export default function RenameFolder({
+  open,
+  setOpen,
+  folderId,
+  reload,
+}: RenameFolderProps) {
   const cancelButtonRef = useRef(null);
   const folderRef = useRef(null);
 
@@ -49,8 +54,8 @@ export default function RenameFolder({ open, setOpen, folderId, reload }: Rename
     } catch (error) {
       console.log(error);
     } finally {
-      setLoading( false );
-        await reload();
+      setLoading(false);
+      await reload();
     }
   };
 
