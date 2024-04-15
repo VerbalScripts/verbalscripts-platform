@@ -4,14 +4,15 @@ import './globals.css';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'VerbalScripts | Home',
+  title:
+    'VerbalScripts | Fast, affordable, and highly accurate human transcription',
   keywords: [
     'transcription',
     'audio transcription',
     'video transcription',
     'speech to text',
     'academic transcription',
-    'proofreading'
+    'proofreading',
   ],
   description:
     'VerbalScripts offers fast, affordable, and highly accurate human transcription, translation, data annotation, and AI dataset services customized for your needs.',

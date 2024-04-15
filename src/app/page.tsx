@@ -215,7 +215,7 @@ export default function Home() {
           <div className='relative isolate   px-6 pt-16 sm:rounded-3xl sm:px-16 md:pt-24 md:px-24 xl:px-28 lg:flex lg:items-center lg:gap-x-20 lg:px-36 lg:pt-0'>
             <div className='mx-auto  lg:max-w-[28rem]   xl:max-w-[33rem] lg:mx-0 lg:flex-auto '>
               <h2 className='text-4xl md:text-5xl font-bold  text-gray-100'>
-                What Do We Offer
+                Our Services
               </h2>
               <p className='mt-6 text-xl  leading-7 text-gray-50'>
                 The way we think about data is changing; and now more than ever
