@@ -1,4 +1,3 @@
-'use client';
 
 import React from 'react';
 import FileEmpty from '@/components/dashboard/FileEmpty';
