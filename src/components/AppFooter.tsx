@@ -22,8 +22,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faXTwitter,
   faFacebook,
-  faGithub,
   faLinkedin,
+  faInstagram,
 } from '@fortawesome/free-brands-svg-icons';
 
 export default function AppFooter() {
@@ -151,8 +151,8 @@ export default function AppFooter() {
   return (
     <div className='relative isolate overflow-hidden pb-36 md:pb-0 pt-16 sm:pt-24 lg:pt-32'>
       <div className='mx-auto max-w-7xl xl:max-w-7xl px-6 lg:px-8 xl:px-22'>
-        <div className='mx-auto flex flex-col md:flex-row   md:justify-between md:items-end border-b border-gray-300/10 pb-12 mb-8'>
-          <div className='lg:max-w-lg'>
+        {/* <div className='mx-auto flex flex-col md:flex-row   md:justify-between md:items-end border-b border-gray-300/10 pb-12 mb-8'>
+          <div className=''>
             <h2 className='text-3xl font-bold tracking-tight text-white sm:text-4xl'>
               Stay in the know.
             </h2>
@@ -160,57 +160,57 @@ export default function AppFooter() {
               Get Discount coupons and updates from VerbalScripts
             </p>
 
-            <div className='flex items-center mt-5 gap-x-3'>
-              <a
-                href=''
-                className='text-center mb-3 flex h-12 w-12 items-center justify-center'
+            <div className='mt-6 flex flex-col md:flex-row  gap-5 '>
+              <label htmlFor='email-address' className='sr-only'>
+                Email address
+              </label>
+              <input
+                id='email-address'
+                name='email'
+                type='email'
+                autoComplete='email'
+                required
+                className='w-full min-w-80 lg:min-w-2xl  flex-auto rounded-md border-0 bg-white/5 px-3.5 py-3.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
+                placeholder='Enter your email'
+              />
+              <button
+                type='submit'
+                className='flex-none max-w-40 md:max-w-none rounded-full bg-indigo-600 px-7 py-2.5 text-lg font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500'
               >
-                <FontAwesomeIcon icon={faLinkedin} className='h-6 w-6' />
-              </a>
-              <a
-                href=''
-                className='text-center mb-3 flex h-12 w-12 items-center justify-center'
-              >
-                <FontAwesomeIcon icon={faXTwitter} className='h-6 w-6' />
-              </a>
-
-              <a
-                href=''
-                className='text-center mb-3 flex h-12 w-12 items-center justify-center'
-              >
-                <FontAwesomeIcon icon={faFacebook} className='h-6 w-6' />
-              </a>
-
-              <a
-                href=''
-                className='text-center mb-3 flex h-12 w-12 items-center justify-center'
-              >
-                <FontAwesomeIcon icon={faGithub} className='h-6 w-6' />
-              </a>
+                Subscribe
+              </button>
             </div>
           </div>
 
-          <div className='mt-6 flex flex-col md:flex-row  gap-5 '>
-            <label htmlFor='email-address' className='sr-only'>
-              Email address
-            </label>
-            <input
-              id='email-address'
-              name='email'
-              type='email'
-              autoComplete='email'
-              required
-              className='w-full min-w-80 lg:min-w-2xl  flex-auto rounded-md border-0 bg-white/5 px-3.5 py-3.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
-              placeholder='Enter your email'
-            />
-            <button
-              type='submit'
-              className='flex-none max-w-40 md:max-w-none rounded-full bg-indigo-600 px-7 py-2.5 text-lg font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500'
+          <div className='flex items-center mt-5 gap-x-3'>
+            <a
+              href=''
+              className='text-center mb-3 flex h-12 w-12 items-center justify-center'
             >
-              Subscribe
-            </button>
+              <FontAwesomeIcon icon={faLinkedin} className='h-6 w-6' />
+            </a>
+            <a
+              href=''
+              className='text-center mb-3 flex h-12 w-12 items-center justify-center'
+            >
+              <FontAwesomeIcon icon={faXTwitter} className='h-6 w-6' />
+            </a>
+
+            <a
+              href=''
+              className='text-center mb-3 flex h-12 w-12 items-center justify-center'
+            >
+              <FontAwesomeIcon icon={faFacebook} className='h-6 w-6' />
+            </a>
+
+            <a
+              href=''
+              className='text-center mb-3 flex h-12 w-12 items-center justify-center'
+            >
+              <FontAwesomeIcon icon={faGithub} className='h-6 w-6' />
+            </a>
           </div>
-        </div>
+        </div> */}
         <div
           className='absolute left-1/2 top-0 -z-10 -translate-x-1/2 blur-3xl xl:-top-6'
           aria-hidden='true'
@@ -226,47 +226,70 @@ export default function AppFooter() {
         {/* contact information */}
         <div className='max-w-none lg:max-w-none border-b border-gray-300/10'>
           <dl className='grid  grid-cols-1 md:grid-cols-3   lg:gap-x-8 gap-y-10  lg:grid-cols-4 lg:gap-y-16  pb-12'>
-            <div className='flex flex-col'>
-              <a href='#' className='-m-1.5 mb-3 p-1.5'>
-                <span className='text-white font-bold text-2xl'>
+            <div className='flex flex-col gap-y-2'>
+              <a href='#' className='-m-1.5  mb-3 p-1.5'>
+                <span className='text-white font-bold text-3xl '>
                   VerbalScripts
                 </span>
               </a>
 
-              <a href='#' className='-m-1.5 p-1.5'>
-                <span className='text-gray-300  text-lg'>Get a Quote</span>
-              </a>
-
-              <a href='/upload-files' className='-m-1.5 p-1.5'>
-                <span className='text-gray-300  text-lg'>Order Now</span>
-              </a>
-
-              <a
-                href='mailto:sales@verbalscripts.com leading-7'
-                className='-m-1.5 p-1.5'
-              >
+              <a href='mailto:sales@verbalscripts.com' className='-m-1.5 p-1.5'>
                 <span className='text-gray-300 text-lg '>
                   sales@verbalscripts.com
                 </span>
               </a>
 
               <a
-                href='tel:+1 (800) 275-5513'
+                href='tel:+1 (727) 966-8531'
                 className='-m-1.5 p-1.5 leading-7'
               >
-                <span className='text-gray-300  text-lg hover:text-yellow-400'>
+                <span className='text-gray-300  text-lg hover:text-indigo-500'>
                   +1 (727) 966-8531
                 </span>
               </a>
 
-              <a href='/contact-us' className='-m-1.5 p-1.5 leading-7'>
-                <span className='text-gray-300  text-lg hover:text-yellow-400'>
-                  Contact Us
-                </span>
-              </a>
+              <div className='flex items-center mt-5 gap-x-3'>
+                <a
+                  href=''
+                  className='text-center mb-3  rounded-xl transition hover:bg-indigo-500 flex h-10 w-10 items-center justify-center'
+                >
+                  <FontAwesomeIcon
+                    icon={faLinkedin}
+                    className='h-6 w-6 text-white'
+                  />
+                </a>
+                <a
+                  href=''
+                  className='text-center mb-3 flex h-10 w-10 rounded-xl transition hover:bg-indigo-500 items-center justify-center'
+                >
+                  <FontAwesomeIcon
+                    icon={faXTwitter}
+                    className='h-6 w-6 text-white'
+                  />
+                </a>
+
+                <a
+                  href=''
+                  className='text-center mb-3 flex rounded-xl transition hover:bg-indigo-500 h-10 w-10 items-center justify-center'
+                >
+                  <FontAwesomeIcon
+                    icon={faFacebook}
+                    className='h-6 w-6 text-white'
+                  />
+                </a>
+                <a
+                  href=''
+                  className='text-center mb-3 flex rounded-xl transition hover:bg-indigo-500 h-10 w-10 items-center justify-center'
+                >
+                  <FontAwesomeIcon
+                    icon={faInstagram}
+                    className='h-6 w-6 text-white'
+                  />
+                </a>
+              </div>
             </div>
 
-            <div className='flex flex-col'>
+            <div className='flex flex-col gap-y-2'>
               <a href='#' className='-m-1.5 mb-3  p-1.5'>
                 <span className='text-gray-100 font-bold text-xl'>
                   Services
@@ -275,66 +298,81 @@ export default function AppFooter() {
 
               {services.map((item) => (
                 <a key={item.name} href={item.href} className='-m-1.5 p-1.5 '>
-                  <span className='text-gray-300  text-lg hover:text-yellow-400'>
+                  <span className='text-gray-300  text-lg hover:text-indigo-500'>
                     {item.name}
                   </span>
                 </a>
               ))}
             </div>
 
-            <div className='flex flex-col'>
+            <div className='flex flex-col gap-y-2'>
               <a href='#' className='-m-1.5 mb-3 p-1.5'>
                 <span className='text-gray-100 font-bold text-lg'>
-                  Solutions
+                  Industries
                 </span>
               </a>
 
               {solutions.map((item) => (
                 <a key={item.name} href={item.href} className='-m-1.5 p-1.5'>
-                  <span className='text-gray-300  text-lg hover:text-yellow-400'>
+                  <span className='text-gray-300  text-lg hover:text-indigo-500'>
                     {item.name}
                   </span>
                 </a>
               ))}
             </div>
 
-            <div className='flex flex-col'>
+            <div className='flex flex-col gap-y-2'>
               <a href='#' className='-m-1.5 mb-3 p-1.5'>
-                <span className='text-gray-100 font-bold text-lg'>
-                  Resources
+                <span className='text-gray-100  font-bold text-lg'>
+                  Company
                 </span>
               </a>
-              <a href='/contact-us' className='-m-1.5 p-1.5'>
-                <span className='text-gray-300 text-lg hover:text-yellow-400'>
-                  Customer Support
-                </span>
+              <a
+                href='/about-us'
+                className='-m-1.5 p-1.5 hover:text-indigo-500'
+              >
+                <span className='text-gray-300 text-lg'>About Us</span>
               </a>
-              <a href='/faqs' className='-m-1.5 p-1.5'>
-                <span className='text-gray-300 text-lg hover:text-yellow-400'>
-                  Faqs
-                </span>
+              <a
+                href='/contact-us'
+                className='-m-1.5 p-1.5 hover:text-indigo-500'
+              >
+                <span className='text-gray-300 text-lg '>Support</span>
               </a>
+
+              <a href='/faqs' className='-m-1.5 p-1.5 hover:text-indigo-500'>
+                <span className='text-gray-300 text-lg '>FAQs</span>
+              </a>
+
+              <div className='-m-1.5 mt-3 p-1.5  inline-flex '>
+                <a
+                  href='/freelancers'
+                  className='bg-indigo-600 font-semibold text-lg rounded-full px-5 py-2.5 hover:bg-indigo-500 '
+                >
+                  Become a Transcriber
+                </a>
+              </div>
             </div>
           </dl>
 
           <div className='flex flex-col md:flex-row  md:justify-center md:items-center text-gray-300 py-4 text-md'>
             <a href='#' className='px-1.5  md:border-r border-gray-300'>
-              <span className='text-gray-300  hover:text-yellow-400'>
+              <span className='text-gray-300  hover:text-indigo-500'>
                 Client Terms
               </span>
             </a>{' '}
             <a href='#' className='px-1.5 md:border-r border-gray-300'>
-              <span className='text-gray-300  hover:text-yellow-400'>
+              <span className='text-gray-300  hover:text-indigo-500'>
                 Freelancer Terms
               </span>
             </a>
             <a href='#' className='px-1.5 md:border-r border-gray-300'>
-              <span className='text-gray-300  hover:text-yellow-400'>
+              <span className='text-gray-300  hover:text-indigo-500'>
                 Client Privacy & data securiy
               </span>
             </a>
             <a href='#' className='px-1.5 md:border-r border-gray-300'>
-              <span className='text-gray-300  hover:text-yellow-400'>
+              <span className='text-gray-300  hover:text-indigo-500'>
                 Freelancer Worker Privacy
               </span>
             </a>

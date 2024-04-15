@@ -2,12 +2,28 @@ import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { classNames } from '@/utils/classNames';
-import { DocumentDuplicateIcon, EllipsisVerticalIcon, PencilSquareIcon, ShareIcon, TrashIcon } from '@heroicons/react/24/outline';
+import {
+  DocumentDuplicateIcon,
+  EllipsisVerticalIcon,
+  PencilSquareIcon,
+  ShareIcon,
+  TrashIcon,
+} from '@heroicons/react/24/outline';
 
 interface TableMenuDropDownProps {
   isGrid?: boolean;
+  rename: () => void;
+  remove: () => void;
+  duplicate: () => void;
+  share: () => void;
 }
-export default function TableMenuDropDown({ isGrid }: TableMenuDropDownProps) {
+export default function TableMenuDropDown({
+  isGrid,
+  rename,
+  remove,
+  duplicate,
+  share,
+}: TableMenuDropDownProps) {
   return (
     <Menu as='div' className='relative inline-block text-left'>
       <div>
@@ -44,6 +60,7 @@ export default function TableMenuDropDown({ isGrid }: TableMenuDropDownProps) {
               {({ active }) => (
                 <a
                   href='#'
+                  onClick={() => rename()}
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                     'flex items-center gap-x-2 px-4 py-2 text-sm',
@@ -58,6 +75,7 @@ export default function TableMenuDropDown({ isGrid }: TableMenuDropDownProps) {
               {({ active }) => (
                 <a
                   href='#'
+                  onClick={() => duplicate()}
                   className={classNames(
                     active ? ' bg-gray-100 text-gray-900' : 'text-gray-700',
                     'px-4 flex items-center gap-x-2 py-2 text-sm',
@@ -69,12 +87,13 @@ export default function TableMenuDropDown({ isGrid }: TableMenuDropDownProps) {
               )}
             </Menu.Item>
           </div>
-          
+
           <div className='py-1'>
             <Menu.Item>
               {({ active }) => (
                 <a
                   href='#'
+                  onClick={() => share()}
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                     'px-4 flex items-center gap-x-2 py-2 text-sm',
@@ -91,6 +110,7 @@ export default function TableMenuDropDown({ isGrid }: TableMenuDropDownProps) {
               {({ active }) => (
                 <a
                   href='#'
+                  onClick={() => remove()}
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                     'flex items-center gap-x-2 px-4 py-2 text-sm',

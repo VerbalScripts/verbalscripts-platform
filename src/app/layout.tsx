@@ -26,5 +26,6 @@ export default function RootLayout({
       </Head>
       <body className='relative min-h-screen'>{children}</body>
     </html>
+    
   );
 }

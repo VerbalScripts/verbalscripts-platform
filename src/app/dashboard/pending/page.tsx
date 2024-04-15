@@ -27,6 +27,8 @@ import TableView from '@/components/dashboard/FileView/TableView';
 import GridView from '@/components/dashboard/FileView/GridView';
 import RemoveFile from '@/components/modals/RemoveFile';
 import OrderNowModal from '@/components/modals/OrderNowModal';
+import RenameFile from '@/components/modals/RenameFile';
+import RenameFolder from '@/components/modals/RenameFolder';
 interface PageSetupOptions {
   toggleView: 'grid' | 'list';
 }
@@ -41,9 +43,18 @@ export default function Page() {
   const [orders, setOrders] = useState<OrderFile[]>([]);
   const [folders, setFolders] = useState<OrderFolder[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+
+  // modal toggles
   const [open, setOpen] = useState(false);
   const [deleteFile, setDeleteFile] = useState(false);
   const [orderNow, setOrderNow] = useState(false);
+  const [openFileRename, setOpenFileRename] = useState(false);
+  const [openFolderRename, setOpenFolderRename] = useState(false);
+  const [openRemoveFile, setOpenRemoveFile] = useState(false);
+
+  // setters
+  const [currentFile, setCurrentFile] = useState<string>('');
+  const [currentFolder, setCurrentFolder] = useState<string>('');
 
   // selected files
   const [selectedFiles, setSelectedFiles] = useState<string[]>([]);
@@ -62,6 +73,21 @@ export default function Page() {
   const [pageSetup, setPageSetup] = useState<PageSetupOptions>({
     toggleView: 'list',
   });
+
+  const _renameFile = ( id: string ) => {
+    setOpenFileRename( true );
+    setCurrentFile(id)
+  };
+
+  const _renameFolder = (id: string) => {
+    setOpenFolderRename(true);
+    setCurrentFolder(id);
+  };
+
+    const _removeFile = (id: string) => {
+      setOpenRemoveFile(true);
+      setCurrentFolder(id);
+    };
 
   // toggle folder visibility
   const toggleFolderShow = (
@@ -338,6 +364,9 @@ export default function Page() {
               selectedFiles={selectedFiles}
               updatedSelectedFiles={updateSelectedFiles}
               folders={folders}
+              renameFile={_renameFile}
+              renameFolder={_renameFolder}
+              removeFile={_removeFile}
               callback={updateOrders}
               showFolders={showFolders}
               orders={orders}
@@ -351,6 +380,18 @@ export default function Page() {
             files={selectedFiles}
             open={deleteFile}
             setOpen={setDeleteFile}
+          />
+          <RenameFile
+            fileId={currentFile}
+            reload={reload}
+            open={openFileRename}
+            setOpen={setOpenFileRename}
+          />
+          <RenameFolder
+            folderId={currentFolder}
+            reload={reload}
+            open={openFolderRename}
+            setOpen={setOpenFolderRename}
           />
           <OrderNowModal
             reload={reload}

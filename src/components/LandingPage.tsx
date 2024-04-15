@@ -47,13 +47,13 @@ export default function LandingPage() {
             href='/solutions'
             className='rounded-full bg-orange-400 px-12 py-3 text-2xl transition font-bold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600'
           >
-            Solutions
+            Services
           </a>
           <a
             href='/services'
             className='text-lg underline underline-offset-8 font-bold leading-6 text-white'
           >
-            Our Services
+            Our Industries
           </a>
         </div>
       </div>

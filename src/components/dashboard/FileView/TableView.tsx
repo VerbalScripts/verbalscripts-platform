@@ -20,6 +20,9 @@ interface TableViewProps {
     clearAll: boolean,
   ) => void;
   selectedFiles: string[];
+  renameFile: (id: string) => void;
+  renameFolder: (id: string) => void;
+  removeFile: (id: string) => void;
 }
 
 export default function TableView({
@@ -29,6 +32,9 @@ export default function TableView({
   showFolders,
   updatedSelectedFiles,
   selectedFiles,
+  renameFile,
+  renameFolder,
+  removeFile,
   callback,
 }: TableViewProps) {
   const [draggedRowIndex, setDraggedRowIndex] = useState<number | null>(null);
@@ -221,7 +227,12 @@ export default function TableView({
                 <Table.Cell>---</Table.Cell>
                 <Table.Cell>
                   <div className='flex items-center gap-x-1'>
-                    <TableMenuDropDown />
+                    <TableMenuDropDown
+                      remove={() => {}}
+                      rename={() => {}}
+                      duplicate={() => {}}
+                      share={() => {}}
+                    />
                   </div>
                 </Table.Cell>
               </Table.Row>
@@ -262,7 +273,12 @@ export default function TableView({
               </Table.Cell>
               <Table.Cell className='py-2'>
                 <div className='flex items-center gap-x-1'>
-                  <TableMenuDropDown />
+                  <TableMenuDropDown
+                    remove={() => removeFile(order.id)}
+                    rename={() => renameFile(order.id)}
+                    duplicate={() => {}}
+                    share={() => {}}
+                  />
                 </div>
               </Table.Cell>
             </Table.Row>
