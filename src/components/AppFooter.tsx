@@ -278,7 +278,8 @@ export default function AppFooter() {
                   />
                 </a>
                 <a
-                  href=''
+                  target='_blank'
+                  href='https://www.instagram.com/verbal_scripts?igsh=dDliMGVkNnhoYmdv'
                   className='text-center mb-3 flex rounded-xl transition hover:bg-indigo-500 h-10 w-10 items-center justify-center'
                 >
                   <FontAwesomeIcon
