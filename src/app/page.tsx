@@ -5,7 +5,7 @@ import React, { useEffect, useRef } from 'react';
 import { useState } from 'react';
 import { NextSeo } from 'next-seo';
 import Image from 'next/image';
-import Script from 'next/script';
+import TawkMessengerReact from '@tawk.to/tawk-messenger-react';
 
 import AppHeader from '@/components/AppHeader';
 import LandingPage from '@/components/LandingPage';
@@ -103,6 +103,13 @@ export default function Home() {
     },
   ];
 
+
+  const tawkMessengerRef = useRef();
+
+  // const handleMinimize = () => {
+  //   tawkMessengerRef.current.minimize();
+  // };
+
   return (
     <div
       className='bg-zinc-800 max-h-screen overflow-y-scroll overflow-x-hidden relative'
@@ -113,10 +120,18 @@ export default function Home() {
         description='VerbalScripts offers fast, affordable, and highly accurate human transcription, translation, data annotation, and AI dataset services customized for your needs.'
         canonical='https://www.verbalscripts.com/'
       />
-      <Script
+
+      <TawkMessengerReact
+        propertyId={'661d1f4b1ec1082f04e270b9'}
+        widgetId={'1hrgs4hj7'}
+        useRef={tawkMessengerRef}
+      />
+
+      {/* <Script
         src='https://fw-cdn.com/11485930/4150032.js'
         strategy='lazyOnload'
-      />
+      /> */}
+
       <AppHeader
         showQuote={setOpen}
         dataPush={solutions}
@@ -145,7 +160,7 @@ export default function Home() {
               {features.map((feature) => (
                 <div
                   key={feature.name}
-                  className='relative py-8 px-4 rounded-3xl shadow-md'
+                  className='relative py-8 px-4 rounded-3xl shadow-sm'
                   style={{ backgroundColor: '#f9f8f2' }}
                 >
                   <dt className='flex flex-col items-center text-base font-semibold leading-7 text-gray-900'>
@@ -171,7 +186,31 @@ export default function Home() {
       </div>
 
       {/* testimonials */}
-      <div className='rounded-tr-full bg-indigo-400'>
+      <div className='relative rounded-tr-2xl bg-indigo-500'>
+        <div
+          className='absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80'
+          aria-hidden='true'
+        >
+          <div
+            className='relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]'
+            style={{
+              clipPath:
+                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
+            }}
+          />
+        </div>
+        <div
+          className='absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]'
+          aria-hidden='true'
+        >
+          <div
+            className='relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]'
+            style={{
+              clipPath:
+                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
+            }}
+          />
+        </div>
         <div className='mx-auto max-w-7xl '>
           <div className='relative isolate   px-6 pt-16 sm:rounded-3xl sm:px-16 md:pt-24 md:px-24 xl:px-28 lg:flex lg:items-center lg:gap-x-20 lg:px-36 lg:pt-0'>
             <div className='mx-auto  lg:max-w-[28rem]   xl:max-w-[33rem] lg:mx-0 lg:flex-auto '>
