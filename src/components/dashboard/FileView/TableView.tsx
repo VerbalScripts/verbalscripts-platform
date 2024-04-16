@@ -23,6 +23,8 @@ interface TableViewProps {
   renameFile: (id: string) => void;
   renameFolder: (id: string) => void;
   removeFile: (id: string) => void;
+  isNavigating: boolean;
+  selectedFolderId: string;
 }
 
 export default function TableView({
@@ -36,6 +38,8 @@ export default function TableView({
   renameFolder,
   removeFile,
   callback,
+  isNavigating,
+  selectedFolderId,
 }: TableViewProps) {
   const [draggedRowIndex, setDraggedRowIndex] = useState<number | null>(null);
 
@@ -187,7 +191,8 @@ export default function TableView({
                 onDrop={onDropHandler}
                 onDragOver={(event) => handelDragOverHandler(event, index)}
                 className={classNames(
-                  'bg-white dark:border-gray-700 dark:bg-gray-800 py-2',
+                  'transition dark:border-gray-700 dark:bg-gray-800 py-2',
+                  isNavigating && selectedFolderId == folder.id ? 'bg-gray-300' : 'bg-white',
                   draggedOverIndex == index
                     ? 'bg-indigo-100 border-dashed'
                     : '',

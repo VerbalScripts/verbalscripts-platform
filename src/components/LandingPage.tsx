@@ -34,7 +34,7 @@ export default function LandingPage() {
       </div>
 
       <div className='mx-auto max-w-7xl  md:py-16 lg:py-28 xl:py-28 py-20 md:mx-10 lg:mx-20 xl:mx-28 flex flex-col items-start md:items-center  text-left lg:text-center'>
-        <h1 className='max-w-6xl lg:max-w-4xl xl:max-w-5xl relative z-10 text-5xl font-bold  text-white lg:text-5xl xl:text-6xl'>
+        <h1 className='max-w-6xl lg:max-w-5xl xl:max-w-7xl relative z-10 text-5xl font-bold  text-white lg:text-6xl xl:text-7xl'>
           Transcription Mastery: Unmatched Accuracy & Efficiency, Every Time.
         </h1>
         <p className='hidden md:block md:max-w-2xl lg:max-w-3xl xl:max-w-4xl relative z-10 mt-6 text-xl leading-8 text-gray-50'>

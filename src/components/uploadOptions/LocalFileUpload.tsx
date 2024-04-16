@@ -1,11 +1,12 @@
 import { classNames } from '@/utils/classNames';
 import React, { DragEvent, useState } from 'react';
 
-import JSZip from 'jszip';
 import FileUploadProgress from './FileUploadProgress';
 import { hostUrl } from '../../../config';
 import { v4 as uuid } from 'uuid';
 import { GetOrStoreAuthToken } from '@/utils/GetOrStoreAuthToken';
+import { getFilesAsZip } from '@/utils/FolderZip';
+
 
 export default function LocalFileUpload() {
   // const router = useRouter();
@@ -21,8 +22,10 @@ export default function LocalFileUpload() {
     'mkv',
   ];
 
+
   async function updateImageDisplay(inputFiles: File[]) {
-    const zip = new JSZip();
+
+    console.log(inputFiles);
 
     // reset progress tracker
     setProgress((prevState) => ({
@@ -42,20 +45,8 @@ export default function LocalFileUpload() {
       statusText: 'Zipping files',
     }));
 
-    // add files to zip
-    inputFiles.forEach((file) => {
-      zip.file(file.name, file);
-    });
 
-    const zipContent = await zip.generateAsync(
-      { type: 'blob' },
-      function updateCallback(metadata) {
-        console.log('progression: ' + metadata.percent.toFixed(2) + ' %');
-        if (metadata.currentFile) {
-          console.log('current file = ' + metadata.currentFile);
-        }
-      },
-    );
+    const zipContent = await getFilesAsZip( inputFiles );
 
     const formData = new FormData();
     formData.append('folderzip', zipContent);
@@ -68,6 +59,7 @@ export default function LocalFileUpload() {
           label: item.name,
           size: item.size,
           mimetype: item.type,
+          relativePath: item.webkitRelativePath,
         }),
       );
     });
@@ -165,7 +157,7 @@ export default function LocalFileUpload() {
 
     if (target.files.length == 0) return;
 
-    // await prepareFilesForUpload(Array.from(target.files));
+    await prepareFilesForUpload(Array.from(target.files));
     console.log(target.files);
   };
 

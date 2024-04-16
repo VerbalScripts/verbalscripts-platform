@@ -66,6 +66,9 @@ export default function Page() {
     { id: '', label: '..' },
   ]);
   const [currentFolderIndex, setCurrentFolderIndex] = useState<number>(0);
+  // track api call within folder navigation
+  const [navigating, setNavigating] = useState<boolean>(false);
+  const [selectedFolderId, setSelectedFolderId] = useState<string>('');
 
   // watch for query changes
   const searchParams = useSearchParams();
@@ -127,7 +130,6 @@ export default function Page() {
     }
   };
   const navBack = () => {
-    console.log(currentFolderIndex);
     if (folderArr.length > 1 && currentFolderIndex > 0) {
       // update index
       setCurrentFolderIndex(currentFolderIndex - 1);
@@ -145,6 +147,8 @@ export default function Page() {
 
   const fetchPendingOrders = async (folderId?: string) => {
     try {
+      setNavigating(true);
+
       const response = await AxiosProxy.get(
         folderId ? `/files/folder/${folderId}` : '/files',
       );
@@ -154,6 +158,8 @@ export default function Page() {
       console.log(response);
     } catch (error) {
       console.log(error);
+    } finally {
+      setNavigating(false);
     }
   };
 
@@ -182,6 +188,8 @@ export default function Page() {
       ...prevArr,
       { id: route.id, label: route.label },
     ]);
+    // set clicked folder
+    setSelectedFolderId(route.id);
     // update count
     setCurrentFolderIndex(currentFolderIndex + 1);
     router.push(`?folderId=${route.id}`);
@@ -189,6 +197,7 @@ export default function Page() {
 
   const fetchPendingFolderOrders = async (folderId?: string) => {
     try {
+      setNavigating(true);
       const response = await AxiosProxy.get(
         folderId ? `/folders/${folderId}` : '/folders',
       );
@@ -198,6 +207,8 @@ export default function Page() {
       console.log(response);
     } catch (error) {
       console.log(error);
+    } finally {
+      setNavigating(false);
     }
   };
 
@@ -359,6 +370,8 @@ export default function Page() {
               renameFolder={_renameFolder}
               removeFile={_removeFile}
               callback={updateOrders}
+              isNavigating={navigating}
+              selectedFolderId={selectedFolderId}
               showFolders={showFolders}
               orders={orders}
             />
@@ -373,6 +386,8 @@ export default function Page() {
               removeFile={_removeFile}
               callback={updateOrders}
               showFolders={showFolders}
+              isNavigating={navigating}
+              selectedFolderId={selectedFolderId}
               orders={orders}
             />
           )}

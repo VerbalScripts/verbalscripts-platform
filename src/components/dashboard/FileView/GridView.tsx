@@ -23,6 +23,8 @@ interface GridViewProps {
   renameFile: (id: string) => void;
   renameFolder: (id: string) => void;
   removeFile: (id: string) => void;
+  isNavigating: boolean;
+  selectedFolderId: string;
 }
 
 export default function GridView({
@@ -37,6 +39,10 @@ export default function GridView({
   renameFolder,
   removeFile,
   callback,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  isNavigating,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  selectedFolderId,
 }: GridViewProps) {
   const [draggedRowIndex, setDraggedRowIndex] = useState<number | null>(null);
 
