@@ -222,7 +222,7 @@ export default function Page() {
   useEffect(() => {
     // fetchPendingOrders();
     initialFeedsFetch();
-  }, []);
+  });
 
   // drag and drop files and folders
 
