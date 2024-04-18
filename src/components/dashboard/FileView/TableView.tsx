@@ -34,14 +34,10 @@ export default function TableView({
   showFolders,
   updatedSelectedFiles,
   selectedFiles,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   renameFile,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   renameFolder,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   removeFile,
   callback,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   isNavigating,
   selectedFolderId,
 }: TableViewProps) {
@@ -285,12 +281,8 @@ export default function TableView({
               <Table.Cell className='py-2'>
                 <div className='flex items-center gap-x-1'>
                   <TableMenuDropDown
-                    // remove={() => removeFile(order.id)}
-                    // rename={() => renameFile(order.id)}
-                    // duplicate={() => {}}
-                    // share={() => {}}
-                    remove={() => {}}
-                    rename={() => {}}
+                    remove={() => removeFile(order.id)}
+                    rename={() => renameFile(order.id)}
                     duplicate={() => {}}
                     share={() => {}}
                   />
