@@ -1,33 +1,27 @@
+'use client';
+
 import { Fragment, useState, useEffect } from 'react';
 import { Dialog, Popover } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { classNames } from '@/utils/classNames';
 
-function classNames(...classes: string[]): string {
-  return classes.filter(Boolean).join(' ');
-}
-
-interface HeaderProps {
-  heightOffset: number;
-}
-
-export default function Freelanc({ heightOffset }: HeaderProps) {
+export default function FreelancingHeader() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    if (heightOffset > 200) {
-      document
-        .querySelector('header')
-        ?.classList.add('fixed', 'top-0', 'animate-nav-bottom', 'shadow-lg');
-      document
-        .querySelector('header')
-        ?.classList.remove('relative', 'animate-nav-top');
-    } else {
-      document
-        .querySelector('header')
-        ?.classList.remove('fixed', 'top-0', 'animate-nav-bottom');
-      document
-        .querySelector('header')
-        ?.classList.add('relative', 'animate-nav-top');
+    if (window != undefined) {
+      window.addEventListener('scroll', () => {
+        const heightOffset = window.pageYOffset;
+        if (heightOffset > 200) {
+          document
+            .querySelector('header')
+            ?.classList.add('is-sticky', 'shadow-lg');
+        } else {
+          document
+            .querySelector('header')
+            ?.classList.remove('is-sticky', 'shadow-lg');
+        }
+      });
     }
   });
 

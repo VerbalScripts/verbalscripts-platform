@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import JSZip from "jszip";
+import JSZip from 'jszip';
 
 const recursivelyZipFolders = (
   folder: JSZip,
@@ -20,7 +20,7 @@ const recursivelyZipFolders = (
 export const getFilesAsZip = async (files: File[]) => {
   // eslint-disable-next-line no-useless-catch
   try {
-      const zip = new JSZip();
+    const zip = new JSZip();
     //   @ts-ignore
     files.forEach((file: any) => {
       const pathArray = file.path
@@ -41,7 +41,7 @@ export const getFilesAsZip = async (files: File[]) => {
       }
     });
     // zip object now maintains the original folder structure
-    return  zip.generateAsync({
+    return zip.generateAsync({
       type: 'blob',
       compression: 'DEFLATE',
       compressionOptions: {

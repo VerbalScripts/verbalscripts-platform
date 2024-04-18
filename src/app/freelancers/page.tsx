@@ -1,8 +1,5 @@
-'use client';
-
 import React from 'react';
-
-import { useState } from 'react';
+import type { Metadata } from 'next';
 
 import { ClockIcon, CalendarIcon } from '@heroicons/react/24/outline';
 
@@ -10,6 +7,10 @@ import { StarIcon } from '@heroicons/react/20/solid';
 
 import FreelancingHeader from '@/components/FreelancingHeader';
 import AppFooter from '@/components/AppFooter';
+
+export const metadata: Metadata = {
+  title: 'VerbalScripts | Freelancers',
+};
 
 interface FeatureLabel {
   name: string;
@@ -19,12 +20,6 @@ interface FeatureLabel {
 }
 
 export default function Page() {
-  const [heightOffset, setOffsetHeight] = useState(0);
-
-  const onBodyScroll = (event: React.UIEvent<HTMLElement>) => {
-    setOffsetHeight((event.target as HTMLElement).scrollTop);
-  };
-
   const features: Array<FeatureLabel> = [
     {
       name: 'Starting At',
@@ -88,11 +83,8 @@ export default function Page() {
   ];
 
   return (
-    <div
-      className='bg-zinc-800 max-h-screen overflow-y-scroll relative'
-      onScroll={onBodyScroll}
-    >
-      <FreelancingHeader heightOffset={heightOffset} />
+    <div className='bg-zinc-800 max-h-screen overflow-y-scroll relative'>
+      <FreelancingHeader />
       <div className='relative bg-teal-600 h-auto isolate px-6 pt-14 lg:px-8'>
         <div className='landing-page-video-wrapper'></div>
         <div

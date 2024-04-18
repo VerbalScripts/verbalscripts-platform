@@ -56,6 +56,7 @@ body {
 .swiper-pagination {
   z-index: 30;
 }
+
 .swiper-button-next,
 .swiper-button-prev {
   display: none !important;
@@ -71,26 +72,22 @@ body {
   animation: wiggle_nav_top 0.5s ease-in-out forwards;
 }
 
-@keyframes wiggle_nav_bottom {
-  0% {
-    transform: translateY(-100px);
-  }
-
-  100% {
-    transform: translateY(0px);
-  }
+.page-header {
+  /* position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 20px 0;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.15); */
 }
 
-@keyframes wiggle_nav_top {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-100px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
+.is-sticky {
+  position: fixed;
+  padding: 8px 0;
+  backdrop-filter: blur(10px);
+  animation: slideDown 0.35s ease-out;
+  top: 0;
 }
 
 .login-img {
@@ -106,15 +103,13 @@ body {
   opacity: 0;
 }
 
-@keyframes slide-up {
-  0% {
-    transform: translateX(100px);
-    opacity: 0;
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
   }
 
-  100% {
-    transform: translateX(0);
-    opacity: 1;
+  to {
+    transform: translateY(0);
   }
 }
 

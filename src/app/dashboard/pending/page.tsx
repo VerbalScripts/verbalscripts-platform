@@ -22,13 +22,13 @@ import AxiosProxy from '@/utils/AxiosProxy';
 // import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
-import Head from 'next/head';
 import TableView from '@/components/dashboard/FileView/TableView';
 import GridView from '@/components/dashboard/FileView/GridView';
 import RemoveFile from '@/components/modals/RemoveFile';
 import OrderNowModal from '@/components/modals/OrderNowModal';
 import RenameFile from '@/components/modals/RenameFile';
 import RenameFolder from '@/components/modals/RenameFolder';
+import TawkMessenger from '@/lib/TawkMessenger';
 interface PageSetupOptions {
   toggleView: 'grid' | 'list';
 }
@@ -228,14 +228,8 @@ export default function Page() {
 
   return (
     <div className='py-4'>
-      <Head>
-        <title>Verbal Dashboard | Pending Orders</title>
-        <meta
-          property='og:title'
-          content='Verbal Dashboard | Pending Orders'
-          key='title'
-        />
-      </Head>
+      <TawkMessenger />
+
       {loading ? (
         <LoadSpinner />
       ) : (

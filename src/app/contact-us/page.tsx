@@ -1,61 +1,14 @@
-'use client';
-
-import React, { useEffect, useRef } from 'react';
-
-import { useState } from 'react';
+import React from 'react';
 
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 
 import AppHeader from '@/components/AppHeader';
 import AppFooter from '@/components/AppFooter';
-import GetAQuoteModal from '@/components/GetAQuoteModal';
-import CallToActionBanner from '@/components/CallToActionBanner';
 
-export default function Home() {
-  const [heightOffset, setOffsetHeight] = useState(0);
-  // open slide over
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    const callToActionObserver = new IntersectionObserver(
-      (sections) => {
-        sections.forEach((section) => {
-          if (section.isIntersecting) {
-            // document
-            //   .querySelector('.call-to-action')
-            //   ?.classList.add( 'animate-call' );
-            console.log('down');
-          } else {
-            console.log('slide up');
-            // document.querySelector( '.call-to-action' )?.classList.remove('animate-call')
-          }
-        });
-      },
-      {
-        threshold: 0.2,
-      },
-    );
-
-    const el = document.querySelector('.landing-page');
-    if (el) callToActionObserver.observe(el);
-  });
-
-  const onBodyScroll = (event: React.UIEvent<HTMLElement>) => {
-    setOffsetHeight((event.target as HTMLElement).scrollTop);
-  };
-
-  const solutions = useRef<Array<NavLabel>>([]);
-
+export default function ContactPage() {
   return (
-    <div
-      className='bg-zinc-800 max-h-screen overflow-y-scroll overflow-x-hidden relative'
-      onScroll={onBodyScroll}
-    >
-      <AppHeader
-        showQuote={setOpen}
-        dataPush={solutions}
-        heightOffset={heightOffset}
-      />
+    <div className='bg-zinc-800 max-h-screen overflow-y-scroll overflow-x-hidden relative'>
+      <AppHeader />
 
       <div className='relative bg--600 h-auto isolate px-6 lg:px-8 bg-indigo-500 landing-page'>
         {/* <video className='absolute top-0 right-0 left-0 w-full -z-20 h-full object-cover'  loop autoPlay>
@@ -95,8 +48,6 @@ export default function Home() {
           />
         </div>
       </div>
-
-      <GetAQuoteModal open={open} setOpen={setOpen} />
 
       <div className='isolate bg-white px-6 py-24 sm:py-32 lg:px-8'>
         <div
@@ -259,7 +210,7 @@ export default function Home() {
         </form>
       </div>
 
-      <CallToActionBanner fn={setOpen} />
+      {/* <CallToActionBanner fn={setOpen} /> */}
 
       <AppFooter />
     </div>

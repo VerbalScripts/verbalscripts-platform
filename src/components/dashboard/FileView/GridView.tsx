@@ -34,9 +34,11 @@ export default function GridView({
   showFolders,
   updatedSelectedFiles,
   selectedFiles,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   renameFile,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   renameFolder,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   removeFile,
   callback,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -250,8 +252,13 @@ export default function GridView({
 
               <div>
                 <TableMenuDropDown
-                  remove={() => removeFile(order.id)}
-                  rename={() => renameFile(order.id)}
+                  // remove={() => removeFile(order.id)}
+                  // rename={() => renameFile(order.id)}
+                  // duplicate={() => {}}
+                  // share={() => {}}
+                  // isGrid={true}
+                  remove={() => {}}
+                  rename={() => {}}
                   duplicate={() => {}}
                   share={() => {}}
                   isGrid={true}

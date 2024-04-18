@@ -1,11 +1,7 @@
+'use client';
+
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import React, {
-  Fragment,
-  useState,
-  MutableRefObject,
-  useRef,
-  useEffect,
-} from 'react';
+import React, { Fragment, useState, useRef, useEffect } from 'react';
 import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react';
 import {
   Bars3Icon,
@@ -23,23 +19,15 @@ import {
   SquaresPlusIcon,
 } from '@heroicons/react/24/outline';
 import NavItem from './NavItem';
+import GetAQuoteModal from './GetAQuoteModal';
 
 function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ');
 }
 
-interface HeaderProps {
-  heightOffset: number;
-  showQuote: (arg0: boolean) => void;
-  dataPush?: MutableRefObject<NavLabel[]>;
-}
-
-export default function AppHeader({
-  showQuote,
-  dataPush,
-  heightOffset,
-}: HeaderProps) {
+export default function AppHeader() {
   const [open, setOpen] = useState(false);
+  const [showQuote, setShowQuote] = useState(false);
   let timeout: ReturnType<typeof setTimeout>;
   const timeoutDuration: number = 100;
 
@@ -211,23 +199,20 @@ export default function AppHeader({
   ];
 
   useEffect(() => {
-    if (heightOffset > 200) {
-      document
-        .querySelector('header')
-        ?.classList.add('fixed', 'top-0', 'animate-nav-bottom', 'shadow-lg');
-      document
-        .querySelector('header')
-        ?.classList.remove('relative', 'animate-nav-top');
-    } else {
-      document
-        .querySelector('header')
-        ?.classList.remove('fixed', 'top-0', 'animate-nav-bottom');
-      document
-        .querySelector('header')
-        ?.classList.add('relative', 'animate-nav-top');
+    if (window != undefined) {
+      window.addEventListener('scroll', () => {
+        const heightOffset = window.pageYOffset;
+        if (heightOffset > 200) {
+          document
+            .querySelector('header')
+            ?.classList.add('is-sticky', 'shadow-lg');
+        } else {
+          document
+            .querySelector('header')
+            ?.classList.remove('is-sticky', 'shadow-lg');
+        }
+      });
     }
-
-    if (dataPush) dataPush.current = solutions;
 
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
@@ -237,6 +222,8 @@ export default function AppHeader({
 
   return (
     <>
+      <GetAQuoteModal open={showQuote} setOpen={setShowQuote} />
+
       <div className='mx-auto  max-w-7xl relative z-30'>
         <p className='hidden relative z-50 md:flex  h-10 items-center  justify-end gap-6 px-4 text-sm font-medium text-white sm:px-6 lg:px-8'>
           <a
@@ -258,6 +245,7 @@ export default function AppHeader({
       </div>
       <header
         className={classNames(
+          'page-header',
           'bg-white',
           'relative',
           'transition',
@@ -442,7 +430,7 @@ export default function AppHeader({
               Contact
             </a>
             <button
-              onClick={() => showQuote(true)}
+              onClick={() => setShowQuote(true)}
               className=' text-lg font-semibold  px-5 py-2 bg-indigo-600 transition text-center  hover:-translate-y-1 hover:shadow-xl rounded-full text-gray-100'
             >
               Get a Qoute
@@ -568,7 +556,7 @@ export default function AppHeader({
 
                   <div className='border-b py-2 border-gray-200'></div>
                   <button
-                    onClick={() => showQuote(true)}
+                    onClick={() => setShowQuote(true)}
                     className='-mx-3 block underline underline-offset-2 rounded-lg px-3 py-2 text-xl font-semibold leading-7 text-orange-500 hover:bg-gray-50'
                   >
                     Request a Quote
@@ -608,7 +596,7 @@ export default function AppHeader({
       <div className='md:hidden bg-white fixed bottom-0 left-0 right-0 flex  justify-center px-3 py-4 z-30 shadow-2xl gap-x-5'>
         <div className='max-w-7xl'>
           <button
-            onClick={() => showQuote(true)}
+            onClick={() => setShowQuote(true)}
             className=' rounded-full ring-1 ring-inset ring-indigo-500  px-6 py-2.5 text-xl font-semibold leading-7 text-indigo-500 hover:ring-indigo-400 hover:text-indigo-400'
           >
             Get a Qoute

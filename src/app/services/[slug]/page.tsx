@@ -1,36 +1,52 @@
-'use client';
-
-import React, { useRef } from 'react';
-
-import { useState } from 'react';
+import React from 'react';
 
 import AppHeader from '@/components/AppHeader';
-import GetAQuoteModal from '@/components/GetAQuoteModal';
 import AppFooter from '@/components/AppFooter';
 
 export default function Page() {
-  const [heightOffset, setOffsetHeight] = useState(0);
-  // slide over
-  const [open, slideOpen] = useState(false);
+  const solutions: Array<NavLabel> = [
+    {
+      name: 'Court reporting & Legal',
+      description:
+        'We convert audio/video content into transcripts quickly and securing to save law firms, investigators, police force, or research firms time and money.',
+      href: '/solutions/legal',
+      imgUrl: '/icons/legal-document.png',
+    },
+    {
+      name: 'Corporate & general business',
+      description:
+        'Customized for your large volume needs, including a variety of enterprise security requirements.',
+      href: '/solutions/enterprise',
+      imgUrl: '/icons/paper.png',
+    },
+    {
+      name: 'Media production',
+      description:
+        'The very best in human intelligence requires top quality training data for speech NLP and computer vision models.',
+      href: '/solutions/ai',
+      imgUrl: '/icons/video-editor.png',
+    },
+    {
+      name: 'Digital & online learning',
+      description:
+        'Fast, easy lecture and dissertation transcripts for students or faculty, compatible with NVivo and other research platforms.',
+      href: '/solutions/education',
+      imgUrl: '/icons/online-learning.png',
+    },
 
-  const onBodyScroll = (event: React.UIEvent<HTMLElement>) => {
-    setOffsetHeight((event.target as HTMLElement).scrollTop);
-  };
-
-  const solutions = useRef<Array<NavLabel>>([]);
+    {
+      name: 'Government',
+      description:
+        'Making live events, meetings, ad campaigns and press briefings more accessible and actionable.',
+      href: '/solutions/government',
+      imgUrl: '/icons/policy.png',
+    },
+  ];
 
   return (
-    <div
-      className='bg-zinc-800 max-h-screen overflow-y-scroll relative'
-      onScroll={onBodyScroll}
-    >
-      <AppHeader
-        showQuote={slideOpen}
-        dataPush={solutions}
-        heightOffset={heightOffset}
-      />
+    <div className='bg-zinc-800  relative'>
+      <AppHeader />
 
-      <GetAQuoteModal open={open} setOpen={slideOpen} />
       <div className='relative bg-teal-600 h-auto isolate px-6 pt-14 lg:px-8'>
         <div className='landing-page-video-wrapper'></div>
         <div
@@ -96,7 +112,7 @@ export default function Page() {
 
         <div className='mx-auto pt-16 max-w-3xl sm:pt-20 lg:pt-24 lg:max-w-5xl'>
           <dl className='mx-auto grid max-w-none px-6 grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-7xl xl:max-w-7xl lg:grid-cols-2 lg:gap-y-16'>
-            {[...solutions.current].map((feature) => (
+            {[...solutions].map((feature) => (
               <a
                 href={'/solutions' + feature.href}
                 key={feature.name}

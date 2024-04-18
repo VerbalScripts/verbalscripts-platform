@@ -7,7 +7,6 @@ import { v4 as uuid } from 'uuid';
 import { GetOrStoreAuthToken } from '@/utils/GetOrStoreAuthToken';
 import { getFilesAsZip } from '@/utils/FolderZip';
 
-
 export default function LocalFileUpload() {
   // const router = useRouter();
 
@@ -22,9 +21,7 @@ export default function LocalFileUpload() {
     'mkv',
   ];
 
-
   async function updateImageDisplay(inputFiles: File[]) {
-
     console.log(inputFiles);
 
     // reset progress tracker
@@ -45,8 +42,7 @@ export default function LocalFileUpload() {
       statusText: 'Zipping files',
     }));
 
-
-    const zipContent = await getFilesAsZip( inputFiles );
+    const zipContent = await getFilesAsZip(inputFiles);
 
     const formData = new FormData();
     formData.append('folderzip', zipContent);

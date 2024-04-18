@@ -34,10 +34,14 @@ export default function TableView({
   showFolders,
   updatedSelectedFiles,
   selectedFiles,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   renameFile,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   renameFolder,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   removeFile,
   callback,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   isNavigating,
   selectedFolderId,
 }: TableViewProps) {
@@ -192,7 +196,9 @@ export default function TableView({
                 onDragOver={(event) => handelDragOverHandler(event, index)}
                 className={classNames(
                   'transition dark:border-gray-700 dark:bg-gray-800 py-2',
-                  isNavigating && selectedFolderId == folder.id ? 'bg-gray-300' : 'bg-white',
+                  isNavigating && selectedFolderId == folder.id
+                    ? 'bg-gray-300'
+                    : 'bg-white',
                   draggedOverIndex == index
                     ? 'bg-indigo-100 border-dashed'
                     : '',
@@ -279,8 +285,12 @@ export default function TableView({
               <Table.Cell className='py-2'>
                 <div className='flex items-center gap-x-1'>
                   <TableMenuDropDown
-                    remove={() => removeFile(order.id)}
-                    rename={() => renameFile(order.id)}
+                    // remove={() => removeFile(order.id)}
+                    // rename={() => renameFile(order.id)}
+                    // duplicate={() => {}}
+                    // share={() => {}}
+                    remove={() => {}}
+                    rename={() => {}}
                     duplicate={() => {}}
                     share={() => {}}
                   />

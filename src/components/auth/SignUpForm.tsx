@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import React, { FormEvent, useState } from 'react';
 import { EyeSlashIcon } from '@heroicons/react/20/solid';

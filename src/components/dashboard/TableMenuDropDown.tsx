@@ -73,17 +73,18 @@ export default function TableMenuDropDown({
             </Menu.Item>
             <Menu.Item>
               {({ active }) => (
-                <a
-                  href='#'
+                <div
                   onClick={() => duplicate()}
                   className={classNames(
-                    active ? ' bg-gray-100 text-gray-900' : 'text-gray-700',
+                    active
+                      ? 'cursor-pointer bg-gray-100 text-gray-900'
+                      : 'text-gray-700',
                     'px-4 flex items-center gap-x-2 py-2 text-sm',
                   )}
                 >
                   <DocumentDuplicateIcon className='w-5 h-5' />
                   <span>Duplicate</span>
-                </a>
+                </div>
               )}
             </Menu.Item>
           </div>
@@ -95,7 +96,9 @@ export default function TableMenuDropDown({
                   href='#'
                   onClick={() => share()}
                   className={classNames(
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    active
+                      ? 'cursor-pointer bg-gray-100 text-gray-900'
+                      : 'text-gray-700',
                     'px-4 flex items-center gap-x-2 py-2 text-sm',
                   )}
                 >
@@ -108,17 +111,18 @@ export default function TableMenuDropDown({
           <div className='py-1'>
             <Menu.Item>
               {({ active }) => (
-                <a
-                  href='#'
+                <div
                   onClick={() => remove()}
                   className={classNames(
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    active
+                      ? 'cursor-pointer bg-gray-100 text-gray-900'
+                      : 'text-gray-700',
                     'flex items-center gap-x-2 px-4 py-2 text-sm',
                   )}
                 >
                   <TrashIcon className='h-5 w-5' />
                   <span>Delete</span>
-                </a>
+                </div>
               )}
             </Menu.Item>
           </div>

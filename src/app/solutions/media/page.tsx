@@ -1,29 +1,14 @@
-'use client';
-
-import React, { useRef } from 'react';
-
-import { useState } from 'react';
+import React from 'react';
 
 import AppHeader from '@/components/AppHeader';
-import GetAQuoteModal from '@/components/GetAQuoteModal';
 import AppFooter from '@/components/AppFooter';
 import SolutionsLanding from '@/components/SolutionsLanding';
 import PopularPartner from '@/components/PopularPartner';
-import CallToActionBanner from '@/components/CallToActionBanner';
+// import CallToActionBanner from '@/components/CallToActionBanner';
 import Faqs from '@/components/Faqs';
 import { CheckCircleIcon } from '@heroicons/react/16/solid';
 
 export default function Page() {
-  const [heightOffset, setOffsetHeight] = useState(0);
-  // slide over
-  const [open, setOpen] = useState(false);
-
-  const onBodyScroll = (event: React.UIEvent<HTMLElement>) => {
-    setOffsetHeight((event.target as HTMLElement).scrollTop);
-  };
-
-  const solutions = useRef<Array<NavLabel>>([]);
-
   const features = [
     {
       name: 'Trained for Legal Precision',
@@ -136,17 +121,8 @@ export default function Page() {
   ];
 
   return (
-    <div
-      className='bg-zinc-800 max-h-screen overflow-y-scroll relative'
-      onScroll={onBodyScroll}
-    >
-      <AppHeader
-        showQuote={setOpen}
-        dataPush={solutions}
-        heightOffset={heightOffset}
-      />
-
-      <GetAQuoteModal open={open} setOpen={setOpen} />
+    <div className='bg-zinc-800  relative'>
+      <AppHeader />
 
       {/* landing page */}
       <SolutionsLanding
@@ -306,7 +282,7 @@ export default function Page() {
       </div>
 
       {/* validation section */}
-      <CallToActionBanner fn={setOpen} />
+      {/* <CallToActionBanner fn={setOpen} /> */}
 
       <div className='bg-white'>
         <div className='py-24 px-6 md:py-20 lg:px-8'>

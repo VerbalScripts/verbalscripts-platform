@@ -1,3 +1,5 @@
+'use client';
+
 import { EyeSlashIcon } from '@heroicons/react/20/solid';
 import { EyeIcon } from '@heroicons/react/24/outline';
 import React, { FormEvent, useState } from 'react';

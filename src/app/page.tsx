@@ -1,57 +1,33 @@
-'use client';
+import React from 'react';
 
-import React, { useEffect, useRef } from 'react';
-
-import { useState } from 'react';
-import { NextSeo } from 'next-seo';
 import Image from 'next/image';
-import TawkMessengerReact from '@tawk.to/tawk-messenger-react';
 
 import AppHeader from '@/components/AppHeader';
 import LandingPage from '@/components/LandingPage';
 import AppFooter from '@/components/AppFooter';
 import Testimonials from '@/components/Testimonials';
-import GetAQuoteModal from '@/components/GetAQuoteModal';
-import CallToActionBanner from '@/components/CallToActionBanner';
 import PopularPartner from '@/components/PopularPartner';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLongArrowRight } from '@fortawesome/free-solid-svg-icons';
+
+import type { Metadata } from 'next';
+import TawkMessenger from '@/lib/TawkMessenger';
+import SolutionsList from '@/components/SolutionsList';
+
+export const metadata: Metadata = {
+  title:
+    'VerbalScripts | Fast, affordable, and highly accurate human transcription',
+  keywords: [
+    'transcription',
+    'audio transcription',
+    'video transcription',
+    'speech to text',
+    'academic transcription',
+    'proofreading',
+  ],
+  description:
+    'VerbalScripts offers fast, affordable, and highly accurate human transcription, translation, data annotation, and AI dataset services customized for your needs.',
+};
 
 export default function Home() {
-  const [heightOffset, setOffsetHeight] = useState(0);
-  // open slide over
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    const callToActionObserver = new IntersectionObserver(
-      (sections) => {
-        sections.forEach((section) => {
-          if (section.isIntersecting) {
-            // document
-            //   .querySelector('.call-to-action')
-            //   ?.classList.add( 'animate-call' );
-            console.log('down');
-          } else {
-            console.log('slide up');
-            // document.querySelector( '.call-to-action' )?.classList.remove('animate-call')
-          }
-        });
-      },
-      {
-        threshold: 0.2,
-      },
-    );
-
-    const el = document.querySelector('.landing-page');
-    if (el) callToActionObserver.observe(el);
-  });
-
-  const onBodyScroll = (event: React.UIEvent<HTMLElement>) => {
-    setOffsetHeight((event.target as HTMLElement).scrollTop);
-  };
-
-  const solutions = useRef<Array<NavLabel>>([]);
-
   const testimonials: Array<Testimony> = [
     {
       description:
@@ -103,43 +79,28 @@ export default function Home() {
     },
   ];
 
-
-  const tawkMessengerRef = useRef();
-
   // const handleMinimize = () => {
   //   tawkMessengerRef.current.minimize();
   // };
 
   return (
-    <div
-      className='bg-zinc-800 max-h-screen overflow-y-scroll overflow-x-hidden relative'
-      onScroll={onBodyScroll}
-    >
-      <NextSeo
+    <div className='bg-zinc-800 relative'>
+      {/* <NextSeo
+        defaultTitle='VerbalScripts: Fast; Accurate Human Transcription Services'
         title='VerbalScripts: Fast; Accurate Human Transcription Services'
         description='VerbalScripts offers fast, affordable, and highly accurate human transcription, translation, data annotation, and AI dataset services customized for your needs.'
         canonical='https://www.verbalscripts.com/'
-      />
+      /> */}
 
-      <TawkMessengerReact
-        propertyId={'661d1f4b1ec1082f04e270b9'}
-        widgetId={'1hrgs4hj7'}
-        useRef={tawkMessengerRef}
-      />
+      <TawkMessenger />
 
       {/* <Script
         src='https://fw-cdn.com/11485930/4150032.js'
         strategy='lazyOnload'
       /> */}
 
-      <AppHeader
-        showQuote={setOpen}
-        dataPush={solutions}
-        heightOffset={heightOffset}
-      />
+      <AppHeader />
       <LandingPage />
-
-      <GetAQuoteModal open={open} setOpen={setOpen} />
 
       <PopularPartner />
 
@@ -239,54 +200,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className='mx-auto mt-14 max-w-7xl md:mt-16 xl:mt-10'>
-          <dl className='mx-auto grid max-w-none px-6 md:px-16 lg:px-20 xl:px-28 grid-cols-1 md:grid-cols-2 gap-8 lg:max-w-7xl xl:max-w-7xl lg:grid-cols-3 lg:gap-y-16'>
-            {[...solutions.current.slice(0, 6)].map((feature) => (
-              <a
-                href={'/solutions/' + feature.href}
-                key={feature.name}
-                className='relative transition flex flex-col items-center justify-start ring-inset  hover:ring-3 hover:ring-gray-400 rounded-3xl py-8 px-4'
-                style={{ backgroundColor: '#f9f8f2' }}
-              >
-                <dt className=''>
-                  <div className='flex  items-center justify-center '>
-                    {feature.icon != undefined ? (
-                      <feature.icon
-                        className='h-6 w-6 text-gray-200'
-                        aria-hidden='true'
-                      />
-                    ) : feature.imgUrl != undefined ? (
-                      <Image
-                        className='mb-5'
-                        alt={feature.name}
-                        src={feature.imgUrl}
-                        height={110}
-                        width={110}
-                      />
-                    ) : null}
-                  </div>
-                </dt>
-                <dd className='text-[1.35rem] text-center font-semibold leading-7 text-gray-800'>
-                  {feature.name}
-                </dd>
-                <dd className='mt-2 text-lg  text-center leading-7 text-gray-700 line-clamp-4'>
-                  {feature.description}
-                </dd>
-
-                <dd className='my-3'>
-                  <a
-                    href='/'
-                    className='flex items-center text-orange-400 font-semibold text-lg underline underline-offset-4'
-                  >
-                    <span>Learn More</span>
-
-                    <FontAwesomeIcon className='ml-4' icon={faLongArrowRight} />
-                  </a>
-                </dd>
-              </a>
-            ))}
-          </dl>
-        </div>
+        <SolutionsList />
 
         <div className='flex justify-center py-32'>
           <a
@@ -444,7 +358,7 @@ export default function Home() {
         </div>
       </div>
 
-      <CallToActionBanner fn={setOpen} />
+      {/* <CallToActionBanner fn={setOpen} /> */}
 
       <div className='bg-white'>
         <div className='mx-auto max-w-7xl lg:py-28 py-16  sm:px-6  lg:px-8'>

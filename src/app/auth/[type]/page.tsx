@@ -1,16 +1,35 @@
-'use client';
-
-import { useParams } from 'next/navigation';
-
+import type { Metadata } from 'next';
 import ForgotPassword from '@/components/auth/ForgotPassword';
 import ResetAccount from '@/components/auth/ResetAccount';
 import SignInForm from '@/components/auth/SignInForm';
 import SignUpForm from '@/components/auth/SignUpForm';
 import AuthHeader from '@/components/AuthHeader';
 
-export default function Login() {
-  const params = useParams<{ type: string }>();
+interface AuthPageProps {
+  params: { type: string };
+}
 
+export async function generateMetadata({
+  params,
+}: AuthPageProps): Promise<Metadata> {
+  if (params.type == 'login') {
+    return { title: 'VerbalScripts | Sign In' };
+  }
+  if (params.type == 'register') {
+    return { title: 'VerbalScripts | Sign Up' };
+  }
+  if (params.type == 'reset-password') {
+    return { title: 'VerbalScripts | Password Reset' };
+  }
+
+  if (params.type == 'reset-account') {
+    return { title: 'VerbalScripts | Account Reset' };
+  }
+
+  return { title: 'VerbalScripts | Authenticate' };
+}
+
+export default function AuthPage({ params }: AuthPageProps) {
   return (
     <div className='bg-white md:bg-gray-200 min-h-screen  overflow-x-hidden'>
       <AuthHeader route={params.type} />

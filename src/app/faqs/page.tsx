@@ -1,8 +1,4 @@
-'use client';
-
-import React, { useEffect, useRef } from 'react';
-
-import { useState } from 'react';
+import React from 'react';
 
 import {
   ArrowPathIcon,
@@ -12,44 +8,9 @@ import {
 
 import AppHeader from '@/components/AppHeader';
 import AppFooter from '@/components/AppFooter';
-import GetAQuoteModal from '@/components/GetAQuoteModal';
 import LogoSlider from '@/components/LogoSlider';
 
-export default function Home() {
-  const [heightOffset, setOffsetHeight] = useState(0);
-  // open slide over
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    const callToActionObserver = new IntersectionObserver(
-      (sections) => {
-        sections.forEach((section) => {
-          if (section.isIntersecting) {
-            // document
-            //   .querySelector('.call-to-action')
-            //   ?.classList.add( 'animate-call' );
-            console.log('down');
-          } else {
-            console.log('slide up');
-            // document.querySelector( '.call-to-action' )?.classList.remove('animate-call')
-          }
-        });
-      },
-      {
-        threshold: 0.2,
-      },
-    );
-
-    const el = document.querySelector('.landing-page');
-    if (el) callToActionObserver.observe(el);
-  });
-
-  const onBodyScroll = (event: React.UIEvent<HTMLElement>) => {
-    setOffsetHeight((event.target as HTMLElement).scrollTop);
-  };
-
-  const solutions = useRef<Array<NavLabel>>([]);
-
+export default function FAQsPage() {
   const features = [
     {
       name: 'Transcribe with High Accuracy',
@@ -102,15 +63,8 @@ export default function Home() {
   ];
 
   return (
-    <div
-      className='bg-zinc-800 max-h-screen overflow-y-scroll overflow-x-hidden relative'
-      onScroll={onBodyScroll}
-    >
-      <AppHeader
-        showQuote={setOpen}
-        dataPush={solutions}
-        heightOffset={heightOffset}
-      />
+    <div className='bg-zinc-800  relative'>
+      <AppHeader />
 
       <div className='relative bg--600 h-auto isolate px-6 lg:px-8 bg-indigo-500 landing-page'>
         {/* <video className='absolute top-0 right-0 left-0 w-full -z-20 h-full object-cover'  loop autoPlay>
@@ -150,8 +104,6 @@ export default function Home() {
           />
         </div>
       </div>
-
-      <GetAQuoteModal open={open} setOpen={setOpen} />
 
       <div className=' py-32 md:py-10' style={{ backgroundColor: '#f9f8f2' }}>
         <div className='mx-auto max-w-7xl xl:max-w-8xl px-6 lg:px-8 xl:px-10'>
@@ -253,7 +205,7 @@ export default function Home() {
                     Order Now
                   </a>
                   <button
-                    onClick={() => setOpen(true)}
+                    onClick={() => {}}
                     className='rounded-full bg-orange-500 px-8 py-3.5 text-xl font-semibold text-white transition hover:-translate-y-1 hover:shadow-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white'
                   >
                     Get a Qoute
