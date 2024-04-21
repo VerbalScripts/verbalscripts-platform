@@ -103,7 +103,7 @@ export default function GoogleUpload() {
 
   // TODO(developer): Set to client ID and API key from the Developer Console
   const CLIENT_ID = '<YOUR_CLIENT_ID>';
-  const API_KEY = '<YOUR_API_KEY>';
+  const API_KEY = 'AIzaSyDw8a5-1aFFbOsM4F0bVAAqCXm_8X0udpI';
 
   // TODO(developer): Replace with your own project number from console.developers.google.com.
   const APP_ID = '<YOUR_APP_ID>';

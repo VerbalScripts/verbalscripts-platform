@@ -83,6 +83,8 @@ export default function Page() {
     setCurrentFile(id);
   };
 
+  // const downloadFile = async () => {}
+
   const _renameFolder = (id: string) => {
     setOpenFolderRename(true);
     setCurrentFolder(id);
@@ -138,6 +140,13 @@ export default function Page() {
     }
   };
 
+  // update showfolders toggle
+  useEffect(() => {
+    if (folders.length > orders.length) {
+      setShowFolders(true);
+    }
+  }, [orders, folders]);
+
   useEffect(() => {
     if (folderId != null) {
       fetchPendingOrders(folderId);
@@ -155,7 +164,6 @@ export default function Page() {
       if (response.status == 200) {
         setOrders(response.data);
       }
-      console.log(response);
     } catch (error) {
       console.log(error);
     } finally {
@@ -184,6 +192,7 @@ export default function Page() {
 
   const openFolder = (route: { id: string; label: string }) => {
     // console.log(currentFolderIndex)
+    if (folderArr[currentFolderIndex].id == route.id) return;
     setFolderArr((prevArr) => [
       ...prevArr,
       { id: route.id, label: route.label },
@@ -204,7 +213,6 @@ export default function Page() {
       if (response.status == 200) {
         setFolders(response.data);
       }
-      console.log(response);
     } catch (error) {
       console.log(error);
     } finally {
@@ -222,7 +230,7 @@ export default function Page() {
   useEffect(() => {
     // fetchPendingOrders();
     initialFeedsFetch();
-  });
+  }, []);
 
   // drag and drop files and folders
 
@@ -234,7 +242,7 @@ export default function Page() {
         <LoadSpinner />
       ) : (
         <div>
-          <div className='px-6 md:px-16 xl:px-16 sticky top-1 z-50 bg-white py-1'>
+          <div className='px-6 md:px-16 xl:px-16 sticky top-1 z-10 bg-white py-1'>
             <div className='flex items-center justify-end gap-x-3'>
               <FileUploadMenuOptions />
               <button

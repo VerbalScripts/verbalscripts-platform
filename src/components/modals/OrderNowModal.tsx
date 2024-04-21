@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 // import AxiosProxy from '@/utils/AxiosProxy';
 import { XMarkIcon } from '@heroicons/react/24/outline';
+import TranscriptionOptions from '../dashboard/TranscriptionOptions';
 
 interface RemoveFilesProps {
   open: boolean;
@@ -88,13 +89,8 @@ export default function OrderNowModal({ open, setOpen }: RemoveFilesProps) {
                     </div>
                   </Transition.Child>
                   <div className='flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl'>
-                    <div className='px-4 sm:px-6'>
-                      <Dialog.Title className='text-xl font-semibold leading-6 text-gray-900'>
-                        Order Now
-                      </Dialog.Title>
-                    </div>
                     <div className='relative mt-6 flex-1 px-4 sm:px-6'>
-                      {/* Your content */}
+                      <TranscriptionOptions />
                     </div>
                   </div>
                 </Dialog.Panel>

@@ -193,8 +193,9 @@ export default function TableView({
                 className={classNames(
                   'transition dark:border-gray-700 dark:bg-gray-800 py-2',
                   isNavigating && selectedFolderId == folder.id
-                    ? 'bg-gray-300'
+                    ? 'bg-gray-200'
                     : 'bg-white',
+                  isNavigating ? 'cursor-wait' : '',
                   draggedOverIndex == index
                     ? 'bg-indigo-100 border-dashed'
                     : '',

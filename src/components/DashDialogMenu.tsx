@@ -51,7 +51,7 @@ export default function DashDialogMenu() {
         leaveFrom='transform opacity-100 scale-100'
         leaveTo='transform opacity-0 scale-95'
       >
-        <Menu.Items className='absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-gray-50 shadow-lg focus:outline-none'>
+        <Menu.Items className='absolute right-0 z-30 mt-2 w-56 origin-top-right rounded-md bg-gray-50 shadow-lg focus:outline-none'>
           <div className='py-1 px-2'>
             <div className='py-3 px-4 text-gray-700 border-b border-gray-200 mb-2'>
               <span className='font-bold'>Guest User</span> - This is a

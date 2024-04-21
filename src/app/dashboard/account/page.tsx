@@ -15,8 +15,8 @@ export default function Page() {
           key='title'
         />
       </Head>
-      <section className='relative px-6 py-14 sm:py-20 lg:px-24'>
-        <div className='mx-auto max-w-3xl text-left'>
+      <section className='relative px-6 py-10 md:py-14  lg:px-14'>
+        <div className='mx-auto max-w-4xl text-left'>
           {/* profile update */}
 
           <ProfileSettings />

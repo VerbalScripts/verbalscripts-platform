@@ -107,7 +107,7 @@ export default function DashboardNavigation({
     {
       name: 'Help Center',
       icon: QuestionMarkCircleIcon,
-      href: '/dashboard/help',
+      href: '/dashboard/support',
     },
 
     {
