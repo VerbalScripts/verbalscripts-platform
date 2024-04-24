@@ -1,27 +1,73 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 'use client';
 
 import Link from 'next/link';
-import React, { FormEvent, useState } from 'react';
+import React, { useState } from 'react';
 import { EyeSlashIcon } from '@heroicons/react/20/solid';
 import { EyeIcon } from '@heroicons/react/24/outline';
 import GoogleIcon from '../GoogleIcon';
+import { FieldValues, useForm } from 'react-hook-form';
+import AxiosProxy from '@/utils/AxiosProxy';
 
-export default function SIgnInForm() {
+export default function SignInForm() {
   // const validation = {};
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  // @ts-ignore
 
-  // const [loading, setLoading] = useState(false);
   const [is_visible, toggleVisible] = useState(true);
+  const [is_error, showErrors] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [apiError, setApiError] = useState(false);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const onSubmit = async (
+    data: FieldValues,
+    event?: React.BaseSyntheticEvent,
+  ) => {
+    event?.preventDefault();
+    // check for errors
+    if (errors.email || errors.password) {
+      showErrors(true);
+    } else {
+      try {
+        setLoading(true);
 
-    // const formData = new FormData(event.currentTarget);
-
-    // setLoading(true);
-    // setTimeout(() => {
-    //   setLoading(false);
-    // }, 2000);
+        const response = await AxiosProxy.post('/auth/login', data);
+        if (response.status == 200) {
+          // store user in store
+          // add token to localstorage
+          // add info to store
+          // toDashboard();
+        } else {
+          setApiError(true);
+        }
+      } catch (err) {
+        setApiError(true);
+      } finally {
+        setLoading(false);
+      }
+    }
   };
+
+  const toDashboard = () => {
+    window.location.href = '/dashboard';
+  };
+
+  // on input focus
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const onFocusIn = () => {
+    showErrors(false);
+    setApiError(false);
+  };
+  // console.log(data);
+
+  // setLoading(true);
+  // setTimeout(() => {
+  //   setLoading(false);
+  // }, 2000);
 
   return (
     <>
@@ -29,11 +75,16 @@ export default function SIgnInForm() {
         <div className='mb-8 md:mb-7 text-left text-4xl font-bold text-gray-700'>
           Sign In
         </div>
+        {apiError ? (
+          <div className='py-2 px-3 text-red-500 font-semibold bg-red-100 rounded-md'>
+            Wrong Email or Password!
+          </div>
+        ) : null}
       </div>
 
       <form
         className='mx-auto max-w-md'
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmit(onSubmit)}
         action='#'
         method='POST'
       >
@@ -44,20 +95,19 @@ export default function SIgnInForm() {
           >
             Email address
           </label>
+
           <div className='mt-2'>
             <input
-              id='email'
-              name='email'
+              onFocus={() => onFocusIn()}
               type='email'
-              autoComplete='email'
-              required
+              {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
               className='block w-full rounded-md border-3 py-2.5 px-3 text-gray-600 shadow-sm ring-1 ring-inset ring-indigo-400 placeholder:text-grey-900  md:text-xl focus:ring-2 focus:ring-inset  focus:ring-dark sm:text-sm sm:leading-6'
             />
           </div>
         </div>
         <div className='my-4'>
           <label
-            htmlFor='email'
+            htmlFor='password'
             className='block text-md font-medium leading-6 text-gray-600'
           >
             Password
@@ -65,20 +115,24 @@ export default function SIgnInForm() {
           <div className='mt-2 relative'>
             <input
               id='password'
-              name='password'
+              onFocus={() => onFocusIn()}
               type={is_visible ? 'password' : 'text'}
-              autoComplete='password'
-              required
+              {...register('password', {
+                required: true,
+                maxLength: 16,
+                pattern:
+                  /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!-%*#?&])[A-Za-z\d@!$%*#?&]{8,}/,
+              })}
               className='block w-full rounded-md border-3 py-2.5 px-3 text-gray-600 shadow-sm ring-1 ring-inset ring-indigo-400 placeholder:text-grey-900  md:text-xl focus:ring-2 focus:ring-inset  focus:ring-dark sm:text-sm sm:leading-6'
             />
             <span
-              className='absolute top-4 right-4 cursor-pointer'
+              className='absolute top-2.5 right-4 cursor-pointer'
               onClick={() => toggleVisible(!is_visible)}
             >
               {is_visible ? (
-                <EyeIcon height={'30px'} />
+                <EyeIcon height={'25px'} className='text-gray-400' />
               ) : (
-                <EyeSlashIcon height={'30px'} />
+                <EyeSlashIcon height={'25px'} className='text-gray-400' />
               )}
             </span>
           </div>
@@ -96,8 +150,19 @@ export default function SIgnInForm() {
         <div>
           <button
             type='submit'
-            className='flex w-full  justify-center rounded-full bg-indigo-600 px-3 py-2.5 text-xl font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+            disabled={loading}
+            className='flex gap-x-5 w-full items-center disabled:bg-indigo-400  justify-center rounded-full bg-indigo-600 px-3 py-2.5 text-xl font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
           >
+            {loading ? (
+              <div
+                className='inline-block h-5 w-5 animate-spin rounded-full border-2 border-solid border-current border-e-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]'
+                role='status'
+              >
+                <span className='!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]'>
+                  Loading...
+                </span>
+              </div>
+            ) : null}
             Sign In
           </button>
         </div>

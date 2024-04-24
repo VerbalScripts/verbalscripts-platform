@@ -162,7 +162,8 @@ export default function Page() {
         folderId ? `/files/folder/${folderId}` : '/files',
       );
       if (response.status == 200) {
-        setOrders(response.data);
+        console.log(response.data);
+        setOrders(response.data.results);
       }
     } catch (error) {
       console.log(error);
@@ -211,7 +212,7 @@ export default function Page() {
         folderId ? `/folders/${folderId}` : '/folders',
       );
       if (response.status == 200) {
-        setFolders(response.data);
+        setFolders(response.data.results);
       }
     } catch (error) {
       console.log(error);
@@ -220,9 +221,15 @@ export default function Page() {
     }
   };
 
+  useEffect(() => {
+    if (showFolders) {
+      fetchPendingFolderOrders();
+    }
+  }, [showFolders]);
+
   const initialFeedsFetch = async () => {
     setLoading(true);
-    await Promise.all([fetchPendingOrders(), fetchPendingFolderOrders()]);
+    await Promise.all([fetchPendingOrders()]);
 
     setLoading(false);
   };
@@ -236,6 +243,7 @@ export default function Page() {
 
   return (
     <div className='py-4'>
+      <title>Dashboard | Pending</title>
       <TawkMessenger />
 
       {loading ? (

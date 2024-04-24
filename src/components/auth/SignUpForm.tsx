@@ -1,26 +1,55 @@
 'use client';
 
 import Link from 'next/link';
-import React, { FormEvent, useState } from 'react';
+import React, { useState } from 'react';
 import { EyeSlashIcon } from '@heroicons/react/20/solid';
 import { EyeIcon } from '@heroicons/react/24/outline';
+import { FieldValues, useForm } from 'react-hook-form';
 import GoogleIcon from '../GoogleIcon';
+import AxiosProxy from '@/utils/AxiosProxy';
 
 export default function SignUpForm() {
   // const validation = {};
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  // const [loading, setLoading] = useState(false);
   const [is_visible, toggleVisible] = useState(true);
+  const [is_error, showErrors] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [apiError, setApiError] = useState(false);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const onSubmit = async (
+    data: FieldValues,
+    event?: React.BaseSyntheticEvent,
+  ) => {
+    event?.preventDefault();
+    if (errors.email || errors.password) {
+      showErrors(true);
+    } else {
+      try {
+        setLoading(true);
 
-    // const formData = new FormData(event.currentTarget);
+        const response = await AxiosProxy.post('/auth/register', data);
+        if (response.status == 201) {
+          // store user in store
+          // add token to localstorage
+        } else {
+          setApiError(true);
+        }
+      } catch (err) {
+        setApiError(true);
+      } finally {
+        setLoading(false);
+      }
+    }
+  };
 
-    // setLoading(true);
-    // setTimeout(() => {
-    //   setLoading(false);
-    // }, 2000);
+  const onFocusIn = () => {
+    showErrors(false);
+    setApiError(false);
   };
 
   return (
@@ -29,9 +58,14 @@ export default function SignUpForm() {
         <div className='mb-10 md:mb-10 text-left text-4xl font-bold text-gray-700'>
           Join Us
         </div>
+        {apiError ? (
+          <div className='py-2 px-3 mb-5 text-red-500 font-semibold bg-red-100 rounded-md'>
+            An Account with email already exists
+          </div>
+        ) : null}
         <form
           className='space-y-6'
-          onSubmit={handleSubmit}
+          onSubmit={handleSubmit(onSubmit)}
           action='#'
           method='POST'
         >
@@ -45,29 +79,29 @@ export default function SignUpForm() {
               </label>
               <div className='mt-2'>
                 <input
-                  id='first'
-                  name='first'
+                  id='firstName'
                   type='text'
-                  autoComplete='first'
-                  required
+                  onFocus={() => onFocusIn()}
+                  autoComplete='firstName'
+                  {...register('firstName', { required: true, maxLength: 80 })}
                   className='block w-full rounded-md border-3 py-2.5 px-3 text-gray-600 shadow-sm ring-1 ring-inset ring-indigo-400 placeholder:text-grey-900  md:text-xl focus:ring-2 focus:ring-inset  focus:ring-dark sm:text-sm sm:leading-6'
                 />
               </div>
             </div>
             <div className=''>
               <label
-                htmlFor='first'
+                htmlFor='lastName'
                 className='block text-md font-medium leading-6 text-gray-600'
               >
                 Last Name
               </label>
               <div className='mt-1.5'>
                 <input
-                  id='last'
-                  name='last'
+                  id='lastName'
+                  onFocus={() => onFocusIn()}
                   type='text'
-                  autoComplete='last'
-                  required
+                  autoComplete='lastName'
+                  {...register('lastName', { required: true, maxLength: 80 })}
                   className='block w-full rounded-md border-3 py-2.5 px-3 text-gray-600 shadow-sm ring-1 ring-inset ring-indigo-400 placeholder:text-grey-900  md:text-xl focus:ring-2 focus:ring-inset  focus:ring-dark sm:text-sm sm:leading-6'
                 />
               </div>
@@ -75,17 +109,18 @@ export default function SignUpForm() {
           </div>
           <div className='my-1.5'>
             <label
-              htmlFor='company_name'
+              htmlFor='companyName'
               className='block text-md font-medium leading-6 text-gray-600'
             >
               Company Name (optional)
             </label>
             <div className='mt-2'>
               <input
-                id='company_name'
-                name='company_name'
+                id='companyName'
+                onFocus={() => onFocusIn()}
                 type='text'
                 autoComplete='email'
+                {...register('companyName', { required: false, maxLength: 80 })}
                 className='block w-full rounded-md border-3 py-2.5 px-3 text-gray-600 shadow-sm ring-1 ring-inset ring-indigo-400 placeholder:text-grey-900  md:text-xl focus:ring-2 focus:ring-inset  focus:ring-dark sm:text-sm sm:leading-6'
               />
             </div>
@@ -100,10 +135,13 @@ export default function SignUpForm() {
             <div className='mt-1.5'>
               <input
                 id='email'
-                name='email'
+                onFocus={() => onFocusIn()}
                 type='email'
                 autoComplete='email'
-                required
+                {...register('email', {
+                  required: true,
+                  pattern: /^\S+@\S+$/i,
+                })}
                 className='block w-full rounded-md border-3 py-2.5 px-3 text-gray-600 shadow-sm ring-1 ring-inset ring-indigo-400 placeholder:text-grey-900  md:text-xl focus:ring-2 focus:ring-inset  focus:ring-dark sm:text-sm sm:leading-6'
               />
             </div>
@@ -118,20 +156,25 @@ export default function SignUpForm() {
             <div className='mt-2 relative'>
               <input
                 id='password'
-                name='password'
                 type={is_visible ? 'password' : 'text'}
+                onFocus={() => onFocusIn()}
                 autoComplete='password'
-                required
+                {...register('password', {
+                  required: true,
+                  maxLength: 16,
+                  pattern:
+                    /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@!$%*#?&]{8,}/,
+                })}
                 className='block w-full rounded-md border-3  py-2.5 px-3 text-gray-600 shadow-sm ring-1 ring-inset ring-indigo-400 placeholder:text-grey-900  md:text-xl focus:ring-2 focus:ring-inset  focus:ring-dark sm:text-sm sm:leading-6'
               />
               <span
-                className='absolute top-4 right-4 cursor-pointer'
+                className='absolute top-2 right-4 cursor-pointer'
                 onClick={() => toggleVisible(!is_visible)}
               >
                 {is_visible ? (
-                  <EyeIcon height={'30px'} />
+                  <EyeIcon height={'25px'} className='text-gray-400' />
                 ) : (
-                  <EyeSlashIcon height={'30px'} />
+                  <EyeSlashIcon height={'25px'} className='text-gray-400' />
                 )}
               </span>
             </div>
@@ -140,9 +183,20 @@ export default function SignUpForm() {
           <div>
             <button
               type='submit'
-              className='flex w-full  justify-center rounded-full bg-indigo-600 px-3 py-2.5 text-xl font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+              disabled={loading}
+              className='flex gap-x-5 w-full items-center disabled:bg-indigo-400  justify-center rounded-full bg-indigo-600 px-3 py-2.5 text-xl font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
             >
-              Submit
+              {loading ? (
+                <div
+                  className='inline-block h-5 w-5 animate-spin rounded-full border-2 border-solid border-current border-e-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]'
+                  role='status'
+                >
+                  <span className='!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]'>
+                    Loading...
+                  </span>
+                </div>
+              ) : null}
+              Create Accout
             </button>
           </div>
         </form>
