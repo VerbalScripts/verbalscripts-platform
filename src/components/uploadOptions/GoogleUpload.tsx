@@ -1,139 +1,38 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import Script from 'next/script';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-declare const gapi: {
-  load: (arg0: string, arg1: () => Promise<void>) => void;
-  client: {
-    load: (arg0: string) => any;
-    drive: { files: { get: (arg0: { fileId: any; fields: string }) => any } };
-  };
-};
+let tokenClient: any;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-declare const google: {
-  accounts: {
-    oauth2: {
-      initTokenClient: (arg0: {
-        client_id: string;
-        scope: string;
-        callback: string;
-      }) => string;
-      revoke: (arg0: string) => void;
-    };
-  };
-  picker: {
-    View: new (arg0: any) => any;
-    ViewId: { DOCS: any };
-    PickerBuilder: new () => {
-      (): any;
-      new (): any;
-      enableFeature: {
-        (arg0: any): {
-          (): any;
-          new (): any;
-          enableFeature: {
-            (arg0: any): {
-              (): any;
-              new (): any;
-              setDeveloperKey: {
-                (arg0: string): {
-                  (): any;
-                  new (): any;
-                  setAppId: {
-                    (arg0: string): {
-                      (): any;
-                      new (): any;
-                      setOAuthToken: {
-                        (arg0: string): {
-                          (): any;
-                          new (): any;
-                          addView: {
-                            (arg0: any): {
-                              (): any;
-                              new (): any;
-                              addView: {
-                                (arg0: any): {
-                                  (): any;
-                                  new (): any;
-                                  setCallback: {
-                                    (arg0: (data: any) => Promise<void>): {
-                                      (): any;
-                                      new (): any;
-                                      build: { (): any; new (): any };
-                                    };
-                                    new (): any;
-                                  };
-                                };
-                                new (): any;
-                              };
-                            };
-                            new (): any;
-                          };
-                        };
-                        new (): any;
-                      };
-                    };
-                    new (): any;
-                  };
-                };
-                new (): any;
-              };
-            };
-            new (): any;
-          };
-        };
-        new (): any;
-      };
-    };
-    Feature: { NAV_HIDDEN: any; MULTISELECT_ENABLED: any };
-    DocsUploadView: new () => any;
-    Action: { PICKED: any };
-    Response: { DOCUMENTS: string | number };
-    Document: { ID: string | number };
-  };
-};
+let accessToken: any;
+let pickerInited: boolean = false;
+let gisInited: boolean = false;
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 /* global gapi */
 export default function GoogleUpload() {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
   // Authorization scopes required by the API; multiple scopes can be
   // included, separated by spaces.
   const SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly';
 
   // TODO(developer): Set to client ID and API key from the Developer Console
-  const CLIENT_ID = '<YOUR_CLIENT_ID>';
-  const API_KEY = 'AIzaSyDw8a5-1aFFbOsM4F0bVAAqCXm_8X0udpI';
+  const CLIENT_ID =
+    '324780422094-bgi1n0ofg62989rhr2vganu9u7dpma7c.apps.googleusercontent.com';
+  const API_KEY = 'AIzaSyA9cL8ZhmuPBaUgv5Ohx-Dj6L-ZtkjR6lE';
 
   // TODO(developer): Replace with your own project number from console.developers.google.com.
-  const APP_ID = '<YOUR_APP_ID>';
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  let tokenClient: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  let accessToken: any;
-  let pickerInited: boolean = false;
-  let gisInited: boolean = false;
-
-  useEffect(() => {
-    if (
-      window != null &&
-      window.document.getElementById('authorize_button') != null &&
-      window.document.getElementById('signout_button')
-    ) {
-      window.document.getElementById('authorize_button')!.style.visibility =
-        'hidden';
-      window.document.getElementById('signout_button')!.style.visibility =
-        'hidden';
-    }
-  });
+  const APP_ID = 'verbal-platform ';
 
   /**
    * Callback after api.js is loaded.
    */
   function gapiLoaded() {
-    if (window.gapi! != null) {
-      gapi.load('client:picker', initializePicker);
+    if (typeof window.gapi != 'undefined') {
+      window.gapi.load('client:picker', initializePicker);
     }
   }
 
@@ -146,6 +45,9 @@ export default function GoogleUpload() {
       'https://www.googleapis.com/discovery/v1/apis/drive/v3/rest',
     );
     pickerInited = true;
+    console.log('picker loaded !!');
+    console.log(tokenClient);
+
     maybeEnableButtons();
   }
 
@@ -153,11 +55,17 @@ export default function GoogleUpload() {
    * Callback after Google Identity Services are loaded.
    */
   function gisLoaded() {
-    tokenClient = google.accounts.oauth2.initTokenClient({
+    console.log('loaded google gis');
+
+    // @ts-ignore
+    tokenClient = window.google.accounts.oauth2.initTokenClient({
       client_id: CLIENT_ID,
       scope: SCOPES,
-      callback: '', // defined later
+      callback: () => {
+        console.log('something happened');
+      }, // defined later
     });
+
     gisInited = true;
     maybeEnableButtons();
   }
@@ -167,14 +75,19 @@ export default function GoogleUpload() {
    */
   function maybeEnableButtons() {
     if (pickerInited && gisInited) {
-      document.getElementById('authorize_button')!.style.visibility = 'visible';
+      setLoading(false);
     }
   }
 
   /**
    *  Sign in the user upon button click.
    */
-  function handleAuthClick() {
+  async function handleAuthClick() {
+    if (tokenClient == undefined) {
+      setError('Failed to Authenticate');
+      return;
+    }
+
     tokenClient.callback = async (response: {
       error: undefined;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -184,16 +97,19 @@ export default function GoogleUpload() {
         throw response;
       }
       accessToken = response.access_token;
-      document.getElementById('signout_button')!.style.visibility = 'visible';
-      document.getElementById('authorize_button')!.innerText = 'Refresh';
+      console.log(accessToken);
+      // document.getElementById('signout_button')!.style.visibility = 'visible';
+      // document.getElementById('authorize_button')!.innerText = 'Refresh';
       await createPicker();
     };
 
+    
     if (accessToken === null) {
       // Prompt the user to select a Google Account and ask for consent to share their data
       // when establishing a new session.
       tokenClient.requestAccessToken({ prompt: 'consent' });
     } else {
+      console.log( 'access token exists using session' );
       // Skip display of account chooser and consent dialog for an existing session.
       tokenClient.requestAccessToken({ prompt: '' });
     }
@@ -202,30 +118,35 @@ export default function GoogleUpload() {
   /**
    *  Sign out the user upon button click.
    */
-  function handleSignoutClick() {
-    if (accessToken) {
-      accessToken = null;
-      google.accounts.oauth2.revoke(accessToken);
-      document.getElementById('content')!.innerText = '';
-      document.getElementById('authorize_button')!.innerText = 'Authorize';
-      document.getElementById('signout_button')!.style.visibility = 'hidden';
-    }
-  }
+  // function handleSignoutClick() {
+  //   if (accessToken) {
+  //     accessToken = null;
+  //     google.accounts.oauth2.revoke(accessToken);
+  //     document.getElementById('content')!.innerText = '';
+  //     document.getElementById('authorize_button')!.innerText = 'Authorize';
+  //     document.getElementById('signout_button')!.style.visibility = 'hidden';
+  //   }
+  // }
 
   /**
    *  Create and render a Picker object for searching images.
    */
   function createPicker() {
-    const view = new google.picker.View(google.picker.ViewId.DOCS);
-    view.setMimeTypes('image/png,image/jpeg,image/jpg');
-    const picker = new google.picker.PickerBuilder()
-      .enableFeature(google.picker.Feature.NAV_HIDDEN)
-      .enableFeature(google.picker.Feature.MULTISELECT_ENABLED)
+    // @ts-ignore
+    const view = new window.google.picker.View(google.picker.ViewId.DOCS);
+    // view.setMimeTypes('image/png,image/jpeg,image/jpg');
+    // @ts-ignore
+    const picker = new window.google.picker.PickerBuilder()
+      // @ts-ignore
+      .enableFeature(window.google.picker.Feature.NAV_HIDDEN)
+      // @ts-ignore
+      .enableFeature(window.google.picker.Feature.MULTISELECT_ENABLED)
       .setDeveloperKey(API_KEY)
       .setAppId(APP_ID)
       .setOAuthToken(accessToken)
       .addView(view)
-      .addView(new google.picker.DocsUploadView())
+      // @ts-ignore
+      .addView(new window.google.picker.DocsUploadView())
       .setCallback(pickerCallback)
       .build();
     picker.setVisible(true);
@@ -237,11 +158,16 @@ export default function GoogleUpload() {
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async function pickerCallback(data: { [x: string]: any[]; action: any }) {
-    if (data.action === google.picker.Action.PICKED) {
-      let text = `Picker response: \n${JSON.stringify(data, null, 2)}\n`;
-      const document = data[google.picker.Response.DOCUMENTS][0];
-      const fileId = document[google.picker.Document.ID];
+    // @ts-ignore
+    if (data.action === window.google.picker.Action.PICKED) {
+      let text = `Picker response: \n${ JSON.stringify( data, null, 2 ) }\n`;
+      console.log(data)
+      // @ts-ignore
+      const document = data[window.google.picker.Response.DOCUMENTS][0];
+      // @ts-ignore
+      const fileId = document[window.google.picker.Document.ID];
       console.log(fileId);
+      // @ts-ignore
       const res = await gapi.client.drive.files.get({
         fileId: fileId,
         fields: '*',
@@ -264,22 +190,30 @@ export default function GoogleUpload() {
         onLoad={() => gisLoaded()}
       />
 
-      <button
-        id='authorize_button'
-        className='text-gray-700 p-3 rounded-xl bg-indigo-500 cursor-pointer'
-        onClick={() => handleAuthClick()}
-      >
-        Authorize
-      </button>
-      <button
-        id='signout_button'
-        className='text-gray-700 p-3 rounded-xl bg-indigo-500 cursor-pointer'
-        onClick={() => handleSignoutClick()}
-      >
-        Sign Out
-      </button>
+      <div className='px-6 py-10 lg:py-12'>
+        {error != '' ? <div className='bg-red-300 text-gray-500 p-5 rounded-xl'>{error}</div> : null}
+        <p className='text-gray-600'>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus
+          laudantium consequatur magni est similique praesentium accusantium
+          culpa molestiae enim iure.
+        </p>
 
-      <pre id='content' style={{ whiteSpace: 'pre-wrap' }}></pre>
+        <div className='mt-5'>
+          <button
+            disabled={loading}
+            onClick={() => handleAuthClick()}
+            className='px-7 py-3 font-semibold bg-indigo-500 rounded-xl text-white'
+          >
+            {loading ? 'File picker loading ... ' : 'Choose File '}
+          </button>
+        </div>
+      </div>
+
+      <pre
+        id='content'
+        className='text-white'
+        style={{ whiteSpace: 'pre-wrap' }}
+      ></pre>
     </div>
   );
 }

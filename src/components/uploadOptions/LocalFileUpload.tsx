@@ -5,24 +5,11 @@ import FileUploadProgress from './FileUploadProgress';
 import { hostUrl } from '../../../config';
 import { v4 as uuid } from 'uuid';
 import { GetOrStoreAuthToken } from '@/utils/GetOrStoreAuthToken';
-import { getFilesAsZip } from '@/utils/FolderZip';
+// import { getFilesAsZip } from '@/utils/FolderZip';
 
 export default function LocalFileUpload() {
-  // const router = useRouter();
-
-  const allowedExtensions = [
-    'mp3',
-    'wav',
-    'wmv',
-    'mpeg',
-    'mp4',
-    'mp3',
-    'ogg',
-    'mkv',
-  ];
 
   async function updateImageDisplay(inputFiles: File[]) {
-    console.log(inputFiles);
 
     // reset progress tracker
     setProgress((prevState) => ({
@@ -36,16 +23,13 @@ export default function LocalFileUpload() {
       return;
     }
     setOpen(true);
-
-    setProgress((prevState) => ({
-      ...prevState,
-      statusText: 'Zipping files',
-    }));
-
-    const zipContent = await getFilesAsZip(inputFiles);
+    // const zipContent = await getFilesAsZip(inputFiles);
 
     const formData = new FormData();
-    formData.append('folderzip', zipContent);
+
+    inputFiles.forEach( _file => {
+      formData.append('transcription-files', _file);
+    })
 
     // append files
     inputFiles.forEach((item) => {
@@ -271,7 +255,6 @@ export default function LocalFileUpload() {
                   <input
                     type='file'
                     id='raw_file'
-                    accept={allowedExtensions.join(',')}
                     multiple
                     name='raw_file'
                     onChange={FilesUploadForm}
