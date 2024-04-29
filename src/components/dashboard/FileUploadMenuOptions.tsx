@@ -1,7 +1,7 @@
 import { classNames } from '@/utils/classNames';
 import { Menu, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/16/solid';
-import { CloudArrowUpIcon } from '@heroicons/react/24/outline';
+import { PlusIcon } from '@heroicons/react/24/outline';
 import React, { Fragment } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -48,13 +48,9 @@ export default function FileUploadMenuOptions() {
   return (
     <Menu as='div' className='relative inline-block text-left'>
       <div>
-        <Menu.Button className='flex mb-5 gap-x-2 rounded-xl bg-indigo-500 font-semibold px-4 py-2  focus-within:ring-4 focus-within:ring-indigo-400'>
-          <CloudArrowUpIcon className='h-5 w-5 text-white' />
-          <span className='text-white'>Add Files</span>
-          <ChevronDownIcon
-            className='-mr-1 h-5 w-5 text-white'
-            aria-hidden='true'
-          />
+        <Menu.Button className='flex flex-col mb-5 gap-x-2 rounded-xl bg-indigo-500 font-semibold px-4 py-2  focus-within:ring-4 focus-within:ring-indigo-400'>
+          <PlusIcon className='-mr-1 h-5 w-5 text-white' aria-hidden='true' />
+          <span className='text-white'>Upload or Drop</span>
         </Menu.Button>
       </div>
 
@@ -67,7 +63,7 @@ export default function FileUploadMenuOptions() {
         leaveFrom='transform opacity-100 scale-100'
         leaveTo='transform opacity-0 scale-95'
       >
-        <Menu.Items className='absolute right-0 z-10 mt-2 w-56 origin-top divide-y  rounded-xl bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+        <Menu.Items className='absolute left-0 z-10 mt-1 w-56 origin-top divide-y  rounded-xl bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
           {uploadOptions.map((iupload) => (
             <div key={iupload.id} className='py-1'>
               <Menu.Item>

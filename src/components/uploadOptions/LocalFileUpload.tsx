@@ -8,9 +8,7 @@ import { GetOrStoreAuthToken } from '@/utils/GetOrStoreAuthToken';
 // import { getFilesAsZip } from '@/utils/FolderZip';
 
 export default function LocalFileUpload() {
-
   async function updateImageDisplay(inputFiles: File[]) {
-
     // reset progress tracker
     setProgress((prevState) => ({
       ...prevState,
@@ -27,9 +25,9 @@ export default function LocalFileUpload() {
 
     const formData = new FormData();
 
-    inputFiles.forEach( _file => {
+    inputFiles.forEach((_file) => {
       formData.append('transcription-files', _file);
-    })
+    });
 
     // append files
     inputFiles.forEach((item) => {

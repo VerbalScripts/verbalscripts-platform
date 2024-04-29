@@ -2,6 +2,8 @@ import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { useRecoilValue } from 'recoil';
+import { getUser } from '@/store/configureStore';
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
@@ -13,6 +15,8 @@ interface menuRoute {
   isProtected: boolean;
 }
 export default function DashDialogMenu() {
+  const user = useRecoilValue(getUser);
+
   const menuRoutes: menuRoute[] = [
     {
       label: ' Account settings',
@@ -53,10 +57,17 @@ export default function DashDialogMenu() {
       >
         <Menu.Items className='absolute right-0 z-30 mt-2 w-56 origin-top-right rounded-md bg-gray-50 shadow-lg focus:outline-none'>
           <div className='py-1 px-2'>
-            <div className='py-3 px-4 text-gray-700 border-b border-gray-200 mb-2'>
-              <span className='font-bold'>Guest User</span> - This is a
-              temporary account, please login to save your uploads.
-            </div>
+            {user.isAuth ? (
+              <div className='py-3 px-4 text-gray-600 border-b border-gray-200 mb-2'>
+                <span className='font-bold'>{user.email}</span>
+              </div>
+            ) : (
+              <div className='py-3 px-4 text-gray-600 border-b border-gray-200 mb-2'>
+                <span className='font-bold'>Guest User</span> - This is a
+                temporary account, please login to save your uploads.
+              </div>
+            )}
+
             {menuRoutes.map((route) => (
               <Menu.Item key={route.label}>
                 {({ active }) => (

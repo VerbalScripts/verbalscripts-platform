@@ -1,25 +1,22 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import uploadsSlice from './features/uploadsSlice';
-// import userSlice from './features/userSlice';
-import authSlice from './features/authSlice';
+import { atom, selector } from 'recoil';
 
-// add store namespaces
-const rootReducer = combineReducers({
-  uploads: uploadsSlice,
-  auth: authSlice,
+export const userState = atom({
+  key: 'userState',
+  default: {
+    isAuth: false,
+    email: '',
+    firstName: '',
+    lastName: '',
+    userId: '',
+  },
 });
 
-export const createStore = () => {
-  return configureStore({
-    reducer: rootReducer,
-    //     middleware: ( getDefaultMiddlware ) => {
-    //         getDefaultMiddlware( { serializableCheck: false} )
-    //   }
-  });
-};
+export const isAuthenticated = selector({
+  key: 'isAuthGetter',
+  get: ({ get }) => get(userState).isAuth,
+});
 
-// infer type
-export type AppStore = ReturnType<typeof createStore>;
-// infer root state
-export type RootState = ReturnType<AppStore['getState']>;
-export type AppDispatch = AppStore['dispatch'];
+export const getUser = selector({
+  key: 'userSelector',
+  get: ({ get }) => get(userState),
+});

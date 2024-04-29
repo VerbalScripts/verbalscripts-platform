@@ -124,10 +124,6 @@ export default function TableView({
     // setDraggedOverIndex(rowIndex);
   };
 
-  // const GoToDashboard = () => {
-  //   router.push('/dashboard/pending?new=true');
-  // }
-
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const handelDragLeaveHandler = (ev: DragEvent<Element>) => {

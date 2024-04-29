@@ -7,6 +7,7 @@ import { EyeIcon } from '@heroicons/react/24/outline';
 import { FieldValues, useForm } from 'react-hook-form';
 import GoogleIcon from '../GoogleIcon';
 import AxiosProxy from '@/utils/AxiosProxy';
+import { GetOrStoreAuthToken } from '@/utils/GetOrStoreAuthToken';
 
 export default function SignUpForm() {
   // const validation = {};
@@ -36,6 +37,8 @@ export default function SignUpForm() {
         if (response.status == 201) {
           // store user in store
           // add token to localstorage
+          storeTokens(response.data.access_token, response.data.refresh_token);
+          toDashboard();
         } else {
           setApiError(true);
         }
@@ -45,6 +48,15 @@ export default function SignUpForm() {
         setLoading(false);
       }
     }
+  };
+
+  const storeTokens = (accessToken: string, refreshToken: string) => {
+    GetOrStoreAuthToken(accessToken);
+    window.localStorage.setItem('rft-btt', refreshToken);
+  };
+
+  const toDashboard = () => {
+    window.location.href = '/dashboard/pending';
   };
 
   const onFocusIn = () => {

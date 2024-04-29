@@ -3,7 +3,11 @@
 import React, { useEffect, useState } from 'react';
 import LoadSpinner from '@/components/dashboard/LoadSpinner';
 
-import { FolderPlusIcon, TrashIcon } from '@heroicons/react/24/outline';
+import {
+  ArrowDownCircleIcon,
+  FolderPlusIcon,
+  TrashIcon,
+} from '@heroicons/react/24/outline';
 import {
   ArrowUturnLeftIcon,
   ArrowUturnRightIcon,
@@ -29,6 +33,8 @@ import OrderNowModal from '@/components/modals/OrderNowModal';
 import RenameFile from '@/components/modals/RenameFile';
 import RenameFolder from '@/components/modals/RenameFolder';
 import TawkMessenger from '@/lib/TawkMessenger';
+import FileDownload from 'js-file-download';
+
 interface PageSetupOptions {
   toggleView: 'grid' | 'list';
 }
@@ -47,6 +53,7 @@ export default function Page() {
   // modal toggles
   const [open, setOpen] = useState(false);
   const [deleteFile, setDeleteFile] = useState(false);
+  const [downloadFile, setDownloadFile] = useState(false);
   const [orderNow, setOrderNow] = useState(false);
   const [openFileRename, setOpenFileRename] = useState(false);
   const [openFolderRename, setOpenFolderRename] = useState(false);
@@ -191,6 +198,22 @@ export default function Page() {
     });
   };
 
+  const requestFileDownload = async () => {
+    setDownloadFile(true);
+
+    try {
+      const response = await AxiosProxy.post('/files/download', {
+        files: [...selectedFiles],
+      });
+
+      FileDownload(response.data, 'folder-archive.zip');
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setDownloadFile(false);
+    }
+  };
+
   const openFolder = (route: { id: string; label: string }) => {
     // console.log(currentFolderIndex)
     if (folderArr[currentFolderIndex].id == route.id) return;
@@ -212,7 +235,7 @@ export default function Page() {
         folderId ? `/folders/${folderId}` : '/folders',
       );
       if (response.status == 200) {
-        setFolders(response.data.results);
+        setFolders(response.data);
       }
     } catch (error) {
       console.log(error);
@@ -251,14 +274,14 @@ export default function Page() {
       ) : (
         <div>
           <div className='px-6 md:px-16 xl:px-16 sticky top-1 z-10 bg-white py-1'>
-            <div className='flex items-center justify-end gap-x-3'>
+            <div className='flex items-center justify-start gap-x-3'>
               <FileUploadMenuOptions />
               <button
                 onClick={() => setOpen(true)}
-                className='flex mb-5 gap-x-2 rounded-xl bg-indigo-100 font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
+                className='flex flex-col mb-5 gap-x-2 rounded-xl bg-indigo-100 font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
               >
                 <FolderPlusIcon className='h-5 w-5 text-indigo-500' />
-                <span className='text-indigo-500'>New Folder</span>
+                <span className='text-indigo-500'>Create Folder</span>
               </button>
             </div>
             <div className='flex  justify-between items-center mb-4'>
@@ -304,16 +327,29 @@ export default function Page() {
                 <div className='flex items-center gap-x-2 p-2 rounded-xl bg-indigo-100'>
                   <button
                     onClick={() => setOrderNow(true)}
-                    className='flex  gap-x-2 rounded-xl bg-indigo-500 font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
+                    className='flex  gap-x-2 rounded-xl bg-indigo-600 font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
                   >
                     <CheckCircleIcon className='h-5 w-5 text-white' />
                     <span className='text-white'>
                       Order File({selectedFiles.length})
                     </span>
                   </button>
+
+                  <button
+                    disabled={downloadFile}
+                    onClick={() => requestFileDownload()}
+                    className='flex  gap-x-2 rounded-xl bg-indigo-500  font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
+                  >
+                    <ArrowDownCircleIcon className='h-5 w-5 text-white' />
+                    {downloadFile ? (
+                      <span className='text-gray-100'>downloading ...</span>
+                    ) : (
+                      <span className='text-gray-100'>Dowload</span>
+                    )}
+                  </button>
                   <button
                     onClick={() => setDeleteFile(true)}
-                    className='flex  gap-x-2 rounded-xl  font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
+                    className='flex  gap-x-2 rounded-xl bg-red-100  font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
                   >
                     <TrashIcon className='h-5 w-5 text-red-400' />
                     <span className='text-red-400'>Delete</span>

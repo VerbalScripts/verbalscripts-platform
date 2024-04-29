@@ -8,6 +8,7 @@ import { EyeIcon } from '@heroicons/react/24/outline';
 import GoogleIcon from '../GoogleIcon';
 import { FieldValues, useForm } from 'react-hook-form';
 import AxiosProxy from '@/utils/AxiosProxy';
+import { GetOrStoreAuthToken } from '@/utils/GetOrStoreAuthToken';
 
 export default function SignInForm() {
   // const validation = {};
@@ -40,7 +41,8 @@ export default function SignInForm() {
           // store user in store
           // add token to localstorage
           // add info to store
-          // toDashboard();
+          storeTokens(response.data.access_token, response.data.refresh_token);
+          toDashboard();
         } else {
           setApiError(true);
         }
@@ -52,8 +54,13 @@ export default function SignInForm() {
     }
   };
 
+  const storeTokens = (accessToken: string, refreshToken: string) => {
+    GetOrStoreAuthToken(accessToken);
+    window.localStorage.setItem('rft-btt', refreshToken);
+  };
+
   const toDashboard = () => {
-    window.location.href = '/dashboard';
+    window.location.href = '/dashboard/pending';
   };
 
   // on input focus

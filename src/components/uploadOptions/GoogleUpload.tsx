@@ -103,13 +103,12 @@ export default function GoogleUpload() {
       await createPicker();
     };
 
-    
     if (accessToken === null) {
       // Prompt the user to select a Google Account and ask for consent to share their data
       // when establishing a new session.
       tokenClient.requestAccessToken({ prompt: 'consent' });
     } else {
-      console.log( 'access token exists using session' );
+      console.log('access token exists using session');
       // Skip display of account chooser and consent dialog for an existing session.
       tokenClient.requestAccessToken({ prompt: '' });
     }
@@ -160,8 +159,8 @@ export default function GoogleUpload() {
   async function pickerCallback(data: { [x: string]: any[]; action: any }) {
     // @ts-ignore
     if (data.action === window.google.picker.Action.PICKED) {
-      let text = `Picker response: \n${ JSON.stringify( data, null, 2 ) }\n`;
-      console.log(data)
+      let text = `Picker response: \n${JSON.stringify(data, null, 2)}\n`;
+      console.log(data);
       // @ts-ignore
       const document = data[window.google.picker.Response.DOCUMENTS][0];
       // @ts-ignore
@@ -191,7 +190,9 @@ export default function GoogleUpload() {
       />
 
       <div className='px-6 py-10 lg:py-12'>
-        {error != '' ? <div className='bg-red-300 text-gray-500 p-5 rounded-xl'>{error}</div> : null}
+        {error != '' ? (
+          <div className='bg-red-300 text-gray-500 p-5 rounded-xl'>{error}</div>
+        ) : null}
         <p className='text-gray-600'>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus
           laudantium consequatur magni est similique praesentium accusantium

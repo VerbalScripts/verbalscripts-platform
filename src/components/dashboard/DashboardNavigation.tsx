@@ -7,7 +7,6 @@ import {
   RocketLaunchIcon,
   CheckBadgeIcon,
   ClockIcon,
-  Squares2X2Icon,
   ChevronDownIcon,
   UserIcon,
   ArrowLeftEndOnRectangleIcon,
@@ -64,12 +63,6 @@ export default function DashboardNavigation({
   expanded = true,
 }: DashboardNavigationProps) {
   const appRoutes: Array<NavItem> = [
-    {
-      name: 'Dashboard',
-      icon: Squares2X2Icon,
-      href: '/dashboard',
-    },
-
     {
       name: 'Upload',
       icon: ArrowUpOnSquareStackIcon,

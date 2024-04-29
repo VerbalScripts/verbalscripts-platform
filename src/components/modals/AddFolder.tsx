@@ -113,10 +113,14 @@ export default function AddFolder({ open, setOpen, reload }: AddFolderProps) {
                           ref={folderRef}
                           autoComplete='name'
                           required
-                          placeholder='Enter name of folder '
-                          className='block w-full rounded-md border-0 py-3.5 text-gray-600 shadow-sm text-md font-semibold ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+                          placeholder='Folder name'
+                          className='block w-full rounded-md border-0 py-3.5 text-gray-600 shadow-sm text-lg font-semibold ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600  sm:leading-6'
                         />
                       </div>
+                    </div>
+                    <div className='text-gray-700 px-3 py-2 bg-gray-100 rounded-md'>
+                      Use folders to organize content, converting files and
+                      downloading files.
                     </div>
                   </form>
                 </div>
