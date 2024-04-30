@@ -16,7 +16,7 @@ import {
 import { classNames } from '@/utils/classNames';
 import { Breadcrumb } from 'flowbite-react';
 
-import FileUploadMenuOptions from '@/components/dashboard/FileUploadMenuOptions';
+import FileUploadMenuOptions from '@/components/dashboard/FileUploadFromLocal';
 import AddFolder from '@/components/modals/AddFolder';
 import AxiosProxy from '@/utils/AxiosProxy';
 // import Link from 'next/link';

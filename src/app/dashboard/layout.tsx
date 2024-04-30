@@ -9,7 +9,7 @@ import { classNames } from '@/utils/classNames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDoubleLeft } from '@fortawesome/free-solid-svg-icons';
 import { RecoilRoot } from 'recoil';
-import StoreWrapper from '@/components/StoreWrapper';
+import StoreWrapper from '@/components/dashboard/StoreWrapper';
 
 // add redux
 
@@ -25,7 +25,7 @@ export default function DashboardLayout({
   return (
     <RecoilRoot>
       <StoreWrapper>
-        <section className='bg-white min-h-screen'>
+        <section className='dark-mode-toggle bg-white min-h-screen'>
           <Suspense>
             <NextNprogress />
           </Suspense>
@@ -54,7 +54,7 @@ export default function DashboardLayout({
 
               <div
                 className={classNames(
-                  'absolute transition-all duration-300 top-0 right-0 max-h-screen overflow-x-auto overflow-y-auto',
+                  'absolute dark:bg-gray-900 transition-all duration-300 top-0 right-0 max-h-screen overflow-x-auto overflow-y-auto',
                   expanded
                     ? 'w-[calc(100%] md:w-[calc(100%-16rem)]'
                     : 'w-[calc(100%-5rem)] md:w-[calc(100%-5rem)]',

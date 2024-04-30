@@ -13,7 +13,7 @@ export default function UploadFile() {
   const [activeTab, setActiveTab] = useState<string>('local-file');
 
   return (
-    <section style={{ backgroundColor: '#f9f8f2' }}>
+    <section className='min-h-screen'>
       <div className=' py-14 md:py-14 px-3 md:px-0'>
         <div className='mx-auto max-w-xl'>
           <p className='text-center text-2xl md:text-3xl font-bold  text-gray-900'>

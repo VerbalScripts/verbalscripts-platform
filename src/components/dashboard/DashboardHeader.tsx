@@ -2,7 +2,7 @@
 
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React, { useState } from 'react';
-import { BellAlertIcon } from '@heroicons/react/24/outline';
+import { BellAlertIcon, MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 
 import DashDialogMenu from '../DashDialogMenu';
 import { classNames } from '@/utils/classNames';
@@ -14,14 +14,27 @@ export default function DashboardHeader() {
   // const [open, setOpen] = useState(false);
 
   const [preview, setPreview] = useState<boolean>(false);
+  const [isDark, setDark] = useState<boolean>(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   // const SearchForFile = (event: KeyboardEventHandler<HTMLInputElement>) => {};
+
+  const toggleDarkMode = () => {
+    const toggleRef = document.querySelector('.dark-mode-toggle');
+    if (toggleRef) {
+      toggleRef.classList.toggle('dark');
+      if (isDark) {
+        setDark(false);
+      } else {
+        setDark(true);
+      }
+    }
+  };
 
   return (
     <>
       <header
         className={classNames(
-          'bg-white relative transition w-full z-30 border-b border-gray-200',
+          'bg-white dark:bg-gray-700 relative transition w-full z-30 border-b border-gray-200 dark:border-gray-700',
         )}
       >
         <nav
@@ -39,7 +52,7 @@ export default function DashboardHeader() {
             </button>
           </div> */}
 
-          <div className='hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-5'>
+          <div className='hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-2'>
             {/* <a
               href='/dashboard/upload'
               className='flex items-center text-md font-semibold ring-1 ring-inset text-white px-3.5 py-1.5 focus:ring-4 focus:ring-indigo-300 bg-indigo-500 hover:bg-white hover:ring-indigo-400 hover:text-indigo-500 rounded-full'
@@ -48,14 +61,32 @@ export default function DashboardHeader() {
 
               <span>Create New Order</span>
             </a> */}
+            <button
+              // href='/dashboard/notifications'
+              onClick={() => toggleDarkMode()}
+              data-dropdown-toggle='notification-dropdown'
+              className='flex items-center text-md font-semibold  px-3.5 py-1.5 focus:ring-4 focus:ring-indigo-300 hover:bg-white hover:ring-indigo-400 hover:text-indigo-500 rounded-full'
+            >
+              {isDark ? (
+                <SunIcon className='h-6 w-6 text-white' aria-hidden='true' />
+              ) : (
+                <MoonIcon
+                  className='h-6 w-6 text-gray-700'
+                  aria-hidden='true'
+                />
+              )}
+            </button>
 
             <button
               // href='/dashboard/notifications'
               onClick={() => setPreview(true)}
               data-dropdown-toggle='notification-dropdown'
-              className='flex items-center text-md font-semibold  text-gray-700 px-3.5 py-1.5 focus:ring-4 focus:ring-indigo-300 hover:bg-white hover:ring-indigo-400 hover:text-indigo-500 rounded-full'
+              className='flex items-center text-md font-semibold   px-3.5 py-1.5 focus:ring-4 focus:ring-indigo-300 hover:bg-white hover:ring-indigo-400 hover:text-indigo-500 rounded-full'
             >
-              <BellAlertIcon className='h-6 w-6' aria-hidden='true' />
+              <BellAlertIcon
+                className='h-6 w-6 text-gray-700 dark:text-white'
+                aria-hidden='true'
+              />
             </button>
 
             <DashDialogMenu />
@@ -66,11 +97,30 @@ export default function DashboardHeader() {
 
             <button
               // href='/dashboard/notifications'
+              onClick={() => toggleDarkMode()}
+              data-dropdown-toggle='notification-dropdown'
+              className='flex items-center text-md font-semibold  px-3.5 py-1.5 focus:ring-4 focus:ring-indigo-300 hover:bg-white hover:ring-indigo-400 hover:text-indigo-500 rounded-full'
+            >
+              {isDark ? (
+                <SunIcon className='h-6 w-6 text-white' aria-hidden='true' />
+              ) : (
+                <MoonIcon
+                  className='h-6 w-6 text-gray-700'
+                  aria-hidden='true'
+                />
+              )}
+            </button>
+
+            <button
+              // href='/dashboard/notifications'
               onClick={() => setPreview(true)}
               data-dropdown-toggle='notification-dropdown'
-              className='flex items-center text-md font-semibold  text-gray-700 px-3.5 py-1.5 focus:ring-4 focus:ring-indigo-300 hover:bg-white hover:ring-indigo-400 hover:text-indigo-500 rounded-full'
+              className='flex items-center text-md font-semibold   px-3.5 py-1.5 focus:ring-4 focus:ring-indigo-300 hover:bg-white hover:ring-indigo-400 hover:text-indigo-500 rounded-full'
             >
-              <BellAlertIcon className='h-6 w-6' aria-hidden='true' />
+              <BellAlertIcon
+                className='h-6 w-6 text-gray-700 dark:text-white'
+                aria-hidden='true'
+              />
             </button>
 
             <DashDialogMenu />

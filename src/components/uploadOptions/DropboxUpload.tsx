@@ -12,9 +12,17 @@ interface DropBoxFile {
   thumbnailLink: string;
 }
 
+interface DropboxUploadProps {
+  visible?: boolean;
+  trigger?: string;
+}
+
 let timeoutRef: ReturnType<typeof setInterval> | undefined = undefined;
 
-export default function DropboxUpload() {
+export default function DropboxUpload({
+  visible = true,
+  trigger,
+}: DropboxUploadProps) {
   const [loading, setLoading] = useState(false);
   const [keepGoing, setkeepGoing] = useState(true);
   const [files, setFiles] = useState<DropBoxFile[]>([]);
@@ -67,6 +75,12 @@ export default function DropboxUpload() {
     setLoading(false);
     console.log('loaded script');
   };
+
+  useEffect(() => {
+    if (trigger) {
+      initFilePicker();
+    }
+  }, [trigger]);
 
   const initFilePicker = () => {
     if (typeof window.Dropbox != 'undefined') {
@@ -169,24 +183,25 @@ export default function DropboxUpload() {
         source={'DropBox'}
         setOpen={setOpen}
       />
+      {visible ? (
+        <div className='px-6 py-10 lg:py-12'>
+          <p className='text-gray-600'>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus
+            laudantium consequatur magni est similique praesentium accusantium
+            culpa molestiae enim iure.
+          </p>
 
-      <div className='px-6 py-10 lg:py-12'>
-        <p className='text-gray-600'>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus
-          laudantium consequatur magni est similique praesentium accusantium
-          culpa molestiae enim iure.
-        </p>
-
-        <div className='mt-5'>
-          <button
-            disabled={loading}
-            onClick={() => initFilePicker()}
-            className='px-7 py-3 font-semibold bg-indigo-500 rounded-xl text-white'
-          >
-            {loading ? 'File picker loading ... ' : 'Choose File '}
-          </button>
+          <div className='mt-5'>
+            <button
+              disabled={loading}
+              onClick={() => initFilePicker()}
+              className='px-7 py-3 font-semibold bg-indigo-500 rounded-xl text-white'
+            >
+              {loading ? 'File picker loading ... ' : 'Choose File '}
+            </button>
+          </div>
         </div>
-      </div>
+      ) : null}
     </div>
   );
 }

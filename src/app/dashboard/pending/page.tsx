@@ -17,10 +17,12 @@ import {
   ListBulletIcon,
   Squares2X2Icon,
 } from '@heroicons/react/20/solid';
-import { classNames } from '@/utils/classNames';
 import { Breadcrumb } from 'flowbite-react';
+import { v4 as uuid} from 'uuid'
 
-import FileUploadMenuOptions from '@/components/dashboard/FileUploadMenuOptions';
+import { classNames } from '@/utils/classNames';
+import FileUploadFromLocal from '@/components/dashboard/FileUploadFromLocal';
+import FileUploadFromOtherOptions from '@/components/dashboard/FileUploadFromOtherOptions';
 import AddFolder from '@/components/modals/AddFolder';
 import AxiosProxy from '@/utils/AxiosProxy';
 // import Link from 'next/link';
@@ -34,6 +36,9 @@ import RenameFile from '@/components/modals/RenameFile';
 import RenameFolder from '@/components/modals/RenameFolder';
 import TawkMessenger from '@/lib/TawkMessenger';
 import FileDownload from 'js-file-download';
+import DropboxUpload from '@/components/uploadOptions/DropboxUpload';
+import GoogleUpload from '@/components/uploadOptions/GoogleUpload';
+import OneDrivePicker from '@/components/uploadOptions/OneDrivePicker';
 
 interface PageSetupOptions {
   toggleView: 'grid' | 'list';
@@ -80,6 +85,11 @@ export default function Page() {
   // watch for query changes
   const searchParams = useSearchParams();
   const folderId = searchParams.get('folderId');
+
+  // add cloud file import toggles
+  const [openDropBoxUpload, setDropBoxUpload] = useState<string>(uuid());
+  const [openGoogleDriveUpload, setGoogleDriveUpload] = useState<string>(uuid());
+  const [openOneDriveUpload, setOneDriveUpload] = useState<string>(uuid());
 
   const [pageSetup, setPageSetup] = useState<PageSetupOptions>({
     toggleView: 'list',
@@ -265,17 +275,26 @@ export default function Page() {
   // drag and drop files and folders
 
   return (
-    <div className='py-4'>
+    <div className=''>
       <title>Dashboard | Pending</title>
       <TawkMessenger />
+
+      <DropboxUpload trigger={openDropBoxUpload} visible={false} />
+      <GoogleUpload trigger={openGoogleDriveUpload} visible={false} />
+      <OneDrivePicker trigger={openOneDriveUpload} visible={false} />
 
       {loading ? (
         <LoadSpinner />
       ) : (
         <div>
-          <div className='px-6 md:px-16 xl:px-16 sticky top-1 z-10 bg-white py-1'>
+          <div className='px-6  md:px-16 xl:px-16 sticky top-0 z-10  bg-white dark:bg-gray-700 py-3'>
             <div className='flex items-center justify-start gap-x-3'>
-              <FileUploadMenuOptions />
+              <FileUploadFromOtherOptions
+                openDropBoxPicker={setDropBoxUpload}
+                openGoogleDrivePicker={setGoogleDriveUpload}
+                openOneDrivePicker={setOneDriveUpload}
+              />
+              <FileUploadFromLocal />
               <button
                 onClick={() => setOpen(true)}
                 className='flex flex-col mb-5 gap-x-2 rounded-xl bg-indigo-100 font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'

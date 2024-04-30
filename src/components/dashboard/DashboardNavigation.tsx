@@ -17,6 +17,8 @@ import React from 'react';
 
 import { usePathname } from 'next/navigation';
 import AppTitle from '../AppTitle';
+import { useRecoilValue } from 'recoil';
+import { userState } from '@/store/configureStore';
 
 type NavItem = {
   name: string;
@@ -36,7 +38,7 @@ function NavigationItemLink({ item, expanded }: NavItemProp) {
       <Link
         href={item.href}
         className={classNames(
-          'flex items-center gap-x-4 px-3 py-2.5 font-semibold  text-gray-600 rounded-full ',
+          'flex items-center gap-x-4 px-3 py-2.5 font-semibold dark:text-gray-200 text-gray-600 rounded-full ',
           usePathname() == item.href
             ? 'bg-indigo-500 text-white'
             : 'hover:bg-indigo-500/5',
@@ -111,10 +113,12 @@ export default function DashboardNavigation({
   ];
   // const [open, setOpen] = useState(false);
 
+  const globalUser = useRecoilValue(userState);
+
   return (
     <aside
       className={classNames(
-        'py-5 border-r bg-gray-100 border-gray-300  min-h-screen flex flex-col justify-between max-h-screen overflow-x-hidden overflow-y-auto',
+        'py-5 border-r bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-900  min-h-screen flex flex-col justify-between max-h-screen overflow-x-hidden overflow-y-auto',
         expanded ? 'px-8' : 'px-1',
       )}
     >
@@ -174,24 +178,26 @@ export default function DashboardNavigation({
 
       {/* bottom section */}
       <div>
-        <div
-          className={classNames(
-            ' bg-indigo-500/15 rounded-xl px-2 py-4 text-center',
-            expanded ? '' : 'hidden',
-          )}
-        >
-          <div className='text-gray-700'>
-            You have not signed in yet!. Click the button to continue
+        {!globalUser.isAuth ? (
+          <div
+            className={classNames(
+              ' bg-indigo-500/15 rounded-xl px-2 py-4 text-center',
+              expanded ? '' : 'hidden',
+            )}
+          >
+            <div className='text-gray-700 dark:text-gray-200'>
+              You have not signed in yet!. Click the button to continue
+            </div>
+            <div className='mt-5'>
+              <Link
+                href='/auth/login'
+                className='rounded-full  px-4 py-2.5 bg-indigo-500 text-md font-semibold focus:ring-4 focus:outline-none focus:ring-indigo-300'
+              >
+                Login
+              </Link>
+            </div>
           </div>
-          <div className='mt-5'>
-            <Link
-              href='/auth/login'
-              className='rounded-full  px-4 py-2.5 bg-indigo-500 text-md font-semibold focus:ring-4 focus:outline-none focus:ring-indigo-300'
-            >
-              Login
-            </Link>
-          </div>
-        </div>
+        ) : null}
 
         {/* bottom routes */}
         <div className='mt-10'>

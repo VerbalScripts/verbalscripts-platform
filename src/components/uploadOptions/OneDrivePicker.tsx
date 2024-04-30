@@ -1,7 +1,14 @@
 import React from 'react';
 import { IFilePickerOptions } from '@pnp/picker-api';
 
-export default function OneDrivePicker() {
+interface OneDrivePickerProps {
+  trigger?: string;
+  visible?: boolean;
+}
+export default function OneDrivePicker({
+  visible = true,
+  trigger,
+}: OneDrivePickerProps) {
   const paramsTest: IFilePickerOptions = {
     sdk: '8.0',
     entry: {

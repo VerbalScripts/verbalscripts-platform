@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Script from 'next/script';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -12,7 +12,16 @@ let gisInited: boolean = false;
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 /* global gapi */
-export default function GoogleUpload() {
+
+interface GoogleUploadProps {
+  visible?: boolean;
+  trigger?: string;
+}
+
+export default function GoogleUpload({
+  visible = true,
+  trigger,
+}: GoogleUploadProps) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   // Authorization scopes required by the API; multiple scopes can be
@@ -50,6 +59,11 @@ export default function GoogleUpload() {
 
     maybeEnableButtons();
   }
+
+  // Trigger picker from parent
+  useEffect(() => {
+    handleAuthClick();
+  }, [trigger]);
 
   /**
    * Callback after Google Identity Services are loaded.
@@ -189,32 +203,37 @@ export default function GoogleUpload() {
         onLoad={() => gisLoaded()}
       />
 
-      <div className='px-6 py-10 lg:py-12'>
-        {error != '' ? (
-          <div className='bg-red-300 text-gray-500 p-5 rounded-xl'>{error}</div>
-        ) : null}
-        <p className='text-gray-600'>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus
-          laudantium consequatur magni est similique praesentium accusantium
-          culpa molestiae enim iure.
-        </p>
+      {visible ? (
+        <div>
+          <div className='px-6 py-10 lg:py-12'>
+            {error != '' ? (
+              <div className='bg-red-300 text-gray-500 p-5 rounded-xl'>
+                {error}
+              </div>
+            ) : null}
+            <p className='text-gray-600'>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus
+              laudantium consequatur magni est similique praesentium accusantium
+              culpa molestiae enim iure.
+            </p>
 
-        <div className='mt-5'>
-          <button
-            disabled={loading}
-            onClick={() => handleAuthClick()}
-            className='px-7 py-3 font-semibold bg-indigo-500 rounded-xl text-white'
-          >
-            {loading ? 'File picker loading ... ' : 'Choose File '}
-          </button>
+            <div className='mt-5'>
+              <button
+                disabled={loading}
+                onClick={() => handleAuthClick()}
+                className='px-7 py-3 font-semibold bg-indigo-500 rounded-xl text-white'
+              >
+                {loading ? 'File picker loading ... ' : 'Choose File '}
+              </button>
+            </div>
+          </div>
+          <pre
+            id='content'
+            className='text-white'
+            style={{ whiteSpace: 'pre-wrap' }}
+          ></pre>
         </div>
-      </div>
-
-      <pre
-        id='content'
-        className='text-white'
-        style={{ whiteSpace: 'pre-wrap' }}
-      ></pre>
+      ) : null}
     </div>
   );
 }
