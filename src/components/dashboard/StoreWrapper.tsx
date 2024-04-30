@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import AxiosProxy from '@/utils/AxiosProxy';
@@ -11,8 +12,7 @@ export default function StoreWrapper({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}> ) {
-  
+}>) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [userState, setUserState] = useRecoilState(globalUser);
   const fetchUser = async () => {

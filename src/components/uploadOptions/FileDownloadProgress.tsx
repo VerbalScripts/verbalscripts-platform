@@ -1,13 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Fragment, useRef } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import {
-  CheckBadgeIcon,
-  ExclamationTriangleIcon,
-} from '@heroicons/react/24/outline';
-import { classNames } from '@/utils/classNames';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLongArrowAltRight, faRedo } from '@fortawesome/free-solid-svg-icons';
-import { CloudArrowUpIcon } from '@heroicons/react/16/solid';
+import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 import { useRouter } from 'next/navigation';
 
 interface FileDownloadProgressProps {

@@ -2,14 +2,18 @@ import { classNames } from '@/utils/classNames';
 import { Menu, Transition } from '@headlessui/react';
 import React, { Fragment } from 'react';
 import Image from 'next/image';
-import {v4 as uuid } from 'uuid'
+import { v4 as uuid } from 'uuid';
 
 interface FileUploadFromOtherOptionsProps {
   openDropBoxPicker: (arg0: string) => void;
   openOneDrivePicker: (arg0: string) => void;
   openGoogleDrivePicker: (arg0: string) => void;
 }
-export default function FileUploadFromOtherOptions({ openDropBoxPicker, openOneDrivePicker, openGoogleDrivePicker }: FileUploadFromOtherOptionsProps) {
+export default function FileUploadFromOtherOptions({
+  openDropBoxPicker,
+  openOneDrivePicker,
+  openGoogleDrivePicker,
+}: FileUploadFromOtherOptionsProps) {
   const uploadOptions = [
     {
       title: 'Dropbox',
@@ -66,7 +70,7 @@ export default function FileUploadFromOtherOptions({ openDropBoxPicker, openOneD
               <Menu.Item>
                 {({ active }) => (
                   <button
-                  onClick={() => iupload.cb(uuid())}
+                    onClick={() => iupload.cb(uuid())}
                     className={classNames(
                       active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                       'flex items-center gap-x-3 px-4 py-1.5 text-sm',

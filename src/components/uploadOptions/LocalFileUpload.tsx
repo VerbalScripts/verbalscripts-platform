@@ -49,7 +49,7 @@ export default function LocalFileUpload() {
     xhr.upload.addEventListener('progress', function (event) {
       if (event.lengthComputable) {
         const percent = Math.round((event.loaded / event.total) * 100);
-        console.log(percent);
+
         setProgress((prevState) => ({
           ...prevState,
           percentage: `${percent}`,
@@ -136,7 +136,6 @@ export default function LocalFileUpload() {
     if (target.files.length == 0) return;
 
     await prepareFilesForUpload(Array.from(target.files));
-    console.log(target.files);
   };
 
   const updateFilesArray = (_prepFiles: File[]) => {

@@ -12,6 +12,13 @@ type NavLabel = {
   imgUrl?: string;
 };
 
+interface ProgressTracker {
+  percentage: string;
+  isComplete: boolean;
+  failed: boolean;
+  error: string;
+}
+
 interface OrderFile {
   label: string;
   size: number;
@@ -38,6 +45,15 @@ interface ProgressTracker {
   failed: boolean;
   error: string;
   statusText: string;
+}
+interface User {
+  email: string;
+  firstName: string;
+  lastName: string;
+  address: string;
+  country: string;
+  companyName?: string;
+  city?: string;
 }
 
 type AccordionpProps = {

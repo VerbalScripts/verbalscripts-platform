@@ -1,46 +1,255 @@
 import { classNames } from '@/utils/classNames';
 import { Menu, Transition } from '@headlessui/react';
 import { ArrowUpTrayIcon } from '@heroicons/react/24/outline';
-import React, { Fragment } from 'react';
+import React, { DragEvent, Fragment, useState } from 'react';
+import {
+  filesArr as storeFiles,
+  progressTracker,
+  showProgressBar,
+  currentUploadFileIndex,
+} from '@/store/features/fileUpload';
+import { useRecoilState, useSetRecoilState } from 'recoil';
+import { v4 as uuid } from 'uuid';
+
+import { hostUrl } from '../../../config';
+import { GetOrStoreAuthToken } from '@/utils/GetOrStoreAuthToken';
 
 export default function FileUploadFromLocal() {
-  // const uploadOptions = [
-  //   {
-  //     title: 'Upload',
-  //     logoUrl: '/icons/upload.png',
-  //     id: 'local-file',
-  //   },
-  //   {
-  //     title: 'Link',
-  //     logoUrl: '/icons/link.png',
-  //     id: 'link',
-  //   },
-  //   {
-  //     title: 'Google Drive',
-  //     logoUrl: '/icons/google-drive.png',
-  //     id: 'google-drive',
-  //   },
-  //   {
-  //     title: 'Dropbox',
-  //     logoUrl: '/icons/dropbox.png',
-  //     id: 'dropbox',
-  //   },
-  //   {
-  //     title: 'One Drive',
-  //     logoUrl: '/icons/one-drive.png',
-  //     id: 'one-drive',
-  //   },
-  //   {
-  //     title: 'Youtube',
-  //     logoUrl: '/icons/youtube.png',
-  //     id: 'youtube',
-  //   },
-  // ];
+  const [dragEnter, setDragEnter] = useState<boolean>(false);
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [progressTr, setProgress] = useRecoilState(progressTracker);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [filesArr, setFiles] = useRecoilState(storeFiles);
+  const setShowProgressBar = useSetRecoilState(showProgressBar);
+  const [_currentIndex, setCurrentIndex] = useRecoilState(
+    currentUploadFileIndex,
+  );
+
+  // const uploadFiles = (_filesArr: File[]) => {
+  //   for (let i = 0; i < _filesArr.length; i++) {
+  //     // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  //     const fileExtension = _filesArr[i].name
+  //       .substring(_filesArr[i].name.lastIndexOf('.'))
+  //       .toLowerCase();
+
+  //     uploadFile(_filesArr[i], i);
+  //     // if (allowedExtensions.includes(fileExtension)) {
+  //     // } else {
+  //     //   alert('Invalid file type: ' + fileExtension);
+  //     // }
+  //   }
+  // };
+
+  const prepareFilesForUpload = (_prepFiles: File[]) => {
+    setFiles((_prevFiles: File[]) => {
+      const files: File[] = [];
+      _prepFiles.forEach((file: File) => files.push(file));
+      return [..._prevFiles, ...files];
+    });
+
+    // init trackers
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _prepFiles.forEach((_file: File) =>
+      setProgress((prev: ProgressTracker[]) => {
+        return [
+          ...prev,
+          {
+            percentage: '0',
+            isComplete: false,
+            error: '',
+            failed: false,
+            statusText: 'In queue',
+          },
+        ];
+      }),
+    );
+  };
+
+  const uploadFile = (file: File) => {
+    const formData = new FormData();
+    formData.append('file-transcript', file);
+
+    formData.append(
+      'meta[]',
+      JSON.stringify({
+        label: file.name,
+        size: file.size,
+        mimetype: file.type,
+        relativePath: file.webkitRelativePath,
+      }),
+    );
+    const xhr = new XMLHttpRequest();
+
+    xhr.upload.addEventListener('progress', function (event) {
+      if (event.lengthComputable) {
+        const percent = Math.round((event.loaded / event.total) * 100);
+        // progressBar.style.width = percent + '%';
+        // progressBar.innerHTML = percent + '%';
+        console.log(progressTr);
+        setProgress((prev: ProgressTracker[]) => {
+          const _updated = Array.from(prev);
+          const update: ProgressTracker = {
+            isComplete: _updated[_currentIndex].isComplete,
+            failed: _updated[_currentIndex].failed,
+            error: _updated[_currentIndex].error,
+            percentage: percent.toString(),
+            statusText: 'pushing',
+          };
+          _updated[_currentIndex] = update;
+          return _updated;
+        });
+      }
+    });
+
+    xhr.addEventListener('readystatechange', function () {
+      // route to a new page and update status
+
+      if (this.readyState == 4 && this.status == 201) {
+        //  setOpen(false);
+        const resp = JSON.parse(this.response);
+        if (resp.token) GetOrStoreAuthToken(resp.token);
+      }
+    });
+
+    xhr.addEventListener('load', function () {
+      setProgress((prev: ProgressTracker[]) => {
+        const _updated = Array.from(prev);
+        const update: ProgressTracker = {
+          isComplete: true,
+          failed: true,
+          error: '',
+          percentage: _updated[_currentIndex].percentage,
+          statusText: 'Uploaded',
+        };
+        _updated[_currentIndex] = update;
+        return _updated;
+      });
+      setTimeout(() => {
+        // upload next file
+        console.log(filesArr);
+        if (_currentIndex + 1 < filesArr.length) {
+          console.log('next item in queue');
+
+          setCurrentIndex(_currentIndex + 1);
+          uploadFile(filesArr[_currentIndex]);
+        } else if (_currentIndex == 0) {
+          console.log('late item in queue');
+
+          setCurrentIndex(_currentIndex + 1);
+          uploadFile(filesArr[_currentIndex]);
+        }
+      }, 100);
+
+      setTimeout(() => {
+        // upload next file
+      }, 100);
+    });
+
+    xhr.addEventListener('error', function () {
+      setProgress((prev: ProgressTracker[]) => {
+        const _updated = Array.from(prev);
+        const update: ProgressTracker = {
+          isComplete: false,
+          failed: true,
+          error: 'Upload Failed',
+          percentage: '',
+          statusText: 'failed',
+        };
+        _updated[_currentIndex] = update;
+        return _updated;
+      });
+    });
+
+    xhr.open('POST', `${hostUrl}/uploads/add-file`, true);
+
+    const access_token = GetOrStoreAuthToken();
+    if (access_token == null) {
+      xhr.setRequestHeader('x-token', uuid());
+    } else {
+      xhr.setRequestHeader('Authorization', `Bearer ${access_token}`);
+    }
+
+    xhr.send(formData);
+  };
+
+  async function dropHandler(ev: DragEvent) {
+    // console.log('goeat');
+    console.log('File(s) dropped');
+
+    // Prevent default behavior (Prevent file from being opened)
+    ev.preventDefault();
+
+    const _dataFiles: File[] = [];
+
+    if (ev.dataTransfer == null) return false;
+    setDragEnter(false);
+
+    if (ev.dataTransfer.items) {
+      // Use DataTransferItemList interface to access the file(s)
+      [...Array.from(ev.dataTransfer.items)].forEach((item) => {
+        // If dropped items aren't files, reject them
+        if (item.kind === 'file') {
+          const file = item.getAsFile()!;
+          _dataFiles.push(file);
+        }
+      });
+    } else {
+      // Use DataTransfer interface to access the file(s)
+
+      [...Array.from(ev.dataTransfer.files)].forEach((file) => {
+        _dataFiles.push(file);
+      });
+    }
+
+    if (_dataFiles.length == 0) return false;
+    prepareFilesForUpload(_dataFiles);
+
+    // show progress bar
+    setShowProgressBar(true);
+    // upload files
+    setTimeout(() => {
+      uploadFile(_dataFiles[_currentIndex]);
+    }, 100);
+  }
+
+  function dragOverHandler(ev: DragEvent) {
+    setDragEnter(true);
+
+    // Prevent default behavior (Prevent file from being opened)
+    ev.preventDefault();
+  }
+
+  function dragEnterHandler(ev: DragEvent) {
+    // Prevent default behavior (Prevent file from being opened)
+    ev.preventDefault();
+    setDragEnter(true);
+  }
+
+  // const GoToDashboard = () => {
+  //   router.push('/dashboard/pending?new=true');
+  // }
+
+  function dragLeaveHandler(ev: DragEvent) {
+    // Prevent default behavior (Prevent file from being opened)
+    ev.preventDefault();
+    setDragEnter(false);
+  }
 
   return (
     <Menu as='div' className='relative inline-block text-left'>
-      <div>
-        <Menu.Button className='flex flex-col mb-5 gap-x-2 rounded-xl border-2 border-dashed border-indigo-500 bg-indigo-50 font-semibold px-4 py-2  focus-within:ring-indigo-400'>
+      <div
+        onDrop={dropHandler}
+        onDragEnter={dragEnterHandler}
+        onDragLeave={dragLeaveHandler}
+        onDragOver={dragOverHandler}
+      >
+        <Menu.Button
+          className={classNames(
+            'flex flex-col mb-5 gap-x-2 rounded-xl border-2 border-dashed border-indigo-300 hover:border-indigo-500 hover:bg-indigo-100 bg-indigo-50 font-semibold px-4 py-2  focus-within:ring-indigo-400',
+            dragEnter ? 'border-indigo-500 bg-gray-200' : '',
+          )}
+        >
           <ArrowUpTrayIcon
             className='-mr-1 h-5 w-5 text-indigo-500'
             aria-hidden='true'

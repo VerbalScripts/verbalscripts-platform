@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
-import { IFilePickerOptions } from '@pnp/picker-api';
+// import { IFilePickerOptions } from '@pnp/picker-api';
 
 interface OneDrivePickerProps {
   trigger?: string;
@@ -9,7 +10,7 @@ export default function OneDrivePicker({
   visible = true,
   trigger,
 }: OneDrivePickerProps) {
-  const paramsTest: IFilePickerOptions = {
+  const paramsTest = {
     sdk: '8.0',
     entry: {
       oneDrive: {},
@@ -32,5 +33,5 @@ export default function OneDrivePicker({
     },
   };
 
-  return <div>OneDrivePicker</div>;
+  return <div></div>;
 }

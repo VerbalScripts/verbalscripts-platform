@@ -20,6 +20,7 @@ export default function SignInForm() {
   // @ts-ignore
 
   const [is_visible, toggleVisible] = useState(true);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [is_error, showErrors] = useState(false);
   const [loading, setLoading] = useState(false);
   const [apiError, setApiError] = useState(false);
@@ -108,7 +109,7 @@ export default function SignInForm() {
               onFocus={() => onFocusIn()}
               type='email'
               {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
-              className='block w-full rounded-md border-3 py-2.5 px-3 text-gray-600 shadow-sm ring-1 ring-inset ring-indigo-400 placeholder:text-grey-900  md:text-xl focus:ring-2 focus:ring-inset  focus:ring-dark sm:text-sm sm:leading-6'
+              className='block w-full rounded-md border-0 py-2.5 px-3 text-gray-600  ring-1 ring-inset ring-gray-300 placeholder:text-grey-900  md:text-xl focus:ring-2 focus:ring-inset  focus:ring-dark sm:text-sm sm:leading-6'
             />
           </div>
         </div>
@@ -130,7 +131,7 @@ export default function SignInForm() {
                 pattern:
                   /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!-%*#?&])[A-Za-z\d@!$%*#?&]{8,}/,
               })}
-              className='block w-full rounded-md border-3 py-2.5 px-3 text-gray-600 shadow-sm ring-1 ring-inset ring-indigo-400 placeholder:text-grey-900  md:text-xl focus:ring-2 focus:ring-inset  focus:ring-dark sm:text-sm sm:leading-6'
+              className='block w-full rounded-md border-0  py-2.5 px-3 text-gray-600 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-grey-900  md:text-xl focus:ring-2 focus:ring-inset  focus:ring-dark sm:text-sm sm:leading-6'
             />
             <span
               className='absolute top-2.5 right-4 cursor-pointer'
@@ -177,7 +178,7 @@ export default function SignInForm() {
 
       <div className='mx-auto max-w-md border-b border-gray-300 my-5'></div>
       <div className='mx-auto max-w-md'>
-        <div className='mb-3 cursor-pointer flex w-full items-center ring-1 ring-gray-500  justify-center rounded-full  py-2.5 md:py-2.5 text-lg font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
+        <div className='mb-3 cursor-pointer flex w-full items-center ring-1 ring-gray-300  justify-center rounded-full  py-2.5 md:py-2.5 text-lg font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
           <GoogleIcon />{' '}
           <span className='ml-3  text-gray-600'>Continue with Google</span>
         </div>

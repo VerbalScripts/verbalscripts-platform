@@ -90,7 +90,7 @@ export default function SettingsTab() {
           </div>
         </div>
       </div>
-      <div className='flex justify-between items-center'>
+      {/* <div className='flex justify-between items-center'>
         <div className='flex text-gray-600 text-md font-semibold'>
           Low-quality audio Heavy accent
         </div>
@@ -116,7 +116,7 @@ export default function SettingsTab() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className='flex justify-between items-center'>
         <div className='flex text-gray-600 text-md font-semibold'>

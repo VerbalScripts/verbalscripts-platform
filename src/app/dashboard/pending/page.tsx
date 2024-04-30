@@ -18,7 +18,7 @@ import {
   Squares2X2Icon,
 } from '@heroicons/react/20/solid';
 import { Breadcrumb } from 'flowbite-react';
-import { v4 as uuid} from 'uuid'
+import { v4 as uuid } from 'uuid';
 
 import { classNames } from '@/utils/classNames';
 import FileUploadFromLocal from '@/components/dashboard/FileUploadFromLocal';
@@ -39,6 +39,7 @@ import FileDownload from 'js-file-download';
 import DropboxUpload from '@/components/uploadOptions/DropboxUpload';
 import GoogleUpload from '@/components/uploadOptions/GoogleUpload';
 import OneDrivePicker from '@/components/uploadOptions/OneDrivePicker';
+import SystemProgressUpload from '@/components/dashboard/SystemProgressUpload';
 
 interface PageSetupOptions {
   toggleView: 'grid' | 'list';
@@ -88,7 +89,8 @@ export default function Page() {
 
   // add cloud file import toggles
   const [openDropBoxUpload, setDropBoxUpload] = useState<string>(uuid());
-  const [openGoogleDriveUpload, setGoogleDriveUpload] = useState<string>(uuid());
+  const [openGoogleDriveUpload, setGoogleDriveUpload] =
+    useState<string>(uuid());
   const [openOneDriveUpload, setOneDriveUpload] = useState<string>(uuid());
 
   const [pageSetup, setPageSetup] = useState<PageSetupOptions>({
@@ -278,6 +280,9 @@ export default function Page() {
     <div className=''>
       <title>Dashboard | Pending</title>
       <TawkMessenger />
+
+      {/* systenm progress */}
+      <SystemProgressUpload />
 
       <DropboxUpload trigger={openDropBoxUpload} visible={false} />
       <GoogleUpload trigger={openGoogleDriveUpload} visible={false} />

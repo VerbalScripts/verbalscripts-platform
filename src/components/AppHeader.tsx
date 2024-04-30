@@ -228,6 +228,14 @@ export default function AppHeader() {
         <p className='hidden relative z-50 md:flex  h-10 items-center  justify-end gap-6 px-4 text-sm font-medium text-white sm:px-6 lg:px-8'>
           <a
             href='/auth/login'
+            className='-mx-3 flex items-center underline  underline-offset-4 gap-x-5 rounded-lg px-3 py-2.5 text-base  transition leading-7 text-white hover:text-orange-400'
+          >
+            <ComputerDesktopIcon className='h-5 w-5' aria-hidden='true' />
+            Try Now
+          </a>
+          |
+          <a
+            href='/auth/login'
             className='-mx-3 flex items-center gap-x-5 rounded-lg px-3 py-2.5 text-base  transition leading-7 text-white hover:text-orange-400'
           >
             <ComputerDesktopIcon className='h-5 w-5' aria-hidden='true' />
