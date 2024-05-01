@@ -143,7 +143,7 @@ export default function ProfileSettings({
                 <input
                   type='text'
                   id='first-name'
-                  value={firstName}
+                  defaultValue={firstName}
                   {...register('firstName', { required: true, maxLength: 80 })}
                   autoComplete='given-name'
                   className='block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
@@ -162,7 +162,7 @@ export default function ProfileSettings({
                 <input
                   type='text'
                   {...register('lastName', { required: true, maxLength: 80 })}
-                  value={lastName}
+                  defaultValue={lastName}
                   autoComplete='family-name'
                   className='block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
                 />
@@ -181,7 +181,7 @@ export default function ProfileSettings({
                   id='email'
                   name='email'
                   type='email'
-                  value={email}
+                  defaultValue={email}
                   readOnly
                   autoComplete='email'
                   className='block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
@@ -203,7 +203,7 @@ export default function ProfileSettings({
                     required: true,
                     maxLength: 80,
                   })}
-                  value={companyName}
+                  defaultValue={companyName}
                   autoComplete='address-level2'
                   className='block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
                 />
@@ -220,7 +220,7 @@ export default function ProfileSettings({
               <div className='mt-2'>
                 <select
                   id='country'
-                  value={country}
+                  defaultValue={country}
                   autoComplete='country-name'
                   {...register('country', { required: true, maxLength: 80 })}
                   className='block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6'
@@ -251,7 +251,7 @@ export default function ProfileSettings({
                 <input
                   type='text'
                   id='address'
-                  value={address}
+                  defaultValue={address}
                   {...register('address', { required: false, maxLength: 80 })}
                   autoComplete='street-address'
                   className='block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
@@ -270,7 +270,7 @@ export default function ProfileSettings({
                 <input
                   type='text'
                   id='city'
-                  value={city}
+                  defaultValue={city}
                   {...register('city', { required: false, maxLength: 80 })}
                   autoComplete='address-level2'
                   className='block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'

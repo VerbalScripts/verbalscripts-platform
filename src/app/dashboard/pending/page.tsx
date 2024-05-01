@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import LoadSpinner from '@/components/dashboard/LoadSpinner';
 
 import {
@@ -87,10 +88,6 @@ export default function Page() {
   const searchParams = useSearchParams();
   const folderId = searchParams.get('folderId');
 
-  // add cloud file import toggles
-  const [openDropBoxUpload, setDropBoxUpload] = useState<string>(uuid());
-  const [openGoogleDriveUpload, setGoogleDriveUpload] =
-    useState<string>(uuid());
   const [openOneDriveUpload, setOneDriveUpload] = useState<string>(uuid());
 
   const [pageSetup, setPageSetup] = useState<PageSetupOptions>({
@@ -276,6 +273,25 @@ export default function Page() {
 
   // drag and drop files and folders
 
+  const triggerDropBoxPicker = useRef(null);
+  const triggerGooglePicker = useRef(null);
+  const triggerOneDrivePicker = useRef(null);
+
+  const launchDropBoxPicker = () => {
+    if (triggerDropBoxPicker.current) {
+      // @ts-ignore
+      triggerDropBoxPicker.current.initFilePicker();
+    }
+  };
+
+  const launchGoogleDrivePicker = () => {
+    if (triggerGooglePicker.current) {
+      // @ts-ignore
+      triggerGooglePicker.current.handleAuthClick();
+    }
+  };
+  const launchOneDrivePicker = () => {};
+
   return (
     <div className=''>
       <title>Dashboard | Pending</title>
@@ -284,8 +300,8 @@ export default function Page() {
       {/* systenm progress */}
       <SystemProgressUpload />
 
-      <DropboxUpload trigger={openDropBoxUpload} visible={false} />
-      <GoogleUpload trigger={openGoogleDriveUpload} visible={false} />
+      <DropboxUpload ref={triggerDropBoxPicker} visible={false} />
+      <GoogleUpload ref={triggerGooglePicker} visible={false} />
       <OneDrivePicker trigger={openOneDriveUpload} visible={false} />
 
       {loading ? (
@@ -295,9 +311,9 @@ export default function Page() {
           <div className='px-6  md:px-16 xl:px-16 sticky top-0 z-10  bg-white dark:bg-gray-700 py-3'>
             <div className='flex items-center justify-start gap-x-3'>
               <FileUploadFromOtherOptions
-                openDropBoxPicker={setDropBoxUpload}
-                openGoogleDrivePicker={setGoogleDriveUpload}
-                openOneDrivePicker={setOneDriveUpload}
+                openDropBoxPicker={launchDropBoxPicker}
+                openGoogleDrivePicker={launchGoogleDrivePicker}
+                openOneDrivePicker={launchOneDrivePicker}
               />
               <FileUploadFromLocal />
               <button
