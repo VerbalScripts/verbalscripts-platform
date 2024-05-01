@@ -28,7 +28,7 @@ export default function SystemProgressUpload() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className='absolute  z-[100]  bottom-5 right-5 rounded-xl min-w-3xl border border-gray-200 dark:border-0 px-1'>
+    <div className='absolute  z-[100]  bottom-5 right-5 rounded-xl min-w-[70rem] border border-gray-200 dark:border-0 px-1'>
       {showToast ? (
         <Toast className='flex flex-col py-0 px-0'>
           {/* show pending files */}
