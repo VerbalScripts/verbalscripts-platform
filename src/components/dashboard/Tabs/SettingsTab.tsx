@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-export default function SettingsTab() {
+interface SettingsTabProps {
+  config: OrderConfiguration;
+  setConfig: (arg0: OrderConfiguration) => void;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export default function SettingsTab({ config, setConfig }: SettingsTabProps) {
   const languages = new Map([
     ['English', 'en'],
     ['Spanish', 'es'],
@@ -37,11 +43,16 @@ export default function SettingsTab() {
   ]);
 
   const timestamping = new Map([
+    ['Not Required', 'Not Required'],
     ['On Speaker Change', 'speaker'],
     ['Every 10 Seconds', '10s'],
     ['Every 30 Seconds', '30s'],
     ['Every 2 Minutes', '2min'],
   ]);
+
+  useEffect(() => {
+    console.log(config);
+  }, [config]);
 
   return (
     <section className='flex flex-col gap-10  divide-gray-400'>
@@ -51,9 +62,9 @@ export default function SettingsTab() {
           <div className='block w-full'>
             <select
               id='countries'
+              defaultValue={config.language}
               className='h-12 border border-gray-300 text-gray-600 text-base rounded-full block w-full py-2.5 px-4 focus:outline-none'
             >
-              <option selected>Choose Language</option>
               {Array.from(languages.entries()).map(([language, code]) => (
                 <option key={code} value={code}>
                   {language}
@@ -73,8 +84,10 @@ export default function SettingsTab() {
               {Array.from(text_formats.entries()).map(([label, format]) => (
                 <div key={format} className='flex items-center gap-x-3'>
                   <input
-                    id={format}
-                    name='push-notifications'
+                    id='text_format'
+                    name='text_format'
+                    defaultValue={format}
+                    defaultChecked={config.text_format == format ? true : false}
                     type='radio'
                     className='h-7 w-7 border-gray-300 text-indigo-500 focus:ring-indigo-500'
                   />
@@ -125,22 +138,28 @@ export default function SettingsTab() {
         <div>
           <div className='block w-full'>
             <div className='flex items-center gap-5'>
-              {Array.from(turn_around_time.entries()).map(([label, format]) => (
-                <div key={format} className='flex items-center gap-x-3'>
-                  <input
-                    id={format}
-                    name='push-notifications'
-                    type='radio'
-                    className='h-7 w-7 border-gray-300 text-indigo-500 focus:ring-indigo-500'
-                  />
-                  <label
-                    htmlFor={format}
-                    className='block text-md font-medium leading-6 text-gray-700'
-                  >
-                    {label}
-                  </label>
-                </div>
-              ))}
+              {Array.from(turn_around_time.entries()).map(
+                ([label, tr_time]) => (
+                  <div key={tr_time} className='flex items-center gap-x-3'>
+                    <input
+                      id='turn_around_time'
+                      name='turn_around_time'
+                      defaultChecked={
+                        config.turn_around_time == tr_time ? true : false
+                      }
+                      defaultValue={tr_time}
+                      type='radio'
+                      className='h-7 w-7 border-gray-300 text-indigo-500 focus:ring-indigo-500'
+                    />
+                    <label
+                      htmlFor={'turn_around_time'}
+                      className='block text-md font-medium leading-6 text-gray-700'
+                    >
+                      {label}
+                    </label>
+                  </div>
+                ),
+              )}
             </div>
           </div>
         </div>
@@ -153,16 +172,20 @@ export default function SettingsTab() {
         <div>
           <div className='block w-full'>
             <div className='flex items-center gap-5'>
-              {Array.from(speakers.entries()).map(([label, format]) => (
-                <div key={format} className='flex items-center gap-x-3'>
+              {Array.from(speakers.entries()).map(([label, speaker_size]) => (
+                <div key={speaker_size} className='flex items-center gap-x-3'>
                   <input
-                    id={format}
-                    name='push-notifications'
+                    id='speaker_size'
+                    name='speakers'
                     type='radio'
+                    defaultChecked={
+                      config.speakers == speaker_size ? true : false
+                    }
+                    defaultValue={speaker_size}
                     className='h-7 w-7 border-gray-300 text-indigo-500 focus:ring-indigo-500'
                   />
                   <label
-                    htmlFor={format}
+                    htmlFor='speaker_size'
                     className='block text-md font-medium leading-6 text-gray-700'
                   >
                     {label}
@@ -182,14 +205,12 @@ export default function SettingsTab() {
           <div className='block w-full'>
             <select
               id='timestamps'
+              defaultValue={config.apply_timestamps}
               className='h-12 border border-gray-300 text-gray-600 text-base rounded-full block w-full py-2.5 px-4 focus:outline-none'
             >
-              <option selected value='none'>
-                Not Required
-              </option>
-              {Array.from(timestamping.entries()).map(([language, code]) => (
+              {Array.from(timestamping.entries()).map(([ts_opt, code]) => (
                 <option key={code} value={code}>
-                  {language}
+                  {ts_opt}
                 </option>
               ))}
             </select>

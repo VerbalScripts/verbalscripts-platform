@@ -56,6 +56,30 @@ interface User {
   city?: string;
 }
 
+interface OrderConfiguration {
+  speakers: string;
+  instructions?: string;
+  turn_around_time: string;
+  text_format: string;
+  language: string;
+  apply_timestamps: string;
+}
+interface Order {
+  configuration: OrderConfiguration;
+  orderStatus?: string;
+  files: string[];
+  userId?: string;
+}
+
+interface PendingOrder {
+  configuration: OrderConfiguration;
+  files: string[];
+  userId: string;
+  id: string;
+  createdAt: string;
+  orderStatus: string;
+}
+
 type AccordionpProps = {
   children: React.ReactNode;
   title: string;
