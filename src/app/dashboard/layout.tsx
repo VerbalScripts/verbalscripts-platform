@@ -54,7 +54,7 @@ export default function DashboardLayout({
 
               <div
                 className={classNames(
-                  'absolute dark:bg-gray-900 transition-all duration-300 top-0 right-0 max-h-screen overflow-x-auto overflow-y-auto',
+                  'absolute dark:bg-zinc-800 transition-all duration-300 top-0 right-0 max-h-screen overflow-x-auto overflow-y-auto',
                   expanded
                     ? 'w-[calc(100%] md:w-[calc(100%-16rem)]'
                     : 'w-[calc(100%-5rem)] md:w-[calc(100%-5rem)]',

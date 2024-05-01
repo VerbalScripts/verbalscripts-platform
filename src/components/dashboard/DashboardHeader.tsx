@@ -34,7 +34,7 @@ export default function DashboardHeader() {
     <>
       <header
         className={classNames(
-          'bg-white dark:bg-gray-700 relative transition w-full z-30 border-b border-gray-200 dark:border-gray-700',
+          'bg-white dark:bg-zinc-800 relative transition w-full z-30 border-b border-gray-200 dark:border-gray-700',
         )}
       >
         <nav

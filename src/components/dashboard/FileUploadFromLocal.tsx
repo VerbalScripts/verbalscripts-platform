@@ -86,7 +86,6 @@ export default function FileUploadFromLocal() {
         const percent = Math.round((event.loaded / event.total) * 100);
         // progressBar.style.width = percent + '%';
         // progressBar.innerHTML = percent + '%';
-        console.log(progressTr);
         setProgress((prev: ProgressTracker[]) => {
           const _updated = Array.from(prev);
           const update: ProgressTracker = {

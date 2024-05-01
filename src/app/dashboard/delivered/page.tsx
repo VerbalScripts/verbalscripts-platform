@@ -115,7 +115,7 @@ export default function Page() {
         <LoadSpinner />
       ) : (
         <div className=''>
-          <div className='px-6  md:px-16 xl:px-16 sticky top-0 z-10  bg-white dark:bg-gray-700 py-3'>
+          <div className='px-6  md:px-16 xl:px-16 sticky top-0 z-10  bg-white dark:bg-zinc-800 py-3'>
             <div className='flex  justify-between items-center mb-4'>
               <div className='flex gap-x-2'>
                 <SearchBar />
@@ -180,13 +180,12 @@ export default function Page() {
                   />
                 </Table.HeadCell>
                 <Table.HeadCell>Order Id</Table.HeadCell>
-                <Table.HeadCell>Type</Table.HeadCell>
                 <Table.HeadCell>Category</Table.HeadCell>
-                <Table.HeadCell>ETA</Table.HeadCell>
                 <Table.HeadCell>File(s)</Table.HeadCell>
+                <Table.HeadCell>ETA</Table.HeadCell>
                 <Table.HeadCell>Created At</Table.HeadCell>
                 <Table.HeadCell>
-                  <span className='sr-only'>Edit</span>
+                  <span className='sr-only'>Actions</span>
                 </Table.HeadCell>
               </Table.Head>
               <Table.Body className='divide-y'>
@@ -210,16 +209,16 @@ export default function Page() {
                       </span>
                     </Table.Cell>
                     <Table.Cell className='py-2'>
-                      <span className='uppercase'>{'tyoe'}</span>
+                      {/* <span className='uppercase'>{'tyoe'}</span> */}
                     </Table.Cell>
                     <Table.Cell className='py-2'>
-                      <span className='capitalize bg-indigo-100 text-sm text-indigo-500 px-3 py-1.5 rounded-xl'>
+                      {/* <span className='capitalize bg-indigo-100 text-sm text-indigo-500 px-3 py-1.5 rounded-xl'>
                         {order.orderStatus}
-                      </span>
+                      </span> */}
                     </Table.Cell>
                     <Table.Cell className='py-2'>
-                      <span className='capitalize bg-indigo-100 text-sm text-indigo-500 px-3 py-1.5 rounded-xl'>
-                        {moment(order.createdAt).startOf('day').fromNow()}
+                      <span className='capitalize text-sm text-white px-3 py-1.5 rounded-xl'>
+                        {moment(order.createdAt).format('L')}
                       </span>
                     </Table.Cell>
                     <Table.Cell className='py-2'>
@@ -228,6 +227,7 @@ export default function Page() {
                     <Table.Cell className='py-2'>
                       <div className='flex items-center gap-x-1'></div>
                     </Table.Cell>
+                    
                   </Table.Row>
                 ))}
               </Table.Body>

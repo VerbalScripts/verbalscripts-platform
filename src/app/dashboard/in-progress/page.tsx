@@ -114,7 +114,7 @@ export default function Page() {
         <LoadSpinner />
       ) : (
         <div className=''>
-          <div className='px-6  md:px-16 xl:px-16 sticky top-0 z-10  bg-white dark:bg-gray-700 py-3'>
+          <div className='px-6  md:px-16 xl:px-16 sticky top-0 z-10  bg-white dark:bg-zinc-800 py-3'>
             <div className='flex  justify-between items-center mb-4'>
               <div className='flex gap-x-2'>
                 <SearchBar />
@@ -171,7 +171,7 @@ export default function Page() {
           </div>
           <div className='px-6 md:px-16 xl:px-16 overflow-x-auto min-h-svh'>
             <Table hoverable>
-              <Table.Head>
+              <Table.Head className='dark:border-gray-700 dark:bg-zinc-800'>
                 <Table.HeadCell className='p-4'>
                   <Checkbox
                     disabled={orders.length == 0}
@@ -192,7 +192,7 @@ export default function Page() {
                   <Table.Row
                     key={order.id}
                     className={classNames(
-                      'bg-white dark:border-gray-700 dark:bg-gray-800',
+                      'bg-white dark:border-gray-700 dark:bg-zinc-500',
                     )}
                   >
                     <Table.Cell className='px-4 py-1'>

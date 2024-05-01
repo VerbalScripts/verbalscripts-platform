@@ -310,7 +310,7 @@ export default function Page() {
         <LoadSpinner />
       ) : (
         <div>
-          <div className='px-6  md:px-16 xl:px-16 sticky top-0 z-10  bg-white dark:bg-gray-700 py-3'>
+          <div className='px-6  md:px-16 xl:px-16 sticky top-0 z-10  bg-white dark:bg-zinc-800 py-3'>
             <div className='flex items-center justify-start gap-x-3'>
               <FileUploadFromOtherOptions
                 openDropBoxPicker={launchDropBoxPicker}
@@ -347,12 +347,12 @@ export default function Page() {
                 <div className='flex items-center gap-x-2'>
                   <Breadcrumb
                     aria-label='Solid background breadcrumb example'
-                    className='bg-gray-50 px-5 py-1.5 dark:bg-gray-800'
+                    className='bg-gray-50 px-5 py-1.5 dark:bg-zinc-500'
                   >
                     {folderArr.map((track) => (
                       <Breadcrumb.Item
                         key={track.id}
-                        className='hover:underline text-gray-600 hover:text-indigo-500'
+                        className='hover:underline text-gray-600 dark:text-gray-300 hover:text-indigo-500'
                         href={`?folderId=${track.id}`}
                       >
                         {track.label}

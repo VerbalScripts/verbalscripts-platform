@@ -108,7 +108,7 @@ export default function DashboardNavigation({
     {
       name: 'Log out',
       icon: ArrowLeftEndOnRectangleIcon,
-      href: '/auth/deauth',
+      href: '/auth/login',
     },
   ];
   // const [open, setOpen] = useState(false);
@@ -118,7 +118,7 @@ export default function DashboardNavigation({
   return (
     <aside
       className={classNames(
-        'py-5 border-r bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-900  min-h-screen flex flex-col justify-between max-h-screen overflow-x-hidden overflow-y-auto',
+        'py-5 border-r bg-white dark:bg-zinc-800 border-gray-300 dark:border-gray-700  min-h-screen flex flex-col justify-between max-h-screen overflow-x-hidden overflow-y-auto',
         expanded ? 'px-8' : 'px-1',
       )}
     >
