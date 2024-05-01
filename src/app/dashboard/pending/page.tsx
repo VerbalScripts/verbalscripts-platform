@@ -19,7 +19,6 @@ import {
   Squares2X2Icon,
 } from '@heroicons/react/20/solid';
 import { Breadcrumb } from 'flowbite-react';
-import { v4 as uuid } from 'uuid';
 
 import { classNames } from '@/utils/classNames';
 import FileUploadFromLocal from '@/components/dashboard/FileUploadFromLocal';
@@ -87,8 +86,6 @@ export default function Page() {
   // watch for query changes
   const searchParams = useSearchParams();
   const folderId = searchParams.get('folderId');
-
-  const [openOneDriveUpload, setOneDriveUpload] = useState<string>(uuid());
 
   const [pageSetup, setPageSetup] = useState<PageSetupOptions>({
     toggleView: 'list',
@@ -290,7 +287,12 @@ export default function Page() {
       triggerGooglePicker.current.handleAuthClick();
     }
   };
-  const launchOneDrivePicker = () => {};
+  const launchOneDrivePicker = () => {
+    if (triggerGooglePicker.current) {
+      // @ts-ignore
+      triggerGooglePicker.current.initPicker();
+    }
+  };
 
   return (
     <div className=''>
@@ -302,7 +304,7 @@ export default function Page() {
 
       <DropboxUpload ref={triggerDropBoxPicker} visible={false} />
       <GoogleUpload ref={triggerGooglePicker} visible={false} />
-      <OneDrivePicker trigger={openOneDriveUpload} visible={false} />
+      <OneDrivePicker ref={triggerOneDrivePicker} visible={false} />
 
       {loading ? (
         <LoadSpinner />
