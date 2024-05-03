@@ -117,7 +117,10 @@ export default function Page() {
           <div className='px-6  md:px-16 xl:px-16 sticky top-0 z-10  bg-white dark:bg-zinc-800 py-3'>
             <div className='flex  justify-between items-center mb-4'>
               <div className='flex gap-x-2'>
-                <SearchBar />
+                <SearchBar
+                  cb={() => new Promise(() => {})}
+                  clearSearch={() => new Promise(() => {})}
+                />
               </div>
               {/* toggles */}
 
