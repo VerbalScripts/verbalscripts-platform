@@ -11,7 +11,12 @@ interface ShareFileProps {
   setOpen: (arg0: boolean) => void;
 }
 
-export default function ShareFile({ open, setOpen, reload, files }: ShareFileProps) {
+export default function ShareFile({
+  open,
+  setOpen,
+  reload,
+  files,
+}: ShareFileProps) {
   const cancelButtonRef = useRef(null);
   const folderRef = useRef(null);
 

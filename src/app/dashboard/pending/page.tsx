@@ -109,7 +109,6 @@ export default function Page() {
     setCurrentFile(id);
   };
 
-  
   const _copyFile = (id: string) => {
     setCopyFile(true);
     setCurrentFile(id);
@@ -555,13 +554,13 @@ export default function Page() {
             open={openFolderRename}
             setOpen={setOpenFolderRename}
           />
-           <CopyFile
+          <CopyFile
             fileId={currentFile}
             reload={reload}
             open={copyFile}
             setOpen={setCopyFile}
           />
-           <ShareFile
+          <ShareFile
             files={selectedFiles}
             reload={reload}
             open={shareFile}

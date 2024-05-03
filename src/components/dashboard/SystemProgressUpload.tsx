@@ -22,13 +22,15 @@ import { Player } from '@lottiefiles/react-lottie-player';
 
 export default function SystemProgressUpload() {
   const [showToast, setShowToast] = useRecoilState(showProgressBar);
-  const [_progressTracker, setProgressTracker] = useRecoilState(progressTracker);
+  const [_progressTracker, setProgressTracker] =
+    useRecoilState(progressTracker);
   const uploadStats = useRecoilValue(uploadProgressStats);
   const [filesToUpload, setFilesToUpload] = useRecoilState(filesArr);
-  const [_currentIndex, setCurrentIndex] = useRecoilState(currentUploadFileIndex);
+  const [_currentIndex, setCurrentIndex] = useRecoilState(
+    currentUploadFileIndex,
+  );
 
   const [open, setOpen] = useState(false);
-
 
   useEffect(() => {
     if (uploadStats.total > 0 && uploadStats.complete == uploadStats.total) {
@@ -36,7 +38,7 @@ export default function SystemProgressUpload() {
       // close toast
       closeToast();
       // reset stats
-      resetStats()
+      resetStats();
     }
   }, [uploadStats]);
 
@@ -47,10 +49,10 @@ export default function SystemProgressUpload() {
   };
 
   const resetStats = () => {
-    setProgressTracker(() => [])
-    setFilesToUpload(() => [])
-    setCurrentIndex(-1)
-  }
+    setProgressTracker(() => []);
+    setFilesToUpload(() => []);
+    setCurrentIndex(-1);
+  };
 
   return (
     <div
@@ -114,7 +116,8 @@ export default function SystemProgressUpload() {
                     )}
                   >
                     <div className='relative z-10 text-4xl w-full h-2 rounded-xl bg-gray-200'>
-                      {_progressTracker[index].isComplete && !_progressTracker[index].failed ? (
+                      {_progressTracker[index].isComplete &&
+                      !_progressTracker[index].failed ? (
                         <span className='text-sm text-gray-600 dark:text-white'>
                           Uploaded
                         </span>

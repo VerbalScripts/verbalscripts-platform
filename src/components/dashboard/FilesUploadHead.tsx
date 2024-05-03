@@ -106,7 +106,6 @@ const FilesUploadHead = forwardRef<FilesUploadHeadRef, FilesUploadHeadProps>(
             });
             reject(xhr.statusText);
           }
-
         });
 
         xhr.addEventListener('error', function () {

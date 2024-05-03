@@ -55,11 +55,14 @@ export default function SearchBar({ cb, clearSearch }: SearchBarProps) {
       />
 
       <div className='absolute top-1 right-2'>
-      <button onClick={emptySearch} className='z-8 cursor-pointer  h-8 w-8 rounded-full flex justify-center align inset-y-0 start-0  items-center'>
-        <XMarkIcon className='text-gray-700 h-7 w-7 dark:text-white' />
+        <button
+          onClick={emptySearch}
+          className='z-8 cursor-pointer  h-8 w-8 rounded-full flex justify-center align inset-y-0 start-0  items-center'
+        >
+          <XMarkIcon className='text-gray-700 h-7 w-7 dark:text-white' />
 
-        <span className='sr-only'>Clear Search</span>
-      </button>
+          <span className='sr-only'>Clear Search</span>
+        </button>
       </div>
     </div>
   );

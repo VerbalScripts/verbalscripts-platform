@@ -29,13 +29,13 @@ export default function AuthGuard() {
     } catch (err) {
       // @ts-ignore
       if (err.code == 'ERR_BAD_REQUEST') {
-      // @ts-ignore
-      console.log(err.code);
+        // @ts-ignore
+        console.log(err.code);
       }
       // @ts-ignore
       if (err.code == 'NETWORK_ERR') {
-      // @ts-ignore
-      console.log(err.code);
+        // @ts-ignore
+        console.log(err.code);
       }
     }
   };

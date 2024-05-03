@@ -46,7 +46,7 @@ export default function RenameFile({
       if (response.status == 201) {
         setOpen(false);
         await reload();
-      } 
+      }
     } catch (error) {
       console.log(error);
     } finally {
@@ -116,7 +116,6 @@ export default function RenameFile({
                           required
                           placeholder='New Label'
                           className='block w-full rounded-md border-0 py-3.5 text-gray-600 shadow-sm text-lg font-semibold ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600  sm:leading-6'
-
                         />
                       </div>
                     </div>

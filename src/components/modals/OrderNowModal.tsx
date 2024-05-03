@@ -19,7 +19,13 @@ interface OrderNowProps {
 
 type tabValues = 'settings' | 'instructions' | 'finish';
 
-export default function OrderNowModal({ open, setOpen, reload, files, clearSelection }: OrderNowProps) {
+export default function OrderNowModal({
+  open,
+  setOpen,
+  reload,
+  files,
+  clearSelection,
+}: OrderNowProps) {
   //   const cancelButtonRef = useRef(null);
   const router = useRouter();
 
@@ -71,13 +77,13 @@ export default function OrderNowModal({ open, setOpen, reload, files, clearSelec
         await reload();
         // setOpen(false);
         setStatus({ complete: true, message: 'success' });
-      } 
+      }
     } catch (error) {
       console.log(error);
       setStatus({ complete: true, message: 'error' });
     } finally {
       setLoading(false);
-      clearSelection()
+      clearSelection();
     }
   };
 

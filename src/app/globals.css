@@ -163,11 +163,9 @@ body {
   }
 }
 
-
 .toast-render {
   animation: toast_slide_in 0.8s;
 }
-
 
 @keyframes toast_slide_in {
   0% {
@@ -178,7 +176,6 @@ body {
   40% {
     transform: translateX(0);
     opacity: 1;
-
   }
 
   100% {
@@ -190,7 +187,6 @@ body {
   animation: toast_slide_out 0.8s;
 }
 
-
 @keyframes toast_slide_out {
   0% {
     transform: translateX(0);
@@ -200,15 +196,9 @@ body {
   40% {
     transform: translateX(500px);
     opacity: 1;
-
   }
 
   100% {
     transform: translateX(0);
   }
 }
-
-
-
-
-

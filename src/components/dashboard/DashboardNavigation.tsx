@@ -2,7 +2,7 @@
 
 import { classNames } from '@/utils/classNames';
 import { Disclosure } from '@headlessui/react';
-import {  CogIcon } from '@heroicons/react/20/solid';
+import { CogIcon } from '@heroicons/react/20/solid';
 import {
   RocketLaunchIcon,
   CheckBadgeIcon,
@@ -66,7 +66,6 @@ export default function DashboardNavigation({
   expanded = true,
 }: DashboardNavigationProps) {
   const appRoutes: Array<NavItem> = [
-
     {
       name: 'Pending',
       icon: ClockIcon,
