@@ -65,14 +65,14 @@ export default function FileUploadFromOtherOptions({
       >
         <Menu.Items className='absolute left-0 z-10 -mt-1 w-48 origin-top divide-y  rounded-md bg-indigo-50 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
           {uploadOptions.map((iupload) => (
-            <div key={iupload.id} className='py-0.5'>
+            <div key={iupload.id} className='py-0.5 w-full'>
               <Menu.Item>
                 {({ active }) => (
                   <button
                     onClick={() => iupload.cb()}
                     className={classNames(
                       active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                      'flex items-center gap-x-3 px-4 py-1.5 text-sm',
+                      'flex items-center gap-x-3 px-4 py-1.5 text-sm w-full',
                     )}
                   >
                     <Image

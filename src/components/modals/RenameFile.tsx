@@ -1,6 +1,6 @@
 import { Fragment, useRef, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import { FolderPlusIcon } from '@heroicons/react/24/outline';
+import { PencilSquareIcon } from '@heroicons/react/24/outline';
 import AxiosProxy from '@/utils/AxiosProxy';
 import { Spinner } from 'flowbite-react';
 
@@ -40,21 +40,16 @@ export default function RenameFile({
       // @ts-ignore
       const label = folderRef.current!.value;
       setLoading(true);
-      const response = await AxiosProxy.post(`/file/${fileId}`, {
+      const response = await AxiosProxy.patch(`/files/${fileId}`, {
         label,
       });
       if (response.status == 201) {
-        console.log(response.data);
         setOpen(false);
-      } else {
-        setOpen(false);
-        console.log('success');
-        console.log(response.data);
-      }
+        await reload();
+      } 
     } catch (error) {
       console.log(error);
     } finally {
-      await reload();
       setLoading(false);
     }
   };
@@ -94,7 +89,7 @@ export default function RenameFile({
                 <div className='bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4'>
                   <div className='sm:flex flex-col sm:items-center'>
                     <div className=' mb-5 mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-indigo-100 sm:mx-0 sm:h-20 sm:w-20'>
-                      <FolderPlusIcon
+                      <PencilSquareIcon
                         className='h-10 w-10 text-indigo-500'
                         aria-hidden='true'
                       />
@@ -119,8 +114,9 @@ export default function RenameFile({
                           ref={folderRef}
                           autoComplete='name'
                           required
-                          placeholder='Enter name of folder '
-                          className='block w-full rounded-md border-0 py-3.5 text-gray-600 shadow-sm text-md font-semibold ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+                          placeholder='New Label'
+                          className='block w-full rounded-md border-0 py-3.5 text-gray-600 shadow-sm text-lg font-semibold ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600  sm:leading-6'
+
                         />
                       </div>
                     </div>

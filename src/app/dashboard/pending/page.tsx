@@ -40,6 +40,11 @@ import DropboxUpload from '@/components/uploadOptions/DropboxUpload';
 import GoogleUpload from '@/components/uploadOptions/GoogleUpload';
 import OneDrivePicker from '@/components/uploadOptions/OneDrivePicker';
 import SystemProgressUpload from '@/components/dashboard/SystemProgressUpload';
+import { useRecoilValue } from 'recoil';
+import { uploadProgressStats } from '@/store/features/fileUpload';
+import SearchBar from '@/components/dashboard/SearchBar';
+import CopyFile from '@/components/modals/CopyFile';
+import ShareFile from '@/components/modals/ShareFile';
 
 interface PageSetupOptions {
   toggleView: 'grid' | 'list';
@@ -62,6 +67,8 @@ export default function Page() {
   const [downloadFile, setDownloadFile] = useState(false);
   const [orderNow, setOrderNow] = useState(false);
   const [openFileRename, setOpenFileRename] = useState(false);
+  const [copyFile, setCopyFile] = useState(false);
+  const [shareFile, setShareFile] = useState(false);
   const [openFolderRename, setOpenFolderRename] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [openRemoveFile, setOpenRemoveFile] = useState(false);
@@ -83,6 +90,7 @@ export default function Page() {
   const [navigating, setNavigating] = useState<boolean>(false);
   const [selectedFolderId, setSelectedFolderId] = useState<string>('');
 
+  const { complete } = useRecoilValue(uploadProgressStats);
   // watch for query changes
   const searchParams = useSearchParams();
   const folderId = searchParams.get('folderId');
@@ -93,6 +101,17 @@ export default function Page() {
 
   const _renameFile = (id: string) => {
     setOpenFileRename(true);
+    setCurrentFile(id);
+  };
+
+  const _shareFile = (id: string) => {
+    setShareFile(true);
+    setCurrentFile(id);
+  };
+
+  
+  const _copyFile = (id: string) => {
+    setCopyFile(true);
     setCurrentFile(id);
   };
 
@@ -153,12 +172,25 @@ export default function Page() {
     }
   };
 
+  const clearSelection = () => {
+    setSelectedFiles(() => []);
+  };
+
   // update showfolders toggle
   useEffect(() => {
     if (folders.length > orders.length) {
       setShowFolders(true);
     }
   }, [orders, folders]);
+
+  // check for uplaod completion
+
+  useEffect(() => {
+    // reload for every update
+    if (complete > 0) {
+      reload();
+    }
+  }, [complete]);
 
   useEffect(() => {
     if (folderId != null) {
@@ -175,7 +207,7 @@ export default function Page() {
         folderId ? `/files/folder/${folderId}` : '/files',
       );
       if (response.status == 200) {
-        console.log(response.data);
+        console.log('updating foldrs', JSON.stringify(response.data));
         setOrders(response.data.results);
       }
     } catch (error) {
@@ -268,6 +300,20 @@ export default function Page() {
     initialFeedsFetch();
   }, []);
 
+  const searchForFile = async (filename: string) => {
+    try {
+      const response = await AxiosProxy.get(
+        `/files/search?status=pending&q=${filename}`,
+      );
+      if (response.status == 200) {
+        const orders = response.data || [];
+        setOrders(() => [...orders]);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   // drag and drop files and folders
 
   const triggerDropBoxPicker = useRef(null);
@@ -300,6 +346,7 @@ export default function Page() {
       <TawkMessenger />
 
       {/* systenm progress */}
+      <SystemProgressUpload />
       <SystemProgressUpload />
 
       <DropboxUpload ref={triggerDropBoxPicker} visible={false} />
@@ -364,41 +411,6 @@ export default function Page() {
               {/* toggles */}
 
               {/* manage selected files */}
-
-              {selectedFiles.length != 0 ? (
-                <div className='flex items-center gap-x-2 p-2 rounded-xl bg-indigo-100'>
-                  <button
-                    onClick={() => setOrderNow(true)}
-                    className='flex  gap-x-2 rounded-xl bg-indigo-600 font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
-                  >
-                    <CheckCircleIcon className='h-5 w-5 text-white' />
-                    <span className='text-white'>
-                      Order File({selectedFiles.length})
-                    </span>
-                  </button>
-
-                  <button
-                    disabled={downloadFile}
-                    onClick={() => requestFileDownload()}
-                    className='flex  gap-x-2 rounded-xl bg-indigo-500  font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
-                  >
-                    <ArrowDownCircleIcon className='h-5 w-5 text-white' />
-                    {downloadFile ? (
-                      <span className='text-gray-100'>downloading ...</span>
-                    ) : (
-                      <span className='text-gray-100'>Dowload</span>
-                    )}
-                  </button>
-                  <button
-                    onClick={() => setDeleteFile(true)}
-                    className='flex  gap-x-2 rounded-xl bg-red-100  font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
-                  >
-                    <TrashIcon className='h-5 w-5 text-red-400' />
-                    <span className='text-red-400'>Delete</span>
-                  </button>
-                </div>
-              ) : null}
-
               <div className='flex gap-x-2 items-center'>
                 <div className='flex gap-x-3 pr-3 border-r border-gray-400'>
                   <div className=''>
@@ -446,6 +458,45 @@ export default function Page() {
                 </button>
               </div>
             </div>
+
+            <div className='flex items-center justify-between'>
+              <div>
+                <SearchBar cb={searchForFile} clearSearch={reload} />
+              </div>
+              {selectedFiles.length != 0 ? (
+                <div className='flex items-center gap-x-2 p-2 rounded-xl bg-indigo-100'>
+                  <button
+                    onClick={() => setOrderNow(true)}
+                    className='flex  gap-x-2 rounded-xl bg-indigo-600 font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
+                  >
+                    <CheckCircleIcon className='h-5 w-5 text-white' />
+                    <span className='text-white'>
+                      Order File({selectedFiles.length})
+                    </span>
+                  </button>
+
+                  <button
+                    disabled={downloadFile}
+                    onClick={() => requestFileDownload()}
+                    className='flex  gap-x-2 rounded-xl bg-indigo-500  font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
+                  >
+                    <ArrowDownCircleIcon className='h-5 w-5 text-white' />
+                    {downloadFile ? (
+                      <span className='text-gray-100'>downloading ...</span>
+                    ) : (
+                      <span className='text-gray-100'>Dowload</span>
+                    )}
+                  </button>
+                  <button
+                    onClick={() => setDeleteFile(true)}
+                    className='flex  gap-x-2 rounded-xl bg-red-100  font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
+                  >
+                    <TrashIcon className='h-5 w-5 text-red-400' />
+                    <span className='text-red-400'>Delete</span>
+                  </button>
+                </div>
+              ) : null}
+            </div>
           </div>
 
           {pageSetup.toggleView == 'grid' ? (
@@ -459,6 +510,8 @@ export default function Page() {
               removeFile={_removeFile}
               callback={updateOrders}
               isNavigating={navigating}
+              shareFile={_shareFile}
+              copyFile={_copyFile}
               selectedFolderId={selectedFolderId}
               showFolders={showFolders}
               orders={orders}
@@ -470,6 +523,8 @@ export default function Page() {
               updatedSelectedFiles={updateSelectedFiles}
               folders={folders}
               renameFile={_renameFile}
+              shareFile={_shareFile}
+              copyFile={_copyFile}
               renameFolder={_renameFolder}
               removeFile={_removeFile}
               callback={updateOrders}
@@ -500,8 +555,21 @@ export default function Page() {
             open={openFolderRename}
             setOpen={setOpenFolderRename}
           />
+           <CopyFile
+            fileId={currentFile}
+            reload={reload}
+            open={copyFile}
+            setOpen={setCopyFile}
+          />
+           <ShareFile
+            files={selectedFiles}
+            reload={reload}
+            open={shareFile}
+            setOpen={setShareFile}
+          />
           <OrderNowModal
             reload={reload}
+            clearSelection={clearSelection}
             files={selectedFiles}
             open={orderNow}
             setOpen={setOrderNow}

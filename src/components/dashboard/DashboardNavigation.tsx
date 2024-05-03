@@ -2,7 +2,7 @@
 
 import { classNames } from '@/utils/classNames';
 import { Disclosure } from '@headlessui/react';
-import { ArrowUpOnSquareStackIcon, CogIcon } from '@heroicons/react/20/solid';
+import {  CogIcon } from '@heroicons/react/20/solid';
 import {
   RocketLaunchIcon,
   CheckBadgeIcon,
@@ -11,6 +11,7 @@ import {
   UserIcon,
   ArrowLeftEndOnRectangleIcon,
   QuestionMarkCircleIcon,
+  CreditCardIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import React from 'react';
@@ -65,11 +66,6 @@ export default function DashboardNavigation({
   expanded = true,
 }: DashboardNavigationProps) {
   const appRoutes: Array<NavItem> = [
-    {
-      name: 'Upload',
-      icon: ArrowUpOnSquareStackIcon,
-      href: '/dashboard/upload',
-    },
 
     {
       name: 'Pending',
@@ -95,6 +91,11 @@ export default function DashboardNavigation({
       name: 'Settings',
       icon: CogIcon,
       href: '/dashboard/settings',
+    },
+    {
+      name: 'Invoice',
+      icon: CreditCardIcon,
+      href: '/dashboard/invoice',
     },
   ];
 

@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-
 type NavLabel = {
   name: string;
   href: string;
@@ -30,6 +29,8 @@ interface OrderFile {
   userId?: string;
   id: string;
   status?: string;
+  createdAt: string;
+  duration?: number;
 }
 
 interface OrderFolder {
@@ -126,4 +127,8 @@ type ParterLogo = {
 
 interface LogoComponentProp {
   partners: Array<ParterLogo>;
+}
+
+interface FilesUploadHeadRef {
+  launchPicker: () => void;
 }

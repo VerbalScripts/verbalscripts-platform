@@ -55,36 +55,35 @@ export default function TableMenuDropDown({
         leaveTo='transform opacity-0 scale-95'
       >
         <Menu.Items className='absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
-          <div className='py-1'>
+          <div className='py-1 w-full'>
             <Menu.Item>
               {({ active }) => (
-                <a
-                  href='#'
+                <button
                   onClick={() => rename()}
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'flex items-center gap-x-2 px-4 py-2 text-sm',
+                    'flex items-center gap-x-2 px-4 py-2 text-sm w-full',
                   )}
                 >
                   <PencilSquareIcon className='h-5 w-5' />
                   <span>Rename</span>
-                </a>
+                </button>
               )}
             </Menu.Item>
             <Menu.Item>
               {({ active }) => (
-                <div
+                <button
                   onClick={() => duplicate()}
                   className={classNames(
                     active
                       ? 'cursor-pointer bg-gray-100 text-gray-900'
                       : 'text-gray-700',
-                    'px-4 flex items-center gap-x-2 py-2 text-sm',
+                    'px-4 flex items-center gap-x-2 py-2 text-sm w-full',
                   )}
                 >
                   <DocumentDuplicateIcon className='w-5 h-5' />
                   <span>Duplicate</span>
-                </div>
+                </button>
               )}
             </Menu.Item>
           </div>
@@ -92,37 +91,36 @@ export default function TableMenuDropDown({
           <div className='py-1'>
             <Menu.Item>
               {({ active }) => (
-                <a
-                  href='#'
+                <button
                   onClick={() => share()}
                   className={classNames(
                     active
                       ? 'cursor-pointer bg-gray-100 text-gray-900'
                       : 'text-gray-700',
-                    'px-4 flex items-center gap-x-2 py-2 text-sm',
+                    'px-4 flex items-center gap-x-2 py-2 text-sm w-full',
                   )}
                 >
                   <ShareIcon className='h-5 w-5' />
                   <span>Share</span>
-                </a>
+                </button>
               )}
             </Menu.Item>
           </div>
           <div className='py-1'>
             <Menu.Item>
               {({ active }) => (
-                <div
+                <button
                   onClick={() => remove()}
                   className={classNames(
                     active
                       ? 'cursor-pointer bg-gray-100 text-gray-900'
                       : 'text-gray-700',
-                    'flex items-center gap-x-2 px-4 py-2 text-sm',
+                    'flex items-center gap-x-2 px-4 py-2 text-sm w-full',
                   )}
                 >
                   <TrashIcon className='h-5 w-5' />
                   <span>Delete</span>
-                </div>
+                </button>
               )}
             </Menu.Item>
           </div>

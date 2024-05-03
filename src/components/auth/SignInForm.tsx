@@ -9,6 +9,7 @@ import GoogleIcon from '../GoogleIcon';
 import { FieldValues, useForm } from 'react-hook-form';
 import AxiosProxy from '@/utils/AxiosProxy';
 import { GetOrStoreAuthToken } from '@/utils/GetOrStoreAuthToken';
+import AuthGuard from './AuthGuard';
 
 export default function SignInForm() {
   // const validation = {};
@@ -89,6 +90,7 @@ export default function SignInForm() {
           </div>
         ) : null}
       </div>
+      <AuthGuard />
 
       <form
         className='mx-auto max-w-md'

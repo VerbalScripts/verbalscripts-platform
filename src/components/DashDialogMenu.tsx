@@ -55,14 +55,14 @@ export default function DashDialogMenu() {
         leaveFrom='transform opacity-100 scale-100'
         leaveTo='transform opacity-0 scale-95'
       >
-        <Menu.Items className='absolute right-0 z-30 mt-2 w-56 origin-top-right rounded-md bg-gray-50 shadow-lg focus:outline-none'>
+        <Menu.Items className='absolute right-0 z-30 mt-2 w-56 origin-top-right rounded-md bg-gray-50 dark:bg-slate-800 shadow-lg focus:outline-none'>
           <div className='py-1 px-2'>
             {user.isAuth ? (
-              <div className='py-3 px-4 text-gray-600 border-b border-gray-200 mb-2'>
+              <div className='py-3 px-4 text-gray-600 dark:text-white border-b border-gray-200 mb-2'>
                 <span className='font-bold'>{user.email}</span>
               </div>
             ) : (
-              <div className='py-3 px-4 text-gray-600 border-b border-gray-200 mb-2'>
+              <div className='py-3 px-4 text-gray-600 dark:text-white border-b border-gray-200 mb-2'>
                 <span className='font-bold'>Guest User</span> - This is a
                 temporary account, please login to save your uploads.
               </div>
@@ -92,8 +92,8 @@ export default function DashDialogMenu() {
                   <button
                     type='submit'
                     className={classNames(
-                      'block w-full px-4 py-2 text-left text-gray-600 font-semibold text-md',
-                      'mt-1 border-t border-gray-200 flex items-center',
+                      'block w-full px-4 py-2 text-left text-gray-600 dark:text-white font-semibold text-md',
+                      'mt-1 border-t border-gray-200 dark:border-gray-800 flex items-center',
                     )}
                   >
                     <FontAwesomeIcon icon={faSignOutAlt} color={'gray'} />

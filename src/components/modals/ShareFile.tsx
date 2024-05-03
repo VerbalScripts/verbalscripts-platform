@@ -1,47 +1,29 @@
 import { Fragment, useRef, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import { FolderPlusIcon } from '@heroicons/react/24/outline';
+import { EnvelopeOpenIcon } from '@heroicons/react/24/outline';
 import AxiosProxy from '@/utils/AxiosProxy';
 import { Spinner } from 'flowbite-react';
 
-interface RenameFolderProps {
+interface ShareFileProps {
   open: boolean;
-  folderId: string;
+  files: string[];
   reload: () => Promise<void>;
   setOpen: (arg0: boolean) => void;
 }
 
-export default function RenameFolder({
-  open,
-  setOpen,
-  folderId,
-  reload,
-}: RenameFolderProps) {
+export default function ShareFile({ open, setOpen, reload, files }: ShareFileProps) {
   const cancelButtonRef = useRef(null);
   const folderRef = useRef(null);
 
   const [loading, setLoading] = useState<boolean>(false);
 
-  const renameFolderHttp = async () => {
+  const createFolderHttp = async () => {
     try {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      if (
-        folderRef.current != null &&
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        folderRef.current!.value &&
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        folderRef.current!.value.length == 0
-      )
-        return;
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      const label = folderRef.current!.value;
       setLoading(true);
-      const response = await AxiosProxy.patch(`/folder/${folderId}`, {
-        label,
+      const response = await AxiosProxy.post('/files/share', {
+        files,
       });
       if (response.status == 201) {
         console.log(response.data);
@@ -51,11 +33,11 @@ export default function RenameFolder({
         console.log('success');
         console.log(response.data);
       }
+      await reload();
     } catch (error) {
       console.log(error);
     } finally {
       setLoading(false);
-      await reload();
     }
   };
 
@@ -94,7 +76,7 @@ export default function RenameFolder({
                 <div className='bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4'>
                   <div className='sm:flex flex-col sm:items-center'>
                     <div className=' mb-5 mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-indigo-100 sm:mx-0 sm:h-20 sm:w-20'>
-                      <FolderPlusIcon
+                      <EnvelopeOpenIcon
                         className='h-10 w-10 text-indigo-500'
                         aria-hidden='true'
                       />
@@ -104,7 +86,7 @@ export default function RenameFolder({
                         as='h3'
                         className='text-xl font-semibold leading-6 text-gray-700'
                       >
-                        Add Folder
+                        Share File(s)
                       </Dialog.Title>
                       <div className='mt-2'></div>
                     </div>
@@ -113,17 +95,20 @@ export default function RenameFolder({
                     <div>
                       <div className='mt-2 w-full'>
                         <input
-                          id='folder-name'
-                          name='name'
-                          type='text'
+                          id='email-address'
+                          name='email'
+                          type='email'
                           ref={folderRef}
-                          autoComplete='name'
+                          autoComplete='email'
                           required
-                          placeholder='Enter name of folder '
+                          placeholder='Enter Recipient Email'
                           className='block w-full rounded-md border-0 py-3.5 text-gray-600 shadow-sm text-lg font-semibold ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600  sm:leading-6'
-
-/>
+                        />
                       </div>
+                    </div>
+                    <div className='text-gray-700 px-3 py-2 bg-gray-100 rounded-md'>
+                      Use folders to organize content, converting files and
+                      downloading files.
                     </div>
                   </form>
                 </div>
@@ -132,10 +117,10 @@ export default function RenameFolder({
                     type='button'
                     disabled={loading}
                     className='inline-flex w-full justify-center rounded-xl bg-indigo-500 px-7 py-2.5  font-semibold text-white shadow-sm hover:bg-indigo-400 sm:ml-3 sm:w-auto'
-                    onClick={() => renameFolderHttp()}
+                    onClick={() => createFolderHttp()}
                   >
                     {!loading ? (
-                      'Rename'
+                      'Share File'
                     ) : (
                       <div>
                         <Spinner color={'pink'} />

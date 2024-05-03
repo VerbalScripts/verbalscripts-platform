@@ -16,7 +16,7 @@ export const progressTracker = atom({
 
 export const currentUploadFileIndex = atom({
   key: 'currentUploadFileIndex',
-  default: 0,
+  default: -1,
 });
 
 export const uploadProgressStats = selector({

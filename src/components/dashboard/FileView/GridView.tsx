@@ -23,6 +23,8 @@ interface GridViewProps {
   renameFile: (id: string) => void;
   renameFolder: (id: string) => void;
   removeFile: (id: string) => void;
+  shareFile: (id: string) => void;
+  copyFile: (id: string) => void;
   isNavigating: boolean;
   selectedFolderId: string;
 }
@@ -35,6 +37,8 @@ export default function GridView({
   updatedSelectedFiles,
   selectedFiles,
   renameFile,
+  shareFile,
+  copyFile,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   renameFolder,
   removeFile,
@@ -239,7 +243,7 @@ export default function GridView({
                 </div>
                 <div className='mt-1 flex'>
                   <span className='text-gray-600 text-sm'>
-                    {bytesToMB(order.size)}
+                    {bytesToMB(order.size)} {'MBs'}
                   </span>
                   |
                   <span className='text-gray-600 text-sm uppercase'>
@@ -252,8 +256,8 @@ export default function GridView({
                 <TableMenuDropDown
                   remove={() => removeFile(order.id)}
                   rename={() => renameFile(order.id)}
-                  duplicate={() => {}}
-                  share={() => {}}
+                  duplicate={() => copyFile(order.id)}
+                  share={() => shareFile(order.id)}
                   isGrid={true}
                 />
               </div>

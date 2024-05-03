@@ -1,7 +1,7 @@
 'use client';
 
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BellAlertIcon, MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 
 import DashDialogMenu from '../DashDialogMenu';
@@ -18,17 +18,37 @@ export default function DashboardHeader() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   // const SearchForFile = (event: KeyboardEventHandler<HTMLInputElement>) => {};
 
-  const toggleDarkMode = () => {
+  const storeOrGetModeStatus = (dark: boolean) => {
+    if (!dark) {
+      window.localStorage.removeItem('is-dark');
+    } else {
+      window.localStorage.setItem('is-dark', '1');
+    }
+  };
+
+  const toggleDarkMode = (dark: boolean) => {
     const toggleRef = document.querySelector('.dark-mode-toggle');
     if (toggleRef) {
       toggleRef.classList.toggle('dark');
-      if (isDark) {
-        setDark(false);
+      if (!dark) {
+        storeOrGetModeStatus(false);
       } else {
-        setDark(true);
+        storeOrGetModeStatus(true);
       }
     }
   };
+
+  useEffect(() => {
+    toggleDarkMode(isDark);
+  }, [isDark]);
+
+  useEffect(() => {
+    const isDark = window.localStorage.getItem('is-dark');
+
+    if (isDark != null) {
+      setDark(true);
+    }
+  }, []);
 
   return (
     <>
@@ -63,7 +83,7 @@ export default function DashboardHeader() {
             </a> */}
             <button
               // href='/dashboard/notifications'
-              onClick={() => toggleDarkMode()}
+              onClick={() => setDark(!isDark)}
               data-dropdown-toggle='notification-dropdown'
               className='flex items-center text-md font-semibold  px-3.5 py-1.5 focus:ring-4 focus:ring-indigo-300 hover:bg-white hover:ring-indigo-400 hover:text-indigo-500 rounded-full'
             >
@@ -97,7 +117,7 @@ export default function DashboardHeader() {
 
             <button
               // href='/dashboard/notifications'
-              onClick={() => toggleDarkMode()}
+              onClick={() => setDark(!isDark)}
               data-dropdown-toggle='notification-dropdown'
               className='flex items-center text-md font-semibold  px-3.5 py-1.5 focus:ring-4 focus:ring-indigo-300 hover:bg-white hover:ring-indigo-400 hover:text-indigo-500 rounded-full'
             >

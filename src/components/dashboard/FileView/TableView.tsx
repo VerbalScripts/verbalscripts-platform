@@ -7,6 +7,8 @@ import { classNames } from '@/utils/classNames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy } from '@fortawesome/free-solid-svg-icons';
 import AxiosProxy from '@/utils/AxiosProxy';
+import moment from 'moment';
+import { DurationFromSeconds } from '@/utils/DurationFromSeconds';
 
 interface TableViewProps {
   folders: OrderFolder[];
@@ -23,6 +25,8 @@ interface TableViewProps {
   renameFile: (id: string) => void;
   renameFolder: (id: string) => void;
   removeFile: (id: string) => void;
+  shareFile: (id: string) => void;
+  copyFile: (id: string) => void;
   isNavigating: boolean;
   selectedFolderId: string;
 }
@@ -40,6 +44,8 @@ export default function TableView({
   callback,
   isNavigating,
   selectedFolderId,
+  shareFile,
+  copyFile,
 }: TableViewProps) {
   const [draggedRowIndex, setDraggedRowIndex] = useState<number | null>(null);
 
@@ -169,9 +175,9 @@ export default function TableView({
             />
           </Table.HeadCell>
           <Table.HeadCell>File Name</Table.HeadCell>
-          <Table.HeadCell>Size</Table.HeadCell>
-          <Table.HeadCell>Type</Table.HeadCell>
-          <Table.HeadCell>Status</Table.HeadCell>
+          <Table.HeadCell>Size (MB)s</Table.HeadCell>
+          <Table.HeadCell>Duration</Table.HeadCell>
+          <Table.HeadCell>Upload Date</Table.HeadCell>
           <Table.HeadCell>Action</Table.HeadCell>
           <Table.HeadCell>
             <span className='sr-only'>Edit</span>
@@ -267,12 +273,12 @@ export default function TableView({
               <Table.Cell className='py-2'>{bytesToMB(order.size)}</Table.Cell>
               <Table.Cell className='py-2'>
                 <span className='uppercase'>
-                  {order.mimetype.split('/')[1]}
+                  {order.duration ? DurationFromSeconds(order.duration) : '-'}
                 </span>
               </Table.Cell>
               <Table.Cell className='py-2'>
-                <span className='capitalize bg-indigo-100 text-sm text-indigo-500 px-3 py-1.5 rounded-xl'>
-                  {order.status}
+                <span className='capitalize text-sm text-gray-900 dark:text-white'>
+                  {moment(order.createdAt).format('L')}
                 </span>
               </Table.Cell>
               <Table.Cell className='py-2'>
@@ -280,8 +286,8 @@ export default function TableView({
                   <TableMenuDropDown
                     remove={() => removeFile(order.id)}
                     rename={() => renameFile(order.id)}
-                    duplicate={() => {}}
-                    share={() => {}}
+                    duplicate={() => copyFile(order.id)}
+                    share={() => shareFile(order.id)}
                   />
                 </div>
               </Table.Cell>

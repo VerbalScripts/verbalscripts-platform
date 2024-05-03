@@ -12,13 +12,14 @@ import InstructionsTab from '../dashboard/Tabs/InstructionsTab';
 interface OrderNowProps {
   open: boolean;
   files: string[];
-  reload?: () => Promise<void>;
+  reload: () => Promise<void>;
   setOpen: (arg0: boolean) => void;
+  clearSelection: () => void;
 }
 
 type tabValues = 'settings' | 'instructions' | 'finish';
 
-export default function OrderNowModal({ open, setOpen, files }: OrderNowProps) {
+export default function OrderNowModal({ open, setOpen, reload, files, clearSelection }: OrderNowProps) {
   //   const cancelButtonRef = useRef(null);
   const router = useRouter();
 
@@ -67,19 +68,16 @@ export default function OrderNowModal({ open, setOpen, files }: OrderNowProps) {
         order: payload,
       });
       if (response.status == 201) {
-        console.log(response.data);
-        // await reload();
+        await reload();
         // setOpen(false);
         setStatus({ complete: true, message: 'success' });
-      } else {
-        console.log('success');
-        console.log(response.data);
-      }
+      } 
     } catch (error) {
       console.log(error);
       setStatus({ complete: true, message: 'error' });
     } finally {
       setLoading(false);
+      clearSelection()
     }
   };
 
