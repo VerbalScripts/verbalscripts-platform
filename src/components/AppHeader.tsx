@@ -8,6 +8,7 @@ import {
   XMarkIcon,
   ComputerDesktopIcon,
   UserIcon,
+  ArrowUpTrayIcon,
 } from '@heroicons/react/24/outline';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 
@@ -230,7 +231,7 @@ export default function AppHeader() {
             href='/auth/login'
             className='-mx-3 flex items-center underline  underline-offset-4 gap-x-5 rounded-lg px-3 py-2.5 text-base  transition leading-7 text-white hover:text-orange-400'
           >
-            <ComputerDesktopIcon className='h-5 w-5' aria-hidden='true' />
+            <ArrowUpTrayIcon className='h-5 w-5' aria-hidden='true' />
             Try Now
           </a>
           |

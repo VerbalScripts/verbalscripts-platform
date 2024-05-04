@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 'use client';
-
 import AxiosProxy from '@/utils/AxiosProxy';
 import { GetOrStoreAuthToken } from '@/utils/GetOrStoreAuthToken';
 import React, { useEffect } from 'react';

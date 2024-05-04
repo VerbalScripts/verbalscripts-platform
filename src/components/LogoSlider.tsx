@@ -29,7 +29,7 @@ export default function LogoSlider({ partners }: LogoComponentProp) {
                 <SwiperSlide key={item.name}>
                   <img
                     key={item.name}
-                    className='max-h-12 min-w-[30rem] object-contain'
+                    className='max-h-16 min-w-[40rem] object-contain'
                     src={item.imgUrl}
                     alt={item.name}
                   />

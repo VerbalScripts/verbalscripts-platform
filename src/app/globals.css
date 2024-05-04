@@ -97,7 +97,29 @@ body {
     url('/login-page.svg') no-repeat top right;
   background-size: cover;
 }
+.home-landing-page {
+  background:
+    linear-gradient(to bottom, transparent, rgba(248, 247, 247, 0.8)),
+    linear-gradient(to top, transparent, rgba(247, 246, 246, 0.938)),
+    url('/compliant.jpg') no-repeat top right;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
 
+.steps-section-bg {
+  background:
+    linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.8)),
+    linear-gradient(to top, transparent, rgba(255, 252, 252, 0.842)),
+    url('/social-integrated-person-workspace.jpg') no-repeat top right;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.section-title {
+  line-height: 1.21 !important;
+}
 .animate-auth {
   animation: slide-up 0.8s ease-in-out forwards;
   opacity: 0;

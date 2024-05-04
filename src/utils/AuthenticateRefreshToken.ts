@@ -1,7 +1,7 @@
 import AxiosProxy from './AxiosProxy';
 
 export const AuthUsingRefreshToken = async () => {
-  const token = localStorage.getItem('rfc-token');
+  const token = localStorage.getItem('rft-btt');
 
   if (token == null) return false;
 
@@ -20,5 +20,5 @@ export const AuthUsingRefreshToken = async () => {
 
 export const cleanExpiredSession = () => {
   window.localStorage.removeItem('x-token');
-  window.localStorage.removeItem('rfc-token');
+  window.localStorage.removeItem('rft-btt');
 };

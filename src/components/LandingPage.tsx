@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function LandingPage() {
   return (
-    <div className='relative isolate px-6 lg:px-8 bg-indigo-500'>
+    <div className='relative isolate px-6 lg:px-8 home-landing-page overflow-hidden'>
       {/* <video className='absolute top-0 right-0 left-0 w-full -z-20 h-full object-cover'  loop autoPlay>
         <source src="landing_prodution.mp4" type='video/mp4' />
       </video> */}
@@ -33,29 +33,34 @@ export default function LandingPage() {
         />
       </div>
 
-      <div className='mx-auto max-w-7xl py-20 md-py-0 md:min-h-[60vh]  lg:min-h-[70vh]  md:mx-10 lg:mx-20 xl:mx-28 flex flex-col items-start justify-center md:items-center  text-left lg:text-center'>
-        <h1 className='max-w-6xl lg:max-w-5xl xl:max-w-7xl relative z-10 text-5xl font-bold  text-white lg:text-6xl xl:text-7xl'>
-          Transcription Mastery: Unmatched Accuracy & Efficiency, Every Time.
+      <div className='mx-auto max-w-7xl py-20 md-py-0 md:min-h-[60vh]  lg:min-h-[70vh]  md:mx-10 lg:mx-20 xl:mx-28 flex flex-col items-start  md:items-center  text-left lg:text-center'>
+        <h1 className='max-w-6xl lg:max-w-5xl xl:max-w-7xl relative z-10 text-5xl font-bold  text-gray-900 lg:text-5xl xl:text-6xl'>
+          Transcription <span className='text-orange-600'>Mastery</span>:
+          Unmatched Accuracy & Efficiency, Every Time.
         </h1>
-        <p className='hidden md:block md:max-w-2xl lg:max-w-3xl xl:max-w-4xl relative z-10 mt-6 text-xl leading-8 text-gray-50'>
+        <p className='hidden md:block md:max-w-2xl lg:max-w-3xl xl:max-w-4xl relative z-10 mt-6 text-xl font-semibold leading-7 text-gray-800'>
           With you in mind always, we delivery accurate transcripts through our
           experienced transcriptionists. Count on us to alwsays exceed your
           expectations, project after project, at an affordable rate.
         </p>
-        <div className='mt-10 flex flex-col md:flex-row items-start md:items-center justify-center gap-6'>
-          <a
-            href='/solutions'
-            className='rounded-full bg-orange-400 px-12 py-3 text-2xl transition font-bold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600'
-          >
-            Services
-          </a>
-          <a
-            href='/services'
-            className='text-lg underline underline-offset-8 font-bold leading-6 text-white'
-          >
-            Our Industries
-          </a>
-        </div>
+      </div>
+
+      <div className='absolute -bottom-10 -right-32'>
+        <img src='./4.jpg' className='w-96 rounded-xl object-cover' alt='' />
+      </div>
+      <div className='absolute -bottom-10 right-1/3'>
+        <img
+          src='./education.jpg'
+          className='w-96 rounded-xl object-cover'
+          alt=''
+        />
+      </div>
+      <div className='absolute -bottom-5 -left-1/4'>
+        <img
+          src='./learning.jpg'
+          className='w-2/6 rounded-xl object-cover'
+          alt=''
+        />
       </div>
     </div>
   );

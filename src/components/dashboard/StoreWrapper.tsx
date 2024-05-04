@@ -28,18 +28,45 @@ export default function StoreWrapper({
             userId: response.data.userId,
             isAuth: true,
           });
+        } else {
+          const response = await AuthUsingRefreshToken();
+          if (!response) {
+            // clean up
+            cleanExpiredSession();
+            setUserState({
+              ...userState,
+              isAuth: false,
+            });
+            return;
+          } else {
+            setUserState({
+              email: response.email,
+              firstName: response.firstName,
+              lastName: response.lastName,
+              userId: response.userId,
+              isAuth: true,
+            });
+
+            window.localStorage.setItem('x-token', response.access_token);
+            window.localStorage.setItem('rft-btt', response.refresh_token);
+          }
         }
       }
     } catch (err: any) {
-      if (err.response == undefined) {
+      console.log('beige killer');
+      if (err.code == 'NETWORK_ERR') {
         console.log('network failure');
       }
-      if (err.response.status && err.response.data.message == 'jwt expired') {
+      if (err.code == 'ERR_BAD_REQUEST') {
         //   use refresh token
         const response = await AuthUsingRefreshToken();
         if (!response) {
           // clean up
           cleanExpiredSession();
+          setUserState({
+            ...userState,
+            isAuth: false,
+          });
           return;
         } else {
           setUserState({
@@ -49,6 +76,9 @@ export default function StoreWrapper({
             userId: response.userId,
             isAuth: true,
           });
+
+          window.localStorage.setItem('x-token', response.access_token);
+          window.localStorage.setItem('rft-btt', response.refresh_token);
         }
       }
     }

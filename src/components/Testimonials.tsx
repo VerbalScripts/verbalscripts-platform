@@ -13,16 +13,14 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 export default function Testimonials({ testimonials }: TestimonyProp) {
   return (
-    <section
-      className='relative px-6 py-14 sm:py-20 lg:px-8'
-      style={{ backgroundColor: '#f9f8f2' }}
-    >
+    <section className='relative px-6 py-14 sm:py-20 lg:px-8 bg-white'>
       <div className='absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] opacity-20' />
       <div className='absolute  right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center' />
 
       <div className='mx-auto max-w-2xl text-left lg:text-center'>
         <p className='mt-2 text-4xl font-bold   text-gray-900 sm:text-5xl'>
-          What are people saying about VerbalScripts
+          What are people saying about{' '}
+          <span className='text-orange-400'>VerbalScripts</span>
         </p>
         {/* <p className="mt-6 text-lg leading-8 text-gray-600">
             Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a elementum

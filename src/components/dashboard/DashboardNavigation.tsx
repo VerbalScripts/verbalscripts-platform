@@ -2,7 +2,7 @@
 
 import { classNames } from '@/utils/classNames';
 import { Disclosure } from '@headlessui/react';
-import { CogIcon } from '@heroicons/react/20/solid';
+import { CogIcon, Square2StackIcon } from '@heroicons/react/20/solid';
 import {
   RocketLaunchIcon,
   CheckBadgeIcon,
@@ -16,7 +16,7 @@ import {
 import Link from 'next/link';
 import React from 'react';
 
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import AppTitle from '../AppTitle';
 import { useRecoilValue } from 'recoil';
 import { userState } from '@/store/configureStore';
@@ -33,31 +33,6 @@ interface NavItemProp {
   expanded?: boolean;
 }
 
-function NavigationItemLink({ item, expanded }: NavItemProp) {
-  return (
-    <div key={item.name} className='mb-3'>
-      <Link
-        href={item.href}
-        className={classNames(
-          'flex items-center gap-x-4 px-3 py-2.5 font-semibold dark:text-gray-200 text-gray-600 rounded-full ',
-          usePathname() == item.href
-            ? 'bg-indigo-500 text-white'
-            : 'hover:bg-indigo-500/5',
-          expanded ? '' : 'justify-center',
-        )}
-      >
-        <item.icon
-          className={classNames(
-            'transition-all',
-            expanded ? 'h-6 w-6 ' : 'h-7 w-7 ',
-          )}
-        />
-        {expanded ? <span>{item.name}</span> : null}
-      </Link>
-    </div>
-  );
-}
-
 interface DashboardNavigationProps {
   expanded: boolean;
 }
@@ -65,7 +40,54 @@ interface DashboardNavigationProps {
 export default function DashboardNavigation({
   expanded = true,
 }: DashboardNavigationProps) {
+  const NavigationItemLink = ({ item, expanded }: NavItemProp) => {
+    const pathname = usePathname();
+
+    return (
+      <div key={item.name} className='mb-3'>
+        {item.href != '/deauth' ? (
+          <Link
+            href={item.href}
+            className={classNames(
+              'flex items-center gap-x-4 px-3 py-2.5 font-semibold hover:bg-indigo-500/5 dark:text-gray-200 text-gray-600 rounded-full ',
+              pathname == item.href ? 'bg-indigo-500 text-white' : '',
+              expanded ? '' : 'justify-center',
+            )}
+          >
+            <item.icon
+              className={classNames(
+                'transition-all',
+                expanded ? 'h-6 w-6 ' : 'h-7 w-7 ',
+              )}
+            />
+            {expanded ? <span>{item.name}</span> : null}
+          </Link>
+        ) : (
+          <button
+            className='flex w-full items-center hover:bg-indigo-500/5 gap-x-4 px-3 py-2.5 font-semibold dark:text-gray-200 text-gray-600 rounded-full '
+            onClick={() => logout()}
+          >
+            <item.icon
+              className={classNames(
+                'transition-all',
+                expanded ? 'h-6 w-6 ' : 'h-7 w-7 ',
+              )}
+            />
+            {expanded ? <span>{item.name}</span> : null}
+          </button>
+        )}
+      </div>
+    );
+  };
+
+  const router = useRouter();
+
   const appRoutes: Array<NavItem> = [
+    {
+      name: 'Dashboard',
+      icon: Square2StackIcon,
+      href: '/dashboard',
+    },
     {
       name: 'Pending',
       icon: ClockIcon,
@@ -108,10 +130,17 @@ export default function DashboardNavigation({
     {
       name: 'Log out',
       icon: ArrowLeftEndOnRectangleIcon,
-      href: '/auth/login',
+      href: '/deauth',
     },
   ];
   // const [open, setOpen] = useState(false);
+
+  const logout = () => {
+    window.localStorage.removeItem('x-token');
+    window.localStorage.removeItem('rft-btt');
+
+    router.push('/auth/login');
+  };
 
   const globalUser = useRecoilValue(userState);
 
@@ -190,7 +219,7 @@ export default function DashboardNavigation({
             </div>
             <div className='mt-5'>
               <Link
-                href='/auth/login'
+                href={'/auth/login'}
                 className='rounded-full  px-4 py-2.5 bg-indigo-500 text-md font-semibold focus:ring-4 focus:outline-none focus:ring-indigo-300'
               >
                 Login

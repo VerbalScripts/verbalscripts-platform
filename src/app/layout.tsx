@@ -1,4 +1,4 @@
-import { DM_Sans } from 'next/font/google';
+import { Urbanist } from 'next/font/google';
 import './globals.css';
 // import type { Metadata } from 'next';
 
@@ -17,7 +17,7 @@ import './globals.css';
 //     'VerbalScripts offers fast, affordable, and highly accurate human transcription, translation, data annotation, and AI dataset services customized for your needs.',
 // };
 
-const dm_sans = DM_Sans({ subsets: ['latin'] });
+const urbanist = Urbanist({ subsets: ['latin'] });
 
 export default function RootLayout({
   children,
@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en' className={dm_sans.className}>
+    <html lang='en' className={urbanist.className}>
       <body className='relative min-h-screen'>{children}</body>
     </html>
   );

@@ -57,14 +57,14 @@ export default function Home() {
 
   const features = [
     {
-      name: 'Precise Transcription Guaranteed',
+      name: 'Precise Transcription',
       description:
         'We ensure accurate transcription delivered on time by transcribing, reviewing and profreading',
 
       imgUrl: '/icons/accuracy.png',
     },
     {
-      name: 'One Click Submission, Fast Processing',
+      name: 'One Click Submission',
       description:
         'Simply give a us a link or upload your file and your will be ready to start working on it in a matter of minutes',
 
@@ -102,27 +102,57 @@ export default function Home() {
       <AppHeader />
       <LandingPage />
 
-      <PopularPartner />
+      <div className='relative bg-white py-16'>
+        <div className='absolute -top-16 left-36 mt-10 flex flex-col md:flex-row items-start md:items-center justify-center gap-6'>
+          <a
+            href='/solutions'
+            className='rounded-xl bg-orange-500 px-12 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600'
+          >
+            Services
+          </a>
+          <a
+            href='/services'
+            className='rounded-xl bg-orange-500 px-12 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600'
+          >
+            Industries
+          </a>
+        </div>
+        <PopularPartner />
+      </div>
 
-      <div className='bg-white py-20 md:py-24'>
-        <div className='mx-auto max-w-7xl px-6 lg:px-8'>
-          <div className='mx-auto max-w-4xl md:text-center'>
-            {/* <h2 className="text-base font-semibold leading-7 text-indigo-600">What we do</h2> */}
-            <p className='mt-2 text-4xl md:text-5xl font-bold  text-gray-900'>
-              Benefits of Choosing VerbalScripts
-            </p>
-            <p className='mx-auto max-w-2xl mt-6 text-lg leading-8 text-gray-600'>
-              We are the best platform for accelerated speed, enhanced privacy,
-              top-notch quality, and cost effective-solution;
-            </p>
+      <div className='py-20 md:py-14' style={{ background: '#FAFAFA' }}>
+        <div className='mx-auto max-w-7xl px-6 md:px-16 lg:px-16 xl:px-28'>
+          <div className='flex items-center gap-x-6'>
+            <div className='min-w-[30rem] text-left'>
+              <h2 className='text-xl font-semibold leading-7 capitalize text-gray-700'>
+                Why <span className='text-orange-400'>Verbal</span>Scripts
+              </h2>
+              <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
+                We transcribe <br></br>with Precision <br></br>and <br></br>
+                Professionalism.
+              </p>
+            </div>
+            <div>
+              <p className='mx-auto max-w-2xl mt-6 text-lg leading-8 text-gray-600'>
+                We are the best platform for accelerated speed, enhanced
+                privacy, top-notch quality, and cost effective-solution;
+              </p>
+              <div className='mt-10'>
+                <a
+                  href='/upload-files'
+                  className='rounded-xl bg-orange-500 px-12 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600'
+                >
+                  Order Now
+                </a>
+              </div>
+            </div>
           </div>
-          <div className='mx-auto mt-16 max-w-7xl sm:mt-20 lg:mt-24 lg:max-w-7xl'>
-            <dl className='grid max-w-none  md:px-16 lg:px-16 xl:px-28 content-center grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-y-16'>
+          <div className='mt-16  sm:mt-20 lg:mt-24'>
+            <dl className='grid max-w-none   content-center grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-y-16'>
               {features.map((feature) => (
                 <div
                   key={feature.name}
-                  className='relative py-8 px-4 rounded-3xl shadow-sm'
-                  style={{ backgroundColor: '#f9f8f2' }}
+                  className='relative py-8 px-4  shadow-sm bg-white border-b-4 border-indigo-500'
                 >
                   <dt className='flex flex-col items-center text-base font-semibold leading-7 text-gray-900'>
                     <Image
@@ -147,7 +177,10 @@ export default function Home() {
       </div>
 
       {/* testimonials */}
-      <div className='relative rounded-tr-2xl bg-indigo-500'>
+      <div
+        className='relative py-20 md:py-14'
+        style={{ background: '#FAFAFA' }}
+      >
         <div
           className='absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80'
           aria-hidden='true'
@@ -172,13 +205,18 @@ export default function Home() {
             }}
           />
         </div>
-        <div className='mx-auto max-w-7xl '>
-          <div className='relative isolate   px-6 pt-16 sm:rounded-3xl sm:px-16 md:pt-24 md:px-24 xl:px-28 lg:flex lg:items-center lg:gap-x-20 lg:px-36 lg:pt-0'>
-            <div className='mx-auto  lg:max-w-[28rem]   xl:max-w-[33rem] lg:mx-0 lg:flex-auto '>
-              <h2 className='text-4xl md:text-5xl font-bold  text-gray-100'>
-                Our Services
+        <div className='mx-auto max-w-7xl px-6 md:px-16 lg:px-16 xl:px-28'>
+          <div className='flex items-center gap-x-6'>
+            <div className='min-w-[30rem] text-left'>
+              <h2 className='text-xl font-semibold capitalize leading-7 text-orange-400'>
+                What Services We Offer
               </h2>
-              <p className='mt-6 text-xl  leading-7 text-gray-50'>
+              <p className='mt-2 text-4xl md:text-5xl capitalize  font-bold text-left text-gray-900 section-title'>
+                Transcription Needs? <br></br> Meet out exceptional Services
+              </p>
+            </div>
+            <div>
+              <p className='mx-auto max-w-2xl mt-6 text-lg leading-8 text-gray-600'>
                 The way we think about data is changing; and now more than ever
                 industry leaders are counting on accurate, reliable
                 transcription and data annotation for their business.
@@ -190,26 +228,10 @@ export default function Home() {
                 requirements you may need.
               </p>
             </div>
-            <div className='relative mb-44 md:mb-32 mt-16 h-80 lg:mt-8'>
-              <img
-                className='absolute left-0 top-0 w-[28rem] md:w-[32rem] max-w-none rounded-m'
-                src='transcription-service.webp'
-                alt='Service Image'
-              />
-            </div>
           </div>
         </div>
 
         <SolutionsList />
-
-        <div className='flex justify-center py-32'>
-          <a
-            href='/solutions'
-            className='rounded-full  bg-orange-400 px-8 py-3.5 text-lg font-bold text-white shadow-sm transition  hover:shadow-md hover:bg-yellow-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
-          >
-            View all solutions
-          </a>
-        </div>
       </div>
       {/* testimonials */}
       <Testimonials testimonials={testimonials} />
@@ -221,21 +243,30 @@ export default function Home() {
             {/* <h2 className="text-base font-semibold leading-7 text-indigo-600">
             You did{ "'"}nt Hear it from us
           </h2> */}
-            <p className='mt-2 text-4xl md:text-5xl font-bold  text-gray-900'>
+            <p className='mt-2 text-4xl md:text-5xl font-bold  text-orange-400'>
               4-step Process for Concistent Results
             </p>
-            <p className='mx-auto max-w-2xl mt-6 text-lg leading-8 text-gray-600'>
+            <p className='mx-auto max-w-2xl mt-6 text-xl leading-8 text-gray-600'>
               Human driven transcription process.
             </p>
           </div>
-          <div className='mx-auto max-w-7xl py-2'>
+          <div className='mx-auto max-w-7xl py-20 mt-10 steps-section-bg'>
             <div className='relative isolate  sm:rounded-3xl sm:px-16  lg:flex lg:items-center lg:gap-x-20 lg:px-24'>
               <div className='hidden lg:block relative md:-mt-16 h-80 lg:min-w-[24rem]   xl:min-w-[25rem]'>
                 <img
-                  className='absolute left-0 top-0 w-[20rem] md:w-[23rem]  xl:w-[24rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10'
-                  src='ai-transcription-service.webp'
+                  className=' w-[20rem] md:w-[25rem]  xl:w-[28rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10'
+                  src='/4-steps.svg'
                   alt='Ai Powered'
                 />
+
+                <div className='flex justify-center mt-16 md:mr-16'>
+                  <a
+                    href='/upload-files'
+                    className='rounded-xl ring-1 ring-indigo-600 ring-inset focus:ring-4 focus:ring-indigo-300  bg-indigo-500 px-8 py-3.5 text-lg font-bold text-white shadow-sm transition  hover:shadow-md hover:bg-indigo-400 hover:rind focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-indigo-300'
+                  >
+                    Order Now
+                  </a>
+                </div>
               </div>
 
               <div className='mx-auto  lg:mx-0 lg:flex-auto '>
@@ -245,14 +276,14 @@ export default function Home() {
                       <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/30 text-indigo-500 font-bold'>
                         1
                       </span>
-                      <span className='h-14 border-r-2 border-dashed  border-gray-300'></span>
+                      <span className='h-20 border-r-2 border-dashed  border-gray-500'></span>
                     </div>
                     <br />
                     <div className='ml-5  max-w-md'>
-                      <div className='leading-8 text-gray-800 font-semibold text-xl mb-3'>
+                      <div className='leading-8 text-indigo-600 font-semibold text-2xl mb-3'>
                         Transcribe
                       </div>
-                      <p className='text-gray-600 text-md'>
+                      <p className='text-gray-800 font-semibold text-md'>
                         Files are split into small chunks and types by our
                         certified transcribers.
                       </p>
@@ -264,14 +295,14 @@ export default function Home() {
                       <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/30 text-indigo-700 font-bold'>
                         2
                       </span>
-                      <span className='h-14 border-r-2 border-dashed  border-gray-300'></span>
+                      <span className='h-20 border-r-2 border-dashed  border-gray-500'></span>
                     </div>
                     <br />
                     <div className='ml-5  max-w-md'>
-                      <div className='leading-8 text-gray-800 font-semibold text-xl mb-3'>
+                      <div className='leading-8 text-indigo-600 font-semibold text-2xl mb-3'>
                         Review
                       </div>
-                      <p className='text-gray-600 text-md'>
+                      <p className='text-gray-800 font-semibold text-md'>
                         Reviewers checks the parts, add speaker tracking and
                         timestamps.
                       </p>
@@ -283,14 +314,14 @@ export default function Home() {
                       <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/30 text-indigo-500 font-bold'>
                         3
                       </span>
-                      <span className='h-14 border-r-2 border-dashed  border-gray-300'></span>
+                      <span className='h-20 border-r-2 border-dashed  border-gray-500'></span>
                     </div>
                     <br />
                     <div className='ml-5  max-w-md'>
-                      <div className='leading-8 text-gray-800 font-semibold text-xl mb-3'>
+                      <div className='leading-8 text-indigo-600 font-semibold text-2xl mb-3'>
                         Proofreading
                       </div>
-                      <p className='text-gray-600 text-md'>
+                      <p className='text-gray-800 font-semibold text-md'>
                         Parts are collated and the combined transcript is
                         proofreading for concistency and accuracy.
                       </p>
@@ -305,10 +336,10 @@ export default function Home() {
                     </div>
                     <br />
                     <div className='ml-5  max-w-md'>
-                      <div className='leading-8 text-gray-800 font-semibold text-xl mb-3'>
+                      <div className='leading-8 text-indigo-600 font-semibold text-2xl mb-3'>
                         Quality Check
                       </div>
-                      <p className='text-gray-600 text-md'>
+                      <p className='text-gray-800  font-semibold text-md'>
                         Accuracy is assesed, the files alternates between
                         Proofreading and Quality till accuracy is 99% +.
                       </p>
@@ -316,15 +347,6 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div className='flex justify-center mt-16 md:mr-16'>
-              <a
-                href='/solutions'
-                className='rounded-full ring-1 ring-indigo-500 ring-inset focus:ring-4 focus:ring-indigo-300  bg-indigo-500 px-8 py-3.5 text-lg font-bold text-white shadow-sm transition  hover:shadow-md hover:bg-indigo-400 hover:rind focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-indigo-300'
-              >
-                Place Order Now
-              </a>
             </div>
           </div>
 
@@ -360,73 +382,69 @@ export default function Home() {
 
       {/* <CallToActionBanner fn={setOpen} /> */}
 
-      <div className='bg-white'>
-        <div className='mx-auto max-w-7xl lg:py-28 py-16  sm:px-6  lg:px-8'>
-          <div className='relative isolate   px-6  sm:rounded-3xl sm:px-16  md:flex md:items-center  lg:gap-x-20 lg:px-24 lg:pt-0'>
-            <div className='hidden lg:block relative md:min-w-[28rem] lg:min-w-[35rem] xl:min-w-[28rem] -mt-32 h-80'>
-              <img
-                className='w-[20rem] md:w-[26rem] max-w-none'
-                src='login-page.svg'
-                alt='Become a Freelancer Image'
-              />
-            </div>
-
-            <div className='lg:mx-0 max-w-xl lg:flex  flex-col  text-left'>
-              <h2 className='text-4xl mt-0 md:mt-20 lg:mt-0 font-bold  text-gray-900 md:text-5xl'>
-                Want to join our team of skilled Transcriptionists
+      <div className='bg-white py-24'>
+        <div className='mx-auto max-w-7xl  px-6 md:px-16 lg:px-16 xl:px-28'>
+          <div className='flex items-center gap-x-6 '>
+            <div className='min-w-[34rem] text-left'>
+              <h2 className='text-xl font-semibold leading-7 capitalize text-orange-400'>
+                Want to be a transcriber
               </h2>
-              <p className='mt-6 text-lg leading-8 text-gray-700'>
-                Got the experience we need? We are looking for you.
+              <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
+                Got the experience we<br></br>need? <br></br> We are looking for
+                you
               </p>
 
-              <div className='flex flex-col md:flex-row items-start gap-x-3 gap-y-5 md:gap-y-0 mt-5'>
-                <div className='flex md:block'>
-                  <div className=' flex flex-col md:flex-row gap-y-5 md:gap-y-0 items-center'>
-                    <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/30 text-indigo-500 font-bold'>
-                      1
-                    </span>
-                    <span className='h-24 border-r-2 border-dashed md:h-0 md:ml-2 md:w-48 lg:w-32 md:border-b-2 border-gray-300'></span>
+              <div className='flex flex-col  items-start gap-x-3 gap-y-5  mt-5 border-l-4 border-orange-400'>
+                <div className='flex items-center -ml-[10px]'>
+                  <div className=' flex  items-center '>
+                    <span className='flex items-center justify-center w-4 h-4 rounded-full bg-indigo-500 text-indigo-500 font-bold'></span>
                   </div>
-                  <br />
-                  <div className='ml-5 md:-ml-5  leading-8 text-gray-600 font-semibold text-xl max-w-sm'>
-                    Create an <br></br> Account
+                  <div className='ml-5  max-w-md'>
+                    <div className='leading-8 text-indigo-600 font-semibold text-xl mb-1 capitalize'>
+                      create an account
+                    </div>
                   </div>
                 </div>
 
-                <div className='flex md:block'>
-                  <div className=' flex flex-col md:flex-row gap-y-5 md:gap-y-0 items-center'>
-                    <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/30 text-indigo-500 font-bold'>
-                      2
-                    </span>
-                    <span className='h-24 border-r-2 border-dashed md:h-0 md:ml-2 md:w-48 lg:w-32  md:border-b-2 border-gray-300'></span>
+                <div className='flex  items-center -ml-[10px]'>
+                  <div className=' flex  items-center'>
+                    <span className='flex items-center justify-center w-4 h-4 rounded-full bg-indigo-500 text-indigo-700 font-bold'></span>
                   </div>
-                  <br />
-                  <div className='ml-5 md:-ml-5 leading-8 text-gray-600 font-semibold text-xl max-w-sm'>
-                    Submit required documents
+                  <div className='ml-5  max-w-md'>
+                    <div className='leading-8 text-indigo-600 font-semibold text-xl mb-1 capitalize'>
+                      submit required documents
+                    </div>
                   </div>
                 </div>
 
-                <div className='flex md:block'>
-                  <div className=' flex items-center'>
-                    <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/30 text-indigo-500 font-bold'>
-                      3
-                    </span>
+                <div className='flex  items-center -ml-[10px]'>
+                  <div className=' flex  items-center'>
+                    <span className='flex items-center justify-center w-4 h-4 rounded-full bg-indigo-500 text-indigo-500 font-bold'></span>
                   </div>
-                  <br />
-                  <div className='ml-5 md:-ml-5 leading-8 text-gray-600 font-semibold text-xl max-w-sm'>
-                    Take the Entrance Exams.
+
+                  <div className='ml-5  max-w-md'>
+                    <div className='leading-8 text-indigo-600 font-semibold text-xl mb-1 capitalize'>
+                      Take The entrance exam
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <div className='block mt-4'>
+              <div className='flex justify-center mt-16 md:mr-16'>
                 <a
-                  href='/auth/login'
-                  className='my-2.5 inline-block rounded-full hover:bg-indigo-500 hover:text-white hover:ring-0 transition focus:ring-4 focus:ring-indigo-300  ring-1 ring-indigo-500 px-8 py-2.5 text-xl font-semibold text-indigo-500 transition shadow-sm '
+                  href='/upload-files'
+                  className='rounded-xl   bg-orange-400 px-8 py-3.5 text-lg font-bold text-white shadow-sm transition  hover:shadow-md hover:bg-indigo-400 hover:rind focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-indigo-300'
                 >
-                  Become a Transcriber!
+                  Become a Transcriber
                 </a>
               </div>
+            </div>
+            <div className='hidden  items-center justify-center min-h-[28rem] bg-gray-100 md:flex relative md:-mt-16 '>
+              <img
+                className=' w-[20rem] md:w-[28rem]  xl:w-[30rem]'
+                src='/transcriber.svg'
+                alt='Ai Powered'
+              />
             </div>
           </div>
         </div>

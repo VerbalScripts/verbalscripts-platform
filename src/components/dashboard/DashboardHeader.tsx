@@ -50,6 +50,9 @@ export default function DashboardHeader() {
     }
   }, []);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [notifications, setNotifications] = useState<string[]>([]);
+
   return (
     <>
       <header
@@ -147,7 +150,11 @@ export default function DashboardHeader() {
           </div>
         </nav>
 
-        <NotificationsPreview open={preview} setOpen={setPreview} />
+        <NotificationsPreview
+          notifications={notifications}
+          open={preview}
+          setOpen={setPreview}
+        />
       </header>
     </>
   );
