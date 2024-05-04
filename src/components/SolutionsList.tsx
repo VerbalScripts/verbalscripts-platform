@@ -96,8 +96,8 @@ export default function SolutionsList() {
             href={'/solutions/' + feature.href}
             key={feature.name}
             className={classNames(
-              'relative transition flex flex-col bg-white items-center justify-start ring-inset   hover:ring-1 hover:ring-gray-400 py-8 px-4',
-              index % 2 == 0 ? 'ring-orange-400' : 'ring-indigo-500',
+              'relative transition flex flex-col bg-white items-center justify-start ring-1 ring-inset   hover:ring-1 hover:ring-gray-400 py-8 px-4',
+              index + 1 % 2 == 0 ? 'ring-orange-400' : 'ring-indigo-500',
             )}
           >
             <dt className=''>
