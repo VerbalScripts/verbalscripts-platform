@@ -102,7 +102,7 @@ export default function Home() {
       <AppHeader />
       <LandingPage />
 
-      <div className='relative bg-white py-16'>
+      <div className='relative bg-white py-4'>
         <div className='absolute -top-16 left-36 mt-10 flex flex-col md:flex-row items-start md:items-center justify-center gap-6'>
           <a
             href='/solutions'
