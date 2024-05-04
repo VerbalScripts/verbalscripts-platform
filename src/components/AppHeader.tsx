@@ -285,7 +285,7 @@ export default function AppHeader() {
           <Popover.Group className='hidden lg:flex lg:gap-x-1 lg:items-center'>
             <a
               href='/'
-              className='text-md font-semibold px-2 py-1 leading-6 text-gray-900 transition hover:bg-orange-100'
+              className='text-md uppercase font-semibold px-2 py-1 leading-6 text-gray-900 transition hover:bg-orange-100'
             >
               Home
             </a>
@@ -299,7 +299,7 @@ export default function AppHeader() {
                 <>
                   <Popover.Button
                     ref={buttonRef}
-                    className='flex px-2 py-1 items-center gap-x-1 text-md font-semibold leading-6 text-gray-900'
+                    className='flex uppercase text-sm px-2 py-1 items-center gap-x-1 text-md font-semibold leading-6 text-gray-900'
                   >
                     Industries
                     <ChevronDownIcon
@@ -345,7 +345,7 @@ export default function AppHeader() {
             <Popover className='relative'>
               {({ open }) => (
                 <>
-                  <Popover.Button className='flex px-2 py-1 items-center gap-x-1 text-md font-semibold leading-6 text-gray-900'>
+                  <Popover.Button className='flex uppercase px-2 py-1 items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900'>
                     Services
                     <ChevronDownIcon
                       className='h-5 w-5 flex-none text-gray-400'
@@ -390,7 +390,7 @@ export default function AppHeader() {
             <Popover className='relative'>
               {({ open }) => (
                 <>
-                  <Popover.Button className='flex px-2 py-1 items-center gap-x-1 text-md font-semibold leading-6 text-gray-900'>
+                  <Popover.Button className='flex uppercase px-2 py-1 items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900'>
                     Company
                     <ChevronDownIcon
                       className='h-5 w-5 flex-none text-gray-400'
@@ -433,7 +433,7 @@ export default function AppHeader() {
             </Popover>
             <a
               href='/contact-us'
-              className='text-md font-semibold rounded-md leading-6 py-1 px-2 text-gray-900 transition hover:bg-orange-100'
+              className='text-sm  uppercase font-semibold rounded-md leading-6 py-1 px-2 text-gray-900 transition hover:bg-orange-100'
             >
               Contact
             </a>
