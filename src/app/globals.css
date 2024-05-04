@@ -27,12 +27,9 @@ html {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
 .landing-page-video-wrapper::after {
@@ -97,6 +94,7 @@ body {
     url('/login-page.svg') no-repeat top right;
   background-size: cover;
 }
+
 .home-landing-page {
   background:
     linear-gradient(to bottom, transparent, rgba(248, 247, 247, 0.8)),
@@ -120,6 +118,7 @@ body {
 .section-title {
   line-height: 1.21 !important;
 }
+
 .animate-auth {
   animation: slide-up 0.8s ease-in-out forwards;
   opacity: 0;
@@ -136,11 +135,9 @@ body {
 }
 
 .landing-blur {
-  background: linear-gradient(
-    86deg,
-    var(--white) 27.65%,
-    var(--swiper-pagination-color) 159.67%
-  );
+  background: linear-gradient(86deg,
+      var(--white) 27.65%,
+      var(--swiper-pagination-color) 159.67%);
 }
 
 @media (max-width: 767px) {
@@ -223,4 +220,9 @@ body {
   100% {
     transform: translateX(0);
   }
+}
+
+
+.btn-vlg {
+  background:linear-gradient(125deg, #FAAA19 80%, #FF450DCC 100%);
 }

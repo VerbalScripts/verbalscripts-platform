@@ -48,14 +48,14 @@ export default function LandingPage() {
       <div className='absolute -bottom-10 -right-32'>
         <img src='./4.jpg' className='w-96 rounded-xl object-cover' alt='' />
       </div>
-      <div className='absolute -bottom-10 right-1/3'>
+      <div className='absolute -bottom-10 left-1/3'>
         <img
           src='./education.jpg'
-          className='w-96 rounded-xl object-cover'
+          className='w-[26rem] rounded-xl object-cover'
           alt=''
         />
       </div>
-      <div className='absolute -bottom-5 -left-1/4'>
+      <div className='absolute -bottom-14 -left-1/4'>
         <img
           src='./learning.jpg'
           className='w-2/6 rounded-xl object-cover'

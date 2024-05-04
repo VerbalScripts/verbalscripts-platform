@@ -87,17 +87,29 @@ export default function SolutionsList() {
     },
   ];
 
+  const getColor = (index: number) => {
+    let color = '';
+    if (index == 0) {
+      color = 'ring-orange-500';
+    } else if ((index - 1) % 4 < 2) {
+      color = 'ring-indigo-500';
+    } else {
+      color = 'ring-orange-500';
+    }
+    return color;
+  };
+
   return (
     // <div className='mx-auto  max-w-7xl mt-16 md:mt-20 xl:mt-20'>
     <div className='mt-16 md:mt-20 xl:mt-20'>
-      <dl className='mx-auto grid max-w-none px-6 md:px-16 lg:px-20 xl:px-28 grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 lg:max-w-7xl xl:max-w-7xl lg:grid-cols-2 lg:gap-16'>
+      <dl className='mx-auto grid max-w-none px-6 md:px-16 lg:px-20 xl:px-28 grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 lg:max-w-7xl xl:max-w-7xl lg:grid-cols-2 lg:gap-20'>
         {[...solutions.slice(0, 6)].map((feature, index) => (
           <a
             href={'/solutions/' + feature.href}
             key={feature.name}
             className={classNames(
               'relative transition flex flex-col bg-white items-center justify-start ring-1 ring-inset   hover:ring-1 hover:ring-gray-400 py-8 px-4',
-              index + 1 % 2 == 0 ? 'ring-orange-400' : 'ring-indigo-500',
+              getColor(index),
             )}
           >
             <dt className=''>
@@ -109,7 +121,7 @@ export default function SolutionsList() {
                 />
               </div>
             </dt>
-            <span className='text-[1.35rem] text-center font-semibold leading-7 text-gray-800'>
+            <span className='text-[1.35rem] text-2xl text-center font-bold leading-7 text-gray-900'>
               {feature.name}
             </span>
             <span className='mt-2 text-lg  text-center leading-7 text-gray-700 line-clamp-4'>
@@ -117,7 +129,7 @@ export default function SolutionsList() {
             </span>
 
             <span className='my-3'>
-              <span className='flex items-center text-orange-400 font-semibold text-lg underline underline-offset-4'>
+              <span className='flex items-center text-orange-500 font-semibold text-xl underline underline-offset-4'>
                 <span>Learn More</span>
 
                 <FontAwesomeIcon className='ml-4' icon={faLongArrowRight} />

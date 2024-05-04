@@ -11,6 +11,8 @@ import PopularPartner from '@/components/PopularPartner';
 import type { Metadata } from 'next';
 import TawkMessenger from '@/lib/TawkMessenger';
 import SolutionsList from '@/components/SolutionsList';
+import { faLongArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const metadata: Metadata = {
   title:
@@ -106,13 +108,13 @@ export default function Home() {
         <div className='absolute -top-16 left-36 mt-10 flex flex-col md:flex-row items-start md:items-center justify-center gap-6'>
           <a
             href='/solutions'
-            className='rounded-xl bg-orange-500 px-12 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600'
+            className='rounded-xl btn-vlg  px-12 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600'
           >
             Services
           </a>
           <a
             href='/services'
-            className='rounded-xl bg-orange-500 px-12 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600'
+            className='rounded-xl btn-vlg  px-12 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600'
           >
             Industries
           </a>
@@ -120,12 +122,12 @@ export default function Home() {
         <PopularPartner />
       </div>
 
-      <div className='py-20 md:py-14' style={{ background: '#FAFAFA' }}>
+      <div className='py-20 md:py-16' style={{ background: '#FAFAFA' }}>
         <div className='mx-auto max-w-7xl px-6 md:px-16 lg:px-16 xl:px-28'>
           <div className='flex items-center gap-x-6'>
             <div className='min-w-[30rem] text-left'>
-              <h2 className='text-xl font-semibold leading-7 capitalize text-gray-700'>
-                Why <span className='text-orange-400'>Verbal</span>Scripts
+              <h2 className='text-xl font-bold leading-7 capitalize text-orange-500'>
+                Why <span className='text-gray-800'>Verbal</span>Scripts
               </h2>
               <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
                 We transcribe <br></br>with Precision <br></br>and <br></br>
@@ -140,9 +142,10 @@ export default function Home() {
               <div className='mt-10'>
                 <a
                   href='/upload-files'
-                  className='rounded-xl bg-orange-500 px-12 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600'
+                  className='inline-flex  items-center gap-x-2 rounded-lg bg-orange-500 px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
                 >
-                  Order Now
+                  <span>Order Now</span>
+                  <FontAwesomeIcon className='ml-4' icon={faLongArrowRight} />
                 </a>
               </div>
             </div>
@@ -152,7 +155,7 @@ export default function Home() {
               {features.map((feature) => (
                 <div
                   key={feature.name}
-                  className='relative py-8 px-4  shadow-sm bg-white border-b-4 border-indigo-500'
+                  className='relative py-8 px-4  shadow-sm bg-white border-t border-b-4 border-indigo-600'
                 >
                   <dt className='flex flex-col items-center text-base font-semibold leading-7 text-gray-900'>
                     <Image
@@ -212,7 +215,7 @@ export default function Home() {
                 What Services We Offer
               </h2>
               <p className='mt-2 text-4xl md:text-5xl capitalize  font-bold text-left text-gray-900 section-title'>
-                Transcription Needs? <br></br> Meet out exceptional Services
+                Transcription Needs ? <br></br> Meet out exceptional Services
               </p>
             </div>
             <div>
@@ -243,7 +246,7 @@ export default function Home() {
             {/* <h2 className="text-base font-semibold leading-7 text-indigo-600">
             You did{ "'"}nt Hear it from us
           </h2> */}
-            <p className='mt-2 text-4xl md:text-5xl font-bold  text-orange-400'>
+            <p className='mt-2 text-4xl md:text-5xl font-bold  text-orange-500'>
               4-step Process for Concistent Results
             </p>
             <p className='mx-auto max-w-2xl mt-6 text-xl leading-8 text-gray-600'>
@@ -389,7 +392,7 @@ export default function Home() {
               <h2 className='text-xl font-semibold leading-7 capitalize text-orange-400'>
                 Want to be a transcriber
               </h2>
-              <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
+              <p className='mt-2 capitalize text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
                 Got the experience we<br></br>need? <br></br> We are looking for
                 you
               </p>
@@ -433,7 +436,7 @@ export default function Home() {
               <div className='flex justify-center mt-16 md:mr-16'>
                 <a
                   href='/upload-files'
-                  className='rounded-xl   bg-orange-400 px-8 py-3.5 text-lg font-bold text-white shadow-sm transition  hover:shadow-md hover:bg-indigo-400 hover:rind focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-indigo-300'
+                  className='rounded-xl   bg-orange-400 px-8 py-3.5 text-lg font-bold text-white shadow-sm transition  hover:shadow-md hover:bg-indigo-400 hover:rind focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-indigo-300 btn-vlg'
                 >
                   Become a Transcriber
                 </a>
