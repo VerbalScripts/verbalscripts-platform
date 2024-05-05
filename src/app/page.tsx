@@ -36,15 +36,14 @@ export default function Home() {
         ' VerbalScripts has done a terrific job in helping us meet a tight deadline for a demanding client. They helped us tailor the transcripts to our particular needs, and were always available, helpful and patient.”',
       name: 'Limor Hochberg',
       imageUrl:
-        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+        '/testimonials/1.png',
       occupation: 'UL',
     },
     {
       description:
         ' “We used VerbalScripts for transcripts and the quality has been great. Turnaround speed is fast and the process to upload files is very simple. Very responsive.”',
       name: 'Bart Langton',
-      imageUrl:
-        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+      imageUrl: '/testimonials/2.png',
       occupation: 'Ipsos',
     },
     {
@@ -52,9 +51,26 @@ export default function Home() {
         " “It's been a great experience working with VerbalScripts. Their transcription is the best quality for the cheapest price. They worked with us to create a business rate and the quality was great.”",
       name: 'Angel Cruz',
       imageUrl:
-        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+      '/testimonials/3.png',
       occupation: 'Datu Research',
     },
+    {
+      description:
+        " “It's been a great experience working with VerbalScripts. Their transcription is the best quality for the cheapest price. They worked with us to create a business rate and the quality was great.”",
+      name: 'Angel Cruz',
+      imageUrl:
+      '/testimonials/4.png',
+      occupation: 'Datu Research',
+    },
+    {
+      description:
+        " “It's been a great experience working with VerbalScripts. Their transcription is the best quality for the cheapest price. They worked with us to create a business rate and the quality was great.”",
+      name: 'Angel Cruz',
+      imageUrl:
+      '/testimonials/5.png',
+      occupation: 'Datu Research',
+    },
+
   ];
 
   const features = [

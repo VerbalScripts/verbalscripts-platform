@@ -234,5 +234,10 @@ body {
 
 
 .btn-vlg {
-  background:linear-gradient(125deg, #FAAA19 80%, #FF450DCC 100%);
+  /* background:linear-gradient(125deg, #FAAA19 80%, #FF450DCC 100%); */
+background: linear-gradient(45deg, #FAAA19 0%, #FF450D 80%);
 }
+
+/* .swiper-slide-active  > figure > figcaption{
+  transform: scale(1.2);
+} */
