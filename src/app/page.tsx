@@ -246,7 +246,7 @@ export default function Home() {
             {/* <h2 className="text-base font-semibold leading-7 text-indigo-600">
             You did{ "'"}nt Hear it from us
           </h2> */}
-            <p className='mt-2 text-4xl md:text-5xl font-bold  text-orange-500'>
+            <p className='mt-2 text-5xl md:text-5xl font-bold  text-orange-500'>
               4-step Process for Concistent Results
             </p>
             <p className='mx-auto max-w-2xl mt-6 text-xl leading-8 text-gray-600'>
@@ -387,8 +387,8 @@ export default function Home() {
 
       <div className='bg-white py-24'>
         <div className='mx-auto max-w-7xl  px-6 md:px-16 lg:px-16 xl:px-28'>
-          <div className='flex items-center gap-x-6 '>
-            <div className='min-w-[34rem] text-left'>
+          <div className='flex flex-wrap md:flex-nowrap items-center gap-x-6 '>
+            <div className='order-2 md:order-1  md:min-w-[25rem] lg:min-w-[30rem] text-left'>
               <h2 className='text-xl font-semibold leading-7 capitalize text-orange-400'>
                 Want to be a transcriber
               </h2>
@@ -433,7 +433,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className='flex justify-center mt-16 md:mr-16'>
+              <div className='flex justify-start md:justify-center mt-16 md:mr-16'>
                 <a
                   href='/upload-files'
                   className='rounded-xl   bg-orange-400 px-8 py-3.5 text-lg font-bold text-white shadow-sm transition  hover:shadow-md hover:bg-indigo-400 hover:rind focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-indigo-300 btn-vlg'
@@ -442,9 +442,9 @@ export default function Home() {
                 </a>
               </div>
             </div>
-            <div className='hidden  items-center justify-center min-h-[28rem] bg-gray-100 md:flex relative md:-mt-16 '>
+            <div className='mb-10 overflow-hidden py-14 md:py-0 md:mb-0 order-1 md:order-2 items-center justify-center  md:min-h-[28rem] bg-gray-100 md:flex relative md:-mt-16 '>
               <img
-                className=' w-[20rem] md:w-[28rem]  xl:w-[30rem]'
+                className=' w-[40rem] md:w-[30rem]  xl:w-[30rem]'
                 src='/transcriber.svg'
                 alt='Ai Powered'
               />

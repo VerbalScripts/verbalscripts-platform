@@ -18,8 +18,8 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
       <div className='absolute  right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center' />
 
       <div className='mx-auto max-w-2xl text-left lg:text-center'>
-        <p className='mt-2 text-4xl font-bold   text-gray-900 sm:text-5xl'>
-          What are people saying about{' '}
+        <p className='mt-2 text-5xl font-bold  section-title text-gray-900 sm:text-5xl'>
+          What  people are saying about{' '}
           <span className='text-orange-400'>VerbalScripts</span>
         </p>
         {/* <p className="mt-6 text-lg leading-8 text-gray-600">
