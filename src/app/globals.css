@@ -70,7 +70,7 @@ body {
   animation: wiggle_nav_top 0.5s ease-in-out forwards;
 }
 
-.page-header {
+.page-header {  
   /* position: absolute;
   top: 0;
   right: 0;
@@ -82,7 +82,6 @@ body {
 
 .is-sticky {
   position: fixed;
-  padding: 8px 0;
   backdrop-filter: blur(10px);
   animation: slideDown 0.35s ease-out;
   top: 0;

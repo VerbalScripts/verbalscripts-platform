@@ -11,6 +11,7 @@ import {
   ArrowUpTrayIcon,
 } from '@heroicons/react/24/outline';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
+import { v4 as uuid } from 'uuid';
 
 import {
   ArrowPathIcon,
@@ -27,48 +28,6 @@ function classNames(...classes: string[]): string {
 }
 
 export default function AppHeader() {
-  const [open, setOpen] = useState(false);
-  const [showQuote, setShowQuote] = useState(false);
-  let timeout: ReturnType<typeof setTimeout>;
-  const timeoutDuration: number = 100;
-
-  // control popover
-  const [menuOpen, setMenuOpen] = useState(false); // reset state on startup
-
-  const buttonRef = useRef<HTMLButtonElement>(null);
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-    // toggle menu by clicking button ref
-    buttonRef?.current?.click();
-  };
-
-  // add delay before opening menu
-  const onHover = (open: boolean, action: string) => {
-    // if menu is open = close || close = open
-    if (
-      (!open && !menuOpen && action == 'onMouseEnter') ||
-      (!open && !menuOpen && action == 'onMouseLeave')
-    )
-      // clear delay
-      clearTimeout(timeout);
-    timeout = setTimeout(() => toggleMenu(), timeoutDuration);
-  };
-
-  // const handleClick = (open: boolean) => {
-  //   setMenuOpen(!open);
-  //   clearTimeout(timeout);
-  // };
-
-  const handleClickOutside = (event: Event) => {
-    if (
-      buttonRef?.current &&
-      !buttonRef?.current?.contains(event.target as Node)
-    ) {
-      event.stopPropagation();
-    }
-  };
-
   const services: Array<NavLabel> = [
     {
       name: 'Legal Transcription',
@@ -199,6 +158,75 @@ export default function AppHeader() {
     },
   ];
 
+  const menuPopovers = [
+    { title: 'Industry', items: [...solutions] },
+    { title: 'Services', items: [...services] },
+    { title: 'Company', items: [...resources] },
+  ];
+
+  const [open, setOpen] = useState(false);
+  const [showQuote, setShowQuote] = useState(false);
+  let timeout: ReturnType<typeof setTimeout>;
+  const timeoutDuration: number = 10;
+
+  const buttonRefs = useRef<HTMLButtonElement[]>([]);
+
+  const [openMenus, setOpenMenus] = useState<boolean[]>(
+    menuPopovers.map(() => false),
+  );
+
+  const toggleMenu = (index: number) => {
+    setOpenMenus((_prev) => {
+      const to_update = [...menuPopovers.map(() => false)];
+      to_update[index] = !_prev[index];
+      return [...to_update];
+    });
+  };
+
+  const clearOpenMenu = () => {
+    setOpenMenus(() => [...menuPopovers.map(() => false)]);
+  };
+
+  // add delay before opening menu
+  const onHover = (open: boolean, action: string, index: number) => {
+    // if menu is open = close || close = open
+    if (
+      (!open && !openMenus[index] && action == 'onMouseEnter') ||
+      (open && openMenus[index] && action == 'onMouseLeave')
+    ) {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => toggleMenu(index), timeoutDuration);
+    }
+    // clear delay
+  };
+
+  useEffect(() => {
+    const activeIndex = openMenus.findIndex((value) => value);
+    if (buttonRefs.current[activeIndex]) {
+      // toggle menu by clicking button ref
+      buttonRefs.current[activeIndex].click();
+    }
+  }, [openMenus]);
+
+  // useEffect(() => {
+  //   console.log(buttonRefs)
+  // }, [buttonRefs])
+  // const handleClick = (open: boolean) => {
+  //   setMenuOpen(!open);
+  //   clearTimeout(timeout);
+  // };
+
+  const handleClickOutside = (event: Event) => {
+    buttonRefs.current.forEach((buttonRef) => {
+      if (buttonRef && !buttonRef.contains(event.target as Node)) {
+       
+        event.stopPropagation();
+        clearOpenMenu();
+      }
+    });
+
+  };
+
   useEffect(() => {
     if (window != undefined) {
       window.addEventListener('scroll', () => {
@@ -213,12 +241,11 @@ export default function AppHeader() {
             ?.classList.remove('is-sticky', 'shadow-lg');
         }
       });
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
     }
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
   });
 
   return (
@@ -226,7 +253,7 @@ export default function AppHeader() {
       <GetAQuoteModal open={showQuote} setOpen={setShowQuote} />
 
       <div className='mx-auto  max-w-7xl relative z-30'>
-        <p className='hidden relative z-50 md:flex  h-10 items-center  justify-end gap-6 px-4 text-sm font-medium text-white sm:px-6 lg:px-8'>
+        <p className='hidden relative z-50 md:flex  h-10 items-center  justify-end gap-6  text-sm font-medium text-white px-6 md:px-16 lg:px-20'>
           <a
             href='/auth/login'
             className='-mx-3 flex items-center underline  underline-offset-4 gap-x-5 rounded-lg px-3 py-2.5 text-base  transition leading-7 text-white hover:text-orange-400'
@@ -263,12 +290,16 @@ export default function AppHeader() {
         )}
       >
         <nav
-          className='mx-auto flex relative max-w-7xl items-center justify-end px-6 py-4 lg:px-8'
+          className='mx-auto flex relative max-w-7xl items-center justify-end px-6 py-4 md:px-16 lg:px-20'
           aria-label='Global'
         >
-          <div className='flex lg:flex-1 absolute -top-1 md:-top-2 top-0 left-8'>
+          <div className='flex lg:flex-1 absolute -top-1 md:-top-2 left-6 md:left-16  lg:left-20'>
             <a href='/' className='-m-1.5 p-1.5 text-2xl font-bold'>
-             <img className='h-[4.0rem] md:h-[4.0rem] lg:h-[4.8rem]' src="/icons/logo-png.png" alt="" />
+              <img
+                className='h-[4.0rem] md:h-[4.0rem] lg:h-[4.8rem]'
+                src='/icons/logo-png.png'
+                alt=''
+              />
             </a>
           </div>
           <div className='flex lg:hidden'>
@@ -285,155 +316,76 @@ export default function AppHeader() {
           <Popover.Group className='hidden lg:flex lg:gap-x-1 lg:items-center'>
             <a
               href='/'
-              className='text-md uppercase font-semibold px-2 py-1 leading-6 text-gray-900 transition hover:bg-orange-100'
+              className='text-md uppercase font-semibold px-2 py-2.5 leading-6 text-gray-900 transition hover:bg-orange-100'
             >
               Home
             </a>
 
-            <Popover
-              onMouseEnter={() => onHover(open, 'onMouseEnter')}
-              onMouseLeave={() => onHover(open, 'onMouseLeave')}
-              className='relative'
-            >
-              {({ open }) => (
-                <>
-                  <Popover.Button
-                    ref={buttonRef}
-                    className='flex uppercase text-sm px-2 py-1 items-center gap-x-1 text-md font-semibold leading-6 text-gray-900'
-                  >
-                    Industries
-                    <ChevronDownIcon
-                      className='h-5 w-5 flex-none text-gray-400'
-                      aria-hidden='true'
-                    />
-                  </Popover.Button>
-
-                  <Transition
-                    show={open}
-                    as={Fragment}
-                    enter='transition ease-out duration-200'
-                    enterFrom='opacity-0 translate-y-1'
-                    enterTo='opacity-100 translate-y-0'
-                    leave='transition ease-in duration-150'
-                    leaveFrom='opacity-100 translate-y-0'
-                    leaveTo='opacity-0 translate-y-1'
-                  >
-                    <Popover.Panel className='absolute -left-8 top-4 z-10 mt-3 w-screen max-w-xl overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5'>
-                      <div className='p-4 w-full grid  grid-cols-1 gap-x-8 gap-y-3 lg:grid-cols-2'>
-                        {solutions.map((item: NavLabel) => (
-                          <NavItem key={item.name} label={item} />
-                        ))}
-                      </div>
-                      {/* <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
-                  {callsToAction.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
+            {menuPopovers.map((popover, index) => (
+              <Popover
+                key={uuid()}
+                onMouseEnter={() =>
+                  onHover(openMenus[index], 'onMouseEnter', index)
+                }
+                onMouseLeave={() =>
+                  onHover(openMenus[index], 'onMouseLeave', index)
+                }
+                className='relative'
+              >
+                {({ open }) => (
+                  <>
+                    <Popover.Button
+                      ref={(element) =>
+                        (buttonRefs.current[index] =
+                          element as HTMLButtonElement)
+                      }
+                      className='flex uppercase text-sm px-2 py-2.5 items-center gap-x-1 text-md font-semibold leading-6 text-gray-900'
                     >
-                      <item.icon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
-                      {item.name}
-                    </a>
-                  ))}
-                </div> */}
-                    </Popover.Panel>
-                  </Transition>
-                </>
-              )}
-            </Popover>
+                      {popover.title}
+                      <ChevronDownIcon
+                        className='h-5 w-5 flex-none text-gray-400'
+                        aria-hidden='true'
+                      />
+                    </Popover.Button>
 
-            <Popover className='relative'>
-              {({ open }) => (
-                <>
-                  <Popover.Button className='flex uppercase px-2 py-1 items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900'>
-                    Services
-                    <ChevronDownIcon
-                      className='h-5 w-5 flex-none text-gray-400'
-                      aria-hidden='true'
-                    />
-                  </Popover.Button>
-
-                  <Transition
-                    show={open}
-                    as={Fragment}
-                    enter='transition ease-out duration-200'
-                    enterFrom='opacity-0 translate-y-1'
-                    enterTo='opacity-100 translate-y-0'
-                    leave='transition ease-in duration-150'
-                    leaveFrom='opacity-100 translate-y-0'
-                    leaveTo='opacity-0 translate-y-1'
-                  >
-                    <Popover.Panel className='absolute -left-8 top-4 z-10 mt-3 w-screen max-w-xl overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5'>
-                      <div className='p-4 w-full grid  grid-cols-1 gap-x-8 gap-y-3 lg:grid-cols-2'>
-                        {services.map((item: NavLabel) => (
-                          <NavItem key={item.name} label={item} />
-                        ))}
-                      </div>
-                      {/* <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
-                  {callsToAction.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
+                    <Transition
+                      show={open}
+                      as={Fragment}
+                      enter='transition ease-out duration-200'
+                      enterFrom='opacity-0 translate-y-1'
+                      enterTo='opacity-100 translate-y-0'
+                      leave='transition ease-in duration-150'
+                      leaveFrom='opacity-100 translate-y-0'
+                      leaveTo='opacity-0 translate-y-1'
                     >
-                      <item.icon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
-                      {item.name}
-                    </a>
-                  ))}
-                </div> */}
-                    </Popover.Panel>
-                  </Transition>
-                </>
-              )}
-            </Popover>
+                      <Popover.Panel className='absolute -left-8 top-8 z-10 mt-3 w-screen max-w-xl overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5'>
+                        <div className='p-4 w-full grid  grid-cols-1 gap-x-8 gap-y-3 lg:grid-cols-2'>
+                          {popover.items.map((item: NavLabel) => (
+                            <NavItem key={item.name} label={item} />
+                          ))}
+                        </div>
+                        {/* <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
+      {callsToAction.map((item) => (
+        <a
+          key={item.name}
+          href={item.href}
+          className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
+        >
+          <item.icon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
+          {item.name}
+        </a>
+      ))}
+    </div> */}
+                      </Popover.Panel>
+                    </Transition>
+                  </>
+                )}
+              </Popover>
+            ))}
 
-            <Popover className='relative'>
-              {({ open }) => (
-                <>
-                  <Popover.Button className='flex uppercase px-2 py-1 items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900'>
-                    Company
-                    <ChevronDownIcon
-                      className='h-5 w-5 flex-none text-gray-400'
-                      aria-hidden='true'
-                    />
-                  </Popover.Button>
-
-                  <Transition
-                    show={open}
-                    as={Fragment}
-                    enter='transition ease-out duration-200'
-                    enterFrom='opacity-0 translate-y-1'
-                    enterTo='opacity-100 translate-y-0'
-                    leave='transition ease-in duration-150'
-                    leaveFrom='opacity-100 translate-y-0'
-                    leaveTo='opacity-0 translate-y-1'
-                  >
-                    <Popover.Panel className='absolute -left-10 top-full z-10 mt-3 w-screen max-w-sm overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5'>
-                      <div className='p-4'>
-                        {resources.map((item: NavLabel) => (
-                          <NavItem key={item.name} label={item} />
-                        ))}
-                      </div>
-                      {/* <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
-                  {callsToAction.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
-                    >
-                      <item.icon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
-                      {item.name}
-                    </a>
-                  ))}
-                </div> */}
-                    </Popover.Panel>
-                  </Transition>
-                </>
-              )}
-            </Popover>
             <a
               href='/contact-us'
-              className='text-sm  uppercase font-semibold rounded-md leading-6 py-1 px-2 text-gray-900 transition hover:bg-orange-100'
+              className='text-sm  uppercase font-semibold rounded-md leading-6 py-2.5  px-2 text-gray-900 transition hover:bg-orange-100'
             >
               Contact
             </a>
