@@ -126,7 +126,7 @@ export default function Home() {
         <div className='mx-auto max-w-7xl px-6 md:px-16 lg:px-16 xl:px-28'>
           <div className='flex flex-wrap md:flex-nowrap items-center gap-x-6'>
             <div className='md:min-w-[25rem] lg:min-w-[30rem] text-left'>
-              <h2 className='text-xl font-bold leading-7 capitalize text-orange-500'>
+              <h2 className='text-xl font-bold leading-7 capitalize secondary-text'>
                 Why <span className='text-gray-800'>Verbal</span>Scripts
               </h2>
               <p className='mt-2 text-5xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
@@ -142,7 +142,7 @@ export default function Home() {
               <div className='mt-10'>
                 <a
                   href='/upload-files'
-                  className='inline-flex  items-center gap-x-2 rounded-lg bg-orange-500 px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
+                  className='inline-flex  items-center gap-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
                 >
                   <span>Order Now</span>
                   <FontAwesomeIcon className='ml-4' icon={faLongArrowRight} />
@@ -211,7 +211,7 @@ export default function Home() {
         <div className='mx-auto max-w-7xl px-6 md:px-16 lg:px-16 xl:px-28'>
           <div className='flex flex-wrap md:flex-nowrap items-center  gap-x-6'>
             <div className='md:min-w-[25rem] lg:min-w-[30rem] text-left'>
-              <h2 className='text-xl font-semibold capitalize leading-7 text-orange-400'>
+              <h2 className='text-xl font-semibold capitalize leading-7 secondary-text'>
                 What Services We Offer
               </h2>
               <p className='mt-2 text-5xl md:text-5xl capitalize  font-bold text-left text-gray-900 section-title'>
@@ -246,7 +246,7 @@ export default function Home() {
             {/* <h2 className="text-base font-semibold leading-7 text-indigo-600">
             You did{ "'"}nt Hear it from us
           </h2> */}
-            <p className='mt-2 text-5xl md:text-5xl font-bold  text-orange-500'>
+            <p className='mt-2 text-5xl md:text-5xl font-bold  secondary-text'>
               4-step Process for Concistent Results
             </p>
             <p className='mx-auto max-w-2xl mt-6 text-xl leading-8 text-gray-600'>
@@ -389,7 +389,7 @@ export default function Home() {
         <div className='mx-auto max-w-7xl  px-6 md:px-16 lg:px-16 xl:px-28'>
           <div className='flex flex-wrap md:flex-nowrap items-center gap-x-6 '>
             <div className='order-2 md:order-1  md:min-w-[25rem] lg:min-w-[30rem] text-left'>
-              <h2 className='text-xl font-semibold leading-7 capitalize text-orange-400'>
+              <h2 className='text-xl font-semibold leading-7 capitalize secondary-text'>
                 Want to be a transcriber
               </h2>
               <p className='mt-2 capitalize text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
@@ -397,7 +397,7 @@ export default function Home() {
                 you
               </p>
 
-              <div className='flex flex-col  items-start gap-x-3 gap-y-5  mt-5 border-l-4 border-orange-400'>
+              <div className='flex flex-col  items-start gap-x-3 gap-y-5  mt-5 border-l-4 secondary-border'>
                 <div className='flex items-center -ml-[10px]'>
                   <div className=' flex  items-center '>
                     <span className='flex items-center justify-center w-4 h-4 rounded-full bg-indigo-500 text-indigo-500 font-bold'></span>

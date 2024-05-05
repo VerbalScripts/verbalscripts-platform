@@ -90,11 +90,11 @@ export default function SolutionsList() {
   const getColor = (index: number) => {
     let color = '';
     if (index == 0) {
-      color = 'ring-orange-500';
+      color = 'secondary-border';
     } else if ((index - 1) % 4 < 2) {
-      color = 'ring-indigo-500';
+      color = 'border-indigo-500';
     } else {
-      color = 'ring-orange-500';
+      color = 'secondary-border';
     }
     return color;
   };
@@ -108,7 +108,7 @@ export default function SolutionsList() {
             href={'/solutions/' + feature.href}
             key={feature.name}
             className={classNames(
-              'relative transition flex flex-col bg-white items-center justify-start ring-1 ring-inset   hover:ring-1 hover:ring-gray-400 py-8 px-4',
+              'relative  flex flex-col bg-white items-center transition-all justify-start border hover:ring-1 hover:border-indigo-400 py-8 px-4',
               getColor(index),
             )}
           >

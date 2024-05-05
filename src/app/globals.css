@@ -11,6 +11,7 @@
   --swiper-pagination-color: rgb(249 115 22);
   --white: #fff;
   --white: red;
+  --secondary-text: #FF450D;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -85,6 +86,15 @@ body {
   backdrop-filter: blur(10px);
   animation: slideDown 0.35s ease-out;
   top: 0;
+}
+
+.secondary-text {
+  color: var(--secondary-text);
+}
+
+.secondary-border {
+  border-image: linear-gradient(125deg, #FAAA19 40%, #FF450DCC 100%);;
+  border-image-slice: 1;
 }
 
 .login-img {

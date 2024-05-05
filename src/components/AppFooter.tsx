@@ -150,7 +150,7 @@ export default function AppFooter() {
 
   return (
     <div className='relative isolate overflow-hidden pb-36 md:pb-0 pt-16 sm:pt-24 lg:pt-32'>
-      <div className='mx-auto max-w-7xl xl:max-w-7xl px-6 lg:px-8 xl:px-22'>
+      <div className='mx-auto max-w-7xl lg:max-w-6xl px-6 lg:px-8 xl:px-22'>
         {/* <div className='mx-auto flex flex-col md:flex-row   md:justify-between md:items-end border-b border-gray-300/10 pb-12 mb-8'>
           <div className=''>
             <h2 className='text-3xl font-bold tracking-tight text-white sm:text-4xl'>
@@ -225,12 +225,10 @@ export default function AppFooter() {
         </div>
         {/* contact information */}
         <div className='max-w-none lg:max-w-none border-b border-gray-300/10'>
-          <dl className='grid  grid-cols-1 md:grid-cols-3   lg:gap-x-8 gap-y-10  lg:grid-cols-4 lg:gap-y-16  pb-12'>
+          <dl className='grid justify-evenly grid-cols-1 md:grid-cols-3   lg:gap-x-8 gap-y-10  lg:grid-cols-4 lg:gap-y-16  pb-12'>
             <div className='flex flex-col gap-y-2'>
-              <a href='#' className='-m-1.5  mb-3 p-1.5'>
-                <span className='text-white font-bold text-3xl '>
-                  VerbalScripts
-                </span>
+              <a href='#' className='-m-1.5  mb-1 p-1.5'>
+                <img src="/icons/logo-png.png" className='w-[13rem] md:w-[11rem] lg:w-[10rem] ' alt="verbalscript footer logo" />
               </a>
 
               <a href='mailto:sales@verbalscripts.com' className='-m-1.5 p-1.5'>
@@ -288,6 +286,15 @@ export default function AppFooter() {
                   />
                 </a>
               </div>
+
+                 <div className='-m-1.5 mt-3 p-1.5  inline-flex '>
+                <a
+                  href='/freelancers'
+                  className='bg-indigo-600 font-semibold text-lg rounded-full px-5 py-2.5 hover:bg-indigo-500 '
+                >
+                  Become a Transcriber
+                </a>
+              </div>
             </div>
 
             <div className='flex flex-col gap-y-2'>
@@ -299,7 +306,7 @@ export default function AppFooter() {
 
               {services.map((item) => (
                 <a key={item.name} href={item.href} className='-m-1.5 p-1.5 '>
-                  <span className='text-gray-300  text-lg hover:text-indigo-500'>
+                  <span className='text-gray-300 text:md  lg:text-lg hover:text-indigo-500'>
                     {item.name}
                   </span>
                 </a>
@@ -315,7 +322,7 @@ export default function AppFooter() {
 
               {solutions.map((item) => (
                 <a key={item.name} href={item.href} className='-m-1.5 p-1.5'>
-                  <span className='text-gray-300  text-lg hover:text-indigo-500'>
+                  <span className='text-gray-300 text:md  lg:text-lg hover:text-indigo-500'>
                     {item.name}
                   </span>
                 </a>
@@ -332,56 +339,52 @@ export default function AppFooter() {
                 href='/about-us'
                 className='-m-1.5 p-1.5 hover:text-indigo-500'
               >
-                <span className='text-gray-300 text-lg'>About Us</span>
+                <span className='text-gray-300 text:md  lg:text-lg'>About Us</span>
               </a>
               <a
                 href='/contact-us'
                 className='-m-1.5 p-1.5 hover:text-indigo-500'
               >
-                <span className='text-gray-300 text-lg '>Support</span>
+                <span className='text-gray-300 text:md  lg:text-lg '>Support</span>
               </a>
 
               <a href='/faqs' className='-m-1.5 p-1.5 hover:text-indigo-500'>
-                <span className='text-gray-300 text-lg '>FAQs</span>
+                <span className='text-gray-300 text:md  lg:text-lg '>FAQs</span>
               </a>
 
-              <div className='-m-1.5 mt-3 p-1.5  inline-flex '>
-                <a
-                  href='/freelancers'
-                  className='bg-indigo-600 font-semibold text-lg rounded-full px-5 py-2.5 hover:bg-indigo-500 '
-                >
-                  Become a Transcriber
-                </a>
-              </div>
+           
             </div>
           </dl>
 
-          <div className='flex flex-col md:flex-row  md:justify-center md:items-center text-gray-300 py-4 text-md'>
-            <a href='#' className='px-1.5  md:border-r border-gray-300'>
+     
+        </div>
+
+        <div className='flex justify-between flex-wrap md:flex-nowrap  items-center'>
+        <div className='flex mt-3 md:mt-0  items-center flex-wrap'>
+            <a href='#' className='px-1.5  py-0 md:border-r border-gray-300'>
               <span className='text-gray-300  hover:text-indigo-500'>
-                Client Terms
+                Terms of service
               </span>
             </a>{' '}
             <a href='#' className='px-1.5 md:border-r border-gray-300'>
               <span className='text-gray-300  hover:text-indigo-500'>
-                Freelancer Terms
+                Privacy Policy
               </span>
             </a>
             <a href='#' className='px-1.5 md:border-r border-gray-300'>
               <span className='text-gray-300  hover:text-indigo-500'>
-                Client Privacy & data securiy
+                Accessibility
               </span>
             </a>
-            <a href='#' className='px-1.5 md:border-r border-gray-300'>
+            <a href='#' className='px-1.5  '>
               <span className='text-gray-300  hover:text-indigo-500'>
-                Freelancer Worker Privacy
+                Legal
               </span>
             </a>
           </div>
-        </div>
-
-        <div className='flex justify-center text-gray-300 py-4 text-sm'>
+          <div className='text-gray-300 py-4 text-sm'>
           &copy; VerbalScripts 2024. All rights reserved.
+          </div>
         </div>
       </div>
     </div>
