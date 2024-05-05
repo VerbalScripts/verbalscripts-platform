@@ -46,7 +46,7 @@ export default function LandingPage() {
       </div>
 
       <div className='absolute -bottom-10 -right-44 hidden lg:block'>
-        <img src='./4.jpg' className='w-96 rounded-xl object-cover' alt='' />
+        <img src='./shutterstock_1018721356_1024.jpg' className='w-96 rounded-xl object-cover' alt='' />
       </div>
       <div className='absolute -bottom-10 left-1/3 hidden lg:block'>
         <img
