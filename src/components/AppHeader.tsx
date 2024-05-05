@@ -266,9 +266,9 @@ export default function AppHeader() {
           className='mx-auto flex relative max-w-7xl items-center justify-end px-6 py-4 lg:px-8'
           aria-label='Global'
         >
-          <div className='flex lg:flex-1 absolute top-0 left-8'>
+          <div className='flex lg:flex-1 absolute -top-1 md:-top-2 top-0 left-8'>
             <a href='/' className='-m-1.5 p-1.5 text-2xl font-bold'>
-             <img className='h-[4.8rem]' src="/icons/logo-png.png" alt="" />
+             <img className='h-[4.0rem] md:h-[4.0rem] lg:h-[4.8rem]' src="/icons/logo-png.png" alt="" />
             </a>
           </div>
           <div className='flex lg:hidden'>

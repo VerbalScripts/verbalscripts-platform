@@ -45,17 +45,17 @@ export default function LandingPage() {
         </p>
       </div>
 
-      <div className='absolute -bottom-10 -right-32'>
+      <div className='absolute -bottom-10 -right-44 hidden lg:block'>
         <img src='./4.jpg' className='w-96 rounded-xl object-cover' alt='' />
       </div>
-      <div className='absolute -bottom-10 left-1/3'>
+      <div className='absolute -bottom-10 left-1/3 hidden lg:block'>
         <img
           src='./education.jpg'
           className='w-[26rem] rounded-xl object-cover'
           alt=''
         />
       </div>
-      <div className='absolute -bottom-14 -left-1/4'>
+      <div className='absolute -bottom-14 -left-1/4 hidden lg:block'>
         <img
           src='./learning.jpg'
           className='w-2/6 rounded-xl object-cover'

@@ -104,17 +104,17 @@ export default function Home() {
       <AppHeader />
       <LandingPage />
 
-      <div className='relative bg-white py-4'>
-        <div className='absolute -top-16 left-36 mt-10 flex flex-col md:flex-row items-start md:items-center justify-center gap-6'>
+      <div className='relative bg-white py-0'>
+        <div className='absolute  -top-16 left-10 md:left-28 lg:left-36 mt-10 flex  items-start md:items-center justify-center gap-6'>
           <a
             href='/solutions'
-            className='rounded-xl btn-vlg  px-12 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600'
+            className='rounded-lg btn-vlg px-6  md:px-12 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600'
           >
             Services
           </a>
           <a
             href='/services'
-            className='rounded-xl btn-vlg  px-12 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600'
+            className='rounded-lg btn-vlg px-6  md:px-12 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600'
           >
             Industries
           </a>
@@ -124,12 +124,12 @@ export default function Home() {
 
       <div className='py-20 md:py-16' style={{ background: '#FAFAFA' }}>
         <div className='mx-auto max-w-7xl px-6 md:px-16 lg:px-16 xl:px-28'>
-          <div className='flex items-center gap-x-6'>
-            <div className='min-w-[30rem] text-left'>
+          <div className='flex flex-wrap md:flex-nowrap items-center gap-x-6'>
+            <div className='md:min-w-[25rem] lg:min-w-[30rem] text-left'>
               <h2 className='text-xl font-bold leading-7 capitalize text-orange-500'>
                 Why <span className='text-gray-800'>Verbal</span>Scripts
               </h2>
-              <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
+              <p className='mt-2 text-5xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
                 We transcribe <br></br>with Precision <br></br>and <br></br>
                 Professionalism.
               </p>
@@ -181,7 +181,7 @@ export default function Home() {
 
       {/* testimonials */}
       <div
-        className='relative py-20 md:py-14'
+        className='relative py-16 md:py-20 lg:py-14'
         style={{ background: '#FAFAFA' }}
       >
         <div
@@ -209,12 +209,12 @@ export default function Home() {
           />
         </div>
         <div className='mx-auto max-w-7xl px-6 md:px-16 lg:px-16 xl:px-28'>
-          <div className='flex items-center gap-x-6'>
-            <div className='min-w-[30rem] text-left'>
+          <div className='flex flex-wrap md:flex-nowrap items-center  gap-x-6'>
+            <div className='md:min-w-[25rem] lg:min-w-[30rem] text-left'>
               <h2 className='text-xl font-semibold capitalize leading-7 text-orange-400'>
                 What Services We Offer
               </h2>
-              <p className='mt-2 text-4xl md:text-5xl capitalize  font-bold text-left text-gray-900 section-title'>
+              <p className='mt-2 text-5xl md:text-5xl capitalize  font-bold text-left text-gray-900 section-title'>
                 Transcription Needs ? <br></br> Meet out exceptional Services
               </p>
             </div>
