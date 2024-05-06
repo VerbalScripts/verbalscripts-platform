@@ -92,8 +92,11 @@ body {
 }
 
 .secondary-border {
+  border-collapse: separate; 
   border-image: linear-gradient(125deg, #FAAA19 40%, #FF450DCC 100%);;
-  border-image-slice: 1;
+  border-image-slice: 4;
+  /* overflow: hidden; */
+  perspective: 1px;
 }
 
 .login-img {

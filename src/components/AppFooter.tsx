@@ -68,7 +68,7 @@ export default function AppFooter() {
       price: '0.10$ per task',
     },
     {
-      name: 'Transcription & Live Captioning',
+      name: 'Focus groups & Interviews',
       description: 'Get a better understanding of your traffic',
       href: '/services/transcription',
       icon: ChartPieIcon,
@@ -149,7 +149,7 @@ export default function AppFooter() {
   ];
 
   return (
-    <div className='relative isolate overflow-hidden pb-36 md:pb-0 pt-16 sm:pt-24 lg:pt-32'>
+    <div className='relative isolate overflow-hidden pb-36 md:pb-0 pt-16 sm:pt-14 lg:pt-24'>
       <div className='mx-auto max-w-7xl lg:max-w-6xl px-6 lg:px-8 xl:px-22'>
         {/* <div className='mx-auto flex flex-col md:flex-row   md:justify-between md:items-end border-b border-gray-300/10 pb-12 mb-8'>
           <div className=''>
@@ -289,10 +289,10 @@ export default function AppFooter() {
 
                  <div className='-m-1.5 mt-3 p-1.5  inline-flex '>
                 <a
-                  href='/freelancers'
-                  className='bg-indigo-600 font-semibold text-lg rounded-full px-5 py-2.5 hover:bg-indigo-500 '
+                  href='/contact-us'
+                  className='bg-indigo-600 font-semibold text-md rounded-full px-5 py-2.5 hover:bg-indigo-500 '
                 >
-                  Become a Transcriber
+                  Huge Project? Get In Touch
                 </a>
               </div>
             </div>

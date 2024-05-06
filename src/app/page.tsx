@@ -448,7 +448,7 @@ export default function Home() {
 
               <div className='flex justify-start md:justify-center mt-16 md:mr-16'>
                 <a
-                  href='/upload-files'
+                  href='/freelancers'
                   className='rounded-xl   bg-orange-400 px-8 py-3.5 text-lg font-bold text-white shadow-sm transition  hover:shadow-md hover:bg-indigo-400 hover:rind focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-indigo-300 btn-vlg'
                 >
                   Become a Transcriber
