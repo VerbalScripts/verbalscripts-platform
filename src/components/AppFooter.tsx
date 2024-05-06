@@ -228,7 +228,11 @@ export default function AppFooter() {
           <dl className='grid justify-evenly grid-cols-1 md:grid-cols-3   lg:gap-x-8 gap-y-10  lg:grid-cols-4 lg:gap-y-16  pb-12'>
             <div className='flex flex-col gap-y-2'>
               <a href='#' className='-m-1.5  mb-1 p-1.5'>
-                <img src="/icons/logo-png.png" className='w-[13rem] md:w-[11rem] lg:w-[10rem] ' alt="verbalscript footer logo" />
+                <img
+                  src='/icons/logo-png.png'
+                  className='w-[13rem] md:w-[11rem] lg:w-[10rem] '
+                  alt='verbalscript footer logo'
+                />
               </a>
 
               <a href='mailto:sales@verbalscripts.com' className='-m-1.5 p-1.5'>
@@ -287,7 +291,7 @@ export default function AppFooter() {
                 </a>
               </div>
 
-                 <div className='-m-1.5 mt-3 p-1.5  inline-flex '>
+              <div className='-m-1.5 mt-3 p-1.5  inline-flex '>
                 <a
                   href='/contact-us'
                   className='bg-indigo-600 font-semibold text-md rounded-full px-5 py-2.5 hover:bg-indigo-500 '
@@ -339,28 +343,28 @@ export default function AppFooter() {
                 href='/about-us'
                 className='-m-1.5 p-1.5 hover:text-indigo-500'
               >
-                <span className='text-gray-300 text:md  lg:text-lg'>About Us</span>
+                <span className='text-gray-300 text:md  lg:text-lg'>
+                  About Us
+                </span>
               </a>
               <a
                 href='/contact-us'
                 className='-m-1.5 p-1.5 hover:text-indigo-500'
               >
-                <span className='text-gray-300 text:md  lg:text-lg '>Support</span>
+                <span className='text-gray-300 text:md  lg:text-lg '>
+                  Support
+                </span>
               </a>
 
               <a href='/faqs' className='-m-1.5 p-1.5 hover:text-indigo-500'>
                 <span className='text-gray-300 text:md  lg:text-lg '>FAQs</span>
               </a>
-
-           
             </div>
           </dl>
-
-     
         </div>
 
         <div className='flex justify-between flex-wrap md:flex-nowrap  items-center'>
-        <div className='flex mt-3 md:mt-0  items-center flex-wrap'>
+          <div className='flex mt-3 md:mt-0  items-center flex-wrap'>
             <a href='#' className='px-1.5  py-0 md:border-r border-gray-300'>
               <span className='text-gray-300  hover:text-indigo-500'>
                 Terms of service
@@ -383,7 +387,7 @@ export default function AppFooter() {
             </a>
           </div>
           <div className='text-gray-300 py-4 text-sm'>
-          &copy; VerbalScripts 2024. All rights reserved.
+            &copy; VerbalScripts 2024. All rights reserved.
           </div>
         </div>
       </div>

@@ -17,7 +17,7 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
   // @ts-ignore
   const [swiper, setSwiper] = useState<ReturnType<SwiperType>>(null);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState<number | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(5);
   const [load, setFirstLoad] = useState(true);
@@ -42,9 +42,9 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
   useEffect(() => {
     if (swiper && load) {
       findMiddleNumber();
-      setFirstLoad(false)
+      setFirstLoad(false);
     } else {
-      console.log(swiper)
+      console.log(swiper);
       const timer = setTimeout(() => {
         swiper.slideTo(activeIndex);
       }, 500);
@@ -53,9 +53,7 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
   }, [swiper]);
 
   useEffect(() => {
-    console.log('change akin', activeIndex);
     if (swiper) {
-      console.log('package index ', activeIndex);
       swiper.slideTo(activeIndex);
     }
   }, [activeIndex]);
@@ -65,10 +63,12 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
   };
 
   useEffect(() => {
-    if (width < 699) {
-      setItemsPerView(3);
+    if (window) {
+      if (window.innerWidth < 699) {
+        setItemsPerView(3);
+      }
     }
-  }, [width]);
+  }, []);
 
   // useEffect(() => {
   // findMiddleNumber();
@@ -113,20 +113,21 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
         </div>
         <div className='flex relative'>
           <div className='bg-white absolute -bottom-[3rem] z-[25] right-0 left-0 h-24'></div>
-          {[...testimonials.slice(0, itemsPerView )].map((testimony: Testimony, index: number) => (
-            <div key={index} className='relative'>
-              <div
-                className={classNames(
-                  'mt-4 flex-col -top-52 rotate-12 z-[11] bg-white shadow-md secondary-border border rounded-xl py-2 px-3  absolute flex items-center justify-center space-x-3 text-base',
+          {[...testimonials.slice(0, itemsPerView)].map(
+            (testimony: Testimony, index: number) => (
+              <div key={index} className='relative'>
+                <div
+                  className={classNames(
+                    'mt-4 flex-col -top-52 rotate-12 z-[11] bg-white shadow-md secondary-border border rounded-xl py-2 px-3  absolute flex items-center justify-center space-x-3 text-base',
 
-                  index == activeIndex ? '' : 'hidden',
-                )}
-              >
-                <span className='absolute -bottom-5 w-10 h-10 -z-[1] -rotate-45 bg-white shadow-md secondary-border border-l border-b'></span>
-                <div className='font-semibold text-gray-700'>
-                  {testimony.name}
-                </div>
-                {/* <svg
+                    index == activeIndex ? '' : 'hidden',
+                  )}
+                >
+                  <span className='absolute -bottom-5 w-10 h-10 -z-[1] -rotate-45 bg-white shadow-md secondary-border border-l border-b'></span>
+                  <div className='font-semibold text-gray-700'>
+                    {testimony.name}
+                  </div>
+                  {/* <svg
                     viewBox='0 0 2 2'
                     width={3}
                     height={3}
@@ -135,31 +136,34 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
                   >
                     <circle cx={1} cy={1} r={1} />
                   </svg> */}
-                <div className='text-gray-500'>{testimony.occupation}</div>
+                  <div className='text-gray-500'>{testimony.occupation}</div>
+                </div>
+                <div
+                  onClick={() => changeActive(index)}
+                  className={classNames(
+                    'relative transition-all flex overflow-x-hidden justify-center items-center  border-8 border-white min-w-[35vw]  min-h-[35vw] md:min-h-[120px]  md:min-w-[120px] lg:min-h-[20vw] lg:min-w-[20vw] rounded-full',
+                    `z-[${10 + index + 2}]`,
+                    // index % 2 == 0 ? '-translate-x-10' : 'translate-x-10',
+                    index == 0
+                      ? 'translate-x-5 md:translate-x-5 lg:translate-x-10'
+                      : '-translate-x-10',
+                    index == itemsPerView - 1
+                      ? '-translate-x-10 md:-translate-x-20'
+                      : '',
+                    index == activeIndex
+                      ? 'bg-yellow-400 scale-150  z-[20]'
+                      : ' testimonials-bg',
+                    index <= activeIndex
+                      ? `scale-[1.${index + 1}]`
+                      : `scale-[1.${itemsPerView - index}]`,
+                  )}
+                  style={{}}
+                >
+                  <img className='h-40 w-40' src={testimony.imageUrl} alt='' />
+                </div>
               </div>
-              <div
-                onClick={() => changeActive(index)}
-                className={classNames(
-                  'relative transition-all flex overflow-x-hidden justify-center items-center  border-8 border-white min-w-[35vw]  min-h-[35vw] md:min-h-[120px]  md:min-w-[120px] lg:min-h-[20vw] lg:min-w-[20vw] rounded-full',
-                  `z-[${10 + index + 2}]`,
-                  // index % 2 == 0 ? '-translate-x-10' : 'translate-x-10',
-                  index == 0
-                    ? 'translate-x-5 md:translate-x-5 lg:translate-x-10'
-                    : '-translate-x-10',
-                  index == itemsPerView - 1 ? '-translate-x-10 md:-translate-x-20' : '',
-                  index == activeIndex
-                    ? 'bg-yellow-400 scale-150  z-[20]'
-                    : ' testimonials-bg',
-                  index <= activeIndex
-                    ? `scale-[1.${index + 1}]`
-                    : `scale-[1.${itemsPerView - index}]`,
-                )}
-                style={{}}
-              >
-                <img className='h-40 w-40' src={testimony.imageUrl} alt='' />
-              </div>
-            </div>
-          ))}
+            ),
+          )}
         </div>
       </div>
     </section>

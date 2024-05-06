@@ -219,12 +219,10 @@ export default function AppHeader() {
   const handleClickOutside = (event: Event) => {
     buttonRefs.current.forEach((buttonRef) => {
       if (buttonRef && !buttonRef.contains(event.target as Node)) {
-       
         event.stopPropagation();
         clearOpenMenu();
       }
     });
-
   };
 
   useEffect(() => {

@@ -11,7 +11,7 @@
   --swiper-pagination-color: rgb(249 115 22);
   --white: #fff;
   --white: red;
-  --secondary-text: #FF450D;
+  --secondary-text: #ff450d;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -28,9 +28,12 @@ html {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom,
+  background: linear-gradient(
+      to bottom,
       transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
 }
 
 .landing-page-video-wrapper::after {
@@ -70,7 +73,7 @@ body {
   animation: wiggle_nav_top 0.5s ease-in-out forwards;
 }
 
-.page-header {  
+.page-header {
   /* position: absolute;
   top: 0;
   right: 0;
@@ -92,8 +95,8 @@ body {
 }
 
 .secondary-border {
-  border-collapse: separate; 
-  border-image: linear-gradient(125deg, #FAAA19 40%, #FF450DCC 100%);;
+  border-collapse: separate;
+  border-image: linear-gradient(125deg, #faaa19 40%, #ff450dcc 100%);
   border-image-slice: 4;
   /* overflow: hidden; */
   perspective: 1px;
@@ -147,9 +150,11 @@ body {
 }
 
 .landing-blur {
-  background: linear-gradient(86deg,
-      var(--white) 27.65%,
-      var(--swiper-pagination-color) 159.67%);
+  background: linear-gradient(
+    86deg,
+    var(--white) 27.65%,
+    var(--swiper-pagination-color) 159.67%
+  );
 }
 
 @media (max-width: 767px) {
@@ -234,10 +239,9 @@ body {
   }
 }
 
-
 .btn-vlg {
   /* background:linear-gradient(125deg, #FAAA19 80%, #FF450DCC 100%); */
-background: linear-gradient(45deg, #FAAA19 0%, #FF450D 80%);
+  background: linear-gradient(45deg, #faaa19 0%, #ff450d 80%);
 }
 
 /* .swiper-slide-active  > figure > figcaption{
@@ -245,5 +249,5 @@ background: linear-gradient(45deg, #FAAA19 0%, #FF450D 80%);
 } */
 
 .testimonials-bg {
-  background: #8468F5;
+  background: #8468f5;
 }

@@ -24,7 +24,10 @@ export default function NavItem({ label }: NavItemProp) {
         <RenderNavItem label={label} />
       </div>
       <div className='flex-auto'>
-        <Link href={label.href} className='block uppercase text-sm font-semibold text-gray-900'>
+        <Link
+          href={label.href}
+          className='block uppercase text-sm font-semibold text-gray-900'
+        >
           {label.name}
           <span className='absolute inset-0' />
         </Link>
