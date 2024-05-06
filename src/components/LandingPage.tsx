@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function LandingPage() {
   return (
-    <div className='relative isolate px-6 lg:px-8 home-landing-page overflow-hidden'>
+    <div className='relative mx-auto max-w-7xl isolate px-6 lg:px-8 home-landing-page overflow-hidden'>
       {/* <video className='absolute top-0 right-0 left-0 w-full -z-20 h-full object-cover'  loop autoPlay>
         <source src="landing_prodution.mp4" type='video/mp4' />
       </video> */}
@@ -33,7 +33,7 @@ export default function LandingPage() {
         />
       </div>
 
-      <div className='mx-auto max-w-7xl py-20 md-py-0 md:min-h-[60vh]  lg:min-h-[70vh]  md:mx-10 lg:mx-20 xl:mx-28 flex flex-col items-start  md:items-center  text-left lg:text-center'>
+      <div className=' py-20 md-py-0   lg:min-h-[40rem]  md:mx-10 lg:mx-20 xl:mx-28 flex flex-col items-start  md:items-center  text-left lg:text-center'>
         <h1 className='max-w-6xl lg:max-w-5xl xl:max-w-7xl relative z-10 text-5xl font-bold  text-gray-900 lg:text-5xl xl:text-6xl'>
           Transcription <span className='text-orange-600'>Mastery</span>:
           Unmatched Accuracy & Efficiency, Every Time.

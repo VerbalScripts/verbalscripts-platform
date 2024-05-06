@@ -35,8 +35,7 @@ export default function Home() {
       description:
         ' VerbalScripts has done a terrific job in helping us meet a tight deadline for a demanding client. They helped us tailor the transcripts to our particular needs, and were always available, helpful and patient.”',
       name: 'Limor Hochberg',
-      imageUrl:
-        '/testimonials/1.png',
+      imageUrl: '/testimonials/1.png',
       occupation: 'UL',
     },
     {
@@ -50,27 +49,23 @@ export default function Home() {
       description:
         " “It's been a great experience working with VerbalScripts. Their transcription is the best quality for the cheapest price. They worked with us to create a business rate and the quality was great.”",
       name: 'Angel Cruz',
-      imageUrl:
-      '/testimonials/3.png',
+      imageUrl: '/testimonials/3.png',
       occupation: 'Datu Research',
     },
     {
       description:
         " “It's been a great experience working with VerbalScripts. Their transcription is the best quality for the cheapest price. They worked with us to create a business rate and the quality was great.”",
       name: 'Angel Cruz',
-      imageUrl:
-      '/testimonials/4.png',
+      imageUrl: '/testimonials/4.png',
       occupation: 'Datu Research',
     },
     {
       description:
         " “It's been a great experience working with VerbalScripts. Their transcription is the best quality for the cheapest price. They worked with us to create a business rate and the quality was great.”",
       name: 'Angel Cruz',
-      imageUrl:
-      '/testimonials/5.png',
+      imageUrl: '/testimonials/5.png',
       occupation: 'Datu Research',
     },
-
   ];
 
   const features = [
@@ -120,22 +115,24 @@ export default function Home() {
       <AppHeader />
       <LandingPage />
 
-      <div className='relative bg-white py-0'>
-        <div className='absolute  -top-16 left-10 md:left-28 lg:left-36 mt-10 flex  items-start md:items-center justify-center gap-6'>
-          <a
-            href='/solutions'
-            className='rounded-lg btn-vlg px-6  md:px-12 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600'
-          >
-            Services
-          </a>
-          <a
-            href='/services'
-            className='rounded-lg btn-vlg px-6  md:px-12 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600'
-          >
-            Industries
-          </a>
+      <div className='bg-white py-0'>
+        <div className='relative mx-auto max-w-7xl'>
+          <div className='absolute  -top-16 left-10 md:left-28 lg:left-36 mt-10 flex  items-start md:items-center justify-center gap-6'>
+            <a
+              href='/solutions'
+              className='rounded-lg btn-vlg px-6  md:px-12 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600'
+            >
+              Services
+            </a>
+            <a
+              href='/services'
+              className='rounded-lg btn-vlg px-6  md:px-12 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600'
+            >
+              Industries
+            </a>
+          </div>
+          <PopularPartner />
         </div>
-        <PopularPartner />
       </div>
 
       <div className='py-20 md:py-16' style={{ background: '#FAFAFA' }}>

@@ -240,3 +240,7 @@ background: linear-gradient(45deg, #FAAA19 0%, #FF450D 80%);
 /* .swiper-slide-active  > figure > figcaption{
   transform: scale(1.2);
 } */
+
+.testimonials-bg {
+  background: #8468F5;
+}

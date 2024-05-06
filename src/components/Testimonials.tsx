@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper   , SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -50,7 +50,7 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
   }, [swiper]);
 
   useEffect(() => {
-    console.log('change akin');
+    console.log('change akin', activeIndex);
     if (swiper) {
       console.log('package index ', activeIndex);
       swiper.slideTo(activeIndex);
@@ -67,6 +67,8 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
 
   return (
     <section className='relative py-14 sm:py-20 bg-white'>
+        <div className='mx-auto max-w-7xl'>
+
       <div className='absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] opacity-20' />
       <div className='absolute  right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center' />
 
@@ -109,9 +111,12 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
           className={classNames(
             'relative  flex overflow-x-hidden justify-center items-center  border-8 border-white  min-h-[15rem] min-w-[15rem] rounded-full',
             `z-[${10 + index + 2}]`,
-            index % 2 == 0 ? '-translate-x-10': ''
+            index % 2 == 0 ? '-translate-x-10': 'translate-x-10',
+            index == 0 ? 'translate-x-20': '',
+            index == testimonials.length - 1 ? '-translate-x-10': '',
+            index == activeIndex ? 'bg-yellow-400': 'testimonials-bg'
           )}
-          style={{ background: '#8468F5'}}
+          style={{ }}
         >
           <img className='h-40 w-40' src={testimony.imageUrl} alt='' />
           <div className='mt-4 -top-24   absolute flex items-center justify-center space-x-3 text-base'>
@@ -129,6 +134,7 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
           </div>
         </div>
       ))}
+   </div>
    </div>
     </section>
   );
