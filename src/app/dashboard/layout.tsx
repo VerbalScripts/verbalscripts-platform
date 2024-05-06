@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDoubleLeft } from '@fortawesome/free-solid-svg-icons';
 import { RecoilRoot } from 'recoil';
 import StoreWrapper from '@/components/dashboard/StoreWrapper';
+import Script from 'next/script';
 
 // add redux
 
@@ -24,6 +25,10 @@ export default function DashboardLayout({
 
   return (
     <RecoilRoot>
+      <Script
+        src='//code.tidio.co/c85xnh9sahm0ijtezx6yvkixt4hq3aul.js'
+        strategy='lazyOnload'
+      />
       <StoreWrapper>
         <section className='dark-mode-toggle bg-white min-h-screen'>
           <Suspense>

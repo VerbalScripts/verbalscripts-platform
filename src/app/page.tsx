@@ -9,10 +9,10 @@ import Testimonials from '@/components/Testimonials';
 import PopularPartner from '@/components/PopularPartner';
 
 import type { Metadata } from 'next';
-import TawkMessenger from '@/lib/TawkMessenger';
 import SolutionsList from '@/components/SolutionsList';
 import { faLongArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title:
@@ -105,12 +105,10 @@ export default function Home() {
         canonical='https://www.verbalscripts.com/'
       /> */}
 
-      <TawkMessenger />
-
-      {/* <Script
-        src='https://fw-cdn.com/11485930/4150032.js'
+      <Script
+        src='//code.tidio.co/c85xnh9sahm0ijtezx6yvkixt4hq3aul.js'
         strategy='lazyOnload'
-      /> */}
+      />
 
       <AppHeader />
       <LandingPage />
