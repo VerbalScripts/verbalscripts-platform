@@ -251,3 +251,10 @@ body {
 .testimonials-bg {
   background: #8468f5;
 }
+
+@media (max-width: 500px) {
+  .testimonials-circles {
+    width: 80px;
+    height: 80px;
+  }
+}

@@ -140,7 +140,7 @@ export default function Home() {
               <h2 className='text-xl font-bold leading-7 capitalize secondary-text'>
                 Why <span className='text-gray-800'>Verbal</span>Scripts
               </h2>
-              <p className='mt-2 text-5xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
+              <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
                 We transcribe <br></br>with Precision <br></br>and <br></br>
                 Professionalism.
               </p>
@@ -225,7 +225,7 @@ export default function Home() {
               <h2 className='text-xl font-semibold capitalize leading-7 secondary-text'>
                 What Services We Offer
               </h2>
-              <p className='mt-2 text-5xl md:text-5xl capitalize  font-bold text-left text-gray-900 section-title'>
+              <p className='mt-2 text-4xl md:text-5xl capitalize  font-bold text-left text-gray-900 section-title'>
                 Transcription Needs ? <br></br> Meet out exceptional Services
               </p>
             </div>
@@ -257,7 +257,7 @@ export default function Home() {
             {/* <h2 className="text-base font-semibold leading-7 text-indigo-600">
             You did{ "'"}nt Hear it from us
           </h2> */}
-            <p className='mt-2 text-5xl md:text-5xl font-bold  secondary-text'>
+            <p className='mt-2 text-4xl md:text-5xl font-bold  secondary-text'>
               4-step Process for Concistent Results
             </p>
             <p className='mx-auto max-w-2xl mt-6 text-xl leading-8 text-gray-600'>

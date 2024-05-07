@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 'use client';
 
 import React, { useEffect, useState } from 'react';
@@ -19,6 +20,7 @@ import {
 import { classNames } from '@/utils/classNames';
 import SearchBar from '@/components/dashboard/SearchBar';
 import moment from 'moment';
+import FilesSummary from '@/components/modals/FilesSummary';
 
 interface PageSetupOptions {
   toggleView: 'grid' | 'list';
@@ -28,12 +30,23 @@ export default function Page() {
   // const router = useRouter();
 
   const [loading, setLoading] = useState(true);
-  const [orders, setOrders] = useState<PendingOrder[]>([]);
+  const [orders, setOrders] = useState<InprogressOrder[]>([]);
   const [selectedFiles, setSelectedFiles] = useState<string[]>([]);
+  const [file, setFile] = useState<InprogressOrder>();
+
+  const [showFileSummary, setShowFileSummary] = useState(true);
 
   const [pageSetup, setPageSetup] = useState<PageSetupOptions>({
     toggleView: 'list',
   });
+
+  const showDetails = () => {
+    console.log('show details');
+    const fileId = selectedFiles[0];
+    // @ts-ignore
+    setFile(() => orders.filter((order) => order.id == fileId));
+    setShowFileSummary(true);
+  };
 
   const fetchOrders = async () => {
     try {
@@ -109,11 +122,19 @@ export default function Page() {
 
       {/* systenm progress */}
       <SystemProgressUpload />
+      {/* show summary */}
 
       {loading ? (
         <LoadSpinner />
       ) : (
         <div className=''>
+          <FilesSummary
+            open={showFileSummary}
+            setOpen={setShowFileSummary}
+            // @ts-ignore
+            files={file}
+          />
+
           <div className='px-6  md:px-16 xl:px-16 sticky top-0 z-10  bg-white dark:bg-zinc-800 py-3'>
             <div className='flex  justify-between items-center mb-4'>
               <div className='flex gap-x-2'>
@@ -129,7 +150,7 @@ export default function Page() {
               {selectedFiles.length != 0 ? (
                 <div className='flex items-center gap-x-2 p-2 rounded-xl bg-indigo-100'>
                   <button
-                    onClick={() => {}}
+                    onClick={() => showDetails()}
                     className='flex  gap-x-2 rounded-xl bg-indigo-500  font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
                   >
                     <InformationCircleIcon className='h-5 w-5 text-white' />

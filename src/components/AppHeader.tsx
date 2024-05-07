@@ -9,6 +9,8 @@ import {
   ComputerDesktopIcon,
   UserIcon,
   ArrowUpTrayIcon,
+  InformationCircleIcon,
+  QuestionMarkCircleIcon,
 } from '@heroicons/react/24/outline';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { v4 as uuid } from 'uuid';
@@ -69,7 +71,7 @@ export default function AppHeader() {
       price: '0.10$ per task',
     },
     {
-      name: 'Transcription & Live Captioning',
+      name: 'Focus groups and Interviews',
       description: 'Get a better understanding of your traffic',
       href: '/services/transcription',
       icon: ChartPieIcon,
@@ -145,16 +147,28 @@ export default function AppHeader() {
 
   const resources: Array<NavLabel> = [
     {
-      name: 'FAQs',
-      description: 'Frequently asked questions',
-      href: '/faqs',
+      name: 'About Us',
+      description: 'Learn More About Us.',
+      href: '/about-us',
       icon: ChartPieIcon,
     },
     {
-      name: 'legal',
-      description: 'Review terms of usage, policies',
-      href: '/legal',
-      icon: ChartPieIcon,
+      name: 'Support',
+      description: 'Get help and ask queries',
+      href: '/support',
+      icon: InformationCircleIcon,
+    },
+    {
+      name: 'FAQs',
+      description: 'Frequently asked questions',
+      href: '/faqs',
+      icon: QuestionMarkCircleIcon,
+    },
+    {
+      name: 'Terms and Conditions',
+      description: 'Terms, privacy and usage.',
+      href: '/terms-and-conditions',
+      icon: FingerPrintIcon,
     },
   ];
 
@@ -183,9 +197,9 @@ export default function AppHeader() {
     });
   };
 
-  const clearOpenMenu = () => {
-    setOpenMenus(() => [...menuPopovers.map(() => false)]);
-  };
+  // const clearOpenMenu = () => {
+  //   setOpenMenus(() => [...menuPopovers.map(() => false)]);
+  // };
 
   // add delay before opening menu
   const onHover = (open: boolean, action: string, index: number) => {
@@ -216,14 +230,14 @@ export default function AppHeader() {
   //   clearTimeout(timeout);
   // };
 
-  const handleClickOutside = (event: Event) => {
-    buttonRefs.current.forEach((buttonRef) => {
-      if (buttonRef && !buttonRef.contains(event.target as Node)) {
-        event.stopPropagation();
-        clearOpenMenu();
-      }
-    });
-  };
+  // const handleClickOutside = (event: Event) => {
+  //   buttonRefs.current.forEach((buttonRef) => {
+  //     if (buttonRef && !buttonRef.contains(event.target as Node)) {
+  //       event.stopPropagation();
+  //       clearOpenMenu();
+  //     }
+  //   });
+  // };
 
   useEffect(() => {
     if (window != undefined) {
@@ -239,10 +253,10 @@ export default function AppHeader() {
             ?.classList.remove('is-sticky', 'shadow-lg');
         }
       });
-      document.addEventListener('mousedown', handleClickOutside);
-      return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
-      };
+      // document.addEventListener('mousedown', handleClickOutside);
+      // return () => {
+      //   document.removeEventListener('mousedown', handleClickOutside);
+      // };
     }
   });
 
@@ -314,7 +328,7 @@ export default function AppHeader() {
           <Popover.Group className='hidden lg:flex lg:gap-x-1 lg:items-center'>
             <a
               href='/'
-              className='text-md uppercase font-semibold px-2 py-2.5 leading-6 text-gray-900 transition hover:bg-orange-100'
+              className='text-sm uppercase font-semibold px-2 py-2.5 leading-6 text-gray-900 transition hover:bg-orange-100'
             >
               Home
             </a>

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Link from 'next/link';
+// import Link from 'next/link';
 import React from 'react';
 
 export default function NavItem({ label }: NavItemProp) {
@@ -24,14 +24,16 @@ export default function NavItem({ label }: NavItemProp) {
         <RenderNavItem label={label} />
       </div>
       <div className='flex-auto'>
-        <Link
+        <a
           href={label.href}
-          className='block uppercase text-sm font-semibold text-gray-900'
+          className='block  text-sm font-semibold text-gray-900'
         >
           {label.name}
           <span className='absolute inset-0' />
-        </Link>
-        <p className=' text-gray-600 line-clamp-2'>{label.description}</p>
+        </a>
+        <p className=' text-gray-600 text-sm line-clamp-2'>
+          {label.description}
+        </p>
       </div>
     </div>
   );

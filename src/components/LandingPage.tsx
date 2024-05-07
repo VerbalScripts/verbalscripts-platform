@@ -34,7 +34,7 @@ export default function LandingPage() {
       </div>
 
       <div className=' py-20 md-py-0   lg:min-h-[40rem]  md:mx-10 lg:mx-20 xl:mx-28 flex flex-col items-start  md:items-center  text-left lg:text-center'>
-        <h1 className='max-w-6xl lg:max-w-5xl xl:max-w-7xl relative z-10 text-5xl font-bold  text-gray-900 lg:text-5xl xl:text-6xl'>
+        <h1 className='max-w-6xl lg:max-w-5xl xl:max-w-7xl relative z-10 text-4xl font-bold  text-gray-900 lg:text-5xl xl:text-6xl'>
           Transcription <span className='text-orange-600'>Mastery</span>:
           Unmatched Accuracy & Efficiency, Every Time.
         </h1>

@@ -64,9 +64,22 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
 
   useEffect(() => {
     if (window) {
-      if (window.innerWidth < 699) {
-        setItemsPerView(3);
-      }
+      handleResize();
+    }
+  }, [width]);
+
+  const handleResize = () => {
+    console.log('resizubf');
+    if (window.innerWidth < 750) {
+      setItemsPerView(3);
+    } else {
+      setItemsPerView(5);
+    }
+  };
+
+  useEffect(() => {
+    if (window) {
+      window.addEventListener('resize', handleResize);
     }
   }, []);
 
@@ -80,8 +93,8 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
         <div className='absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] opacity-20' />
         <div className='absolute  right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center' />
 
-        <div className='mx-auto max-w-2xl text-left lg:text-center'>
-          <p className='mt-2 text-5xl font-bold  section-title text-gray-900 sm:text-5xl'>
+        <div className='mx-auto px-6 md:px-0 md:max-w-2xl text-left lg:text-center'>
+          <p className='mt-2 text-4xl font-bold  section-title text-gray-900 md:text-5xl'>
             What people are saying about{' '}
             <span className='text-orange-400'>VerbalScripts</span>
           </p>
@@ -112,19 +125,19 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
           </Swiper>
         </div>
         <div className='flex relative'>
-          <div className='bg-white absolute -bottom-[3rem] z-[25] right-0 left-0 h-24'></div>
+          <div className='bg-white absolute -bottom-10 md:-bottom-[4rem] z-[25] right-0 left-0 h-14 md:h-32'></div>
           {[...testimonials.slice(0, itemsPerView)].map(
             (testimony: Testimony, index: number) => (
               <div key={index} className='relative'>
                 <div
                   className={classNames(
-                    'mt-4 flex-col -top-52 rotate-12 z-[11] bg-white shadow-md secondary-border border rounded-xl py-2 px-3  absolute flex items-center justify-center space-x-3 text-base',
+                    'mt-4 flex-col -top-44 md:-top-52 rotate-12 z-[11] bg-white min-w-[150px]  shadow-md secondary-border border rounded-xl py-2 px-3  absolute flex items-center justify-center space-x-3 text-base',
 
                     index == activeIndex ? '' : 'hidden',
                   )}
                 >
-                  <span className='absolute -bottom-5 w-10 h-10 -z-[1] -rotate-45 bg-white shadow-md secondary-border border-l border-b'></span>
-                  <div className='font-semibold text-gray-700'>
+                  <span className='absolute -bottom-5 w-10 h-10 -z-[1]  -rotate-45 bg-white shadow-md secondary-border border-l border-b'></span>
+                  <div className='font-semibold text-gray-700 text-sm md:text-md'>
                     {testimony.name}
                   </div>
                   {/* <svg
@@ -141,17 +154,17 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
                 <div
                   onClick={() => changeActive(index)}
                   className={classNames(
-                    'relative transition-all flex overflow-x-hidden justify-center items-center  border-8 border-white min-w-[35vw]  min-h-[35vw] md:min-h-[120px]  md:min-w-[120px] lg:min-h-[20vw] lg:min-w-[20vw] rounded-full',
+                    'relative transition-all  flex overflow-x-hidden overflow-y-hidden justify-center items-center  border-8 border-white min-w-[30vw]  min-h-[30vw] md:min-h-[120px]  md:min-w-[120px] lg:min-h-[20vw] lg:min-w-[20vw] rounded-full testimonials-circles',
                     `z-[${10 + index + 2}]`,
                     // index % 2 == 0 ? '-translate-x-10' : 'translate-x-10',
                     index == 0
-                      ? 'translate-x-5 md:translate-x-5 lg:translate-x-10'
-                      : '-translate-x-10',
+                      ? 'translate-x-10 md:translate-x-5 lg:translate-x-10'
+                      : 'md:-translate-x-10',
                     index == itemsPerView - 1
                       ? '-translate-x-10 md:-translate-x-20'
                       : '',
                     index == activeIndex
-                      ? 'bg-yellow-400 scale-150  z-[20]'
+                      ? 'bg-yellow-400 scale-125 md:scale-150  z-[20]'
                       : ' testimonials-bg',
                     index <= activeIndex
                       ? `scale-[1.${index + 1}]`
@@ -159,7 +172,11 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
                   )}
                   style={{}}
                 >
-                  <img className='h-40 w-40' src={testimony.imageUrl} alt='' />
+                  <img
+                    className='h-32 w-32 md:h-40 md:w-40 object-contain'
+                    src={testimony.imageUrl}
+                    alt=''
+                  />
                 </div>
               </div>
             ),

@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' className={urbanist.className}>
-      <body className='relative min-h-screen'>{children}</body>
+      <body className='relative max-w-screen'>{children}</body>
     </html>
   );
 }

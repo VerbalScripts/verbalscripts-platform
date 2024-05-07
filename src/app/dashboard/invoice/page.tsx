@@ -29,7 +29,7 @@ export default function Page() {
   // const router = useRouter();
 
   const [loading, setLoading] = useState(true);
-  const [orders, setOrders] = useState<PendingOrder[]>([]);
+  const [orders, setOrders] = useState<InprogressOrder[]>([]);
   const [selectedFiles, setSelectedFiles] = useState<string[]>([]);
 
   const [pageSetup, setPageSetup] = useState<PageSetupOptions>({

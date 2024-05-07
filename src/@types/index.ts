@@ -72,7 +72,7 @@ interface Order {
   userId?: string;
 }
 
-interface PendingOrder {
+interface InprogressOrder {
   configuration: OrderConfiguration;
   files: string[];
   userId: string;
