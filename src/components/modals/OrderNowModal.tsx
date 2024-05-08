@@ -35,6 +35,7 @@ export default function OrderNowModal({
       language: 'English',
       text_format: 'clean',
       speakers: '1-2',
+      samples: [],
       apply_timestamps: 'Not Required',
       turn_around_time: '2_days',
     });

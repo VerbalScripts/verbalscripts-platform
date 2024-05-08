@@ -68,7 +68,7 @@ export default function Page() {
               updater={setUser}
             />
             {/* divider */}
-            {/* <div className='my-4 border-b border-gray-200'></div> */}
+            <div className='my-10  border-b border-gray-100'></div>
 
             {/* password update */}
             <SecuritySettings />

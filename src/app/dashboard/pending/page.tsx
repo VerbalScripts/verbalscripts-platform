@@ -45,6 +45,8 @@ import { uploadProgressStats } from '@/store/features/fileUpload';
 import SearchBar from '@/components/dashboard/SearchBar';
 import CopyFile from '@/components/modals/CopyFile';
 import ShareFile from '@/components/modals/ShareFile';
+import DirectFileLinkUpload from '@/components/modals/DirectFileLinkUpload';
+import YoutubeLinkUpload from '@/components/modals/YoutubeLinkUpload';
 
 interface PageSetupOptions {
   toggleView: 'grid' | 'list';
@@ -72,6 +74,9 @@ export default function Page() {
   const [openFolderRename, setOpenFolderRename] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [openRemoveFile, setOpenRemoveFile] = useState(false);
+  // upload options
+  const [openYoutube, setOpenYoutube] = useState(false);
+  const [openDirectLink, setOpenDirectLink] = useState(false);
 
   // setters
   const [currentFile, setCurrentFile] = useState<string>('');
@@ -351,6 +356,8 @@ export default function Page() {
       <DropboxUpload ref={triggerDropBoxPicker} visible={false} />
       <GoogleUpload ref={triggerGooglePicker} visible={false} />
       <OneDrivePicker ref={triggerOneDrivePicker} visible={false} />
+      <YoutubeLinkUpload open={openYoutube} setOpen={setOpenYoutube} />
+      <DirectFileLinkUpload open={openDirectLink} setOpen={setOpenDirectLink} />
 
       {loading ? (
         <LoadSpinner />
@@ -362,6 +369,8 @@ export default function Page() {
                 openDropBoxPicker={launchDropBoxPicker}
                 openGoogleDrivePicker={launchGoogleDrivePicker}
                 openOneDrivePicker={launchOneDrivePicker}
+                openDirectLink={() => setOpenDirectLink(!openDirectLink)}
+                openYoutube={() => setOpenYoutube(!openYoutube)}
               />
               <FileUploadFromLocal />
               <button

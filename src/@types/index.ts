@@ -62,13 +62,14 @@ interface OrderConfiguration {
   instructions?: string;
   turn_around_time: string;
   text_format: string;
+  samples: string[];
   language: string;
   apply_timestamps: string;
 }
 interface Order {
   configuration: OrderConfiguration;
   orderStatus?: string;
-  files: string[];
+  files: string[] | OrderFile[];
   userId?: string;
 }
 

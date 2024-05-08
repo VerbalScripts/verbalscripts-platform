@@ -7,11 +7,15 @@ interface FileUploadFromOtherOptionsProps {
   openDropBoxPicker: () => void;
   openOneDrivePicker: () => void;
   openGoogleDrivePicker: () => void;
+  openYoutube: () => void;
+  openDirectLink: () => void;
 }
 export default function FileUploadFromOtherOptions({
   openDropBoxPicker,
   openOneDrivePicker,
   openGoogleDrivePicker,
+  openYoutube,
+  openDirectLink,
 }: FileUploadFromOtherOptionsProps) {
   const uploadOptions = [
     {
@@ -32,6 +36,18 @@ export default function FileUploadFromOtherOptions({
       logoUrl: '/icons/one-drive.png',
       id: 'one-drive',
       cb: openOneDrivePicker,
+    },
+    {
+      title: 'Youtube',
+      logoUrl: '/icons/youtube.png',
+      id: 'youtube',
+      cb: openYoutube,
+    },
+    {
+      title: 'Link',
+      logoUrl: '/icons/link.png',
+      id: 'link',
+      cb: openDirectLink,
     },
   ];
 

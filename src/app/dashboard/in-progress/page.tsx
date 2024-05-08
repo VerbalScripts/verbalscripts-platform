@@ -3,7 +3,6 @@
 
 import React, { useEffect, useState } from 'react';
 import LoadSpinner from '@/components/dashboard/LoadSpinner';
-import { Checkbox, Table } from 'flowbite-react';
 
 // import Link from 'next/link';
 // import { useSearchParams } from 'next/navigation';
@@ -11,16 +10,12 @@ import { Checkbox, Table } from 'flowbite-react';
 import TawkMessenger from '@/lib/TawkMessenger';
 import SystemProgressUpload from '@/components/dashboard/SystemProgressUpload';
 import AxiosProxy from '@/utils/AxiosProxy';
-import {
-  InformationCircleIcon,
-  ListBulletIcon,
-  Squares2X2Icon,
-  XCircleIcon,
-} from '@heroicons/react/24/outline';
+import { ListBulletIcon, Squares2X2Icon } from '@heroicons/react/24/outline';
 import { classNames } from '@/utils/classNames';
 import SearchBar from '@/components/dashboard/SearchBar';
 import moment from 'moment';
-import FilesSummary from '@/components/modals/FilesSummary';
+import { ArrowDownTrayIcon } from '@heroicons/react/20/solid';
+import { Table } from 'flowbite-react';
 
 interface PageSetupOptions {
   toggleView: 'grid' | 'list';
@@ -31,22 +26,19 @@ export default function Page() {
 
   const [loading, setLoading] = useState(true);
   const [orders, setOrders] = useState<InprogressOrder[]>([]);
-  const [selectedFiles, setSelectedFiles] = useState<string[]>([]);
-  const [file, setFile] = useState<InprogressOrder>();
-
-  const [showFileSummary, setShowFileSummary] = useState(true);
+  // const [selectedFiles, setSelectedFiles] = useState<string[]>([]);
 
   const [pageSetup, setPageSetup] = useState<PageSetupOptions>({
     toggleView: 'list',
   });
 
-  const showDetails = () => {
-    console.log('show details');
-    const fileId = selectedFiles[0];
-    // @ts-ignore
-    setFile(() => orders.filter((order) => order.id == fileId));
-    setShowFileSummary(true);
-  };
+  // const showDetails = () => {
+  //   console.log('show details');
+  //   const fileId = selectedFiles[0];
+  //   // @ts-ignore
+  //   setFile(() => orders.find((order) => order.id == fileId));
+  //   setShowFileSummary(true);
+  // };
 
   const fetchOrders = async () => {
     try {
@@ -69,51 +61,51 @@ export default function Page() {
   }, []);
 
   // updated selected files
-  const updateSelectedFiles = (
-    id: string,
-    remove: boolean,
-    clearAll: boolean,
-  ) => {
-    if (clearAll && remove) {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      setSelectedFiles((prevFiles) => []);
-    } else if (clearAll && !remove) {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      setSelectedFiles((_prevFiles) => orders.map((order) => order.id));
-    } else if (remove) {
-      setSelectedFiles((prevFiles) => [
-        ...prevFiles.filter((_id) => _id != id),
-      ]);
-    } else if (!remove) {
-      setSelectedFiles((prevFiles) => [...prevFiles, id]);
-    }
-  };
+  // const updateSelectedFiles = (
+  //   id: string,
+  //   remove: boolean,
+  //   clearAll: boolean,
+  // ) => {
+  //   if (clearAll && remove) {
+  //     // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  //     setSelectedFiles((prevFiles) => []);
+  //   } else if (clearAll && !remove) {
+  //     // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  //     setSelectedFiles((_prevFiles) => orders.map((order) => order.id));
+  //   } else if (remove) {
+  //     setSelectedFiles((prevFiles) => [
+  //       ...prevFiles.filter((_id) => _id != id),
+  //     ]);
+  //   } else if (!remove) {
+  //     setSelectedFiles((prevFiles) => [...prevFiles, id]);
+  //   }
+  // };
 
-  const selectAllOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    if (((event as any).target as HTMLInputElement).checked) {
-      updateSelectedFiles('', false, true);
-    } else {
-      updateSelectedFiles('', true, true);
-    }
-  };
+  // const selectAllOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  //   if (((event as any).target as HTMLInputElement).checked) {
+  //     updateSelectedFiles('', false, true);
+  //   } else {
+  //     updateSelectedFiles('', true, true);
+  //   }
+  // };
 
-  const isSelected = (id: string) => {
-    const result = selectedFiles.find((item: string) => item == id);
-    return result == undefined ? false : true;
-  };
+  // const isSelected = (id: string) => {
+  //   const result = selectedFiles.find((item: string) => item == id);
+  //   return result == undefined ? false : true;
+  // };
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  const addSelected = (event: ChangeEvent<HTMLInputElement>, id: string) => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    if ((event.target as HTMLInputElement).checked) {
-      updateSelectedFiles(id, false, false);
-    } else {
-      updateSelectedFiles(id, true, false);
-    }
-  };
+  // const addSelected = (event: ChangeEvent<HTMLInputElement>, id: string) => {
+  //   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  //   // @ts-ignore
+  //   if ((event.target as HTMLInputElement).checked) {
+  //     updateSelectedFiles(id, false, false);
+  //   } else {
+  //     updateSelectedFiles(id, true, false);
+  //   }
+  // };
 
   return (
     <div className=''>
@@ -124,17 +116,16 @@ export default function Page() {
       <SystemProgressUpload />
       {/* show summary */}
 
+      {/* <FilesSummary
+        open={showFileSummary}
+        setOpen={setShowFileSummary}
+        // @ts-ignore
+        file={file}
+      /> */}
       {loading ? (
         <LoadSpinner />
       ) : (
         <div className=''>
-          <FilesSummary
-            open={showFileSummary}
-            setOpen={setShowFileSummary}
-            // @ts-ignore
-            files={file}
-          />
-
           <div className='px-6  md:px-16 xl:px-16 sticky top-0 z-10  bg-white dark:bg-zinc-800 py-3'>
             <div className='flex  justify-between items-center mb-4'>
               <div className='flex gap-x-2'>
@@ -147,7 +138,7 @@ export default function Page() {
 
               {/* manage selected files */}
 
-              {selectedFiles.length != 0 ? (
+              {/* {selectedFiles.length != 0 ? (
                 <div className='flex items-center gap-x-2 p-2 rounded-xl bg-indigo-100'>
                   <button
                     onClick={() => showDetails()}
@@ -165,7 +156,7 @@ export default function Page() {
                     <span className='text-gray-700 text-md'>Cancel Order</span>
                   </button>
                 </div>
-              ) : null}
+              ) : null} */}
 
               <div className='flex gap-x-2 items-center'>
                 <button
@@ -196,17 +187,11 @@ export default function Page() {
           <div className='px-6 md:px-16 xl:px-16 overflow-x-auto min-h-svh'>
             <Table hoverable>
               <Table.Head className='dark:border-gray-700 dark:bg-zinc-800'>
-                <Table.HeadCell className='p-4'>
-                  <Checkbox
-                    disabled={orders.length == 0}
-                    onChange={selectAllOnChange}
-                  />
-                </Table.HeadCell>
                 <Table.HeadCell>Order Id</Table.HeadCell>
                 <Table.HeadCell>Progress</Table.HeadCell>
-                <Table.HeadCell>ETA</Table.HeadCell>
                 <Table.HeadCell>File(s)</Table.HeadCell>
                 <Table.HeadCell>Created At</Table.HeadCell>
+                <Table.HeadCell>Actions</Table.HeadCell>
                 <Table.HeadCell>
                   <span className='sr-only'>Edit</span>
                 </Table.HeadCell>
@@ -214,17 +199,12 @@ export default function Page() {
               <Table.Body className='divide-y'>
                 {orders.map((order) => (
                   <Table.Row
+                    onClick={() => {}}
                     key={order.id}
                     className={classNames(
-                      'bg-white dark:border-gray-700 dark:bg-zinc-500',
+                      'bg-white cursor-pointer dark:border-gray-700 dark:bg-zinc-500',
                     )}
                   >
-                    <Table.Cell className='px-4 py-1'>
-                      <Checkbox
-                        onChange={(event) => addSelected(event, order.id)}
-                        checked={isSelected(order.id)}
-                      />
-                    </Table.Cell>
                     <Table.Cell className='py-1'>
                       <span className='whitespace-nowrap font-medium text-gray-900 dark:text-white'>
                         {order.id}
@@ -236,11 +216,7 @@ export default function Page() {
                         {order.orderStatus}
                       </span>
                     </Table.Cell>
-                    <Table.Cell className='py-1'>
-                      <span className='text-gray-700'>
-                        {order.configuration.turn_around_time}
-                      </span>
-                    </Table.Cell>
+
                     <Table.Cell className=''>
                       <button className='py-1 '>{order.files.length}</button>
                     </Table.Cell>
@@ -248,6 +224,12 @@ export default function Page() {
                       <span className='whitespace-nowrap font-medium text-sm text-gray-900 dark:text-white'>
                         {moment(order.createdAt).format('L')}
                       </span>
+                    </Table.Cell>
+
+                    <Table.Cell className='py-1'>
+                      <button onClick={() => {}}>
+                        <ArrowDownTrayIcon className='h-8 w-8 text-indigo-500' />
+                      </button>
                     </Table.Cell>
                   </Table.Row>
                 ))}

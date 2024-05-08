@@ -1,7 +1,6 @@
 'use client';
 
 import AxiosProxy from '@/utils/AxiosProxy';
-import { UserIcon } from '@heroicons/react/24/outline';
 import React, { useState } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 
@@ -120,14 +119,14 @@ export default function ProfileSettings({
       <div className='space-y-12'>
         <div className='border-b border-gray-900/10 pb-12'>
           <div className='py-5 mb-10'>
-            <div className='h-16 w-16 md:w-24 md:h-24 bg-indigo-100 flex items-center justify-center rounded-full'>
-              <UserIcon className='h-12 w-12 md:w-16 md:h-16 text-indigo-500' />
-            </div>
+            <h2 className='text-2xl font-semibold leading-7 text-gray-900 dark:text-white'>
+              Account Settings
+            </h2>
           </div>
-          <h2 className='text-2xl font-semibold leading-7 text-gray-900'>
+          <h2 className='text-2xl font-semibold leading-7 text-gray-900 dark:text-gray-100'>
             Personal Information
           </h2>
-          <p className='mt-1 text-md leading-6 text-gray-600'>
+          <p className='mt-1 text-md leading-6 text-gray-600 dark:text-gray-200'>
             Use a permanent address where you can receive mail.
           </p>
 
@@ -135,7 +134,7 @@ export default function ProfileSettings({
             <div className='sm:col-span-3'>
               <label
                 htmlFor='first-name'
-                className='block text-sm font-medium leading-6 text-gray-900'
+                className='block text-sm font-medium leading-6 text-gray-900 dark:text-white'
               >
                 First name
               </label>
@@ -146,7 +145,7 @@ export default function ProfileSettings({
                   defaultValue={firstName}
                   {...register('firstName', { required: true, maxLength: 80 })}
                   autoComplete='given-name'
-                  className='block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+                  className='"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"'
                 />
               </div>
             </div>
@@ -154,7 +153,7 @@ export default function ProfileSettings({
             <div className='sm:col-span-3'>
               <label
                 htmlFor='lastName'
-                className='block text-sm font-medium leading-6 text-gray-900'
+                className='block text-sm font-medium leading-6 text-gray-900 dark:text-white'
               >
                 Last name
               </label>
@@ -164,7 +163,7 @@ export default function ProfileSettings({
                   {...register('lastName', { required: true, maxLength: 80 })}
                   defaultValue={lastName}
                   autoComplete='family-name'
-                  className='block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+                  className='"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"'
                 />
               </div>
             </div>
@@ -172,7 +171,7 @@ export default function ProfileSettings({
             <div className='sm:col-span-4'>
               <label
                 htmlFor='email'
-                className='block text-sm font-medium leading-6 text-gray-900'
+                className='block text-sm font-medium leading-6 text-gray-900 dark:text-white'
               >
                 Email address
               </label>
@@ -184,7 +183,7 @@ export default function ProfileSettings({
                   defaultValue={email}
                   readOnly
                   autoComplete='email'
-                  className='block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+                  className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                 />
               </div>
             </div>
@@ -192,7 +191,7 @@ export default function ProfileSettings({
             <div className='sm:col-span-2 sm:col-start-1'>
               <label
                 htmlFor='company_name'
-                className='block text-sm font-medium leading-6 text-gray-900'
+                className='block text-sm font-medium leading-6 text-gray-900 dark:text-white'
               >
                 Company Name
               </label>
@@ -205,7 +204,7 @@ export default function ProfileSettings({
                   })}
                   defaultValue={companyName}
                   autoComplete='address-level2'
-                  className='block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+                  className='"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"'
                 />
               </div>
             </div>
@@ -213,7 +212,7 @@ export default function ProfileSettings({
             <div className='sm:col-span-3'>
               <label
                 htmlFor='country'
-                className='block text-sm font-medium leading-6 text-gray-900'
+                className='block text-sm font-medium leading-6 text-gray-900 dark:text-white'
               >
                 Country
               </label>
@@ -223,7 +222,7 @@ export default function ProfileSettings({
                   defaultValue={country}
                   autoComplete='country-name'
                   {...register('country', { required: true, maxLength: 80 })}
-                  className='block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6'
+                  className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                 >
                   {Array.from(countryMap.entries()).map(([code, scountry]) =>
                     scountry == country ? (
@@ -240,10 +239,10 @@ export default function ProfileSettings({
               </div>
             </div>
 
-            <div className='col-span-full'>
+            <div className='sm:col-span-2'>
               <label
                 htmlFor='address'
-                className='block text-sm font-medium leading-6 text-gray-900'
+                className='block text-sm font-medium leading-6 text-gray-900 dark:text-white'
               >
                 Street address
               </label>
@@ -254,7 +253,7 @@ export default function ProfileSettings({
                   defaultValue={address}
                   {...register('address', { required: false, maxLength: 80 })}
                   autoComplete='street-address'
-                  className='block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+                  className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                 />
               </div>
             </div>
@@ -262,7 +261,7 @@ export default function ProfileSettings({
             <div className='sm:col-span-2 sm:col-start-1'>
               <label
                 htmlFor='city'
-                className='block text-sm font-medium leading-6 text-gray-900'
+                className='block text-sm font-medium leading-6 text-gray-900 dark:text-white'
               >
                 City
               </label>
@@ -273,7 +272,7 @@ export default function ProfileSettings({
                   defaultValue={city}
                   {...register('city', { required: false, maxLength: 80 })}
                   autoComplete='address-level2'
-                  className='block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
+                  className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                 />
               </div>
             </div>
@@ -281,13 +280,7 @@ export default function ProfileSettings({
         </div>
       </div>
 
-      <div className='mt-6 flex items-center justify-end gap-x-6'>
-        <button
-          type='button'
-          className='text-md px-4 py-2.5 font-semibold leading-6 text-gray-900'
-        >
-          Cancel
-        </button>
+      <div className='mt-6 flex items-center justify-start gap-x-6'>
         <button
           type='submit'
           disabled={loading}
