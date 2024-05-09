@@ -45,7 +45,7 @@ export default function SolutionsList() {
   //   },
   // ];
 
-  const solutions: Array<NavLabel> = [
+  const servies: Array<NavLabel> = [
     {
       name: 'General Transcription',
       description: 'Growth Strategies from from acquisition to conversion.',
@@ -103,7 +103,7 @@ export default function SolutionsList() {
     // <div className='mx-auto  max-w-7xl mt-16 md:mt-20 xl:mt-20'>
     <div className='mt-16 md:mt-20 xl:mt-20'>
       <dl className='mx-auto grid max-w-none px-6 md:px-16 lg:px-20 xl:px-28 grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 lg:max-w-7xl xl:max-w-7xl lg:grid-cols-2 lg:gap-20'>
-        {[...solutions.slice(0, 6)].map((feature, index) => (
+        {[...servies].map((feature, index) => (
           <a
             href={'/solutions/' + feature.href}
             key={feature.name}

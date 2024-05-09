@@ -302,7 +302,7 @@ export default function AppHeader() {
         )}
       >
         <nav
-          className='mx-auto flex relative max-w-7xl items-center justify-between md:justify-end px-6 py-4 md:px-16 lg:px-20'
+          className='mx-auto flex relative max-w-7xl items-center justify-between lg:justify-end px-6 py-4 md:px-16 lg:px-20'
           aria-label='Global'
         >
           <div className='hidden lg:flex flex-1 absolute -top-1 md:-top-2 left-6 md:left-16  lg:left-20'>

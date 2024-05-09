@@ -3,89 +3,95 @@ import type { Metadata } from 'next';
 
 import AppHeader from '@/components/AppHeader';
 import AppFooter from '@/components/AppFooter';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLongArrowRight } from '@fortawesome/free-solid-svg-icons';
+import PopularPartner from '@/components/PopularPartner';
 
 export const metadata: Metadata = {
   title: 'VerbalScripts | Services',
 };
 
 export default function Page() {
-  const solutions: Array<NavLabel> = [
+  const services: Array<NavLabel> = [
     {
-      name: 'Court reporting & Legal',
-      description:
-        'We convert audio/video content into transcripts quickly and securing to save law firms, investigators, police force, or research firms time and money.',
-      href: '/solutions/legal',
-      imgUrl: '/icons/legal-document.png',
+      name: 'General Transcription',
+      description: 'Growth Strategies from from acquisition to conversion.',
+      href: '/services/general',
+      imgUrl: '/svg/Prototyping-process-bro.svg',
     },
     {
-      name: 'Corporate & general business',
-      description:
-        'Customized for your large volume needs, including a variety of enterprise security requirements.',
-      href: '/solutions/enterprise',
-      imgUrl: '/icons/paper.png',
+      name: 'Legal Transcription',
+      description: 'Brand ambassadors servin customers at all channels',
+      href: '/services/legal',
+      imgUrl: '/svg/Privacy-policy-pana.svg',
     },
     {
-      name: 'Media production',
-      description:
-        'The very best in human intelligence requires top quality training data for speech NLP and computer vision models.',
-      href: '/solutions/ai',
-      imgUrl: '/icons/video-editor.png',
+      name: 'Video & Audio Transcription',
+      description: 'Expert tech hanlde increasingly complex problems.',
+      href: '/services/vide&audio',
+      imgUrl: '/svg/Web-devices-amico.svg',
     },
     {
-      name: 'Digital & online learning',
+      name: 'Focus Groups & Interviews',
       description:
-        'Fast, easy lecture and dissertation transcripts for students or faculty, compatible with NVivo and other research platforms.',
-      href: '/solutions/education',
-      imgUrl: '/icons/online-learning.png',
+        'Fast, easy lecture and dissertation transcripts for students.',
+      href: '/services/interviews',
+      imgUrl: '/svg/Telecommuting-rafiki.svg',
+    },
+    {
+      name: 'Medical Transcription',
+      description:
+        'Fast, easy lecture and dissertation transcripts for students.',
+      href: '/services/medical',
+      imgUrl: '/svg/Researchers-cuate.svg',
     },
 
     {
-      name: 'Government',
-      description:
-        'Making live events, meetings, ad campaigns and press briefings more accessible and actionable.',
-      href: '/solutions/government',
-      imgUrl: '/icons/policy.png',
+      name: 'Academic & Conference Transcription',
+      description: 'Expert tech hanlde increasingly complex problems.',
+      href: '/services/academic',
+      imgUrl: '/svg/Conference-pana.svg',
     },
   ];
 
-  const features = [
-    {
-      name: 'First Draft',
-      features: [
-        '-98% accuracy',
-        'Average next day delivery',
-        'Speaker IDs available',
-        'Timestamps available',
-      ],
-      price: '0.79$ per minute',
-    },
-    {
-      name: 'Standard',
-      features: [
-        '99% accuracy guaranteed',
-        '1-3 business day delivery',
-        'Speaker IDs available',
-        'Timestamps available',
-      ],
-      price: '1.25$ per minute',
-    },
-    {
-      name: 'Verbatin',
-      features: [
-        'Every utterance captured',
-        '2-5  business day delivery',
-        'Speaker IDs available',
-        'Timestamps available',
-      ],
-      price: '2.00$ per minute',
-    },
-  ];
+  // const features = [
+  //   {
+  //     name: 'First Draft',
+  //     features: [
+  //       '-98% accuracy',
+  //       'Average next day delivery',
+  //       'Speaker IDs available',
+  //       'Timestamps available',
+  //     ],
+  //     price: '0.79$ per minute',
+  //   },
+  //   {
+  //     name: 'Standard',
+  //     features: [
+  //       '99% accuracy guaranteed',
+  //       '1-3 business day delivery',
+  //       'Speaker IDs available',
+  //       'Timestamps available',
+  //     ],
+  //     price: '1.25$ per minute',
+  //   },
+  //   {
+  //     name: 'Verbatin',
+  //     features: [
+  //       'Every utterance captured',
+  //       '2-5  business day delivery',
+  //       'Speaker IDs available',
+  //       'Timestamps available',
+  //     ],
+  //     price: '2.00$ per minute',
+  //   },
+  // ];
 
   return (
     <div className='bg-zinc-800 max-h-screen overflow-y-scroll relative'>
       <AppHeader />
 
-      <div className='relative bg-teal-600 h-auto isolate px-6 pt-14 lg:px-8'>
+      <div className='relative bg-white h-auto  px-6 pt-14 md:pt-0  pb-40 md:py-32 lg:py-36 md:px-20 lg:px-28'>
         <div className='landing-page-video-wrapper'></div>
         <div
           className='absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80'
@@ -99,15 +105,31 @@ export default function Page() {
             }}
           />
         </div>
-        <div className='max-w-3xl pb-60 pt-0 md:py-32 lg:py-32 md:mx-20 lg:mx-40'>
-          <div className='text-left'>
-            <h1 className='text-5xl font-bold tracking-tight text-white sm:text-6xl'>
-              Transcription Solutions
+        <div className='flex flex-wrap  md:flex-nowrap items-center gap-x-10 '>
+          <div className='max-w-3xl '>
+            <h1 className='text-3xl font-bold capitalize tracking-tight text-gray-800 sm:text-4xl'>
+              Service we offer
             </h1>
 
-            <p className='mt-6 text-3xl leading-8 text-gray-100'>
-              99%+ Accuracy, fast and secure
+            <p className='hidden md:block md:max-w-2xl lg:max-w-3xl xl:max-w-4xl relative z-10 mt-6 text-lg  leading-7 text-gray-800'>
+              At VerbalScripts, precision meets efficiency as we transform
+              spoken content into clear, accessible text, empowering your
+              projects with accuracy and ease.Explore our diverse transcription
+              services below.
             </p>
+
+            <div className='mt-10'>
+              <a
+                href='/upload-files'
+                className='inline-flex flex-nowrap  items-center gap-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
+              >
+                <span className='flex'>Order Now</span>
+                <FontAwesomeIcon className='ml-2 w-5' icon={faLongArrowRight} />
+              </a>
+            </div>
+          </div>
+          <div className='md:min-w-[25rem] lg:min-w-[30rem] text-left'>
+            <img src='/table-coffee.jpg' className='' alt='' />
           </div>
         </div>
         <div
@@ -124,30 +146,8 @@ export default function Page() {
         </div>
       </div>
 
-      {/* transcription process */}
-      <div className='bg-white py-14 md:py-24 -mt-40'>
-        <dl className=' mx-auto grid max-w-none px-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3  lg:max-w-7xl xl:max-w-7xl '>
-          {[...features].map((feature) => (
-            <div
-              key={feature.name}
-              className='relative shadow-md bg-white pl-4 md:pl-6 transition  p-5  border-r border-gray-300'
-            >
-              <dt className='text-xl font-semibold leading-7 text-gray-800'>
-                {feature.name}
-              </dt>
-              <dd className='mt-1 text-lg leading-7 text-gray-700'>
-                <ul className='list-disc ml-5'>
-                  {feature.features.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </dd>
-              <p className='mt-5 bg-orange-100 rounded-md px-4 py-3 text-orange-500 font-semibold text-lg'>
-                {'Starting at '} {feature.price}
-              </p>
-            </div>
-          ))}
-        </dl>
+      <div className='bg-gray-100 py-0'>
+        <PopularPartner />
       </div>
 
       <div className='bg-white py-14 md:py-24'>
@@ -164,7 +164,7 @@ export default function Page() {
 
         <div className='mx-auto pt-16 max-w-3xl sm:pt-20 lg:pt-24 lg:max-w-5xl'>
           <dl className='mx-auto grid max-w-none px-6 grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-7xl xl:max-w-7xl lg:grid-cols-2 lg:gap-y-16'>
-            {[...solutions].map((feature) => (
+            {[...services].map((feature) => (
               <a
                 href={'/solutions' + feature.href}
                 key={feature.name}

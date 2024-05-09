@@ -117,7 +117,7 @@ export default function Home() {
         <div className='relative mx-auto max-w-7xl'>
           <div className='absolute  -top-16 left-10 md:left-28 lg:left-36 mt-10 flex  items-start md:items-center justify-center gap-6'>
             <a
-              href='/solutions'
+              href='/services'
               className='rounded-lg btn-vlg px-6  md:px-12 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600'
             >
               Services
