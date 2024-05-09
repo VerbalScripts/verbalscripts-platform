@@ -227,7 +227,7 @@ export default function AppFooter() {
         <div className='max-w-none lg:max-w-none border-b border-gray-300/10'>
           <dl className='grid justify-evenly grid-cols-1 md:grid-cols-3   lg:gap-x-8 gap-y-10  lg:grid-cols-4 lg:gap-y-16  pb-12'>
             <div className='flex flex-col gap-y-2'>
-              <a href='#' className='-m-1.5  mb-1 p-1.5'>
+              <a href='#' className='-m-1.5  mb-1 p-1.5 -mt-10'>
                 <img
                   src='/icons/logo-png.png'
                   className='w-[13rem] md:w-[11rem] lg:w-[10rem] '
@@ -286,7 +286,7 @@ export default function AppFooter() {
                 >
                   <FontAwesomeIcon
                     icon={faInstagram}
-                    className='h-6 w-6 text-white'
+                    className='h-6 w-6  footer-title'
                   />
                 </a>
               </div>
@@ -303,7 +303,7 @@ export default function AppFooter() {
 
             <div className='flex flex-col gap-y-2'>
               <a href='#' className='-m-1.5 mb-3  p-1.5'>
-                <span className='text-gray-100 font-bold text-xl'>
+                <span className=' font-bold text-xl footer-title'>
                   Services
                 </span>
               </a>
@@ -319,7 +319,7 @@ export default function AppFooter() {
 
             <div className='flex flex-col gap-y-2'>
               <a href='#' className='-m-1.5 mb-3 p-1.5'>
-                <span className='text-gray-100 font-bold text-lg'>
+                <span className=' font-bold text-lg footer-title'>
                   Industries
                 </span>
               </a>
@@ -335,7 +335,7 @@ export default function AppFooter() {
 
             <div className='flex flex-col gap-y-2'>
               <a href='#' className='-m-1.5 mb-3 p-1.5'>
-                <span className='text-gray-100  font-bold text-lg'>
+                <span className='font-bold text-lg footer-title'>
                   Company
                 </span>
               </a>

@@ -88,7 +88,7 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
   // }, []);
 
   return (
-    <section className='relative py-14 sm:py-20 bg-white'>
+    <section className='relative py-14 sm:py-12 bg-white'>
       <div className='mx-auto max-w-7xl'>
         <div className='absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] opacity-20' />
         <div className='absolute  right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center' />
@@ -111,7 +111,7 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             onSwiper={setSwiper}
-            className='w-full h-96 flex justify-center-center '
+            className='w-full h-80 flex justify-center-center '
           >
             {testimonials.map((testimony: Testimony, index: number) => (
               <SwiperSlide key={testimony.name + index}>
@@ -131,7 +131,7 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
               <div key={index} className='relative'>
                 <div
                   className={classNames(
-                    'mt-4 flex-col -top-44 md:-top-52 rotate-12 z-[11] bg-white min-w-[150px]  shadow-md secondary-border border rounded-xl py-2 px-3  absolute flex items-center justify-center space-x-3 text-base',
+                    'mt-4 flex-col -top-44 md:-top-36 rotate-12 z-[11] bg-white min-w-[150px]  shadow-md border border-orange-500 rounded-xl py-2 px-3  absolute flex items-center justify-center space-x-3 text-base',
 
                     index == activeIndex ? '' : 'hidden',
                   )}
@@ -154,7 +154,7 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
                 <div
                   onClick={() => changeActive(index)}
                   className={classNames(
-                    'relative transition-all  flex overflow-x-hidden overflow-y-hidden justify-center items-center  border-8 border-white min-w-[30vw]  min-h-[30vw] md:min-h-[120px]  md:min-w-[120px] lg:min-h-[20vw] lg:min-w-[20vw] rounded-full testimonials-circles',
+                    'relative transition-all  flex overflow-x-hidden overflow-y-hidden justify-center items-center  border-8 border-white min-w-[30vw]  min-h-[30vw] md:min-h-[110px]  md:min-w-[110px] lg:min-h-[18vw] lg:min-w-[18vw] rounded-full testimonials-circles',
                     `z-[${10 + index + 2}]`,
                     // index % 2 == 0 ? '-translate-x-10' : 'translate-x-10',
                     index == 0
@@ -164,7 +164,7 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
                       ? '-translate-x-10 md:-translate-x-20'
                       : '',
                     index == activeIndex
-                      ? 'bg-yellow-400 scale-125 md:scale-150  z-[20]'
+                      ? 'bg-yellow-400 scale-125 md:scale-125  z-[20]'
                       : ' testimonials-bg',
                     index <= activeIndex
                       ? `scale-[1.${index + 1}]`

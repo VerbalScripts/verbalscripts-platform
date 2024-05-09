@@ -302,10 +302,10 @@ export default function AppHeader() {
         )}
       >
         <nav
-          className='mx-auto flex relative max-w-7xl items-center justify-end px-6 py-4 md:px-16 lg:px-20'
+          className='mx-auto flex relative max-w-7xl items-center justify-between md:justify-end px-6 py-4 md:px-16 lg:px-20'
           aria-label='Global'
         >
-          <div className='flex lg:flex-1 absolute -top-1 md:-top-2 left-6 md:left-16  lg:left-20'>
+          <div className='hidden md:flex lg:flex-1 absolute -top-1 md:-top-2 left-6 md:left-16  lg:left-20'>
             <a href='/' className='-m-1.5 p-1.5 text-2xl font-bold'>
               <img
                 className='h-[4.0rem] md:h-[4.0rem] lg:h-[4.8rem]'
@@ -314,15 +314,28 @@ export default function AppHeader() {
               />
             </a>
           </div>
-          <div className='flex lg:hidden'>
+          <div className='flex items-center lg:hidden'>
             <button
               type='button'
               className='-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700'
               onClick={() => setOpen(true)}
             >
               <span className='sr-only'>Open main menu</span>
-              <Bars3Icon className='h-6 w-6' aria-hidden='true' />
+              <Bars3Icon className='h-8 w-8' aria-hidden='true' />
             </button>
+            <a href='/' className='-m-1.5 p-1.5 text-2xl font-bold'>
+              <img className='h-[3rem]' src='/icons/logo-v.png' alt='' />
+            </a>
+          </div>
+
+          <div className='flex items-center lg:hidden'>
+            <a
+              href='/dashboard/pending'
+              className='-mx-3  text-center rounded-full inline-flex items-center gap-x-2 bg-indigo-500  px-3 py-1.5 text-xl font-semibold leading-7  hover:bg-indigo-400 hover:text-gray-200'
+            >
+              <ArrowUpTrayIcon className='text-white h-5 w-5' />
+              <span className='text-white'>Try Now</span>
+            </a>
           </div>
 
           <Popover.Group className='hidden lg:flex lg:gap-x-1 lg:items-center'>
@@ -421,45 +434,55 @@ export default function AppHeader() {
           <div className='fixed inset-0 z-10 bg-white-300' />
 
           <Dialog.Panel className='fixed inset-y-0 right-0 z-30 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10'>
-            <div className='flex items-center justify-end'>
+            <div className='flex items-center justify-between'>
+              <a href='/' className='-m-1.5 p-1.5 text-2xl font-bold'>
+                <img className='h-[4rem]' src='/icons/logo-v.png' alt='' />
+              </a>
               <button
                 type='button'
-                className='-m-1.5 rounded-md p-2.5 text-gray-700'
+                className='-m-1.5 rounded-md p-2.5 '
                 onClick={() => setOpen(false)}
               >
                 <span className='sr-only'>Close menu</span>
-                <XMarkIcon className='h-6 w-6' aria-hidden='true' />
+                <XMarkIcon
+                  className='h-8 w-8 text-gray-900'
+                  aria-hidden='true'
+                />
               </button>
             </div>
             <div className='mt-6 flow-root'>
               <div className='-my-6 divide-y divide-gray-500/10'>
-                <div className='space-y-2 py-6'>
+                <div className='space-y-4 py-6 px-5'>
                   <a
                     href='/'
-                    className='-mx-3 block rounded-lg px-3 py-2 text-xl font-semibold leading-7 text-gray-900 hover:bg-gray-50'
+                    className='-mx-3 block rounded-lg px-3 py-2 text-xl  font-bold leading-7 text-gray-800 hover:text-gray-900'
                   >
                     Home
                   </a>
                   <Disclosure as='div' className='-mx-3'>
                     {({ open }) => (
                       <>
-                        <Disclosure.Button className='flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-xl font-semibold leading-7 text-gray-900 hover:bg-gray-50'>
-                          Services
+                        <Disclosure.Button className='flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-xl font-bold leading-7 text-gray-800 hover:text-gray-900'>
+                          <span
+                            className={classNames(open ? 'text-gray-900' : '')}
+                          >
+                            Services
+                          </span>
                           <ChevronDownIcon
                             className={classNames(
-                              open ? 'rotate-180' : '',
-                              'h-5 w-5 flex-none',
+                              'h-8 w-8 flex-none transition-all',
+                              open ? 'rotate-0' : '-rotate-90',
                             )}
                             aria-hidden='true'
                           />
                         </Disclosure.Button>
-                        <Disclosure.Panel className='mt-2 space-y-2'>
+                        <Disclosure.Panel className='mt-2 ml-2 space-y-1 border-l border-gray-400'>
                           {[...services].map((item) => (
                             <Disclosure.Button
                               key={item.name}
                               as='a'
                               href={item.href}
-                              className='block rounded-lg py-2 pl-6 pr-3 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50'
+                              className='block rounded-lg py-2 pl-6 pr-3 text-lg font-semibold leading-7 text-gray-600 hover:bg-gray-50'
                             >
                               {item.name}
                             </Disclosure.Button>
@@ -471,23 +494,27 @@ export default function AppHeader() {
                   <Disclosure as='div' className='-mx-3'>
                     {({ open }) => (
                       <>
-                        <Disclosure.Button className='flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-xl font-semibold leading-7 text-gray-900 hover:bg-gray-50'>
-                          Industries
+                        <Disclosure.Button className='flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-xl font-bold leading-7 text-gray-800 hover:text-gray-900'>
+                          <span
+                            className={classNames(open ? 'text-gray-900' : '')}
+                          >
+                            Industry
+                          </span>
                           <ChevronDownIcon
                             className={classNames(
-                              open ? 'rotate-180' : '',
-                              'h-5 w-5 flex-none',
+                              'h-8 w-8 flex-none transition-all',
+                              open ? 'rotate-0' : '-rotate-90',
                             )}
                             aria-hidden='true'
                           />
                         </Disclosure.Button>
-                        <Disclosure.Panel className='mt-2 space-y-2'>
+                        <Disclosure.Panel className='mt-2 ml-2 space-y-1 border-l border-gray-400'>
                           {[...solutions].map((item) => (
                             <Disclosure.Button
                               key={item.name}
                               as='a'
                               href={item.href}
-                              className='block rounded-lg py-2 pl-6 pr-3 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50'
+                              className='block rounded-lg py-2 pl-6 pr-3 text-lg font-semibold leading-7 text-gray-600 hover:bg-gray-50'
                             >
                               {item.name}
                             </Disclosure.Button>
@@ -500,23 +527,27 @@ export default function AppHeader() {
                   <Disclosure as='div' className='-mx-3'>
                     {({ open }) => (
                       <>
-                        <Disclosure.Button className='flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-xl font-semibold leading-7 text-gray-900 hover:bg-gray-50'>
-                          Company
+                        <Disclosure.Button className='flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-xl font-bold leading-7 text-gray-800 hover:text-gray-900'>
+                          <span
+                            className={classNames(open ? 'text-gray-900' : '')}
+                          >
+                            Company
+                          </span>
                           <ChevronDownIcon
                             className={classNames(
-                              open ? 'rotate-180' : '',
-                              'h-5 w-5 flex-none',
+                              'h-8 w-8 flex-none transition-all',
+                              open ? 'rotate-0' : '-rotate-90',
                             )}
                             aria-hidden='true'
                           />
                         </Disclosure.Button>
-                        <Disclosure.Panel className='mt-2 space-y-2'>
+                        <Disclosure.Panel className='mt-2 ml-2 space-y-1 border-l border-gray-400'>
                           {[...resources].map((item) => (
                             <Disclosure.Button
                               key={item.name}
                               as='a'
                               href={item.href}
-                              className='block rounded-lg py-2 pl-6 pr-3 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50'
+                              className='block rounded-lg py-2 pl-6 pr-3 text-lg font-semibold leading-7 text-gray-600 hover:bg-gray-50'
                             >
                               {item.name}
                             </Disclosure.Button>
@@ -529,35 +560,53 @@ export default function AppHeader() {
                   <div className='border-b py-2 border-gray-200'></div>
                   <button
                     onClick={() => setShowQuote(true)}
-                    className='-mx-3 block underline underline-offset-2 rounded-lg px-3 py-2 text-xl font-semibold leading-7 text-orange-500 hover:bg-gray-50'
+                    className='-mx-3 block underline underline-offset-2 rounded-lg px-3 py-2 text-xl font-semibold leading-7 text-indigo-500 hover:bg-gray-50'
                   >
                     Request a Quote
                   </button>
                   <a
                     href='/upload-files'
-                    className='-mx-3 underline underline-offset-2 block rounded-lg px-3 py-2 text-xl font-semibold leading-7 text-orange-500 hover:bg-gray-50'
+                    className='-mx-3 underline underline-offset-2 block rounded-lg px-3 py-2 text-xl font-semibold leading-7 text-indigo-500 hover:bg-gray-50'
                   >
                     Place Order
                   </a>
                 </div>
-                <div className='grid grid-cols-1 md:grid-cols-1  gap-y-3 md:gap-x-10 divide-x divide-gray-900/5 bg-gray-50'>
+
+                <div className='mx-4 mb-3'>
+                  <a
+                    href='/dashboard/pending'
+                    className='-mx-3 block text-center rounded-full  bg-indigo-500  px-3 py-2.5 text-xl font-semibold leading-7 text-white hover:bg-indigo-400 hover:text-gray-200'
+                  >
+                    Get Started
+                  </a>
+                </div>
+                <div className='mx-4 grid grid-cols-1 md:grid-cols-1  gap-y-3 md:gap-x-10 divide-x divide-gray-900/5 bg-gray-50'>
                   <div>
                     <a
                       href='#'
-                      className='-mx-3 block text-center rounded-md ring-1 ring-inset ring-indigo-500  px-3 py-3.5 text-xl font-semibold leading-7 text-indigo-500 hover:ring-indigo-400 hover:text-indigo-400'
+                      className='-mx-3 block text-center rounded-full ring-1 ring-inset ring-indigo-500  px-3 py-2.5 text-xl font-semibold leading-7 text-indigo-500 hover:ring-indigo-400 hover:text-indigo-400'
                     >
                       Transcriber Login
                     </a>
-                  </div>
-
+                  </div>{' '}
                   <div>
                     <a
-                      href='/auth/login'
-                      className='-mx-3 block text-center rounded-md  bg-indigo-500  px-3 py-3.5 text-xl font-semibold leading-7 text-white hover:bg-indigo-400 hover:text-gray-200'
+                      href='#'
+                      className='-mx-3 block text-center rounded-full ring-1 ring-inset ring-indigo-500  px-3 py-2.5 text-xl font-semibold leading-7 text-indigo-500 hover:ring-indigo-400 hover:text-indigo-400'
                     >
                       Client Login
                     </a>
                   </div>
+                </div>
+                <div className='flex items-center justify-evenly mt-10'>
+                  <a href='/privacy-policy' className='text-gray-600 text-sm'>
+                    {' '}
+                    Privacy
+                  </a>
+                  <span className='text-gray-600 text-xl'>|</span>
+                  <a href='/privacy-policy' className='text-gray-600 text-sm'>
+                    Terms and conditions
+                  </a>
                 </div>
               </div>
             </div>

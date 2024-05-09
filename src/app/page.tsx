@@ -142,7 +142,12 @@ export default function Home() {
               </h2>
               <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
                 We transcribe <br></br>with Precision <br></br>and <br></br>
-                Professionalism.
+                <span className='relative z-10'>
+                  Professionalism.{' '}
+                  <span className='z-10 absolute -bottom-5 right-0'>
+                    <img src='/svg/lines.svg' className='w-44' alt='' />
+                  </span>
+                </span>
               </p>
             </div>
             <div>
@@ -226,7 +231,14 @@ export default function Home() {
                 What Services We Offer
               </h2>
               <p className='mt-2 text-4xl md:text-5xl capitalize  font-bold text-left text-gray-900 section-title'>
-                Transcription Needs ? <br></br> Meet out exceptional Services
+                Transcription Needs ? <br></br> Meet out{' '}
+                <span className='relative z-10'>
+                  exceptional{' '}
+                  <span className='z-10 absolute -bottom-5 right-0'>
+                    <img src='/svg/lines.svg' className='w-44' alt='' />
+                  </span>
+                </span>{' '}
+                Services
               </p>
             </div>
             <div>
@@ -268,8 +280,8 @@ export default function Home() {
             <div className='relative isolate  sm:rounded-3xl sm:px-16  lg:flex lg:items-center lg:gap-x-20 lg:px-24'>
               <div className='hidden lg:block relative md:-mt-16 h-80 lg:min-w-[24rem]   xl:min-w-[25rem]'>
                 <img
-                  className=' w-[20rem] md:w-[25rem]  xl:w-[28rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10'
-                  src='/4-steps.svg'
+                  className=' w-[20rem] md:w-[28rem]  xl:w-[32rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10'
+                  src='/svg/Devices-pana.svg'
                   alt='Ai Powered'
                 />
 
@@ -404,8 +416,14 @@ export default function Home() {
                 Want to be a transcriber
               </h2>
               <p className='mt-2 capitalize text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
-                Got the experience we<br></br>need? <br></br> We are looking for
-                you
+                Got the{' '}
+                <span className='relative z-10'>
+                  Experience{' '}
+                  <span className='z-10 absolute -bottom-5 right-0'>
+                    <img src='/svg/lines.svg' className='w-44' alt='' />
+                  </span>
+                </span>{' '}
+                we<br></br>need? <br></br> We are looking for you
               </p>
 
               <div className='flex flex-col  items-start gap-x-3 gap-y-5  mt-5 border-l-4 secondary-border'>
@@ -456,7 +474,7 @@ export default function Home() {
             <div className='mb-10 overflow-hidden py-14 md:py-0 md:mb-0 order-1 md:order-2 items-center justify-center  md:min-h-[28rem] bg-gray-100 md:flex relative md:-mt-16 '>
               <img
                 className=' w-[40rem] md:w-[30rem]  xl:w-[30rem]'
-                src='/transcriber.svg'
+                src='/svg/Working from anywhere-pana.svg'
                 alt='Ai Powered'
               />
             </div>

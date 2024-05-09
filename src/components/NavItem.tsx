@@ -26,7 +26,7 @@ export default function NavItem({ label }: NavItemProp) {
       <div className='flex-auto'>
         <a
           href={label.href}
-          className='block  text-sm font-semibold text-gray-900'
+          className='block  text-sm navitem-text uppercase font-semibold text-gray-900'
         >
           {label.name}
           <span className='absolute inset-0' />
