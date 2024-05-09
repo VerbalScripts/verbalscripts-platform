@@ -226,7 +226,7 @@ export default function AppFooter() {
         {/* contact information */}
         <div className='max-w-none lg:max-w-none border-b border-gray-300/10'>
           <dl className='grid justify-evenly grid-cols-1 md:grid-cols-3   lg:gap-x-8 gap-y-10  lg:grid-cols-4 lg:gap-y-16  pb-12'>
-            <div className='flex flex-col gap-y-2'>
+            <div className='flex items-center flex-col gap-y-2'>
               <a href='#' className='-m-1.5  mb-1 p-1.5 -mt-10'>
                 <img
                   src='/icons/logo-png.png'
@@ -286,7 +286,7 @@ export default function AppFooter() {
                 >
                   <FontAwesomeIcon
                     icon={faInstagram}
-                    className='h-6 w-6  footer-title'
+                    className='h-6 w-6  text-white'
                   />
                 </a>
               </div>
@@ -294,7 +294,7 @@ export default function AppFooter() {
               <div className='-m-1.5 mt-3 p-1.5  inline-flex '>
                 <a
                   href='/contact-us'
-                  className='bg-indigo-600 font-semibold text-md rounded-full px-5 py-2.5 hover:bg-indigo-500 '
+                  className='bg-indigo-600 text-white font-semibold text-md rounded-full px-5 py-2.5 hover:bg-indigo-500 '
                 >
                   Huge Project? Get In Touch
                 </a>
