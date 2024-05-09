@@ -123,7 +123,7 @@ export default function Home() {
               Services
             </a>
             <a
-              href='/services'
+              href='/industries'
               className='rounded-lg btn-vlg px-6  md:px-12 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600'
             >
               Industries
@@ -133,7 +133,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className='py-20 md:py-16' style={{ background: '#FAFAFA' }}>
+      <div className='py-10 md:py-16' style={{ background: '#FAFAFA' }}>
         <div className='mx-auto max-w-7xl px-6 md:px-16 lg:px-16 xl:px-28'>
           <div className='flex flex-wrap md:flex-nowrap items-center gap-x-6'>
             <div className='md:min-w-[25rem] lg:min-w-[30rem] text-left'>
