@@ -97,7 +97,7 @@ export default function Home() {
   // };
 
   return (
-    <div className='bg-zinc-800 relative'>
+    <div className=' relative' style={{ background: '#405568'}}>
       {/* <NextSeo
         defaultTitle='VerbalScripts: Fast; Accurate Human Transcription Services'
         title='VerbalScripts: Fast; Accurate Human Transcription Services'
@@ -161,7 +161,8 @@ export default function Home() {
                   className='inline-flex  items-center gap-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
                 >
                   <span>Order Now</span>
-                  <FontAwesomeIcon className='ml-4' icon={faLongArrowRight} />
+                  <FontAwesomeIcon className='ml-4 w-6' icon={faLongArrowRight} />
+                  
                 </a>
               </div>
             </div>
