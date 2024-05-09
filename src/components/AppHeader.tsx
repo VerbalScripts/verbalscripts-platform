@@ -267,7 +267,7 @@ export default function AppHeader() {
       <div className='mx-auto  max-w-7xl relative z-30'>
         <p className='hidden relative z-50 md:flex  h-10 items-center  justify-end gap-6  text-sm font-medium text-white px-6 md:px-16 lg:px-20'>
           <a
-            href='/auth/login'
+            href='/dashboard/pending'
             className='-mx-3 flex items-center underline  underline-offset-4 gap-x-5 rounded-lg px-3 py-2.5 text-base  transition leading-7 text-white hover:text-orange-400'
           >
             <ArrowUpTrayIcon className='h-5 w-5' aria-hidden='true' />
@@ -498,7 +498,7 @@ export default function AppHeader() {
                           <span
                             className={classNames(open ? 'text-gray-900' : '')}
                           >
-                            Industry
+                            Industries
                           </span>
                           <ChevronDownIcon
                             className={classNames(

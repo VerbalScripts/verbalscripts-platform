@@ -97,7 +97,7 @@ export default function Home() {
   // };
 
   return (
-    <div className=' relative' style={{ background: '#405568'}}>
+    <div className=' relative bg-zinc-900'>
       {/* <NextSeo
         defaultTitle='VerbalScripts: Fast; Accurate Human Transcription Services'
         title='VerbalScripts: Fast; Accurate Human Transcription Services'
@@ -265,7 +265,7 @@ export default function Home() {
       {/* validation section */}
 
       <div className='bg-white'>
-        <div className='py-20 px-6 md:py-20 lg:px-8'>
+        <div className='pt-3 pb-20 px-6 md:pt-20 md:pb-20 lg:px-8'>
           <div className='mx-auto max-w-3xl text-left md:text-center'>
             {/* <h2 className="text-base font-semibold leading-7 text-indigo-600">
             You did{ "'"}nt Hear it from us
@@ -289,7 +289,7 @@ export default function Home() {
                 <div className='flex justify-center mt-16 md:mr-16'>
                   <a
                     href='/upload-files'
-                    className='rounded-xl ring-1 ring-indigo-600 ring-inset focus:ring-4 focus:ring-indigo-300  bg-indigo-500 px-8 py-3.5 text-lg font-bold text-white shadow-sm transition  hover:shadow-md hover:bg-indigo-400 hover:rind focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-indigo-300'
+                    className='rounded-xl  ring-inset focus:ring-4 focus:ring-indigo-300  bg-indigo-500 px-8 py-3.5 text-lg font-bold text-white shadow-sm transition  hover:shadow-md hover:bg-indigo-400 hover:rind focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-indigo-300'
                   >
                     Order Now
                   </a>
@@ -373,6 +373,15 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
+
+                <div className='flex lg:hidden justify-center mt-16 md:mr-16'>
+                  <a
+                    href='/upload-files'
+                    className='rounded-xl  ring-inset focus:ring-4 focus:ring-indigo-300  bg-indigo-500 px-8 py-3.5 text-lg font-bold text-white shadow-sm transition  hover:shadow-md hover:bg-indigo-400 hover:rind focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-indigo-300'
+                  >
+                    Order Now
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -409,7 +418,7 @@ export default function Home() {
 
       {/* <CallToActionBanner fn={setOpen} /> */}
 
-      <div className='bg-white py-24'>
+      <div className='bg-white pt-0 pb-24 md:pb-24 md:pt-24'>
         <div className='mx-auto max-w-7xl  px-6 md:px-16 lg:px-16 xl:px-28'>
           <div className='flex flex-wrap md:flex-nowrap items-center gap-x-6 '>
             <div className='order-2 md:order-1  md:min-w-[25rem] lg:min-w-[30rem] text-left'>
