@@ -97,7 +97,7 @@ export default function Home() {
   // };
 
   return (
-    <div className=' relative bg-zinc-900'>
+    <div className=' relative bg-zinc-800'>
       {/* <NextSeo
         defaultTitle='VerbalScripts: Fast; Accurate Human Transcription Services'
         title='VerbalScripts: Fast; Accurate Human Transcription Services'

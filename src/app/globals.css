@@ -304,3 +304,8 @@ span.svg-circles {
     bottom: 20px !important;
   }
 }
+
+
+.landing-page-alt {
+background: linear-gradient(45deg, rgba(132, 104, 245, 0.603) , rgba(250, 171, 25, 0.74));
+}

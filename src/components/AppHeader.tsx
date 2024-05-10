@@ -34,7 +34,7 @@ export default function AppHeader() {
     {
       name: 'Legal Transcription',
       description: 'Build strategic funnels that will convert',
-      href: '/services/annotation',
+      href: '/services/legal',
       icon: ArrowPathIcon,
       subtitle: 'Data Labeling customized to your needs',
       features: [
@@ -47,7 +47,7 @@ export default function AppHeader() {
     {
       name: 'Video and Audio Transcription services',
       description: 'Speak directly to your customers',
-      href: '/services/translation',
+      href: '/services/audio-and-video',
       icon: CursorArrowRaysIcon,
       subtitle: 'Accurate translation in any language',
       features: [
@@ -60,7 +60,7 @@ export default function AppHeader() {
     {
       name: 'General Transcription',
       description: 'Build strategic funnels that will convert',
-      href: '/services/annotation',
+      href: '/services/general',
       icon: ArrowPathIcon,
       subtitle: 'Data Labeling customized to your needs',
       features: [
@@ -73,13 +73,13 @@ export default function AppHeader() {
     {
       name: 'Focus groups and Interviews',
       description: 'Get a better understanding of your traffic',
-      href: '/services/transcription',
+      href: '/services/focus-groups-and-interviews',
       icon: ChartPieIcon,
     },
     {
       name: 'Medical Transcription',
       description: 'Your customers’ data will be safe and secure',
-      href: '/services/legal',
+      href: '/services/medical',
       icon: FingerPrintIcon,
       subtitle: 'Industry best speech-to-text transcription software',
       features: [
@@ -92,7 +92,7 @@ export default function AppHeader() {
     {
       name: 'Academic & Conference Transcription',
       description: 'Connect with third-party tools',
-      href: '/services/ai',
+      href: '/services/academic-and-conference',
       icon: SquaresPlusIcon,
       subtitle: 'Create custom datasets for AI model training',
       features: [
