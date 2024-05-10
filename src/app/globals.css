@@ -129,7 +129,14 @@ body {
   background-position: center;
   background-attachment: fixed;
 }
-
+.why-section-bg {
+  background:
+   
+    url('/social-integrated-person-workspace.jpg') no-repeat top right;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
 .section-title {
   line-height: 1.21 !important;
 }
