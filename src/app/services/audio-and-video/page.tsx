@@ -464,6 +464,85 @@ export default function Page() {
         </div>
       </div>
 
+      <div className='py-10 md:py-16' style={{ background: '#FAFAFA' }}>
+        <div className='mx-auto max-w-7xl px-6 md:px-16 lg:px-16 xl:px-28'>
+          <div className='flex flex-wrap md:flex-nowrap items-center gap-x-6'>
+            <div className='md:min-w-[25rem] lg:min-w-[30rem] text-left'>
+              <h2 className='text-xl font-bold leading-7 capitalize secondary-text'>
+                Audio & Video Transcription Services?
+              </h2>
+              <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
+                We offer <br></br>{' '}
+                <span className='relative z-10'>
+                  Comprehensive.{' '}
+                  <span className='z-10 absolute -bottom-5 right-0'>
+                    <img src='/svg/lines.svg' className='w-44' alt='' />
+                  </span>
+                </span>{' '}
+                <br></br> transcription services <br></br> tailored to your
+                needs.
+              </p>
+            </div>
+            <div>
+              <p className='mx-auto max-w-2xl mt-6 text-lg leading-8 text-gray-600'>
+                Looking for accuracy, efficiency, and a friendly team? Look no
+                further. With VerbalScripts, you{"'"}re not just getting
+                transcriptions; you{"'"}re getting peace of mind. Our
+                professionals ensure every detail is captured, every time.
+              </p>
+              <div className='mt-10'>
+                <a
+                  href='/upload-files'
+                  className='inline-flex  items-center gap-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
+                >
+                  <span>Explore Services</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div className='py-10 md:py-16' style={{ background: '#FAFAFA' }}>
+        <div className='mx-auto max-w-7xl px-6 md:px-16 lg:px-16 xl:px-28'>
+          <div className='flex flex-wrap md:flex-nowrap items-center gap-x-6'>
+            <div className='md:min-w-[25rem] lg:min-w-[30rem] text-left'>
+              <h2 className='text-xl font-bold leading-7 capitalize secondary-text'>
+                Audio & Video Transcription Services?
+              </h2>
+              <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
+                We offer <br></br>{' '}
+                <span className='relative z-10'>
+                  Comprehensive.{' '}
+                  <span className='z-10 absolute -bottom-5 right-0'>
+                    <img src='/svg/lines.svg' className='w-44' alt='' />
+                  </span>
+                </span>{' '}
+                <br></br> transcription services <br></br> tailored to your
+                needs.
+              </p>
+            </div>
+            <div>
+              <p className='mx-auto max-w-2xl mt-6 text-lg leading-8 text-gray-600'>
+                Looking for accuracy, efficiency, and a friendly team? Look no
+                further. With VerbalScripts, you{"'"}re not just getting
+                transcriptions; you{"'"}re getting peace of mind. Our
+                professionals ensure every detail is captured, every time.
+              </p>
+              <div className='mt-10'>
+                <a
+                  href='/upload-files'
+                  className='inline-flex  items-center gap-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
+                >
+                  <span>Explore Services</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <AppFooter />
     </div>
   );
