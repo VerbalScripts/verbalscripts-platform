@@ -150,11 +150,7 @@ export default function DashboardHeader() {
           </div>
         </nav>
 
-        <NotificationsPreview
-          notifications={notifications}
-          open={preview}
-          setOpen={setPreview}
-        />
+        <NotificationsPreview open={preview} setOpen={setPreview} />
       </header>
     </>
   );
