@@ -248,14 +248,12 @@ export default function Page() {
         <div className='flex flex-wrap  md:flex-nowrap items-center gap-x-10 '>
           <div className='max-w-2xl md:max-w-3xl'>
             <h1 className='text-4xl font-bold capitalize tracking-tight text-gray-800 sm:text-5xl'>
-              Audio and Video Transcription
+            Medical Transcription
             </h1>
 
             <p className='block md:max-w-2xl lg:max-w-3xl xl:max-w-4xl relative z-10 mt-6 text-lg  leading-7 text-gray-800'>
-              At VerbalScripts, precision meets efficiency as we transform
-              spoken content into clear, accessible text, empowering your
-              projects with accuracy and ease.Explore our diverse transcription
-              services below.
+            Welcome to VerbalScripts{'"'} Medical Transcription Services! We know how crucial accurate medical records are. With our dedicated team, expect precise transcriptions while we keep your information secure and confidential.
+
             </p>
 
             {/* <div className='mt-10'>

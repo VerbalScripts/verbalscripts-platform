@@ -279,7 +279,8 @@ export default function Page() {
                   Human Transcripted
                 </div>
                 <div className='text-gray-500 font-semibold mb-3'>
-                  From <span className='footer-title'>$1</span> per minute 98% accuracy
+                  From <span className='footer-title'>$1</span> per minute 98%
+                  accuracy
                 </div>
               </div>
               <div className='px-4'>
@@ -317,8 +318,8 @@ export default function Page() {
 
       <div className='py-10 md:py-16' style={{ background: '#FAFAFA' }}>
         <div className='mx-auto max-w-7xl px-6 md:px-16 lg:px-16 xl:px-28'>
-          <div className='flex flex-wrap md:flex-nowrap items-center gap-x-6'>
-            <div className='md:min-w-[25rem] lg:min-w-[30rem] text-left'>
+          <div className='flex flex-wrap md:flex-nowrap items-center space-x-6'>
+            <div className='md:min-w-[25rem] lg:min-w-[35rem] text-left'>
               <h2 className='text-xl font-bold leading-7 capitalize secondary-text'>
                 Audio & Video Transcription Services?
               </h2>
@@ -333,22 +334,36 @@ export default function Page() {
                 <br></br> transcription services <br></br> tailored to your
                 needs.
               </p>
-            </div>
-            <div>
-              <p className='mx-auto max-w-2xl mt-6 text-lg leading-8 text-gray-600'>
-                Looking for accuracy, efficiency, and a friendly team? Look no
-                further. With VerbalScripts, you{"'"}re not just getting
-                transcriptions; you{"'"}re getting peace of mind. Our
-                professionals ensure every detail is captured, every time.
-              </p>
+
+              <div >
+                <ul className='mx-auto max-w-2xl mt-6 text-lg leading-8 text-gray-800 list-disc flex flex-col space-y-2'>
+                  <li>
+                    Accurate transcription of various audio and video formats.
+                  </li>
+                  <li>
+                    Customizable transcription options, including timestamps,
+                    speaker identification, and more.
+                  </li>
+                  <li>Quick turnaround times to meet your deadlines.</li>
+                  <li>
+                    Strict confidentiality and security measures to protect your
+                    sensitive content.
+                  </li>
+                </ul>
+              </div>
               <div className='mt-10'>
                 <a
                   href='/upload-files'
                   className='inline-flex  items-center gap-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
                 >
-                  <span>Explore Services</span>
+                  <span>Order Now</span>
                 </a>
               </div>
+            </div>
+            <div className='hidden md:block relative w-full'>
+                <img src="/pics/598513718_huge.jpg" 
+                 className='absolute -top-24 -right-10 w-[20rem] md:w-[28rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10'
+                alt="" />
             </div>
           </div>
         </div>
