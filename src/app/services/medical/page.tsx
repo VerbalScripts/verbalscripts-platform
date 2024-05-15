@@ -274,6 +274,44 @@ export default function Page() {
         </div>
       </div>
 
+      <div className='py-10 md:py-16 why-section-bg '>
+        <div className='mx-auto max-w-7xl    px-6 md:px-16 lg:px-16 xl:px-28'>
+          <div className='flex flex-wrap md:flex-nowrap items-center gap-x-6 rounded-md md:px-8 md:py-10 bg-white/30 ring-1 ring-white/10'>
+            <div className='md:max-w-[25rem] lg:max-w-[30rem] text-left'>
+              <h2 className='text-xl font-bold leading-7 capitalize secondary-text'>
+                Why choose us?
+              </h2>
+              <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
+                Rest assured, your medical transcription needs are in capable
+                hands.
+              </p>
+            </div>
+            <div>
+              <ul className='mx-auto max-w-2xl mt-6 text-lg leading-8 text-gray-800 list-disc flex flex-col gap-y-5'>
+                <li>
+                  Our team possesses in-depth knowledge of medical terminology,
+                  ensuring accurate transcriptions.
+                </li>
+                <li>
+                  We adhere to stringent HIPAA regulations, ensuring the utmost
+                  confidentiality of patient information.
+                </li>
+                <li>
+                  Your data is safe with us. We employ robust security measures
+                  to protect sensitive information.
+                </li>
+                <li>
+                  Receive dedicated customer support throughout your
+                  transcription journey.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
       <div className='py-10 md:py-16' style={{ background: '#FAFAFA' }}>
         <div className='mx-auto max-w-3xl text-left md:text-center'>
           <h2 className='text-base font-semibold leading-7 text-indigo-600'>
@@ -322,42 +360,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className='py-10 md:py-16 why-section-bg '>
-        <div className='mx-auto max-w-7xl    px-6 md:px-16 lg:px-16 xl:px-28'>
-          <div className='flex flex-wrap md:flex-nowrap items-center gap-x-6 rounded-md md:px-8 md:py-10 bg-white/30 ring-1 ring-white/10'>
-            <div className='md:max-w-[25rem] lg:max-w-[30rem] text-left'>
-              <h2 className='text-xl font-bold leading-7 capitalize secondary-text'>
-                Why choose us?
-              </h2>
-              <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
-                Rest assured, your medical transcription needs are in capable
-                hands.
-              </p>
-            </div>
-            <div>
-              <ul className='mx-auto max-w-2xl mt-6 text-lg leading-8 text-gray-800 list-disc flex flex-col gap-y-5'>
-                <li>
-                  Our team possesses in-depth knowledge of medical terminology,
-                  ensuring accurate transcriptions.
-                </li>
-                <li>
-                  We adhere to stringent HIPAA regulations, ensuring the utmost
-                  confidentiality of patient information.
-                </li>
-                <li>
-                  Your data is safe with us. We employ robust security measures
-                  to protect sensitive information.
-                </li>
-                <li>
-                  Receive dedicated customer support throughout your
-                  transcription journey.
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      
       <div className='py-10 md:py-24 steps-section-bg'>
         <div className='mx-auto max-w-7xl px-6 md:px-16 lg:px-16 xl:px-28'>
           <div>

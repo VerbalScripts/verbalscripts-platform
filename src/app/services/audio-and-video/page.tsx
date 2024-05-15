@@ -274,7 +274,7 @@ export default function Page() {
               className='absolute -bottom-10 rounded-md shadow-xl py-7 px-5'
               style={{ background: '#E0E8F0' }}
             >
-              <div className='px-4 pb-5 border-l secondary-border'>
+              <div className='px-4 pb-5 border-l-2 secondary-border'>
                 <div className='text-gray-500 font-semibold '>
                   Human Transcripted
                 </div>

@@ -311,9 +311,5 @@ span.svg-circles {
 }
 
 .landing-page-alt {
-  background: linear-gradient(
-    45deg,
-    rgba(132, 104, 245, 0.603),
-    rgba(250, 171, 25, 0.74)
-  );
+  background-image: linear-gradient(to right bottom, #8468f5, #ec4ac7, #ff4b89, #ff784d, #faaa19);
 }
