@@ -1,17 +1,23 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 // import AxiosProxy from '@/utils/AxiosProxy';
-import { XMarkIcon } from '@heroicons/react/24/outline';
+import {
+  DocumentCheckIcon,
+  RectangleGroupIcon,
+  WrenchScrewdriverIcon,
+  XMarkIcon,
+} from '@heroicons/react/24/outline';
 import { useRouter } from 'next/navigation';
 
 import { classNames } from '@/utils/classNames';
-import AxiosProxy from '@/utils/AxiosProxy';
 import SettingsTab from '../dashboard/Tabs/SettingsTab';
 import InstructionsTab from '../dashboard/Tabs/InstructionsTab';
+import { hostUrl } from '../../../config';
+import { GetOrStoreAuthToken } from '@/utils/GetOrStoreAuthToken';
 
 interface OrderNowProps {
   open: boolean;
-  files: string[];
+  files: OrderFile[];
   reload: () => Promise<void>;
   setOpen: (arg0: boolean) => void;
   clearSelection: () => void;
@@ -40,6 +46,7 @@ export default function OrderNowModal({
       turn_around_time: '2_days',
     });
   const [instructions, setInstructions] = useState<string>('');
+  const [samples, setFiles] = useState<File[]>([]);
 
   const [activeTab, setActiveTab] = useState<tabValues>('settings');
   const [position, setPosition] = useState<number>(0);
@@ -49,11 +56,17 @@ export default function OrderNowModal({
   });
   const sectionArray: tabValues[] = ['settings', 'instructions', 'finish'];
 
+  // const includedFeatures = [
+  //   'Private forum access',
+  //   'Member resources',
+  //   'Entry to annual conference',
+  //   'Official member t-shirt',
+  // ];
+
   useEffect(() => {
     if (position < sectionArray.length) {
       setActiveTab(sectionArray[position]);
     }
-    console.log(activeTab);
   }, [position]);
 
   const createOrder = async () => {
@@ -63,29 +76,68 @@ export default function OrderNowModal({
         ...orderConfiuration,
         instructions,
       },
-      files: files,
+      files: [...files.map((ord) => ord.id)],
     };
+
+    const formdata = new FormData();
     console.log(payload);
 
-    try {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      setLoading(true);
-      const response = await AxiosProxy.post('/orders/client/create', {
-        order: payload,
+    formdata.append('order', JSON.stringify(payload));
+    // add files if any
+    console.log(samples);
+    if (samples.length > 0) {
+      samples.forEach((sample) => {
+        formdata.append('samples[]', sample);
       });
-      if (response.status == 201) {
+    }
+
+    // console.log(formdata)
+
+    const xhr = new XMLHttpRequest();
+
+    // xhr.upload.addEventListener('progress', function (event) {
+    //   if (event.lengthComputable) {
+    //     const percent = Math.round((event.loaded / event.total) * 100);
+
+    //     console.log(percent);
+    //   }
+    // });
+
+    xhr.addEventListener('readystatechange', async function () {
+      // route to a new page and update status
+      // resolve('happy')
+      if (this.readyState == 4 && this.status == 201) {
+        //  setOpen(false);
+        setLoading(false);
         await reload();
-        // setOpen(false);
         setStatus({ complete: true, message: 'success' });
       }
-    } catch (error) {
-      console.log(error);
-      setStatus({ complete: true, message: 'error' });
-    } finally {
-      setLoading(false);
+    });
+
+    xhr.addEventListener('load', function () {
       clearSelection();
+      console.log('loaded');
+    });
+
+    xhr.addEventListener('error', function () {
+      // setOpen( false );
+      setStatus({ complete: true, message: 'error' });
+      // reject(xhr.response)
+    });
+
+    setLoading(true);
+
+    xhr.open('POST', `${hostUrl}/orders/client/create`, true);
+
+    const access_token = GetOrStoreAuthToken();
+    console.log(access_token);
+    if (access_token == null) {
+      // xhr.setRequestHeader('x-token', uuid());
+      // request login
+    } else {
+      xhr.setRequestHeader('Authorization', `Bearer ${access_token}`);
     }
+    xhr.send(formdata);
   };
 
   const goToInProgress = () => {
@@ -129,10 +181,10 @@ export default function OrderNowModal({
                     leaveFrom='opacity-100'
                     leaveTo='opacity-0'
                   >
-                    <div className='absolute right-0 top-0 -ml-8 flex pr-2 pt-4 sm:-ml-10 sm:pr-4'>
+                    <div className='absolute right-0 top-0 z-50 -ml-8 flex pr-2 pt-4 sm:-ml-10 sm:pr-4'>
                       <button
                         type='button'
-                        className='relative rounded-md text-gray-500 hover:text-gray-300 focus:outline-none focus:ring-4 focus:ring-indigo-200'
+                        className='relative rounded-full text-gray-500 hover:text-gray-300 focus:outline-none focus:ring-4 focus:ring-indigo-200'
                         onClick={() => setOpen(false)}
                       >
                         <span className='absolute -inset-2.5' />
@@ -141,213 +193,258 @@ export default function OrderNowModal({
                       </button>
                     </div>
                   </Transition.Child>
-                  <div className='flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl'>
+                  <div className='flex h-full  flex-col bg-white  shadow-xl'>
                     {!status.complete ? (
-                      <div className='relative mt-6 flex-1 px-4 sm:px-6'>
-                        <div>
-                          <ol className='lg:flex justify-center items-center w-full md:py-6 lg:py-10 space-y-4 lg:space-y-0 lg:space-x-4'>
-                            <li className='relative '>
-                              <a
-                                href='https://verbalscripts.com/'
-                                className='flex items-center font-medium w-full  '
-                              >
-                                <span
-                                  className={classNames(
-                                    'w-6 h-6   border border-transparent rounded-full flex justify-center items-center mr-3 text-md lg:w-8 lg:h-8',
-                                    activeTab == 'settings'
-                                      ? 'bg-indigo-500 text-white'
-                                      : 'bg-gray-50 text-gray-500 border  border-gray-200',
-                                  )}
-                                >
-                                  {' '}
-                                  1{' '}
-                                </span>
-                                <div className='block'>
-                                  <h4
-                                    className={classNames(
-                                      'text-md',
-                                      activeTab == 'settings'
-                                        ? 'text-indigo-500'
-                                        : 'text-gray-600',
+                      <div className='relative '>
+                        <div className='flex justify-between'>
+                          <div className='max-w-md bg-indigo-500 h-screen'>
+                            <img
+                              src='/svg/create-order.svg'
+                              className='min-w-[28rem] mt-32'
+                              alt=''
+                            />
+                          </div>
+
+                          <div className='py-7 px-10 w-[100%] max-h-screen overflow-y-auto'>
+                            <div className='mx-auto max-w-2xl  rounded-full'>
+                              <ol className='flex items-center w-full'>
+                                <li className="flex w-full items-center text-blue-600 dark:text-blue-500 after:content-[''] after:w-full after:h-1 after:border-b after:border-blue-100 after:border-4 after:inline-block dark:after:border-blue-800">
+                                  <span className='flex items-center justify-center w-10 h-10 bg-blue-100 rounded-full lg:h-12 lg:w-12 dark:bg-blue-800 shrink-0'>
+                                    {position > 0 ? (
+                                      <svg
+                                        className='w-3.5 h-3.5 text-blue-600 lg:w-4 lg:h-4 dark:text-blue-300'
+                                        aria-hidden='true'
+                                        xmlns='http://www.w3.org/2000/svg'
+                                        fill='none'
+                                        viewBox='0 0 16 12'
+                                      >
+                                        <path
+                                          stroke='currentColor'
+                                          stroke-linecap='round'
+                                          stroke-linejoin='round'
+                                          stroke-width='2'
+                                          d='M1 5.917 5.724 10.5 15 1.5'
+                                        />
+                                      </svg>
+                                    ) : (
+                                      <RectangleGroupIcon className='w-6 text-gray-600' />
                                     )}
-                                  >
-                                    General Settings
-                                  </h4>
-                                </div>
-                                <svg
-                                  className='w-5 h-5 ml-2 stroke-indigo-600 sm:ml-4'
-                                  viewBox='0 0 24 24'
-                                  fill='none'
-                                  xmlns='http://www.w3.org/2000/svg'
-                                >
-                                  <path
-                                    d='M5 18L9.67462 13.0607C10.1478 12.5607 10.3844 12.3107 10.3844 12C10.3844 11.6893 10.1478 11.4393 9.67462 10.9393L5 6M12.6608 18L17.3354 13.0607C17.8086 12.5607 18.0452 12.3107 18.0452 12C18.0452 11.6893 17.8086 11.4393 17.3354 10.9393L12.6608 6'
-                                    stroke='stroke-current'
-                                    stroke-width='1.6'
-                                    stroke-linecap='round'
-                                  />
-                                </svg>
-                              </a>
-                            </li>
-                            <li className='relative  '>
-                              <a className='flex items-center font-medium w-full  '>
-                                <span
-                                  className={classNames(
-                                    'w-6 h-6   border border-transparent rounded-full flex justify-center items-center mr-3 text-md lg:w-8 lg:h-8',
-                                    activeTab == 'instructions'
-                                      ? 'bg-indigo-500 text-white'
-                                      : 'bg-gray-50 text-gray-500 border  border-gray-300',
-                                  )}
-                                >
-                                  {' '}
-                                  2{' '}
-                                </span>
-                                <div className='block'>
-                                  <h4
-                                    className={classNames(
-                                      'text-md',
-                                      activeTab == 'instructions'
-                                        ? 'text-indigo-500'
-                                        : 'text-gray-600',
+                                  </span>
+                                </li>
+                                <li className="flex w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-100 after:border-4 after:inline-block dark:after:border-gray-700">
+                                  <span className='flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full lg:h-12 lg:w-12 dark:bg-gray-700 shrink-0'>
+                                    {position > 1 ? (
+                                      <svg
+                                        className='w-3.5 h-3.5 text-blue-600 lg:w-4 lg:h-4 dark:text-blue-300'
+                                        aria-hidden='true'
+                                        xmlns='http://www.w3.org/2000/svg'
+                                        fill='none'
+                                        viewBox='0 0 16 12'
+                                      >
+                                        <path
+                                          stroke='currentColor'
+                                          stroke-linecap='round'
+                                          stroke-linejoin='round'
+                                          stroke-width='2'
+                                          d='M1 5.917 5.724 10.5 15 1.5'
+                                        />
+                                      </svg>
+                                    ) : (
+                                      <WrenchScrewdriverIcon className='w-6 text-gray-600' />
                                     )}
-                                  >
-                                    Instructions
-                                  </h4>
-                                </div>
-                                <svg
-                                  className='w-5 h-5 ml-2 stroke-indigo-600 sm:ml-4'
-                                  viewBox='0 0 24 24'
-                                  fill='none'
-                                  xmlns='http://www.w3.org/2000/svg'
-                                >
-                                  <path
-                                    d='M5 18L9.67462 13.0607C10.1478 12.5607 10.3844 12.3107 10.3844 12C10.3844 11.6893 10.1478 11.4393 9.67462 10.9393L5 6M12.6608 18L17.3354 13.0607C17.8086 12.5607 18.0452 12.3107 18.0452 12C18.0452 11.6893 17.8086 11.4393 17.3354 10.9393L12.6608 6'
-                                    stroke='stroke-current'
-                                    stroke-width='1.6'
-                                    stroke-linecap='round'
-                                  />
-                                </svg>
-                              </a>
-                            </li>
-
-                            <li className='relative  '>
-                              <a className='flex items-center font-medium w-full  '>
-                                <span
-                                  className={classNames(
-                                    'w-6 h-6   border border-transparent rounded-full flex justify-center items-center mr-3 text-md lg:w-8 lg:h-8',
-                                    activeTab == 'finish'
-                                      ? 'bg-indigo-500 text-white'
-                                      : 'bg-gray-50 text-gray-500 border  border-gray-300',
-                                  )}
-                                >
-                                  {' '}
-                                  3{' '}
-                                </span>
-                                <div className='block'>
-                                  <h4
-                                    className={classNames(
-                                      'text-md',
-                                      activeTab == 'finish'
-                                        ? 'text-indigo-500'
-                                        : 'text-gray-600',
-                                    )}
-                                  >
-                                    Finish
-                                  </h4>
-                                </div>
-                              </a>
-                            </li>
-                          </ol>
-
-                          {/* tab content */}
-                          <div className='mx-auto max-w-4xl border border-gray-300 rounded-xl py-7 px-10'>
-                            <div
-                              className={classNames(
-                                activeTab == 'settings' ? '' : 'hidden',
-                              )}
-                            >
-                              <SettingsTab
-                                config={orderConfiuration}
-                                setConfig={setOrderConfiuration}
-                              />
-                            </div>
-                            <div
-                              className={classNames(
-                                activeTab == 'instructions' ? '' : 'hidden',
-                              )}
-                            >
-                              <InstructionsTab
-                                instructions={instructions}
-                                setInstructions={setInstructions}
-                              />
-                            </div>
-
-                            <div
-                              className={classNames(
-                                activeTab == 'finish' ? '' : 'hidden',
-                              )}
-                            >
-                              <div className='flex gap-x-5'>
-                                <div className='hidden md:block max-w-[25rem] md:max-w-[25rem]'>
-                                  <img
-                                    src='/bg-auth-0.jpg'
-                                    className='rounded-xl object-cover'
-                                    alt=''
-                                  />
-                                </div>
-                                <div className=''>
-                                  <div>
-                                    <div className='text-gray-700 text-3xl mb-8'>
-                                      Complete Your Order
-                                    </div>
-
-                                    <div className='text-gray-700'>
-                                      If you have any additional instructions,
-                                      or demos you can reach out to our team via
-                                      our chat with more information.
-                                    </div>
-                                  </div>
-
-                                  <div className='mt-10 flex justify-end'>
-                                    <button
-                                      onClick={() => createOrder()}
-                                      disabled={loading}
-                                      className='flex gap-x-5  items-center disabled:bg-indigo-400  justify-center rounded-full bg-indigo-600 px-3 py-2.5 text-xl font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+                                  </span>
+                                </li>
+                                <li className='flex items-center w-full'>
+                                  {position == 2 ? (
+                                    <svg
+                                      className='w-3.5 h-3.5 text-blue-600 lg:w-4 lg:h-4 dark:text-blue-300'
+                                      aria-hidden='true'
+                                      xmlns='http://www.w3.org/2000/svg'
+                                      fill='none'
+                                      viewBox='0 0 16 12'
                                     >
-                                      {loading ? (
-                                        <div
-                                          className='inline-block h-5 w-5 animate-spin rounded-full border-2 border-solid border-current border-e-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]'
-                                          role='status'
-                                        >
-                                          <span className='!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]'>
-                                            Loading...
-                                          </span>
+                                      <path
+                                        stroke='currentColor'
+                                        stroke-linecap='round'
+                                        stroke-linejoin='round'
+                                        stroke-width='2'
+                                        d='M1 5.917 5.724 10.5 15 1.5'
+                                      />
+                                    </svg>
+                                  ) : (
+                                    <DocumentCheckIcon className='w-6 text-gray-600' />
+                                  )}
+                                </li>
+                              </ol>
+                            </div>
+
+                            {/* tab content */}
+                            <div className='mt-20 w-full '>
+                              <div
+                                className={classNames(
+                                  activeTab == 'settings' ? '' : 'hidden',
+                                )}
+                              >
+                                <SettingsTab
+                                  config={orderConfiuration}
+                                  setConfig={setOrderConfiuration}
+                                />
+                              </div>
+                              <div
+                                className={classNames(
+                                  activeTab == 'instructions' ? '' : 'hidden',
+                                )}
+                              >
+                                <InstructionsTab
+                                  setFiles={setFiles}
+                                  samples={samples}
+                                  instructions={instructions}
+                                  setInstructions={setInstructions}
+                                />
+                              </div>
+
+                              <div
+                                className={classNames(
+                                  activeTab == 'finish' ? '' : 'hidden',
+                                )}
+                              >
+                                <div className='flex space-x-5'>
+                                  <div className=''>
+                                    <div className='flex flex-col items-center'>
+                                      <div className=''>
+                                        <div className='flex flex-col items-center'>
+                                          <div className='mx-auto max-w-2xl sm:text-center'>
+                                            <h2 className='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>
+                                              Place Your Order
+                                            </h2>
+                                            <p className='mt-6 text-lg leading-8 text-gray-600'>
+                                              Distinctio et nulla eum soluta et
+                                              neque labore quibusdam. Saepe et
+                                              quasi iusto modi velit ut non
+                                              voluptas in. Explicabo id ut
+                                              laborum.
+                                            </p>
+                                          </div>
+
+                                          <div className='mx-auto max-w-lg mb-20'>
+                                            <div className='mt-10 flex items-center gap-x-4'>
+                                              <h4 className='flex-none text-sm font-semibold leading-6 text-indigo-600'>
+                                                Files Preview
+                                              </h4>
+                                              <div className='h-px flex-auto bg-gray-100' />
+                                            </div>
+                                            <ul
+                                              role='list'
+                                              className='mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-gray-600 sm:grid-cols-1 sm:gap-6'
+                                            >
+                                              {files.map((file, index) => (
+                                                <li
+                                                  key={file.id}
+                                                  className='flex gap-x-3'
+                                                >
+                                                  {index + 1} {' . '}
+                                                  <DocumentCheckIcon
+                                                    className='h-6 w-5 flex-none text-indigo-600'
+                                                    aria-hidden='true'
+                                                  />
+                                                  {file.label}
+                                                </li>
+                                              ))}
+                                            </ul>
+                                          </div>
+
+                                          {/* <div className='mx-auto max-w-lg'>
+                                            <div className='mt-10 flex items-center gap-x-4'>
+                                              <h4 className='flex-none text-sm font-semibold leading-6 text-indigo-600'>
+                                                What’s included
+                                              </h4>
+                                              <div className='h-px flex-auto bg-gray-100' />
+                                            </div>
+                                            <ul
+                                              role='list'
+                                              className='mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-gray-600 sm:grid-cols-1 sm:gap-6'
+                                            >
+                                              {includedFeatures.map(
+                                                (feature) => (
+                                                  <li
+                                                    key={feature}
+                                                    className='flex gap-x-3'
+                                                  >
+                                                    <CheckIcon
+                                                      className='h-6 w-5 flex-none text-indigo-600'
+                                                      aria-hidden='true'
+                                                    />
+                                                    {feature}
+                                                  </li>
+                                                ),
+                                              )}
+                                            </ul>
+                                          </div> */}
+
+                                          <div className='mt-10 p-2 lg:mt-0 lg:w-full lg:max-w-md'>
+                                            <div className='rounded-2xl bg-gray-50 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16'>
+                                              <div className='mx-auto max-w-xs px-8 flex flex-col items-center'>
+                                                {/* <p className='text-base font-semibold text-gray-600'>
+                                                  Pay once, own it forever
+                                                </p> */}
+                                                {/* <p className='mt-6 flex items-baseline justify-center gap-x-2'>
+                                                  <span className='text-5xl font-bold tracking-tight text-gray-900'>
+                                                    $349
+                                                  </span>
+                                                  <span className='text-sm font-semibold leading-6 tracking-wide text-gray-600'>
+                                                    USD
+                                                  </span>
+                                                </p> */}
+                                                <button
+                                                  onClick={() => createOrder()}
+                                                  disabled={loading}
+                                                  className='flex space-x-5  items-center disabled:bg-indigo-400  justify-center rounded-full bg-indigo-600 px-3 md:px-10 py-2.5 font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+                                                >
+                                                  {loading ? (
+                                                    <div
+                                                      className='inline-block h-5 w-5 animate-spin rounded-full border-2 border-solid border-current border-e-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]'
+                                                      role='status'
+                                                    >
+                                                      <span className='!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]'>
+                                                        Loading...
+                                                      </span>
+                                                    </div>
+                                                  ) : null}
+                                                  Create Order
+                                                </button>
+                                                <p className='mt-6 text-xs leading-5 text-gray-600'>
+                                                  Invoices and receipts
+                                                  available for easy company
+                                                  reimbursement
+                                                </p>
+                                              </div>
+                                            </div>
+                                          </div>
                                         </div>
-                                      ) : null}
-                                      Place Order
-                                    </button>
+                                      </div>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
-                            </div>
 
-                            <div className='mt-8 md:mt-16 flex justify-end gap-x-4'>
-                              {position > 0 ? (
-                                <button
-                                  onClick={() => setPosition(position - 1)}
-                                  className='rounded-full ring-1 ring-inset ring-gray-400 py-2.5 px-7 text-gray-600'
-                                >
-                                  Prev
-                                </button>
-                              ) : null}
-                              {position < sectionArray.length ? (
-                                <button
-                                  onClick={() => setPosition(position + 1)}
-                                  className='rounded-full bg-indigo-500 py-2.5 px-7 text-white'
-                                >
-                                  Next
-                                </button>
-                              ) : null}
+                              <div className='mt-8 md:mt-16 flex justify-end gap-x-4'>
+                                {position > 0 ? (
+                                  <button
+                                    onClick={() => setPosition(position - 1)}
+                                    className='rounded-full font-semibold capitalize ring-1 ring-inset ring-gray-400 py-2.5 px-7 text-gray-600'
+                                  >
+                                    Prev: {sectionArray[position - 1]}
+                                  </button>
+                                ) : null}
+                                {position < sectionArray.length - 1 ? (
+                                  <button
+                                    onClick={() => setPosition(position + 1)}
+                                    className='rounded-full font-semibold capitalize bg-indigo-500 py-2.5 px-7 text-white'
+                                  >
+                                    Next: {sectionArray[position + 1]}
+                                  </button>
+                                ) : null}
+                              </div>
                             </div>
                           </div>
                         </div>

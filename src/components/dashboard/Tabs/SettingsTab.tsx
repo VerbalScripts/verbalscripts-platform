@@ -55,7 +55,7 @@ export default function SettingsTab({ config, setConfig }: SettingsTabProps) {
   }, [config]);
 
   return (
-    <section className='flex flex-col gap-10  divide-gray-400'>
+    <section className='flex flex-col gap-10    divide-gray-400'>
       <div className='flex justify-between items-center'>
         <div className='flex text-gray-600 text-md font-semibold'>Language</div>
         <div>

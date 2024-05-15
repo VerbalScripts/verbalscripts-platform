@@ -349,7 +349,7 @@ const FilesUploadHead = forwardRef<FilesUploadHeadRef, FilesUploadHeadProps>(
     };
 
     return (
-      <div>
+      <div className='hidden'>
         {uploadType == 'file' ? (
           <label
             htmlFor='raw_file'

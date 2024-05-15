@@ -39,17 +39,17 @@ export default function DashboardLayout({
               <div
                 className={classNames(
                   'absolute transition-all z-50 bg-white  duration-300 left-0 top-0',
-                  expanded ? 'w-[16rem]' : 'w-[5rem]',
+                  expanded ? 'w-[16rem]' : 'w-0 md:w-[5rem]',
                 )}
               >
                 <button
                   onClick={() => setExpanded(!expanded)}
-                  className='absolute bg-white top-[3rem] -right-[1rem] z-50 rounded-full h-10 w-10 border text-gray-700 border-gray-300'
+                  className='absolute bg-indigo-500 border-0  md:bg-white top-[0.5rem] md:top-[3rem] -right-10 md:-right-[1rem] z-50 rounded-r-lg md:rounded-full h-10 w-10 md:border  border-gray-300'
                 >
                   <FontAwesomeIcon
                     icon={faAngleDoubleLeft}
                     className={classNames(
-                      'h-5 w-5 transition-all text-gray-600 mt-1',
+                      'h-6 w-6 md:h-5 md:w-5 transition-all  mt-1 text-white md:text-gray-700',
                       expanded ? '' : '-rotate-180',
                     )}
                   />
@@ -61,8 +61,8 @@ export default function DashboardLayout({
                 className={classNames(
                   'absolute dark:bg-zinc-800 transition-all duration-300 top-0 right-0 max-h-screen overflow-x-auto overflow-y-auto',
                   expanded
-                    ? 'w-[calc(100%] md:w-[calc(100%-16rem)]'
-                    : 'w-[calc(100%-5rem)] md:w-[calc(100%-5rem)]',
+                    ? 'w-[calc(100%)] md:w-[calc(100%-16rem)]'
+                    : 'w-[calc(100%)] md:w-[calc(100%-5rem)]',
                 )}
               >
                 <DashboardHeader />

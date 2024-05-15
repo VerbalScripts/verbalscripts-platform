@@ -57,6 +57,14 @@ interface User {
   city?: string;
 }
 
+interface UserNotification {
+  id: string;
+  title: string;
+  read: boolean;
+  createdAt: Date;
+  content: string;
+}
+
 interface OrderConfiguration {
   speakers: string;
   instructions?: string;

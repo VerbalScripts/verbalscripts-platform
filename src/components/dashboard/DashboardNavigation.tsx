@@ -148,7 +148,7 @@ export default function DashboardNavigation({
     <aside
       className={classNames(
         'py-5 border-r bg-white dark:bg-zinc-800 border-gray-300 dark:border-gray-700  min-h-screen flex flex-col justify-between max-h-screen overflow-x-hidden overflow-y-auto',
-        expanded ? 'px-8' : 'px-1',
+        expanded ? 'px-8' : 'px-0 md:px-1',
       )}
     >
       {/* title */}

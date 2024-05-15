@@ -165,7 +165,7 @@ export default function TableView({
   };
 
   return (
-    <div className='px-6 md:px-16 xl:px-16 overflow-x-auto min-h-svh'>
+    <div className='overflow-x-auto min-h-svh'>
       <Table hoverable>
         <Table.Head>
           <Table.HeadCell className='p-4'>

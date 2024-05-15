@@ -265,7 +265,7 @@ export default function AppHeader() {
       <GetAQuoteModal open={showQuote} setOpen={setShowQuote} />
 
       <div className='mx-auto  max-w-7xl relative z-30'>
-        <p className='hidden relative z-50 md:flex  h-10 items-center  justify-end gap-6  text-sm font-medium text-white px-6 md:px-16 lg:px-20'>
+        <p className='hidden relative z-50 md:flex  h-10 items-center  justify-end space-x-6  text-sm font-medium text-white px-6 md:px-16 lg:px-20'>
           <a
             href='/dashboard/pending'
             className='-mx-3 flex items-center underline  underline-offset-4 gap-x-5 rounded-lg px-3 py-2.5 text-base  transition leading-7 text-white hover:text-orange-400'

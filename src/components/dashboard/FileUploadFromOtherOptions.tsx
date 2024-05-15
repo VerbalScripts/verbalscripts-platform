@@ -54,8 +54,8 @@ export default function FileUploadFromOtherOptions({
   return (
     <Menu as='div' className='relative inline-block text-left'>
       <div>
-        <Menu.Button className='flex items-start flex-col mb-5 gap-y-2 rounded-xl  bg-indigo-50 font-semibold px-4 py-2  focus-within:ring-3 focus-within:ring-indigo-400'>
-          <div className='flex items-center gap-x-1'>
+        <Menu.Button className='flex items-start flex-col mb-5 gap-y-2 rounded-sm md:rounded-xl  bg-indigo-50 font-semibold px-4 py-2  focus-within:ring-3 focus-within:ring-indigo-400'>
+          <div className='hidden md:flex items-center gap-x-1 overflow-clip'>
             {uploadOptions.map((uploadOption) => (
               <Image
                 key={uploadOption.id}
@@ -66,7 +66,9 @@ export default function FileUploadFromOtherOptions({
               />
             ))}
           </div>
-          <span className='text-indigo-500'>Import file(s)</span>
+          <span className='text-indigo-500 text-sm md:text-md'>
+            Import file(s)
+          </span>
         </Menu.Button>
       </div>
 

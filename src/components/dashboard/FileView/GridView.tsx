@@ -161,7 +161,7 @@ export default function GridView({
   };
 
   return (
-    <div className='px-6 md:px-16 xl:px-16  min-h-svh'>
+    <div className=''>
       {/* {draggedOverIndex == index ? (
         <span className='flex gap-x-5 ml-10'>
           <span className=''>

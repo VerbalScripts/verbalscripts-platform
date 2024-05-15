@@ -34,7 +34,6 @@ import RemoveFile from '@/components/modals/RemoveFile';
 import OrderNowModal from '@/components/modals/OrderNowModal';
 import RenameFile from '@/components/modals/RenameFile';
 import RenameFolder from '@/components/modals/RenameFolder';
-import TawkMessenger from '@/lib/TawkMessenger';
 import FileDownload from 'js-file-download';
 import DropboxUpload from '@/components/uploadOptions/DropboxUpload';
 import GoogleUpload from '@/components/uploadOptions/GoogleUpload';
@@ -47,6 +46,7 @@ import CopyFile from '@/components/modals/CopyFile';
 import ShareFile from '@/components/modals/ShareFile';
 import DirectFileLinkUpload from '@/components/modals/DirectFileLinkUpload';
 import YoutubeLinkUpload from '@/components/modals/YoutubeLinkUpload';
+import LocalFilePLoad from '@/components/dashboard/LocalFilePLoad';
 
 interface PageSetupOptions {
   toggleView: 'grid' | 'list';
@@ -62,6 +62,9 @@ export default function Page() {
   const [orders, setOrders] = useState<OrderFile[]>([]);
   const [folders, setFolders] = useState<OrderFolder[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+
+  // files o order
+  const [fileToOrder, setFilesToOrder] = useState<OrderFile[]>([]);
 
   // modal toggles
   const [open, setOpen] = useState(false);
@@ -139,6 +142,21 @@ export default function Page() {
     setShowFolders(!showFolders);
   };
 
+  const createOrder = () => {
+    setFilesToOrder(() => {
+      const files: OrderFile[] = [];
+      selectedFiles.forEach((id) => {
+        const orderFile = orders.find((od) => od.id == id);
+        if (orderFile != undefined) {
+          files.push(orderFile);
+        }
+      });
+      return [...files];
+    });
+    // show modal
+    setOrderNow(true);
+  };
+
   // updated selected files
   const updateSelectedFiles = (
     id: string,
@@ -212,7 +230,7 @@ export default function Page() {
       );
       if (response.status == 200) {
         console.log('updating foldrs', JSON.stringify(response.data));
-        setOrders(response.data.results);
+        setOrders(response.data.results || []);
       }
     } catch (error) {
       console.log(error);
@@ -345,9 +363,9 @@ export default function Page() {
   };
 
   return (
-    <div className=''>
+    <div className='bg-white dark:bg-zinc-800 min-h-screen'>
       <title>Dashboard | Pending</title>
-      <TawkMessenger />
+      {/* <TawkMessenger /> */}
 
       {/* systenm progress */}
       <SystemProgressUpload />
@@ -362,8 +380,8 @@ export default function Page() {
       {loading ? (
         <LoadSpinner />
       ) : (
-        <div>
-          <div className='px-6  md:px-16 xl:px-16 sticky top-0 z-10  bg-white dark:bg-zinc-800 py-3'>
+        <div className='px-6  md:px-16 xl:px-16 '>
+          <div className=' sticky top-0 z-10 bg-white dark:bg-zinc-800  py-3'>
             <div className='flex items-center justify-start gap-x-3'>
               <FileUploadFromOtherOptions
                 openDropBoxPicker={launchDropBoxPicker}
@@ -375,173 +393,185 @@ export default function Page() {
               <FileUploadFromLocal />
               <button
                 onClick={() => setOpen(true)}
-                className='flex flex-col mb-5 gap-x-2 rounded-xl bg-indigo-100 font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
+                className='flex flex-col mb-5 gap-x-2 rounded-sm md:rounded-xl bg-indigo-100 font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
               >
                 <FolderPlusIcon className='h-5 w-5 text-indigo-500' />
-                <span className='text-indigo-500'>Create Folder</span>
+                <span className='text-indigo-500 hidden md:block text-sm md:text-md'>
+                  Create Folder
+                </span>
               </button>
             </div>
-            <div className='flex  justify-between items-center mb-4'>
-              <div className='flex gap-x-2'>
-                <button
-                  disabled={folderArr.length == 1 || loading}
-                  onClick={navBack}
-                  className='rounded-xl bg-indigo-100 font-semibold px-4 py-1.5 text-indigo-600  focus-within:ring-4 focus-within:ring-indigo-400 disabled:cursor-not-allowed disabled:text-indigo-300'
-                >
-                  <ArrowUturnLeftIcon className=' h-5 w-5' />
-                </button>
-                <button
-                  onClick={navForward}
-                  disabled={
-                    currentFolderIndex + 1 == folderArr.length || loading
-                  }
-                  className='rounded-xl bg-indigo-100 font-semibold px-4 py-1.5 text-indigo-600  focus-within:ring-4 focus-within:ring-indigo-400 disabled:cursor-not-allowed  disabled:text-indigo-300'
-                >
-                  <ArrowUturnRightIcon className=' h-5 w-5 ' />
-                </button>
-                <div className='flex items-center gap-x-2'>
-                  <Breadcrumb
-                    aria-label='Solid background breadcrumb example'
-                    className='bg-gray-50 px-5 py-1.5 dark:bg-zinc-500'
-                  >
-                    {folderArr.map((track) => (
-                      <Breadcrumb.Item
-                        key={track.id}
-                        className='hover:underline text-gray-600 dark:text-gray-300 hover:text-indigo-500'
-                        href={`?folderId=${track.id}`}
-                      >
-                        {track.label}
-                      </Breadcrumb.Item>
-                    ))}
-                  </Breadcrumb>
-                </div>
-              </div>
-              {/* toggles */}
 
-              {/* manage selected files */}
-              <div className='flex gap-x-2 items-center'>
-                <div className='flex gap-x-3 pr-3 border-r border-gray-400'>
-                  <div className=''>
-                    <label
-                      htmlFor='showFolders'
-                      className=' h-6 relative inline-block'
+            {orders.length > 0 ? (
+              <>
+                <div className='flex  justify-between space-y-2 flex-wrap items-center mb-4'>
+                  <div className='flex space-x-2'>
+                    <button
+                      disabled={folderArr.length == 1 || loading}
+                      onClick={navBack}
+                      className='rounded-xl bg-indigo-100 font-semibold px-4 py-1.5 text-indigo-600  focus-within:ring-4 focus-within:ring-indigo-400 disabled:cursor-not-allowed disabled:text-indigo-300'
                     >
-                      <input
-                        id='showFolders'
-                        type='checkbox'
-                        onChange={toggleFolderShow}
-                        className='w-11 h-0 cursor-pointer inline-block focus:outline-0 dark:focus:outline-0 border-0 dark:border-0 focus:ring-offset-transparent dark:focus:ring-offset-transparent focus:ring-transparent dark:focus:ring-transparent focus-within:ring-0 dark:focus-within:ring-0 focus:shadow-none dark:focus:shadow-none after:absolute before:absolute after:top-0 before:top-0  after:block before:inline-block before:rounded-full after:rounded-full after:content-[""] after:w-5 after:h-5 after:mt-0.5 after:ml-0.5 after:shadow-md after:duration-100
+                      <ArrowUturnLeftIcon className=' h-5 w-5' />
+                    </button>
+                    <button
+                      onClick={navForward}
+                      disabled={
+                        currentFolderIndex + 1 == folderArr.length || loading
+                      }
+                      className='rounded-xl bg-indigo-100 font-semibold px-4 py-1.5 text-indigo-600  focus-within:ring-4 focus-within:ring-indigo-400 disabled:cursor-not-allowed  disabled:text-indigo-300'
+                    >
+                      <ArrowUturnRightIcon className=' h-5 w-5 ' />
+                    </button>
+                    <div className='flex items-center gap-x-2'>
+                      <Breadcrumb
+                        aria-label='Solid background breadcrumb example'
+                        className='bg-gray-50 px-5 py-1.5 dark:bg-zinc-500'
+                      >
+                        {folderArr.map((track) => (
+                          <Breadcrumb.Item
+                            key={track.id}
+                            className='hover:underline text-gray-600 dark:text-gray-300 hover:text-indigo-500'
+                            href={`?folderId=${track.id}`}
+                          >
+                            {track.label}
+                          </Breadcrumb.Item>
+                        ))}
+                      </Breadcrumb>
+                    </div>
+                  </div>
+                  {/* toggles */}
+
+                  {/* manage selected files */}
+                  <div className='flex space-x-2 items-center'>
+                    <div className='flex gap-x-3 pr-3 border-r border-gray-400'>
+                      <div className=''>
+                        <label
+                          htmlFor='showFolders'
+                          className=' h-6 relative inline-block'
+                        >
+                          <input
+                            id='showFolders'
+                            type='checkbox'
+                            onChange={toggleFolderShow}
+                            className='w-11 h-0 cursor-pointer inline-block focus:outline-0 dark:focus:outline-0 border-0 dark:border-0 focus:ring-offset-transparent dark:focus:ring-offset-transparent focus:ring-transparent dark:focus:ring-transparent focus-within:ring-0 dark:focus-within:ring-0 focus:shadow-none dark:focus:shadow-none after:absolute before:absolute after:top-0 before:top-0  after:block before:inline-block before:rounded-full after:rounded-full after:content-[""] after:w-5 after:h-5 after:mt-0.5 after:ml-0.5 after:shadow-md after:duration-100
                           before:content-[""] before:w-10 before:h-full before:shadow-[inset_0_0_#000] after:bg-white dark:after:bg-indigo-50
                           before:bg-indigo-300 dark:before:bg-indigo-500   before:checked:bg-indigo-500 dark:before:checked:bg-indigo-500 checked:after:duration-300 checked:after:translate-x-4 disabled:after:bg-opacity-75 disabled:cursor-not-allowed disabled:checked:before:bg-opacity-40
                               '
-                        checked={showFolders}
-                      />
-                    </label>
+                            checked={showFolders}
+                          />
+                        </label>
+                      </div>
+                      <span className='text-gray-500 font-semibold'>
+                        {showFolders ? 'Hide Folders' : 'Show Folders'}
+                      </span>
+                    </div>
+                    <button
+                      onClick={() =>
+                        setPageSetup({ ...pageSetup, toggleView: 'grid' })
+                      }
+                      className={classNames(
+                        'rounded-xl  font-semibold px-4 py-2  focus-within:ring-4 focus-within:ring-indigo-400',
+                        pageSetup.toggleView == 'grid' ? 'bg-indigo-100' : '',
+                      )}
+                    >
+                      <Squares2X2Icon className=' h-5 w-5 text-indigo-600' />
+                    </button>
+                    <button
+                      onClick={() =>
+                        setPageSetup({ ...pageSetup, toggleView: 'list' })
+                      }
+                      className={classNames(
+                        'rounded-xl  font-semibold px-4 py-2  focus-within:ring-4 focus-within:ring-indigo-400',
+                        pageSetup.toggleView == 'list' ? 'bg-indigo-100' : '',
+                      )}
+                    >
+                      <ListBulletIcon className=' h-5 w-5 text-indigo-600' />
+                    </button>
                   </div>
-                  <span className='text-gray-500 font-semibold'>
-                    {showFolders ? 'Hide Folders' : 'Show Folders'}
-                  </span>
                 </div>
-                <button
-                  onClick={() =>
-                    setPageSetup({ ...pageSetup, toggleView: 'grid' })
-                  }
-                  className={classNames(
-                    'rounded-xl  font-semibold px-4 py-2  focus-within:ring-4 focus-within:ring-indigo-400',
-                    pageSetup.toggleView == 'grid' ? 'bg-indigo-100' : '',
-                  )}
-                >
-                  <Squares2X2Icon className=' h-5 w-5 text-indigo-600' />
-                </button>
-                <button
-                  onClick={() =>
-                    setPageSetup({ ...pageSetup, toggleView: 'list' })
-                  }
-                  className={classNames(
-                    'rounded-xl  font-semibold px-4 py-2  focus-within:ring-4 focus-within:ring-indigo-400',
-                    pageSetup.toggleView == 'list' ? 'bg-indigo-100' : '',
-                  )}
-                >
-                  <ListBulletIcon className=' h-5 w-5 text-indigo-600' />
-                </button>
-              </div>
-            </div>
+                <div className='flex items-center justify-between'>
+                  <div>
+                    <SearchBar cb={searchForFile} clearSearch={reload} />
+                  </div>
+                  {selectedFiles.length != 0 ? (
+                    <div className='flex items-center gap-x-2 p-2 rounded-xl bg-indigo-100'>
+                      <button
+                        onClick={() => createOrder()}
+                        className='flex  gap-x-2 rounded-xl bg-indigo-600 font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
+                      >
+                        <CheckCircleIcon className='h-5 w-5 text-white' />
+                        <span className='text-white'>
+                          Order File({selectedFiles.length})
+                        </span>
+                      </button>
 
-            <div className='flex items-center justify-between'>
-              <div>
-                <SearchBar cb={searchForFile} clearSearch={reload} />
-              </div>
-              {selectedFiles.length != 0 ? (
-                <div className='flex items-center gap-x-2 p-2 rounded-xl bg-indigo-100'>
-                  <button
-                    onClick={() => setOrderNow(true)}
-                    className='flex  gap-x-2 rounded-xl bg-indigo-600 font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
-                  >
-                    <CheckCircleIcon className='h-5 w-5 text-white' />
-                    <span className='text-white'>
-                      Order File({selectedFiles.length})
-                    </span>
-                  </button>
-
-                  <button
-                    disabled={downloadFile}
-                    onClick={() => requestFileDownload()}
-                    className='flex  gap-x-2 rounded-xl bg-indigo-500  font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
-                  >
-                    <ArrowDownCircleIcon className='h-5 w-5 text-white' />
-                    {downloadFile ? (
-                      <span className='text-gray-100'>downloading ...</span>
-                    ) : (
-                      <span className='text-gray-100'>Dowload</span>
-                    )}
-                  </button>
-                  <button
-                    onClick={() => setDeleteFile(true)}
-                    className='flex  gap-x-2 rounded-xl bg-red-100  font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
-                  >
-                    <TrashIcon className='h-5 w-5 text-red-400' />
-                    <span className='text-red-400'>Delete</span>
-                  </button>
+                      <button
+                        disabled={downloadFile}
+                        onClick={() => requestFileDownload()}
+                        className='flex  gap-x-2 rounded-xl bg-indigo-500  font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
+                      >
+                        <ArrowDownCircleIcon className='h-5 w-5 text-white' />
+                        {downloadFile ? (
+                          <span className='text-gray-100'>downloading ...</span>
+                        ) : (
+                          <span className='text-gray-100'>Dowload</span>
+                        )}
+                      </button>
+                      <button
+                        onClick={() => setDeleteFile(true)}
+                        className='flex  gap-x-2 rounded-xl bg-red-100  font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
+                      >
+                        <TrashIcon className='h-5 w-5 text-red-400' />
+                        <span className='text-red-400'>Delete</span>
+                      </button>
+                    </div>
+                  ) : null}
                 </div>
-              ) : null}
-            </div>
+              </>
+            ) : null}
           </div>
 
-          {pageSetup.toggleView == 'grid' ? (
-            <GridView
-              openFolder={openFolder}
-              selectedFiles={selectedFiles}
-              updatedSelectedFiles={updateSelectedFiles}
-              folders={folders}
-              renameFile={_renameFile}
-              renameFolder={_renameFolder}
-              removeFile={_removeFile}
-              callback={updateOrders}
-              isNavigating={navigating}
-              shareFile={_shareFile}
-              copyFile={_copyFile}
-              selectedFolderId={selectedFolderId}
-              showFolders={showFolders}
-              orders={orders}
-            />
-          ) : (
-            <TableView
-              openFolder={openFolder}
-              selectedFiles={selectedFiles}
-              updatedSelectedFiles={updateSelectedFiles}
-              folders={folders}
-              renameFile={_renameFile}
-              shareFile={_shareFile}
-              copyFile={_copyFile}
-              renameFolder={_renameFolder}
-              removeFile={_removeFile}
-              callback={updateOrders}
-              showFolders={showFolders}
-              isNavigating={navigating}
-              selectedFolderId={selectedFolderId}
-              orders={orders}
-            />
-          )}
+          {orders.length > 0 ? (
+            pageSetup.toggleView == 'grid' ? (
+              <GridView
+                openFolder={openFolder}
+                selectedFiles={selectedFiles}
+                updatedSelectedFiles={updateSelectedFiles}
+                folders={folders}
+                renameFile={_renameFile}
+                renameFolder={_renameFolder}
+                removeFile={_removeFile}
+                callback={updateOrders}
+                isNavigating={navigating}
+                shareFile={_shareFile}
+                copyFile={_copyFile}
+                selectedFolderId={selectedFolderId}
+                showFolders={showFolders}
+                orders={orders}
+              />
+            ) : (
+              <TableView
+                openFolder={openFolder}
+                selectedFiles={selectedFiles}
+                updatedSelectedFiles={updateSelectedFiles}
+                folders={folders}
+                renameFile={_renameFile}
+                shareFile={_shareFile}
+                copyFile={_copyFile}
+                renameFolder={_renameFolder}
+                removeFile={_removeFile}
+                callback={updateOrders}
+                showFolders={showFolders}
+                isNavigating={navigating}
+                selectedFolderId={selectedFolderId}
+                orders={orders}
+              />
+            )
+          ) : null}
+
+          {/* show file and folder upload frame */}
+
+          {orders.length == 0 ? <LocalFilePLoad /> : null}
 
           {/* add folder */}
           <AddFolder reload={reload} open={open} setOpen={setOpen} />
@@ -578,7 +608,7 @@ export default function Page() {
           <OrderNowModal
             reload={reload}
             clearSelection={clearSelection}
-            files={selectedFiles}
+            files={fileToOrder}
             open={orderNow}
             setOpen={setOrderNow}
           />

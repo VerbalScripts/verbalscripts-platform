@@ -1,23 +1,20 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { classNames } from '@/utils/classNames';
-import { Menu, Transition } from '@headlessui/react';
-import { ArrowUpTrayIcon } from '@heroicons/react/24/outline';
-import React, { DragEvent, Fragment, useEffect, useRef, useState } from 'react';
-
-import { v4 as uuid } from 'uuid';
+import React, { DragEvent, useEffect, useState } from 'react';
 
 import { hostUrl } from '../../../config';
+import { v4 as uuid } from 'uuid';
 import { GetOrStoreAuthToken } from '@/utils/GetOrStoreAuthToken';
-import FilesUploadHead from './FilesUploadHead';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import {
   currentUploadFileIndex,
   filesArr,
   progressTracker,
   showProgressBar,
 } from '@/store/features/fileUpload';
-import { useRecoilState, useSetRecoilState } from 'recoil';
+// import { getFilesAsZip } from '@/utils/FolderZip';
 
-export default function FileUploadFromLocal() {
-  const [dragEnter, setDragEnter] = useState<boolean>(false);
+export default function LocalFilePLoad() {
   async function uploadFile(fileToSend: File) {
     // reset progress tracker
 
@@ -144,7 +141,7 @@ export default function FileUploadFromLocal() {
   }
   const [files, setFiles] = useState<File[]>([]);
   const [progress, setProgress] = useState<ProgressTracker[]>([]);
-
+  const [dragEnter, setDragEnter] = useState(false);
   const dispalyProgress = useSetRecoilState(showProgressBar);
   const [globalProgress, updateGlobalProgressTracker] =
     useRecoilState(progressTracker);
@@ -153,6 +150,15 @@ export default function FileUploadFromLocal() {
     currentUploadFileIndex,
   );
   // show progress bar
+
+  const ref = React.useRef<HTMLInputElement>(null);
+
+  React.useEffect(() => {
+    if (ref.current !== null) {
+      ref.current.setAttribute('directory', '');
+      ref.current.setAttribute('webkitdirectory', '');
+    }
+  }, [ref]);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const retryUpload = async (index: number) => {
@@ -287,6 +293,40 @@ export default function FileUploadFromLocal() {
     }
   }, [globalProgress]);
 
+  const folderInputRef = React.useRef<HTMLInputElement>(null);
+
+  React.useEffect(() => {
+    if (folderInputRef.current !== null) {
+      folderInputRef.current.setAttribute('directory', '');
+      folderInputRef.current.setAttribute('webkitdirectory', '');
+    }
+  }, [folderInputRef]);
+
+  const handleFolderUploadForm = async (
+    event: React.FormEvent<HTMLInputElement>,
+  ) => {
+    const target = event.target as HTMLInputElement & {
+      files: FileList;
+    };
+
+    if (target.files.length == 0) return;
+
+    await prepareFilesForUpload(Array.from(target.files));
+    // setFiles(Array.from(target.files));
+  };
+
+  const handleFilesUploadForm = async (
+    event: React.FormEvent<HTMLInputElement>,
+  ) => {
+    const target = event.target as HTMLInputElement & {
+      files: FileList;
+    };
+
+    if (target.files.length == 0) return;
+
+    await prepareFilesForUpload(Array.from(target.files));
+  };
+
   async function dropHandler(ev: DragEvent) {
     // console.log('goeat');
     console.log('File(s) dropped');
@@ -343,100 +383,66 @@ export default function FileUploadFromLocal() {
     setDragEnter(false);
   }
 
-  // pushing foyee
-  const fileUploadRef = useRef<FilesUploadHeadRef>(null);
-  const folderUploadRef = useRef<FilesUploadHeadRef>(null);
-
-  const launchFilePicker = () => {
-    if (fileUploadRef.current) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      fileUploadRef.current.showPicker();
-    }
-  };
-  const launchFolderPicker = () => {
-    if (folderUploadRef.current) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      folderUploadRef.current.showPicker();
-    }
-  };
-
   return (
-    <>
-      <FilesUploadHead ref={fileUploadRef} uploadType='file' />
-
-      <FilesUploadHead ref={folderUploadRef} uploadType='folder' />
-
-      <Menu as='div' className='relative inline-block text-left'>
+    <div className='my-10'>
+      <form>
         <div
           onDrop={dropHandler}
           onDragEnter={dragEnterHandler}
           onDragLeave={dragLeaveHandler}
           onDragOver={dragOverHandler}
+          className={classNames(
+            'relative w-full rounded-xl border-2 transition-all duration-200 border-dashed bg-white dark:bg-gray-600  h-[13rem]',
+            dragEnter ? 'border-indigo-500 bg-gray-300' : '',
+          )}
         >
-          <Menu.Button
-            className={classNames(
-              'flex flex-col mb-5 gap-x-2 rounded-sm md:rounded-xl border-2 border-dashed border-indigo-300 hover:border-indigo-500 hover:bg-indigo-100 bg-indigo-50 font-semibold px-4 py-1.5  md:py-2  focus-within:ring-indigo-400',
-              dragEnter ? 'border-indigo-500 bg-gray-200' : '',
-            )}
-          >
-            <ArrowUpTrayIcon
-              className='-mr-1 h-5 w-5 text-indigo-500'
-              aria-hidden='true'
-            />
-            <span className='text-indigo-500 hidden md:block md:text-md'>
-              Tap or Drop
-            </span>
-          </Menu.Button>
+          <div className='flex flex-col h-full  items-center justify-center'>
+            {/* <img src='upload.png' alt='' className='absolute top-6  w-32' /> */}
+
+            <div className=' text-center leading-8'>
+              <span className='text-2xl text-gray-800 dark:text-white md:text-3xl'>
+                Drag and Drop files here or <br></br>
+              </span>
+              <span>
+                {' '}
+                <label
+                  htmlFor='raw_file'
+                  className='cursor-pointer text-indigo-500 dark:text-indigo-300 font-semibold'
+                >
+                  <input
+                    type='file'
+                    id='raw_file'
+                    multiple
+                    name='raw_file'
+                    onChange={handleFilesUploadForm}
+                    className='hidden'
+                  ></input>
+                  Browse files
+                </label>
+              </span>
+              {' or '}
+              <span>
+                <label
+                  htmlFor='folder_files'
+                  className='cursor-pointer text-indigo-500 dark:text-indigo-300 font-semibold'
+                >
+                  <input
+                    type='file'
+                    name='folder_files'
+                    id='folder_files'
+                    onChange={handleFolderUploadForm}
+                    className='hidden'
+                    ref={ref}
+                    multiple
+                  ></input>
+                  Select Folder
+                </label>
+              </span>
+              <span> on your computer.</span>
+            </div>
+          </div>
         </div>
-
-        <Transition
-          as={Fragment}
-          enter='transition ease-out duration-100'
-          enterFrom='transform opacity-0 scale-95'
-          enterTo='transform opacity-100 scale-100'
-          leave='transition ease-in duration-75'
-          leaveFrom='transform opacity-100 scale-100'
-          leaveTo='transform opacity-0 scale-95'
-        >
-          <Menu.Items className='absolute left-0 -mt-2 z-10  w-44 origin-top divide-y  rounded-md bg-indigo-50 shadow-sm ring-1 ring-black ring-opacity-5 focus:outline-none'>
-            <div className='py-1 w-full'>
-              <Menu.Item>
-                {({ active }) => (
-                  <button
-                    onClick={() => launchFilePicker()}
-                    className={classNames(
-                      active ? 'bg-gray-100 text-gray-900 ' : 'text-gray-700',
-                      'flex items-center px-4 py-2.5 text-sm w-full',
-                    )}
-                  >
-                    File
-                  </button>
-                )}
-              </Menu.Item>
-            </div>
-
-            <div className='py-1 w-full'>
-              <Menu.Item>
-                {({ active }) => (
-                  <button
-                    onClick={() => launchFolderPicker()}
-                    className={classNames(
-                      active
-                        ? 'bg-gray-100 text-left text-gray-900'
-                        : 'text-gray-700',
-                      'flex items-center px-4 py-2.5 text-sm w-full',
-                    )}
-                  >
-                    Folder
-                  </button>
-                )}
-              </Menu.Item>
-            </div>
-          </Menu.Items>
-        </Transition>
-      </Menu>
-    </>
+      </form>
+    </div>
   );
 }

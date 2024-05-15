@@ -335,9 +335,7 @@ export default function AppFooter() {
 
             <div className='flex flex-col gap-y-2'>
               <a href='#' className='-m-1.5 mb-3 p-1.5'>
-                <span className='font-bold text-lg footer-title'>
-                  Company
-                </span>
+                <span className='font-bold text-lg footer-title'>Company</span>
               </a>
               <a
                 href='/about-us'

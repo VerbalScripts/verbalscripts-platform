@@ -153,7 +153,7 @@ export default function SolutionsList() {
                   <span>Learn More</span>
 
                   <FontAwesomeIcon
-                    className='ml-4 icon-vector'
+                    className='ml-4 icon-vector w-6'
                     icon={faLongArrowRight}
                   />
                 </span>

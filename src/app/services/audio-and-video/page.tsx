@@ -503,7 +503,6 @@ export default function Page() {
         </div>
       </div>
 
-
       <div className='py-10 md:py-16' style={{ background: '#FAFAFA' }}>
         <div className='mx-auto max-w-7xl px-6 md:px-16 lg:px-16 xl:px-28'>
           <div className='flex flex-wrap md:flex-nowrap items-center gap-x-6'>
