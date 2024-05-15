@@ -6,6 +6,12 @@ import AppFooter from '@/components/AppFooter';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLongArrowRight } from '@fortawesome/free-solid-svg-icons';
 import PopularPartner from '@/components/PopularPartner';
+import {
+  ArrowLongRightIcon,
+  ComputerDesktopIcon,
+  ShoppingBagIcon,
+  SquaresPlusIcon,
+} from '@heroicons/react/24/outline';
 
 export const metadata: Metadata = {
   title: 'VerbalScripts | Services',
@@ -165,6 +171,29 @@ export default function Page() {
         'Streamline communication by converting dictated notes, memos, and letters from dictation software, voice recorders, or mobile apps into clear, actionable text.',
     },
   ];
+
+  const audio_features = [
+    {
+      title: 'Enhanced Accessibility',
+      description:
+        'Make your content accessible to a wider audience, including those with hearing impairments and non-native speakers, improving inclusivity and engagement.',
+    },
+    {
+      title: 'Content Purposing',
+      description:
+        ' Repurpose transcribed content into various formats for content marketing strategies, extending the reach of your original content.',
+    },
+    {
+      title: 'Professional Image',
+      description:
+        'Enhance your brand image and professionalism by delivering high-quality transcriptions to your audience.',
+    },
+    {
+      title: 'Time Savings',
+      description:
+        ' Save time and resources by outsourcing your transcription needs to professionals with quick turnaround times.',
+    },
+  ];
   // const features = [
   //   {
   //     name: 'First Draft',
@@ -229,7 +258,7 @@ export default function Page() {
               services below.
             </p>
 
-            <div className='mt-10'>
+            {/* <div className='mt-10'>
               <a
                 href='/upload-files'
                 className='inline-flex flex-nowrap  items-center gap-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
@@ -237,6 +266,27 @@ export default function Page() {
                 <span className='flex'>Order Now</span>
                 <FontAwesomeIcon className='ml-2 w-5' icon={faLongArrowRight} />
               </a>
+            </div> */}
+
+            <div className='h-[3rem]'></div>
+
+            <div
+              className='absolute -bottom-10 rounded-md shadow-xl py-7 px-5'
+              style={{ background: '#E0E8F0' }}
+            >
+              <div className='px-4 pb-5 border-l secondary-border'>
+                <div className='text-gray-500 font-semibold '>
+                  Human Transcripted
+                </div>
+                <div className='text-gray-500 font-semibold mb-3'>
+                  From <span className='footer-title'>$1</span> per minute 98% accuracy
+                </div>
+              </div>
+              <div className='px-4'>
+                <button className=' text-md font-semibold  px-5 py-1.5 bg-indigo-600 transition text-center  hover:-translate-y-1 hover:shadow-xl rounded-full text-gray-100'>
+                  Order Now
+                </button>
+              </div>
             </div>
           </div>
           <div className='hidden relative md:block md:min-w-[20rem]  lg:min-w-[30rem]'>
@@ -464,78 +514,104 @@ export default function Page() {
         </div>
       </div>
 
-      <div className='py-10 md:py-16' style={{ background: '#FAFAFA' }}>
+      <div className='py-10 md:py-24' style={{ background: '#FAFAFA' }}>
         <div className='mx-auto max-w-7xl px-6 md:px-16 lg:px-16 xl:px-28'>
-          <div className='flex flex-wrap md:flex-nowrap items-center gap-x-6'>
-            <div className='md:min-w-[25rem] lg:min-w-[30rem] text-left'>
-              <h2 className='text-xl font-bold leading-7 capitalize secondary-text'>
-                Audio & Video Transcription Services?
-              </h2>
-              <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
-                We offer <br></br>{' '}
-                <span className='relative z-10'>
-                  Comprehensive.{' '}
-                  <span className='z-10 absolute -bottom-5 right-0'>
-                    <img src='/svg/lines.svg' className='w-44' alt='' />
-                  </span>
-                </span>{' '}
-                <br></br> transcription services <br></br> tailored to your
-                needs.
-              </p>
-            </div>
-            <div>
-              <p className='mx-auto max-w-2xl mt-6 text-lg leading-8 text-gray-600'>
-                Looking for accuracy, efficiency, and a friendly team? Look no
-                further. With VerbalScripts, you{"'"}re not just getting
-                transcriptions; you{"'"}re getting peace of mind. Our
-                professionals ensure every detail is captured, every time.
-              </p>
-              <div className='mt-10'>
-                <a
-                  href='/upload-files'
-                  className='inline-flex  items-center gap-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
-                >
-                  <span>Explore Services</span>
-                </a>
-              </div>
+          <div>
+            <h2 className='text-xl font-bold leading-7 capitalize text-indigo-600'>
+              Audio & Video Transcription Services?
+            </h2>
+            <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
+              Empowering Your Audio & Video, Every Step
+            </p>
+          </div>
+          <div className='relative my-5'>
+            <img
+              src='/pics/78.png'
+              className='rounded-xl object-cover w-full h-[15rem]'
+              alt=''
+            />
+          </div>
+
+          <div className='my-10'>
+            <div className='grid max-w-none  grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 lg:grid-cols-2 lg:gap-20'>
+              {audio_features.map((feature, index) => (
+                <div key={index} className='shadow-md rounded-xl py-10 px-12'>
+                  <div className='footer-title text-xl md:text-2xl font-semibold mb-3'>
+                    {feature.title}
+                  </div>
+
+                  <div className='text-gray-600 text-md'>
+                    {feature.description}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
 
-      <div className='py-10 md:py-16' style={{ background: '#FAFAFA' }}>
+      <div className='py-10 md:py-24 steps-section-bg'>
         <div className='mx-auto max-w-7xl px-6 md:px-16 lg:px-16 xl:px-28'>
-          <div className='flex flex-wrap md:flex-nowrap items-center gap-x-6'>
-            <div className='md:min-w-[25rem] lg:min-w-[30rem] text-left'>
-              <h2 className='text-xl font-bold leading-7 capitalize secondary-text'>
-                Audio & Video Transcription Services?
-              </h2>
-              <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
-                We offer <br></br>{' '}
-                <span className='relative z-10'>
-                  Comprehensive.{' '}
-                  <span className='z-10 absolute -bottom-5 right-0'>
-                    <img src='/svg/lines.svg' className='w-44' alt='' />
-                  </span>
-                </span>{' '}
-                <br></br> transcription services <br></br> tailored to your
-                needs.
-              </p>
-            </div>
-            <div>
-              <p className='mx-auto max-w-2xl mt-6 text-lg leading-8 text-gray-600'>
-                Looking for accuracy, efficiency, and a friendly team? Look no
-                further. With VerbalScripts, you{"'"}re not just getting
-                transcriptions; you{"'"}re getting peace of mind. Our
-                professionals ensure every detail is captured, every time.
-              </p>
-              <div className='mt-10'>
-                <a
-                  href='/upload-files'
-                  className='inline-flex  items-center gap-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
-                >
-                  <span>Explore Services</span>
-                </a>
+          <div>
+            <h2 className='text-xl font-bold leading-7 capitalize text-indigo-600'>
+              How it Works?
+            </h2>
+            <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
+              Simplifying Your Transcription Journey
+            </p>
+          </div>
+          <div className='my-10'>
+            <div className='grid max-w-none  grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 lg:grid-cols-3 lg:gap-10'>
+              <div className='relative shadow-md rounded-xl py-10 px-12 bg-white'>
+                <div>
+                  <div className='w-16 h-16 flex bg-indigo-400 rounded-md items-center justify-center'>
+                    <SquaresPlusIcon className='text-gray-100 w-10 h-10' />
+                  </div>
+                </div>
+                <div className='absolute z-10 -right-12 top-24 w-16 h-16 bg-white flex items-center justify-center  rounded-full shadow-xl'>
+                  <ArrowLongRightIcon className='text-orange-500 w-7' />
+                </div>
+                <div className='mt-5 footer-title text-left text-xl md:text-2xl font-semibold mb-3'>
+                  Files Upload
+                </div>
+
+                <div className='text-gray-600 text-left  text-md'>
+                  Simply upload your files to our secure platform.
+                </div>
+              </div>
+              <div className='relative shadow-md rounded-xl py-10 px-12 bg-white'>
+                <div>
+                  <div className='w-16 h-16 flex bg-indigo-400 rounded-md items-center justify-center'>
+                    <ComputerDesktopIcon className='text-gray-100 w-10 h-10' />
+                  </div>
+                </div>
+                <div className='absolute z-10 -right-12 top-24 w-16 h-16 bg-white flex items-center justify-center  rounded-full shadow-xl'>
+                  <ArrowLongRightIcon className='text-orange-500 w-7' />
+                </div>
+                <div className='mt-5 footer-title text-left text-xl md:text-2xl font-semibold mb-3'>
+                  Transcription
+                </div>
+
+                <div className='text-gray-600 text-left  text-md'>
+                  Our experts transcribe your files with accuracy and attention
+                  to detail.
+                </div>
+              </div>
+              <div className='relative shadow-md rounded-xl py-10 px-12 bg-white'>
+                <div>
+                  <div className='w-16 h-16 flex bg-indigo-400 rounded-md items-center justify-center'>
+                    <ShoppingBagIcon className='text-gray-100 w-10 h-10' />
+                  </div>
+                </div>
+
+                <div className='mt-5 footer-title text-left text-xl md:text-2xl font-semibold mb-3'>
+                  Delivery
+                </div>
+
+                <div className='text-gray-600 text-left  text-md'>
+                  Your completed transcriptions are delivered promptly via email
+                  or our platform.
+                </div>
               </div>
             </div>
           </div>
