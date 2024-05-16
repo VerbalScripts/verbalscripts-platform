@@ -81,14 +81,14 @@ export default function Home() {
       description:
         'Simply give a us a link or upload your file and your will be ready to start working on it in a matter of minutes',
 
-      imgUrl: '/icons/upload.png',
+      imgUrl: '/Home/upload.png',
     },
     {
       name: 'Affordable Solutions',
       description:
         'The quality and workflow we have built enable us to deliver the highest quality transcripts concistency at the best industry rates',
 
-      imgUrl: '/icons/affordable.png',
+      imgUrl: '/Home/affordable.png',
     },
   ];
 
