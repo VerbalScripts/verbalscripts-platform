@@ -6,70 +6,57 @@ import AppFooter from '@/components/AppFooter';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLongArrowRight } from '@fortawesome/free-solid-svg-icons';
 import PopularPartner from '@/components/PopularPartner';
-import {
-  ArrowLongRightIcon,
-  ComputerDesktopIcon,
-  ShoppingBagIcon,
-  SquaresPlusIcon,
-} from '@heroicons/react/24/outline';
+
+import HowItWorks from '@/components/HowItWorks';
 
 export const metadata: Metadata = {
   title: 'VerbalScripts | Services',
 };
 
 export default function Page() {
-
-
   const audio_video_theme = [
     {
-      imgUrl: '/svg/podcast.svg',
+      imgUrl: '/medical_transcription/patientnotes.svg',
       title: 'Patient Notes',
       description:
         'Capture patient encounters with precision, ensuring comprehensive documentation of medical histories and treatment plans.',
     },
     {
-      imgUrl: '',
+      imgUrl: '/medical_transcription/operativereport.svg',
+
       title: 'Operative Reports',
       description:
         'Detail surgical procedures with clarity, facilitating seamless communication among healthcare providers and accurate patient care.',
     },
     {
-      imgUrl: '',
+      imgUrl: '/medical_transcription/consultation.svg',
+
       title: 'Consultation Notes',
       description:
         'Record detailed assessments and recommendations from healthcare professionals, aiding in continuity of care and patient follow-up.',
     },
     {
-      imgUrl: '',
+      imgUrl: '/medical_transcription/dischargesummary.svg',
+
       title: 'Discharge Summaries',
       description:
         'Summarize patient treatment and post-discharge instructions effectively, enhancing patient understanding and compliance.',
     },
     {
-      imgUrl: '',
+      imgUrl: '/medical_transcription/progressreport.svg',
+
       title: 'Progress Reports',
       description:
         'Document patient progress over time, providing valuable insights for ongoing treatment adjustments and healthcare management.',
     },
     {
-      imgUrl: '',
+      imgUrl: '/medical_transcription/medicalhistory.svg',
       title: 'Medical History and Physical Exams',
       description:
         'Preserve detailed medical histories and examination findings, supporting comprehensive patient evaluations and treatment planning.',
     },
 
-    {
-      imgUrl: '/svg/Webinar-pana.svg',
-      title: 'Training Videos',
-      description:
-        'Enhance learning with transcriptions of your engaging training videos; corporate training sessions, or instructional videos, providing accessible resources for your team"s development.',
-    },
-    {
-      imgUrl: '/svg/Webinar-pana.svg',
-      title: 'Dictations',
-      description:
-        'Streamline communication by converting dictated notes, memos, and letters from dictation software, voice recorders, or mobile apps into clear, actionable text.',
-    },
+   
   ];
 
   // const audio_features = [
@@ -131,100 +118,123 @@ export default function Page() {
     <div className='bg-zinc-800  relative'>
       <AppHeader />
 
-      <div className='relative landing-page-alt h-auto  px-6 py-20 md:pt-0  pb-40 md:py-32 lg:py-36 md:px-20 lg:px-28'>
-        <div className='landing-page-video-wrapper'></div>
-        <div
-          className='absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80'
-          aria-hidden='true'
-        >
+      <div className='landing-page-alt'>
+        <div className='relative mx-auto max-w-7xl  h-auto  px-6 py-20   pb-40 md:py-20 lg:py-36 md:px-20 lg:px-28'>
+          <div className='landing-page-video-wrapper'></div>
           <div
-            className='relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]'
-            style={{
-              clipPath:
-                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-            }}
-          />
-        </div>
-        <div className='flex flex-wrap  md:flex-nowrap items-center gap-x-10 '>
-          <div className='max-w-2xl md:max-w-3xl'>
-            <h1 className='text-4xl font-bold capitalize tracking-tight text-gray-800 sm:text-5xl'>
-              Medical Transcription
-            </h1>
-
-            <p className='block md:max-w-2xl lg:max-w-3xl xl:max-w-4xl relative z-10 mt-6 text-lg  leading-7 text-gray-800'>
-              Welcome to VerbalScripts{'"'} Medical Transcription Services! We
-              know how crucial accurate medical records are. With our dedicated
-              team, expect precise transcriptions while we keep your information
-              secure and confidential.
-            </p>
-
-            {/* <div className='mt-10'>
-              <a
-                href='/upload-files'
-                className='inline-flex flex-nowrap  items-center gap-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
-              >
-                <span className='flex'>Order Now</span>
-                <FontAwesomeIcon className='ml-2 w-5' icon={faLongArrowRight} />
-              </a>
-            </div> */}
-
-            <div className='h-[3rem]'></div>
-
+            className='absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80'
+            aria-hidden='true'
+          >
             <div
-              className='absolute -bottom-10 rounded-md shadow-xl py-7 px-5'
-              style={{ background: '#E0E8F0' }}
-            >
-              <div className='px-4 pb-5 border-l secondary-border'>
-                <div className='text-gray-500 font-semibold '>
-                  Human Transcripted
-                </div>
-                <div className='text-gray-500 font-semibold mb-3'>
-                  From <span className='footer-title'>$1</span> per minute 98%
-                  accuracy
+              className='relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]'
+              style={{
+                clipPath:
+                  'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
+              }}
+            />
+          </div>
+          <div className='flex flex-wrap  lg:flex-nowrap items-center gap-x-10 '>
+            <div className='max-w-2xl md:max-w-4xl'>
+              <h1 className='text-4xl font-bold capitalize tracking-tight text-gray-800 sm:text-5xl'>
+                Medical Transcription
+              </h1>
+
+              <p className='block md:max-w-2xl lg:max-w-3xl xl:max-w-4xl relative z-10 mt-6 text-lg  leading-7 text-gray-800'>
+                Welcome to VerbalScripts{'"'} Medical Transcription Services! We
+                know how crucial accurate medical records are. With our
+                dedicated team, expect precise transcriptions while we keep your
+                information secure and confidential.
+              </p>
+
+              <div className='lg:hidden   py-5 px-5 max-w-[18rem]'>
+                <div className='px-4 border-l-4 secondary-border'>
+                  <div className='text-gray-700 font-semibold '></div>
+                  <div className='text-gray-700 font-semibold mb-3'>
+                    From{' '}
+                    <span className='py-1.5 px-2 bg-gray-300 rounded-full'>
+                      Human Transcripted
+                    </span>
+                    <br></br>
+                    <span className='footer-title text-3xl font-bold'>$1</span>
+                    <br></br> per minute 98% accuracy
+                  </div>
                 </div>
               </div>
-              <div className='px-4'>
-                <button className=' text-md font-semibold  px-5 py-1.5 bg-indigo-600 transition text-center  hover:-translate-y-1 hover:shadow-xl rounded-full text-gray-100'>
-                  Order Now
-                </button>
+
+              <div className='lg:hidden mt-5'>
+                <a
+                  href='/upload-files'
+                  className='inline-flex flex-nowrap  items-center space-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
+                >
+                  <span className='flex'>Order Now</span>
+                  <FontAwesomeIcon
+                    className='ml-2 w-5'
+                    icon={faLongArrowRight}
+                  />
+                </a>
+              </div>
+
+              <div className='lg:h-[3rem]'></div>
+
+              <div
+                className='hidden lg:block lg:absolute left-1/4 -bottom-10 rounded-xl shadow-xl py-5 px-5'
+                style={{ background: '#E0E8F0' }}
+              >
+                <div className='px-4 pb-2 border-l-2 secondary-border'>
+                  <div className='text-gray-700 font-semibold '></div>
+                  <div className='text-gray-700 font-semibold mb-3'>
+                    From{' '}
+                    <span className='py-1.5 px-2 bg-gray-300 rounded-full'>
+                      Human Transcripted
+                    </span>
+                    <br></br>
+                    <span className='footer-title text-3xl font-bold'>$1</span>
+                    <br></br> per minute 98% accuracy
+                  </div>
+                </div>
+                <div className='px-4'>
+                  <button className=' text-md font-semibold  px-5 py-1.5 bg-indigo-600 transition text-center  hover:-translate-y-1 hover:shadow-xl rounded-full text-gray-100'>
+                    Order Now
+                  </button>
+                </div>
               </div>
             </div>
+            <div className='mt-10 lg:mt-0 relative   lg:min-w-[30rem]'>
+              <img
+                src='/medical_transcription/medicallandingIllustration.svg'
+                className='max-w-[90%] lg:absolute object-cover -top-60'
+                alt=''
+              />
+            </div>
           </div>
-          <div className='hidden relative md:block md:min-w-[20rem]  lg:min-w-[30rem]'>
-            <img
-              src='/svg/svg-audio-video.svg'
-              className='absolute object-cover -top-60'
-              alt=''
+          <div
+            className='absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]'
+            aria-hidden='true'
+          >
+            <div
+              className='relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]'
+              style={{
+                clipPath:
+                  'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
+              }}
             />
           </div>
         </div>
-        <div
-          className='absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]'
-          aria-hidden='true'
-        >
-          <div
-            className='relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]'
-            style={{
-              clipPath:
-                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-            }}
-          />
-        </div>
       </div>
 
-      <div className='bg-gray-100 py-0'>
+      <div className='bg-gray-100 py-0 '>
         <PopularPartner />
       </div>
 
       <div className='py-10 md:py-16' style={{ background: '#FAFAFA' }}>
         <div className='mx-auto max-w-7xl px-6 md:px-16 lg:px-16 xl:px-28'>
-          <div className='flex flex-wrap md:flex-nowrap items-center space-x-6'>
-            <div className='order-2 md:min-w-[25rem] lg:min-w-[35rem] text-left'>
+          <div className='flex flex-wrap lg:flex-nowrap items-center space-x-6'>
+            <div className='lg:order-2 lg:max-w-[30rem] text-left'>
               <h2 className='text-xl font-bold leading-7 capitalize secondary-text'>
-                Medical Transcription Services?
+                Medical Transcription?
               </h2>
               <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
-                Tailored Medical <br></br> Transcription Solutions{' '}
+                Tailored Medical Transcription Solutions{' '}
                 <span className='relative z-10'>
                   Designed.{' '}
                   <span className='z-10 absolute -bottom-5 right-0'>
@@ -234,8 +244,8 @@ export default function Page() {
                 for you.
               </p>
 
-              <div>
-                <ul className='mx-auto max-w-2xl mt-6 text-lg leading-8 text-gray-800 list-disc flex flex-col space-y-2'>
+              <div className='px-6'>
+                <ul className='lg:mx-auto max-w-2xl mt-6 text-lg leading-8 text-gray-800 list-disc flex flex-col space-y-2'>
                   <li>
                     From patient notes to operative reports, we transcribe
                     medical dictations with precision.
@@ -245,7 +255,7 @@ export default function Page() {
                     and adhere to industry standards.
                   </li>
                   <li>
-                    Your patients{'"'} privacy is our priority. We strictly
+                    Your patients{"'"} privacy is our priority. We strictly
                     comply with HIPAA regulations and maintain confidentiality.
                   </li>
                   <li>
@@ -263,10 +273,10 @@ export default function Page() {
                 </a>
               </div>
             </div>
-            <div className='order-1 hidden md:block relative w-full'>
+            <div className=' order-1 mt-10 lg:mt-0 relative w-full'>
               <img
                 src='/pics/598513718_huge.jpg'
-                className='absolute -top-32 -left-10 w-[20rem] md:w-[28rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10'
+                className='lg:absolute -top-24 -left-10 w-[90%] -ml-7 lg:-ml-0 md:w-[28rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10'
                 alt=''
               />
             </div>
@@ -274,16 +284,21 @@ export default function Page() {
         </div>
       </div>
 
-      <div className='py-10 md:py-16 why-section-bg '>
+      <div className='py-10 md:py-16 steps-section-bg '>
         <div className='mx-auto max-w-7xl    px-6 md:px-16 lg:px-16 xl:px-28'>
-          <div className='flex flex-wrap md:flex-nowrap items-center gap-x-6 rounded-md md:px-8 md:py-10 bg-white/30 ring-1 ring-white/10'>
-            <div className='md:max-w-[25rem] lg:max-w-[30rem] text-left'>
+          <div className='flex flex-wrap lg:flex-nowrap items-center gap-x-6 rounded-md md:px-8 md:py-10 bg-white/30 ring-1 ring-white/10'>
+            <div className='lg:max-w-[30rem] text-left'>
               <h2 className='text-xl font-bold leading-7 capitalize secondary-text'>
                 Why choose us?
               </h2>
               <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
-                Rest assured, your medical transcription needs are in capable
-                hands.
+                Rest assured, your medical transcription needs are in{' '}
+                <span className='relative z-10'>
+                  capable hands.{' '}
+                  <span className='z-10 absolute -bottom-5 right-0'>
+                    <img src='/svg/lines.svg' className='w-44' alt='' />
+                  </span>
+                </span>{' '}
               </p>
             </div>
             <div>
@@ -310,8 +325,6 @@ export default function Page() {
         </div>
       </div>
 
-
-
       <div className='py-10 md:py-16' style={{ background: '#FAFAFA' }}>
         <div className='mx-auto max-w-3xl text-left md:text-center'>
           <h2 className='text-base font-semibold leading-7 text-indigo-600'>
@@ -326,15 +339,15 @@ export default function Page() {
           <div className='grid justify-evenly grid-cols-1 md:grid-cols-2   lg:gap-x-8 gap-y-5  lg:grid-cols-2 lg:gap-y-5  pb-12'>
             {audio_video_theme.map((content) => (
               <div key={content.title}>
-                <div>
+                <div className='max-h-[18rem]'>
                   <img
-                    src='/svg/Webinar-pana.svg'
+                    src={content.imgUrl}
                     className='rounded-sm object-cover'
                     alt=''
                   />
                 </div>
                 <div className='px-8'>
-                  <div className='mb-5 text-center text-2xl text-gray-900 capitalize font-semibold mt-5'>
+                  <div className='mb-5 text-center text-2xl md:text-3xl text-gray-900 capitalize font-bold mt-5'>
                     {content.title}
                   </div>
 
@@ -359,75 +372,8 @@ export default function Page() {
           </div>
         </div>
       </div>
-
-      
-      <div className='py-10 md:py-24 steps-section-bg'>
-        <div className='mx-auto max-w-7xl px-6 md:px-16 lg:px-16 xl:px-28'>
-          <div>
-            <h2 className='text-xl font-bold leading-7 capitalize text-indigo-600'>
-              How it Works?
-            </h2>
-            <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
-              Simplifying Your Transcription Journey
-            </p>
-          </div>
-          <div className='my-10'>
-            <div className='grid max-w-none  grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 lg:grid-cols-3 lg:gap-10'>
-              <div className='relative shadow-md rounded-xl py-10 px-12 bg-white'>
-                <div>
-                  <div className='w-16 h-16 flex bg-indigo-400 rounded-md items-center justify-center'>
-                    <SquaresPlusIcon className='text-gray-100 w-10 h-10' />
-                  </div>
-                </div>
-                <div className='absolute z-10 -right-12 top-24 w-16 h-16 bg-white flex items-center justify-center  rounded-full shadow-xl'>
-                  <ArrowLongRightIcon className='text-orange-500 w-7' />
-                </div>
-                <div className='mt-5 footer-title text-left text-xl md:text-2xl font-semibold mb-3'>
-                  Files Upload
-                </div>
-
-                <div className='text-gray-600 text-left  text-md'>
-                  Simply upload your files to our secure platform.
-                </div>
-              </div>
-              <div className='relative shadow-md rounded-xl py-10 px-12 bg-white'>
-                <div>
-                  <div className='w-16 h-16 flex bg-indigo-400 rounded-md items-center justify-center'>
-                    <ComputerDesktopIcon className='text-gray-100 w-10 h-10' />
-                  </div>
-                </div>
-                <div className='absolute z-10 -right-12 top-24 w-16 h-16 bg-white flex items-center justify-center  rounded-full shadow-xl'>
-                  <ArrowLongRightIcon className='text-orange-500 w-7' />
-                </div>
-                <div className='mt-5 footer-title text-left text-xl md:text-2xl font-semibold mb-3'>
-                  Transcription
-                </div>
-
-                <div className='text-gray-600 text-left  text-md'>
-                  Our experts transcribe your files with accuracy and attention
-                  to detail.
-                </div>
-              </div>
-              <div className='relative shadow-md rounded-xl py-10 px-12 bg-white'>
-                <div>
-                  <div className='w-16 h-16 flex bg-indigo-400 rounded-md items-center justify-center'>
-                    <ShoppingBagIcon className='text-gray-100 w-10 h-10' />
-                  </div>
-                </div>
-
-                <div className='mt-5 footer-title text-left text-xl md:text-2xl font-semibold mb-3'>
-                  Delivery
-                </div>
-
-                <div className='text-gray-600 text-left  text-md'>
-                  Your completed transcriptions are delivered promptly via email
-                  or our platform.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+     
+     <HowItWorks />
 
       <AppFooter />
     </div>
