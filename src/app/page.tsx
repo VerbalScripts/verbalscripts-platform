@@ -13,6 +13,7 @@ import SolutionsList from '@/components/SolutionsList';
 import { faLongArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Script from 'next/script';
+import HowItWorks from '@/components/HowItWorks';
 
 export const metadata: Metadata = {
   title:
@@ -133,7 +134,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className='py-10 md:py-16' style={{ background: '#FAFAFA' }}>
+      <div className='py-10 md:py-16' style={{ background: '#f9f8f2' }}>
         <div className='mx-auto max-w-7xl px-6 md:px-16 lg:px-16 xl:px-28'>
           <div className='flex flex-wrap lg:flex-nowrap items-center gap-x-6'>
             <div className='lg:max-w-[30rem] text-left'>
@@ -420,10 +421,10 @@ export default function Home() {
 
       {/* <CallToActionBanner fn={setOpen} /> */}
 
-      <div className='bg-white pt-0 pb-24 md:pb-24 md:pt-24'>
+      <div className='bg-white pt-0 pb-24 md:pb-24 md:pt-24' style={{ background: '#f9f8f2'}}>
         <div className='mx-auto max-w-7xl  px-6 md:px-16 lg:px-16 xl:px-28'>
           <div className='flex flex-wrap lg:flex-nowrap items-center gap-x-6 '>
-            <div className='order-2 md:order-1  md:min-w-[25rem] lg:min-w-[30rem] text-left'>
+            <div className='order-2 md:order-1  md:min-w-[25rem] lg:max-w-[35rem] text-left'>
               <h2 className='text-xl font-semibold leading-7 capitalize secondary-text'>
                 Want to be a transcriber
               </h2>
@@ -493,6 +494,8 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      <HowItWorks />
 
       <AppFooter />
     </div>

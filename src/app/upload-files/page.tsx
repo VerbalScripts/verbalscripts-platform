@@ -25,7 +25,9 @@ export default function Page() {
     <div className='bg-zinc-800 relative'>
       <AppHeader />
 
+      <div className='bg-gray-100'>
       <UploadFile />
+      </div>
 
       <AppFooter />
     </div>
