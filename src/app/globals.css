@@ -28,12 +28,9 @@ html {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
 .landing-page-video-wrapper::after {
@@ -129,12 +126,16 @@ body {
   background-position: center;
   background-attachment: fixed;
 }
+
 .why-section-bg {
-  background: url('/social-integrated-person-workspace.jpg') no-repeat top right;
+  background:
+    linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.87)),
+    linear-gradient(to top, transparent, rgba(255, 252, 252, 0.952)), url('/pics/1979726285_huge小.jpg') no-repeat top right;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
 }
+
 .section-title {
   line-height: 1.21 !important;
 }
@@ -182,12 +183,11 @@ span.svg-circles {
   transform: scaleX(1.3);
   transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+
 .landing-blur {
-  background: linear-gradient(
-    86deg,
-    var(--white) 27.65%,
-    var(--swiper-pagination-color) 159.67%
-  );
+  background: linear-gradient(86deg,
+      var(--white) 27.65%,
+      var(--swiper-pagination-color) 159.67%);
 }
 
 .navitem-text {
@@ -280,11 +280,13 @@ span.svg-circles {
   /* background:linear-gradient(125deg, #FAAA19 80%, #FF450DCC 100%); */
   background: linear-gradient(45deg, #faaa19 0%, #ff450d 80%);
 }
+
 .footer-title {
   background: linear-gradient(45deg, #faaa19 0%, #ff450d 80%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
 /* .swiper-slide-active  > figure > figcaption{
   transform: scale(1.2);
 } */
@@ -311,5 +313,6 @@ span.svg-circles {
 }
 
 .landing-page-alt {
-  background-image: linear-gradient(to right bottom, #8468f5, #ec4ac7, #ff4b89, #ff784d, #faaa19);
+  background: rgb(215,200,234);
+  background-image: linear-gradient(180deg, rgba(215, 200, 234, 1) 0%, rgba(252, 220, 165, 1) 57%);
 }

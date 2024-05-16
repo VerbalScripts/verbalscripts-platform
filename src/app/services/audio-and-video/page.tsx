@@ -20,152 +20,209 @@ export const metadata: Metadata = {
 export default function Page() {
   const audio_formats = [
     {
-      name: 'aac',
-      icon: '/services/aac.png',
-    },
-    {
-      name: 'flac',
-      icon: '/services/flac.png',
-    },
-    {
-      name: 'm3u',
-      icon: '/services/m3u.png',
-    },
-    {
-      name: 'mp4',
-      icon: '/services/audio-mp4.png',
-    },
-    {
       name: 'amr',
-      icon: '/services/amr.png',
-    },
-    {
-      name: 'wmv',
-      icon: '/services/wmv.png',
+      icon: '/audio_and_video/audio_formats/amr.svg',
     },
     {
       name: 'asf',
-      icon: '/services/asf.png',
+      icon: '/audio_and_video/audio_formats/asf.svg',
     },
     {
-      name: 'ogg',
-      icon: '/services/ogg.png',
+      name: 'aif',
+      icon: '/audio_and_video/audio_formats/aif.svg',
     },
     {
-      name: 'mpg',
-      icon: '/services/mpg.png',
-    },
-    {
-      name: 'webm',
-      icon: '/services/webm.png',
-    },
-    {
-      name: 'pls',
-      icon: '/services/pls.png',
-    },
-    {
-      name: 'rtf',
-      icon: '/services/rtf.png',
+      name: 'flac',
+      icon: '/audio_and_video/audio_formats/flac.svg',
     },
     {
       name: 'm4a',
-      icon: '/services/m4a.png',
+      icon: '/audio_and_video/audio_formats/m4a.svg',
+    },
+    {
+      name: 'mp3',
+      icon: '/audio_and_video/audio_formats/mp3.svg',
+    },
+    {
+      name: 'mpg',
+      icon: '/audio_and_video/audio_formats/mpg.svg',
+    },
+    {
+      name: 'wav',
+      icon: '/audio_and_video/audio_formats/wav.svg',
+    },
+    {
+      name: 'mpeg',
+      icon: '/audio_and_video/audio_formats/mpeg.svg',
+    },
+
+    {
+      name: 'webm',
+      icon: '/audio_and_video/audio_formats/webm.svg',
+    },
+    {
+      name: 'ogg',
+      icon: '/audio_and_video/audio_formats/ogg.svg',
+    },
+    {
+      name: 'webm',
+      icon: '/audio_and_video/audio_formats/webm.svg',
+    },
+    {
+      name: 'aac',
+      icon: '/audio_and_video/audio_formats/aac.svg',
+    },
+    {
+      name: 'aac',
+      icon: '/audio_and_video/audio_formats/aac.svg',
+    },
+    {
+      name: 'wma',
+      icon: '/audio_and_video/audio_formats/wma.svg',
+    },
+    {
+      name: 'pls',
+      icon: '/audio_and_video/audio_formats/pls.svg',
+    },
+    {
+      name: 'wmv',
+      icon: '/audio_and_video/audio_formats/wmv.svg',
+    },
+    {
+      name: 'rtf',
+      icon: '/audio_and_video/audio_formats/rtf.svg',
+    },
+    {
+      name: 'meu',
+      icon: '/audio_and_video/audio_formats/meu.svg',
+    },
+    {
+      name: 'dss',
+      icon: '/audio_and_video/audio_formats/dss.svg',
     },
   ];
 
   const video_formats = [
     {
       name: 'mp4',
-      icon: '/services/video-mp4.png',
-    },
-    {
-      name: 'avi',
-      icon: '/services/avi.png',
-    },
-    {
-      name: 'mov',
-      icon: '/services/mov.png',
+      icon: '/audio_and_video/video_formats/mp4.svg',
+
     },
     {
       name: 'asf',
-      icon: '/services/asf.png',
+      icon: '/audio_and_video/video_formats/asf.svg',
+
     },
     {
-      name: 'amr',
-      icon: '/services/amr.png',
+      name: 'mov',
+      icon: '/audio_and_video/video_formats/mov.svg',
+
     },
     {
-      name: 'wmv',
-      icon: '/services/wmv.png',
-    },
-    {
-      name: 'ogg',
-      icon: '/services/ogg.png',
-    },
-    {
-      name: 'mpg',
-      icon: '/services/mpg.png',
-    },
-    {
-      name: 'flv',
-      icon: '/services/flv.png',
-    },
-    {
-      name: 'amr',
-      icon: '/services/amr.png',
+      name: 'mkv',
+      icon: '/audio_and_video/video_formats/mkv.svg',
+
     },
     {
       name: 'wav',
-      icon: '/services/wav.png',
+      icon: '/audio_and_video/video_formats/wav.svg',
+
     },
+    
+    {
+      name: 'webm',
+      icon: '/audio_and_video/video_formats/webm.svg',
+
+    },
+    {
+      name: 'avi',
+      icon: '/audio_and_video/video_formats/avi.svg',
+
+    },
+    {
+      name: 'mpeg',
+      icon: '/audio_and_video/video_formats/mpeg.svg',
+
+    },
+    {
+      name: 'avi',
+      icon: '/audio_and_video/video_formats/avi.svg',
+
+    },
+    {
+      name: 'flv',
+      icon: '/audio_and_video/video_formats/flv.svg',
+
+    },
+    {
+      name: 'dv',
+      icon: '/audio_and_video/video_formats/dv.svg',
+
+    },
+    {
+      name: 'wmv',
+      icon: '/audio_and_video/video_formats/wmv.svg',
+
+    },
+    {
+      name: 'ts',
+      icon: '/audio_and_video/video_formats/ts.svg',
+
+    },
+    {
+      name: '3gp',
+      icon: '/audio_and_video/video_formats/3gp.svg',
+
+    },
+  
   ];
 
   const audio_video_theme = [
     {
-      imgUrl: '/svg/podcast.svg',
+      imgUrl: '/audio_and_video/meetings.svg',
       title: 'Meeting',
       description:
         'From lively Zoom, Microsoft Teams or Google Meets brainstorming sessions to productive conference calls, we capture every detail for seamless collaboration.',
     },
     {
-      imgUrl: '',
+      imgUrl: '/audio_and_video/Podcasts.svg',
       title: 'Podcasts',
       description:
         'Turn your captivating podcast episodes from Spotify, Apple Podcasts, or Google Podcasts into searchable text, expanding your audience reach and boosting SEO.',
     },
     {
-      imgUrl: '',
+      imgUrl: '/audio_and_video/seminars.svg',
       title: 'Seminars & Webinars',
       description:
         'Preserve the knowledge shared in dynamic webinars and seminars conducted on platforms like GoToWebinar or Zoom Webinar, making insights accessible long after the event ends.',
     },
     {
-      imgUrl: '',
+      imgUrl: '/audio_and_video/videovoicecall.svg',
       title: 'Video & Voice Calls',
       description:
         'Capture important conversations from any platform, whether it"s a client meeting on Skype or a brainstorming session on Microsoft Teams, for future reference.',
     },
     {
-      imgUrl: '',
+      imgUrl: '/audio_and_video/sermons.svg',
       title: 'Sermons',
       description:
         'Spread inspiration with written versions of your powerful sermons from church recordings, to online streaming platforms, reaching a broader audience and fostering deeper reflection.',
     },
     {
-      imgUrl: '',
+      imgUrl: '/audio_and_video/testimonials.svg',
       title: 'Testimonials',
       description:
         'Showcase the satisfaction of your clients by transforming heartfelt testimonials from video, audio, or written form into compelling written content.',
     },
 
     {
-      imgUrl: '/svg/Webinar-pana.svg',
+      imgUrl: '/audio_and_video/trainvideos.svg',
       title: 'Training Videos',
       description:
         'Enhance learning with transcriptions of your engaging training videos; corporate training sessions, or instructional videos, providing accessible resources for your team"s development.',
     },
     {
-      imgUrl: '/svg/Webinar-pana.svg',
+      imgUrl: '/audio_and_video/dictations.svg',
       title: 'Dictations',
       description:
         'Streamline communication by converting dictated notes, memos, and letters from dictation software, voice recorders, or mobile apps into clear, actionable text.',
@@ -292,7 +349,7 @@ export default function Page() {
           </div>
           <div className='hidden relative md:block md:min-w-[20rem]  lg:min-w-[30rem]'>
             <img
-              src='/svg/svg-audio-video.svg'
+              src='/audio_and_video/landingIllustration.svg'
               className='absolute object-cover -top-60'
               alt=''
             />
@@ -335,7 +392,7 @@ export default function Page() {
                 needs.
               </p>
 
-              <div >
+              <div>
                 <ul className='mx-auto max-w-2xl mt-6 text-lg leading-8 text-gray-800 list-disc flex flex-col space-y-2'>
                   <li>
                     Accurate transcription of various audio and video formats.
@@ -361,9 +418,11 @@ export default function Page() {
               </div>
             </div>
             <div className='hidden md:block relative w-full'>
-                <img src="/pics/598513718_huge.jpg" 
-                 className='absolute -top-24 -right-10 w-[20rem] md:w-[28rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10'
-                alt="" />
+              <img
+                src='/pics/598513718_huge.jpg'
+                className='absolute -top-24 -right-10 w-[20rem] md:w-[28rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10'
+                alt=''
+              />
             </div>
           </div>
         </div>
@@ -393,7 +452,7 @@ export default function Page() {
               </div>
             </div>
             <div>
-              <div className='grid justify-evenly grid-cols-4 md:grid-cols-3   lg:gap-x-8 gap-y-5  lg:grid-cols-4 lg:gap-y-5  pb-12'>
+              <div className='grid justify-evenly grid-cols-4 md:grid-cols-5   lg:gap-x-8 gap-y-5  lg:grid-cols-5 lg:gap-y-5  pb-12'>
                 {audio_formats.map((audio_format) => (
                   <div key={audio_format.name} className=''>
                     <img
@@ -429,7 +488,7 @@ export default function Page() {
               </div>
             </div>
             <div>
-              <div className='grid justify-evenly grid-cols-4 md:grid-cols-3   lg:gap-x-8 gap-y-5  lg:grid-cols-4 lg:gap-y-5  pb-12'>
+              <div className='grid justify-evenly grid-cols-4 md:grid-cols-5   lg:gap-x-8 gap-y-5  lg:grid-cols-5 lg:gap-y-5  pb-12'>
                 {video_formats.map((audio_format) => (
                   <div key={audio_format.name} className=''>
                     <img
@@ -459,15 +518,15 @@ export default function Page() {
           <div className='grid justify-evenly grid-cols-1 md:grid-cols-2   lg:gap-x-8 gap-y-5  lg:grid-cols-2 lg:gap-y-5  pb-12'>
             {audio_video_theme.map((content) => (
               <div key={content.title}>
-                <div>
+                <div className='max-h-[18rem]'>
                   <img
-                    src='/svg/Webinar-pana.svg'
+                    src={content.imgUrl}
                     className='rounded-sm object-cover'
                     alt=''
                   />
                 </div>
                 <div className='px-8'>
-                  <div className='mb-5 text-center text-2xl text-gray-900 capitalize font-semibold mt-5'>
+                  <div className='mb-5 text-center text-2xl md:text-3xl text-gray-900 capitalize font-bold mt-5'>
                     {content.title}
                   </div>
 
@@ -492,7 +551,7 @@ export default function Page() {
           </div>
         </div>
       </div>
-      <div className='py-10 md:py-16 why-section-bg '>
+      <div className='py-10 md:py-16 steps-section-bg '>
         <div className='mx-auto max-w-7xl    px-6 md:px-16 lg:px-16 xl:px-28'>
           <div className='flex flex-wrap md:flex-nowrap items-center gap-x-6 rounded-md md:px-8 md:py-10 bg-white/30 ring-1 ring-white/10'>
             <div className='md:max-w-[25rem] lg:max-w-[30rem] text-left'>
@@ -541,8 +600,8 @@ export default function Page() {
           </div>
           <div className='relative my-5'>
             <img
-              src='/pics/78.png'
-              className='rounded-xl object-cover w-full h-[15rem]'
+              src='/audio_and_video/benefits.svg'
+              className=' object-cover w-full -translate-x-16 -mt-16'
               alt=''
             />
           </div>
@@ -565,7 +624,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className='py-10 md:py-24 steps-section-bg'>
+      <div className='py-10 md:py-24 why-section-bg'>
         <div className='mx-auto max-w-7xl px-6 md:px-16 lg:px-16 xl:px-28'>
           <div>
             <h2 className='text-xl font-bold leading-7 capitalize text-indigo-600'>
