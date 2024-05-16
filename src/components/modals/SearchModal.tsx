@@ -23,7 +23,7 @@ export default function SearchModal({ open, setOpen }: SearchModalProps) {
           leaveFrom='opacity-50'
           leaveTo='opacity-0'
         >
-          <div className='fixed inset-0 bg-orange-100 bg-opacity-75 transition-opacity' />
+          <div className='fixed inset-0 bg-orange-50 pointer-events-nonepointer-events-none bg-opacity-75 transition-opacity' />
         </Transition.Child>
 
         <div className='fixed inset-0 overflow-hidden'>
@@ -31,14 +31,14 @@ export default function SearchModal({ open, setOpen }: SearchModalProps) {
             <div className=' fixed inset-y-0 right-0 flex w-full '>
               <Transition.Child
                 as={Fragment}
-                enter='transform transition ease-in-out duration-300 sm:duration-500'
+                enter='transform transition ease-in-out duration-100 sm:duration-100'
                 enterFrom='translate-y-full'
                 enterTo='translate-x-0'
-                leave='transform transition ease-in-out duration-300 sm:duration-500'
+                leave='transform transition ease-in-out duration-100 sm:duration-100'
                 leaveFrom='translate-x-0'
                 leaveTo='translate-y-full'
               >
-                <Dialog.Panel className='mx-auto pointer-events-none  relative z-[200] transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg'>
+                <Dialog.Panel className='mx-auto   relative z-[200] transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg'>
                   <div className=' bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4'>
                     <form className='space-y-6' action='#' method='POST'>
                       <PageSearch />

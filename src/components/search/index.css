@@ -1,1 +1,13 @@
-@import url('https://cdn.jsdelivr.net/npm/instantsearch.css@7/themes/satellite-min.css')
+.ais-Hits-item {
+    padding: unset;
+    border-radius: unset;
+    border: unset;
+    box-shadow: unset;
+}
+
+.ais-SearchBox-input {
+    border-radius: 5px;
+    padding-top:  1.2rem !important;  
+    padding-bottom: 1.2rem !important;
+    font-size: 18px;
+}

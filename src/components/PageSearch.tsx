@@ -1,6 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react';
+import 'instantsearch.css/themes/satellite.css';
+
 import './search/index.css';
+
 import algoliasearch from 'algoliasearch/lite';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -16,13 +20,12 @@ import {
   Hits,
   // @ts-ignore
 } from 'react-instantsearch';
+import { HashtagIcon } from '@heroicons/react/24/outline';
 // import { XMarkIcon } from '@heroicons/react/24/outline';
 
 const searchClient = algoliasearch(
-  //   'ARKTPJ3X46',
-  //   'f7c48eeaccad5b98fc876a1d0f3ea0f1',
-  'latency',
-  '6be0576ff61c053d5f9a3225e2a90f76',
+  'ARKTPJ3X46',
+  'f7c48eeaccad5b98fc876a1d0f3ea0f1',
 );
 
 // type HitProps = {
@@ -44,9 +47,16 @@ type HitProps = {
 
 function Hit({ hit }: HitProps) {
   return (
-    <a href={hit.url}>
-      <Highlight hit={hit} attribute='name' className='Hit-label' />
-      <span className='Hit-price'>${hit.title}</span>
+    <a
+      href={hit.url}
+      className='cursor-pointer w-full mb-2 flex space-x-2 items-center hover:bg-indigo-200 py-3.5 px-3 rounded-md bg-gray-100'
+    >
+      <HashtagIcon className='text-gray-600 w-5' />
+      <Highlight
+        hit={hit}
+        attribute='title'
+        className='text-gray-600 text-lg'
+      />
     </a>
   );
 }
@@ -64,11 +74,10 @@ export default function PageSearch() {
   //   }
   // };
 
-
   return (
     <InstantSearch
       searchClient={searchClient}
-      indexName='instant_search'
+      indexName='web_content'
       insights={true}
     >
       <Configure ruleContexts={[]} />
@@ -115,10 +124,8 @@ export default function PageSearch() {
 
       <SearchBox />
       <PoweredBy />
-      <div className='max-h-[30rem] overflow-y-scroll'>
-        <Hits hitComponent={Hit} />
-        <Pagination className='Pagination' />
-      </div>
+      <Hits hitComponent={Hit} />
+      <Pagination className='Pagination' />
     </InstantSearch>
   );
 }
