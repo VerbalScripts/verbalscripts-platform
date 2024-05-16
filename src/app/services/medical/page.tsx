@@ -324,7 +324,7 @@ export default function Page() {
       </div>
 
       <div className='py-10 md:py-16' style={{ background: '#FAFAFA' }}>
-        <div className='mx-auto max-w-3xl text-left md:text-center'>
+        <div className='mx-auto max-w-3xl text-left md:text-center px-6 md:px-16 lg:px-16 xl:px-28'>
           <h2 className='text-base font-semibold leading-7 text-indigo-600'>
             What are Our Supported Contents?
           </h2>
@@ -334,7 +334,7 @@ export default function Page() {
         </div>
 
         <div className='mx-auto max-w-7xl py-10 md:py-24 px-6 md:px-16 lg:px-16 xl:px-28'>
-          <div className='grid justify-evenly grid-cols-1 md:grid-cols-2   lg:gap-x-8 gap-y-5  lg:grid-cols-2 lg:gap-y-5  pb-12'>
+          <div className='grid justify-evenly grid-cols-1 md:grid-cols-2   lg:gap-x-8 gap-y-16  lg:grid-cols-2 lg:gap-y-5  pb-12'>
             {audio_video_theme.map((content) => (
               <div key={content.title}>
                 <div className='max-h-[18rem]'>
@@ -345,7 +345,7 @@ export default function Page() {
                   />
                 </div>
                 <div className='px-8'>
-                  <div className='mb-5 text-center text-2xl md:text-3xl text-gray-900 capitalize font-bold mt-5'>
+                  <div className='mb-5 text-center text-3xl md:text-3xl text-gray-900 capitalize font-bold mt-5'>
                     {content.title}
                   </div>
 
