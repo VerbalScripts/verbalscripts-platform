@@ -62,7 +62,7 @@ export default function PopularPartner() {
   ];
 
   return (
-    <div className='py-5  md:py-6'>
+    <div className='py-5  md:py-6 mx-auto max-w-7xl'>
       {/* <h2 className='text-center text-lg font-semibold leading-8 text-gray-900'>
             Trusted by the world’s most innovative teams
           </h2> */}

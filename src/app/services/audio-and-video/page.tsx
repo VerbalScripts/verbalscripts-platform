@@ -106,75 +106,60 @@ export default function Page() {
     {
       name: 'mp4',
       icon: '/audio_and_video/video_formats/mp4.svg',
-
     },
     {
       name: 'asf',
       icon: '/audio_and_video/video_formats/asf.svg',
-
     },
     {
       name: 'mov',
       icon: '/audio_and_video/video_formats/mov.svg',
-
     },
     {
       name: 'mkv',
       icon: '/audio_and_video/video_formats/mkv.svg',
-
     },
     {
       name: 'wav',
       icon: '/audio_and_video/video_formats/wav.svg',
-
     },
-    
+
     {
       name: 'webm',
       icon: '/audio_and_video/video_formats/webm.svg',
-
     },
     {
       name: 'avi',
       icon: '/audio_and_video/video_formats/avi.svg',
-
     },
     {
       name: 'mpeg',
       icon: '/audio_and_video/video_formats/mpeg.svg',
-
     },
     {
       name: 'avi',
       icon: '/audio_and_video/video_formats/avi.svg',
-
     },
     {
       name: 'flv',
       icon: '/audio_and_video/video_formats/flv.svg',
-
     },
     {
       name: 'dv',
       icon: '/audio_and_video/video_formats/dv.svg',
-
     },
     {
       name: 'wmv',
       icon: '/audio_and_video/video_formats/wmv.svg',
-
     },
     {
       name: 'ts',
       icon: '/audio_and_video/video_formats/ts.svg',
-
     },
     {
       name: '3gp',
       icon: '/audio_and_video/video_formats/3gp.svg',
-
     },
-  
   ];
 
   const audio_video_theme = [
@@ -288,112 +273,128 @@ export default function Page() {
     <div className='bg-zinc-800  relative'>
       <AppHeader />
 
-      <div className='relative landing-page-alt h-auto  px-6 py-20 md:pt-0  pb-40 md:py-32 lg:py-36 md:px-20 lg:px-28'>
-        <div className='landing-page-video-wrapper'></div>
-        <div
-          className='absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80'
-          aria-hidden='true'
-        >
+      <div className='landing-page-alt'>
+        <div className='relative mx-auto max-w-7xl  h-auto  px-6 py-20   pb-40 md:py-20 lg:py-36 md:px-20 lg:px-28'>
+          <div className='landing-page-video-wrapper'></div>
           <div
-            className='relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]'
-            style={{
-              clipPath:
-                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-            }}
-          />
-        </div>
-        <div className='flex flex-wrap  md:flex-nowrap items-center gap-x-10 '>
-          <div className='max-w-2xl md:max-w-3xl'>
-            <h1 className='text-4xl font-bold capitalize tracking-tight text-gray-800 sm:text-5xl'>
-              Audio and Video Transcription
-            </h1>
+            className='absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80'
+            aria-hidden='true'
+          >
+            <div
+              className='relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]'
+              style={{
+                clipPath:
+                  'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
+              }}
+            />
+          </div>
+          <div className='flex flex-wrap  lg:flex-nowrap items-center gap-x-10 '>
+            <div className='max-w-2xl md:max-w-4xl'>
+              <h1 className='text-4xl font-bold capitalize tracking-tight text-gray-800 sm:text-5xl'>
+                Audio and Video Transcription
+              </h1>
 
-            <p className='block md:max-w-2xl lg:max-w-3xl xl:max-w-4xl relative z-10 mt-6 text-lg  leading-7 text-gray-800'>
-              At VerbalScripts, precision meets efficiency as we transform
-              spoken content into clear, accessible text, empowering your
-              projects with accuracy and ease.Explore our diverse transcription
-              services below.
-            </p>
+              <p className='block md:max-w-2xl lg:max-w-3xl xl:max-w-4xl relative z-10 mt-6 text-lg  leading-7 text-gray-800'>
+                At VerbalScripts, precision meets efficiency as we transform
+                spoken content into clear, accessible text, empowering your
+                projects with accuracy and ease.Explore our diverse
+                transcription services below.
+              </p>
 
-            {/* <div className='mt-10'>
+              <div
+                className='lg:hidden   py-5 px-5 max-w-[18rem]'
+                
+              >
+                <div className='px-4 border-l-4 secondary-border'>
+                  <div className='text-gray-700 font-semibold '>
+                    
+                  </div>
+                  <div className='text-gray-700 font-semibold mb-3'>
+                    From <span className='py-1.5 px-2 bg-gray-300 rounded-full'>Human Transcripted</span><br></br><span className='footer-title text-3xl font-bold'>$1</span><br></br> per minute 98%
+                    accuracy
+                  </div>
+                </div>
+              </div>
+
+              <div className='lg:hidden mt-5'>
               <a
                 href='/upload-files'
-                className='inline-flex flex-nowrap  items-center gap-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
+                className='inline-flex flex-nowrap  items-center space-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
               >
                 <span className='flex'>Order Now</span>
                 <FontAwesomeIcon className='ml-2 w-5' icon={faLongArrowRight} />
               </a>
-            </div> */}
+            </div>
 
-            <div className='h-[3rem]'></div>
+              <div className='lg:h-[3rem]'></div>
 
-            <div
-              className='absolute -bottom-10 rounded-md shadow-xl py-7 px-5'
-              style={{ background: '#E0E8F0' }}
-            >
-              <div className='px-4 pb-5 border-l-2 secondary-border'>
-                <div className='text-gray-500 font-semibold '>
-                  Human Transcripted
+              <div
+                className='hidden lg:block lg:absolute left-1/4 -bottom-10 rounded-xl shadow-xl py-5 px-5'
+                style={{ background: '#E0E8F0' }}
+              >
+                <div className='px-4 pb-2 border-l-2 secondary-border'>
+                  <div className='text-gray-700 font-semibold '>
+                    
+                  </div>
+                  <div className='text-gray-700 font-semibold mb-3'>
+                    From <span className='py-1.5 px-2 bg-gray-300 rounded-full'>Human Transcripted</span><br></br><span className='footer-title text-3xl font-bold'>$1</span><br></br> per minute 98%
+                    accuracy
+                  </div>
                 </div>
-                <div className='text-gray-500 font-semibold mb-3'>
-                  From <span className='footer-title'>$1</span> per minute 98%
-                  accuracy
+                <div className='px-4'>
+                  <button className=' text-md font-semibold  px-5 py-1.5 bg-indigo-600 transition text-center  hover:-translate-y-1 hover:shadow-xl rounded-full text-gray-100'>
+                    Order Now
+                  </button>
                 </div>
-              </div>
-              <div className='px-4'>
-                <button className=' text-md font-semibold  px-5 py-1.5 bg-indigo-600 transition text-center  hover:-translate-y-1 hover:shadow-xl rounded-full text-gray-100'>
-                  Order Now
-                </button>
               </div>
             </div>
+            <div className='mt-10 lg:mt-0 relative   lg:min-w-[30rem]'>
+              <img
+                src='/audio_and_video/landingIllustration.svg'
+                className='max-w-[90%] lg:absolute object-cover -top-60'
+                alt=''
+              />
+            </div>
           </div>
-          <div className='hidden relative md:block md:min-w-[20rem]  lg:min-w-[30rem]'>
-            <img
-              src='/audio_and_video/landingIllustration.svg'
-              className='absolute object-cover -top-60'
-              alt=''
+          <div
+            className='absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]'
+            aria-hidden='true'
+          >
+            <div
+              className='relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]'
+              style={{
+                clipPath:
+                  'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
+              }}
             />
           </div>
         </div>
-        <div
-          className='absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]'
-          aria-hidden='true'
-        >
-          <div
-            className='relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]'
-            style={{
-              clipPath:
-                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-            }}
-          />
-        </div>
       </div>
 
-      <div className='bg-gray-100 py-0'>
+      <div className='bg-gray-100 py-0 '>
         <PopularPartner />
       </div>
 
       <div className='py-10 md:py-16' style={{ background: '#FAFAFA' }}>
         <div className='mx-auto max-w-7xl px-6 md:px-16 lg:px-16 xl:px-28'>
-          <div className='flex flex-wrap md:flex-nowrap items-center space-x-6'>
-            <div className='md:min-w-[25rem] lg:min-w-[35rem] text-left'>
+          <div className='flex flex-wrap lg:flex-nowrap items-center space-x-6'>
+            <div className='lg:min-w-[35rem] text-left'>
               <h2 className='text-xl font-bold leading-7 capitalize secondary-text'>
                 Audio & Video Transcription Services?
               </h2>
               <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
-                We offer <br></br>{' '}
+                We offer{' '}
                 <span className='relative z-10'>
                   Comprehensive.{' '}
                   <span className='z-10 absolute -bottom-5 right-0'>
                     <img src='/svg/lines.svg' className='w-44' alt='' />
                   </span>
                 </span>{' '}
-                <br></br> transcription services <br></br> tailored to your
-                needs.
+                transcription services tailored to your needs.
               </p>
 
-              <div>
-                <ul className='mx-auto max-w-2xl mt-6 text-lg leading-8 text-gray-800 list-disc flex flex-col space-y-2'>
+              <div className='px-6'>
+                <ul className='lg:mx-auto max-w-2xl mt-6 text-lg leading-8 text-gray-800 list-disc flex flex-col space-y-2'>
                   <li>
                     Accurate transcription of various audio and video formats.
                   </li>
@@ -417,10 +418,10 @@ export default function Page() {
                 </a>
               </div>
             </div>
-            <div className='hidden md:block relative w-full'>
+            <div className='mt-10 lg:mt-0 relative w-full'>
               <img
                 src='/pics/598513718_huge.jpg'
-                className='absolute -top-24 -right-10 w-[20rem] md:w-[28rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10'
+                className='lg:absolute -top-24 -right-10 w-[90%] -ml-7 lg:-ml-0 md:w-[28rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10'
                 alt=''
               />
             </div>
@@ -430,15 +431,15 @@ export default function Page() {
 
       <div className='py-10 md:py-16 landing-page-alt '>
         <div className='mx-auto max-w-7xl px-6 md:px-16 lg:px-16 xl:px-28'>
-          <div className='flex gap-y-10 bg-white rounded-xl px-8 py-10 flex-wrap md:flex-nowrap items-start justify-between gap-x-6 mb-20'>
-            <div className='md:min-w-[25rem] lg:min-w-[30rem] text-left'>
+          <div className='flex gap-y-10 bg-white rounded-xl px-8 py-10 flex-wrap lg:flex-nowrap items-start justify-between gap-x-6 mb-20'>
+            <div className='md:min-w-[25rem] lg:max-w-[30rem] text-left'>
               <div className='flex flex-col gap-y-10'>
                 <div>
                   <h2 className='text-xl font-bold leading-7 capitalize secondary-text'>
                     Supported audio formats?
                   </h2>
                   <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
-                    Audio Formats <br></br>that We Offer for
+                    Audio Formats that We Offer for
                   </p>
                 </div>
                 <div>
@@ -452,7 +453,7 @@ export default function Page() {
               </div>
             </div>
             <div>
-              <div className='grid justify-evenly grid-cols-4 md:grid-cols-5   lg:gap-x-8 gap-y-5  lg:grid-cols-5 lg:gap-y-5  pb-12'>
+              <div className='grid justify-evenly grid-cols-6 md:grid-cols-10   lg:gap-x-8 gap-y-5  lg:grid-cols-5 lg:gap-y-5  pb-12'>
                 {audio_formats.map((audio_format) => (
                   <div key={audio_format.name} className=''>
                     <img
@@ -466,7 +467,7 @@ export default function Page() {
             </div>
           </div>
 
-          <div className='flex gap-y-10 bg-white  rounded-xl px-8 py-10  flex-wrap md:flex-nowrap items-start justify-between gap-x-6 mb-10'>
+          <div className='flex gap-y-10 bg-white  rounded-xl px-8 py-10  flex-wrap lg:flex-nowrap items-start justify-between gap-x-6 mb-10'>
             <div className='md:min-w-[25rem] lg:min-w-[30rem] text-left'>
               <div className='flex flex-col gap-y-10'>
                 <div>
@@ -474,7 +475,7 @@ export default function Page() {
                     Supported video formats?
                   </h2>
                   <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
-                    Video Formats <br></br>that We Offer for
+                    Video Formats that We Offer for
                   </p>
                 </div>
                 <div>
@@ -488,7 +489,7 @@ export default function Page() {
               </div>
             </div>
             <div>
-              <div className='grid justify-evenly grid-cols-4 md:grid-cols-5   lg:gap-x-8 gap-y-5  lg:grid-cols-5 lg:gap-y-5  pb-12'>
+              <div className='grid justify-evenly grid-cols-6 md:grid-cols-10   lg:gap-x-8 gap-y-5  lg:grid-cols-5 lg:gap-y-5  pb-12'>
                 {video_formats.map((audio_format) => (
                   <div key={audio_format.name} className=''>
                     <img
@@ -553,14 +554,20 @@ export default function Page() {
       </div>
       <div className='py-10 md:py-16 steps-section-bg '>
         <div className='mx-auto max-w-7xl    px-6 md:px-16 lg:px-16 xl:px-28'>
-          <div className='flex flex-wrap md:flex-nowrap items-center gap-x-6 rounded-md md:px-8 md:py-10 bg-white/30 ring-1 ring-white/10'>
-            <div className='md:max-w-[25rem] lg:max-w-[30rem] text-left'>
+          <div className='flex flex-wrap lg:flex-nowrap items-center gap-x-6 rounded-md md:px-8 md:py-10 bg-white/30 ring-1 ring-white/10'>
+            <div className='lg:max-w-[30rem] text-left'>
               <h2 className='text-xl font-bold leading-7 capitalize secondary-text'>
                 Why choose us?
               </h2>
               <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
-                We take pride in offering comprehensive Audio & Video
-                Transcription Services for You
+                We take pride in offering{' '}
+                <span className='relative z-10'>
+                  Comprehensive.{' '}
+                  <span className='z-10 absolute -bottom-5 right-0'>
+                    <img src='/svg/lines.svg' className='w-44' alt='' />
+                  </span>
+                </span>{' '}
+                Audio & Video Transcription Services for You
               </p>
             </div>
             <div>
@@ -635,54 +642,54 @@ export default function Page() {
             </p>
           </div>
           <div className='my-10'>
-            <div className='grid max-w-none  grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 lg:grid-cols-3 lg:gap-10'>
-              <div className='relative shadow-md rounded-xl py-10 px-12 bg-white'>
-                <div>
+            <div className='grid max-w-none  grid-cols-1 gap-8  md:gap-5 md:grid-cols-3 lg:gap-10'>
+              <div className='relative shadow-md rounded-xl py-10 px-10 md:py-5 md:px-5 lg:py-10 lg:px-12 bg-white'>
+                <div className='flex justify-center md:flex-none'>
                   <div className='w-16 h-16 flex bg-indigo-400 rounded-md items-center justify-center'>
                     <SquaresPlusIcon className='text-gray-100 w-10 h-10' />
                   </div>
                 </div>
-                <div className='absolute z-10 -right-12 top-24 w-16 h-16 bg-white flex items-center justify-center  rounded-full shadow-xl'>
+                <div className='absolute z-10 left-[45%] -bottom-10 w-12 h-12 rotate-90 md:rotate-0 md:-right-7 lg:-right-12 md:top-24 md:w-10 md:h-10 lg:w-16 lg:h-16 bg-white flex items-center justify-center  rounded-full shadow-xl'>
                   <ArrowLongRightIcon className='text-orange-500 w-7' />
                 </div>
-                <div className='mt-5 footer-title text-left text-xl md:text-2xl font-semibold mb-3'>
+                <div className='mt-5 footer-title text-center md:text-left text-xl md:text-2xl font-semibold mb-3'>
                   Files Upload
                 </div>
 
-                <div className='text-gray-600 text-left  text-md'>
+                <div className='text-gray-600 text-center md:text-left  text-md'>
                   Simply upload your files to our secure platform.
                 </div>
               </div>
-              <div className='relative shadow-md rounded-xl py-10 px-12 bg-white'>
-                <div>
+              <div className='relative shadow-md rounded-xl py-10 px-10 md:py-5 md:px-5 lg:py-10 lg:px-12 bg-white'>
+                <div className='flex justify-center md:flex-none'>
                   <div className='w-16 h-16 flex bg-indigo-400 rounded-md items-center justify-center'>
                     <ComputerDesktopIcon className='text-gray-100 w-10 h-10' />
                   </div>
                 </div>
-                <div className='absolute z-10 -right-12 top-24 w-16 h-16 bg-white flex items-center justify-center  rounded-full shadow-xl'>
+                <div className='absolute z-10 left-[45%] -bottom-10 w-12 h-12 rotate-90 md:rotate-0 md:-right-7 lg:-right-12 md:top-24 md:w-10 md:h-10 lg:w-16 lg:h-16 bg-white flex items-center justify-center  rounded-full shadow-xl'>
                   <ArrowLongRightIcon className='text-orange-500 w-7' />
                 </div>
-                <div className='mt-5 footer-title text-left text-xl md:text-2xl font-semibold mb-3'>
+                <div className='mt-5 footer-title text-center md:text-left text-xl md:text-2xl font-semibold mb-3'>
                   Transcription
                 </div>
 
-                <div className='text-gray-600 text-left  text-md'>
+                <div className='text-gray-600 text-center md:text-left text-md'>
                   Our experts transcribe your files with accuracy and attention
                   to detail.
                 </div>
               </div>
-              <div className='relative shadow-md rounded-xl py-10 px-12 bg-white'>
-                <div>
+              <div className='relative shadow-md rounded-xl py-10 px-10 md:py-5 md:px-5 lg:py-10 lg:px-12 bg-white'>
+                <div className='flex justify-center md:flex-none'>
                   <div className='w-16 h-16 flex bg-indigo-400 rounded-md items-center justify-center'>
                     <ShoppingBagIcon className='text-gray-100 w-10 h-10' />
                   </div>
                 </div>
 
-                <div className='mt-5 footer-title text-left text-xl md:text-2xl font-semibold mb-3'>
+                <div className='mt-5 footer-title text-center md:text-left text-xl md:text-2xl font-semibold mb-3'>
                   Delivery
                 </div>
 
-                <div className='text-gray-600 text-left  text-md'>
+                <div className='text-gray-600 text-center md:text-left  text-md'>
                   Your completed transcriptions are delivered promptly via email
                   or our platform.
                 </div>
