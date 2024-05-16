@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 // import AxiosProxy from '@/utils/AxiosProxy';
-import { XMarkIcon } from '@heroicons/react/24/outline';
 import PageSearch from '../PageSearch';
 
 interface SearchModalProps {
@@ -17,19 +16,19 @@ export default function SearchModal({ open, setOpen }: SearchModalProps) {
       <Dialog as='div' className='relative z-[60]' onClose={setOpen}>
         <Transition.Child
           as={Fragment}
-          enter='ease-in-out duration-300'
+          enter='ease-in-out duration-50'
           enterFrom='opacity-0'
-          enterTo='opacity-100'
-          leave='ease-in-out duration-300'
-          leaveFrom='opacity-100'
+          enterTo='opacity-50'
+          leave='ease-in-out duration-50'
+          leaveFrom='opacity-50'
           leaveTo='opacity-0'
         >
-          <div className='fixed inset-0 bg-gray-100 bg-opacity-75 transition-opacity' />
+          <div className='fixed inset-0 bg-orange-100 bg-opacity-75 transition-opacity' />
         </Transition.Child>
 
         <div className='fixed inset-0 overflow-hidden'>
           <div className='absolute inset-0 overflow-hidden'>
-            <div className='pointer-events-none fixed inset-y-0 right-0 flex max-w-full '>
+            <div className=' fixed inset-y-0 right-0 flex w-full '>
               <Transition.Child
                 as={Fragment}
                 enter='transform transition ease-in-out duration-300 sm:duration-500'
@@ -39,30 +38,11 @@ export default function SearchModal({ open, setOpen }: SearchModalProps) {
                 leaveFrom='translate-x-0'
                 leaveTo='translate-y-full'
               >
-                <Dialog.Panel className='pointer-events-auto relative w-screen '>
-                  <Transition.Child
-                    as={Fragment}
-                    enter='ease-in-out duration-500'
-                    enterFrom='opacity-0'
-                    enterTo='opacity-100'
-                    leave='ease-in-out duration-300'
-                    leaveFrom='opacity-100'
-                    leaveTo='opacity-0'
-                  >
-                    <div className='absolute right-0 top-0 -ml-8 flex pr-2 pt-4 sm:-ml-10 sm:pr-4'>
-                      <button
-                        type='button'
-                        className='relative rounded-md text-gray-500 hover:text-gray-300 focus:outline-none focus:ring-4 focus:ring-indigo-200'
-                        onClick={() => setOpen(false)}
-                      >
-                        <span className='absolute -inset-2.5' />
-                        <span className='sr-only'>Close panel</span>
-                        <XMarkIcon className='h-10 w-10' aria-hidden='true' />
-                      </button>
-                    </div>
-                  </Transition.Child>
-                  <div className='relative mx-auto max-w-xl bg-white rounded-xl'>
-                    <PageSearch />
+                <Dialog.Panel className='mx-auto pointer-events-none  relative z-[200] transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg'>
+                  <div className=' bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4'>
+                    <form className='space-y-6' action='#' method='POST'>
+                      <PageSearch />
+                    </form>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>
