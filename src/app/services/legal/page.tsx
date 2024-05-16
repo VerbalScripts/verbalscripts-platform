@@ -84,32 +84,28 @@ export default function Page() {
       description:
         'We prioritize the confidentiality of your legal documents and information, implementing strict security measures and confidentiality agreements to protect sensitive data.',
 
-        imgUrl: '/legal/assurance.svg',
-
+      imgUrl: '/legal/assurance.svg',
     },
     {
       name: 'Timely Delivery.',
       description:
         'We understand the importance of deadlines in the legal profession. With our efficient transcription process, we ensure prompt delivery of transcribed documents without compromising accuracy.',
 
-        imgUrl: '/legal/time.svg',
-
+      imgUrl: '/legal/time.svg',
     },
     {
       name: 'Customized Solutions.',
       description:
         'We offer flexible transcription options tailored to your specific requirements, including formatting preferences, timestamping, and speaker identification.',
 
-        imgUrl: '/legal/solutions.svg',
-
+      imgUrl: '/legal/solutions.svg',
     },
     {
       name: 'Dedicated Support.',
       description:
         'From initial consultation to final delivery, our team provides  personalized assistance, ensuring a seamless and hassle-free experience for our clients.',
 
-        imgUrl: '/legal/support.svg',
-
+      imgUrl: '/legal/support.svg',
     },
   ];
 
@@ -372,10 +368,11 @@ export default function Page() {
         <div className='mx-auto max-w-7xl py-10 md:py-24 px-6 md:px-16 lg:px-16 xl:px-28'>
           <div className='grid justify-evenly grid-cols-1  gap-y-5  pb-12'>
             {audio_video_theme.map((content, index) => (
-              <div key={content.title} className='flex flex-wrap lg:flex-nowrap items-center gap-x-6  md:px-8 md:py-10'>
-                <div className={
-                  classNames(index % 2 == 0 ? '': 'md:order-2')
-                }>
+              <div
+                key={content.title}
+                className='flex flex-wrap lg:flex-nowrap items-center gap-x-6  md:px-8 md:py-10'
+              >
+                <div className={classNames(index % 2 == 0 ? '' : 'md:order-2')}>
                   <img
                     src={content.imgUrl}
                     className='lg:max-w-[30rem] rounded-sm object-cover'

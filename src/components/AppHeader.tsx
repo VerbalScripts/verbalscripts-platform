@@ -11,6 +11,7 @@ import {
   ArrowUpTrayIcon,
   InformationCircleIcon,
   QuestionMarkCircleIcon,
+  MagnifyingGlassIcon,
 } from '@heroicons/react/24/outline';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { v4 as uuid } from 'uuid';
@@ -24,12 +25,15 @@ import {
 } from '@heroicons/react/24/outline';
 import NavItem from './NavItem';
 import GetAQuoteModal from './GetAQuoteModal';
+import SearchModal from './modals/SearchModal';
 
 function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ');
 }
 
 export default function AppHeader() {
+  const [search, toggleSearch] = useState(false);
+
   const services: Array<NavLabel> = [
     {
       name: 'Legal Transcription',
@@ -261,7 +265,7 @@ export default function AppHeader() {
   });
 
   return (
-    <>
+    <div>
       <GetAQuoteModal open={showQuote} setOpen={setShowQuote} />
 
       <div className='mx-auto  max-w-7xl relative z-30'>
@@ -315,6 +319,19 @@ export default function AppHeader() {
             </a>
           </div>
           <div className='flex items-center lg:hidden'>
+            <a href='/' className='-m-1.5 p-1.5 text-2xl font-bold'>
+              <img className='h-[3rem]' src='/icons/logo-v.png' alt='' />
+            </a>
+          </div>
+
+          <div className='flex items-center lg:hidden space-x-3'>
+            <a
+              href='#'
+              onClick={() => toggleSearch(!search)}
+              className='text-sm  uppercase font-semibold rounded-full leading-6 py-2.5  px-2 text-gray-900 transition hover:bg-orange-100'
+            >
+              <MagnifyingGlassIcon className='w-5 text-gray-800' />
+            </a>
             <button
               type='button'
               className='-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700'
@@ -323,19 +340,6 @@ export default function AppHeader() {
               <span className='sr-only'>Open main menu</span>
               <Bars3Icon className='h-8 w-8' aria-hidden='true' />
             </button>
-            <a href='/' className='-m-1.5 p-1.5 text-2xl font-bold'>
-              <img className='h-[3rem]' src='/icons/logo-v.png' alt='' />
-            </a>
-          </div>
-
-          <div className='flex items-center lg:hidden'>
-            <a
-              href='/dashboard/pending'
-              className='-mx-3  text-center rounded-full inline-flex items-center gap-x-2 bg-indigo-500  px-3 py-1.5 text-xl font-semibold leading-7  hover:bg-indigo-400 hover:text-gray-200'
-            >
-              <ArrowUpTrayIcon className='text-white h-5 w-5' />
-              <span className='text-white'>Try Now</span>
-            </a>
           </div>
 
           <Popover.Group className='hidden lg:flex lg:gap-x-1 lg:items-center'>
@@ -413,6 +417,13 @@ export default function AppHeader() {
               className='text-sm  uppercase font-semibold rounded-md leading-6 py-2.5  px-2 text-gray-900 transition hover:bg-orange-100'
             >
               Contact
+            </a>
+            <a
+              href='#'
+              onClick={() => toggleSearch(!search)}
+              className='text-sm  uppercase font-semibold rounded-full leading-6 py-2.5  px-2 text-gray-900 transition hover:bg-orange-100'
+            >
+              <MagnifyingGlassIcon className='w-5 text-gray-800' />
             </a>
             <button
               onClick={() => setShowQuote(true)}
@@ -633,6 +644,7 @@ export default function AppHeader() {
           </a>
         </div>
       </div>
-    </>
+      <SearchModal open={search} setOpen={toggleSearch} />
+    </div>
   );
 }

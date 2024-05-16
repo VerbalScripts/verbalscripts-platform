@@ -124,7 +124,7 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
             ))}
           </Swiper>
         </div>
-       
+
         <div className='flex justify-center'>
           <div className='bg-white absolute -bottom-10 md:-bottom-[4rem] z-[25] right-0 left-0 h-14 md:h-32'></div>
           {[...testimonials.slice(0, itemsPerView)].map(

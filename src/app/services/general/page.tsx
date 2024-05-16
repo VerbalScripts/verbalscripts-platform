@@ -279,7 +279,8 @@ export default function Page() {
                   Human Transcripted
                 </div>
                 <div className='text-gray-500 font-semibold mb-3'>
-                  From <span className='footer-title'>$1</span> per minute 98% accuracy
+                  From <span className='footer-title'>$1</span> per minute 98%
+                  accuracy
                 </div>
               </div>
               <div className='px-4'>

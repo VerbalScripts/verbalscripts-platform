@@ -1,11 +1,16 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 // import AxiosProxy from '@/utils/AxiosProxy';
 import { XMarkIcon } from '@heroicons/react/24/outline';
+import PageSearch from '../PageSearch';
 
-export default function SearchModal() {
+interface SearchModalProps {
+  open: boolean;
+  setOpen: (arg0: boolean) => void;
+}
+
+export default function SearchModal({ open, setOpen }: SearchModalProps) {
   //   const cancelButtonRef = useRef(null);
-  const [open, setOpen] = useState(false);
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -56,7 +61,9 @@ export default function SearchModal() {
                       </button>
                     </div>
                   </Transition.Child>
-                  <div></div>
+                  <div className='relative mx-auto max-w-xl bg-white rounded-xl'>
+                    <PageSearch />
+                  </div>
                 </Dialog.Panel>
               </Transition.Child>
             </div>

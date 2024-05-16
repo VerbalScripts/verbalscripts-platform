@@ -55,8 +55,6 @@ export default function Page() {
       description:
         'Preserve detailed medical histories and examination findings, supporting comprehensive patient evaluations and treatment planning.',
     },
-
-   
   ];
 
   // const audio_features = [
@@ -372,8 +370,8 @@ export default function Page() {
           </div>
         </div>
       </div>
-     
-     <HowItWorks />
+
+      <HowItWorks />
 
       <AppFooter />
     </div>

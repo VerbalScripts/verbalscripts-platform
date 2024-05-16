@@ -232,11 +232,11 @@ export default function Page() {
                 Academic & Conference Transcription?
               </h2>
               <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
-              Your Focus Group Discussions & Interviews are Transformed into.
+                Your Focus Group Discussions & Interviews are Transformed into.
                 <span className='relative z-10'>
-                Actionable{' '}
+                  Actionable{' '}
                   <span className='z-10 absolute -bottom-2.5 right-0'>
-                  <img src='/svg/lines.svg' className='w-44' alt='' />
+                    <img src='/svg/lines.svg' className='w-44' alt='' />
                   </span>
                 </span>{' '}
                 Insights.
@@ -245,16 +245,23 @@ export default function Page() {
             <div>
               <ul className='mx-auto max-w-2xl mt-6 text-lg leading-8 text-gray-800 list-disc flex flex-col gap-y-5'>
                 <li>
-                We meticulously transcribe focus group discussions and interviews, ensuring every nuance is accurately captured.
+                  We meticulously transcribe focus group discussions and
+                  interviews, ensuring every nuance is accurately captured.
                 </li>
                 <li>
-                Our transcriptionists are well-versed in the intricacies of qualitative research, enabling them to navigate diverse topics and terminology with ease.
+                  Our transcriptionists are well-versed in the intricacies of
+                  qualitative research, enabling them to navigate diverse topics
+                  and terminology with ease.
                 </li>
                 <li>
-                Compliant with UK{"'"}s GDPR and US{"'"}s HIPAA, we prioritize participant privacy, empowering your research with peace of mind.
+                  Compliant with UK{"'"}s GDPR and US{"'"}s HIPAA, we prioritize
+                  participant privacy, empowering your research with peace of
+                  mind.
                 </li>
                 <li>
-                Tailor our services to your unique research requirements, including formatting preferences, speaker identification, and thematic coding.
+                  Tailor our services to your unique research requirements,
+                  including formatting preferences, speaker identification, and
+                  thematic coding.
                 </li>
               </ul>
             </div>

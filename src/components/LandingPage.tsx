@@ -46,9 +46,7 @@ export default function LandingPage() {
           </p>
         </div>
 
-        <div className=' min-h-[120px] lg:min-h-0'>
-
-        </div>
+        <div className=' min-h-[120px] lg:min-h-0'></div>
 
         <div className='absolute -bottom-10 -right-44 hidden lg:block'>
           <img
@@ -72,7 +70,11 @@ export default function LandingPage() {
           />
         </div>
         <div className=' bg-red-100 h-[150px] absolute bottom-0 left-0 right-0  lg:hidden block'>
-          <img src="./Home/legal-banner.jpg" className='absolute right-0 left-0 top-0 bottom-0' alt="" />
+          <img
+            src='./Home/legal-banner.jpg'
+            className='absolute right-0 left-0 top-0 bottom-0'
+            alt=''
+          />
         </div>
       </div>
     </div>

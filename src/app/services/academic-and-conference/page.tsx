@@ -15,7 +15,6 @@ export const metadata: Metadata = {
 
 export default function Page() {
   const audio_video_theme = [
-    
     {
       imgUrl: '/academic_conference/researchpresentation.svg',
       title: 'Research Presentations',
@@ -42,7 +41,6 @@ export default function Page() {
     },
     {
       imgUrl: '/academic_conference/Q&A-sessions.jpg',
-
 
       title: 'Q&A Sessions',
       description:

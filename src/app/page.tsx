@@ -135,13 +135,13 @@ export default function Home() {
 
       <div className='py-10 md:py-16' style={{ background: '#FAFAFA' }}>
         <div className='mx-auto max-w-7xl px-6 md:px-16 lg:px-16 xl:px-28'>
-          <div className='flex flex-wrap md:flex-nowrap items-center gap-x-6'>
-            <div className='md:min-w-[25rem] lg:min-w-[30rem] text-left'>
+          <div className='flex flex-wrap lg:flex-nowrap items-center gap-x-6'>
+            <div className='lg:max-w-[30rem] text-left'>
               <h2 className='text-xl font-bold leading-7 capitalize secondary-text'>
                 Why <span className='text-gray-800'>Verbal</span>Scripts
               </h2>
               <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
-                We transcribe <br></br>with Precision <br></br>and <br></br>
+                We transcribe with Precision and{' '}
                 <span className='relative z-10'>
                   Professionalism.{' '}
                   <span className='z-10 absolute -bottom-5 right-0'>
@@ -228,13 +228,13 @@ export default function Home() {
           />
         </div>
         <div className='mx-auto max-w-7xl px-6 md:px-16 lg:px-16 xl:px-28'>
-          <div className='flex flex-wrap md:flex-nowrap items-center  gap-x-6'>
-            <div className='md:min-w-[25rem] lg:min-w-[30rem] text-left'>
+          <div className='flex flex-wrap lg:flex-nowrap items-center  gap-x-6'>
+            <div className='lg:max-w-[30rem] text-left'>
               <h2 className='text-xl font-semibold capitalize leading-7 secondary-text'>
                 What Services We Offer
               </h2>
               <p className='mt-2 text-4xl md:text-5xl capitalize  font-bold text-left text-gray-900 section-title'>
-                Transcription Needs ? <br></br> Meet out{' '}
+                Transcription Needs ? Meet out{' '}
                 <span className='relative z-10'>
                   exceptional{' '}
                   <span className='z-10 absolute -bottom-5 right-0'>
@@ -422,7 +422,7 @@ export default function Home() {
 
       <div className='bg-white pt-0 pb-24 md:pb-24 md:pt-24'>
         <div className='mx-auto max-w-7xl  px-6 md:px-16 lg:px-16 xl:px-28'>
-          <div className='flex flex-wrap md:flex-nowrap items-center gap-x-6 '>
+          <div className='flex flex-wrap lg:flex-nowrap items-center gap-x-6 '>
             <div className='order-2 md:order-1  md:min-w-[25rem] lg:min-w-[30rem] text-left'>
               <h2 className='text-xl font-semibold leading-7 capitalize secondary-text'>
                 Want to be a transcriber
@@ -435,7 +435,7 @@ export default function Home() {
                     <img src='/svg/lines.svg' className='w-44' alt='' />
                   </span>
                 </span>{' '}
-                we<br></br>need? <br></br> We are looking for you
+                we need? We are looking for you
               </p>
 
               <div className='flex flex-col  items-start gap-x-3 gap-y-5  mt-5 border-l-4 secondary-border'>
