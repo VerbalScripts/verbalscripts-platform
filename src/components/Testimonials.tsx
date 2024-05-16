@@ -88,8 +88,8 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
   // }, []);
 
   return (
-    <section className='relative py-14 sm:py-12 bg-white'>
-      <div className='mx-auto max-w-7xl'>
+    <section className=' py-14 sm:py-12 bg-white'>
+      <div className='mx-auto max-w-7xl relative'>
         <div className='absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] opacity-20' />
         <div className='absolute  right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center' />
 
@@ -124,7 +124,8 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
             ))}
           </Swiper>
         </div>
-        <div className='flex relative'>
+       
+        <div className='flex justify-center'>
           <div className='bg-white absolute -bottom-10 md:-bottom-[4rem] z-[25] right-0 left-0 h-14 md:h-32'></div>
           {[...testimonials.slice(0, itemsPerView)].map(
             (testimony: Testimony, index: number) => (
@@ -154,7 +155,7 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
                 <div
                   onClick={() => changeActive(index)}
                   className={classNames(
-                    'relative transition-all  flex overflow-x-hidden overflow-y-hidden justify-center items-center  border-8 border-white min-w-[30vw]  min-h-[30vw] md:min-h-[110px]  md:min-w-[110px] lg:min-h-[18vw] lg:min-w-[18vw] rounded-full testimonials-circles',
+                    'relative transition-all  flex overflow-x-hidden overflow-y-hidden justify-center items-center  border-8 border-white min-w-[30vw]  min-h-[30vw] md:min-h-[110px]  md:min-w-[110px] lg:min-h-[15rem] lg:min-w-[15rem] rounded-full testimonials-circles',
                     `z-[${10 + index + 2}]`,
                     // index % 2 == 0 ? '-translate-x-10' : 'translate-x-10',
                     index == 0
