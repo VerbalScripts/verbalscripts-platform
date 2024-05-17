@@ -114,7 +114,7 @@ body {
   background:
     linear-gradient(to bottom, transparent, rgba(248, 247, 247, 0.8)),
     linear-gradient(to top, transparent, rgba(247, 246, 246, 0.938)),
-    url('/compliant.jpg') no-repeat top right;
+    url('/learning.jpg') no-repeat top right;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -126,6 +126,16 @@ body {
     linear-gradient(to top, transparent, rgba(255, 252, 252, 0.952)),
     url('/social-integrated-person-workspace.jpg') no-repeat top right;
   background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.medical-section-bg {
+  background:
+    linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.87)),
+    linear-gradient(to top, transparent, rgba(255, 252, 252, 0.952)),
+    url('/pics/medical.jpg') no-repeat top right;
+  background-size: contain;
   background-position: center;
   background-attachment: fixed;
 }

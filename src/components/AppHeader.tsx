@@ -12,6 +12,7 @@ import {
   InformationCircleIcon,
   QuestionMarkCircleIcon,
   MagnifyingGlassIcon,
+  BuildingOffice2Icon,
 } from '@heroicons/react/24/outline';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { v4 as uuid } from 'uuid';
@@ -146,6 +147,13 @@ export default function AppHeader() {
         'Making live events, meetings, ad campaigns and press briefings more accessible and actionable.',
       href: '/solutions/government',
       imgUrl: '/icons/policy.png',
+    },
+    {
+      name: 'Healthcare',
+      description:
+        'Making live events, meetings, ad campaigns and press briefings more accessible and actionable.',
+      href: '/solutions/call-centers',
+      icon: BuildingOffice2Icon,
     },
   ];
 

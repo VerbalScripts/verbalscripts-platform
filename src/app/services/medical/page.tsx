@@ -199,7 +199,7 @@ export default function Page() {
             </div>
             <div className='mt-10 lg:mt-0 relative   lg:min-w-[30rem]'>
               <img
-                src='/medical_transcription/medicallandingIllustration.svg'
+                src='/medical_transcription/secondary-lg.svg'
                 className='max-w-[90%] lg:absolute object-cover -top-60'
                 alt=''
               />
@@ -273,8 +273,8 @@ export default function Page() {
             </div>
             <div className=' order-1 mt-10 lg:mt-0 relative w-full'>
               <img
-                src='/pics/598513718_huge.jpg'
-                className='lg:absolute -top-24 -left-10 w-[90%] -ml-7 lg:-ml-0 md:w-[28rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10'
+                src='/medical_transcription/forecast.svg'
+                className='lg:absolute -top-24 -left-10 lg:-top-56  w-[90%] -ml-7 lg:-ml-0 md:w-[28rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10'
                 alt=''
               />
             </div>
@@ -282,7 +282,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className='py-10 md:py-16 steps-section-bg '>
+      <div className='py-10 md:py-16 medical-section-bg '>
         <div className='mx-auto max-w-7xl    px-6 md:px-16 lg:px-16 xl:px-28'>
           <div className='flex flex-wrap lg:flex-nowrap items-center gap-x-6 rounded-md md:px-8 md:py-10 bg-white/30 ring-1 ring-white/10'>
             <div className='lg:max-w-[30rem] text-left'>

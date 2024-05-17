@@ -17,6 +17,7 @@ import {
   AcademicCapIcon,
   MicrophoneIcon,
   ChartBarIcon,
+  BuildingOffice2Icon,
 } from '@heroicons/react/24/outline';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -31,7 +32,7 @@ export default function AppFooter() {
     {
       name: 'Legal Transcription',
       description: 'Build strategic funnels that will convert',
-      href: '/services/annotation',
+      href: '/services/legal',
       icon: ArrowPathIcon,
       subtitle: 'Data Labeling customized to your needs',
       features: [
@@ -44,7 +45,7 @@ export default function AppFooter() {
     {
       name: 'Video and Audio Transcription services',
       description: 'Speak directly to your customers',
-      href: '/services/translation',
+      href: '/services/audio-and-video',
       icon: CursorArrowRaysIcon,
       subtitle: 'Accurate translation in any language',
       features: [
@@ -57,7 +58,7 @@ export default function AppFooter() {
     {
       name: 'General Transcription',
       description: 'Build strategic funnels that will convert',
-      href: '/services/annotation',
+      href: '/services/general',
       icon: ArrowPathIcon,
       subtitle: 'Data Labeling customized to your needs',
       features: [
@@ -68,15 +69,15 @@ export default function AppFooter() {
       price: '0.10$ per task',
     },
     {
-      name: 'Focus groups & Interviews',
+      name: 'Focus groups and Interviews',
       description: 'Get a better understanding of your traffic',
-      href: '/services/transcription',
+      href: '/services/focus-groups-and-interviews',
       icon: ChartPieIcon,
     },
     {
       name: 'Medical Transcription',
       description: 'Your customers’ data will be safe and secure',
-      href: '/services/legal',
+      href: '/services/medical',
       icon: FingerPrintIcon,
       subtitle: 'Industry best speech-to-text transcription software',
       features: [
@@ -89,7 +90,7 @@ export default function AppFooter() {
     {
       name: 'Academic & Conference Transcription',
       description: 'Connect with third-party tools',
-      href: '/services/ai',
+      href: '/services/academic-and-conference',
       icon: SquaresPlusIcon,
       subtitle: 'Create custom datasets for AI model training',
       features: [
@@ -101,7 +102,7 @@ export default function AppFooter() {
       ],
       price: '2.00$ per minute',
     },
-  ];
+  ]; 
 
   const solutions: Array<NavLabel> = [
     {
@@ -145,6 +146,13 @@ export default function AppFooter() {
         'Making live events, meetings, ad campaigns and press briefings more accessible and actionable.',
       href: '/solutions/call-centers',
       icon: MicrophoneIcon,
+    },
+    {
+      name: 'Healthcare',
+      description:
+        'Making live events, meetings, ad campaigns and press briefings more accessible and actionable.',
+      href: '/solutions/call-centers',
+      icon: BuildingOffice2Icon,
     },
   ];
 

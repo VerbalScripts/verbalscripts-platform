@@ -132,7 +132,7 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
               <div key={index} className='relative'>
                 <div
                   className={classNames(
-                    'mt-4 flex-col -top-44 md:-top-36 rotate-12 z-[11] bg-white min-w-[150px]  shadow-md border border-orange-500 rounded-xl py-2 px-3  absolute flex items-center justify-center space-x-3 text-base',
+                    'mt-4 flex-col -top-32 md:-top-36 rotate-12 z-[11] bg-white min-w-[150px]  shadow-md border border-orange-500 rounded-xl py-2 px-3  absolute flex items-center justify-center space-x-3 text-base',
 
                     index == activeIndex ? '' : 'hidden',
                   )}

@@ -6,7 +6,7 @@ import AppFooter from '@/components/AppFooter';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLongArrowRight } from '@fortawesome/free-solid-svg-icons';
 import PopularPartner from '@/components/PopularPartner';
-import SolutionsList from '@/components/SolutionsList';
+import { classNames } from '@/utils/classNames';
 
 export const metadata: Metadata = {
   title: 'VerbalScripts | Services',
@@ -46,11 +46,56 @@ export default function Page() {
   //   },
   // ];
 
+  const servies: Array<NavLabel> = [
+    {
+      name: 'General Transcription',
+      description:
+        'Accurate transcriptions for a variety of content, perfect for meetings, seminars, and more.',
+      href: '/services/general',
+      imgUrl: '/services/general.jpg',
+    },
+    {
+      name: 'Legal Transcription',
+      description:
+        'Precise documentation for legal proceedings, ensuring clarity and compliance.',
+      href: '/services/legal',
+      imgUrl: '/services/legal.jpg',
+    },
+    {
+      name: 'Video & Audio Transcription',
+      description:
+        'Transcriptions for multimedia content, including videos, podcasts, and recordings.',
+      href: '/services/vide&audio',
+      imgUrl: '/services/video-audio.jpg',
+    },
+    {
+      name: 'Focus Groups & Interviews',
+      description:
+        'Comprehensive transcriptions for focus groups, interviews, and qualitative research.',
+      href: '/services/interviews',
+      imgUrl: '/services/focus-groups.jpg',
+    },
+    {
+      name: 'Medical Transcription',
+      description:
+        'Detailed transcriptions for medical professionals, maintaining confidentiality and accuracy.',
+      href: '/services/medical',
+      imgUrl: '/services/medical.jpg',
+    },
+
+    {
+      name: 'Academic & Conference Transcription',
+      description:
+        'Thorough transcriptions for academic lectures, conferences, and presentations.',
+      href: '/services/academic',
+      imgUrl: '/services/academic.jpg',
+    },
+  ];
   return (
     <div className='bg-zinc-800  relative'>
       <AppHeader />
 
-      <div className='relative bg-white h-auto  px-6 py-20 md:pt-0  pb-40 md:py-32 lg:py-36 md:px-20 lg:px-28'>
+      <div className='relative bg-white h-auto  px-6 py-20 md:pt-0 pb-10 md:pb-30 md:py-24 lg:py-24 md:px-20 lg:px-28'>
         <div className='landing-page-video-wrapper'></div>
         <div
           className='absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80'
@@ -64,8 +109,8 @@ export default function Page() {
             }}
           />
         </div>
-        <div className='flex flex-wrap  md:flex-nowrap items-center gap-x-10 '>
-          <div className='max-w-2xl md:max-w-3xl'>
+        <div className='flex flex-wrap  lg:flex-nowrap items-center lg:space-x-10  space-y-10'>
+          <div className='max-w-2xl lg:max-w-4xl'>
             <h1 className='text-4xl font-bold capitalize tracking-tight text-gray-800 sm:text-5xl'>
               Service we offer
             </h1>
@@ -87,8 +132,8 @@ export default function Page() {
               </a>
             </div>
           </div>
-          <div className='hidden md:block md:min-w-[20rem] lg:min-w-[30rem]'>
-            <img src='/table-coffee.jpg' className='' alt='' />
+          <div className='md:min-w-[20rem] lg:max-w-[30rem]'>
+            <img src='/services/services-landing.jpg' className='' alt='' />
           </div>
         </div>
         <div
@@ -117,13 +162,14 @@ export default function Page() {
                 What Makes Our Transcription Services Stand Out?
               </h2>
               <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
-                Discover Seamless <br></br> Transcription <br></br>
+                Discover{' '}
                 <span className='relative z-10'>
-                  Services.{' '}
-                  <span className='z-10 absolute -bottom-5 right-0'>
+                  Seamless{' '}
+                  <span className='z-10 absolute -bottom-2.5 right-0'>
                     <img src='/svg/lines.svg' className='w-44' alt='' />
                   </span>
                 </span>
+                Transcription Services.
               </p>
             </div>
             <div>
@@ -159,7 +205,69 @@ export default function Page() {
           </p> */}
           </div>
         </div>
-        <SolutionsList />
+        <div className='mt-16 md:mt-20 xl:mt-20'>
+          <dl className='mx-auto grid  pt-10 lg:pt-0 max-w-none px-6 md:px-16 lg:px-20 xl:px-28 grid-cols-1 gap-y-5 lg:gap-20  lg:max-w-7xl xl:max-w-7xl'>
+            {[...servies].map((feature, index) => (
+              <div
+                key={feature.name}
+                className={classNames(
+                  'relative  flex flex-wrap lg:flex-nowrap items-center justify-between bg-white  transition-all',
+                )}
+              >
+                <div
+                  className={classNames(
+                    'overflow-hidden rounded-xl max-w-lg',
+                    index % 2 == 0 ? 'lg:order-2' : '',
+                  )}
+                >
+                  <img
+                    className='mb-5 h-full w-full object-contain transition duration-300 ease-in-out hover:scale-110'
+                    alt={feature.name}
+                    src={feature.imgUrl}
+                  />
+                </div>
+                <div
+                  className={classNames(
+                    'flex flex-col items-start space-y-5 py-8 px-4',
+                    index % 2 == 0 ? 'lg:items-start' : 'lg:items-end',
+                  )}
+                >
+                  <span
+                    className={classNames(
+                      'text-4xl text-left font-bold leading-snug text-gray-900',
+                      index % 2 == 0 ? 'lg:text-left' : 'lg:text-right',
+                    )}
+                  >
+                    {feature.name}
+                  </span>
+                  <span
+                    className={classNames(
+                      'text-lg text-left  leading-7 text-gray-700 line-clamp-4',
+                      index % 2 == 0 ? 'lg:text-left' : 'lg:text-right',
+                    )}
+                  >
+                    {feature.description}
+                  </span>
+
+                  <span className='my-3 '>
+                    <a
+                      href={'/services/' + feature.href}
+                      // className='flex items-center text-orange-500 font-semibold text-xl underline underline-offset-4'
+                      className='flex flex-nowrap relative border border-indigo-600 group  py-1.5 px-2.5 text-indigo-600'
+                    >
+                      <span className='font-semibold'>Learn More</span>
+                      <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-600 group-hover:w-full group-hover:transition-all'></span>
+                      <FontAwesomeIcon
+                        className='ml-4 icon-vector w-6'
+                        icon={faLongArrowRight}
+                      />
+                    </a>
+                  </span>
+                </div>
+              </div>
+            ))}
+          </dl>
+        </div>
       </div>
 
       <AppFooter />
