@@ -34,7 +34,6 @@ import RemoveFile from '@/components/modals/RemoveFile';
 import OrderNowModal from '@/components/modals/OrderNowModal';
 import RenameFile from '@/components/modals/RenameFile';
 import RenameFolder from '@/components/modals/RenameFolder';
-import FileDownload from 'js-file-download';
 import DropboxUpload from '@/components/uploadOptions/DropboxUpload';
 import GoogleUpload from '@/components/uploadOptions/GoogleUpload';
 import OneDrivePicker from '@/components/uploadOptions/OneDrivePicker';
@@ -46,6 +45,8 @@ import CopyFile from '@/components/modals/CopyFile';
 import ShareFile from '@/components/modals/ShareFile';
 import DirectFileLinkUpload from '@/components/modals/DirectFileLinkUpload';
 import YoutubeLinkUpload from '@/components/modals/YoutubeLinkUpload';
+import LocalFilePLoad from '@/components/dashboard/LocalFilePLoad';
+import FileDownloader from '@/components/FileDownloader';
 
 interface PageSetupOptions {
   toggleView: 'grid' | 'list';
@@ -64,10 +65,12 @@ export default function Page() {
 
   // files o order
   const [fileToOrder, setFilesToOrder] = useState<OrderFile[]>([]);
+  const [downloadUrl, setDownloadUrl] = useState('blank');
 
   // modal toggles
   const [open, setOpen] = useState(false);
   const [deleteFile, setDeleteFile] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [downloadFile, setDownloadFile] = useState(false);
   const [orderNow, setOrderNow] = useState(false);
   const [openFileRename, setOpenFileRename] = useState(false);
@@ -258,19 +261,22 @@ export default function Page() {
   };
 
   const requestFileDownload = async () => {
-    setDownloadFile(true);
+    // setDownloadFile(true);
+    const url = `/files/download?files=${selectedFiles.join(',')}`
+    setDownloadUrl(url)
+    //   setDownloadFile(false);
 
-    try {
-      const response = await AxiosProxy.post('/files/download', {
-        files: [...selectedFiles],
-      });
+    // try {
+    //   const response = await AxiosProxy.post('/files/download', {
+    //     files: [...selectedFiles],
+    //   });
 
-      FileDownload(response.data, 'folder-archive.zip');
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setDownloadFile(false);
-    }
+    //   FileDownload(response.data, 'folder-archive.zip');
+    // } catch (err) {
+    //   console.log(err);
+    // } finally {
+    //   setDownloadFile(false);
+    // }
   };
 
   const openFolder = (route: { id: string; label: string }) => {
@@ -530,6 +536,8 @@ export default function Page() {
             ) : null}
           </div>
 
+          <FileDownloader url={downloadUrl} reset={setDownloadUrl} />
+
           {pageSetup.toggleView == 'grid' ? (
             <GridView
               openFolder={openFolder}
@@ -568,7 +576,11 @@ export default function Page() {
 
           {/* show file and folder upload frame */}
 
-          {/* {orders.length == 0 ? <LocalFilePLoad /> : null} */}
+          {orders.length == 0 ? (
+            <LocalFilePLoad />
+          ) : (
+            <div>Hey yaskfjaskfj aj afjsjafpjpa</div>
+          )}
 
           {/* add folder */}
           <AddFolder reload={reload} open={open} setOpen={setOpen} />

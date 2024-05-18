@@ -437,7 +437,7 @@ export default function Page() {
               <div className='flex flex-col gap-y-10'>
                 <div>
                   <h2 className='text-xl font-bold leading-7 capitalize secondary-text'>
-                    Supported audio formats?
+                    Supported audio formats
                   </h2>
                   <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
                     Audio Formats that We Offer for
