@@ -301,13 +301,12 @@ export default function Page() {
                 <div className='px-4 border-l-4 secondary-border'>
                   <div className='text-gray-700 font-semibold '></div>
                   <div className='text-gray-700 font-semibold mb-3'>
-                    From{' '}
                     <span className='py-1.5 px-2 bg-gray-300 rounded-full'>
-                      Human Transcripted
-                    </span>
-                    <br></br>
-                    <span className='footer-title text-3xl font-bold'>$1</span>
-                    <br></br> per minute 98% accuracy
+                     100% Human Transcribed
+                    </span><br></br>
+                    From{' '}
+                    <span className='footer-title text-3xl font-bold'>$ 0.75</span> {' '} per minute
+                    <br></br>  98%+ accuracy
                   </div>
                 </div>
               </div>
