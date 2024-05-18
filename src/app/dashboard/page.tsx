@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 
 // import type { Metadata } from 'next';
 // import { useAppSelector } from '@/store/hooks';
@@ -15,10 +15,10 @@ import { useRouter } from 'next/navigation';
 
 export default function Page() {
   // const authState = useAppSelector((state) => state.auth.isAuth);
-  const router = useRouter();
-  useEffect(() => {
-    router.push('/dashboard/pending');
-  });
+  // const router = useRouter();
+  // useEffect(() => {
+  //   router.push('/dashboard/pending');
+  // });
 
   return (
     <>

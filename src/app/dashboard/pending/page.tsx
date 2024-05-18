@@ -46,7 +46,6 @@ import CopyFile from '@/components/modals/CopyFile';
 import ShareFile from '@/components/modals/ShareFile';
 import DirectFileLinkUpload from '@/components/modals/DirectFileLinkUpload';
 import YoutubeLinkUpload from '@/components/modals/YoutubeLinkUpload';
-import LocalFilePLoad from '@/components/dashboard/LocalFilePLoad';
 
 interface PageSetupOptions {
   toggleView: 'grid' | 'list';
@@ -531,47 +530,45 @@ export default function Page() {
             ) : null}
           </div>
 
-          {orders.length > 0 ? (
-            pageSetup.toggleView == 'grid' ? (
-              <GridView
-                openFolder={openFolder}
-                selectedFiles={selectedFiles}
-                updatedSelectedFiles={updateSelectedFiles}
-                folders={folders}
-                renameFile={_renameFile}
-                renameFolder={_renameFolder}
-                removeFile={_removeFile}
-                callback={updateOrders}
-                isNavigating={navigating}
-                shareFile={_shareFile}
-                copyFile={_copyFile}
-                selectedFolderId={selectedFolderId}
-                showFolders={showFolders}
-                orders={orders}
-              />
-            ) : (
-              <TableView
-                openFolder={openFolder}
-                selectedFiles={selectedFiles}
-                updatedSelectedFiles={updateSelectedFiles}
-                folders={folders}
-                renameFile={_renameFile}
-                shareFile={_shareFile}
-                copyFile={_copyFile}
-                renameFolder={_renameFolder}
-                removeFile={_removeFile}
-                callback={updateOrders}
-                showFolders={showFolders}
-                isNavigating={navigating}
-                selectedFolderId={selectedFolderId}
-                orders={orders}
-              />
-            )
-          ) : null}
+          {pageSetup.toggleView == 'grid' ? (
+            <GridView
+              openFolder={openFolder}
+              selectedFiles={selectedFiles}
+              updatedSelectedFiles={updateSelectedFiles}
+              folders={folders}
+              renameFile={_renameFile}
+              renameFolder={_renameFolder}
+              removeFile={_removeFile}
+              callback={updateOrders}
+              isNavigating={navigating}
+              shareFile={_shareFile}
+              copyFile={_copyFile}
+              selectedFolderId={selectedFolderId}
+              showFolders={showFolders}
+              orders={orders}
+            />
+          ) : (
+            <TableView
+              openFolder={openFolder}
+              selectedFiles={selectedFiles}
+              updatedSelectedFiles={updateSelectedFiles}
+              folders={folders}
+              renameFile={_renameFile}
+              shareFile={_shareFile}
+              copyFile={_copyFile}
+              renameFolder={_renameFolder}
+              removeFile={_removeFile}
+              callback={updateOrders}
+              showFolders={showFolders}
+              isNavigating={navigating}
+              selectedFolderId={selectedFolderId}
+              orders={orders}
+            />
+          )}
 
           {/* show file and folder upload frame */}
 
-          {orders.length == 0 ? <LocalFilePLoad /> : null}
+          {/* {orders.length == 0 ? <LocalFilePLoad /> : null} */}
 
           {/* add folder */}
           <AddFolder reload={reload} open={open} setOpen={setOpen} />
