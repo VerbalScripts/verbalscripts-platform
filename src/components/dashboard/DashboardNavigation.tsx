@@ -2,7 +2,7 @@
 
 import { classNames } from '@/utils/classNames';
 import { Disclosure } from '@headlessui/react';
-import { CogIcon, Square2StackIcon } from '@heroicons/react/20/solid';
+import { CogIcon } from '@heroicons/react/20/solid';
 import {
   RocketLaunchIcon,
   CheckBadgeIcon,
@@ -12,6 +12,7 @@ import {
   ArrowLeftEndOnRectangleIcon,
   QuestionMarkCircleIcon,
   CreditCardIcon,
+  SquaresPlusIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import React from 'react';
@@ -50,7 +51,7 @@ export default function DashboardNavigation({
             href={item.href}
             className={classNames(
               'flex items-center gap-x-4 px-3 py-2.5 font-semibold hover:bg-indigo-500/5 dark:text-gray-200 text-gray-600 rounded-full ',
-              pathname == item.href ? 'bg-indigo-500 text-white' : '',
+              pathname.includes(item.href) ? 'bg-indigo-500 text-white' : '',
               expanded ? '' : 'justify-center',
             )}
           >
@@ -85,7 +86,7 @@ export default function DashboardNavigation({
   const appRoutes: Array<NavItem> = [
     {
       name: 'Dashboard',
-      icon: Square2StackIcon,
+      icon: SquaresPlusIcon,
       href: '/dashboard',
     },
     {

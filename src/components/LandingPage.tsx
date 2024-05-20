@@ -6,7 +6,7 @@ export default function LandingPage() {
       {/* <video className='absolute top-0 right-0 left-0 w-full -z-20 h-full object-cover'  loop autoPlay>
         <source src="landing_prodution.mp4" type='video/mp4' />
       </video> */}
-      <div className='mx-auto max-w-7xl px-6 lg:px-8 relative overflow-hidden'>
+      <div className='mx-auto max-w-7xl px-6 lg:px-8 relative overflow-hidden home-landing-page-w'>
         <div className='landing-page-video-wrapper'></div>
         <div
           className='absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80'

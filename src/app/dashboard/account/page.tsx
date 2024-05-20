@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 
 import ProfileSettings from '@/components/dashboard/ProfileSettings';
 import SecuritySettings from '@/components/dashboard/SecuritySettings';
-import Head from 'next/head';
 import AxiosProxy from '@/utils/AxiosProxy';
 
 export default function Page() {
@@ -43,15 +42,9 @@ export default function Page() {
   }, []);
 
   return (
-    <div>
-      <Head>
-        <title>Verbal Dashboard | Account</title>
-        <meta
-          property='og:title'
-          content='Verbal Dashboard | Account'
-          key='title'
-        />
-      </Head>
+    <div className='min-h-screen'>
+      <title>Verbal Dashboard | Account</title>
+
       {!loading && user ? (
         <section className='relative px-6 py-10 md:py-14  lg:px-14'>
           <div className='mx-auto max-w-4xl text-left'>

@@ -150,6 +150,10 @@ body {
   background-attachment: fixed;
 }
 
+.home-landing-page-w {
+  max-width: max-content !important;
+}
+
 .section-title {
   line-height: 1.21 !important;
 }

@@ -36,7 +36,7 @@ export default function AuthPage({ params }: AuthPageProps) {
       <AuthHeader route={params.type} />
 
       <div className='flex  bg-white pb-60'>
-        <div className='hidden md:block rounded-xl bg-gray-200 mx-2 h-screen w-full'>
+        <div className='order-1 hidden md:block rounded-xl bg-gray-200 mx-2 h-screen w-full'>
           <img
             src='/pics/78.png'
             className='h-[100%] object-cover rounded-xl'
@@ -44,7 +44,7 @@ export default function AuthPage({ params }: AuthPageProps) {
           />
         </div>
 
-        <div className='overflow-x-hidden max-w-md w-full my-10 md:my-0  flex flex-col justify-between px-8 bg-white'>
+        <div className=' overflow-x-hidden max-w-lg w-full my-10 md:my-0  flex flex-col justify-between px-8 bg-white'>
           <div className='py-14'>
             {params.type == 'login' ? (
               <SignInForm />
