@@ -87,7 +87,7 @@ export default function FilesSummary({
                       </Dialog.Title>
                     </div>
                     <div className='mt-4 relative flex-1 px-4 sm:px-6'>
-                      {file ? (
+                      {file != undefined ? (
                         <div className='flex flex-col gap-y-3'>
                           <div className='flex items-center gap-x-5 justify-between'>
                             <div className='flex gap-x-3 items-center'>

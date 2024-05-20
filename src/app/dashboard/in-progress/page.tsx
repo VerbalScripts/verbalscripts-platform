@@ -6,7 +6,7 @@ import LoadSpinner from '@/components/dashboard/LoadSpinner';
 
 // import Link from 'next/link';
 // import { useSearchParams } from 'next/navigation';
-// import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import TawkMessenger from '@/lib/TawkMessenger';
 import SystemProgressUpload from '@/components/dashboard/SystemProgressUpload';
 import AxiosProxy from '@/utils/AxiosProxy';
@@ -14,7 +14,6 @@ import { ListBulletIcon, Squares2X2Icon } from '@heroicons/react/24/outline';
 import { classNames } from '@/utils/classNames';
 import SearchBar from '@/components/dashboard/SearchBar';
 import moment from 'moment';
-import { ArrowDownTrayIcon } from '@heroicons/react/20/solid';
 import { Table } from 'flowbite-react';
 
 interface PageSetupOptions {
@@ -22,31 +21,27 @@ interface PageSetupOptions {
 }
 
 export default function Page() {
-  // const router = useRouter();
+  const router = useRouter();
 
   const [loading, setLoading] = useState(true);
   const [orders, setOrders] = useState<InprogressOrder[]>([]);
-  // const [selectedFiles, setSelectedFiles] = useState<string[]>([]);
 
   const [pageSetup, setPageSetup] = useState<PageSetupOptions>({
     toggleView: 'list',
   });
 
-  // const showDetails = () => {
-  //   console.log('show details');
-  //   const fileId = selectedFiles[0];
-  //   // @ts-ignore
-  //   setFile(() => orders.find((order) => order.id == fileId));
-  //   setShowFileSummary(true);
-  // };
+  const openDetails = (id: string) => {
+    router.push(`/dashboard/in-progress/${id}`);
+  };
 
   const fetchOrders = async () => {
     try {
       setLoading(true);
 
-      const response = await AxiosProxy.get(`orders/client?status=in-progress`);
+      const response = await AxiosProxy.get(
+        `/orders/client?status=in-progress`,
+      );
       if (response.status == 200) {
-        console.log(response.data);
         setOrders(response.data.results);
       }
     } catch (error) {
@@ -60,55 +55,8 @@ export default function Page() {
     fetchOrders();
   }, []);
 
-  // updated selected files
-  // const updateSelectedFiles = (
-  //   id: string,
-  //   remove: boolean,
-  //   clearAll: boolean,
-  // ) => {
-  //   if (clearAll && remove) {
-  //     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  //     setSelectedFiles((prevFiles) => []);
-  //   } else if (clearAll && !remove) {
-  //     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  //     setSelectedFiles((_prevFiles) => orders.map((order) => order.id));
-  //   } else if (remove) {
-  //     setSelectedFiles((prevFiles) => [
-  //       ...prevFiles.filter((_id) => _id != id),
-  //     ]);
-  //   } else if (!remove) {
-  //     setSelectedFiles((prevFiles) => [...prevFiles, id]);
-  //   }
-  // };
-
-  // const selectAllOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  //   if (((event as any).target as HTMLInputElement).checked) {
-  //     updateSelectedFiles('', false, true);
-  //   } else {
-  //     updateSelectedFiles('', true, true);
-  //   }
-  // };
-
-  // const isSelected = (id: string) => {
-  //   const result = selectedFiles.find((item: string) => item == id);
-  //   return result == undefined ? false : true;
-  // };
-
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  // const addSelected = (event: ChangeEvent<HTMLInputElement>, id: string) => {
-  //   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  //   // @ts-ignore
-  //   if ((event.target as HTMLInputElement).checked) {
-  //     updateSelectedFiles(id, false, false);
-  //   } else {
-  //     updateSelectedFiles(id, true, false);
-  //   }
-  // };
-
   return (
-    <div className=''>
+    <div className='bg-white dark:bg-zinc-800 min-h-screen'>
       <title>Dashboard | In Progress</title>
       <TawkMessenger />
 
@@ -116,12 +64,6 @@ export default function Page() {
       <SystemProgressUpload />
       {/* show summary */}
 
-      {/* <FilesSummary
-        open={showFileSummary}
-        setOpen={setShowFileSummary}
-        // @ts-ignore
-        file={file}
-      /> */}
       {loading ? (
         <LoadSpinner />
       ) : (
@@ -189,9 +131,8 @@ export default function Page() {
               <Table.Head className='dark:border-gray-700 dark:bg-zinc-800'>
                 <Table.HeadCell>Order Id</Table.HeadCell>
                 <Table.HeadCell>Progress</Table.HeadCell>
-                <Table.HeadCell>File(s)</Table.HeadCell>
+                <Table.HeadCell>Payment</Table.HeadCell>
                 <Table.HeadCell>Created At</Table.HeadCell>
-                <Table.HeadCell>Actions</Table.HeadCell>
                 <Table.HeadCell>
                   <span className='sr-only'>Edit</span>
                 </Table.HeadCell>
@@ -199,37 +140,36 @@ export default function Page() {
               <Table.Body className='divide-y'>
                 {orders.map((order) => (
                   <Table.Row
-                    onClick={() => {}}
+                    onClick={() => openDetails(order.id)}
                     key={order.id}
                     className={classNames(
-                      'bg-white cursor-pointer dark:border-gray-700 dark:bg-zinc-500',
+                      'bg-white cursor-pointer dark:border-gray-700 dark:bg-gray-800',
                     )}
                   >
-                    <Table.Cell className='py-1'>
+                    <Table.Cell className='flex items-center space-x-3'>
                       <span className='whitespace-nowrap font-medium text-gray-900 dark:text-white'>
                         {order.id}
+                      </span>
+                      <span className='bg-indigo-500 flex items-center font-bold justify-center  rounded-full w-5 h-5 text-white'>
+                        {order.files.length}
                       </span>
                     </Table.Cell>
 
                     <Table.Cell className='py-1'>
-                      <span className='capitalize bg-indigo-100 text-sm text-indigo-500 px-3 py-0.5 rounded-xl'>
+                      <span className='capitalize bg-indigo-50 text-sm font-semibold text-indigo-500 px-3 py-1.5 rounded-xl'>
                         {order.orderStatus}
                       </span>
                     </Table.Cell>
 
                     <Table.Cell className=''>
-                      <button className='py-1 '>{order.files.length}</button>
+                      <span className='py-1.5 bg-orange-50 text-orange-500 px-2 font-semibold rounded-xl'>
+                        {'Not Paid'}
+                      </span>
                     </Table.Cell>
                     <Table.Cell className='py-1'>
                       <span className='whitespace-nowrap font-medium text-sm text-gray-900 dark:text-white'>
                         {moment(order.createdAt).format('L')}
                       </span>
-                    </Table.Cell>
-
-                    <Table.Cell className='py-1'>
-                      <button onClick={() => {}}>
-                        <ArrowDownTrayIcon className='h-8 w-8 text-indigo-500' />
-                      </button>
                     </Table.Cell>
                   </Table.Row>
                 ))}

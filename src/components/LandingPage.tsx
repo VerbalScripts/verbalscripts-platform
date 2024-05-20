@@ -41,8 +41,8 @@ export default function LandingPage() {
           </h1>
           <p className='hidden md:block md:max-w-2xl lg:max-w-3xl xl:max-w-4xl relative z-10 mt-6 text-xl font-semibold leading-7 text-gray-800'>
             With you in mind always, we delivery accurate transcripts through
-            our experienced transcriptionists. Count on us to alwsays exceed
-            your expectations, project after project, at an affordable rate.
+            our experienced transcriptionists. Count on us to always exceed your
+            expectations, project after project, at an affordable rate.
           </p>
         </div>
 

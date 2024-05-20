@@ -40,7 +40,7 @@ export default function Page() {
 
   useEffect(() => {
     fetchUser();
-  });
+  }, []);
 
   return (
     <div>

@@ -4,19 +4,19 @@ import AxiosProxy from '@/utils/AxiosProxy';
 import { Spinner } from 'flowbite-react';
 import { TrashIcon } from '@heroicons/react/20/solid';
 
-interface RemoveFileProps {
+interface RemoveFilesProps {
   open: boolean;
-  fileId: string;
+  files: string[];
   reload: () => Promise<void>;
   setOpen: (arg0: boolean) => void;
 }
 
-export default function RemoveFile({
+export default function RemoveFiles({
   open,
   setOpen,
-  fileId,
+  files,
   reload,
-}: RemoveFileProps) {
+}: RemoveFilesProps) {
   const cancelButtonRef = useRef(null);
 
   const [loading, setLoading] = useState<boolean>(false);
@@ -26,11 +26,18 @@ export default function RemoveFile({
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       setLoading(true);
-      const response = await AxiosProxy.delete(`/files/${fileId}`);
+      const response = await AxiosProxy.post('/files/delete', {
+        files,
+      });
       if (response.status == 200) {
-        await reload();
+        console.log(response.data);
         setOpen(false);
+      } else {
+        setOpen(false);
+        console.log('success');
+        console.log(response.data);
       }
+      await reload();
     } catch (error) {
       console.log(error);
     } finally {
@@ -83,9 +90,9 @@ export default function RemoveFile({
                         as='h3'
                         className='text-center text-xl font-semibold leading-6 text-gray-700'
                       >
-                        Are you Sure you want to delete these File ?
+                        Are you Sure you want to delete these Files ?
                       </Dialog.Title>
-                      <div className='mt-2 text-center text-base text-red-300'>
+                      <div className='mt-2 text-center text-base text-gray-600'>
                         Files deleted may not be recovered.
                       </div>
                     </div>

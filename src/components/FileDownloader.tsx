@@ -34,14 +34,14 @@ function FileDownloader({ url, reset }: FileDownloaderProps) {
       });
 
       const filename = response.headers['content-disposition']
-      .split('filename=')[1]
-      .split(';')[0];
+        .split('filename=')[1]
+        .split(';')[0];
 
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const a = document.createElement('a');
       a.href = url;
       a.download = filename; // Change the filename if needed
-      a.target = '_blank'
+      a.target = '_blank';
       document.body.appendChild(a);
       a.click();
 

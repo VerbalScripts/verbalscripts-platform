@@ -102,7 +102,7 @@ export default function AppFooter() {
       ],
       price: '2.00$ per minute',
     },
-  ]; 
+  ];
 
   const solutions: Array<NavLabel> = [
     {

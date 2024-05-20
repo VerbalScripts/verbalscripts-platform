@@ -43,9 +43,9 @@ export default function RenameFile({
       const response = await AxiosProxy.patch(`/files/${fileId}`, {
         label,
       });
-      if (response.status == 201) {
-        setOpen(false);
+      if (response.status == 200) {
         await reload();
+        setOpen(false);
       }
     } catch (error) {
       console.log(error);

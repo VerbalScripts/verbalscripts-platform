@@ -26,7 +26,7 @@ export default function Page() {
       <AppHeader />
 
       <div className='bg-gray-100'>
-      <UploadFile />
+        <UploadFile />
       </div>
 
       <AppFooter />

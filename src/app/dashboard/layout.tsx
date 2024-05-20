@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 'use client';
 // import { Inter } from "next/font/google";
 import '../globals.css';
@@ -11,6 +12,8 @@ import { faAngleDoubleLeft } from '@fortawesome/free-solid-svg-icons';
 import { RecoilRoot } from 'recoil';
 import StoreWrapper from '@/components/dashboard/StoreWrapper';
 import Script from 'next/script';
+import { ErrorBoundary } from 'next/dist/client/components/error-boundary';
+import Error from './error';
 
 // add redux
 
@@ -24,54 +27,59 @@ export default function DashboardLayout({
   const [expanded, setExpanded] = useState<boolean>(true);
 
   return (
-    <RecoilRoot>
-      <Script
-        src='//code.tidio.co/c85xnh9sahm0ijtezx6yvkixt4hq3aul.js'
-        strategy='lazyOnload'
-      />
-      <StoreWrapper>
-        <section className='dark-mode-toggle bg-white min-h-screen'>
-          <Suspense>
-            <NextNprogress />
-          </Suspense>
-          <div>
-            <div className='relative h-full'>
-              <div
-                className={classNames(
-                  'absolute transition-all z-50 bg-white  duration-300 left-0 top-0',
-                  expanded ? 'w-[16rem]' : 'w-0 md:w-[5rem]',
-                )}
-              >
-                <button
-                  onClick={() => setExpanded(!expanded)}
-                  className='absolute bg-indigo-500 border-0  md:bg-white top-[0.5rem] md:top-[3rem] -right-10 md:-right-[1rem] z-50 rounded-r-lg md:rounded-full h-10 w-10 md:border  border-gray-300'
+    // @ts-ignore
+    <ErrorBoundary fallback={<Error />}>
+      <RecoilRoot>
+        <Script
+          src='//code.tidio.co/c85xnh9sahm0ijtezx6yvkixt4hq3aul.js'
+          strategy='lazyOnload'
+        />
+        <StoreWrapper>
+          <section className='dark-mode-toggle bg-white min-h-screen'>
+            <Suspense>
+              <NextNprogress />
+            </Suspense>
+            <div>
+              <div className='relative h-full'>
+                <div
+                  className={classNames(
+                    'absolute transition-all z-50 bg-white  duration-300 left-0 top-0',
+                    expanded ? 'w-[16rem]' : 'w-0 md:w-[5rem]',
+                  )}
                 >
-                  <FontAwesomeIcon
-                    icon={faAngleDoubleLeft}
+                  <button
+                    onClick={() => setExpanded(!expanded)}
+                    className='absolute bg-indigo-500 border-0  md:bg-white top-[0.5rem] md:top-[3rem] -right-10 md:-right-[1rem] z-50 rounded-r-lg md:rounded-full h-10 w-10 md:border  border-gray-300'
+                  >
+                    <FontAwesomeIcon
+                      icon={faAngleDoubleLeft}
+                      className={classNames(
+                        'h-6 w-6 md:h-5 md:w-5 transition-all  mt-1 text-white md:text-gray-700',
+                        expanded ? '' : '-rotate-180',
+                      )}
+                    />
+                  </button>
+                  <DashboardNavigation expanded={expanded} />
+                </div>
+                {/* @ts-ignore */}
+                <ErrorBoundary fallback={<Error />}>
+                  <div
                     className={classNames(
-                      'h-6 w-6 md:h-5 md:w-5 transition-all  mt-1 text-white md:text-gray-700',
-                      expanded ? '' : '-rotate-180',
+                      'absolute dark:bg-zinc-800 transition-all duration-300 top-0 right-0 max-h-screen overflow-x-auto overflow-y-auto',
+                      expanded
+                        ? 'w-[calc(100%)] md:w-[calc(100%-16rem)]'
+                        : 'w-[calc(100%)] md:w-[calc(100%-5rem)]',
                     )}
-                  />
-                </button>
-                <DashboardNavigation expanded={expanded} />
-              </div>
-
-              <div
-                className={classNames(
-                  'absolute dark:bg-zinc-800 transition-all duration-300 top-0 right-0 max-h-screen overflow-x-auto overflow-y-auto',
-                  expanded
-                    ? 'w-[calc(100%)] md:w-[calc(100%-16rem)]'
-                    : 'w-[calc(100%)] md:w-[calc(100%-5rem)]',
-                )}
-              >
-                <DashboardHeader />
-                {children}
+                  >
+                    <DashboardHeader />
+                    {children}
+                  </div>
+                </ErrorBoundary>
               </div>
             </div>
-          </div>
-        </section>
-      </StoreWrapper>
-    </RecoilRoot>
+          </section>
+        </StoreWrapper>
+      </RecoilRoot>
+    </ErrorBoundary>
   );
 }

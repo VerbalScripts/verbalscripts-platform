@@ -421,7 +421,10 @@ export default function Home() {
 
       {/* <CallToActionBanner fn={setOpen} /> */}
 
-      <div className='bg-white pt-0 pb-24 md:pb-24 md:pt-24' style={{ background: '#f9f8f2'}}>
+      <div
+        className='bg-white pt-0 pb-24 md:pb-24 md:pt-24'
+        style={{ background: '#f9f8f2' }}
+      >
         <div className='mx-auto max-w-7xl  px-6 md:px-16 lg:px-16 xl:px-28'>
           <div className='flex flex-wrap lg:flex-nowrap items-center gap-x-6 '>
             <div className='order-2 md:order-1  md:min-w-[25rem] lg:max-w-[35rem] text-left'>

@@ -284,7 +284,7 @@ export default function ProfileSettings({
         <button
           type='submit'
           disabled={loading}
-          className='rounded-full bg-indigo-500 px-8 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+          className='rounded-full flex items-center space-x-2 bg-indigo-500 px-8 py-2.5 text-lg font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
         >
           {loading ? (
             <div
@@ -296,7 +296,7 @@ export default function ProfileSettings({
               </span>
             </div>
           ) : null}
-          Save Changes
+          <span>Save Changes</span>
         </button>
       </div>
     </form>

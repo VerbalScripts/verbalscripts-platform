@@ -47,6 +47,7 @@ import DirectFileLinkUpload from '@/components/modals/DirectFileLinkUpload';
 import YoutubeLinkUpload from '@/components/modals/YoutubeLinkUpload';
 import LocalFilePLoad from '@/components/dashboard/LocalFilePLoad';
 import FileDownloader from '@/components/FileDownloader';
+import RemoveFiles from '@/components/modals/RemoveFiles';
 
 interface PageSetupOptions {
   toggleView: 'grid' | 'list';
@@ -132,8 +133,9 @@ export default function Page() {
   };
 
   const _removeFile = (id: string) => {
+    console.log('called this');
     setOpenRemoveFile(true);
-    setCurrentFolder(id);
+    setCurrentFile(id);
   };
 
   // toggle folder visibility
@@ -262,8 +264,8 @@ export default function Page() {
 
   const requestFileDownload = async () => {
     // setDownloadFile(true);
-    const url = `/files/download?files=${selectedFiles.join(',')}`
-    setDownloadUrl(url)
+    const url = `/files/download?files=${selectedFiles.join(',')}`;
+    setDownloadUrl(url);
     //   setDownloadFile(false);
 
     // try {
@@ -576,19 +578,21 @@ export default function Page() {
 
           {/* show file and folder upload frame */}
 
-          {orders.length == 0 ? (
-            <LocalFilePLoad />
-          ) : (
-            <div>Hey yaskfjaskfj aj afjsjafpjpa</div>
-          )}
+          {orders.length == 0 ? <LocalFilePLoad /> : <div></div>}
 
           {/* add folder */}
           <AddFolder reload={reload} open={open} setOpen={setOpen} />
-          <RemoveFile
+          <RemoveFiles
             reload={reload}
             files={selectedFiles}
             open={deleteFile}
             setOpen={setDeleteFile}
+          />
+          <RemoveFile
+            reload={reload}
+            fileId={currentFile}
+            open={openRemoveFile}
+            setOpen={setOpenRemoveFile}
           />
           <RenameFile
             fileId={currentFile}

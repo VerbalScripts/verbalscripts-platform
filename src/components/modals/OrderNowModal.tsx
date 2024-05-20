@@ -69,6 +69,10 @@ export default function OrderNowModal({
     }
   }, [position]);
 
+  useEffect(() => {
+    console.log(samples);
+  }, [samples]);
+
   const createOrder = async () => {
     // set payload
     const payload: Order = {
@@ -79,19 +83,19 @@ export default function OrderNowModal({
       files: [...files.map((ord) => ord.id)],
     };
 
-    const formdata = new FormData();
-    console.log(payload);
+    const formData = new FormData();
+    console.log('ceate payload', payload);
 
-    formdata.append('order', JSON.stringify(payload));
+    formData.append('order', JSON.stringify(payload));
     // add files if any
     console.log(samples);
     if (samples.length > 0) {
       samples.forEach((sample) => {
-        formdata.append('samples[]', sample);
+        formData.append('samples', sample);
       });
     }
 
-    // console.log(formdata)
+    console.log(formData);
 
     const xhr = new XMLHttpRequest();
 
@@ -137,7 +141,7 @@ export default function OrderNowModal({
     } else {
       xhr.setRequestHeader('Authorization', `Bearer ${access_token}`);
     }
-    xhr.send(formdata);
+    xhr.send(formData);
   };
 
   const goToInProgress = () => {

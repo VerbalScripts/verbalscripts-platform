@@ -1,13 +1,13 @@
 .ais-Hits-item {
-    padding: unset;
-    border-radius: unset;
-    border: unset;
-    box-shadow: unset;
+  padding: unset;
+  border-radius: unset;
+  border: unset;
+  box-shadow: unset;
 }
 
 .ais-SearchBox-input {
-    border-radius: 5px;
-    padding-top:  1.2rem !important;  
-    padding-bottom: 1.2rem !important;
-    font-size: 18px;
+  border-radius: 5px;
+  padding-top: 1.2rem !important;
+  padding-bottom: 1.2rem !important;
+  font-size: 18px;
 }
