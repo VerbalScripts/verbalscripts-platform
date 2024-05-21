@@ -62,7 +62,7 @@ export default function NotificationsPreview({
               Notifications
             </div>
 
-            <div>
+            <div className='max-h-[20rem] overflow-y-auto'>
               {notifications.length == 0 ? (
                 <div className='min-h-[20rem] flex flex-col items-center justify-center px-10'>
                   {/* add lottie animation here */}

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import LoadSpinner from '@/components/dashboard/LoadSpinner';
 
 // import Link from 'next/link';
@@ -18,7 +18,8 @@ import {
 import { ArrowLeftIcon, GiftIcon } from '@heroicons/react/20/solid';
 import { useRouter } from 'next/navigation';
 import { classNames } from '@/utils/classNames';
-import moment from 'moment';
+import CancelOrder from '@/components/modals/CancelOrder';
+import ComponentSpinner from '@/components/ComponentSpinner';
 
 interface PageProps {
   params: { slug: string };
@@ -35,16 +36,19 @@ export default function Page({ params: { slug } }: PageProps) {
   const router = useRouter();
 
   const [loading, setLoading] = useState(true);
+  const [processLoad, setProcessLoad] = useState(false);
   const [order, setOrder] = useState<InprogressOrder>();
-
-  const statusOrder: OrderStatus[] = [
+  const [open, setOpen] = useState(false);
+  const [statusOrder, setOrderStatus] = useState<OrderStatus[]>([
     'Received',
     'unassigned',
     'assigned',
     'completed',
-  ];
+  ]);
 
   const [position, setPosition] = useState(0);
+
+  const instructionsRef = useRef(null);
 
   const fetchOrderInfo = async () => {
     try {
@@ -54,13 +58,15 @@ export default function Page({ params: { slug } }: PageProps) {
         const order: InprogressOrder = response.data.order;
         setOrder(order);
         if (order.orderStatus == 'cancelled') {
-          statusOrder.pop();
-          statusOrder.push(order.orderStatus);
+          setOrderStatus((prev) => [
+            ...prev.map((pre) => {
+              if (pre == 'assigned') {
+                return 'cancelled';
+              }
+              return pre;
+            }),
+          ]);
         }
-
-        setPosition(() =>
-          statusOrder.findIndex((rorder) => rorder == order.orderStatus),
-        );
       }
     } catch (err) {
       throw new Error('Network Problem');
@@ -68,6 +74,38 @@ export default function Page({ params: { slug } }: PageProps) {
       setLoading(false);
     }
   };
+
+  const updateOrder = async () => {
+    try {
+      if (instructionsRef == null) return false;
+
+      // @ts-ignore
+      const instructions = instructionsRef?.current.value;
+
+      setProcessLoad(true);
+
+      await AxiosProxy.patch(`/orders/client/${slug}`, {
+        order: { configuration: { instructions } },
+      });
+    } catch (err) {
+      // throw new Error('Network Problem');
+      console.log(err);
+    } finally {
+      setProcessLoad(false);
+    }
+  };
+
+  const reload = async () => {
+    await fetchOrderInfo();
+  };
+
+  useEffect(() => {
+    if (order != null) {
+      setPosition(() =>
+        statusOrder.findIndex((rorder) => rorder == order.orderStatus),
+      );
+    }
+  }, [statusOrder]);
 
   useEffect(() => {
     if (slug) {
@@ -79,9 +117,11 @@ export default function Page({ params: { slug } }: PageProps) {
     <>
       <title>Dashboard | # {slug}</title>
       <div className='bg-white dark:bg-zinc-800 min-h-screen'>
-        {/* systenm progress */}
+        {/* system progress */}
         <SystemProgressUpload />
-        {/* show summary */}
+
+        {/* cancel order  modal*/}
+        <CancelOrder open={open} setOpen={setOpen} reload={reload} id={slug} />
 
         {loading ? (
           <LoadSpinner />
@@ -205,6 +245,7 @@ export default function Page({ params: { slug } }: PageProps) {
               <div>
                 <button
                   type='button'
+                  onClick={() => setOpen(true)}
                   className='text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2'
                 >
                   <svg
@@ -645,7 +686,9 @@ export default function Page({ params: { slug } }: PageProps) {
                       </clipPath>{' '}
                     </defs>{' '}
                   </svg>
-                  Cancel Order
+                  {order?.orderStatus == 'cancelled'
+                    ? 'Restore Order'
+                    : 'Cancel Order'}
                 </button>
               </div>
             </div>
@@ -704,29 +747,29 @@ export default function Page({ params: { slug } }: PageProps) {
               </div>
 
               {/* order details */}
-              <div className='my-5'>
-                <div className='grid justify-evenly grid-cols-1 md:grid-cols-3   lg:gap-x-8 gap-y-10  lg:grid-cols-4 lg:gap-y-16  pb-12'>
+              <div className='my-5 border-b border-gray-200 pb-5'>
+                <div className='grid justify-evenly grid-cols-1 md:grid-cols-3   lg:gap-x-8 gap-y-10  lg:grid-cols-4 lg:gap-y-16'>
                   <div className=''>
-                    <div className='text-sm text-gray-600'>ID</div>
-                    <div className='text-gray-800 font-semibold'>
+                    <div className='text-sm text-gray-600 dark:text-gray-300'>
+                      ID
+                    </div>
+                    <div className='text-gray-800 font-semibold dark:text-white'>
                       {order?.id}
                     </div>
                   </div>
                   <div className=''>
-                    <div className='text-sm text-gray-600'>Created At</div>
-                    <div className='text-gray-800 font-semibold'>
-                      {moment(order?.createdAt).fromNow()}
+                    <div className='text-sm text-gray-600 dark:text-gray-300'>
+                      Paid
+                    </div>
+                    <div className='text-gray-800 font-semibold dark:text-white'>
+                      {'Not Paid'}
                     </div>
                   </div>
                   <div className=''>
-                    <div className='text-sm text-gray-600'>Created At</div>
-                    <div className='text-gray-800 font-semibold'>
-                      {order?.orderStatus}
+                    <div className='text-sm text-gray-600 dark:text-gray-300'>
+                      Status
                     </div>
-                  </div>
-                  <div className=''>
-                    <div className='text-sm text-gray-600'>Created At</div>
-                    <div className='text-gray-800 font-semibold'>
+                    <div className='text-gray-800 font-semibold dark:text-white'>
                       {order?.orderStatus}
                     </div>
                   </div>
@@ -735,40 +778,44 @@ export default function Page({ params: { slug } }: PageProps) {
 
               {/* configuration */}
 
-              <div className='mb-5'>
+              <div className='mb-5 border-b border-gray-200 pb-5'>
                 <div className='mb-3'>
-                  <div className='text-sm text-gray-600 uppercase'>
+                  <div className='text-sm text-gray-600 uppercase dark:text-gray-300'>
                     Transcription Configuration
                   </div>
                 </div>
-                <div className='grid justify-evenly grid-cols-1 md:grid-cols-3   lg:gap-x-8 gap-y-10  lg:grid-cols-4 lg:gap-y-16  pb-12'>
+                <div className='grid justify-evenly grid-cols-1 md:grid-cols-3   lg:gap-x-8 gap-y-10  lg:grid-cols-4 lg:gap-y-16'>
                   <div className=''>
-                    <div className='text-sm text-gray-600'>Language</div>
-                    <div className='text-gray-800 font-semibold'>
+                    <div className='text-sm text-gray-600 dark:text-gray-300'>
+                      Language
+                    </div>
+                    <div className='text-gray-800 font-semibold dark:text-white'>
                       {order?.configuration.language}
                     </div>
                   </div>
                   <div className=''>
-                    <div className='text-sm text-gray-600'>
+                    <div className='text-sm text-gray-600 dark:text-gray-300'>
                       Apply Timestamps
                     </div>
-                    <div className='text-gray-800 font-semibold'>
+                    <div className='text-gray-800 font-semibold dark:text-white'>
                       {order?.configuration.apply_timestamps}
                     </div>
                   </div>
                   <div className=''>
-                    <div className='text-sm text-gray-600'>
+                    <div className='text-sm text-gray-600 dark:text-gray-300'>
                       Text Format (Verbatim)
                     </div>
-                    <div className='text-gray-800 font-semibold'>
+                    <div className='text-gray-800 font-semibold dark:text-white'>
                       {order?.configuration.text_format == 'clean'
                         ? 'Clean Verbatim'
                         : 'Full Verbatim'}
                     </div>
                   </div>
                   <div className=''>
-                    <div className='text-sm text-gray-600'>Speakers</div>
-                    <div className='text-gray-800 font-semibold'>
+                    <div className='text-sm text-gray-600 dark:text-gray-300'>
+                      Speakers
+                    </div>
+                    <div className='text-gray-800 font-semibold dark:text-white'>
                       {order?.configuration.speakers}
                     </div>
                   </div>
@@ -786,16 +833,29 @@ export default function Page({ params: { slug } }: PageProps) {
                 <textarea
                   id='message'
                   rows={4}
+                  ref={instructionsRef}
                   defaultValue={order?.configuration.instructions}
                   className='block p-2.5 w-full text-lg text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                   placeholder='Write your thoughts here...'
                 ></textarea>
+
+                <div className='my-4'>
+                  <button
+                    type='button'
+                    disabled={processLoad}
+                    onClick={() => updateOrder()}
+                    className='text-white text-lg font-semibold bg-indigo-500 hover:bg-indigo-400 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-indigo-100  rounded-lg  px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-indigo-500 dark:border-gray-700 dark:text-white dark:hover:bg-indigo-400 me-2 mb-2'
+                  >
+                    {processLoad ? <ComponentSpinner /> : <span></span>}
+                    Save
+                  </button>
+                </div>
               </div>
 
               {/* samples */}
               <div className='mb-5'>
                 <div className='mb-3'>
-                  <div className='text-sm text-gray-600 uppercase'>
+                  <div className='text-sm text-gray-600 uppercase dark:text-gray-300'>
                     FILE SAMPLES
                   </div>
                 </div>
@@ -818,7 +878,7 @@ export default function Page({ params: { slug } }: PageProps) {
 
               <div className='mb-5'>
                 <div className='mb-3'>
-                  <div className='text-sm text-gray-600 uppercase flex items-center space-x-2'>
+                  <div className='text-sm text-gray-600 dark:text-gray-300 uppercase flex items-center space-x-2'>
                     Ordered Files{' '}
                     <span className='bg-indigo-500 text-white w-8 h-8 rounded-full text-sm flex items-center justify-center'>
                       {order?.files.length}

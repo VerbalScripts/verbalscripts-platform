@@ -140,6 +140,7 @@ export default function Page() {
               <Table.Body className='divide-y'>
                 {orders.map((order) => (
                   <Table.Row
+                    is='a'
                     onClick={() => openDetails(order.id)}
                     key={order.id}
                     className={classNames(

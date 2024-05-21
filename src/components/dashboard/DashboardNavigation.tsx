@@ -50,8 +50,8 @@ export default function DashboardNavigation({
           <Link
             href={item.href}
             className={classNames(
-              'flex items-center gap-x-4 px-3 py-2.5 font-semibold hover:bg-indigo-500/5 dark:text-gray-200 text-gray-600 rounded-full ',
-              pathname.includes(item.href) ? 'bg-indigo-500 text-white' : '',
+              'flex items-center gap-x-4 px-3 py-2.5 font-semibold hover:bg-indigo-500/50 dark:text-gray-200 text-gray-600 rounded-full ',
+              pathname == item.href ? 'bg-indigo-500 text-white' : '',
               expanded ? '' : 'justify-center',
             )}
           >
