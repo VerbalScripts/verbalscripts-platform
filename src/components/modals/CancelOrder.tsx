@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Fragment, useRef, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
@@ -27,6 +28,7 @@ export default function CancelOrder({
         await reload();
       }
     } catch (err) {
+      // @ts-ignore
       if (err.code == 'NETWORK_ERR') {
         throw new Error('There was a problem with Your Internet Connection');
       }

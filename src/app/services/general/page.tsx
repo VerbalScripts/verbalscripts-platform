@@ -14,8 +14,6 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
- 
-
   const audio_features = [
     {
       title: 'Accuracy',
@@ -143,11 +141,6 @@ export default function Page() {
         <PopularPartner />
       </div>
 
-    
-
-
-
-     
       <div className='bg-white'>
         <div className='mx-auto  max-w-7xl py-10 md:py-24 px-6 md:px-16 lg:px-16 xl:px-28'>
           <div className='grid justify-evenly grid-cols-1  gap-y-12  pb-12'>

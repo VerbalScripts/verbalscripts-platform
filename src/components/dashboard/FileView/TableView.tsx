@@ -1,4 +1,8 @@
-import { DocumentIcon, FolderIcon } from '@heroicons/react/24/outline';
+import {
+  DocumentIcon,
+  FolderIcon,
+  PlayIcon,
+} from '@heroicons/react/24/outline';
 import { Checkbox, Table } from 'flowbite-react';
 import React, { useState } from 'react';
 import TableMenuDropDown from '../TableMenuDropDown';
@@ -28,6 +32,7 @@ interface TableViewProps {
   shareFile: (id: string) => void;
   copyFile: (id: string) => void;
   isNavigating: boolean;
+  setVideoId: (id: string) => void;
   selectedFolderId: string;
 }
 
@@ -46,6 +51,7 @@ export default function TableView({
   selectedFolderId,
   shareFile,
   copyFile,
+  setVideoId,
 }: TableViewProps) {
   const [draggedRowIndex, setDraggedRowIndex] = useState<number | null>(null);
 
@@ -165,7 +171,7 @@ export default function TableView({
   };
 
   return (
-    <div className='overflow-x-auto min-h-svh'>
+    <div className='overflow-x-auto min-h-0.5'>
       <Table hoverable>
         <Table.Head>
           <Table.HeadCell className='p-4'>
@@ -254,19 +260,31 @@ export default function TableView({
               onDragEnd={handleDragEnd}
               key={order.fileId}
               className={classNames(
-                'bg-white dark:border-gray-700 dark:bg-gray-800',
+                'bg-white dark:border-gray-700 dark:bg-gray-800 player-parent',
                 draggedRowIndex == index ? 'bg-gray-200' : '',
               )}
             >
-              <Table.Cell className='px-4 py-2'>
+              <Table.Cell className='px-4 py-2 w-2'>
                 <Checkbox
                   onChange={(event) => addSelected(event, order.id)}
                   checked={isSelected(order.id)}
                 />
               </Table.Cell>
               <Table.Cell className='flex gap-x-3 items-center py-2'>
+                {order.mimetype &&
+                (order.mimetype.split('/')[0] == 'video' ||
+                  order.mimetype.split('/')[0] == 'audio') ? (
+                  <button
+                    className='media-player transition-all duration-100 '
+                    onClick={() => setVideoId(order.id)}
+                  >
+                    <PlayIcon className='text-gray-800  dark:text-white w-5' />
+                  </button>
+                ) : (
+                  <span className=' w-5'></span>
+                )}
                 <DocumentIcon className='text-gray-700 h-7 w-7' />
-                <span className='whitespace-nowrap font-medium text-gray-900 dark:text-white'>
+                <span className='overflow-hidden truncate md:w-[18rem] font-medium text-gray-900 dark:text-white'>
                   {order.label}
                 </span>
               </Table.Cell>

@@ -48,6 +48,8 @@ import YoutubeLinkUpload from '@/components/modals/YoutubeLinkUpload';
 import LocalFilePLoad from '@/components/dashboard/LocalFilePLoad';
 import FileDownloader from '@/components/FileDownloader';
 import RemoveFiles from '@/components/modals/RemoveFiles';
+import VideoPlayer from '@/components/modals/VideoPlayer';
+import Tablepaginate from '@/components/dashboard/Tablepaginate';
 
 interface PageSetupOptions {
   toggleView: 'grid' | 'list';
@@ -59,7 +61,7 @@ interface FolderTracker {
 }
 export default function Page() {
   const router = useRouter();
-
+  const searchParams = useSearchParams();
   const [orders, setOrders] = useState<OrderFile[]>([]);
   const [folders, setFolders] = useState<OrderFolder[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -103,7 +105,6 @@ export default function Page() {
 
   const { complete } = useRecoilValue(uploadProgressStats);
   // watch for query changes
-  const searchParams = useSearchParams();
   const folderId = searchParams.get('folderId');
 
   const [pageSetup, setPageSetup] = useState<PageSetupOptions>({
@@ -202,6 +203,11 @@ export default function Page() {
     setSelectedFiles(() => []);
   };
 
+  // paginate counters
+  const [total, setTotal] = useState<number>(0);
+  const [page, setPage] = useState<number>(1);
+  const [perPageCount, setPerPageCount] = useState<number>(10);
+
   // update showfolders toggle
   useEffect(() => {
     if (folders.length > orders.length) {
@@ -220,21 +226,31 @@ export default function Page() {
 
   useEffect(() => {
     if (folderId != null) {
-      fetchPendingOrders(folderId);
+      fetchPendingOrders({ folderId, flimit: perPageCount, fpage: page });
       fetchPendingFolderOrders(folderId);
     }
   }, [folderId]);
 
-  const fetchPendingOrders = async (folderId?: string) => {
+  interface FeedInfo {
+    folderId?: string;
+    flimit: number;
+    fpage: number;
+  }
+
+  const fetchPendingOrders = async ({ folderId, flimit, fpage }: FeedInfo) => {
     try {
       setNavigating(true);
 
       const response = await AxiosProxy.get(
-        folderId ? `/files/folder/${folderId}` : '/files',
+        folderId
+          ? `/files/folder/${folderId}?page=${fpage}&limit=${flimit}`
+          : `/files?page=${fpage}&limit=${flimit}`,
       );
       if (response.status == 200) {
-        console.log('updating foldrs', JSON.stringify(response.data));
         setOrders(response.data.results || []);
+        setPerPageCount(response.data.paginate.limit);
+        setPage(response.data.paginate.page);
+        setTotal(response.data.paginate.total);
       }
     } catch (error) {
       console.log(error);
@@ -247,10 +263,13 @@ export default function Page() {
     if (folderId != null) {
       await Promise.all([
         fetchPendingFolderOrders(folderId),
-        fetchPendingOrders(folderId),
+        fetchPendingOrders({ folderId, flimit: perPageCount, fpage: page }),
       ]);
     } else {
-      await Promise.all([fetchPendingFolderOrders(), fetchPendingOrders()]);
+      await Promise.all([
+        fetchPendingFolderOrders(),
+        fetchPendingOrders({ flimit: perPageCount, fpage: page }),
+      ]);
     }
   };
 
@@ -319,7 +338,9 @@ export default function Page() {
 
   const initialFeedsFetch = async () => {
     setLoading(true);
-    await Promise.all([fetchPendingOrders()]);
+    await Promise.all([
+      fetchPendingOrders({ flimit: perPageCount, fpage: page }),
+    ]);
 
     setLoading(false);
   };
@@ -369,13 +390,41 @@ export default function Page() {
     }
   };
 
+  // video player controls
+  const [openPlayer, setOpenPlayer] = useState(false);
+  const [videoId, setVideoId] = useState('');
+
+  useEffect(() => {
+    if (videoId != '') {
+      setOpenPlayer(true);
+    }
+  }, [videoId]);
+
+  // watch query changes
+  const queryLimit = searchParams.get('limit');
+  const queryPage = searchParams.get('page');
+
+  useEffect(() => {
+    if (queryLimit && queryPage) {
+      fetchPendingOrders({
+        flimit: parseInt(queryLimit, 10),
+        fpage: parseInt(queryPage, 10),
+      });
+    }
+  }, [queryLimit, queryPage]);
   return (
     <div className='bg-white dark:bg-zinc-800 min-h-screen'>
       <title>Dashboard | Pending</title>
       {/* <TawkMessenger /> */}
 
+      <VideoPlayer
+        open={openPlayer}
+        setOpen={setOpenPlayer}
+        fileId={videoId}
+        resetPlayer={setVideoId}
+      />
+
       {/* systenm progress */}
-      <SystemProgressUpload />
       <SystemProgressUpload />
 
       <DropboxUpload ref={triggerDropBoxPicker} visible={false} />
@@ -563,6 +612,7 @@ export default function Page() {
               selectedFiles={selectedFiles}
               updatedSelectedFiles={updateSelectedFiles}
               folders={folders}
+              setVideoId={setVideoId}
               renameFile={_renameFile}
               shareFile={_shareFile}
               copyFile={_copyFile}
@@ -580,6 +630,12 @@ export default function Page() {
 
           {orders.length == 0 ? <LocalFilePLoad /> : <div></div>}
 
+          {/* paginate */}
+          <Tablepaginate
+            page={page}
+            perPageCount={perPageCount}
+            totalCount={total}
+          />
           {/* add folder */}
           <AddFolder reload={reload} open={open} setOpen={setOpen} />
           <RemoveFiles

@@ -83,7 +83,7 @@ interface Order {
 
 interface InprogressOrder {
   configuration: OrderConfiguration;
-  files: string[];
+  files: string[] | OrderFile[];
   userId: string;
   id: string;
   createdAt: string;

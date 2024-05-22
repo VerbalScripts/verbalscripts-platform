@@ -14,12 +14,14 @@ import {
   CheckBadgeIcon,
   ClockIcon,
   ExclamationCircleIcon,
+  PlayIcon,
 } from '@heroicons/react/24/outline';
 import { ArrowLeftIcon, GiftIcon } from '@heroicons/react/20/solid';
 import { useRouter } from 'next/navigation';
 import { classNames } from '@/utils/classNames';
 import CancelOrder from '@/components/modals/CancelOrder';
 import ComponentSpinner from '@/components/ComponentSpinner';
+import VideoPlayer from '@/components/modals/VideoPlayer';
 
 interface PageProps {
   params: { slug: string };
@@ -49,6 +51,14 @@ export default function Page({ params: { slug } }: PageProps) {
   const [position, setPosition] = useState(0);
 
   const instructionsRef = useRef(null);
+  const [openPlayer, setOpenPlayer] = useState(false);
+  const [videoId, setVideoId] = useState('');
+
+  useEffect(() => {
+    if (videoId != '') {
+      setOpenPlayer(true);
+    }
+  }, [videoId]);
 
   const fetchOrderInfo = async () => {
     try {
@@ -119,6 +129,13 @@ export default function Page({ params: { slug } }: PageProps) {
       <div className='bg-white dark:bg-zinc-800 min-h-screen'>
         {/* system progress */}
         <SystemProgressUpload />
+
+        <VideoPlayer
+          open={openPlayer}
+          setOpen={setOpenPlayer}
+          fileId={videoId}
+          resetPlayer={setVideoId}
+        />
 
         {/* cancel order  modal*/}
         <CancelOrder open={open} setOpen={setOpen} reload={reload} id={slug} />
@@ -887,7 +904,7 @@ export default function Page({ params: { slug } }: PageProps) {
                 </div>
                 <div className='space-y-2'>
                   <div className='grid justify-evenly grid-cols-2 md:grid-cols-3   lg:gap-x-8 gap-y-5  lg:grid-cols-3 lg:gap-y-8  pb-12'>
-                    {order?.files.map((sample, index) => (
+                    {order?.files.map((orderFile, index) => (
                       <div key={index} className='flex items-center'>
                         <div
                           key={index}
@@ -901,7 +918,7 @@ export default function Page({ params: { slug } }: PageProps) {
                           </div>
                           <div className='py-1.5 px-3'>
                             <div className='text-gray-700 font-semibold text-lg'>
-                              One thing you should never do in life
+                              {orderFile.label}
                             </div>
                             <div className='flex justify-between items-center my-1'>
                               <div className='text-gray-600 text-sm'>
@@ -912,6 +929,9 @@ export default function Page({ params: { slug } }: PageProps) {
                               </div>
                             </div>
                           </div>
+                          <button onClick={() => setVideoId(orderFile.id)}>
+                            <PlayIcon className='text-gray-800 w-10' />
+                          </button>
                         </div>
                       </div>
                     ))}

@@ -173,22 +173,20 @@ export default function Page() {
                 <div className='px-4 border-l-4 secondary-border bg-white py-3 rounded-tr-2xl'>
                   <div className='text-gray-700 font-semibold '></div>
                   <div className='text-gray-700 font-semibold mb-3 space-y-2'>
-                   <div>
-                   <span className='py-1.5 px-3 bg-gray-300 text-sm rounded-full'>
-                      100% Human Transcribed
-                    </span>
-                   </div>
-                    
                     <div>
-                    From{' '}
-                    <span className='footer-title text-3xl font-bold my-2'>
-                      $ 0.75
-                    </span>{' '}
-                    per minute
+                      <span className='py-1.5 px-3 bg-gray-300 text-sm rounded-full'>
+                        100% Human Transcribed
+                      </span>
                     </div>
+
                     <div>
-                     98%+ accuracy
+                      From{' '}
+                      <span className='footer-title text-3xl font-bold my-2'>
+                        $ 0.75
+                      </span>{' '}
+                      per minute
                     </div>
+                    <div>98%+ accuracy</div>
                   </div>
                 </div>
               </div>

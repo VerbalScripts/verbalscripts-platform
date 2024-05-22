@@ -396,3 +396,21 @@ span.svg-circles {
 .ais-PoweredBy-logo {
   height: 1rem;
 }
+
+/* player buttom */
+
+.media-player {
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    visibility 0s,
+    transform 0.3s,
+    opacity 0.5s linear;
+  transform: translateY(10px);
+}
+
+.player-parent:hover .media-player {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0px);
+}

@@ -98,7 +98,6 @@ export default function SignUpForm() {
                   autoComplete='firstName'
                   {...register('firstName', { required: true, maxLength: 80 })}
                   className='block w-full rounded-md border-0 py-2.5 px-3 text-gray-600  ring-1 ring-inset ring-gray-300 placeholder:text-grey-900  md:text-xl focus:ring-2 focus:ring-inset  focus:ring-dark sm:text-sm sm:leading-6'
-
                 />
               </div>
             </div>
@@ -117,7 +116,6 @@ export default function SignUpForm() {
                   autoComplete='lastName'
                   {...register('lastName', { required: true, maxLength: 80 })}
                   className='block w-full rounded-md border-0 py-2.5 px-3 text-gray-600  ring-1 ring-inset ring-gray-300 placeholder:text-grey-900  md:text-xl focus:ring-2 focus:ring-inset  focus:ring-dark sm:text-sm sm:leading-6'
-
                 />
               </div>
             </div>
@@ -137,7 +135,6 @@ export default function SignUpForm() {
                 autoComplete='email'
                 {...register('companyName', { required: false, maxLength: 80 })}
                 className='block w-full rounded-md border-0 py-2.5 px-3 text-gray-600  ring-1 ring-inset ring-gray-300 placeholder:text-grey-900  md:text-xl focus:ring-2 focus:ring-inset  focus:ring-dark sm:text-sm sm:leading-6'
-
               />
             </div>
           </div>
@@ -159,7 +156,6 @@ export default function SignUpForm() {
                   pattern: /^\S+@\S+$/i,
                 })}
                 className='block w-full rounded-md border-0 py-2.5 px-3 text-gray-600  ring-1 ring-inset ring-gray-300 placeholder:text-grey-900  md:text-xl focus:ring-2 focus:ring-inset  focus:ring-dark sm:text-sm sm:leading-6'
-
               />
             </div>
           </div>
@@ -183,7 +179,6 @@ export default function SignUpForm() {
                     /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@!$%*#?&]{8,}/,
                 })}
                 className='block w-full rounded-md border-0 py-2.5 px-3 text-gray-600  ring-1 ring-inset ring-gray-300 placeholder:text-grey-900  md:text-xl focus:ring-2 focus:ring-inset  focus:ring-dark sm:text-sm sm:leading-6'
-
               />
               <span
                 className='absolute top-2 right-4 cursor-pointer'

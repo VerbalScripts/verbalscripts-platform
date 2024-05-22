@@ -41,7 +41,7 @@ export default function page() {
                       </p>
                     </div>
                   </div>
-                
+
                   <div className='relative flex gap-x-3'>
                     <div className='flex h-6 items-center'>
                       <input
