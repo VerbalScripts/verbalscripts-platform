@@ -405,7 +405,7 @@ export default function Page() {
         </div>
       </div>
 
-      <HowItWorks />
+      <HowItWorks  custom_class='legal-how-it-works' />
 
       <AppFooter />
     </div>
