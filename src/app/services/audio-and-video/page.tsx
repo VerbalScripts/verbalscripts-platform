@@ -315,7 +315,7 @@ export default function Page() {
                 </div>
               </div> */}
 
-<div className=' mt-10 max-w-[18rem] '>
+              <div className=' mt-10 max-w-[18rem] '>
                 <div className='px-4 border-l-4 secondary-border bg-white py-3 rounded-tr-2xl'>
                   <div className='text-gray-700 font-semibold '></div>
                   <div className='text-gray-700 font-semibold mb-3 space-y-2'>
