@@ -124,11 +124,13 @@ body {
   background:
     linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.87)),
     linear-gradient(to top, transparent, rgba(255, 252, 252, 0.952)),
-    url('/social-integrated-person-workspace.jpg') no-repeat top right;
+    url('/transcription-steps.jpg') no-repeat top right;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
 }
+
+
 
 .why-medical-section-bg {
   background:
@@ -192,9 +194,9 @@ body {
   background:
     linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.87)),
     linear-gradient(to top, transparent, rgba(255, 252, 252, 0.952)),
-    url('/pics/1979726285_huge小.jpg') no-repeat top right;
+    url('/how-it-works.jpg') no-repeat top right;
   background-size: cover;
-  background-position: center;
+  background-position: right;
   background-attachment: fixed;
 }
 
