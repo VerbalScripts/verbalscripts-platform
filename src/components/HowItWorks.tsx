@@ -1,4 +1,6 @@
 import { classNames } from '@/utils/classNames';
+import { faLongArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   ArrowLongRightIcon,
   ComputerDesktopIcon,
@@ -40,7 +42,7 @@ export default function HowItWorks({
                 Files Upload
               </div>
 
-              <div className='text-gray-600 text-center md:text-left  text-md'>
+              <div className='text-gray-900 text-center md:text-left  text-md '>
                 Simply upload your files to our secure platform.
               </div>
             </div>
@@ -57,7 +59,7 @@ export default function HowItWorks({
                 Transcription
               </div>
 
-              <div className='text-gray-600 text-center md:text-left text-md'>
+              <div className='text-gray-900 text-center md:text-left  text-md '>
                 Our experts transcribe your files with accuracy and attention to
                 detail.
               </div>
@@ -73,12 +75,21 @@ export default function HowItWorks({
                 Delivery
               </div>
 
-              <div className='text-gray-600 text-center md:text-left  text-md'>
+              <div className='text-gray-900 text-center md:text-left  text-md'>
                 Your completed transcriptions are delivered promptly via email
                 or our platform.
               </div>
             </div>
           </div>
+        </div>
+        <div className='mt-5 text-center'>
+          <a
+            href='/upload-files'
+            className='inline-flex  items-center gap-x-2 rounded-lg btn-vlg px-5 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
+          >
+            <span>Order Now</span>
+            <FontAwesomeIcon className='ml-4 w-5' icon={faLongArrowRight} />
+          </a>
         </div>
       </div>
     </div>
