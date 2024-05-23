@@ -9,7 +9,7 @@ import { Autoplay } from 'swiper/modules';
 
 export default function LogoSlider({ partners }: LogoComponentProp) {
   return (
-    <>
+    <> 
       <div className='hidden md:flex items-start flex-wrap md:flex-nowrap my-0 md:my-4 gap-x-10 swiper-container'>
         <div className='w-full md:max-w-full'>
           <div className='block'>
@@ -18,7 +18,7 @@ export default function LogoSlider({ partners }: LogoComponentProp) {
               loop={true}
               autoplay={{
                 delay: 2000,
-                disableOnInteraction: false,
+                disableOnInteraction: true,
               }}
               spaceBetween={20}
               modules={[Autoplay]}

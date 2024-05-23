@@ -11,6 +11,7 @@ import 'swiper/css/navigation';
 
 import { Swiper as SwiperType } from 'swiper/types';
 import { classNames } from '@/utils/classNames';
+import { Autoplay } from 'swiper/modules';
 
 export default function Testimonials({ testimonials }: TestimonyProp) {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -108,6 +109,12 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
           <Swiper
             slidesPerView={1}
             spaceBetween={30}
+            loop={true}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: true,
+            }}
+            modules={[Autoplay]}
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             onSwiper={setSwiper}
