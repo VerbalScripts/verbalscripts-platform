@@ -179,7 +179,7 @@ export default function Page() {
                   </div>
                 </div>
               </div>
-              <div className='lg:hidden mt-5'>
+              <div className='mt-5'>
                 <a
                   href='/upload-files'
                   className='inline-flex flex-nowrap  items-center space-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
