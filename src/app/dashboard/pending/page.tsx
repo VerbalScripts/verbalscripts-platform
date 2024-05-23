@@ -50,6 +50,7 @@ import FileDownloader from '@/components/FileDownloader';
 import RemoveFiles from '@/components/modals/RemoveFiles';
 import VideoPlayer from '@/components/modals/VideoPlayer';
 import Tablepaginate from '@/components/dashboard/Tablepaginate';
+import SystemProgressPopup from '@/components/dashboard/SystemProgressPopup';
 
 interface PageSetupOptions {
   toggleView: 'grid' | 'list';
@@ -426,6 +427,7 @@ export default function Page() {
 
       {/* systenm progress */}
       <SystemProgressUpload />
+      <SystemProgressPopup />
 
       <DropboxUpload ref={triggerDropBoxPicker} visible={false} />
       <GoogleUpload ref={triggerGooglePicker} visible={false} />
@@ -631,11 +633,16 @@ export default function Page() {
           {orders.length == 0 ? <LocalFilePLoad /> : <div></div>}
 
           {/* paginate */}
-          <Tablepaginate
-            page={page}
-            perPageCount={perPageCount}
-            totalCount={total}
-          />
+          {orders.length == 0 ? (
+           <div></div>
+          ) : (
+            <Tablepaginate
+              page={page}
+              perPageCount={perPageCount}
+              totalCount={total}
+            />
+          )}
+
           {/* add folder */}
           <AddFolder reload={reload} open={open} setOpen={setOpen} />
           <RemoveFiles

@@ -1,7 +1,11 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
+import { useRecoilValue } from 'recoil';
+import { userState } from '@/store/configureStore';
+import LocalFilePLoad from '@/components/dashboard/LocalFilePLoad';
+import SystemProgressUpload from '@/components/dashboard/SystemProgressUpload';
+import SystemProgressPopup from '@/components/dashboard/SystemProgressPopup';
 // import { useRouter } from 'next/navigation';
 
 // import type { Metadata } from 'next';
@@ -14,18 +18,33 @@ import Link from 'next/link';
 // };
 
 export default function Page() {
-  // const authState = useAppSelector((state) => state.auth.isAuth);
-  // const router = useRouter();
-  // useEffect(() => {
-  //   router.push('/dashboard/pending');
-  // });
+ 
+
+  const user = useRecoilValue(userState);
 
   return (
-    <>
+    <div className='min-h-screen'>
       <title>VerbalScripts | Dashboard</title>
-      <div className='py-3 px-10'>
-        <div className='py-5'>
-          <div className='my-2 text-gray-600 text-md'>
+      <SystemProgressUpload />
+      <SystemProgressPopup />
+      <div className='py-3 px-6 md:px-24'>
+        <div className='py-5 '>
+          {/* fancy welcome if orders are empty */}
+          <div className='pt-10 md:pt-16'>
+            <div className='mb-5 text-5xl md:text-7xl capitalize font-bold footer-title'>
+              Hello, { user.isAuth ? user.firstName : 'Guest'}
+            </div>
+
+            <div className='text-4xl md:text-5xl font-semibold text-gray-600 dark:text-gray-500'>
+              Are you ready to transcript?
+            </div>
+          </div>
+
+          <div className='py-8'>
+            <LocalFilePLoad />
+          </div>
+
+          {/* <div className='my-2 text-gray-600 text-md'>
             Pending Transcriptions
           </div>
           <div className='grid  grid-cols-4 items-center gap-4 sm:max-w-xl sm:grid-cols-4  lg:mx-0 lg:max-w-none lg:grid-cols-4 '>
@@ -56,9 +75,9 @@ export default function Page() {
                 </div>
               </Link>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
-    </>
+    </div>
   );
 }

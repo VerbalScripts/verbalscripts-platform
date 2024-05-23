@@ -42,6 +42,16 @@ export const showProgressBar = atom({
   default: false,
 });
 
+export const systemProcessStatus = atom({
+  key: 'statusBar',
+  default: {
+    show: false,
+    message: '',
+    title: '',
+    success: true
+  }
+})
+
 // export const isAuthenticated = selector({
 //   key: 'isAuthGetter',
 //   get: ({ get }) => get(fileUploadState).isAuth,

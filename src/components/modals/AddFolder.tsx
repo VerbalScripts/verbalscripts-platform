@@ -3,6 +3,8 @@ import { Dialog, Transition } from '@headlessui/react';
 import { FolderPlusIcon } from '@heroicons/react/24/outline';
 import AxiosProxy from '@/utils/AxiosProxy';
 import { Spinner } from 'flowbite-react';
+import { useSetRecoilState } from 'recoil';
+import { systemProcessStatus } from '@/store/features/fileUpload';
 
 interface AddFolderProps {
   open: boolean;
@@ -13,6 +15,8 @@ interface AddFolderProps {
 export default function AddFolder({ open, setOpen, reload }: AddFolderProps) {
   const cancelButtonRef = useRef(null);
   const folderRef = useRef(null);
+
+  const setSystemProgressContent = useSetRecoilState(systemProcessStatus);
 
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -38,12 +42,20 @@ export default function AddFolder({ open, setOpen, reload }: AddFolderProps) {
         label,
       });
       if (response.status == 201) {
-        console.log(response.data);
         setOpen(false);
+        setSystemProgressContent({
+          show: true,
+          message: `folder '${label}' has been created`,
+          title: 'Folder Added',
+          success: true,
+        });
       } else {
-        setOpen(false);
-        console.log('success');
-        console.log(response.data);
+        setSystemProgressContent({
+          show: true,
+          message: `folder '${label}' failed to create`,
+          title: 'Folder Error',
+          success: false,
+        });
       }
     } catch (error) {
       console.log(error);

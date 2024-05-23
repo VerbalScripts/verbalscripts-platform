@@ -7,7 +7,7 @@ export default function Page() {
   // const router = useRouter();
 
   return (
-    <div className='bg-white min-h-screen flex flex-col items-center justify-center'>
+    <div className='bg-white dark:bg-zinc-800  min-h-screen flex flex-col items-center justify-center'>
       <div className=''>
         <img src='/invoice.svg' className='object-cover w-[20rem]' alt='' />
       </div>

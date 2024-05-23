@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 // import AxiosProxy from '@/utils/AxiosProxy';
 import {
+  CheckBadgeIcon,
   DocumentCheckIcon,
   RectangleGroupIcon,
   WrenchScrewdriverIcon,
@@ -14,6 +15,8 @@ import SettingsTab from '../dashboard/Tabs/SettingsTab';
 import InstructionsTab from '../dashboard/Tabs/InstructionsTab';
 import { hostUrl } from '../../../config';
 import { GetOrStoreAuthToken } from '@/utils/GetOrStoreAuthToken';
+import ComponentSpinner from '../ComponentSpinner';
+import { Player } from '@lottiefiles/react-lottie-player';
 
 interface OrderNowProps {
   open: boolean;
@@ -134,7 +137,6 @@ export default function OrderNowModal({
     xhr.open('POST', `${hostUrl}/orders/client/create`, true);
 
     const access_token = GetOrStoreAuthToken();
-    console.log(access_token);
     if (access_token == null) {
       // xhr.setRequestHeader('x-token', uuid());
       // request login
@@ -198,25 +200,31 @@ export default function OrderNowModal({
                     </div>
                   </Transition.Child>
                   <div className='flex h-full  flex-col bg-white  shadow-xl'>
-                    {!status.complete ? (
-                      <div className='relative '>
-                        <div className='flex justify-between'>
-                          <div className='max-w-md bg-indigo-500 h-screen'>
-                            <img
-                              src='/svg/create-order.svg'
-                              className='min-w-[28rem] mt-32'
-                              alt=''
-                            />
-                          </div>
-
-                          <div className='py-7 px-10 w-[100%] max-h-screen overflow-y-auto'>
-                            <div className='mx-auto max-w-2xl  rounded-full'>
+                    <div className='relative '>
+                      <div className='flex justify-between'>
+                        <div className='max-w-md bg-indigo-500 h-screen'>
+                          <img
+                            src='/svg/create-order.svg'
+                            className='min-w-[28rem] mt-32'
+                            alt=''
+                          />
+                        </div>
+                        {!status.complete ? (
+                          <div className='py-[5rem] px-6 md:px-24 w-[100%] max-h-screen overflow-y-auto'>
+                            <div className='mx-auto max-w-2xl py-6 px-5 rounded-full bg-indigo-50'>
                               <ol className='flex items-center w-full'>
-                                <li className="flex w-full items-center text-blue-600 dark:text-blue-500 after:content-[''] after:w-full after:h-1 after:border-b after:border-blue-100 after:border-4 after:inline-block dark:after:border-blue-800">
-                                  <span className='flex items-center justify-center w-10 h-10 bg-blue-100 rounded-full lg:h-12 lg:w-12 dark:bg-blue-800 shrink-0'>
+                                <li
+                                  className={classNames(
+                                    "flex w-full items-center text-indigo-600 dark:text-indigo-500 after:content-[''] after:w-full after:h-1 after:border-b  after:border-4 after:inline-block dark:after:border-blue-800",
+                                    position >= 1
+                                      ? 'after:border-indigo-500'
+                                      : 'after:border-indigo-100',
+                                  )}
+                                >
+                                  <span className='flex items-center justify-center w-10 h-10 bg-indigo-500 rounded-full lg:h-12 lg:w-12 dark:bg-indigo-800 shrink-0'>
                                     {position > 0 ? (
                                       <svg
-                                        className='w-3.5 h-3.5 text-blue-600 lg:w-4 lg:h-4 dark:text-blue-300'
+                                        className='w-3.5 h-3.5 text-white lg:w-4 lg:h-4 dark:text-indigo-300'
                                         aria-hidden='true'
                                         xmlns='http://www.w3.org/2000/svg'
                                         fill='none'
@@ -231,15 +239,29 @@ export default function OrderNowModal({
                                         />
                                       </svg>
                                     ) : (
-                                      <RectangleGroupIcon className='w-6 text-gray-600' />
+                                      <RectangleGroupIcon className='w-6 text-white' />
                                     )}
                                   </span>
                                 </li>
-                                <li className="flex w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-100 after:border-4 after:inline-block dark:after:border-gray-700">
-                                  <span className='flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full lg:h-12 lg:w-12 dark:bg-gray-700 shrink-0'>
+                                <li
+                                  className={classNames(
+                                    "flex w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-100 after:border-4 after:inline-block dark:after:border-gray-700",
+                                    position == 2
+                                      ? 'after:border-indigo-500'
+                                      : 'after:border-indigo-100',
+                                  )}
+                                >
+                                  <span
+                                    className={classNames(
+                                      'flex items-center justify-center w-10 h-10  rounded-full lg:h-12 lg:w-12 dark:bg-gray-700 shrink-0',
+                                      position >= 1
+                                        ? 'bg-indigo-500'
+                                        : 'bg-indigo-200',
+                                    )}
+                                  >
                                     {position > 1 ? (
                                       <svg
-                                        className='w-3.5 h-3.5 text-blue-600 lg:w-4 lg:h-4 dark:text-blue-300'
+                                        className='w-3.5 h-3.5 text-white lg:w-4 lg:h-4 dark:text-blue-300'
                                         aria-hidden='true'
                                         xmlns='http://www.w3.org/2000/svg'
                                         fill='none'
@@ -254,30 +276,21 @@ export default function OrderNowModal({
                                         />
                                       </svg>
                                     ) : (
-                                      <WrenchScrewdriverIcon className='w-6 text-gray-600' />
+                                      <WrenchScrewdriverIcon className='w-6 text-white-600' />
                                     )}
                                   </span>
                                 </li>
-                                <li className='flex items-center w-full'>
-                                  {position == 2 ? (
-                                    <svg
-                                      className='w-3.5 h-3.5 text-blue-600 lg:w-4 lg:h-4 dark:text-blue-300'
-                                      aria-hidden='true'
-                                      xmlns='http://www.w3.org/2000/svg'
-                                      fill='none'
-                                      viewBox='0 0 16 12'
-                                    >
-                                      <path
-                                        stroke='currentColor'
-                                        stroke-linecap='round'
-                                        stroke-linejoin='round'
-                                        stroke-width='2'
-                                        d='M1 5.917 5.724 10.5 15 1.5'
-                                      />
-                                    </svg>
-                                  ) : (
-                                    <DocumentCheckIcon className='w-6 text-gray-600' />
-                                  )}
+                                <li className='flex items-center'>
+                                  <span
+                                    className={classNames(
+                                      'flex items-center justify-center w-10 h-10  rounded-full lg:h-12 lg:w-12 dark:bg-gray-700 shrink-0',
+                                      position == 2
+                                        ? 'bg-indigo-500'
+                                        : 'bg-indigo-200',
+                                    )}
+                                  >
+                                    <CheckBadgeIcon className='w-6 text-white' />
+                                  </span>
                                 </li>
                               </ol>
                             </div>
@@ -344,7 +357,7 @@ export default function OrderNowModal({
                                               {files.map((file, index) => (
                                                 <li
                                                   key={file.id}
-                                                  className='flex gap-x-3'
+                                                  className='flex gap-x-3 text-lg'
                                                 >
                                                   {index + 1} {' . '}
                                                   <DocumentCheckIcon
@@ -402,19 +415,14 @@ export default function OrderNowModal({
                                                 <button
                                                   onClick={() => createOrder()}
                                                   disabled={loading}
-                                                  className='flex space-x-5  items-center disabled:bg-indigo-400  justify-center rounded-full bg-indigo-600 px-3 md:px-10 py-2.5 font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+                                                  className='inline-flex space-x-3  items-center disabled:bg-indigo-400  justify-center rounded-full bg-indigo-600 px-3 md:px-10 py-2.5 font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
                                                 >
                                                   {loading ? (
-                                                    <div
-                                                      className='inline-block h-5 w-5 animate-spin rounded-full border-2 border-solid border-current border-e-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]'
-                                                      role='status'
-                                                    >
-                                                      <span className='!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]'>
-                                                        Loading...
-                                                      </span>
-                                                    </div>
-                                                  ) : null}
-                                                  Create Order
+                                                    <ComponentSpinner />
+                                                  ) : (
+                                                    <div></div>
+                                                  )}
+                                                  <span>Create Order</span>
                                                 </button>
                                                 <p className='mt-6 text-xs leading-5 text-gray-600'>
                                                   Invoices and receipts
@@ -451,47 +459,41 @@ export default function OrderNowModal({
                               </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                    ) : status.complete && status.message == 'success' ? (
-                      <div className='flex  justify-center items-center'>
-                        <div className='max-w-lg flex flex-col items-center'>
-                          <img
-                            src='/order-success.svg'
-                            className='min-w-[28rem]'
-                            alt=''
-                          />
-                          <div>
-                            <div className='font-semibold text-center text-2xl mb-5 text-gray-800'>
-                              Thank you, Order Received
-                            </div>
-                            <div className='text-gray-700 text-center'>
-                              Thank you {'brian'} your has been received and we
-                              have began processing it. We will reach out to you
-                              in <b>2 to 10 business days</b> with your file and
-                              payment instructions. In the mean time if you any
-                              queries you can reach out via our{' '}
-                              <a className='text-indigo-500 underline'>
-                                support
-                              </a>{' '}
-                              or click on <b>Chat Widget</b> to chat with use
-                              and one of our agents will respond as a soon as
-                              possible.
+                        ) : status.complete && status.message == 'success' ? (
+                          <div className='w-full flex fle-col items-center'>
+                            <div className='mx-auto max-w-md flex flex-col items-center'>
+                              <Player
+                                autoplay
+                                loop={true}
+                                src='https://lottie.host/993f6c56-9347-4c9a-a4a8-d32e4934cd68/sowshNXkDp.json'
+                                style={{ width: '250px', height: '250px' }}
+                              ></Player>
+                              <div>
+                                <div className='font-semibold text-center text-2xl mb-5 text-gray-800'>
+                                  Thank you, Order Success
+                                </div>
+                                <div className='text-gray-700 text-center'>
+                                  Thank you {'brian'} your has been received and
+                                  we have began processing it. We will reach out
+                                  to you in <b>2 to 10 business days</b> with
+                                  your file and payment instructions.
+                                </div>
+                              </div>
+                              <div className='mt-10'>
+                                <button
+                                  onClick={() => goToInProgress()}
+                                  className='text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2'
+                                >
+                                  Track Your Order
+                                </button>
+                              </div>
                             </div>
                           </div>
-                          <div className='mt-10'>
-                            <button
-                              onClick={() => goToInProgress()}
-                              className='rounded-full bg-indigo-500 text-white text-md py-3 px-12 font-semibold'
-                            >
-                              Track Your Order
-                            </button>
-                          </div>
-                        </div>
+                        ) : (
+                          <div className='text-4xl text-gray-700'>Failed</div>
+                        )}
                       </div>
-                    ) : (
-                      <div className='text-4xl text-gray-700'>Failed</div>
-                    )}
+                    </div>
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

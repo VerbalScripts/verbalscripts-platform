@@ -54,7 +54,7 @@ export default function VideoPlayer({
 
       if (videoPlayerRef.current != null) {
         videoPlayerRef.current.src = sourceBlob;
-        videoPlayerRef.current.load(); // To load the new video source
+        videoPlayerRef.current.play(); // To load the new video source
       }
 
       // Cleanup

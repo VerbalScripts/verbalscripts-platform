@@ -12,6 +12,7 @@ import {
   progressTracker,
   showProgressBar,
 } from '@/store/features/fileUpload';
+import { Player } from '@lottiefiles/react-lottie-player';
 // import { getFilesAsZip } from '@/utils/FolderZip';
 
 export default function LocalFilePLoad() {
@@ -392,53 +393,63 @@ export default function LocalFilePLoad() {
           onDragLeave={dragLeaveHandler}
           onDragOver={dragOverHandler}
           className={classNames(
-            'relative w-full rounded-xl border-2 transition-all duration-200 border-dashed bg-white dark:bg-gray-600  h-[13rem]',
-            dragEnter ? 'border-indigo-500 bg-gray-300' : '',
+            'relative w-full rounded-xl border-2 transition-all duration-200 border-dashed bg-gray-50 dark:bg-gray-600 py-5',
+            dragEnter ? 'border-indigo-500 bg-indigo-200' : '',
           )}
         >
           <div className='flex flex-col h-full  items-center justify-center'>
             {/* <img src='upload.png' alt='' className='absolute top-6  w-32' /> */}
 
-            <div className=' text-center leading-8'>
-              <span className='text-2xl text-gray-800 dark:text-white md:text-3xl'>
+            {/* add lottie animation here */}
+            <Player
+              autoplay
+              loop={false}
+              src='https://lottie.host/f74caabd-dcfb-4a70-9e24-6064f1e3e03a/WVV5UpWVQs.json'
+              style={{ width: '200px', height: '200px' }}
+            ></Player>
+
+            <div className='flex flex-col items-center leading-8'>
+              <div className='text-xl text-gray-800 text-center  dark:text-white md:text-2xl'>
                 Drag and Drop files here or <br></br>
-              </span>
-              <span>
-                {' '}
-                <label
-                  htmlFor='raw_file'
-                  className='cursor-pointer text-indigo-500 dark:text-indigo-300 font-semibold'
-                >
-                  <input
-                    type='file'
-                    id='raw_file'
-                    multiple
-                    name='raw_file'
-                    onChange={handleFilesUploadForm}
-                    className='hidden'
-                  ></input>
-                  Browse files
-                </label>
-              </span>
-              {' or '}
-              <span>
-                <label
-                  htmlFor='folder_files'
-                  className='cursor-pointer text-indigo-500 dark:text-indigo-300 font-semibold'
-                >
-                  <input
-                    type='file'
-                    name='folder_files'
-                    id='folder_files'
-                    onChange={handleFolderUploadForm}
-                    className='hidden'
-                    ref={ref}
-                    multiple
-                  ></input>
-                  Select Folder
-                </label>
-              </span>
-              <span> on your computer.</span>
+              </div>
+              <div className='text-gray-600 font-medium'>
+                <span className=''>
+                  {' '}
+                  <label
+                    htmlFor='raw_file'
+                    className='cursor-pointer text-indigo-500   dark:text-indigo-300 font-semibold'
+                  >
+                    <input
+                      type='file'
+                      id='raw_file'
+                      multiple
+                      name='raw_file'
+                      onChange={handleFilesUploadForm}
+                      className='hidden'
+                    ></input>
+                    Browse files
+                  </label>
+                </span>
+                {' or '}
+                <span>
+                  <label
+                    htmlFor='folder_files'
+                    className='cursor-pointer text-indigo-500 dark:text-indigo-300 font-semibold'
+                  >
+                    <input
+                      type='file'
+                      name='folder_files'
+                      id='folder_files'
+                      onChange={handleFolderUploadForm}
+                      className='hidden'
+                      ref={ref}
+                      multiple
+                    ></input>
+                    Select Folder
+                  </label>
+                </span>
+                <span> on your computer.</span>
+              </div>
             </div>
           </div>
         </div>
