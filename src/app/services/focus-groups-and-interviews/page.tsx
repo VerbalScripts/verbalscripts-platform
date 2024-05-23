@@ -117,7 +117,7 @@ export default function Page() {
       <AppHeader />
 
       <div className='landing-page-alt'>
-        <div className='relative mx-auto max-w-7xl  h-auto  px-6 py-20   pb-40 md:py-20 lg:py-36 md:px-20 lg:px-28'>
+        <div className='relative mx-auto max-w-7xl  h-auto  px-6 py-20   pb-40 md:py-20 lg:py-26 md:px-20 lg:px-28'>
           <div className='landing-page-video-wrapper'></div>
           <div
             className='absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80'
