@@ -91,7 +91,7 @@ export default function Page() {
 
                     <div>
                       From{' '}
-                      <span className='footer-title text-3xl font-bold my-2'>
+                      <span className='footer-title text-2xl font-bold my-2'>
                         $ 0.75
                       </span>{' '}
                       per minute
@@ -100,7 +100,6 @@ export default function Page() {
                   </div>
                 </div>
               </div>
-
               <div className='lg:hidden mt-5'>
                 <a
                   href='/upload-files'
@@ -116,8 +115,8 @@ export default function Page() {
             </div>
             <div className='mt-10 lg:mt-0 relative   lg:min-w-[30rem]'>
               <img
-                src='/audio_and_video/landingIllustration.svg'
-                className='max-w-[90%] lg:absolute object-cover -top-60'
+                src='/general/work-remotely.png'
+                className='max-w-[90%]  lg:absolute object-cover -top-60'
                 alt=''
               />
             </div>

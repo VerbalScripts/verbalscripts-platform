@@ -87,7 +87,7 @@ export default function Page() {
                 and enlighten.
               </p>
 
-              <div className='lg:hidden   py-5 px-5 max-w-[18rem]'>
+              {/* <div className='lg:hidden   py-5 px-5 max-w-[18rem]'>
                 <div className='px-4 border-l-4 secondary-border'>
                   <div className='text-gray-700 font-semibold '></div>
                   <div className='text-gray-700 font-semibold mb-3'>
@@ -100,8 +100,29 @@ export default function Page() {
                     <br></br> per minute 98% accuracy
                   </div>
                 </div>
-              </div>
+              </div> */}
 
+              <div className=' mt-10 max-w-[18rem] '>
+                <div className='px-4 border-l-4 secondary-border bg-white py-3 rounded-tr-2xl'>
+                  <div className='text-gray-700 font-semibold '></div>
+                  <div className='text-gray-700 font-semibold mb-3 space-y-2'>
+                    <div>
+                      <span className='py-1.5 px-3 bg-gray-300 text-sm rounded-full'>
+                        100% Human Transcribed
+                      </span>
+                    </div>
+
+                    <div>
+                      From{' '}
+                      <span className='footer-title text-2xl font-bold my-2'>
+                        $ 0.75
+                      </span>{' '}
+                      per minute
+                    </div>
+                    <div>98%+ accuracy</div>
+                  </div>
+                </div>
+              </div>
               <div className='lg:hidden mt-5'>
                 <a
                   href='/upload-files'
@@ -113,31 +134,6 @@ export default function Page() {
                     icon={faLongArrowRight}
                   />
                 </a>
-              </div>
-
-              <div className='lg:h-[3rem]'></div>
-
-              <div
-                className='hidden lg:block lg:absolute left-1/4 -bottom-10 rounded-xl shadow-xl py-5 px-5'
-                style={{ background: '#E0E8F0' }}
-              >
-                <div className='px-4 pb-2 border-l-2 secondary-border'>
-                  <div className='text-gray-700 font-semibold '></div>
-                  <div className='text-gray-700 font-semibold mb-3'>
-                    From{' '}
-                    <span className='py-1.5 px-2 bg-gray-300 rounded-full'>
-                      Human Transcripted
-                    </span>
-                    <br></br>
-                    <span className='footer-title text-3xl font-bold'>$1</span>
-                    <br></br> per minute 98% accuracy
-                  </div>
-                </div>
-                <div className='px-4'>
-                  <button className=' text-md font-semibold  px-5 py-1.5 bg-indigo-600 transition text-center  hover:-translate-y-1 hover:shadow-xl rounded-full text-gray-100'>
-                    Order Now
-                  </button>
-                </div>
               </div>
             </div>
             <div className='mt-10 lg:mt-0 relative   lg:min-w-[30rem]'>

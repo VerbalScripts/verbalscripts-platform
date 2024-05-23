@@ -150,8 +150,12 @@ body {
   background-attachment: fixed;
 }
 
-.home-landing-page-w {
+/* .home-landing-page-w {
   max-width: max-content !important;
+} */
+
+.max-w-7xl {
+  max-width: 90rem !important;
 }
 
 .section-title {

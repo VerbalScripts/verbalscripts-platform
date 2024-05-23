@@ -141,7 +141,7 @@ export default function Page() {
                 documentation.
               </p>
 
-              <div className='lg:hidden   py-5 px-5 max-w-[18rem]'>
+              {/* <div className='lg:hidden   py-5 px-5 max-w-[18rem]'>
                 <div className='px-4 border-l-4 secondary-border'>
                   <div className='text-gray-700 font-semibold '></div>
                   <div className='text-gray-700 font-semibold mb-3'>
@@ -154,21 +154,10 @@ export default function Page() {
                     <br></br> per minute 98% accuracy
                   </div>
                 </div>
-              </div>
+              </div> */}
 
-              <div className='lg:hidden mt-5'>
-                <a
-                  href='/upload-files'
-                  className='inline-flex flex-nowrap  items-center space-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
-                >
-                  <span className='flex'>Order Now</span>
-                  <FontAwesomeIcon
-                    className='ml-2 w-5'
-                    icon={faLongArrowRight}
-                  />
-                </a>
-              </div>
 
+             
               <div className=' mt-10 max-w-[18rem] '>
                 <div className='px-4 border-l-4 secondary-border bg-white py-3 rounded-tr-2xl'>
                   <div className='text-gray-700 font-semibold '></div>
@@ -181,7 +170,7 @@ export default function Page() {
 
                     <div>
                       From{' '}
-                      <span className='footer-title text-3xl font-bold my-2'>
+                      <span className='footer-title text-2xl font-bold my-2'>
                         $ 0.75
                       </span>{' '}
                       per minute
@@ -189,6 +178,18 @@ export default function Page() {
                     <div>98%+ accuracy</div>
                   </div>
                 </div>
+              </div>
+              <div className='lg:hidden mt-5'>
+                <a
+                  href='/upload-files'
+                  className='inline-flex flex-nowrap  items-center space-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
+                >
+                  <span className='flex'>Order Now</span>
+                  <FontAwesomeIcon
+                    className='ml-2 w-5'
+                    icon={faLongArrowRight}
+                  />
+                </a>
               </div>
             </div>
             <div className='mt-10 lg:mt-0 relative   lg:min-w-[30rem]'>

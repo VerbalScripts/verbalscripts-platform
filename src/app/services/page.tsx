@@ -251,7 +251,7 @@ export default function Page() {
 
                   <span className='my-3 '>
                     <a
-                      href={'/services/' + feature.href}
+                      href={feature.href}
                       // className='flex items-center text-orange-500 font-semibold text-xl underline underline-offset-4'
                       className='flex flex-nowrap relative border border-indigo-600 group  py-1.5 px-2.5 text-indigo-600'
                     >
