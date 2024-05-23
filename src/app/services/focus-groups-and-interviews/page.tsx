@@ -222,7 +222,7 @@ export default function Page() {
 
       <div className='py-10 md:py-16 why-groups-section-bg '>
         <div className='mx-auto max-w-7xl    px-6 md:px-16 lg:px-16 xl:px-28'>
-          <div className='flex flex-wrap lg:flex-nowrap items-center gap-x-6 rounded-md md:px-8 md:py-10 bg-white/30 ring-1 ring-white/10'>
+          <div className='flex flex-wrap lg:flex-nowrap items-center gap-x-6 rounded-md md:px-8 md:py-10 bg-white/50 ring-1 ring-white/20'>
             <div className='lg:max-w-[30rem] text-left'>
               <h2 className='text-xl font-bold leading-7 capitalize secondary-text'>
                 Academic & Conference Transcription?
@@ -239,7 +239,7 @@ export default function Page() {
               </p>
             </div>
             <div>
-              <ul className='mx-auto max-w-2xl mt-6 text-lg leading-8 text-gray-800 list-disc flex flex-col gap-y-5'>
+              <ul className='mx-auto max-w-2xl mt-6 text-lg font-semibold  leading-8 text-gray-900 list-disc flex flex-col gap-y-5'>
                 <li>
                   We meticulously transcribe focus group discussions and
                   interviews, ensuring every nuance is accurately captured.
