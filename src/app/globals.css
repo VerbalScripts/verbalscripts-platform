@@ -160,6 +160,16 @@ body {
   background-attachment: fixed;
 }
 
+.audio-how-it-works {
+  background:
+    linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.87)),
+    linear-gradient(to top, transparent, rgba(255, 252, 252, 0.952)),
+    url('/audio_and_video/how-it-works.jpg') no-repeat top right;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
 
 .why-legal-section-bg {
   background:
