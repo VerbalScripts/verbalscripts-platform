@@ -5,6 +5,7 @@ import AxiosProxy from '@/utils/AxiosProxy';
 import React, { useState } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 import { useSetRecoilState } from 'recoil';
+import ComponentSpinner from '../ComponentSpinner';
 
 interface ProfileSettingsProps extends User {
   updater: (arg0: User) => void;
@@ -99,7 +100,7 @@ export default function ProfileSettings({
         setLoading(true);
         const response = await AxiosProxy.patch('/user/client', { user: data });
 
-        if (response.status == 201) {
+        if (response.status == 200) {
           updater({
             email: response.data.email,
             firstName: response.data.firstName,
@@ -127,12 +128,8 @@ export default function ProfileSettings({
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className='space-y-12'>
-        <div className='border-b border-gray-900/10 pb-12'>
-          <div className='py-5 mb-10'>
-            <h2 className='text-2xl font-semibold leading-7 text-gray-900 dark:text-white'>
-              Account Settings
-            </h2>
-          </div>
+        <div className='pb-12'>
+          
           <h2 className='text-2xl font-semibold leading-7 text-gray-900 dark:text-gray-100'>
             Personal Information
           </h2>
@@ -290,21 +287,14 @@ export default function ProfileSettings({
         </div>
       </div>
 
-      <div className='mt-6 flex items-center justify-start gap-x-6'>
+      <div className='flex items-center justify-start gap-x-6'>
         <button
           type='submit'
           disabled={loading}
-          className='rounded-full flex items-center space-x-2 bg-indigo-500 px-8 py-2.5 text-lg font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+          className='rounded-full inline-flex items-center space-x-2 bg-indigo-500 px-8 py-2 text-lg font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
         >
           {loading ? (
-            <div
-              className='inline-block h-5 w-5 animate-spin rounded-full border-2 border-solid border-current border-e-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]'
-              role='status'
-            >
-              <span className='!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]'>
-                Loading...
-              </span>
-            </div>
+            <ComponentSpinner />
           ) : null}
           <span>Save Changes</span>
         </button>

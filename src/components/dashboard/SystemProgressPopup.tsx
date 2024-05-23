@@ -18,7 +18,7 @@ export default function SystemProgressPopup() {
         success: true,
         title: '',
       });
-    }, 10000);
+    }, 5000);
   };
 
   useEffect(() => {
@@ -62,7 +62,6 @@ export default function SystemProgressPopup() {
             </div>
           </div> */}
         </div>
-        <Toast.Toggle />
       </div>
     </Toast>
   );

@@ -42,6 +42,9 @@ export default function CancelOrder({
         throw new Error('There was a problem with Your Internet Connection');
       }
     }
+    finally {
+      setOpen(false);
+    }
   };
   return (
     <Transition.Root show={open} as={Fragment}>

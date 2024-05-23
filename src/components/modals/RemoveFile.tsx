@@ -3,6 +3,8 @@ import { Dialog, Transition } from '@headlessui/react';
 import AxiosProxy from '@/utils/AxiosProxy';
 import { Spinner } from 'flowbite-react';
 import { TrashIcon } from '@heroicons/react/20/solid';
+import { useSetRecoilState } from 'recoil';
+import { systemProcessStatus } from '@/store/features/fileUpload';
 
 interface RemoveFileProps {
   open: boolean;
@@ -20,6 +22,7 @@ export default function RemoveFile({
   const cancelButtonRef = useRef(null);
 
   const [loading, setLoading] = useState<boolean>(false);
+  const setSystemProgressContent = useSetRecoilState(systemProcessStatus);
 
   const createFolderHttp = async () => {
     try {
@@ -30,6 +33,12 @@ export default function RemoveFile({
       if (response.status == 200) {
         await reload();
         setOpen(false);
+        setSystemProgressContent({
+          show: true,
+          message: `File with '${fileId}' has been deleted`,
+          title: 'File Deleted',
+          success: true,
+        });
       }
     } catch (error) {
       console.log(error);

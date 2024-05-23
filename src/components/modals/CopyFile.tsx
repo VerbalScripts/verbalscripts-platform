@@ -3,6 +3,8 @@ import { Dialog, Transition } from '@headlessui/react';
 import { DocumentDuplicateIcon } from '@heroicons/react/24/outline';
 import AxiosProxy from '@/utils/AxiosProxy';
 import { Spinner } from 'flowbite-react';
+import { systemProcessStatus } from '@/store/features/fileUpload';
+import { useSetRecoilState } from 'recoil';
 
 interface CopyFileProps {
   open: boolean;
@@ -20,6 +22,7 @@ export default function CopyFile({
   const cancelButtonRef = useRef(null);
 
   const [loading, setLoading] = useState<boolean>(false);
+  const setSystemProgressContent = useSetRecoilState(systemProcessStatus);
 
   const copyFileHttp = async () => {
     try {
@@ -27,12 +30,19 @@ export default function CopyFile({
       const response = await AxiosProxy.post(`/files/copy/${fileId}`);
       if (response.status == 201) {
         await reload();
-        setOpen(false);
+        setSystemProgressContent({
+          show: true,
+          message: `File with '${fileId}' has been copied`,
+          title: 'File Copy',
+          success: true,
+        });
       }
     } catch (error) {
       console.log(error);
     } finally {
       setLoading(false);
+      setOpen(false);
+
     }
   };
 

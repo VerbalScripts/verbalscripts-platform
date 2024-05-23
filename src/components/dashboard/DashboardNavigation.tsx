@@ -50,8 +50,8 @@ export default function DashboardNavigation({
           <Link
             href={item.href}
             className={classNames(
-              'flex items-center gap-x-4 px-3 py-2.5 font-semibold hover:bg-indigo-500/50 dark:text-gray-200 text-gray-600 rounded-full ',
-              pathname == item.href ? 'bg-indigo-500 text-white' : '',
+              'flex items-center gap-x-4 px-3 py-2.5 font-semibold hover:bg-orange-300/50 text-white  rounded-full ',
+              pathname == item.href ? 'bg-orange-300 text-white' : '',
               expanded ? '' : 'justify-center',
             )}
           >
@@ -65,7 +65,7 @@ export default function DashboardNavigation({
           </Link>
         ) : (
           <button
-            className='flex w-full items-center hover:bg-indigo-500/5 gap-x-4 px-3 py-2.5 font-semibold dark:text-gray-200 text-gray-600 rounded-full '
+            className='flex w-full items-center hover:bg-orange-300/50 space-x-4 px-3 py-2.5 font-semibold text-gray-200  rounded-full '
             onClick={() => logout()}
           >
             <item.icon
@@ -148,7 +148,7 @@ export default function DashboardNavigation({
   return (
     <aside
       className={classNames(
-        'py-5 border-r bg-white dark:bg-zinc-800 border-gray-300 dark:border-gray-700  min-h-screen flex flex-col justify-between max-h-screen overflow-x-hidden overflow-y-auto',
+        'py-5   bg-black    min-h-screen flex flex-col justify-between max-h-screen overflow-x-hidden overflow-y-auto',
         expanded ? 'px-8' : 'px-0 md:px-1',
       )}
     >

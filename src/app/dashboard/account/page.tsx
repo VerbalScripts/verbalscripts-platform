@@ -6,6 +6,11 @@ import ProfileSettings from '@/components/dashboard/ProfileSettings';
 import SecuritySettings from '@/components/dashboard/SecuritySettings';
 import AxiosProxy from '@/utils/AxiosProxy';
 
+import { Tabs } from 'flowbite-react';
+import { HiUserCircle } from 'react-icons/hi';
+import { MdSettings } from 'react-icons/md';
+import SystemProgressPopup from '@/components/dashboard/SystemProgressPopup';
+
 export default function Page() {
   const [user, setUser] = useState<User>();
   const [isAuth, isAuthenticated] = useState<boolean>(true);
@@ -45,26 +50,40 @@ export default function Page() {
     <div className='min-h-screen'>
       <title>Verbal Dashboard | Account</title>
 
+      <SystemProgressPopup />
       {!loading && user ? (
         <section className='relative px-6 py-10 md:py-14  lg:px-14'>
           <div className='mx-auto max-w-4xl text-left'>
             {/* profile update */}
 
-            <ProfileSettings
-              email={user.email}
-              firstName={user.firstName}
-              lastName={user.lastName}
-              companyName={user.companyName}
-              city={user.city}
-              country={user.country}
-              address={user.address}
-              updater={setUser}
-            />
-            {/* divider */}
-            <div className='my-10  border-b border-gray-100'></div>
+            <Tabs
+              aria-label='Tabs with icons'
+              style='underline'
+              className='text-gray-800 dark:text-white'
+            >
+              <Tabs.Item
+                active
+                title='Account Settings'
+                className=' text-xl font-semibold'
+                icon={HiUserCircle}
+              >
+                <ProfileSettings
+                  email={user.email}
+                  firstName={user.firstName}
+                  lastName={user.lastName}
+                  companyName={user.companyName}
+                  city={user.city}
+                  country={user.country}
+                  address={user.address}
+                  updater={setUser}
+                />
+              </Tabs.Item>
+              <Tabs.Item title='Security' icon={MdSettings}>
+                <SecuritySettings />
+              </Tabs.Item>
+            </Tabs>
 
             {/* password update */}
-            <SecuritySettings />
           </div>
         </section>
       ) : isAuth ? (
