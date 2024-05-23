@@ -365,7 +365,7 @@ export default function Page() {
             </div>
           </div>
         </div>
-      </div> 
+      </div>
 
       <HowItWorks custom_class='groups-how-it-works' />
 

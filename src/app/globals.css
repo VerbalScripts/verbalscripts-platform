@@ -28,9 +28,12 @@ html {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom,
+  background: linear-gradient(
+      to bottom,
       transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
 }
 
 .landing-page-video-wrapper::after {
@@ -127,8 +130,6 @@ body {
   background-attachment: fixed;
 }
 
-
-
 .why-medical-section-bg {
   background:
     linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.87)),
@@ -219,7 +220,6 @@ body {
   background-attachment: fixed;
 }
 
-
 .why-legal-section-bg {
   background:
     linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.87)),
@@ -297,9 +297,11 @@ span.svg-circles {
 }
 
 .landing-blur {
-  background: linear-gradient(86deg,
-      var(--white) 27.65%,
-      var(--swiper-pagination-color) 159.67%);
+  background: linear-gradient(
+    86deg,
+    var(--white) 27.65%,
+    var(--swiper-pagination-color) 159.67%
+  );
 }
 
 .navitem-text {
@@ -426,9 +428,11 @@ span.svg-circles {
 
 .landing-page-alt {
   background: rgb(215, 200, 234);
-  background-image: linear-gradient(180deg,
-      rgba(215, 200, 234, 1) 0%,
-      rgba(252, 220, 165, 1) 57%);
+  background-image: linear-gradient(
+    180deg,
+    rgba(215, 200, 234, 1) 0%,
+    rgba(252, 220, 165, 1) 57%
+  );
 }
 
 /* search customize */

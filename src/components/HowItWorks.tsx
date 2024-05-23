@@ -15,9 +15,7 @@ export default function HowItWorks({
   custom_class = 'why-section-bg',
 }: HowItWorksProps) {
   return (
-    <div
-      className={classNames('py-10 md:py-24', custom_class)}
-    >
+    <div className={classNames('py-10 md:py-24', custom_class)}>
       <div className='mx-auto max-w-7xl px-6 md:px-16 lg:px-16 xl:px-28'>
         <div>
           <h2 className='text-xl font-bold leading-7 capitalize text-indigo-600'>

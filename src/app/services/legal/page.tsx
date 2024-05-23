@@ -156,8 +156,6 @@ export default function Page() {
                 </div>
               </div> */}
 
-
-             
               <div className=' mt-10 max-w-[18rem] '>
                 <div className='px-4 border-l-4 secondary-border bg-white py-3 rounded-tr-2xl'>
                   <div className='text-gray-700 font-semibold '></div>
@@ -277,7 +275,6 @@ export default function Page() {
             </div>
             <div className='mt-10 lg:mt-0 relative w-full'>
               <img
-            
                 src='/legal/advance.png'
                 className='lg:absolute  -right-10 w-[95%] -ml-7 lg:-ml-0 md:w-[28rem] -top-96 max-w-none rounded-md bg-white/5 ring-1 ring-white/10'
                 alt=''
@@ -405,7 +402,7 @@ export default function Page() {
         </div>
       </div>
 
-      <HowItWorks  custom_class='legal-how-it-works' />
+      <HowItWorks custom_class='legal-how-it-works' />
 
       <AppFooter />
     </div>

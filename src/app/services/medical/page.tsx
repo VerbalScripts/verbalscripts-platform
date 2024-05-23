@@ -177,13 +177,12 @@ export default function Page() {
                   />
                 </a>
               </div>
-              
             </div>
             <div className='mt-10 lg:mt-0 relative   lg:min-w-[30rem]'>
               <img
                 src='/medical_transcription/secondary-lg.svg'
                 className='w-[90vw] md:w-[50vw] lg:max-w-[90%] lg:absolute object-cover -top-60'
-                alt=''  
+                alt=''
               />
             </div>
           </div>
