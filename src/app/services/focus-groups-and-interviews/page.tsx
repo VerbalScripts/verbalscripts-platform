@@ -220,7 +220,7 @@ export default function Page() {
         <PopularPartner />
       </div>
 
-      <div className='py-10 md:py-16 steps-section-bg '>
+      <div className='py-10 md:py-16 why-groups-section-bg '>
         <div className='mx-auto max-w-7xl    px-6 md:px-16 lg:px-16 xl:px-28'>
           <div className='flex flex-wrap lg:flex-nowrap items-center gap-x-6 rounded-md md:px-8 md:py-10 bg-white/30 ring-1 ring-white/10'>
             <div className='lg:max-w-[30rem] text-left'>
@@ -365,9 +365,9 @@ export default function Page() {
             </div>
           </div>
         </div>
-      </div>
+      </div> 
 
-      <HowItWorks />
+      <HowItWorks custom_class='groups-how-it-works' />
 
       <AppFooter />
     </div>

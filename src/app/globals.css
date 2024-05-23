@@ -150,7 +150,44 @@ body {
   background-attachment: fixed;
 }
 
+.why-groups-section-bg {
+  background:
+    linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.87)),
+    linear-gradient(to top, transparent, rgba(255, 252, 252, 0.952)),
+    url('/focus_groups_interview/advert.jpg') no-repeat top right;
+  background-size: contain;
+  background-position: center;
+  background-attachment: fixed;
+}
 
+.groups-how-it-works {
+  background:
+    linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.87)),
+    linear-gradient(to top, transparent, rgba(255, 252, 252, 0.952)),
+    url('/focus_groups_interview/how-it-works.jpg') no-repeat top right;
+  background-size: contain;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.why-academic-section-bg {
+  background:
+    linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.87)),
+    linear-gradient(to top, transparent, rgba(255, 252, 252, 0.952)),
+    url('/academic_conference/why-us.jpg') no-repeat top right;
+  background-size: contain;
+  background-position: center;
+  background-attachment: fixed;
+}
+.academic-how-it-works {
+  background:
+    linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.87)),
+    linear-gradient(to top, transparent, rgba(255, 252, 252, 0.952)),
+    url('/academic_conference/how-it-works.jpg') no-repeat top right;
+  background-size: contain;
+  background-position: center;
+  background-attachment: fixed;
+}
 .why-section-bg {
   background:
     linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.87)),
