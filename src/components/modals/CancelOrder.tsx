@@ -3,6 +3,8 @@ import { Fragment, useRef, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 import AxiosProxy from '@/utils/AxiosProxy';
+import { systemProcessStatus } from '@/store/features/fileUpload';
+import { useSetRecoilState } from 'recoil';
 
 interface CancelOrderProps {
   open: boolean;
@@ -18,6 +20,7 @@ export default function CancelOrder({
 }: CancelOrderProps) {
   const cancelButtonRef = useRef(null);
   const [loading, setLoading] = useState(false);
+  const setSystemProgressContent = useSetRecoilState(systemProcessStatus);
 
   const httpCancelOrder = async () => {
     try {
@@ -26,6 +29,12 @@ export default function CancelOrder({
       if (response.status == 200) {
         setLoading(false);
         await reload();
+        setSystemProgressContent({
+          show: true,
+          message: `Order with '${id}' has been cancelled`,
+          title: 'Order Cancelled',
+          success: true,
+        });
       }
     } catch (err) {
       // @ts-ignore

@@ -48,9 +48,9 @@ export const systemProcessStatus = atom({
     show: false,
     message: '',
     title: '',
-    success: true
-  }
-})
+    success: true,
+  },
+});
 
 // export const isAuthenticated = selector({
 //   key: 'isAuthGetter',

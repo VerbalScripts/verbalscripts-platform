@@ -1,8 +1,10 @@
 'use client';
 
+import { systemProcessStatus } from '@/store/features/fileUpload';
 import AxiosProxy from '@/utils/AxiosProxy';
 import React, { useState } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
+import { useSetRecoilState } from 'recoil';
 
 interface ProfileSettingsProps extends User {
   updater: (arg0: User) => void;
@@ -76,6 +78,8 @@ export default function ProfileSettings({
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [apiError, setApiError] = useState(false);
 
+  const setSystemProgressContent = useSetRecoilState(systemProcessStatus);
+
   const {
     register,
     handleSubmit,
@@ -104,6 +108,12 @@ export default function ProfileSettings({
             address: response.data.address,
             city: response.data.address,
             companyName: response.data.companyName,
+          });
+          setSystemProgressContent({
+            show: true,
+            message: `User updated success`,
+            title: 'Account Update',
+            success: true,
           });
         }
       } catch (err) {

@@ -2,7 +2,7 @@ import { systemProcessStatus } from '@/store/features/fileUpload';
 import { classNames } from '@/utils/classNames';
 import { Toast } from 'flowbite-react';
 import { useEffect } from 'react';
-import {  MdCheckCircle, MdCrisisAlert } from 'react-icons/md';
+import { MdCheckCircle, MdCrisisAlert } from 'react-icons/md';
 import { useRecoilState } from 'recoil';
 
 export default function SystemProgressPopup() {
@@ -35,16 +35,15 @@ export default function SystemProgressPopup() {
       )}
     >
       <div className='flex items-start'>
-        {
-          statusBarContent.success ?
+        {statusBarContent.success ? (
           <div className='inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-lg  bg-cyan-100 text-cyan-500 dark:bg-cyan-900 dark:text-cyan-300'>
-          <MdCheckCircle className='h-7 w-7' />
-        </div>
-        :
-        <div className='inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-lg  bg-red-100 text-red-500'>
-          <MdCrisisAlert className='h-7 w-7' />
-        </div>
-        }
+            <MdCheckCircle className='h-7 w-7' />
+          </div>
+        ) : (
+          <div className='inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-lg  bg-red-100 text-red-500'>
+            <MdCrisisAlert className='h-7 w-7' />
+          </div>
+        )}
         <div className='ml-3 text-sm font-normal'>
           <span className='mb-1 text-md md:text-lg font-semibold text-gray-900 dark:text-white'>
             {statusBarContent.title}

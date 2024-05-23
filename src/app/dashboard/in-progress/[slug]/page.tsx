@@ -22,6 +22,7 @@ import { classNames } from '@/utils/classNames';
 import CancelOrder from '@/components/modals/CancelOrder';
 import ComponentSpinner from '@/components/ComponentSpinner';
 import VideoPlayer from '@/components/modals/VideoPlayer';
+import SystemProgressPopup from '@/components/dashboard/SystemProgressPopup';
 
 interface PageProps {
   params: { slug: string };
@@ -129,6 +130,7 @@ export default function Page({ params: { slug } }: PageProps) {
       <div className='bg-white dark:bg-zinc-800 min-h-screen'>
         {/* system progress */}
         <SystemProgressUpload />
+        <SystemProgressPopup />
 
         <VideoPlayer
           open={openPlayer}

@@ -18,8 +18,6 @@ import SystemProgressPopup from '@/components/dashboard/SystemProgressPopup';
 // };
 
 export default function Page() {
- 
-
   const user = useRecoilValue(userState);
 
   return (
@@ -32,7 +30,7 @@ export default function Page() {
           {/* fancy welcome if orders are empty */}
           <div className='pt-10 md:pt-16'>
             <div className='mb-5 text-5xl md:text-7xl capitalize font-bold footer-title'>
-              Hello, { user.isAuth ? user.firstName : 'Guest'}
+              Hello, {user.isAuth ? user.firstName : 'Guest'}
             </div>
 
             <div className='text-4xl md:text-5xl font-semibold text-gray-600 dark:text-gray-500'>
