@@ -277,8 +277,9 @@ export default function Page() {
             </div>
             <div className='mt-10 lg:mt-0 relative w-full'>
               <img
-                src='/pics/598513718_huge.jpg'
-                className='lg:absolute -top-24 -right-10 w-[90%] -ml-7 lg:-ml-0 md:w-[28rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10'
+            
+                src='/legal/advance.png'
+                className='lg:absolute  -right-10 w-[95%] -ml-7 lg:-ml-0 md:w-[28rem] -top-96 max-w-none rounded-md bg-white/5 ring-1 ring-white/10'
                 alt=''
               />
             </div>
@@ -286,7 +287,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className='py-10 md:py-16 steps-section-bg '>
+      <div className='py-10 md:py-16 why-legal-section-bg '>
         <div className='mx-auto max-w-7xl    px-6 md:px-16 lg:px-16 xl:px-28'>
           <div className='flex flex-wrap lg:flex-nowrap items-center gap-x-6  md:px-8 md:py-10'>
             <div className='lg:max-w-[30rem] text-left'>

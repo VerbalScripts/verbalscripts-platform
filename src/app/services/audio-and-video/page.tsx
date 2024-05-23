@@ -422,7 +422,7 @@ export default function Page() {
             <div className='mt-10 lg:mt-0 relative w-full'>
               <img
                 src='/pics/598513718_huge.jpg'
-                className='lg:absolute -top-24 -right-10 w-[90%] -ml-7 lg:-ml-0 md:w-[28rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10'
+                className='lg:absolute -top-44 -right-10 w-[90%] -ml-7 lg:-ml-0 md:w-[28rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10'
                 alt=''
               />
             </div>
@@ -632,7 +632,7 @@ export default function Page() {
         </div>
       </div>
 
-      <HowItWorks />
+      <HowItWorks custom_class='audio-why-section-bg' />
 
       <AppFooter />
     </div>

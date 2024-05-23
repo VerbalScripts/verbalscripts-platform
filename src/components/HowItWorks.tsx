@@ -1,3 +1,4 @@
+import { classNames } from '@/utils/classNames';
 import {
   ArrowLongRightIcon,
   ComputerDesktopIcon,
@@ -6,9 +7,17 @@ import {
 } from '@heroicons/react/24/outline';
 import React from 'react';
 
-export default function HowItWorks() {
+interface HowItWorksProps {
+  custom_class?: string;
+}
+
+export default function HowItWorks({
+  custom_class = 'why-section-bg',
+}: HowItWorksProps) {
   return (
-    <div className='py-10 md:py-24 why-section-bg'>
+    <div
+      className={classNames('py-10 md:py-24', custom_class)}
+    >
       <div className='mx-auto max-w-7xl px-6 md:px-16 lg:px-16 xl:px-28'>
         <div>
           <h2 className='text-xl font-bold leading-7 capitalize text-indigo-600'>
