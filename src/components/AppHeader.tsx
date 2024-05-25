@@ -27,6 +27,7 @@ import {
 import NavItem from './NavItem';
 import GetAQuoteModal from './GetAQuoteModal';
 import SearchModal from './modals/SearchModal';
+import Image from 'next/image';
 
 function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ');
@@ -280,6 +281,7 @@ export default function AppHeader() {
         <p className='hidden relative z-50 md:flex  h-10 items-center  justify-end space-x-6  text-sm font-medium text-white px-6 md:px-16 lg:px-20'>
           <a
             href='/dashboard/pending'
+            aria-label='Upload Now Button'
             className='-mx-3 flex items-center underline  underline-offset-4 gap-x-5 rounded-lg px-3 py-2.5 text-base  transition leading-7 text-white hover:text-orange-400'
           >
             <ArrowUpTrayIcon className='h-5 w-5' aria-hidden='true' />
@@ -318,17 +320,34 @@ export default function AppHeader() {
           aria-label='Global'
         >
           <div className='hidden lg:flex flex-1 absolute -top-1 md:-top-2 left-6 md:left-16  lg:left-20'>
-            <a href='/' className='-m-1.5 p-1.5 text-2xl font-bold'>
-              <img
-                className='h-[4.0rem] md:h-[4.0rem] lg:h-[4.8rem]'
+            <a
+              href='/'
+              aria-label='Verbalscripts Logo'
+              className='-m-1.5 p-1.5 text-2xl font-bold'
+            >
+              <Image
+                className='h-[4.0rem] w-[100%] md:h-[4.0rem] lg:h-[4.8rem]'
                 src='/icons/logo-png.png'
-                alt=''
+                alt='Logo Image'
+                objectFit='cover'
+                width={120}
+                height={30}
               />
             </a>
           </div>
           <div className='flex items-center lg:hidden'>
-            <a href='/' className='-m-1.5 p-1.5 text-2xl font-bold'>
-              <img className='h-[3rem]' src='/icons/logo-v.png' alt='' />
+            <a
+              href='/'
+              className='-m-1.5 p-1.5 text-2xl font-bold'
+              aria-label='Verbalscripts Mobile Logo'
+            >
+              <Image
+                className='w-[3rem]'
+                src='/icons/logo-v.png'
+                alt='Mobile Logo Image'
+                width={30}
+                height={30}
+              />
             </a>
           </div>
 
@@ -336,6 +355,7 @@ export default function AppHeader() {
             <a
               href='#'
               onClick={() => toggleSearch(!search)}
+              aria-label='Search Icon'
               className='text-sm  uppercase font-semibold rounded-full leading-6 py-2.5  px-2 text-gray-900 transition hover:bg-orange-100'
             >
               <MagnifyingGlassIcon className='w-5 text-gray-800' />

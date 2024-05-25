@@ -26,6 +26,7 @@ import {
   faLinkedin,
   faInstagram,
 } from '@fortawesome/free-brands-svg-icons';
+import Image from 'next/image';
 
 export default function AppFooter() {
   const services: Array<NavLabel> = [
@@ -233,17 +234,28 @@ export default function AppFooter() {
         </div>
         {/* contact information */}
         <div className='max-w-none lg:max-w-none border-b border-gray-300/10'>
-          <dl className='grid justify-evenly grid-cols-1 md:grid-cols-3   lg:gap-x-8 gap-y-10  lg:grid-cols-4 lg:gap-y-16  pb-12'>
+          <div className='grid justify-evenly grid-cols-1 md:grid-cols-3   lg:gap-x-8 gap-y-10  lg:grid-cols-4 lg:gap-y-16  pb-12'>
             <div className='flex items-center flex-col gap-y-2'>
-              <a href='#' className='-m-1.5  mb-1 p-1.5 -mt-10'>
-                <img
+              <a
+                href='#'
+                aria-label='Verbalscripts footer logo'
+                className='-m-1.5  mb-1 p-1.5 -mt-10'
+              >
+                <Image
                   src='/icons/logo-png.png'
+                  sizes='(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw'
                   className='w-[13rem] md:w-[11rem] lg:w-[10rem] '
                   alt='verbalscript footer logo'
+                  width={150}
+                  height={140}
                 />
               </a>
 
-              <a href='mailto:sales@verbalscripts.com' className='-m-1.5 p-1.5'>
+              <a
+                href='mailto:sales@verbalscripts.com'
+                aria-label='Company Sales Email'
+                className='-m-1.5 p-1.5'
+              >
                 <span className='text-gray-300 text-lg '>
                   sales@verbalscripts.com
                 </span>
@@ -251,6 +263,7 @@ export default function AppFooter() {
 
               <a
                 href='tel:+1 (727) 966-8531'
+                aria-label='Company Telephone'
                 className='-m-1.5 p-1.5 leading-7'
               >
                 <span className='text-gray-300  text-lg hover:text-indigo-500'>
@@ -261,6 +274,7 @@ export default function AppFooter() {
               <div className='flex items-center mt-5 gap-x-3'>
                 <a
                   href=''
+                  aria-label='LinkedIn handle'
                   className='text-center mb-3  rounded-xl transition hover:bg-indigo-500 flex h-10 w-10 items-center justify-center'
                 >
                   <FontAwesomeIcon
@@ -270,6 +284,7 @@ export default function AppFooter() {
                 </a>
                 <a
                   href=''
+                  aria-label='Twitter handle'
                   className='text-center mb-3 flex h-10 w-10 rounded-xl transition hover:bg-indigo-500 items-center justify-center'
                 >
                   <FontAwesomeIcon
@@ -280,6 +295,7 @@ export default function AppFooter() {
 
                 <a
                   href=''
+                  aria-label='Facebook handle'
                   className='text-center mb-3 flex rounded-xl transition hover:bg-indigo-500 h-10 w-10 items-center justify-center'
                 >
                   <FontAwesomeIcon
@@ -289,6 +305,7 @@ export default function AppFooter() {
                 </a>
                 <a
                   target='_blank'
+                  aria-label='Instagram handle'
                   href='https://www.instagram.com/verbal_scripts?igsh=dDliMGVkNnhoYmdv'
                   className='text-center mb-3 flex rounded-xl transition hover:bg-indigo-500 h-10 w-10 items-center justify-center'
                 >
@@ -302,6 +319,7 @@ export default function AppFooter() {
               <div className='-m-1.5 mt-3 p-1.5  inline-flex '>
                 <a
                   href='/contact-us'
+                  aria-label='Contact Us'
                   className='bg-indigo-600 text-white font-semibold text-md rounded-full px-5 py-2.5 hover:bg-indigo-500 '
                 >
                   Huge Project? Get In Touch
@@ -366,7 +384,7 @@ export default function AppFooter() {
                 <span className='text-gray-300 text:md  lg:text-lg '>FAQs</span>
               </a>
             </div>
-          </dl>
+          </div>
         </div>
 
         <div className='flex justify-between flex-wrap md:flex-nowrap  items-center'>
