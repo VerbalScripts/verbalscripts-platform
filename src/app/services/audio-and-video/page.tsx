@@ -270,7 +270,7 @@ export default function Page() {
       <AppHeader />
 
       <div className='landing-page-alt'>
-        <div className='relative mx-auto max-w-7xl  h-auto  px-6 py-20   pb-40 md:py-20 lg:py-36 md:px-20 lg:px-28'>
+        <div className='relative mx-auto max-w-7xl  h-auto  px-6 py-20   pb-40 md:py-20 lg:py-20 md:px-20 lg:px-28'>
           <div className='landing-page-video-wrapper'></div>
           <div
             className='absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80'
@@ -554,8 +554,8 @@ export default function Page() {
         </div>
       </div>
       <div className='py-10 md:py-16 audio-why-section-bg '>
-        <div className='mx-auto max-w-7xl    px-6 md:px-16 lg:px-16 xl:px-28'>
-          <div className='flex flex-wrap lg:flex-nowrap items-center gap-x-6 rounded-md md:px-8 md:py-10 bg-white/30 ring-1 ring-white/10'>
+        <div className='mx-auto max-w-7xl    px-6 md:px-16 lg:px-16 xl:px-24'>
+          <div className='flex flex-wrap lg:flex-nowrap items-center gap-x-6 rounded-md px-6 py-10 md:px-14 md:py-10 bg-white/50 ring-1 ring-white/10'>
             <div className='lg:max-w-[30rem] text-left'>
               <h2 className='text-xl font-bold leading-7 capitalize secondary-text'>
                 Why choose us?
@@ -572,7 +572,8 @@ export default function Page() {
               </p>
             </div>
             <div>
-              <ul className='mx-auto max-w-2xl mt-6 text-lg leading-8 text-gray-800 list-disc flex flex-col gap-y-5'>
+            <ul className='mx-auto max-w-2xl mt-6 text-lg font-semibold  leading-8 text-gray-900 list-disc flex flex-col gap-y-5'>
+
                 <li>
                   Our experienced transcriptionists are skilled in accurately
                   transcribing diverse audio and video content.
@@ -609,20 +610,21 @@ export default function Page() {
           <div className='relative my-5'>
             <img
               src='/audio_and_video/benefits.svg'
-              className=' object-cover w-full -translate-x-16 -mt-16'
+              className=' object-cover w-full translate-y-10 -translate-x-5 md:-translate-x-8 md:translate-y-10 lg:translate-y-0 lg:-translate-x-16 -mt-16'
               alt=''
             />
           </div>
 
           <div className='my-10'>
-            <div className='grid max-w-none  grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 lg:grid-cols-2 lg:gap-20'>
+            <div className='grid max-w-none  grid-cols-1 md:grid-cols-2 gap-5 lg:grid-cols-2 lg:gap-20'>
               {audio_features.map((feature, index) => (
-                <div key={index} className='shadow-md rounded-xl py-10 px-12'>
-                  <div className='footer-title text-xl md:text-2xl font-semibold mb-3'>
+                <div key={index}                   className='border bg-white z-[2] relative after:absolute after:-z-[1] after:opacity-0  hover:after:opacity-100  after:shadow-xl after:top-0 after:bottom-0 after:translate-y-0 after:transition-all after:left-0 after:w-full after:translate-x-0 hover:after:translate-x-5 hover:after:translate-y-5 after:rounded-md border-gray-200 rounded-xl py-5 px-6 md:py-10 md:px-12'
+                >
+                  <div className='footer-title text-xl md:text-2xl lg:text-3xl font-semibold mb-3'>
                     {feature.title}
                   </div>
 
-                  <div className='text-gray-600 text-md'>
+                  <div className='text-gray-600 text-md md:text-lg'>
                     {feature.description}
                   </div>
                 </div>

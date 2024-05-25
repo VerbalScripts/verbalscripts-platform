@@ -117,7 +117,7 @@ export default function Page() {
       <AppHeader />
 
       <div className='landing-page-alt'>
-        <div className='relative mx-auto max-w-7xl  h-auto  px-6 py-20   pb-40 md:py-20 lg:py-36 md:px-20 lg:px-28'>
+        <div className='relative mx-auto max-w-7xl  h-auto  px-6 py-20   pb-40 md:py-20 lg:py-24 md:px-20 lg:px-28'>
           <div className='landing-page-video-wrapper'></div>
           <div
             className='absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80'
@@ -264,8 +264,8 @@ export default function Page() {
       </div>
 
       <div className='py-10 md:py-16 why-medical-section-bg '>
-        <div className='mx-auto max-w-7xl    px-6 md:px-16 lg:px-16 xl:px-28'>
-          <div className='flex flex-wrap lg:flex-nowrap items-center gap-x-6 rounded-md md:px-8 md:py-10 bg-white/30 ring-1 ring-white/10'>
+        <div className='mx-auto max-w-7xl    px-6 md:px-16 lg:px-16 xl:px-24'>
+          <div className='flex flex-wrap lg:flex-nowrap items-center gap-x-6 rounded-md px-6 md:px-10 md:py-10 bg-white/40 ring-1 ring-white/10'>
             <div className='lg:max-w-[30rem] text-left'>
               <h2 className='text-xl font-bold leading-7 capitalize secondary-text'>
                 Why choose us?
@@ -281,7 +281,8 @@ export default function Page() {
               </p>
             </div>
             <div>
-              <ul className='mx-auto max-w-2xl mt-6 text-lg leading-8 text-gray-800 list-disc flex flex-col gap-y-5'>
+            <ul className='mx-auto max-w-2xl mt-6 text-lg font-semibold  leading-8 text-gray-900 list-disc flex flex-col gap-y-5'>
+
                 <li>
                   Our team possesses in-depth knowledge of medical terminology,
                   ensuring accurate transcriptions.
