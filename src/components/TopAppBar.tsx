@@ -4,6 +4,7 @@ import { GetOrStoreAuthToken } from '@/utils/GetOrStoreAuthToken';
 import {
   ArrowUpTrayIcon,
   ComputerDesktopIcon,
+  FolderOpenIcon,
   UserIcon,
 } from '@heroicons/react/24/outline';
 import React, { useEffect, useState } from 'react';
@@ -108,7 +109,7 @@ export default function TopAppBar() {
             aria-label='Upload Now Button'
             className='-mx-3 flex items-center underline  underline-offset-4 gap-x-5 rounded-lg px-3 py-2.5 text-base  transition leading-7 text-white hover:text-orange-400'
           >
-            <ArrowUpTrayIcon className='h-5 w-5' aria-hidden='true' />
+            <FolderOpenIcon className='h-5 w-5' aria-hidden='true' />
             My Files
           </a>
 
