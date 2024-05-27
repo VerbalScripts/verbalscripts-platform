@@ -13,7 +13,6 @@ import AuthGuard from './AuthGuard';
 import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 
-
 interface GoogleUser {
   access_token: string;
 }
@@ -37,17 +36,17 @@ export default function SignInForm() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [is_error, showErrors] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [apiError, setApiError] = useState(false);
+  const [error_message, setShowErrors] = useState('');
 
-   // google auth
-   const [user, setUser] = useState<GoogleUser | null>(null);
+  // google auth
+  const [user, setUser] = useState<GoogleUser | null>(null);
 
-   const UseGoogelLogin = useGoogleLogin({
-     onSuccess: (codeResponse) => setUser(codeResponse),
-     onError: (error) => console.log('Login Failed:', error),
-   });
- 
-   const loginWithGoogle = async () => {
+  const UseGoogelLogin = useGoogleLogin({
+    onSuccess: (codeResponse) => setUser(codeResponse),
+    onError: (error) => console.log('Login Failed:', error),
+  });
+
+  const loginWithGoogle = async () => {
     try {
       const response = await axios.get(
         `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user?.access_token}`,
@@ -62,7 +61,7 @@ export default function SignInForm() {
       const auth_user = {
         email: response.data.email,
         googleId: response.data.id,
-       
+
         password: '',
       };
 
@@ -72,14 +71,13 @@ export default function SignInForm() {
       throw new Error((err as unknown).message);
     }
   };
-   
+
   useEffect(() => {
     if (user) {
       loginWithGoogle();
     }
   }, [user]);
 
-   
   const apiHttpServerRegister = async (data: LoginUser, client = 'local') => {
     try {
       setLoading(true);
@@ -88,7 +86,7 @@ export default function SignInForm() {
         `/auth/login?client=${client}`,
         data,
       );
-      if (response.status == 201) {
+      if (response.status == 200) {
         // store user in store
         // add token to localstorage
         storeTokens(response.data.access_token, response.data.refresh_token);
@@ -115,24 +113,7 @@ export default function SignInForm() {
     if (errors.email || errors.password) {
       showErrors(true);
     } else {
-      try {
-        setLoading(true);
-
-        const response = await AxiosProxy.post('/auth/login', data);
-        if (response.status == 200) {
-          // store user in store
-          // add token to localstorage
-          // add info to store
-          storeTokens(response.data.access_token, response.data.refresh_token);
-          toDashboard();
-        } else {
-          setApiError(true);
-        }
-      } catch (err) {
-        setApiError(true);
-      } finally {
-        setLoading(false);
-      }
+      await apiHttpServerRegister(data as LoginUser);
     }
   };
 
@@ -149,7 +130,6 @@ export default function SignInForm() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onFocusIn = () => {
     showErrors(false);
-    setApiError(false);
   };
   // console.log(data);
 
@@ -164,9 +144,9 @@ export default function SignInForm() {
         <div className='mb-8 md:mb-7 text-left text-4xl font-bold text-gray-700'>
           Sign In
         </div>
-        {apiError ? (
-          <div className='py-2 px-3 text-red-500 font-semibold bg-red-100 rounded-md'>
-            Wrong Email or Password!
+        {error_message.length > 0 ? (
+          <div className='py-2 px-3 mb-5 text-red-400 font-semibold ring-1 ring-red-300 bg-red-100 rounded-md'>
+            {error_message}
           </div>
         ) : null}
       </div>
@@ -261,9 +241,10 @@ export default function SignInForm() {
       <div className='mx-auto max-w-md border-b border-gray-300 my-5'></div>
       <div className='mx-auto max-w-md'>
         <button
-        disabled={loading}
-        onClick={() => UseGoogelLogin()}
-        className='mb-3 cursor-pointer flex w-full items-center ring-1 ring-gray-300  justify-center rounded-full  py-2.5 md:py-2.5 text-lg font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
+          disabled={loading}
+          onClick={() => UseGoogelLogin()}
+          className='mb-3 cursor-pointer flex w-full items-center ring-1 ring-gray-300  justify-center rounded-full  py-2.5 md:py-2.5 text-lg font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+        >
           <GoogleIcon />{' '}
           <span className='ml-3  text-gray-600'>Continue with Google</span>
         </button>

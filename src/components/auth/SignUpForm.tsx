@@ -66,6 +66,7 @@ export default function SignUpForm() {
             ? response.data.name.split(' ')[1]
             : '',
         password: '',
+        companyName: ''
       };
 
       await apiHttpServerRegister(auth_user);
@@ -118,7 +119,6 @@ export default function SignUpForm() {
     event?: React.BaseSyntheticEvent,
   ) => {
     event?.preventDefault();
-    console.log(errors);
     if (errors.email || errors.password) {
       // @ts-ignore
       setShowErrors(errors.email | errors.password);
