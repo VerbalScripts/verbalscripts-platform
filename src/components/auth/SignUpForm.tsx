@@ -272,7 +272,7 @@ export default function SignUpForm() {
             <button
               type='submit'
               disabled={loading}
-              className='flex space-x-3 w-full items-center disabled:bg-indigo-400 focus:ring-4 focus:ring-indigo-300 justify-center rounded-md bg-indigo-600 px-3 py-2.5  leading-6 hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+              className='flex space-x-3 w-full items-center disabled:bg-indigo-400 focus:ring-4 focus:ring-indigo-300 justify-center rounded-full bg-indigo-600 px-3 py-2.5  leading-6 hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
             >
               {loading ? <ComponentSpinner /> : null}
               <span className='text-lg text-white'>Create Accout</span>
@@ -287,7 +287,7 @@ export default function SignUpForm() {
         <button
           onClick={() => UseGoogelLogin()}
           disabled={loading}
-          className='mb-3 text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center flex w-full justify-center items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 '
+          className='mb-3 text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 text-center flex w-full justify-center items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 '
         >
           <GoogleIcon />{' '}
           <span className='ml-3 text-lg text-gray-600'>

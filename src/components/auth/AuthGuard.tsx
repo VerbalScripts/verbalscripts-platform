@@ -44,5 +44,5 @@ export default function AuthGuard() {
     verifyAuthenticationStatus();
   }, []);
 
-  return <div>AuthGuard</div>;
+  return <div></div>;
 }

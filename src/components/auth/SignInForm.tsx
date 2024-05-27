@@ -2,7 +2,7 @@
 'use client';
 
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { EyeSlashIcon } from '@heroicons/react/20/solid';
 import { EyeIcon } from '@heroicons/react/24/outline';
 import GoogleIcon from '../GoogleIcon';
@@ -10,6 +10,19 @@ import { FieldValues, useForm } from 'react-hook-form';
 import AxiosProxy from '@/utils/AxiosProxy';
 import { GetOrStoreAuthToken } from '@/utils/GetOrStoreAuthToken';
 import AuthGuard from './AuthGuard';
+import { useGoogleLogin } from '@react-oauth/google';
+import axios from 'axios';
+
+
+interface GoogleUser {
+  access_token: string;
+}
+
+interface LoginUser {
+  email: string;
+  password?: string;
+  googleId?: string;
+}
 
 export default function SignInForm() {
   // const validation = {};
@@ -25,6 +38,73 @@ export default function SignInForm() {
   const [is_error, showErrors] = useState(false);
   const [loading, setLoading] = useState(false);
   const [apiError, setApiError] = useState(false);
+
+   // google auth
+   const [user, setUser] = useState<GoogleUser | null>(null);
+
+   const UseGoogelLogin = useGoogleLogin({
+     onSuccess: (codeResponse) => setUser(codeResponse),
+     onError: (error) => console.log('Login Failed:', error),
+   });
+ 
+   const loginWithGoogle = async () => {
+    try {
+      const response = await axios.get(
+        `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user?.access_token}`,
+        {
+          headers: {
+            Authorization: `Bearer ${user?.access_token}`,
+            Accept: 'application/json',
+          },
+        },
+      );
+
+      const auth_user = {
+        email: response.data.email,
+        googleId: response.data.id,
+       
+        password: '',
+      };
+
+      await apiHttpServerRegister(auth_user);
+    } catch (err) {
+      // @ts-ignore
+      throw new Error((err as unknown).message);
+    }
+  };
+   
+  useEffect(() => {
+    if (user) {
+      loginWithGoogle();
+    }
+  }, [user]);
+
+   
+  const apiHttpServerRegister = async (data: LoginUser, client = 'local') => {
+    try {
+      setLoading(true);
+
+      const response = await AxiosProxy.post(
+        `/auth/login?client=${client}`,
+        data,
+      );
+      if (response.status == 201) {
+        // store user in store
+        // add token to localstorage
+        storeTokens(response.data.access_token, response.data.refresh_token);
+        toDashboard();
+      }
+    } catch (err) {
+      // @ts-ignore
+      if (err.response.statusText == 'Conflict') {
+        // @ts-ignore
+        setShowErrors(err.response.data.message);
+      }
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const onSubmit = async (
     data: FieldValues,
@@ -180,10 +260,13 @@ export default function SignInForm() {
 
       <div className='mx-auto max-w-md border-b border-gray-300 my-5'></div>
       <div className='mx-auto max-w-md'>
-        <div className='mb-3 cursor-pointer flex w-full items-center ring-1 ring-gray-300  justify-center rounded-full  py-2.5 md:py-2.5 text-lg font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
+        <button
+        disabled={loading}
+        onClick={() => UseGoogelLogin()}
+        className='mb-3 cursor-pointer flex w-full items-center ring-1 ring-gray-300  justify-center rounded-full  py-2.5 md:py-2.5 text-lg font-semibold leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
           <GoogleIcon />{' '}
           <span className='ml-3  text-gray-600'>Continue with Google</span>
-        </div>
+        </button>
       </div>
 
       <div className='mb-5'>
