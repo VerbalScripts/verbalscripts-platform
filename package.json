@@ -7,8 +7,8 @@
     "build": "npm run format && next build",
     "build:format": "npm run format  && next build",
     "start": "next start",
-    "lint": "prettier --check . && next lint",
-    "format": "prettier --write . "
+    "lint": "npx prettier --check . && next lint",
+    "format": "npx prettier --write . "
   },
   "dependencies": {
     "@apollo/client": "^3.9.7",
