@@ -7,14 +7,28 @@ import {
   UserIcon,
 } from '@heroicons/react/24/outline';
 import React, { useEffect, useState } from 'react';
+import PageUserDialog from './dashboard/PageUserDialog';
+
+interface User {
+  firstName: string;
+  email: string;
+}
 
 export default function TopAppBar() {
   const [loading, setLoading] = useState(true);
   const [isAuth, setIsAuth] = useState(false);
+  const [user, setUser] = useState<User>({
+    email: '',
+    firstName: '',
+  });
 
   const verifyAuthenticationStatus = async () => {
     const auth_token = window.localStorage.getItem('rft-btt');
-    if (auth_token == null) return null;
+    if (auth_token == null) {
+      setIsAuth(false);
+      setLoading(false);
+      return null;
+    }
     try {
       const response = await AxiosProxy.post(
         '/auth/refresh',
@@ -30,6 +44,10 @@ export default function TopAppBar() {
         GetOrStoreAuthToken(response.data.access_token);
         window.localStorage.setItem('rft-btt', response.data.refresh_token);
         setIsAuth(true);
+        setUser({
+          email: response.data.email,
+          firstName: response.data.firstName,
+        });
       }
     } catch (err) {
       // @ts-ignore
@@ -56,7 +74,7 @@ export default function TopAppBar() {
     verifyAuthenticationStatus();
   }, []);
   return (
-    <div className='mx-auto  max-w-7xl relative z-30'>
+    <div className='mx-auto  max-w-7xl relative z-50'>
       {!loading && !isAuth ? (
         <p className='hidden relative z-50 md:flex  h-10 items-center  justify-end space-x-6  text-sm font-medium text-white px-6 md:px-16 lg:px-20'>
           <a
@@ -91,23 +109,13 @@ export default function TopAppBar() {
             className='-mx-3 flex items-center underline  underline-offset-4 gap-x-5 rounded-lg px-3 py-2.5 text-base  transition leading-7 text-white hover:text-orange-400'
           >
             <ArrowUpTrayIcon className='h-5 w-5' aria-hidden='true' />
-            Try Now
+            My Files
           </a>
-          <a
-            href='/auth/login'
-            className='-mx-3 flex items-center gap-x-5 rounded-lg px-3 py-2.5 text-base  transition leading-7 text-white hover:text-orange-400'
-          >
-            <ComputerDesktopIcon className='h-5 w-5' aria-hidden='true' />
-            Transcriber Login
-          </a>
-          |
-          <a
-            href='/auth/login'
-            className='-mx-3 flex items-center gap-x-5 rounded-lg px-3 py-2.5 text-base transition leading-7 text-white hover:text-orange-400'
-          >
-            <UserIcon className='h-5 w-5' aria-hidden='true' />
-            Client Login
-          </a>
+
+          <PageUserDialog
+            firstName={user.firstName}
+            email={user.email}
+          />
         </p>
       ) : (
         <div className='hidden md:flex animate-pulse  h-10 items-center  justify-end  px-6 md:px-16 lg:px-20'>

@@ -62,9 +62,9 @@ export default function NotificationsPreview({
               Notifications
             </div>
 
-            <div className='max-h-[20rem] overflow-y-auto'>
+            <div className='max-h-[20rem]  overflow-y-auto'>
               {notifications.length == 0 ? (
-                <div className='min-h-[20rem] flex flex-col items-center justify-center px-10'>
+                <div className='h-full w-full flex flex-col items-center justify-center px-10'>
                   {/* add lottie animation here */}
                   <Player
                     autoplay
@@ -90,18 +90,7 @@ export default function NotificationsPreview({
                         src='https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png'
                         alt='Bonnie Green avatar'
                       />
-                      <div className='flex absolute justify-center items-center ml-6 -mt-5 w-5 h-5 rounded-full border border-white bg-primary-700 dark:border-gray-700'>
-                        <svg
-                          aria-hidden='true'
-                          className='w-3 h-3 text-white'
-                          fill='currentColor'
-                          viewBox='0 0 20 20'
-                          xmlns='http://www.w3.org/2000/svg'
-                        >
-                          <path d='M8.707 7.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l2-2a1 1 0 00-1.414-1.414L11 7.586V3a1 1 0 10-2 0v4.586l-.293-.293z'></path>
-                          <path d='M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z'></path>
-                        </svg>
-                      </div>
+                      
                     </div>
                     <div className='pl-3 w-full text-left'>
                       <div className='font-semibold text-sm text-gray-600 dark:text-white'>
