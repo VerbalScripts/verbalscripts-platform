@@ -1,12 +1,11 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import AxiosProxy from '@/utils/AxiosProxy';
 import { userState as globalUser } from '@/store/configureStore';
-import {
-  AuthUsingRefreshToken,
-  cleanExpiredSession,
-} from '@/utils/AuthenticateRefreshToken';
+import { cleanExpiredSession } from '@/utils/AuthenticateRefreshToken';
+import { GetOrStoreAuthToken } from '@/utils/GetOrStoreAuthToken';
 
 export default function StoreWrapper({
   children,
@@ -15,6 +14,53 @@ export default function StoreWrapper({
 }>) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [userState, setUserState] = useRecoilState(globalUser);
+
+  const verifyAuthenticationStatus = async () => {
+    const auth_token = window.localStorage.getItem('rft-btt');
+    if (auth_token == null) {
+      setUserState({
+        email: '',
+        firstName: '',
+        lastName: '',
+        userId: '',
+        isAuth: false,
+      });
+      return null;
+    }
+    try {
+      const response = await AxiosProxy.post(
+        '/auth/refresh',
+        {},
+        {
+          headers: {
+            Authorization: 'Bearer ' + auth_token,
+          },
+        },
+      );
+
+      if (response.status == 201) {
+        GetOrStoreAuthToken(response.data.access_token);
+        window.localStorage.setItem('rft-btt', response.data.refresh_token);
+        await fetchUser();
+      }
+    } catch (err) {
+      // @ts-ignore
+      if (err.code == 'ERR_NETWORK') {
+        throw new Error('Error, Check your Network Connection');
+      } else {
+        cleanExpiredSession();
+      }
+      // failed authentication
+      setUserState({
+        email: '',
+        firstName: '',
+        lastName: '',
+        userId: '',
+        isAuth: false,
+      });
+    }
+  };
+
   const fetchUser = async () => {
     try {
       const response = await AxiosProxy('/user/get-client');
@@ -28,64 +74,15 @@ export default function StoreWrapper({
             userId: response.data.userId,
             isAuth: true,
           });
-        } else {
-          const response = await AuthUsingRefreshToken();
-          if (!response) {
-            // clean up
-            cleanExpiredSession();
-            setUserState({
-              ...userState,
-              isAuth: false,
-            });
-            return;
-          } else {
-            setUserState({
-              email: response.email,
-              firstName: response.firstName,
-              lastName: response.lastName,
-              userId: response.userId,
-              isAuth: true,
-            });
-
-            window.localStorage.setItem('x-token', response.access_token);
-            window.localStorage.setItem('rft-btt', response.refresh_token);
-          }
         }
       }
     } catch (err: any) {
-      console.log('beige killer');
-      if (err.code == 'NETWORK_ERR') {
-        console.log('network failure');
-      }
-      if (err.code == 'ERR_BAD_REQUEST') {
-        //   use refresh token
-        const response = await AuthUsingRefreshToken();
-        if (!response) {
-          // clean up
-          cleanExpiredSession();
-          setUserState({
-            ...userState,
-            isAuth: false,
-          });
-          return;
-        } else {
-          setUserState({
-            email: response.email,
-            firstName: response.firstName,
-            lastName: response.lastName,
-            userId: response.userId,
-            isAuth: true,
-          });
-
-          window.localStorage.setItem('x-token', response.access_token);
-          window.localStorage.setItem('rft-btt', response.refresh_token);
-        }
-      }
+      throw new Error(err.message);
     }
   };
 
   useEffect(() => {
-    fetchUser();
+    verifyAuthenticationStatus();
   }, []);
   return <div>{children}</div>;
 }

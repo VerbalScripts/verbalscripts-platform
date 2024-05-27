@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 'use client';
 
@@ -65,10 +66,11 @@ export default function SignInForm() {
         password: '',
       };
 
-      await apiHttpServerRegister(auth_user);
-    } catch (err) {
+      await apiHttpServerRegister(auth_user, 'google');
       // @ts-ignore
-      throw new Error((err as unknown).message);
+    } catch (err: any) {
+      // @ts-ignore
+      throw new Error(err);
     }
   };
 
@@ -94,7 +96,7 @@ export default function SignInForm() {
       }
     } catch (err) {
       // @ts-ignore
-      if (err.response.statusText == 'Conflict') {
+      if (err.response.statusText == 'Unauthorized') {
         // @ts-ignore
         setShowErrors(err.response.data.message);
       }

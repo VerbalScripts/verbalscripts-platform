@@ -6,9 +6,6 @@ import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react';
 import {
   Bars3Icon,
   XMarkIcon,
-  ComputerDesktopIcon,
-  UserIcon,
-  ArrowUpTrayIcon,
   InformationCircleIcon,
   QuestionMarkCircleIcon,
   MagnifyingGlassIcon,
@@ -28,6 +25,7 @@ import NavItem from './NavItem';
 import GetAQuoteModal from './GetAQuoteModal';
 import SearchModal from './modals/SearchModal';
 import Image from 'next/image';
+import TobAppBar from './TopAppBar';
 
 function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ');
@@ -277,33 +275,7 @@ export default function AppHeader() {
     <div>
       <GetAQuoteModal open={showQuote} setOpen={setShowQuote} />
 
-      <div className='mx-auto  max-w-7xl relative z-30'>
-        <p className='hidden relative z-50 md:flex  h-10 items-center  justify-end space-x-6  text-sm font-medium text-white px-6 md:px-16 lg:px-20'>
-          <a
-            href='/dashboard/pending'
-            aria-label='Upload Now Button'
-            className='-mx-3 flex items-center underline  underline-offset-4 gap-x-5 rounded-lg px-3 py-2.5 text-base  transition leading-7 text-white hover:text-orange-400'
-          >
-            <ArrowUpTrayIcon className='h-5 w-5' aria-hidden='true' />
-            Try Now
-          </a>
-          <a
-            href='/auth/login'
-            className='-mx-3 flex items-center gap-x-5 rounded-lg px-3 py-2.5 text-base  transition leading-7 text-white hover:text-orange-400'
-          >
-            <ComputerDesktopIcon className='h-5 w-5' aria-hidden='true' />
-            Transcriber Login
-          </a>
-          |
-          <a
-            href='/auth/login'
-            className='-mx-3 flex items-center gap-x-5 rounded-lg px-3 py-2.5 text-base transition leading-7 text-white hover:text-orange-400'
-          >
-            <UserIcon className='h-5 w-5' aria-hidden='true' />
-            Client Login
-          </a>
-        </p>
-      </div>
+      <TobAppBar />
       <header
         className={classNames(
           'page-header',

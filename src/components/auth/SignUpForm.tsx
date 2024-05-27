@@ -66,10 +66,10 @@ export default function SignUpForm() {
             ? response.data.name.split(' ')[1]
             : '',
         password: '',
-        companyName: ''
+        companyName: '',
       };
 
-      await apiHttpServerRegister(auth_user);
+      await apiHttpServerRegister(auth_user, 'google');
     } catch (err) {
       // @ts-ignore
       throw new Error((err as unknown).message);

@@ -32,7 +32,7 @@ export default function AuthGuard() {
         console.log(err.code);
       }
       // @ts-ignore
-      if (err.code == 'NETWORK_ERR') {
+      if (err.code == 'ERR_NETWORK') {
         // @ts-ignore
         console.log(err.code);
       }
@@ -40,7 +40,6 @@ export default function AuthGuard() {
   };
 
   useEffect(() => {
-    console.log('calling ....');
     verifyAuthenticationStatus();
   }, []);
 

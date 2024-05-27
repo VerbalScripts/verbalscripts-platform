@@ -15,6 +15,7 @@ export default function DashboardHeader() {
 
   const [preview, setPreview] = useState<boolean>(false);
   const [isDark, setDark] = useState<boolean>(false);
+  const [init, setInit] = useState<boolean>(true);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   // const SearchForFile = (event: KeyboardEventHandler<HTMLInputElement>) => {};
 
@@ -39,7 +40,11 @@ export default function DashboardHeader() {
   };
 
   useEffect(() => {
-    toggleDarkMode(isDark);
+    if (init) {
+      setInit(false);
+    } else {
+      toggleDarkMode(isDark);
+    }
   }, [isDark]);
 
   useEffect(() => {
