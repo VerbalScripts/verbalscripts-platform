@@ -287,7 +287,6 @@ export default function AppHeader() {
             <ArrowUpTrayIcon className='h-5 w-5' aria-hidden='true' />
             Try Now
           </a>
-          |
           <a
             href='/auth/login'
             className='-mx-3 flex items-center gap-x-5 rounded-lg px-3 py-2.5 text-base  transition leading-7 text-white hover:text-orange-400'
@@ -316,22 +315,19 @@ export default function AppHeader() {
         )}
       >
         <nav
-          className='mx-auto flex relative max-w-7xl items-center justify-between lg:justify-end px-6 py-4 md:px-16 lg:px-20'
+          className='mx-auto flex relative max-w-7xl items-center justify-between lg:justify-end px-6 py-3 md:px-16 lg:px-20'
           aria-label='Global'
         >
-          <div className='hidden lg:flex flex-1 absolute -top-1 md:-top-2 left-6 md:left-16  lg:left-20'>
+          <div className='hidden lg:flex flex-1 absolute -top-1.5 left-6 md:left-16  lg:left-20'>
             <a
               href='/'
               aria-label='Verbalscripts Logo'
               className='-m-1.5 p-1.5 text-2xl font-bold'
             >
-              <Image
+              <img
                 className='h-[4.0rem] w-[100%] md:h-[4.0rem] lg:h-[4.8rem]'
                 src='/icons/logo-png.png'
                 alt='Logo Image'
-                objectFit='cover'
-                width={120}
-                height={30}
               />
             </a>
           </div>

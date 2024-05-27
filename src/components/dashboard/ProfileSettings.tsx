@@ -129,7 +129,6 @@ export default function ProfileSettings({
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className='space-y-12'>
         <div className='pb-12'>
-          
           <h2 className='text-2xl font-semibold leading-7 text-gray-900 dark:text-gray-100'>
             Personal Information
           </h2>
@@ -293,9 +292,7 @@ export default function ProfileSettings({
           disabled={loading}
           className='rounded-full inline-flex items-center space-x-2 bg-indigo-500 px-8 py-2 text-lg font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
         >
-          {loading ? (
-            <ComponentSpinner />
-          ) : null}
+          {loading ? <ComponentSpinner /> : null}
           <span>Save Changes</span>
         </button>
       </div>

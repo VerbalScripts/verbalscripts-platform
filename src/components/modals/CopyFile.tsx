@@ -42,7 +42,6 @@ export default function CopyFile({
     } finally {
       setLoading(false);
       setOpen(false);
-
     }
   };
 

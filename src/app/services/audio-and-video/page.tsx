@@ -166,7 +166,7 @@ export default function Page() {
         'From lively Zoom, Microsoft Teams or Google Meets brainstorming sessions to productive conference calls, we capture every detail for seamless collaboration.',
     },
     {
-      imgUrl: '/audio_and_video/Podcasts.svg',
+      imgUrl: '/audio_and_video/podcasts.svg',
       title: 'Podcasts',
       description:
         'Turn your captivating podcast episodes from Spotify, Apple Podcasts, or Google Podcasts into searchable text, expanding your audience reach and boosting SEO.',
@@ -572,8 +572,7 @@ export default function Page() {
               </p>
             </div>
             <div>
-            <ul className='mx-auto max-w-2xl mt-6 text-lg font-semibold  leading-8 text-gray-900 list-disc flex flex-col gap-y-5'>
-
+              <ul className='mx-auto max-w-2xl mt-6 text-lg font-semibold  leading-8 text-gray-900 list-disc flex flex-col gap-y-5'>
                 <li>
                   Our experienced transcriptionists are skilled in accurately
                   transcribing diverse audio and video content.
@@ -618,7 +617,9 @@ export default function Page() {
           <div className='my-10'>
             <div className='grid max-w-none  grid-cols-1 md:grid-cols-2 gap-5 lg:grid-cols-2 lg:gap-20'>
               {audio_features.map((feature, index) => (
-                <div key={index}                   className='border bg-white z-[2] relative after:absolute after:-z-[1] after:opacity-0  hover:after:opacity-100  after:shadow-xl after:top-0 after:bottom-0 after:translate-y-0 after:transition-all after:left-0 after:w-full after:translate-x-0 hover:after:translate-x-5 hover:after:translate-y-5 after:rounded-md border-gray-200 rounded-xl py-5 px-6 md:py-10 md:px-12'
+                <div
+                  key={index}
+                  className='border bg-white z-[2] relative after:absolute after:-z-[1] after:opacity-0  hover:after:opacity-100  after:shadow-xl after:top-0 after:bottom-0 after:translate-y-0 after:transition-all after:left-0 after:w-full after:translate-x-0 hover:after:translate-x-5 hover:after:translate-y-5 after:rounded-md border-gray-200 rounded-xl py-5 px-6 md:py-10 md:px-12'
                 >
                   <div className='footer-title text-xl md:text-2xl lg:text-3xl font-semibold mb-3'>
                     {feature.title}

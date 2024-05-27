@@ -16,8 +16,8 @@ import Script from 'next/script';
 import HowItWorks from '@/components/HowItWorks';
 
 export const metadata: Metadata = {
-  title: 'VerbalScripts | Fast, affordable',
-  
+  title: 'Verbalscripts - 100% Human Transcription Services',
+
   keywords: [
     'transcription',
     'audio transcription',
@@ -27,21 +27,21 @@ export const metadata: Metadata = {
     'proofreading',
   ],
   description:
-    'VerbalScripts offers fast, affordable, and highly accurate human transcription, translation, data annotation, and AI dataset services customized for your needs.',
+    'We provide fast and affordable client-ready transcription services tailored to your needs through transcription, reviewing and proofreading.',
 
   openGraph: {
     type: 'website',
     url: 'https://verbalscripts.com',
-    title: 'Verbalscripts Platform',
+    title: 'Verbalscripts - 100% Human Transcription Services',
     description:
-      'VerbalScripts offers fast, affordable, and highly accurate human transcription, translation, data annotation, and AI dataset services customized for your needs.',
+      'We provide fast and affordable client-ready transcription services tailored to your needs through transcription, reviewing and proofreading.',
 
     siteName: 'Verbalscripts Platform',
     images: [
       {
         url: 'https://verbalscripts.com/icons/logo-banner.jpg',
         secureUrl: 'https://verbalscripts.com/icons/logo-banner.jpg',
-        alt: 'Verbalscripts Platform',
+        alt: 'Verbalscripts - 100% Human Transcription Services',
         type: 'image/jpg',
       },
     ],

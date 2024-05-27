@@ -41,8 +41,7 @@ export default function CancelOrder({
       if (err.code == 'NETWORK_ERR') {
         throw new Error('There was a problem with Your Internet Connection');
       }
-    }
-    finally {
+    } finally {
       setOpen(false);
     }
   };

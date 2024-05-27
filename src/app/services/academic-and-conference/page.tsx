@@ -181,8 +181,7 @@ export default function Page() {
               </p>
             </div>
             <div>
-            <ul className='mx-auto max-w-2xl mt-6 text-lg font-semibold  leading-8 text-gray-900 list-disc flex flex-col gap-y-5'>
-
+              <ul className='mx-auto max-w-2xl mt-6 text-lg font-semibold  leading-8 text-gray-900 list-disc flex flex-col gap-y-5'>
                 <li>
                   From keynote speeches to panel discussions, we capture every
                   word with precision and clarity.

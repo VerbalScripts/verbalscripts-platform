@@ -39,7 +39,7 @@ export default function RemoveFiles({
           title: 'File Deleted',
           success: true,
         });
-      } 
+      }
     } catch (error) {
       console.log(error);
     } finally {

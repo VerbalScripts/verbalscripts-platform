@@ -3,6 +3,6 @@ import React from 'react';
 
 export default function GoogleIcon() {
   return (
-    <Image height={30} width={30} alt='google icon' src='/icons/google.png' />
+    <Image height={28} width={28} alt='google icon' src='/icons/google.png' />
   );
 }
