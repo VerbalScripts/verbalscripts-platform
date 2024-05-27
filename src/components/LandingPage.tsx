@@ -62,7 +62,7 @@ export default function LandingPage() {
             alt=''
           />
         </div>
-        <div className='absolute -bottom-10 -left-1/4 hidden lg:block'>
+        <div className='absolute -bottom-5 -left-[220px] hidden lg:block'>
           <img
             src='./Home/legal.jpeg'
             className='w-2/6 rounded-xl object-cover'
