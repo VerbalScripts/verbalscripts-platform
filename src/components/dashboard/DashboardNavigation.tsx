@@ -155,7 +155,7 @@ export default function DashboardNavigation({
       {/* title */}
 
       <div>
-        <div className={classNames(expanded ? 'block' : 'hidden')}>
+        <div>
           <AppTitle />
         </div>
         <div className={classNames(expanded ? 'hidden' : 'block py-10')}></div>
@@ -215,7 +215,7 @@ export default function DashboardNavigation({
               expanded ? '' : 'hidden',
             )}
           >
-            <div className='text-gray-700 dark:text-gray-200'>
+            <div className=' dark:text-indigo-200'>
               You have not signed in yet!. Click the button to continue
             </div>
             <div className='mt-5'>

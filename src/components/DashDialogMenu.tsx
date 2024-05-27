@@ -5,6 +5,7 @@ import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { useRecoilValue } from 'recoil';
 import { getUser } from '@/store/configureStore';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { UserIcon, QuestionMarkCircleIcon } from '@heroicons/react/24/outline';
 
 function classNames(...classes: string[]) {
@@ -18,11 +19,11 @@ interface menuRoute {
   icon: React.ElementType;
 }
 export default function DashDialogMenu() {
+  const router = useRouter();
+
   const { email, isAuth, firstName } = useRecoilValue(getUser);
 
-  useEffect(() => {
-    console.log('congress ..........', isAuth);
-  }, [isAuth]);
+  useEffect(() => {}, [isAuth]);
 
   const menuRoutes: menuRoute[] = [
     {
@@ -37,13 +38,14 @@ export default function DashDialogMenu() {
       icon: QuestionMarkCircleIcon,
       isProtected: false,
     },
-    {
-      label: 'Orders',
-      href: '/dashboard/orders',
-      icon: UserIcon,
-      isProtected: false,
-    },
   ];
+
+  const logout = () => {
+    window.localStorage.removeItem('x-token');
+    window.localStorage.removeItem('rft-btt');
+
+    router.push('/auth/login');
+  };
   return (
     <Menu as='div' className='relative inline-block text-left'>
       <div>
@@ -133,6 +135,7 @@ export default function DashDialogMenu() {
                 {() => (
                   <button
                     type='submit'
+                    onClick={logout}
                     className={classNames(
                       'block w-full px-4 py-2 text-left text-gray-600 dark:text-white font-semibold text-md',
                       'mt-1 border-t border-gray-200 dark:border-gray-800 flex items-center',
