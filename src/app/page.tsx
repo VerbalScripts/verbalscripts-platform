@@ -14,6 +14,7 @@ import { faLongArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Script from 'next/script';
 import HowItWorks from '@/components/HowItWorks';
+import FaqsPreview from '@/components/FaqsPreview';
 
 export const metadata: Metadata = {
   title: 'Verbalscripts - 100% Human Transcription Services',
@@ -521,6 +522,9 @@ export default function Home() {
       </div>
 
       <HowItWorks />
+
+
+      <FaqsPreview />
 
       <AppFooter />
     </div>
