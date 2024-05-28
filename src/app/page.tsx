@@ -56,38 +56,38 @@ export default function Home() {
   const testimonials: Array<Testimony> = [
     {
       description:
-        ' VerbalScripts has done a terrific job in helping us meet a tight deadline for a demanding client. They helped us tailor the transcripts to our particular needs, and were always available, helpful and patient.”',
-      name: 'Limor Hochberg',
-      imageUrl: '/testimonials/1.png',
-      occupation: 'UL',
+        ' “For any law firm seeking a reliable and affordable transcription partner, we highly recommend Verbalscripts. They"ve consistently exceeded our expectations, and we"re confident they can do the same for you." - Jon A. Ballis, P.C., Kirkland & Ellis”',
+      name: 'Jon A. Ballis',
+      imageUrl: '/testimonials/Jon A. Ballis.png',
+      occupation: 'Kirkland & Ellis',
     },
     {
       description:
-        ' “We used VerbalScripts for transcripts and the quality has been great. Turnaround speed is fast and the process to upload files is very simple. Very responsive.”',
-      name: 'Bart Langton',
-      imageUrl: '/testimonials/2.png',
-      occupation: 'Ipsos',
+        ' “We were impressed with Verbalscripts when they delivered precise transcripts tailored to a specific client"s requirements. Their accuracy and quick turnaround times were outstanding. We strongly recommend their services.”',
+      name: 'Joseph Baker',
+      imageUrl: '/testimonials/Joseph Baker.png',
+      occupation: 'Veritext',
     },
     {
       description:
-        " “It's been a great experience working with VerbalScripts. Their transcription is the best quality for the cheapest price. They worked with us to create a business rate and the quality was great.”",
-      name: 'Angel Cruz',
-      imageUrl: '/testimonials/3.png',
-      occupation: 'Datu Research',
+        " “They were amazing! Verbalscripts expertly managed over 50 hours of trial transcripts with impressive speed and accuracy. Their formatting was flawless, and their service was affordable. A+ experience all around!”",
+      name: 'Sandy Shapiro',
+      imageUrl: '/testimonials/Sandy Shapiro.png',
+      occupation: 'J&A Reporting, Inc',
     },
     {
       description:
-        " “It's been a great experience working with VerbalScripts. Their transcription is the best quality for the cheapest price. They worked with us to create a business rate and the quality was great.”",
-      name: 'Angel Cruz',
-      imageUrl: '/testimonials/4.png',
-      occupation: 'Datu Research',
+        " “As an investigative reporter, I rely on Verbalscripts for all my transcription needs. Their tailored transcripts consistently meet diverse client requirements, always accurate and delivered on time. Their service is exceptional, ensuring I never miss a deadline. Highly recommended for top-notch quality and reliability.”",
+      name: 'Tricia Nadolny',
+      imageUrl: '/testimonials/Tricia Nadolny.png',
+      occupation: 'USA Today',
     },
     {
       description:
-        " “It's been a great experience working with VerbalScripts. Their transcription is the best quality for the cheapest price. They worked with us to create a business rate and the quality was great.”",
-      name: 'Angel Cruz',
-      imageUrl: '/testimonials/5.png',
-      occupation: 'Datu Research',
+        " “Our internal team handles bulk of our workload, but when we needed an extra hand, Verbalscripts seamlessly stepped in. They delivered accurate legal transcripts for our clients, all at reasonable rates. They are also flexible with payment terms.”",
+      name: 'Carrie A. Cosenza',
+      imageUrl: '/testimonials/Carrie A. Cosenza.png',
+      occupation: 'US Legal Support',
     },
   ];
 
