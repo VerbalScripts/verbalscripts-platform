@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     description:
       'We provide fast and affordable client-ready transcription services tailored to your needs through transcription, reviewing and proofreading.',
 
-    siteName: 'Verbalscripts Platform',
+    siteName: 'Verbalscripts - 100% Human Transcription Services',
     images: [
       {
         url: 'https://verbalscripts.com/icons/logo-banner.jpg',

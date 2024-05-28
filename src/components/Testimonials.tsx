@@ -45,7 +45,6 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
       findMiddleNumber();
       setFirstLoad(false);
     } else {
-      console.log(swiper);
       const timer = setTimeout(() => {
         swiper.slideTo(activeIndex);
       }, 500);
@@ -70,7 +69,6 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
   }, [width]);
 
   const handleResize = () => {
-    console.log('resizubf');
     if (window.innerWidth < 750) {
       setItemsPerView(3);
     } else {
@@ -118,7 +116,7 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             onSwiper={setSwiper}
-            className='w-full h-80 flex justify-center-center '
+            className='w-full h-96 flex justify-center-center '
           >
             {testimonials.map((testimony: Testimony, index: number) => (
               <SwiperSlide key={testimony.name + index}>
@@ -132,20 +130,20 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
           </Swiper>
         </div>
 
-        <div className='flex justify-center'>
+        <div className='flex justify-center box-border'>
           <div className='bg-white absolute -bottom-10 md:-bottom-[4rem] z-[25] right-0 left-0 h-14 md:h-32'></div>
           {[...testimonials.slice(0, itemsPerView)].map(
             (testimony: Testimony, index: number) => (
               <div key={index} className='relative'>
                 <div
                   className={classNames(
-                    'mt-4 flex-col -top-32 md:-top-36 rotate-12 z-[11] bg-white min-w-[150px]  shadow-md border border-orange-500 rounded-xl py-2 px-3  absolute flex items-center justify-center space-x-3 text-base',
+                    'mt-4 flex-col -top-32 md:-top-36 rotate-12 z-[11] bg-white max-w-[150px] md:max-w-[150px]  shadow-md border border-orange-500 rounded-xl py-1 px-2  absolute flex items-center justify-center space-x-3 text-base',
 
                     index == activeIndex ? '' : 'hidden',
                   )}
                 >
                   <span className='absolute -bottom-5 w-10 h-10 -z-[1]  -rotate-45 bg-white shadow-md secondary-border border-l border-b'></span>
-                  <div className='font-semibold text-gray-700 text-sm md:text-md'>
+                  <div className='font-semibold text-gray-700 text-xs md:text-lg'>
                     {testimony.name}
                   </div>
                   {/* <svg
@@ -157,7 +155,7 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
                   >
                     <circle cx={1} cy={1} r={1} />
                   </svg> */}
-                  <div className='text-gray-500'>{testimony.occupation}</div>
+                  <div className='text-gray-500 text-xs md:text-md'>{testimony.occupation}</div>
                 </div>
                 <div
                   onClick={() => changeActive(index)}
@@ -181,7 +179,7 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
                   style={{}}
                 >
                   <img
-                    className='h-32 w-32 md:h-40 md:w-40 object-contain'
+                    className='h-36 w-36 md:h-40 md:w-40 object-contain'
                     src={testimony.imageUrl}
                     alt=''
                   />
