@@ -71,21 +71,21 @@ export default function Home() {
     },
     {
       description:
-        " “They were amazing! Verbalscripts expertly managed over 50 hours of trial transcripts with impressive speed and accuracy. Their formatting was flawless, and their service was affordable. A+ experience all around!”",
+        ' “They were amazing! Verbalscripts expertly managed over 50 hours of trial transcripts with impressive speed and accuracy. Their formatting was flawless, and their service was affordable. A+ experience all around!”',
       name: 'Sandy Shapiro',
       imageUrl: '/testimonials/Sandy Shapiro.png',
       occupation: 'J&A Reporting, Inc',
     },
     {
       description:
-        " “As an investigative reporter, I rely on Verbalscripts for all my transcription needs. Their tailored transcripts consistently meet diverse client requirements, always accurate and delivered on time. Their service is exceptional, ensuring I never miss a deadline. Highly recommended for top-notch quality and reliability.”",
+        ' “As an investigative reporter, I rely on Verbalscripts for all my transcription needs. Their tailored transcripts consistently meet diverse client requirements, always accurate and delivered on time. Their service is exceptional, ensuring I never miss a deadline. Highly recommended for top-notch quality and reliability.”',
       name: 'Tricia Nadolny',
       imageUrl: '/testimonials/Tricia Nadolny.png',
       occupation: 'USA Today',
     },
     {
       description:
-        " “Our internal team handles bulk of our workload, but when we needed an extra hand, Verbalscripts seamlessly stepped in. They delivered accurate legal transcripts for our clients, all at reasonable rates. They are also flexible with payment terms.”",
+        ' “Our internal team handles bulk of our workload, but when we needed an extra hand, Verbalscripts seamlessly stepped in. They delivered accurate legal transcripts for our clients, all at reasonable rates. They are also flexible with payment terms.”',
       name: 'Carrie A. Cosenza',
       imageUrl: '/testimonials/Carrie A. Cosenza.png',
       occupation: 'US Legal Support',
@@ -315,9 +315,13 @@ export default function Home() {
                 <div className='flex justify-center mt-16 md:mr-16'>
                   <a
                     href='/upload-files'
-                    className='rounded-xl  ring-inset focus:ring-4 focus:ring-indigo-300  bg-indigo-500 px-8 py-3.5 text-lg font-bold text-white shadow-sm transition  hover:shadow-md hover:bg-indigo-400 hover:rind focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-indigo-300'
+                    className='inline-flex  items-center gap-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
                   >
-                    Order Now
+                    <span>Order Now</span>
+                    <FontAwesomeIcon
+                      className='ml-4 w-6'
+                      icon={faLongArrowRight}
+                    />
                   </a>
                 </div>
               </div>
@@ -326,14 +330,14 @@ export default function Home() {
                 <div className='flex flex-col  items-start gap-x-3 gap-y-3  mt-5'>
                   <div className='flex'>
                     <div className=' flex flex-col  gap-y-5 items-center '>
-                      <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/30 text-indigo-500 font-bold'>
+                      <span className='flex items-center justify-center w-10 h-10 rounded-full btn-vlg text-white font-bold'>
                         1
                       </span>
                       <span className='h-20 border-r-2 border-dashed  border-gray-500'></span>
                     </div>
                     <br />
                     <div className='ml-5  max-w-md'>
-                      <div className='leading-8 text-indigo-600 font-semibold text-2xl mb-3'>
+                      <div className='leading-8 text-indigo-500 font-bold text-3xl mb-3'>
                         Transcribe
                       </div>
                       <p className='text-gray-800 font-semibold text-md'>
@@ -345,14 +349,14 @@ export default function Home() {
 
                   <div className='flex'>
                     <div className=' flex flex-col  gap-y-5  items-center'>
-                      <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/30 text-indigo-700 font-bold'>
+                      <span className='flex items-center justify-center w-10 h-10 rounded-full btn-vlg text-white font-bold'>
                         2
                       </span>
                       <span className='h-20 border-r-2 border-dashed  border-gray-500'></span>
                     </div>
                     <br />
                     <div className='ml-5  max-w-md'>
-                      <div className='leading-8 text-indigo-600 font-semibold text-2xl mb-3'>
+                      <div className='leading-8 text-indigo-500 font-bold text-3xl mb-3'>
                         Review
                       </div>
                       <p className='text-gray-800 font-semibold text-md'>
@@ -364,14 +368,14 @@ export default function Home() {
 
                   <div className='flex'>
                     <div className=' flex flex-col  gap-y-5  items-center'>
-                      <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/30 text-indigo-500 font-bold'>
+                      <span className='flex items-center justify-center w-10 h-10 rounded-full btn-vlg text-white font-bold'>
                         3
                       </span>
                       <span className='h-20 border-r-2 border-dashed  border-gray-500'></span>
                     </div>
                     <br />
                     <div className='ml-5  max-w-md'>
-                      <div className='leading-8 text-indigo-600 font-semibold text-2xl mb-3'>
+                      <div className='leading-8 text-indigo-500 font-bold text-3xl mb-3'>
                         Proofreading
                       </div>
                       <p className='text-gray-800 font-semibold text-md'>
@@ -383,13 +387,13 @@ export default function Home() {
 
                   <div className='flex'>
                     <div className=' flex items-center'>
-                      <span className='flex items-center justify-center w-10 h-10 rounded-full bg-indigo-500/30 text-indigo-500 font-bold'>
+                      <span className='flex items-center justify-center w-10 h-10 rounded-full btn-vlg text-white font-bold'>
                         4
                       </span>
                     </div>
                     <br />
                     <div className='ml-5  max-w-md'>
-                      <div className='leading-8 text-indigo-600 font-semibold text-2xl mb-3'>
+                      <div className='leading-8 text-indigo-500 font-bold text-3xl mb-3'>
                         Quality Check
                       </div>
                       <p className='text-gray-800  font-semibold text-md'>
@@ -522,7 +526,6 @@ export default function Home() {
       </div>
 
       <HowItWorks />
-
 
       <FaqsPreview />
 
