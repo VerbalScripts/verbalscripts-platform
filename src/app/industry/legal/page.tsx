@@ -271,9 +271,9 @@ export default function Page() {
         </div>
       </div>
 
-      <div className='py-10 md:py-16' style={{ background: '#FAFAFA' }}>
+      <div className='relative z-[15] py-10 md:py-16' style={{ background: '#FAFAFA' }}>
         <div className='mx-auto max-w-6xl text-left md:text-center px-6 md:px-16 lg:px-16 xl:px-28'>
-          <h2 className='text-base font-semibold leading-7 text-indigo-600'>
+          <h2 className='text-base font-semibold leading-7 text-white'>
             What we can offer you?
           </h2>
           <p className='mt-2 text-4xl md:text-5xl font-bold  text-gray-900'>
@@ -281,12 +281,20 @@ export default function Page() {
           </p>
         </div>
 
+        <div className='absolute top-0 -z-[1]'>
+            <img src="/legal_industry/background pattern.svg" className='object-contain ' alt="" />
+        </div>
+
+        <div className='absolute bottom-0 -rotate-180 -z-[1]'>
+            <img src="/legal_industry/background pattern.svg" className='object-contain ' alt="" />
+        </div>
+
         <div className='mx-auto  max-w-7xl py-10 md:py-24 px-6 md:px-16 lg:px-16 xl:px-28'>
         <div className='grid max-w-none   place-content-center  grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-x-10 lg:gap-y-10'>
             {audio_video_theme.map((content) => (
               <div
                 key={content.title}
-                className='flex flex-col shadow-2xl  items-center gap-y-6 px-5 py-5 md:px-5 md:py-5'
+                className='flex flex-col shadow-2xl bg-white  items-center gap-y-6 px-5 py-5 md:px-5 md:py-5'
               >
                 <div className='relative bg-red-100 max-h-[10rem] w-full min-h-[10rem]'>
                   <img
