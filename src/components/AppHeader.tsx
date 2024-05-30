@@ -115,28 +115,28 @@ export default function AppHeader() {
       name: 'Court reporting & Legal',
       description:
         'We convert audio/video content into transcripts quickly and securing to save law firms, investigators, police force, or research firms time and money.',
-      href: '/solutions/legal',
+      href: '/industry/legal',
       imgUrl: '/icons/legal-document.png',
     },
     {
       name: 'Corporate & general business',
       description:
         'Customized for your large volume needs, including a variety of enterprise security requirements.',
-      href: '/solutions/enterprise',
+      href: '/industry/enterprise',
       imgUrl: '/icons/paper.png',
     },
     {
       name: 'Media production',
       description:
         'The very best in human intelligence requires top quality training data for speech NLP and computer vision models.',
-      href: '/solutions/ai',
+      href: '/industry/media-production',
       imgUrl: '/icons/video-editor.png',
     },
     {
       name: 'Digital & online learning',
       description:
         'Fast, easy lecture and dissertation transcripts for students or faculty, compatible with NVivo and other research platforms.',
-      href: '/solutions/education',
+      href: '/industry/education',
       imgUrl: '/icons/online-learning.png',
     },
 
@@ -144,14 +144,14 @@ export default function AppHeader() {
       name: 'Government',
       description:
         'Making live events, meetings, ad campaigns and press briefings more accessible and actionable.',
-      href: '/solutions/government',
+      href: '/industry/government',
       imgUrl: '/icons/policy.png',
     },
     {
       name: 'Healthcare',
       description:
         'Making live events, meetings, ad campaigns and press briefings more accessible and actionable.',
-      href: '/solutions/call-centers',
+      href: '/industry/healthcare',
       icon: BuildingOffice2Icon,
     },
   ];

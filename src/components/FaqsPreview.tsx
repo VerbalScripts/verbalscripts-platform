@@ -6,20 +6,20 @@ export default function FaqsPreview() {
   const faqs: FaqsProp[] = [
     {
       title:
-        'Can Verbit produce transcripts from audio featuring different accents, dialects and ‘quick talkers’?',
+        'What is Verbalscripts’?',
       content:
-        'Yes. Verbit trains its AI using more challenging audio files so that it works in the real world where recordings aren’t always optimal. Although clear, high-quality audio files work best, we can produce strong results even if there are audio-related difficulties, accents or unique terminology. In addition, Verbit’s human transcribers provide an extra layer of transcript proofreading and support so that your transcripts meet the requirements of the demanding legal industry.',
+        'Verbalscripts is an online digital platform  that uses crowd-sourced transcriptionists from around the world to transcribe your audio and video files into written transcripts. It is not a stand-alone program and does not require downloading a platform.',
     },
     {
-      title: 'Can digital court reporters be certified? ',
+      title: 'What currencies do we support? ',
       content:
-        'Yes, a digital court reporter or certified electronic reporter (CER) has a certification through the American Association of Electronic Reporters and Transcribers (AAERT).',
+        'Purchases can be made in USD, AUD, NZD, EUR, JPY, and GBP.',
     },
     {
       title:
-        'What makes GoTranscript"s court proceedings transcription services stand out?',
+        'What are the languages supported?',
       content:
-        'A notable instance is a high-profile trial where our transcription played a crucial role in the appellate process. The comprehensive and accurate transcripts allowed appellate lawyers to effectively argue their points, leading to a successful appeal, highlighting the significance of our services in legal victories. ',
+        'Verbalscripts support a large variety of languages. Languages including Spanish, French, Italian, German, Portuguese, Chinese and Japanese, to name just a few. If you have a language you don’t see listed here, contact our Sales team and we will provide you with a quote. ',
     },
   ];
 
