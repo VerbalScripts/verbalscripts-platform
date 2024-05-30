@@ -36,7 +36,7 @@ export default function FaqsPreview() {
           </p> */}
         </div>
 
-        <div className='py-10'>
+        <div className='py-10 px-6'>
           <Faqs faqs={faqs} />
         </div>
 

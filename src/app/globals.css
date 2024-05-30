@@ -508,3 +508,13 @@ span.svg-circles {
   opacity: 1;
   transform: translateY(0px);
 }
+
+
+/* industry legal */
+
+.why_industry_bg {
+  background: url('/legal_industry/background pattern.svg') no-repeat;
+  background-size: cover;
+  height: 30rem;
+
+}
