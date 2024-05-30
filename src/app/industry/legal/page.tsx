@@ -18,56 +18,63 @@ export const metadata: Metadata = {
 export default function Page() {
   const audio_video_theme = [
     {
-      imgUrl: '/legal/hearing.svg',
-      title: 'Court Hearings',
+      imgUrl: '/legal_industry/courtproceeding.svg',
+      title: 'Courtroom Proceedings',
       description:
-        'Step into the courtroom drama with confidence as we faithfully transcribe the proceedings, capturing the nuances of legal debates, rulings, and judgments. From opening statements to closing arguments, every word is meticulously transcribed to provide an accurate record of legal proceedings.',
+        'Capture every detail of courtroom sessions with our accurate and timely transcriptions, ensuring a reliable record of trials and hearings.',
     },
     {
-      imgUrl: '/legal/depositions.svg',
+      imgUrl: '/legal_industry/depositions.svg',
+
+      title: 'Legal Briefs & Summaries',
+      description:
+        'Streamline your legal documentation with clear and concise transcriptions of briefs and summaries, aiding in effective case management.',
+    },
+    {
+      imgUrl: '/legal_industry/policeinterview.svg',
+
+      title: 'Police Interviews',
+      description:
+        'Get accurate transcriptions of police interviews, essential for investigations and legal proceedings.',
+    },
+    {
+      imgUrl: '/legal_industry/depositions.svg',
 
       title: 'Depositions',
       description:
-        'Navigate the intricate maze of witness testimonies and legal depositions with ease. Our transcripts meticulously document every question, answer, and objection, ensuring that no detail is overlooked. Whether it"s a witness deposition, expert testimony, or attorney questioning, we provide a comprehensive record that stands the test of scrutiny.',
+        'Rely on our experienced team to transcribe depositions meticulously, providing precise records for legal review and case preparation.',
     },
     {
-      imgUrl: '/legal/Interview.svg',
+      imgUrl: '/legal_industry/minutesmemo.svg',
 
-      title: 'Legal Interviews',
+      title: 'Meeting Minutes & Memos',
       description:
-        'Delve into insightful conversations and in-depth legal discussions with our transcription services. Whether it"s interviews with clients, witnesses, or experts, we capture every detail with precision. From investigative interviews to client consultations, our transcripts provide a thorough documentation of legal interactions, facilitating informed decision-making and strategy formulation.',
+        'Keep track of key points and decisions from legal meetings with our detailed and reliable transcriptions.',
     },
     {
-      imgUrl: '/legal/dictations.svg',
+      imgUrl: '/legal_industry/dictation.png',
 
-      title: 'Legal Dictations',
+      title: 'Dictations',
       description:
-        'From case notes to legal memos, we transform spoken words into written documents with unparalleled accuracy. Our transcriptionists meticulously transcribe dictations from legal professionals, ensuring that important information is captured and documented for future reference. Whether it"s case summaries, client letters, or legal briefs, we deliver transcripts that meet the highest standards of clarity and professionalism.',
+        'Simplify your workflow with precise transcriptions of dictations, enabling you to focus more on your legal practice.',
     },
     {
-      imgUrl: '/legal/agreements.svg',
-
-      title: 'Contracts and Agreements',
+      imgUrl: '/legal_industry/arbitration.svg',
+      title: 'Arbitration Hearings',
       description:
-        'Ensure the clarity and enforceability of legal contracts and agreements with accurate transcriptions. Our transcripts meticulously document the terms, conditions, and provisions of contracts, ensuring that all parties are fully informed and legally protected. From commercial agreements to employment contracts, we provide a clear and comprehensive record of contractual obligations and rights.',
+        'Ensure every word of arbitration proceedings is documented accurately, facilitating fair and transparent resolutions.',
     },
     {
-      imgUrl: '/legal/briefs.svg',
-      title: 'Pleadings and Briefs',
+      imgUrl: '/legal_industry/witness.svg',
+      title: 'Expert Witness Testimonies',
       description:
-        'Dive deep into the heart of legal arguments and persuasive advocacy with our transcripts of legal pleadings and briefs. Our transcriptionists meticulously capture the essence of legal arguments, ensuring that key points and supporting evidence are accurately documented. Whether it"s a motion, brief, or memorandum, we provide transcripts that articulate your legal position with clarity and precision.',
+        'Ensure accurate documentation of expert witness statements, critical for case development and courtroom presentations.',
     },
     {
-      imgUrl: '/legal/witness.svg',
-      title: 'Witness Testimony',
+      imgUrl: '/legal_industry/affidavit.svg',
+      title: 'Affidavits & Legal Statements',
       description:
-        'Illuminate the courtroom with expert insights and analysis, as our transcripts faithfully capture the testimony of expert witnesses. From technical jargon to complex concepts, we ensure that expert testimony is conveyed accurately and comprehensively. Our transcripts provide a clear and concise record of expert opinions, facilitating a deeper understanding of complex issues and enhancing the credibility of your case.',
-    },
-    {
-      imgUrl: '/legal/arbitration.svg',
-      title: 'Arbitration Proceedings',
-      description:
-        'Navigate alternative dispute resolution with confidence, as our transcripts provide a clear and comprehensive record of arbitration proceedings. Whether it"s arbitration hearings, mediation sessions, or settlement conferences, we document every aspect of the process with precision. Our transcripts facilitate fair and impartial resolutions, ensuring that all parties are heard and their interests are protected.',
+        'Trust us to provide accurate transcriptions of affidavits and legal statements, crucial for legal documentation and proceedings.',
     },
   ];
 
@@ -279,13 +286,13 @@ export default function Page() {
             {audio_video_theme.map((content) => (
               <div
                 key={content.title}
-                className='flex flex-col shadow-xl  items-center gap-y-6  md:px-5 md:py-5'
+                className='flex flex-col shadow-2xl  items-center gap-y-6 px-5 py-5 md:px-5 md:py-5'
               >
-                <div>
+                <div className='relative bg-red-100 max-h-[10rem] w-full min-h-[10rem]'>
                   <img
-                    src='/legal_industry/affidavit.svg'
-                    className='w-full'
-                    alt=''
+                    src={content.imgUrl}
+                    className='absolute left-0 top-0 w-full h-full object-cover'
+                    alt={content.title}
                   />
                 </div>
                 <div className=''>
