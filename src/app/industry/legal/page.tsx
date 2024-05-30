@@ -275,7 +275,9 @@ export default function Page() {
           </p>
         </div>
 
-        <div className='absolute top-0 -z-[1]'>
+        <div style={{background: '#8468f5'}} className='absolute -z-[1] top-0 left-0 right-0 bg-indigo-500 h-[15rem]'></div>
+
+        <div className='absolute top-[14rem] -z-[1]'>
           <img
             src='/legal_industry/background pattern.svg'
             className='object-contain '
