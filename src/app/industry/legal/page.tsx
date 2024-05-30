@@ -235,7 +235,7 @@ export default function Page() {
                   <div
                     key={feature.name}
                     className={classNames(
-                      'relative py-8 px-4  shadow-sm bg-gray-50 rounded-xl',
+                      'relative py-8 px-4  shadow-sm bg-white rounded-xl',
                       index % 2 == 0 ? '' : 'md:-mt-16 md:mb-16',
                     )}
                   >
