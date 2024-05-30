@@ -5,19 +5,16 @@ import Faqs from './Faqs';
 export default function FaqsPreview() {
   const faqs: FaqsProp[] = [
     {
-      title:
-        'What is Verbalscripts’?',
+      title: 'What is Verbalscripts’?',
       content:
         'Verbalscripts is an online digital platform  that uses crowd-sourced transcriptionists from around the world to transcribe your audio and video files into written transcripts. It is not a stand-alone program and does not require downloading a platform.',
     },
     {
       title: 'What currencies do we support? ',
-      content:
-        'Purchases can be made in USD, AUD, NZD, EUR, JPY, and GBP.',
+      content: 'Purchases can be made in USD, AUD, NZD, EUR, JPY, and GBP.',
     },
     {
-      title:
-        'What are the languages supported?',
+      title: 'What are the languages supported?',
       content:
         'Verbalscripts support a large variety of languages. Languages including Spanish, French, Italian, German, Portuguese, Chinese and Japanese, to name just a few. If you have a language you don’t see listed here, contact our Sales team and we will provide you with a quote. ',
     },

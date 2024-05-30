@@ -106,7 +106,6 @@ export default function Page() {
 
       imgUrl: '/legal/solutions.svg',
     },
-    
   ];
 
   return (
@@ -128,39 +127,37 @@ export default function Page() {
               }}
             />
           </div>
-         <div  className='bg-gray-100  px-6 py-20   pb-40 md:px-10 md:py-20 rounded-xl'>
+          <div className='bg-gray-100  px-6 py-20   pb-40 md:px-10 md:py-20 rounded-xl'>
+            <div className='flex flex-wrap  lg:flex-nowrap items-center gap-x-10 '>
+              <div className='max-w-2xl md:max-w-4xl'>
+                <h1 className='text-4xl font-bold capitalize tracking-tight text-gray-800 sm:text-5xl'>
+                  Court and Legal Reporting Industry
+                </h1>
 
-         <div className='flex flex-wrap  lg:flex-nowrap items-center gap-x-10 '>
-            <div className='max-w-2xl md:max-w-4xl'>
-              <h1 className='text-4xl font-bold capitalize tracking-tight text-gray-800 sm:text-5xl'>
-                Court and Legal Reporting Industry
-              </h1>
+                <p className='block md:max-w-2xl lg:max-w-3xl xl:max-w-4xl relative z-10 mt-6 text-lg  leading-7 text-gray-800'>
+                  Welcome to Verbalscripts your Trusted Partner for Solutions in
+                  the legal Industry
+                </p>
+                <div className='mt-10 flex flex-wrap space-y-5 justify-start lg:flex-nowrap lg:items-center space-x-5'>
+                  <a
+                    href='/contact-us'
+                    className=' rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
+                  >
+                    <span className='flex'>Contect Sales</span>
+                  </a>
 
-              <p className='block md:max-w-2xl lg:max-w-3xl xl:max-w-4xl relative z-10 mt-6 text-lg  leading-7 text-gray-800'>
-                Welcome to Verbalscripts your Trusted Partner for Solutions in
-                the legal Industry
-              </p>
-              <div className='mt-10 flex flex-wrap space-y-5 justify-start lg:flex-nowrap lg:items-center space-x-5'>
-                <a
-                  href='/contact-us'
-                  className=' rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
-                >
-                  <span className='flex'>Contect Sales</span>
-                 
-                </a>
-
-                <a
-                  href='/contact-us'
-                  className='inline-flex flex-nowrap lg:space-x-4  text-xl underline underline-offset-4 transition font-semibold text-indigo-500  hover:text-indigo-300 focus-visible:outline focus-visible:outline-2 '
-                >
-                  <span className='flex'>Request a Quote</span>
-                  <FontAwesomeIcon
-                    className='ml-2 w-5'
-                    icon={faLongArrowRight}
-                  />
-                </a>
-              </div>
-              {/* <div className='lg:hidden   py-5 px-5 max-w-[18rem]'>
+                  <a
+                    href='/contact-us'
+                    className='inline-flex flex-nowrap lg:space-x-4  text-xl underline underline-offset-4 transition font-semibold text-indigo-500  hover:text-indigo-300 focus-visible:outline focus-visible:outline-2 '
+                  >
+                    <span className='flex'>Request a Quote</span>
+                    <FontAwesomeIcon
+                      className='ml-2 w-5'
+                      icon={faLongArrowRight}
+                    />
+                  </a>
+                </div>
+                {/* <div className='lg:hidden   py-5 px-5 max-w-[18rem]'>
                 <div className='px-4 border-l-4 secondary-border'>
                   <div className='text-gray-700 font-semibold '></div>
                   <div className='text-gray-700 font-semibold mb-3'>
@@ -174,16 +171,16 @@ export default function Page() {
                   </div>
                 </div>
               </div> */}
-            </div>
-            <div className='mt-10 lg:mt-0 relative   lg:min-w-[30rem]'>
-              <img
-                src='/legal/landingedited.svg'
-                className='max-w-[90%] lg:absolute object-cover -top-60'
-                alt=''
-              />
+              </div>
+              <div className='mt-10 lg:mt-0 relative   lg:min-w-[30rem]'>
+                <img
+                  src='/legal/landingedited.svg'
+                  className='max-w-[90%] lg:absolute object-cover -top-60'
+                  alt=''
+                />
+              </div>
             </div>
           </div>
-         </div>
           <div
             className='absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]'
             aria-hidden='true'
@@ -203,7 +200,6 @@ export default function Page() {
         <PopularPartner />
       </div>
 
-
       <div className='why-legal-section-bg '>
         <div className='mx-auto max-w-7xl py-5 md:py-10     px-5 md:px-16 lg:px-10'>
           <div className='flex flex-wrap lg:flex-nowrap items-center gap-x-6   rounded-md md:px-8 md:py-24 bg-white/50 ring-1 ring-white/10'>
@@ -212,9 +208,8 @@ export default function Page() {
                 Why choose us?
               </h2>
               <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
-              
                 <span className='relative z-10'>
-                Addressing{' '}
+                  Addressing{' '}
                   <span className='z-10 absolute -bottom-2.5 right-0'>
                     <img src='/svg/lines.svg' className='w-44' alt='' />
                   </span>
@@ -235,62 +230,69 @@ export default function Page() {
               </div>
             </div>
             <div>
-            <dl className='grid max-w-none   place-content-center  grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-x-10 lg:gap-y-10'>
-              {features.map((feature, index) => (
-                <div
-                  key={feature.name}
-                  className={
-                    classNames(
+              <dl className='grid max-w-none   place-content-center  grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-x-10 lg:gap-y-10'>
+                {features.map((feature, index) => (
+                  <div
+                    key={feature.name}
+                    className={classNames(
                       'relative py-8 px-4  shadow-sm bg-gray-50 rounded-xl',
-                      index % 2 == 0 ? '': 'md:-mt-16 md:mb-16'
-                    )
-                  }
-                >
-                  <dt className='flex flex-col items-center text-base font-semibold leading-7 text-gray-900'>
-                    <Image
-                      className='mb-5'
-                      alt={feature.name}
-                      src={feature.imgUrl}
-                      height={110}
-                      width={110}
-                    />
-                    <span className='text-[1.35rem] text-center'>
-                      {feature.name}
-                    </span>
-                  </dt>
-                  <dd className='text-lg text-center mt-2 text-md leading-6 text-gray-500'>
-                    {feature.description}
-                  </dd>
-                </div>
-              ))}
-            </dl>
+                      index % 2 == 0 ? '' : 'md:-mt-16 md:mb-16',
+                    )}
+                  >
+                    <dt className='flex flex-col items-center text-base font-semibold leading-7 text-gray-900'>
+                      <Image
+                        className='mb-5'
+                        alt={feature.name}
+                        src={feature.imgUrl}
+                        height={110}
+                        width={110}
+                      />
+                      <span className='text-[1.35rem] text-center'>
+                        {feature.name}
+                      </span>
+                    </dt>
+                    <dd className='text-lg text-center mt-2 text-md leading-6 text-gray-500'>
+                      {feature.description}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
             </div>
           </div>
-
-         
         </div>
       </div>
 
-      <div className='relative z-[15] py-10 md:py-16' style={{ background: '#FAFAFA' }}>
+      <div
+        className='relative z-[15] py-10 md:py-16'
+        style={{ background: '#FAFAFA' }}
+      >
         <div className='mx-auto max-w-6xl text-left md:text-center px-6 md:px-16 lg:px-16 xl:px-28'>
           <h2 className='text-base font-semibold leading-7 text-white'>
             What we can offer you?
           </h2>
           <p className='mt-2 text-4xl md:text-5xl font-bold  text-gray-900'>
-          Discover the VerbalScripts Advantage for Legal Professionals
+            Discover the VerbalScripts Advantage for Legal Professionals
           </p>
         </div>
 
         <div className='absolute top-0 -z-[1]'>
-            <img src="/legal_industry/background pattern.svg" className='object-contain ' alt="" />
+          <img
+            src='/legal_industry/background pattern.svg'
+            className='object-contain '
+            alt=''
+          />
         </div>
 
         <div className='absolute bottom-0 -rotate-180 -z-[1]'>
-            <img src="/legal_industry/background pattern.svg" className='object-contain ' alt="" />
+          <img
+            src='/legal_industry/background pattern.svg'
+            className='object-contain '
+            alt=''
+          />
         </div>
 
         <div className='mx-auto  max-w-7xl py-10 md:py-24 px-6 md:px-16 lg:px-16 xl:px-28'>
-        <div className='grid max-w-none   place-content-center  grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-x-10 lg:gap-y-10'>
+          <div className='grid max-w-none   place-content-center  grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-x-10 lg:gap-y-10'>
             {audio_video_theme.map((content) => (
               <div
                 key={content.title}
@@ -311,7 +313,6 @@ export default function Page() {
                   <div className='text-gray-600 text-center text-sm capitalize'>
                     {content.description}
                   </div>
-                 
                 </div>
               </div>
             ))}

@@ -63,7 +63,6 @@ export default function PageUserDialog({
     router.push('/auth/login');
   };
   return (
-    
     <Menu as='div' className='relative z-[50] inline-block text-left'>
       <div>
         <Menu.Button className='flex space-x-3 items-center'>

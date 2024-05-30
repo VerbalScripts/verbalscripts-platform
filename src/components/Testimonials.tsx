@@ -155,7 +155,9 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
                   >
                     <circle cx={1} cy={1} r={1} />
                   </svg> */}
-                  <div className='text-gray-500 text-xs md:text-md'>{testimony.occupation}</div>
+                  <div className='text-gray-500 text-xs md:text-md'>
+                    {testimony.occupation}
+                  </div>
                 </div>
                 <div
                   onClick={() => changeActive(index)}

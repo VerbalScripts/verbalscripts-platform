@@ -90,7 +90,6 @@ export default function NotificationsPreview({
                         src='https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png'
                         alt='Bonnie Green avatar'
                       />
-                      
                     </div>
                     <div className='pl-3 w-full text-left'>
                       <div className='font-semibold text-sm text-gray-600 dark:text-white'>

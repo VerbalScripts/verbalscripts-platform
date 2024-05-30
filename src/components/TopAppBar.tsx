@@ -113,10 +113,7 @@ export default function TopAppBar() {
             My Files
           </a>
 
-          <PageUserDialog
-            firstName={user.firstName}
-            email={user.email}
-          />
+          <PageUserDialog firstName={user.firstName} email={user.email} />
         </p>
       ) : (
         <div className='hidden md:flex animate-pulse  h-10 items-center  justify-end  px-6 md:px-16 lg:px-20'>

@@ -345,7 +345,7 @@ export default function Page() {
                     {feature.description}
                   </dd>
                 </div>
-          ac    ))}
+              ))}
             </dl>
           </div>
         </div>
