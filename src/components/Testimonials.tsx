@@ -76,9 +76,26 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
     }
   };
 
+  const punchIt = () => {
+   setTimeout(() => {
+    if (activeIndex + 1 <= itemsPerView) {
+      setActiveIndex(activeIndex + 1);
+    } else {
+      setActiveIndex(0);
+    }
+   }, 5000)
+  }
+
+  const changeSliderAuto = () => {
+    setTimeout(() => {
+      punchIt()
+    }, 5000);
+  };
+
   useEffect(() => {
     if (window) {
       window.addEventListener('resize', handleResize);
+      changeSliderAuto();
     }
   }, []);
 

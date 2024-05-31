@@ -15,17 +15,17 @@ export default function Accordion({
   }, [active]);
 
   return (
-    <div className='py-4'>
+    <div className='py-2'>
       <h2>
         <button
-          className='flex items-start  space-x-4 md:space-x-7 w-full text-left font-semibold py-2'
+          className='flex items-start   space-x-4 md:space-x-7 w-full text-left font-semibold py-2 px-5'
           onClick={() => setAccordionOpen(!accordionOpen)}
           aria-expanded={accordionOpen}
           aria-controls={`accordion-text-${id}`}
         >
-          <span className=' h-9 w-9 flex -mt-1 justify-center items-center rounded-full'>
+          <span className=' h-9 w-9 flex -mt-1  justify-center items-center rounded-full'>
             <svg
-              className='fill-indigo-500 shrink-0'
+              className='fill-orange-500 shrink-0'
               width='16'
               height='16'
               xmlns='http://www.w3.org/2000/svg'
@@ -46,7 +46,7 @@ export default function Accordion({
               />
             </svg>
           </span>
-          <span className='text-gray-800 text-xl font-semibold'>{title}</span>
+          <span className='text-gray-800 text-lg font-semibold'>{title}</span>
         </button>
       </h2>
       <div

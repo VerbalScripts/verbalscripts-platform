@@ -159,7 +159,7 @@ Anytime you are contacting our customer support please provide the file name, em
         <PopularPartner />
       </div>
 
-      <div className='bg-white py-32 md:py-24'>
+      <div className='bg-white py-32 md:py-24 pb-0 md:pb-56'>
         <div className='mx-auto max-w-7xl relative'>
           <div className='absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] opacity-20' />
           <div className='absolute  right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center' />
@@ -232,19 +232,34 @@ Anytime you are contacting our customer support please provide the file name, em
         </div>
       </div>
 
-      <div className='bg-indigo-500 py-32 md:py-24'>
-        <div className='mx-auto max-w-7xl relative'>
-          <div className='mx-auto px-6 md:px-0 md:max-w-2xl text-left lg:text-center'>
-            <p className='mt-2 text-3xl font-bold  section-title text-white md:text-4xl'>
-              Can{"'"}t Find what you are looking for?
-            </p>
-            {/* <p className="mt-6 text-lg leading-8 text-gray-600">
-            Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a elementum
-            pulvinar et feugiat blandit at. In mi viverra elit nunc.
-          </p> */}
-          </div>
-          <div className='my-10 flex items-center justify-center space-x-10'>
+      <div className='contact-section-bg py-32 md:py-24'>
+        <div className='relative mx-auto max-w-7xl '>
+          <div className='absolute flex items-center space-y-10 md:space-y-0 space-x-10 py-10 md:py-16 left-44 px-16 right-44 -top-60 mx-auto bg-gray-300 rounded-xl'>
+            <div className='md:max-w-md'>
+              <p className='mt-2 text-3xl font-bold text-indigo-600 md:text-4xl'>
+                Get Started ?
+              </p>
+              <p className='mt-6 text-lg leading-8 text-gray-700'>
+                Quis tellus eget adipiscing convallis sit sit eget aliquet quis.
+                Suspendisse eget egestas a elementum.
+              </p>
+            </div>
 
+            <div className='flex space-x-5'>
+              <a
+                href='/upload-files'
+                className='rounded-lg  px-5 py-2.5 text-md transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
+              >
+                <span>Contact us</span>
+              </a>
+
+              <a
+                href='/upload-files'
+                className='rounded-lg px-5 py-2.5 text-md transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
+              >
+                <span>Learn More</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
