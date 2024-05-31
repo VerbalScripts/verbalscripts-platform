@@ -234,7 +234,7 @@ Anytime you are contacting our customer support please provide the file name, em
 
       <div className='contact-section-bg py-32 md:py-24'>
         <div className='relative mx-auto max-w-7xl '>
-          <div className='absolute flex items-center space-y-10 md:space-y-0 space-x-10 py-10 md:py-16 left-44 px-16 right-44 -top-60 mx-auto bg-gray-300 rounded-xl'>
+          <div className='absolute flex items-center space-y-10 md:space-y-0 space-x-10 py-10 md:py-16 left-44 px-16 right-44 -top-60 mx-auto bg-gray-200 rounded-xl'>
             <div className='md:max-w-md'>
               <p className='mt-2 text-3xl font-bold text-indigo-600 md:text-4xl'>
                 Get Started ?
