@@ -266,7 +266,7 @@ export default function Page() {
                   <div
                     key={feature.name}
                     className={classNames(
-                      'relative py-8 px-4 lg:px-16  shadow-sm bg-white rounded-xl',
+                      'relative py-8 px-4 lg:px-3 xl:px-5  shadow-sm bg-white rounded-xl',
                       index % 2 == 0 ? '' : 'md:-mt-16 md:mb-16',
                     )}
                   >
@@ -323,15 +323,15 @@ export default function Page() {
                 key={content.title}
                 className='flex flex-col shadow-2xl bg-white  items-center gap-y-6 px-5 py-5 md:px-5 md:py-5'
               >
-                <div className='relative  max-h-[15rem] w-full min-h-[15rem]'>
+                <div className='relative  max-h-[13rem] w-full min-h-[13rem]'>
                   <img
                     src={content.imgUrl}
                     className='absolute left-0 top-0 w-full h-full object-cover'
                     alt={content.title}
                   />
                 </div>
-                <div className='pb-10'>
-                  <div className='mb-5 text-center text-xl md:text-2xl text-gray-900 capitalize font-semibold'>
+                <div className=''>
+                  <div className='mb-2 text-center text-xl md:text-xl text-gray-800 capitalize font-semibold'>
                     {content.title}
                   </div>
 
