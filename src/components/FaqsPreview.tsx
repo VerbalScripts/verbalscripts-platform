@@ -44,10 +44,16 @@ export default function FaqsPreview() {
           <p className='mt-2 text-2xl font-bold  section-title text-gray-900 md:text-3xl'>
             Need more Help ?
           </p>
-          <div className='my-4'>
-            <button className='text-white bg-indigo-500 hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-md px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-indigo-400 me-2 mb-2'>
+          <div className='my-4 flex items-center space-x-4 justify-center'>
+            <a href='/contact-us' className='text-gray-700 font-semibold  hover:bg-gray-100 border border-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-100  rounded-lg text-md px-5 py-2.5   me-2 mb-2 hover:ring-gray-200 hover:text-gray-600'>
               Contact Support
-            </button>
+            </a>
+            <a
+              href='/faqs'
+              className='text-white bg-indigo-500 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-semibold rounded-lg text-md px-5 py-2.5  hover:bg-indigo-400 me-2 mb-2 '
+            >
+              More Faqs
+            </a>
           </div>
         </div>
       </div>

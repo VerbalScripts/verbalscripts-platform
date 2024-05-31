@@ -1,66 +1,114 @@
-'use client';
-
 import React from 'react';
-
-import {
-  ArrowPathIcon,
-  LockClosedIcon,
-  CurrencyDollarIcon,
-} from '@heroicons/react/24/outline';
 
 import AppHeader from '@/components/AppHeader';
 import AppFooter from '@/components/AppFooter';
-import LogoSlider from '@/components/LogoSlider';
+import { Metadata } from 'next';
+import PopularPartner from '@/components/PopularPartner';
+import Faqs from '@/components/Faqs';
+
+export const metadata: Metadata = {
+  title: 'Verbalscripts - Frequently asked Questions',
+
+  keywords: [
+    'transcription',
+    'audio transcription',
+    'video transcription',
+    'speech to text',
+    'academic transcription',
+    'proofreading',
+  ],
+  description:
+    'We provide fast and affordable client-ready transcription services tailored to your needs through transcription, reviewing and proofreading.',
+
+  openGraph: {
+    type: 'website',
+    url: 'https://verbalscripts.com',
+    title: 'Verbalscripts - Frequently asked Questions',
+    description:
+      'We provide fast and affordable client-ready transcription services tailored to your needs through transcription, reviewing and proofreading.',
+
+    siteName: 'Verbalscripts - 100% Human Transcription Services',
+    images: [
+      {
+        url: 'https://verbalscripts.com/icons/logo-banner.jpg',
+        secureUrl: 'https://verbalscripts.com/icons/logo-banner.jpg',
+        alt: 'Verbalscripts - Frequently asked Questions',
+        type: 'image/jpg',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: 'https://verbalscripts.com',
+  },
+};
 
 export default function FAQsPage() {
-  const features = [
+  const pageFaqs: FaqsProp[] = [
     {
-      name: 'Transcribe with High Accuracy',
-      description:
-        'Turn any audio to text with industry leading accuracy and the best transcription models on the market.',
-      icon: LockClosedIcon,
-      imgUrl: 'confidential',
+      title: 'What is Verbalscripts’?',
+      content:
+        'Verbalscripts is an online digital platform  that uses crowd-sourced transcriptionists from around the world to transcribe your audio and video files into written transcripts. It is not a stand-alone program and does not require downloading a platform.',
     },
     {
-      name: 'One Click Submission and Fast Processing',
-      description:
-        'Simply give a us a link or upload your file and your will be ready in a matter of minutes',
-      icon: ArrowPathIcon,
-      imgUrl: 'compliant',
+      title: 'What currencies do we support? ',
+      content: 'Purchases can be made in USD, AUD, NZD, EUR, JPY, and GBP.',
     },
     {
-      name: 'Affordable Solutions',
-      description:
-        'The quality and workflow we have built enable us to deliver the highest quality data consistently at low prices.',
-      icon: CurrencyDollarIcon,
-      imgUrl: 'affordable',
+      title: 'What are the languages supported?',
+      content:
+        'Verbalscripts support a large variety of languages. Languages including Spanish, French, Italian, German, Portuguese, Chinese and Japanese, to name just a few. If you have a language you don’t see listed here, contact our Sales team and we will provide you with a quote. ',
     },
   ];
 
-  const TrustedClients = [
+  const service_faqs: FaqsProp[] = [
     {
-      name: 'Transistor',
-      imgUrl:
-        'https://tailwindui.com/img/logos/158x48/transistor-logo-gray-900.svg',
+      title: 'What is your accuracy guarantee and how to achieve it?',
+      content:
+        'Our Standard and Verbatim service tiers come with an accuracy guarantee of 99% for all audible words in a high quality audio. We monitor the Word Error Rate (WER), which is what our accuracy guarantee is based on. Out of the total number of words, less than 1% of them will be inaccurate.',
     },
     {
-      name: 'Reform',
-      imgUrl:
-        'https://tailwindui.com/img/logos/158x48/reform-logo-gray-900.svg',
+      title: 'I want only a portion of my audio transcribed. Can I do that? ',
+      content:
+        'No. We transcribe the full duration of media files; however, it is easy to trim your audio or video using free software like Audacity or Quicktime. ',
     },
     {
-      name: 'Tuple',
-      imgUrl: 'https://tailwindui.com/img/logos/158x48/tuple-logo-gray-900.svg',
+      title:
+        'I am not happy with the qualuty of my transcript. Can i submit it for review again?',
+      content:
+        'It is paramount for us to ensure your satisfaction with the completed transcript and we are sorry to hear if you are not happy with the final output. Please email us with the name of the file, email address used to upload your file, and let us know the exact problem you’re seeing with your transcription.',
+    },
+  ];
+
+  const pricing: FaqsProp[] = [
+    {
+      title: 'How much does it cost for transcription?',
+      content:
+        'Pricing is set at a per minute rate which varies depending on the service that you choose, as well as the options that you choose at checkout. Click ‘Get A Quote’, fill out the selections and we’ll be able to provide a finalized price for bulk orders.',
     },
     {
-      name: 'Savvycal',
-      imgUrl:
-        'https://tailwindui.com/img/logos/158x48/savvycal-logo-gray-900.svg',
+      title: 'What currencies do we support? ',
+      content: 'Purchases can be made in USD, AUD, NZD, EUR, JPY, and GBP.',
     },
     {
-      name: 'Statamic',
-      imgUrl:
-        'https://tailwindui.com/img/logos/158x48/statamic-logo-gray-900.svg',
+      title: 'What payments methods do we offer?',
+      content:
+        'Our standard payment method is by credit card. We accept Visa, Mastercard, American Express, and Discover Card.',
+    },
+
+    {
+      title: 'Can I get a refund for my order?',
+      content: `
+Refunds are typically handled on a case by case basis depending on the situation, here are a couple of frequent scenarios:
+
+If you realize that you have uploaded the incorrect audio file for us to transcribe, we’re able to offer a 1 hour cancellation window after purchase, for our Standard and Verbatim service tiers, but not Machine Express or First Draft due to our turnaround times – so please be sure to upload the correct file.
+You feel that your transcript is inaccurate after it’s been completed – we will conduct a review, depending on the service tier level that you purchased.If it’s First Draft, there is no accuracy guarantee, however we will conduct a review to audit quality and make a determination after the review.If you ordered Standard or Verbatim we will conduct a review using our Word Error Rate (WER) guidelines to determine accuracy and will work with you if there is a discrepancy.For Machine Express orders, there are no refunds and we suggest uploading a sample file to test for this reason.
+Delivery times are an estimate of what your file should take but are not guaranteed. If you’re having an issue with not getting your files back in time, please contact us to resolve.
+For rush orders not delivered within our projected turnaround time, please contact us for a partial refund.
+
+Anytime you are contacting our customer support please provide the file name, email address used to upload your file, and a summary of the problem.
+
+        `,
     },
   ];
 
@@ -107,63 +155,55 @@ export default function FAQsPage() {
         </div>
       </div>
 
-      <div className=' py-32 md:py-10' style={{ backgroundColor: '#f9f8f2' }}>
-        <div className='mx-auto max-w-7xl xl:max-w-8xl px-6 lg:px-8 xl:px-10'>
-          {/* <h2 className='text-center text-lg font-semibold leading-8 text-gray-900'>
-            Trusted by the world’s most innovative teams
-          </h2> */}
-          <div className='mx-auto   sm:max-w-xl  lg:mx-0 lg:max-w-none'>
-            <LogoSlider partners={TrustedClients} />
-          </div>
-          {/* <div className='mx-auto mt-10 grid  grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5 '>
-           
-            <img
-              className='col-span-2 max-h-12 w-full object-contain lg:col-span-1'
-              src='https://tailwindui.com/img/logos/158x48/tuple-logo-gray-900.svg'
-              alt='Tuple'
-              width={158}
-              height={48}
-            />
-          
-          </div> */}
-        </div>
+      <div className='bg-white py-0'>
+        <PopularPartner />
       </div>
 
       <div className='bg-white py-32 md:py-24'>
-        <div className='mx-auto max-w-7xl px-6 lg:px-8'>
-          <div className='mx-auto max-w-4xl lg:text-center'>
-            {/* <h2 className="text-base font-semibold leading-7 text-indigo-600">What we do</h2> */}
-            <p className='mt-2 text-5xl font-bold  text-gray-900'>
-              Benefits of Choosing VerbalScripts
+        <div className='mx-auto max-w-7xl relative'>
+          <div className='absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] opacity-20' />
+          <div className='absolute  right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center' />
+
+          <div className='mx-auto px-6 md:px-0 md:max-w-2xl text-left lg:text-center'>
+            <p className='mt-2 text-3xl font-bold  section-title text-gray-900 md:text-4xl'>
+              Service Delivery Questions
             </p>
-            <p className='mx-auto max-w-2xl mt-6 text-lg leading-8 text-gray-600'>
-              Why we are the best platform for transcription to improve your
-              speed, privacy and quality service.
-            </p>
+            {/* <p className="mt-6 text-lg leading-8 text-gray-600">
+            Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a elementum
+            pulvinar et feugiat blandit at. In mi viverra elit nunc.
+          </p> */}
           </div>
-          <div className='mx-auto mt-16 max-w-7xl sm:mt-20 lg:mt-24 lg:max-w-8xl'>
-            <dl className='grid max-w-full grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-y-16'>
-              {features.map((feature) => (
-                <div
-                  key={feature.name}
-                  className='relative py-8 px-5 rounded-xl shadow-sm'
-                  style={{ backgroundColor: '#f9f8f2' }}
-                >
-                  <dt className='flex flex-col items-center text-base font-semibold leading-7 text-gray-900'>
-                    <div className='mb-5 flex h-16 w-16 items-center justify-center rounded-lg bg-indigo-500'>
-                      <feature.icon
-                        className='h-10 w-10 text-white'
-                        aria-hidden='true'
-                      />
-                    </div>
-                    <span className='text-2xl text-center'>{feature.name}</span>
-                  </dt>
-                  <dd className='text-lg text-left mt-2 text-md leading-6 text-gray-600'>
-                    {feature.description}
-                  </dd>
-                </div>
-              ))}
-            </dl>
+
+          <div className='py-10 px-6'>
+            <Faqs faqs={service_faqs} />
+          </div>
+
+          <div className='mx-auto px-6 md:px-0 md:max-w-2xl text-left lg:text-center'>
+            <p className='mt-2 text-3xl font-bold  section-title text-gray-900 md:text-4xl'>
+              Verbalscripts Faqs
+            </p>
+            {/* <p className="mt-6 text-lg leading-8 text-gray-600">
+            Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a elementum
+            pulvinar et feugiat blandit at. In mi viverra elit nunc.
+          </p> */}
+          </div>
+
+          <div className='py-10 px-6'>
+            <Faqs faqs={pageFaqs} />
+          </div>
+
+          <div className='mx-auto px-6 md:px-0 md:max-w-2xl text-left lg:text-center'>
+            <p className='mt-2 text-3xl font-bold  section-title text-gray-900 md:text-4xl'>
+              Pricing and Payments Faqs
+            </p>
+            {/* <p className="mt-6 text-lg leading-8 text-gray-600">
+            Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a elementum
+            pulvinar et feugiat blandit at. In mi viverra elit nunc.
+          </p> */}
+          </div>
+
+          <div className='py-10 px-6'>
+            <Faqs faqs={pricing} />
           </div>
         </div>
       </div>
@@ -189,39 +229,22 @@ export default function FAQsPage() {
               </radialGradient>
             </defs>
           </svg>
-          <div className='mx-auto  xl:max-w-full px-6 lg:px-8 xl:px-14'>
-            <div className='relative isolate py-24   px-6   sm:px-16 md:py-10  lg:flex lg:items-center lg:gap-x-20 lg:px-24 lg:pt-0'>
-              <div className='mx-auto  max-w-2xl text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left'>
-                <h2 className='text-5xl font-bold  text-white '>
-                  Ready to succeed with our Transcription Solutions
-                </h2>
-                <p className='mt-6 text-xl leading-8 text-gray-100'>
-                  Click the order now button to get started today or request a
-                  quote if your project is complex.
-                </p>
-                <div className='mt-10 flex items-center flex-wrap justify-center gap-6 lg:justify-start'>
-                  <a
-                    href='#'
-                    className='text-xl font-semibold leading-6 text-white px-8 py-3.5 ring-1  ring-gray-200 rounded-full transition hover:-translate-y-1 hover:shadow-2xl'
-                  >
-                    Order Now
-                  </a>
-                  <button
-                    onClick={() => {}}
-                    className='rounded-full bg-orange-500 px-8 py-3.5 text-xl font-semibold text-white transition hover:-translate-y-1 hover:shadow-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white'
-                  >
-                    Get a Qoute
-                  </button>
-                </div>
-              </div>
-              <div className='hidden lg:block relative mt-16 h-80 lg:-mt-8 pr-10'>
-                <img
-                  className=' w-[32rem] max-w-none'
-                  src='transcription-service.webp'
-                  alt='Ready to Succeed with our transcription service'
-                />
-              </div>
-            </div>
+        </div>
+      </div>
+
+      <div className='bg-indigo-500 py-32 md:py-24'>
+        <div className='mx-auto max-w-7xl relative'>
+          <div className='mx-auto px-6 md:px-0 md:max-w-2xl text-left lg:text-center'>
+            <p className='mt-2 text-3xl font-bold  section-title text-white md:text-4xl'>
+              Can{"'"}t Find what you are looking for?
+            </p>
+            {/* <p className="mt-6 text-lg leading-8 text-gray-600">
+            Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a elementum
+            pulvinar et feugiat blandit at. In mi viverra elit nunc.
+          </p> */}
+          </div>
+          <div className='my-10 flex items-center justify-center space-x-10'>
+
           </div>
         </div>
       </div>
