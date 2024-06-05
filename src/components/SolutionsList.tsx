@@ -105,7 +105,7 @@ export default function SolutionsList() {
       <dl className='mx-auto grid max-w-none px-6 md:px-16 lg:px-20 xl:px-28 grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 lg:max-w-7xl xl:max-w-7xl lg:grid-cols-2 lg:gap-20'>
         {[...servies].map((feature, index) => (
           <a
-            href={'/solutions/' + feature.href}
+            href={feature.href}
             key={feature.name}
             className={classNames(
               'relative solution-panel  flex flex-col bg-white  transition-all justify-start border ',

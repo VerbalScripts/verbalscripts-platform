@@ -18,7 +18,6 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-
   const faqs: FaqsProp[] = [
     {
       title: 'How much does legal trascription cost?',
@@ -45,8 +44,7 @@ export default function Page() {
       content:
         'The time that it takes to finish a transcript will depend on the duration and the audio quality. We strive to have most audio files that are 90 minutes or less, completed within 2-3 business days. ',
     },
-
-  ]
+  ];
   const audio_video_theme = [
     {
       imgUrl: '/legal_industry/courtproceeding.svg',
@@ -306,15 +304,14 @@ export default function Page() {
           </p>
         </div>
 
-        <div style={{background: '#8468f5'}} className='absolute -z-[1] top-0 left-0 w-full bg-indigo-500 h-[15rem]'></div>
+        <div
+          style={{ background: '#8468f5' }}
+          className='absolute -z-[1] top-0 left-0 w-full bg-indigo-500 h-[15rem]'
+        ></div>
 
-        <div className='absolute top-[14rem] left-0  w-full -z-[1] why_industry_bg'>
-         
-        </div>
+        <div className='absolute top-[14rem] left-0  w-full -z-[1] why_industry_bg'></div>
 
-        <div className='absolute bottom-0 left-0 w-full -rotate-180 -z-[1] why_industry_bg'>
-        
-        </div>
+        <div className='absolute bottom-0 left-0 w-full -rotate-180 -z-[1] why_industry_bg'></div>
 
         <div className='mx-auto  max-w-7xl py-10 md:py-24 xl:py-24 px-6 md:px-16 lg:px-16 xl:px-32'>
           <div className='grid max-w-none   place-content-center  grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-x-10 lg:gap-y-10'>
@@ -346,23 +343,21 @@ export default function Page() {
       </div>
 
       <div className=' py-14 sm:py-12 bg-gray-100'>
-      <div className='mx-auto max-w-7xl relative'>
-      <div className='mx-auto px-6 md:px-0 md:max-w-2xl text-left lg:text-center'>
-          <p className='mt-2 text-4xl font-bold  section-title text-gray-900 md:text-5xl'>
-           Legal Frequently asked questions
-          </p>
-          {/* <p className="mt-6 text-lg leading-8 text-gray-600">
+        <div className='mx-auto max-w-7xl relative'>
+          <div className='mx-auto px-6 md:px-0 md:max-w-2xl text-left lg:text-center'>
+            <p className='mt-2 text-4xl font-bold  section-title text-gray-900 md:text-5xl'>
+              Legal Frequently asked questions
+            </p>
+            {/* <p className="mt-6 text-lg leading-8 text-gray-600">
             Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a elementum
             pulvinar et feugiat blandit at. In mi viverra elit nunc.
           </p> */}
-        </div>
+          </div>
 
-        
-        <div className='py-10 px-6'>
-          <Faqs faqs={faqs} />
+          <div className='py-10 px-6'>
+            <Faqs faqs={faqs} />
+          </div>
         </div>
-
-      </div>
       </div>
 
       <HowItWorks custom_class='legal-how-it-works' />

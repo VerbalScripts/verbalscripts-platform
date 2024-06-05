@@ -46,7 +46,9 @@ export default function Accordion({
               />
             </svg>
           </span>
-          <span className='text-gray-800 text-lg font-semibold'>{title}</span>
+          <span className='text-gray-800 text-md md:text-lg font-semibold'>
+            {title}
+          </span>
         </button>
       </h2>
       <div

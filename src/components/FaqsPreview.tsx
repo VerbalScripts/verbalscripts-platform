@@ -5,18 +5,26 @@ import Faqs from './Faqs';
 export default function FaqsPreview() {
   const faqs: FaqsProp[] = [
     {
-      title: 'What is Verbalscripts’?',
-      content:
-        'Verbalscripts is an online digital platform  that uses crowd-sourced transcriptionists from around the world to transcribe your audio and video files into written transcripts. It is not a stand-alone program and does not require downloading a platform.',
+      title: 'What sets Verbalscripts apart from other transcription services?',
+      content: `Experienced Transcriptionists: Our transcriptionists undergo a thorough recruitment and training process to meet our high standards. They exhibit precise attention to detail, possess a firm grasp of English grammar, and are dedicated to ensuring your transcripts meet the highest standards of quality and accuracy.\n
+          Value for Money: Verbalscripts offers a cost-effective solution, ensuring high-quality transcripts at a lower rates compared to competitors, allowing you to save without compromising on quality\n          
+          Accuracy Guarantee: Verbalscripts ensures transcript accuracy through four-step process: transcribing, reviewing, proofreading, and formatting, guaranteeing high-quality transcripts.\n
+          Dedicated Customer Service: Enjoy personalized support with a dedicated contact person assigned to you, ensuring seamless communication and assistance.
+          Extensive Experience: With a track record of serving over 500 satisfied customers, Verbalscripts brings extensive experience and expertise to every transcription project.
+          `,
     },
     {
-      title: 'What currencies do we support? ',
-      content: 'Purchases can be made in USD, AUD, NZD, EUR, JPY, and GBP.',
+      title:
+        'Why are your prices much lower than other transcription services? ',
+      content: `Clients often wonder how Verbalscripts can offer transcription services at up to 60% less than our competitors while maintaining quality and reliability. Here's the straightforward explanation:
+      We operate efficiently, we prioritize building long-term relationships with our clients. Unlike some competitors who view clients as one-time transactions, we value customer satisfaction and rely on referrals for continued business success. 
+      Therefore, we do not engage in price gouging. Transparency is key to our business model. There are no hidden tricks or bait-and-switch tactics. Our commitment to value-conscious customers like you ensures that we will remain in business for many years to come.
+      `,
     },
     {
-      title: 'What are the languages supported?',
-      content:
-        'Verbalscripts support a large variety of languages. Languages including Spanish, French, Italian, German, Portuguese, Chinese and Japanese, to name just a few. If you have a language you don’t see listed here, contact our Sales team and we will provide you with a quote. ',
+      title: 'Why are humans considered more reliable than AI and software?',
+      content: `Humans possess the ability to grasp context and distinguish voices, even in situations where multiple speakers are talking simultaneously. Conversely, AI and software often struggle to accurately identify speakers and may make erroneous assumptions, particularly with homonyms and similar-sounding words.
+        At Verbalscripts, your transcripts are 100% crafted by experienced transcriptionists, ensuring unparalleled quality and accuracy that software-generated transcripts cannot match.`,
     },
   ];
 
@@ -45,7 +53,10 @@ export default function FaqsPreview() {
             Need more Help ?
           </p>
           <div className='my-4 flex items-center space-x-4 justify-center'>
-            <a href='/contact-us' className='text-gray-700 font-semibold  hover:bg-gray-100 border border-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-100  rounded-lg text-md px-5 py-2.5   me-2 mb-2 hover:ring-gray-200 hover:text-gray-600'>
+            <a
+              href='/contact-us'
+              className='text-gray-700 font-semibold  hover:bg-gray-100 border border-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-100  rounded-lg text-md px-5 py-2.5   me-2 mb-2 hover:ring-gray-200 hover:text-gray-600'
+            >
               Contact Support
             </a>
             <a

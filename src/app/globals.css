@@ -437,11 +437,7 @@ span.svg-circles {
 
 .contact-section-bg {
   background: rgb(215, 200, 234);
-  background-image: linear-gradient(
-    180deg,
-    #FF450DCC,
-    #FAAA19
-  );
+  background-image: linear-gradient(180deg, #ff450dcc, #faaa19);
 }
 
 /* search customize */
@@ -518,12 +514,10 @@ span.svg-circles {
   transform: translateY(0px);
 }
 
-
 /* industry legal */
 
 .why_industry_bg {
   background: url('/legal_industry/background pattern.svg') no-repeat;
   background-size: cover;
   height: 30rem;
-
 }

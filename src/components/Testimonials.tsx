@@ -77,18 +77,18 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
   };
 
   const punchIt = () => {
-   setTimeout(() => {
-    if (activeIndex + 1 <= itemsPerView) {
-      setActiveIndex(activeIndex + 1);
-    } else {
-      setActiveIndex(0);
-    }
-   }, 5000)
-  }
+    setTimeout(() => {
+      if (activeIndex + 1 <= itemsPerView) {
+        setActiveIndex(activeIndex + 1);
+      } else {
+        setActiveIndex(0);
+      }
+    }, 5000);
+  };
 
   const changeSliderAuto = () => {
     setTimeout(() => {
-      punchIt()
+      punchIt();
     }, 5000);
   };
 
@@ -114,7 +114,7 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
             What people are saying about{' '}
             <span className='text-orange-400'>VerbalScripts</span>
           </p>
-          {/* <p className="mt-6 text-lg leading-8 text-gray-600">
+          {/* <p className="amt-6 text-lg leading-8 text-gray-600">
             Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a elementum
             pulvinar et feugiat blandit at. In mi viverra elit nunc.
           </p> */}

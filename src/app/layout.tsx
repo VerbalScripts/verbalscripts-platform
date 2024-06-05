@@ -17,6 +17,7 @@ import './globals.css';
 //     'VerbalScripts offers fast, affordable, and highly accurate human transcription, translation, data annotation, and AI dataset services customized for your needs.',
 // };
 
+// const urbanist = Urbanist({ subsets: ['latin'] });
 const urbanist = Urbanist({ subsets: ['latin'] });
 
 export default function RootLayout({

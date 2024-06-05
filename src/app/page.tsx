@@ -5,7 +5,6 @@ import Image from 'next/image';
 import AppHeader from '@/components/AppHeader';
 import LandingPage from '@/components/LandingPage';
 import AppFooter from '@/components/AppFooter';
-import Testimonials from '@/components/Testimonials';
 import PopularPartner from '@/components/PopularPartner';
 
 import type { Metadata } from 'next';
@@ -15,6 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Script from 'next/script';
 import HowItWorks from '@/components/HowItWorks';
 import FaqsPreview from '@/components/FaqsPreview';
+import TestimonialsV2 from '@/components/TestimonialsV2';
 
 export const metadata: Metadata = {
   title: 'Verbalscripts - 100% Human Transcription Services',
@@ -287,12 +287,12 @@ export default function Home() {
         <SolutionsList />
       </div>
       {/* testimonials */}
-      <Testimonials testimonials={testimonials} />
+      <TestimonialsV2 testimonials={testimonials} />
       {/* validation section */}
 
       <div className='bg-white'>
-        <div className='pt-3 pb-20 px-6 md:pt-20 md:pb-20 lg:px-8'>
-          <div className='mx-auto max-w-3xl text-left md:text-center'>
+        <div className='pt-3 pb-20 px-0 md:pt-20 md:pb-20 lg:px-8'>
+          <div className='mx-auto px-6 md:px-0 max-w-3xl text-left md:text-center'>
             {/* <h2 className="text-base font-semibold leading-7 text-indigo-600">
             You did{ "'"}nt Hear it from us
           </h2> */}
@@ -303,7 +303,7 @@ export default function Home() {
               Human driven transcription process.
             </p>
           </div>
-          <div className='mx-auto max-w-7xl py-20 mt-10 steps-section-bg'>
+          <div className='mx-auto max-w-7xl px-6 md:px-0 py-20 mt-10 steps-section-bg'>
             <div className='relative isolate  sm:rounded-3xl sm:px-16  lg:flex lg:items-center lg:gap-x-20 lg:px-24'>
               <div className='hidden lg:block relative md:-mt-16 h-80 lg:min-w-[24rem]   xl:min-w-[25rem]'>
                 <img
@@ -404,12 +404,16 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className='flex lg:hidden justify-center mt-16 md:mr-16'>
+                <div className='mt-16 md:mr-16'>
                   <a
                     href='/upload-files'
-                    className='rounded-xl  ring-inset focus:ring-4 focus:ring-indigo-300  bg-indigo-500 px-8 py-3.5 text-lg font-bold text-white shadow-sm transition  hover:shadow-md hover:bg-indigo-400 hover:rind focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-indigo-300'
+                    className='inline-flex  items-center gap-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
                   >
-                    Order Now
+                    <span>Order Now</span>
+                    <FontAwesomeIcon
+                      className='ml-4 w-6'
+                      icon={faLongArrowRight}
+                    />
                   </a>
                 </div>
               </div>
@@ -448,10 +452,7 @@ export default function Home() {
 
       {/* <CallToActionBanner fn={setOpen} /> */}
 
-      <div
-        className='bg-white pt-0 pb-24 md:pb-24 md:pt-24'
-        style={{ background: '#f9f8f2' }}
-      >
+      <div className='bg-white pt-0 pb-24 md:pb-24 md:pt-24'>
         <div className='mx-auto max-w-7xl  px-6 md:px-16 lg:px-16 xl:px-28'>
           <div className='flex flex-wrap lg:flex-nowrap items-center gap-x-6 '>
             <div className='order-2 md:order-1  md:min-w-[25rem] lg:max-w-[35rem] text-left'>
