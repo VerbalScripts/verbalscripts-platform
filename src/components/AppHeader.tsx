@@ -1,10 +1,12 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 'use client';
 
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React, { Fragment, useState, useRef, useEffect } from 'react';
 import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react';
 import {
-  Bars3Icon,
+  Bars3BottomRightIcon,
   XMarkIcon,
   InformationCircleIcon,
   QuestionMarkCircleIcon,
@@ -26,12 +28,22 @@ import GetAQuoteModal from './GetAQuoteModal';
 import SearchModal from './modals/SearchModal';
 import Image from 'next/image';
 import TobAppBar from './TopAppBar';
+import { GetOrStoreAuthToken } from '@/utils/GetOrStoreAuthToken';
+import AxiosProxy from '@/utils/AxiosProxy';
+import { useRouter } from 'next/navigation';
 
 function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ');
 }
 
+interface User {
+  firstName: string;
+  email: string;
+}
+
 export default function AppHeader() {
+  const router = useRouter();
+
   const [search, toggleSearch] = useState(false);
 
   const services: Array<NavLabel> = [
@@ -189,10 +201,47 @@ export default function AppHeader() {
     { title: 'Company', items: [...resources] },
   ];
 
+  const account = [
+    {
+      name: 'Account Settings',
+      description: 'Manage Account.',
+      href: '/dashboard/account',
+      icon: ChartPieIcon,
+    },
+    {
+      name: 'Pending Orders',
+      description: 'Pending Orders.',
+      href: '/dashboard/pending',
+      icon: ChartPieIcon,
+    },
+    {
+      name: 'Delivered Orders',
+      description: 'Completed Orders.',
+      href: '/dashboard/pending',
+      icon: ChartPieIcon,
+    },
+  ];
+
   const [open, setOpen] = useState(false);
   const [showQuote, setShowQuote] = useState(false);
   let timeout: ReturnType<typeof setTimeout>;
   const timeoutDuration: number = 10;
+
+  const [loading, setLoading] = useState(true);
+  const [isAuth, setIsAuth] = useState(false);
+  const [user, setUser] = useState<User>({
+    email: '',
+    firstName: '',
+  });
+
+  const logout = () => {
+    window.localStorage.removeItem('x-token');
+    window.localStorage.removeItem('rft-btt');
+
+    setIsAuth(false);
+
+    router.push('/auth/login');
+  };
 
   const buttonRefs = useRef<HTMLButtonElement[]>([]);
 
@@ -233,23 +282,6 @@ export default function AppHeader() {
     }
   }, [openMenus]);
 
-  // useEffect(() => {
-  //   console.log(buttonRefs)
-  // }, [buttonRefs])
-  // const handleClick = (open: boolean) => {
-  //   setMenuOpen(!open);
-  //   clearTimeout(timeout);
-  // };
-
-  // const handleClickOutside = (event: Event) => {
-  //   buttonRefs.current.forEach((buttonRef) => {
-  //     if (buttonRef && !buttonRef.contains(event.target as Node)) {
-  //       event.stopPropagation();
-  //       clearOpenMenu();
-  //     }
-  //   });
-  // };
-
   useEffect(() => {
     if (window != undefined) {
       window.addEventListener('scroll', () => {
@@ -264,12 +296,60 @@ export default function AppHeader() {
             ?.classList.remove('is-sticky', 'shadow-lg');
         }
       });
-      // document.addEventListener('mousedown', handleClickOutside);
-      // return () => {
-      //   document.removeEventListener('mousedown', handleClickOutside);
-      // };
     }
   });
+
+  const verifyAuthenticationStatus = async () => {
+    const auth_token = window.localStorage.getItem('rft-btt');
+    if (auth_token == null) {
+      setIsAuth(false);
+      setLoading(false);
+      return null;
+    }
+    try {
+      const response = await AxiosProxy.post(
+        '/auth/refresh',
+        {},
+        {
+          headers: {
+            Authorization: 'Bearer ' + auth_token,
+          },
+        },
+      );
+
+      if (response.status == 201) {
+        GetOrStoreAuthToken(response.data.access_token);
+        window.localStorage.setItem('rft-btt', response.data.refresh_token);
+        setIsAuth(true);
+        setUser({
+          email: response.data.email,
+          firstName: response.data.firstName,
+        });
+      }
+    } catch (err) {
+      // @ts-ignore
+      if (err.code == 'ERR_BAD_REQUEST') {
+        // unauthorized request
+        // @ts-ignore
+        console.log(err.code);
+      }
+      // @ts-ignore
+      if (err.code == 'ERR_NETWORK') {
+        // @ts-ignore
+        console.log(err.code);
+      } else {
+        // @ts-ignore
+        console.log(err.code);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    // check auth status
+    verifyAuthenticationStatus();
+  }, []);
 
   return (
     <div>
@@ -298,7 +378,7 @@ export default function AppHeader() {
             >
               <img
                 className='h-[4.0rem] w-[100%] md:h-[4.0rem] lg:h-[4.8rem]'
-                src='/icons/logo-png.png'
+                src='/icons/logo-v-original.png'
                 alt='Logo Image'
               />
             </a>
@@ -311,7 +391,7 @@ export default function AppHeader() {
             >
               <Image
                 className='w-[3rem]'
-                src='/icons/logo-v.png'
+                src='/icons/logo-v-original.png'
                 alt='Mobile Logo Image'
                 width={30}
                 height={30}
@@ -334,7 +414,7 @@ export default function AppHeader() {
               onClick={() => setOpen(true)}
             >
               <span className='sr-only'>Open main menu</span>
-              <Bars3Icon className='h-8 w-8' aria-hidden='true' />
+              <Bars3BottomRightIcon className='h-8 w-8' aria-hidden='true' />
             </button>
           </div>
 
@@ -466,70 +546,46 @@ export default function AppHeader() {
                   >
                     Home
                   </a>
-                  <Disclosure as='div' className='-mx-3'>
-                    {({ open }) => (
-                      <>
-                        <Disclosure.Button className='flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-xl font-bold leading-7 text-gray-800 hover:text-gray-900'>
-                          <span
-                            className={classNames(open ? 'text-gray-900' : '')}
-                          >
-                            Services
-                          </span>
-                          <ChevronDownIcon
-                            className={classNames(
-                              'h-8 w-8 flex-none transition-all',
-                              open ? 'rotate-0' : '-rotate-90',
-                            )}
-                            aria-hidden='true'
-                          />
-                        </Disclosure.Button>
-                        <Disclosure.Panel className='mt-2 ml-2 space-y-1 border-l border-gray-400'>
-                          {[...services].map((item) => (
-                            <Disclosure.Button
-                              key={item.name}
-                              as='a'
-                              href={item.href}
-                              className='block rounded-lg py-2 pl-6 pr-3 text-lg font-semibold leading-7 text-gray-600 hover:bg-gray-50'
+                  {menuPopovers.map((popover, index) => (
+                    <Disclosure
+                      key={`${popover.title}${index}`}
+                      as='div'
+                      className='-mx-3'
+                    >
+                      {({ open }) => (
+                        <>
+                          <Disclosure.Button className='flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-xl font-bold leading-7 text-gray-800 hover:text-gray-900'>
+                            <span
+                              className={classNames(
+                                open ? 'text-gray-900' : '',
+                              )}
                             >
-                              {item.name}
-                            </Disclosure.Button>
-                          ))}
-                        </Disclosure.Panel>
-                      </>
-                    )}
-                  </Disclosure>
-                  <Disclosure as='div' className='-mx-3'>
-                    {({ open }) => (
-                      <>
-                        <Disclosure.Button className='flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-xl font-bold leading-7 text-gray-800 hover:text-gray-900'>
-                          <span
-                            className={classNames(open ? 'text-gray-900' : '')}
-                          >
-                            Industries
-                          </span>
-                          <ChevronDownIcon
-                            className={classNames(
-                              'h-8 w-8 flex-none transition-all',
-                              open ? 'rotate-0' : '-rotate-90',
-                            )}
-                            aria-hidden='true'
-                          />
-                        </Disclosure.Button>
-                        <Disclosure.Panel className='mt-2 ml-2 space-y-1 border-l border-gray-400'>
-                          {[...solutions].map((item) => (
-                            <Disclosure.Button
-                              key={item.name}
-                              as='a'
-                              href={item.href}
-                              className='block rounded-lg py-2 pl-6 pr-3 text-lg font-semibold leading-7 text-gray-600 hover:bg-gray-50'
-                            >
-                              {item.name}
-                            </Disclosure.Button>
-                          ))}
-                        </Disclosure.Panel>
-                      </>
-                    )}
-                  </Disclosure>
+                              {popover.title}
+                            </span>
+                            <ChevronDownIcon
+                              className={classNames(
+                                'h-8 w-8 flex-none transition-all',
+                                open ? 'rotate-0' : '-rotate-90',
+                              )}
+                              aria-hidden='true'
+                            />
+                          </Disclosure.Button>
+                          <Disclosure.Panel className='mt-2 ml-2 space-y-1 border-l border-gray-400'>
+                            {[...popover.items].map((item) => (
+                              <Disclosure.Button
+                                key={item.name}
+                                as='a'
+                                href={item.href}
+                                className='block rounded-lg py-2 pl-6 pr-3 text-lg font-semibold leading-7 text-gray-600 hover:bg-gray-50'
+                              >
+                                {item.name}
+                              </Disclosure.Button>
+                            ))}
+                          </Disclosure.Panel>
+                        </>
+                      )}
+                    </Disclosure>
+                  ))}
 
                   <Disclosure as='div' className='-mx-3'>
                     {({ open }) => (
@@ -538,7 +594,7 @@ export default function AppHeader() {
                           <span
                             className={classNames(open ? 'text-gray-900' : '')}
                           >
-                            Company
+                            My Account
                           </span>
                           <ChevronDownIcon
                             className={classNames(
@@ -549,7 +605,7 @@ export default function AppHeader() {
                           />
                         </Disclosure.Button>
                         <Disclosure.Panel className='mt-2 ml-2 space-y-1 border-l border-gray-400'>
-                          {[...resources].map((item) => (
+                          {[...account].map((item) => (
                             <Disclosure.Button
                               key={item.name}
                               as='a'
@@ -580,31 +636,52 @@ export default function AppHeader() {
                 </div>
 
                 <div className='mx-4 mb-3'>
-                  <a
-                    href='/dashboard/pending'
-                    className='-mx-3 block text-center rounded-full  bg-indigo-500  px-3 py-2.5 text-xl font-semibold leading-7 text-white hover:bg-indigo-400 hover:text-gray-200'
-                  >
-                    Get Started
-                  </a>
+                  {isAuth ? (
+                    <a
+                      href='/dashboard/pending'
+                      className='-mx-3 block text-center rounded-full  bg-indigo-500  px-3 py-2.5 text-xl font-semibold leading-7 text-white hover:bg-indigo-400 hover:text-gray-200'
+                    >
+                      My Files
+                    </a>
+                  ) : (
+                    <a
+                      href='/dashboard/pending'
+                      className='-mx-3 block text-center rounded-full  bg-indigo-500  px-3 py-2.5 text-xl font-semibold leading-7 text-white hover:bg-indigo-400 hover:text-gray-200'
+                    >
+                      Get Started
+                    </a>
+                  )}
                 </div>
-                <div className='mx-4 grid grid-cols-1 md:grid-cols-1  gap-y-3 md:gap-x-10 divide-x divide-gray-900/5 bg-gray-50'>
-                  <div>
-                    <a
-                      href='#'
-                      className='-mx-3 block text-center rounded-full ring-1 ring-inset ring-indigo-500  px-3 py-2.5 text-xl font-semibold leading-7 text-indigo-500 hover:ring-indigo-400 hover:text-indigo-400'
-                    >
-                      Transcriber Login
-                    </a>
-                  </div>{' '}
-                  <div>
-                    <a
-                      href='#'
-                      className='-mx-3 block text-center rounded-full ring-1 ring-inset ring-indigo-500  px-3 py-2.5 text-xl font-semibold leading-7 text-indigo-500 hover:ring-indigo-400 hover:text-indigo-400'
-                    >
-                      Client Login
-                    </a>
+                {!isAuth ? (
+                  <div className='mx-4 grid grid-cols-1 md:grid-cols-1  gap-y-3 md:gap-x-10 divide-x divide-gray-900/5 bg-gray-50'>
+                    <div>
+                      <a
+                        href='#'
+                        className='-mx-3 block text-center rounded-full ring-1 ring-inset ring-indigo-500  px-3 py-2.5 text-xl font-semibold leading-7 text-indigo-500 hover:ring-indigo-400 hover:text-indigo-400'
+                      >
+                        Transcriber Login
+                      </a>
+                    </div>{' '}
+                    <div>
+                      <a
+                        href='#'
+                        className='-mx-3 block text-center rounded-full ring-1 ring-inset ring-indigo-500  px-3 py-2.5 text-xl font-semibold leading-7 text-indigo-500 hover:ring-indigo-400 hover:text-indigo-400'
+                      >
+                        Client Login
+                      </a>
+                    </div>
                   </div>
-                </div>
+                ) : (
+                  <div className='mx-4 block '>
+                    <button
+                      onClick={() => logout()}
+                      className='w-full text-center focus:ring-4 focus:outline-none focus:ring-indigo-300 rounded-full ring-1 ring-inset ring-indigo-500  px-3 py-2.5 text-xl font-semibold leading-7 text-indigo-500 hover:ring-indigo-400 hover:text-indigo-400'
+                    >
+                      Sign out
+                    </button>
+                  </div>
+                )}
+
                 <div className='flex items-center justify-evenly mt-10'>
                   <a href='/privacy-policy' className='text-gray-600 text-sm'>
                     {' '}

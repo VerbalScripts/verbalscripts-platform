@@ -40,7 +40,7 @@ export default function TopAppBar() {
           },
         },
       );
-
+ 
       if (response.status == 201) {
         GetOrStoreAuthToken(response.data.access_token);
         window.localStorage.setItem('rft-btt', response.data.refresh_token);
