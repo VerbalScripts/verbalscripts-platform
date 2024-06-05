@@ -378,7 +378,7 @@ export default function AppHeader() {
             >
               <img
                 className='h-[4.0rem] w-[100%] md:h-[4.0rem] lg:h-[4.8rem]'
-                src='/icons/logo-v-original.png'
+                src='/icons/logo-png.png'
                 alt='Logo Image'
               />
             </a>
