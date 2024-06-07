@@ -3,8 +3,8 @@ import React from 'react';
 import AppHeader from '@/components/AppHeader';
 import AppFooter from '@/components/AppFooter';
 import { Metadata } from 'next';
-import PopularPartner from '@/components/PopularPartner';
-import Faqs from '@/components/Faqs';
+
+import FaqsPageTab from './components/FaqsPageTab';
 
 export const metadata: Metadata = {
   title: 'Verbalscripts - Frequently asked Questions',
@@ -44,79 +44,11 @@ export const metadata: Metadata = {
 };
 
 export default function FAQsPage() {
-  const pageFaqs: FaqsProp[] = [
-    {
-      title: 'What is Verbalscripts’?',
-      content:
-        'Verbalscripts is an online digital platform  that uses crowd-sourced transcriptionists from around the world to transcribe your audio and video files into written transcripts. It is not a stand-alone program and does not require downloading a platform.',
-    },
-    {
-      title: 'What currencies do we support? ',
-      content: 'Purchases can be made in USD, AUD, NZD, EUR, JPY, and GBP.',
-    },
-    {
-      title: 'What are the languages supported?',
-      content:
-        'Verbalscripts support a large variety of languages. Languages including Spanish, French, Italian, German, Portuguese, Chinese and Japanese, to name just a few. If you have a language you don’t see listed here, contact our Sales team and we will provide you with a quote. ',
-    },
-  ];
-
-  const service_faqs: FaqsProp[] = [
-    {
-      title: 'What is your accuracy guarantee and how to achieve it?',
-      content:
-        'Our Standard and Verbatim service tiers come with an accuracy guarantee of 99% for all audible words in a high quality audio. We monitor the Word Error Rate (WER), which is what our accuracy guarantee is based on. Out of the total number of words, less than 1% of them will be inaccurate.',
-    },
-    {
-      title: 'I want only a portion of my audio transcribed. Can I do that? ',
-      content:
-        'No. We transcribe the full duration of media files; however, it is easy to trim your audio or video using free software like Audacity or Quicktime. ',
-    },
-    {
-      title:
-        'I am not happy with the qualuty of my transcript. Can i submit it for review again?',
-      content:
-        'It is paramount for us to ensure your satisfaction with the completed transcript and we are sorry to hear if you are not happy with the final output. Please email us with the name of the file, email address used to upload your file, and let us know the exact problem you’re seeing with your transcription.',
-    },
-  ];
-
-  const pricing: FaqsProp[] = [
-    {
-      title: 'How much does it cost for transcription?',
-      content:
-        'Pricing is set at a per minute rate which varies depending on the service that you choose, as well as the options that you choose at checkout. Click ‘Get A Quote’, fill out the selections and we’ll be able to provide a finalized price for bulk orders.',
-    },
-    {
-      title: 'What currencies do we support? ',
-      content: 'Purchases can be made in USD, AUD, NZD, EUR, JPY, and GBP.',
-    },
-    {
-      title: 'What payments methods do we offer?',
-      content:
-        'Our standard payment method is by credit card. We accept Visa, Mastercard, American Express, and Discover Card.',
-    },
-
-    {
-      title: 'Can I get a refund for my order?',
-      content: `
-Refunds are typically handled on a case by case basis depending on the situation, here are a couple of frequent scenarios:
-
-If you realize that you have uploaded the incorrect audio file for us to transcribe, we’re able to offer a 1 hour cancellation window after purchase, for our Standard and Verbatim service tiers, but not Machine Express or First Draft due to our turnaround times – so please be sure to upload the correct file.
-You feel that your transcript is inaccurate after it’s been completed – we will conduct a review, depending on the service tier level that you purchased.If it’s First Draft, there is no accuracy guarantee, however we will conduct a review to audit quality and make a determination after the review.If you ordered Standard or Verbatim we will conduct a review using our Word Error Rate (WER) guidelines to determine accuracy and will work with you if there is a discrepancy.For Machine Express orders, there are no refunds and we suggest uploading a sample file to test for this reason.
-Delivery times are an estimate of what your file should take but are not guaranteed. If you’re having an issue with not getting your files back in time, please contact us to resolve.
-For rush orders not delivered within our projected turnaround time, please contact us for a partial refund.
-
-Anytime you are contacting our customer support please provide the file name, email address used to upload your file, and a summary of the problem.
-
-        `,
-    },
-  ];
-
   return (
     <div className='bg-zinc-800  relative'>
       <AppHeader />
 
-      <div className='relative bg--600 h-auto isolate px-6 lg:px-8 bg-indigo-500 landing-page'>
+      <div className='relative mx-auto max-w-7xl  h-auto  px-6 py-20   pb-40 md:py-20 lg:py-20 md:px-20 lg:px-28'>
         {/* <video className='absolute top-0 right-0 left-0 w-full -z-20 h-full object-cover'  loop autoPlay>
         <source src="landing_prodution.mp4" type='video/mp4' />
       </video> */}
@@ -133,14 +65,35 @@ Anytime you are contacting our customer support please provide the file name, em
             }}
           />
         </div>
-        <div className='max-w-7xl md:py-20 py-20 md:mx-10 lg:mx-20 xl:mx-28 flex flex-col items-center text-center'>
-          <h1 className='max-w-6xl lg:max-w-4xl xl:max-w-5xl relative z-10 text-5xl font-bold  text-white lg:text-5xl xl:text-6xl'>
-            Frequently Asked Questions
-          </h1>
-          <p className='md:max-w-2xl lg:max-w-3xl xl:max-w-4xl relative z-10 mt-6 text-xl leading-8 text-gray-100'>
-            How can we help you?.
-          </p>
+        <div className='flex flex-wrap  lg:flex-nowrap items-center gap-x-10 '>
+          <div className='max-w-2xl md:max-w-4xl'>
+            <h1 className='max-w-6xl lg:max-w-4xl xl:max-w-5xl relative z-10 text-5xl font-bold  text-white lg:text-5xl xl:text-6xl'>
+              Frequently Asked Questions
+            </h1>
+            <p className='block md:max-w-2xl lg:max-w-3xl xl:max-w-4xl relative z-10 mt-6 text-lg  leading-7 text-gray-100'>
+              Explore our FAQs to learn how VerbalScripts can meet your
+              transcription needs with precision, efficiency, and unmatched
+              professionalism.
+            </p>
+            <div className='mt-5'>
+                <a
+                  href='/contact-us'
+                  className='inline-flex flex-nowrap  items-center space-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
+                >
+                  <span className='flex'>Contact Support</span>
+                
+                </a>
+              </div>
+          </div>
+          <div className='mt-10 lg:mt-0 relative   lg:min-w-[30rem]'>
+              <img
+                src='/pics/faqs.jpg'
+                className='w-[90%]  lg:max-w-[90%] lg:absolute object-cover -top-32'
+                alt=''
+              />
+            </div>
         </div>
+
         <div
           className='absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]'
           aria-hidden='true'
@@ -155,56 +108,12 @@ Anytime you are contacting our customer support please provide the file name, em
         </div>
       </div>
 
-      <div className='bg-white py-0'>
-        <PopularPartner />
-      </div>
-
-      <div className='bg-white py-32 md:py-24 pb-0 md:pb-56'>
+      <div className='bg-white py-32 md:py-24 pb-20 md:pb-56'>
         <div className='mx-auto max-w-7xl relative'>
           <div className='absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.indigo.100),white)] opacity-20' />
           <div className='absolute  right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center' />
 
-          <div className='mx-auto px-6 md:px-0 md:max-w-2xl text-left lg:text-center'>
-            <p className='mt-2 text-3xl font-bold  section-title text-gray-900 md:text-4xl'>
-              Service Delivery Questions
-            </p>
-            {/* <p className="mt-6 text-lg leading-8 text-gray-600">
-            Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a elementum
-            pulvinar et feugiat blandit at. In mi viverra elit nunc.
-          </p> */}
-          </div>
-
-          <div className='py-10 px-6'>
-            <Faqs faqs={service_faqs} />
-          </div>
-
-          <div className='mx-auto px-6 md:px-0 md:max-w-2xl text-left lg:text-center'>
-            <p className='mt-2 text-3xl font-bold  section-title text-gray-900 md:text-4xl'>
-              Verbalscripts Faqs
-            </p>
-            {/* <p className="mt-6 text-lg leading-8 text-gray-600">
-            Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a elementum
-            pulvinar et feugiat blandit at. In mi viverra elit nunc.
-          </p> */}
-          </div>
-
-          <div className='py-10 px-6'>
-            <Faqs faqs={pageFaqs} />
-          </div>
-
-          <div className='mx-auto px-6 md:px-0 md:max-w-2xl text-left lg:text-center'>
-            <p className='mt-2 text-3xl font-bold  section-title text-gray-900 md:text-4xl'>
-              Pricing and Payments Faqs
-            </p>
-            {/* <p className="mt-6 text-lg leading-8 text-gray-600">
-            Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a elementum
-            pulvinar et feugiat blandit at. In mi viverra elit nunc.
-          </p> */}
-          </div>
-
-          <div className='py-10 px-6'>
-            <Faqs faqs={pricing} />
-          </div>
+          <FaqsPageTab />
         </div>
       </div>
 
@@ -232,9 +141,9 @@ Anytime you are contacting our customer support please provide the file name, em
         </div>
       </div>
 
-      <div className='contact-section-bg py-32 md:py-24'>
+      <div className='contact-section-bg py-16 md:py-24'>
         <div className='relative mx-auto max-w-7xl '>
-          <div className='absolute flex items-center space-y-10 md:space-y-0 space-x-10 py-10 md:py-16 left-44 px-16 right-44 -top-60 mx-auto bg-gray-200 rounded-xl'>
+          <div className='lg:absolute flex flex-wrap lg:flex-nowrap items-center space-y-10 md:space-y-0 space-x-10 py-10 md:py-16 left-6 right-6 mx-6 px-8 lg:px-16 lg:right-44 -top-60 lg:mx-auto bg-gray-200 rounded-xl'>
             <div className='md:max-w-md'>
               <p className='mt-2 text-3xl font-bold text-indigo-600 md:text-4xl'>
                 Get Started ?
@@ -245,7 +154,7 @@ Anytime you are contacting our customer support please provide the file name, em
               </p>
             </div>
 
-            <div className='flex space-x-5'>
+            <div className='flex space-x-2 md:space-x-5'>
               <a
                 href='/upload-files'
                 className='rounded-lg  px-5 py-2.5 text-md transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'

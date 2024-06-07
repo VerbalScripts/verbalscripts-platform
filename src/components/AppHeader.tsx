@@ -389,12 +389,10 @@ export default function AppHeader() {
               className='-m-1.5 p-1.5 text-2xl font-bold'
               aria-label='Verbalscripts Mobile Logo'
             >
-              <Image
-                className='w-[3rem]'
-                src='/icons/logo-v-original.png'
+              <img
+                className='w-[2.2rem]'
+                src='/icons/logo-v.png'
                 alt='Mobile Logo Image'
-                width={30}
-                height={30}
               />
             </a>
           </div>
@@ -586,39 +584,43 @@ export default function AppHeader() {
                       )}
                     </Disclosure>
                   ))}
-
-                  <Disclosure as='div' className='-mx-3'>
-                    {({ open }) => (
-                      <>
-                        <Disclosure.Button className='flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-xl font-bold leading-7 text-gray-800 hover:text-gray-900'>
-                          <span
-                            className={classNames(open ? 'text-gray-900' : '')}
-                          >
-                            My Account
-                          </span>
-                          <ChevronDownIcon
-                            className={classNames(
-                              'h-8 w-8 flex-none transition-all',
-                              open ? 'rotate-0' : '-rotate-90',
-                            )}
-                            aria-hidden='true'
-                          />
-                        </Disclosure.Button>
-                        <Disclosure.Panel className='mt-2 ml-2 space-y-1 border-l border-gray-400'>
-                          {[...account].map((item) => (
-                            <Disclosure.Button
-                              key={item.name}
-                              as='a'
-                              href={item.href}
-                              className='block rounded-lg py-2 pl-6 pr-3 text-lg font-semibold leading-7 text-gray-600 hover:bg-gray-50'
+                  {isAuth ? (
+                    <Disclosure as='div' className='-mx-3'>
+                      {({ open }) => (
+                        <>
+                          <Disclosure.Button className='flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-xl font-bold leading-7 text-gray-800 hover:text-gray-900'>
+                            <span
+                              className={classNames(
+                                open ? 'text-gray-900' : '',
+                              )}
                             >
-                              {item.name}
-                            </Disclosure.Button>
-                          ))}
-                        </Disclosure.Panel>
-                      </>
-                    )}
-                  </Disclosure>
+                              My Account
+                            </span>
+                            <ChevronDownIcon
+                              className={classNames(
+                                'h-8 w-8 flex-none transition-all',
+                                open ? 'rotate-0' : '-rotate-90',
+                              )}
+                              aria-hidden='true'
+                            />
+                          </Disclosure.Button>
+                          <Disclosure.Panel className='mt-2 ml-2 space-y-1 border-l border-gray-400'>
+                            {[...account].map((item) => (
+                              <Disclosure.Button
+                                key={item.name}
+                                as='a'
+                                href={item.href}
+                                className='block rounded-lg py-2 pl-6 pr-3 text-lg font-semibold leading-7 text-gray-600 hover:bg-gray-50'
+                              >
+                                {item.name}
+                              </Disclosure.Button>
+                            ))}
+                          </Disclosure.Panel>
+                        </>
+                      )}
+                    </Disclosure>
+                  ) : null
+                  }
 
                   <div className='border-b py-2 border-gray-200'></div>
                   <button

@@ -521,3 +521,9 @@ span.svg-circles {
   background-size: cover;
   height: 30rem;
 }
+
+
+.faqs-tab-active-button {
+  background-image: linear-gradient(to right, #FF782D, #8468F5);
+  
+}
