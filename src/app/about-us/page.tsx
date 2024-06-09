@@ -150,8 +150,8 @@ export default function Page() {
             </div>
             <div className=' order-1 mt-10 lg:mt-0 relative w-full'>
               <img
-                src='/medical_transcription/forecast.svg'
-                className='lg:absolute -top-24 -left-10 lg:-top-56  w-[90%] -ml-7 lg:-ml-0 md:w-[28rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10'
+                src='/about-us/light-bulb-wooden-table.jpg'
+                className='lg:absolute -top-24 -left-10 lg:-top-64  w-[90%] -ml-7 lg:-ml-0 md:w-[28rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10'
                 alt=''
               />
             </div>
@@ -181,7 +181,7 @@ export default function Page() {
         </div>
         <div className='mx-auto max-w-7xl flex flex-col  gap-y-5 lg:gap-y-10 py-10 md:py-24 px-6 md:px-16 lg:px-16 xl:px-28'>
           <div className='flex border border-gray-300'>
-            <div className='px-6 py-6 lg:min-w-[50%]'>
+            <div className='px-6 py-6 lg:max-w-[50%]'>
               <h2 className='mb-5 text-2xl md:text-3xl  font-bold text-left text-gray-900 section-title'>
                 Innovative Solutions for Every Industry
               </h2>
@@ -199,7 +199,7 @@ export default function Page() {
             <div className=''>
               <img
                 className='w-full h-full object-cover'
-                src='/industry/why-industry.jpg'
+                src='/about-us/glowing-filament-ignites-inspiration-bright-ideas-indoors-generated-by-ai.jpg'
                 alt=''
               />
             </div>
@@ -226,7 +226,7 @@ export default function Page() {
               <div className=''>
                 <img
                   className='w-full h-full object-cover'
-                  src='/industry/why-industry.jpg'
+                  src='/about-us/archery-bow-arrow-with-target.jpg'
                   alt=''
                 />
               </div>
@@ -250,7 +250,7 @@ export default function Page() {
               <div className='order-1'>
                 <img
                   className='w-full h-full object-cover'
-                  src='/industry/why-industry.jpg'
+                  src='/about-us/blue-padlock-secures-computer-data-network-connection-safe-generated-by-ai.jpg'
                   alt=''
                 />
               </div>
@@ -278,7 +278,7 @@ export default function Page() {
               <div className=''>
                 <img
                   className='w-full h-full object-cover'
-                  src='/industry/why-industry.jpg'
+                  src='/about-us/man-wooden-cubes-table-management-concept.jpg'
                   alt=''
                 />
               </div>
@@ -302,7 +302,7 @@ export default function Page() {
               <div className='order-1'>
                 <img
                   className='w-full h-full object-cover'
-                  src='/industry/why-industry.jpg'
+                  src='/about-us/successful-businessmen-seal-deal-with-firm-handshake-generated-by-ai.jpg'
                   alt=''
                 />
               </div>
@@ -342,8 +342,8 @@ export default function Page() {
             </div>
             <div className=' order-1 mt-10 lg:mt-0 relative w-full'>
               <img
-                src='/medical_transcription/forecast.svg'
-                className='lg:absolute -top-24 -left-10 lg:-top-56  w-[90%] -ml-7 lg:-ml-0 md:w-[28rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10'
+                src='/about-us/closeup-diverse-people-joining-their-hands.jpg'
+                className='lg:absolute -top-24 -left-10 lg:-top-40  w-[90%] -ml-7 lg:-ml-0 md:w-[30rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10'
                 alt=''
               />
             </div>
