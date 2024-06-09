@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next';
+import './style.css'
 
 import AppHeader from '@/components/AppHeader';
 import AppFooter from '@/components/AppFooter';
@@ -60,28 +61,17 @@ export default function Page() {
     <div className='bg-zinc-800  relative'>
       <AppHeader />
 
-      <div className='relative   h-auto  px-6 py-20 md:pt-0 pb-10 md:pb-30 md:py-24 lg:py-24 md:px-20 lg:px-28'>
+      <div className='relative industry_landing z-[10] h-auto  px-6 py-20 md:pt-0 pb-10 md:pb-30 md:py-24 lg:py-24 md:px-20 lg:px-28'>
         <div className='landing-page-video-wrapper'></div>
-        <div
-          className='absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80'
-          aria-hidden='true'
-        >
-          <div
-            className='relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]'
-            style={{
-              clipPath:
-                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-            }}
-          />
-        </div>
+     
         {/* <div className='absolute -z-[1] blur-sm bottom-0 right-0 -rotate-180 left-0 why_industry_bg'></div> */}
         <div className='flex flex-wrap  lg:flex-nowrap items-center lg:space-x-10  space-y-10'>
           <div className='max-w-2xl lg:max-w-4xl'>
-            <h1 className='text-4xl font-bold capitalize  text-white sm:text-5xl'>
+            <h1 className='text-4xl font-bold capitalize  text-gray-900 sm:text-5xl'>
               Popular Industry Solutions
             </h1>
 
-            <p className='block md:max-w-2xl lg:max-w-3xl xl:max-w-4xl relative z-10 mt-6 text-lg  leading-7 text-gray-100'>
+            <p className='block md:max-w-2xl lg:max-w-3xl xl:max-w-4xl relative z-10 mt-6 text-lg  leading-7 text-gray-800'>
               Explore The Best Solutions For The Betterment of Your Industries
             </p>
 
@@ -94,22 +84,11 @@ export default function Page() {
               </a>
             </div>
           </div>
-          <div className='md:min-w-[20rem] lg:max-w-[30rem]'>
+          {/* <div className='md:min-w-[20rem] lg:max-w-[30rem]'>
             <img src='/industry/industry-landing.jpg' className='' alt='' />
-          </div>
+          </div> */}
         </div>
-        <div
-          className='absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]'
-          aria-hidden='true'
-        >
-          <div
-            className='relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]'
-            style={{
-              clipPath:
-                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-            }}
-          />
-        </div>
+        
       </div>
 
       <div className='bg-gray-100 py-0'>
@@ -233,7 +212,7 @@ export default function Page() {
               </div>
             </div>
             <div>
-              <div className='px-6 bg-red-100 md:mt-10 lg:mt-0 z-[15] relative w-full after:rounded-xl after:transition-all after:duration-100 after:absolute after:-z-[5] after:left-5  after:top-5 after:md:w-[70%] after:lg:w-[85%] after:h-full hover:after:top-10 hover:after:left-10 after:bg-orange-300'>
+              <div className='px-6 bg-red-100 md:mt-10 lg:mt-0 z-[15] relative  after:rounded-xl after:transition-all after:duration-70000 after:absolute after:-z-[5] after:left-5  after:top-5 after:md:w-[70%] after:lg:w-[85%] after:h-full hover:after:top-10 hover:after:left-10 after:bg-orange-300'>
                 <img
                   src='/industry/why-industry.jpg'
                   className='  w-[90vw] -ml-7 object-contain lg:-ml-0 md:w-[28rem] max-w-none bg-white/5 ring-1 ring-white/10'

@@ -147,7 +147,7 @@ export default function Home() {
               Services
             </a>
             <a
-              href='/industries'
+              href='/industry'
               className='rounded-lg btn-vlg px-6  md:px-12 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600'
             >
               Industries
@@ -314,14 +314,11 @@ export default function Home() {
 
                 <div className='flex justify-center mt-16 md:mr-16'>
                   <a
-                    href='/upload-files'
+                    href='/services'
                     className='inline-flex  items-center gap-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
                   >
-                    <span>Order Now</span>
-                    <FontAwesomeIcon
-                      className='ml-4 w-6'
-                      icon={faLongArrowRight}
-                    />
+                    <span>Check Our Services</span>
+                    
                   </a>
                 </div>
               </div>

@@ -36,7 +36,7 @@ export default function TestimonialsV2({ testimonials }: TestimonyProp) {
                 loop={true}
                 autoplay={{
                   delay: 3000,
-                  disableOnInteraction: true,
+                  disableOnInteraction: false,
                 }}
                 modules={[Autoplay, Pagination]}
                 pagination={{

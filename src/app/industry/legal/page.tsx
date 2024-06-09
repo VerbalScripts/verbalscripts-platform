@@ -167,25 +167,22 @@ export default function Page() {
                   Welcome to Verbalscripts your Trusted Partner for Solutions in
                   the legal Industry
                 </p>
-                <div className='mt-10 flex flex-wrap space-y-5  justify-start lg:flex-nowrap md:items-center space-x-5'>
-                  <a
-                    href='/contact-us'
-                    className=' rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
-                  >
-                    <span className='flex'>Contect Sales</span>
-                  </a>
+                <div className='mt-10 flex flex-wrap space-y-5 lg:space-y-0  justify-start lg:flex-nowrap md:items-center space-x-5'>
+              <a
+                href='/contact-us'
+                className=' rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
+              >
+                <span className='flex'>Contact Sales</span>
+              </a>
 
-                  <a
-                    href='/contact-us'
-                    className='inline-flex flex-nowrap lg:space-x-4  text-xl underline underline-offset-4 transition font-semibold text-indigo-500  hover:text-indigo-300 focus-visible:outline focus-visible:outline-2 '
-                  >
-                    <span className='flex'>Request a Quote</span>
-                    <FontAwesomeIcon
-                      className='ml-2 w-5'
-                      icon={faLongArrowRight}
-                    />
-                  </a>
-                </div>
+              <a
+                href='/contact-us'
+                className='inline-flex flex-nowrap lg:space-x-4  text-xl underline underline-offset-4 transition font-semibold text-indigo-600  hover:text-indigo-500 focus-visible:outline focus-visible:outline-2 '
+              >
+                <span className='flex'>Request a Quote</span>
+                <FontAwesomeIcon className='ml-2 w-5' icon={faLongArrowRight} />
+              </a>
+            </div>
                 {/* <div className='lg:hidden   py-5 px-5 max-w-[18rem]'>
                 <div className='px-4 border-l-4 secondary-border'>
                   <div className='text-gray-700 font-semibold '></div>

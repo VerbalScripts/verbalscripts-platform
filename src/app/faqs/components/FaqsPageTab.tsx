@@ -76,7 +76,7 @@ export default function FaqsPageTab() {
   const topics = [
     {
       id: 'all',
-      title: 'All',
+      title: 'All Questions',
       items: [...service_faqs, ...service_faqs, ...pageFaqs, ...pricing],
     },
     {
@@ -86,12 +86,12 @@ export default function FaqsPageTab() {
     },
     {
       id: 'legal',
-      title: 'Legal',
+      title: 'Legal Services',
       items: pageFaqs,
     },
     {
       id: 'pricing',
-      title: 'Pricing',
+      title: 'Pricing & Payment',
       items: pricing,
     },
   ];
@@ -123,9 +123,10 @@ export default function FaqsPageTab() {
         </p>
         {/* faqs menu */}
 
-        <div className='flex flex-col my-5'>
+        <div className='flex flex-col my-5' >
           {topics.map((faq, index) => (
-            <button
+            <a
+            href='#faq-content-tab'
               onClick={() => setActiveTab(faq.id)}
               key={index}
               className={classNames(
@@ -137,11 +138,12 @@ export default function FaqsPageTab() {
               )}
             >
               {faq.title}
-            </button>
+            </a>
           ))}
         </div>
       </div>
       <div
+      id='faq-content-tab'
         className='
     lg:order-2 lg:min-w-[40rem] xl:min-w-[50rem] w-full'
       >
