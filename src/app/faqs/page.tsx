@@ -143,7 +143,8 @@ export default function FAQsPage() {
 
       <div className='contact-section-bg py-16 md:py-24'>
         <div className='relative mx-auto max-w-7xl '>
-          <div className='lg:absolute flex flex-wrap lg:flex-nowrap items-center space-y-10 md:space-y-0 space-x-10 py-10 md:py-16 left-6 right-6 mx-6 px-8 lg:px-16 lg:right-44 -top-60 lg:mx-auto bg-gray-200 rounded-xl'>
+          <div className='lg:absolute  left-0 right-0 -top-60 lg:mx-auto '>
+            <div className='mx-6 md:mx-16 lg:mx-24 xl:mx-32 bg-gray-200 rounded-xl flex flex-wrap lg:flex-nowrap items-center space-y-10 md:space-y-0 space-x-10 py-10 md:py-16 left-6 right-6 px-8 lg:px-16'>
             <div className='md:max-w-md'>
               <p className='mt-2 text-3xl font-bold text-indigo-600 md:text-4xl'>
                 Get Started ?
@@ -168,6 +169,7 @@ export default function FAQsPage() {
               >
                 <span>Learn More</span>
               </a>
+            </div>
             </div>
           </div>
         </div>

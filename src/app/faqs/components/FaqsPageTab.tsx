@@ -102,8 +102,8 @@ export default function FaqsPageTab() {
     topics.find((topic) => topic.id == id);
 
   return (
-    <div className='flex flex-wrap lg:flex-nowrap items-start space-y-16 lg:space-x-6 lg:space-y-0 px-6 md:px-16 lg:px-24.'>
-      <div className='w-full lg:sticky top-[20%]'>
+    <div className='flex flex-wrap lg:flex-nowrap items-start space-y-16 lg:space-x-6 lg:space-y-0 px-6 md:px-16 lg:px-24 xl:px-32'>
+      <div className='w-full xl:w-[40%] lg:sticky top-[20%]'>
         <h2 className='text-xl font-bold leading-7 capitalize footer-title'>
           What are Your Frequently Asked Questions?
         </h2>

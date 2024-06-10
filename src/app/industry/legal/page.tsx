@@ -141,33 +141,21 @@ export default function Page() {
     <div className='bg-zinc-800  relative'>
       <AppHeader />
 
-      <div className='landing-page-alt'>
-        <div className='relative mx-auto max-w-7xl  h-auto  px-0 py-0   md:pb-40 lg:py-14  lg:px-20'>
-          <div className='landing-page-video-wrapper'></div>
-          <div
-            className='absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80'
-            aria-hidden='true'
-          >
-            <div
-              className='relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-50 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]'
-              style={{
-                clipPath:
-                  'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-              }}
-            />
-          </div>
-          <div className='bg-gray-100  px-6 py-20   pb-40 md:px-10 md:py-20 rounded-xl'>
-            <div className='flex flex-wrap  lg:flex-nowrap items-center gap-x-10 '>
-              <div className='max-w-2xl md:max-w-4xl xl:max-w-2xl'>
-                <h1 className='text-4xl font-bold capitalize tracking-tight text-gray-800 sm:text-5xl'>
-                  Court and Legal Reporting Industry
-                </h1>
+      <div className='relative legal_landing z-[10] h-auto  px-6 py-20 md:pt-0 pb-10 md:pb-30 md:py-24 lg:py-24 md:px-20 lg:px-28'>
+        <div className='landing-page-video-wrapper'></div>
 
-                <p className='block md:max-w-2xl lg:max-w-3xl xl:max-w-4xl relative z-10 mt-6 text-lg  leading-7 text-gray-800'>
-                  Welcome to Verbalscripts your Trusted Partner for Solutions in
-                  the legal Industry
-                </p>
-                <div className='mt-10 flex flex-wrap space-y-5 lg:space-y-0  justify-start lg:flex-nowrap md:items-center space-x-5'>
+        {/* <div className='absolute -z-[1] blur-sm bottom-0 right-0 -rotate-180 left-0 why_industry_bg'></div> */}
+        <div className='flex flex-wrap  lg:flex-nowrap items-center lg:space-x-10  space-y-10'>
+          <div className='max-w-2xl lg:max-w-xl'>
+          <h1 className='text-4xl font-bold capitalize  text-gray-900 sm:text-5xl'>
+          Court and Legal Reporting Industry
+            </h1>
+
+            <p className='block md:max-w-2xl lg:max-w-3xl xl:max-w-4xl relative z-10 mt-6 text-lg  leading-7 text-gray-800'>
+            Welcome to Verbalscripts your Trusted Partner for Solutions in the legal Industry
+            </p>
+
+            <div className='mt-10 flex flex-wrap space-y-5 lg:space-y-0  justify-start lg:flex-nowrap md:items-center space-x-5'>
               <a
                 href='/contact-us'
                 className=' rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
@@ -183,42 +171,10 @@ export default function Page() {
                 <FontAwesomeIcon className='ml-2 w-5' icon={faLongArrowRight} />
               </a>
             </div>
-                {/* <div className='lg:hidden   py-5 px-5 max-w-[18rem]'>
-                <div className='px-4 border-l-4 secondary-border'>
-                  <div className='text-gray-700 font-semibold '></div>
-                  <div className='text-gray-700 font-semibold mb-3'>
-                    From{' '}
-                    <span className='py-1.5 px-2 bg-gray-300 rounded-full'>
-                      Human Transcripted
-                    </span>
-                    <br></br>
-                    <span className='footer-title text-3xl font-bold'>$1</span>
-                    <br></br> per minute 98% accuracy
-                  </div>
-                </div>
-              </div> */}
-              </div>
-              <div className='mt-10 lg:mt-0 relative   lg:min-w-[30rem]'>
-                <img
-                  src='/legal/landingedited.svg'
-                  className='max-w-[90%] lg:absolute object-cover -top-60'
-                  alt=''
-                />
-              </div>
-            </div>
           </div>
-          <div
-            className='absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]'
-            aria-hidden='true'
-          >
-            <div
-              className='relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]'
-              style={{
-                clipPath:
-                  'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-              }}
-            />
-          </div>
+          {/* <div className='md:min-w-[20rem] lg:max-w-[30rem]'>
+            <img src='/industry/industry-landing.jpg' className='' alt='' />
+          </div> */}
         </div>
       </div>
 
@@ -226,7 +182,7 @@ export default function Page() {
         <PopularPartner />
       </div>
 
-      <div className='why-legal-section-bg '>
+      <div className='why-legal-industry-bg '>
         <div className='mx-auto max-w-7xl py-5 md:py-10     px-5 md:px-16 lg:px-10'>
           <div className='flex flex-wrap lg:flex-nowrap px-6 py-6 items-center gap-y-10 lg:gap-x-20   rounded-md md:px-8 md:py-24 bg-white/50 ring-1 ring-white/10'>
             <div className='lg:min-w-[25rem] text-left'>
