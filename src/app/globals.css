@@ -521,6 +521,11 @@ span.svg-circles {
   background-size: cover;
   height: 30rem;
 }
+.media_industry_pattern {
+  background: url('/media_industry/top-pattern.svg') no-repeat;
+  background-size: cover;
+  height: 30rem;
+}
 
 .why-legal-industry-bg {
   background:

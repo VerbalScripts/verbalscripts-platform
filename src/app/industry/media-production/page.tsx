@@ -13,6 +13,7 @@ import CallToActionBanner from '@/components/CallToActionBanner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLongArrowRight } from '@fortawesome/free-solid-svg-icons';
 import ContentCard from './components/ContentCard';
+import NoMediaCard from './components/NoMediacard';
 
 export const metadata: Metadata = {
   title: 'VerbalScripts | Corporate & General Business',
@@ -123,62 +124,7 @@ export default function Page() {
         <PopularPartner />
       </div>
 
-      <div className='py-10 md:py-16' style={{ background: '#FAFAFA' }}>
-        <div className='mx-auto max-w-7xl px-6 md:px-16 lg:px-16 xl:px-28'>
-          <div className='flex flex-wrap lg:flex-nowrap items-center space-x-6'>
-            <div className='lg:order-2 lg:max-w-[30rem] text-left'>
-              <h2 className='text-xl font-bold leading-7 capitalize secondary-text'>
-                What Benefits gained in your Media Production?
-              </h2>
-              <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
-                <span className='relative z-10'>
-                  Transforming.{' '}
-                  <span className='z-10 absolute -bottom-5 right-0'>
-                    <img src='/svg/lines.svg' className='w-44' alt='' />
-                  </span>
-                </span>{' '}
-                for you.
-              </p>
 
-              <div className='px-6'>
-                <ul className='lg:mx-auto max-w-2xl mt-6 text-lg leading-8 text-gray-800 list-disc flex flex-col space-y-2'>
-                  <li>
-                    From patient notes to operative reports, we transcribe
-                    medical dictations with precision.
-                  </li>
-                  <li>
-                    Our transcriptionists are well-versed in medical terminology
-                    and adhere to industry standards.
-                  </li>
-                  <li>
-                    Your patients{"'"} privacy is our priority. We strictly
-                    comply with HIPAA regulations and maintain confidentiality.
-                  </li>
-                  <li>
-                    Tailor our services to your specific needs, including
-                    formatting preferences and turnaround times.
-                  </li>
-                </ul>
-              </div>
-              <div className='mt-10'>
-                <a
-                  href='/upload-files'
-                  className='inline-flex  items-center gap-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
-                >
-                  <span>Order Now</span>
-                </a>
-              </div>
-            </div>
-            <div className=' order-1 mt-10 lg:mt-0 relative w-full'>
-              <img
-                src='/medical_transcription/forecast.svg'
-                className='lg:absolute -top-24 -left-10 lg:-top-56  w-[90%] -ml-7 lg:-ml-0 md:w-[28rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10'
-                alt=''
-              />
-            </div>
-          </div>
-        </div>
-      </div>
 
       <div className='why-corporate-industry-bg'>
         <div className='mx-auto max-w-7xl py-5 md:py-24 lg:py-32     px-5 md:px-24 lg:px-32'>
@@ -248,77 +194,93 @@ export default function Page() {
       >
         <div className='mx-auto max-w-6xl text-left md:text-center px-6 md:px-16 lg:px-16 xl:px-28'>
           <h2 className='text-xl font-semibold leading-7 text-white footer-title'>
-          Our Solutions for Media Production Industry?
+            Our Solutions for Media Production Industry?
           </h2>
           <p className='mt-2 text-4xl md:text-5xl font-bold  text-gray-900'>
-          Crafting Perfect Content with Precision Through VerbalScripts For You 
+            Crafting Perfect Content with Precision Through VerbalScripts For
+            You
           </p>
         </div>
 
         <div
-          style={{ background: '#8468f5' }}
-          className='absolute -z-[1] top-0 left-0 w-full bg-indigo-500 h-[15rem]'
+          // style={{ background: '#8468f5' }}
+          className='absolute -z-[1] top-0 left-0 w-full bg-orange-500 h-[15rem]'
         ></div>
 
-        <div className='absolute top-[14rem] left-0  w-full -z-[1] why_industry_bg'></div>
+        <div className='absolute top-[14rem] left-0  w-full -z-[1] media_industry_pattern'></div>
 
-        <div className='absolute bottom-0 left-0 w-full -rotate-180 -z-[1] why_industry_bg'></div>
+        <div className='absolute bottom-0 left-0 w-full -rotate-180 -z-[1] media_industry_pattern'></div>
 
         <div className='mx-auto max-w-7xl flex flex-col  gap-y-5 lg:gap-y-10 py-10 md:py-24 px-6 md:px-16 lg:px-16 xl:px-28'>
           <div className='grid max-w-none   place-content-center  grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-x-10 lg:gap-y-10'>
-            <div className='flex flex-col gap-y-5 lg:gap-y-8'>
+            <ContentCard
+              title='Post-Production Notes'
+              direction='vertical'
+              description='Detailed transcriptions of post-production notes help streamline the editing process, ensuring that every creative decision is documented and easily accessible for final cuts and reviews. This enhances the efficiency and quality of your production workflow.'
+              imgSrc='/media_industry/postproduction.svg'
+            />
+
+            <div className='space-y-10'>
+              <div className='grid max-w-none   place-content-center  grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-x-10 lg:gap-y-10'>
+                <NoMediaCard
+                  title='Script Transcriptions'
+                  description='Ensure every word in your scripts is captured accurately for seamless production processes.'
+                />
+                <NoMediaCard
+                  title='Footage Logging'
+                  description='Streamline your editing process with detailed logs of raw footage, highlighting key moments and dialogue.'
+                />
+              </div>
+
               <ContentCard
-                title='Meetings and Conferences'
-                description='Capture every crucial detail of your corporate meetings and
-              conferences to ensure nothing slips through the cracks.'
-                imgSrc='/corporate_industry/meetingconference.svg'
-              />
-              <ContentCard
-                title='Business Presentations'
-                description='Ensure the full content of business presentations is documented, making information easily accessible for future reference and sharing.'
-                imgSrc='/corporate_industry/business presentation.svg'
+                title='Interviews and Documentaries'
+                description='Precisely transcribe interviews and documentaries for content creation and archival purposes.'
+                imgSrc='/media_industry/interviews.svg'
               />
             </div>
-
-            <ContentCard
-              title='Board Meetings and Annual Reports'
-              direction='vertical'
-              description='Step into the boardroom with confidence as we meticulously record every detail of your board meetings. From annual reports to strategic discussions, our accurate transcriptions empower you with transparent insights for informed decision-making, ensuring your organization"s success.'
-              imgSrc='/corporate_industry/board&annualreport.svg'
-            />
           </div>
         </div>
 
         <div className='mx-auto max-w-6xl text-left md:text-center px-6 md:px-16 lg:px-16 xl:px-28'>
           <h2 className='text-xl font-semibold leading-7 text-white footer-title'>
-            Training, Development, and Market Insights
+            Broadcast and Digital Media
           </h2>
           <p className='mt-2 text-4xl md:text-5xl font-bold  text-gray-900'>
-            Empower Growth, Enhance Insights
+            Enhancing Broadcasts, Amplifying Reach
           </p>
         </div>
 
         <div className='mx-auto max-w-7xl flex flex-col  gap-y-5 lg:gap-y-10 py-10 md:py-24 px-6 md:px-16 lg:px-16 xl:px-28'>
           <div className='grid max-w-none   place-content-center  grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-x-10 lg:gap-y-10'>
+          <div className='space-y-10'>
+              <ContentCard
+                title='Live Events and Shows'
+                description='Accurate transcriptions of live events capture every detail, aiding in post-event analysis, promotional content, and improving audience accessibility and engagement.'
+                imgSrc='/media_industry/liveshow.svg'
+              />
+              <div className='grid max-w-none   place-content-center  grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-x-10 lg:gap-y-10'>
+                
+                <NoMediaCard
+                  title='News Transcriptions'
+                  description='Get accurate transcriptions of news segments for archiving and repurposing.'
+                />
+                <NoMediaCard
+                  title='Conferences'
+                  description='Document press conferences accurately for media kits, reports, and news articles.'
+                />
+              </div>
+
+             
+            </div>
+          
             <ContentCard
-              title='Customer Interactions'
+              title='Podcast Transcriptions'
               direction='vertical'
-              description='Capture every customer service calls and corporate communications to boost quality, ensure compliance, and elevate customer satisfaction. Our team help you review interactions, identify training needs, and maintain transparent records, empowering your team to deliver exceptional service and make informed decisions.'
-              imgSrc='/corporate_industry/Customer interaction.svg'
+              description='Precise transcriptions of your podcasts make your content more accessible, boosting engagement and reach. They provide a written record that can be easily searched, referenced, and repurposed for articles, social media posts, and more, maximizing the impact of each episode.'
+              imgSrc='/media_industry/Podcast.svg'
             />
 
-            <div className='flex flex-col gap-y-5 lg:gap-y-8'>
-              <ContentCard
-                title='Training and Webinars'
-                description='Create comprehensive records of training sessions and webinars, providing valuable resources for employee onboarding and professional growth.'
-                imgSrc='/corporate_industry/training.svg'
-              />
-              <ContentCard
-                title='Interviews and Focus Groups'
-                description='Transcribe interviews and focus groups accurately to gather essential data for market research and internal evaluations.'
-                imgSrc='/corporate_industry/interviewfocusgr.svg'
-              />
-            </div>
+           
           </div>
         </div>
       </div>
