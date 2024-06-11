@@ -37,7 +37,7 @@ export default function Page() {
     <div className='bg-zinc-800  relative'>
       <AppHeader />
 
-      <div className='relative about-landing   h-auto  px-6 py-20 md:pt-0 pb-10 md:pb-32 md:py-32  lg:py-24 md:px-20 lg:px-28'>
+      <div className='relative about-landing   h-auto  px-6 py-20 md:pt-0 pb-10 md:pb-32 md:py-28  lg:py-20 md:px-20 lg:px-28'>
         <div
           className='absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80'
           aria-hidden='true'
@@ -52,8 +52,8 @@ export default function Page() {
         </div>
         {/* <div className='absolute -z-[1] blur-sm bottom-0 right-0 -rotate-180 left-0 why_industry_bg'></div> */}
 
-        <div className='max-w-2xl lg:max-w-4xl flex flex-col items-center '>
-          <h1 className='text-4xl font-bold capitalize text-left  md:text-center  text-white sm:text-5xl'>
+        <div className='mx-auto max-w-3xl lg:max-w-5xl flex flex-col items-center '>
+          <h1 className='text-5xl font-bold capitalize text-left  md:text-center  text-white sm:text-6xl'>
             VerbalScripts, Best Partner For Your Industries Transcription Needs.
           </h1>
 

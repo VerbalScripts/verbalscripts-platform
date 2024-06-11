@@ -521,11 +521,7 @@ span.svg-circles {
   background-size: cover;
   height: 30rem;
 }
-.media_industry_pattern {
-  background: url('/media_industry/top-pattern.svg') no-repeat;
-  background-size: cover;
-  height: 30rem;
-}
+
 
 .why-legal-industry-bg {
   background:
@@ -546,6 +542,15 @@ span.svg-circles {
   background-position: center;
   background-attachment: fixed;
 }
+.why-media-industry-bg {
+  background:
+  linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.87)),
+  linear-gradient(to top, transparent, rgba(255, 252, 252, 0.952)),
+  url('/media_industry/musician_playing.jpg') no-repeat top right;
+background-size: cover;
+background-position: center;
+background-attachment: fixed;
+}
 
 .faqs-tab-active-button {
   background-image: linear-gradient(to right, #FF782D, #8468F5);
@@ -564,6 +569,14 @@ span.svg-circles {
   background-size: cover;
 }
 
+.media_landing {
+  background: 
+  
+  linear-gradient(to left, transparent, rgba(255, 255, 255, 0.87)),
+  linear-gradient(to top, transparent, rgba(255, 252, 252, 0.329)),url('/media_industry/film-studio.jpg') no-repeat top right;
+  background-size: cover;
+}
+
 .legal_landing {
   background: 
   
@@ -571,6 +584,18 @@ span.svg-circles {
   linear-gradient(to top, transparent, rgba(255, 252, 252, 0.329)),url('/legal_industry/legal_landing.webp') no-repeat top right;
   background-size: cover;
 }
+
+.why_media_industry_top {
+  background: rgb(241,88,60);
+  background: linear-gradient(180deg, rgba(241,88,60,1) 0%, rgba(247,150,31,1) 64%);
+}
+.media_industry_pattern {
+  background: url('/media_industry/top-pattern.svg') no-repeat;
+  background-size: cover;
+  height: 30rem;
+}
+
+
 
 /* about us */
 .about-landing {

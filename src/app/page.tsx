@@ -20,6 +20,7 @@ export const metadata: Metadata = {
   title: 'Verbalscripts - 100% Human Transcription Services',
 
   keywords: [
+    'verbalscripts',
     'transcription',
     'audio transcription',
     'video transcription',
