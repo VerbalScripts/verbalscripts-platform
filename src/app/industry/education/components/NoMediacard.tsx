@@ -24,7 +24,7 @@ export default function NoMediaCard({
         <h2 className='mb-5 text-2xl md:text-3xl  font-bold text-left text-gray-900 section-title'>
           {title}
         </h2>
-        <p className='text-md lg:text-lg xl:text-xl text-gray-700'>
+        <p className='text-md lg:text-lg  text-gray-700'>
           {description}
         </p>
       </div>
