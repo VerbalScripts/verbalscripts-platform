@@ -32,7 +32,7 @@ export default function ContactForm() {
 
         <div className='flex items-center mt-5 gap-x-3 my-5'>
           <a
-            href='#faq-content-tab'
+            href='mailto:support@verbalscripts.com'
             className={classNames(
               'py-3 px-7 font-bold hover:bg-gray-100 transition-all duration-100 bg-gray-200 capitalize text-left rounded-md mb-2',
             )}
@@ -43,7 +43,7 @@ export default function ContactForm() {
             />
           </a>
           <a
-            href='#faq-content-tab'
+            href='https://wa.me/17279668531'
             className={classNames(
               'py-3 px-7 font-bold hover:bg-gray-100 transition-all duration-100 bg-gray-200 capitalize text-left rounded-md mb-2',
             )}

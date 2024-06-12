@@ -88,7 +88,7 @@ export default function FAQsPage() {
           </div>
           <div className='mt-10 lg:mt-0 relative   lg:min-w-[30rem]'>
               <img
-                src='/pics/faqs.jpg'
+                src='/pics/contact-us.jpg'
                 className='w-[90%]  lg:max-w-[90%] lg:absolute object-cover -top-32'
                 alt=''
               />
