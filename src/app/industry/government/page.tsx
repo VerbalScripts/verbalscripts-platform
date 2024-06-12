@@ -15,7 +15,7 @@ import ContentCard from './components/ContentCard';
 import NoMediaCard from './components/NoMediacard';
 
 export const metadata: Metadata = {
-  title: 'VerbalScripts | Corporate & General Business',
+  title: 'VerbalScripts | Government',
 };
 
 export default function Page() {
@@ -49,31 +49,42 @@ export default function Page() {
 
   const features = [
     {
-      name: 'Unmatched Precision.',
+      name: 'Historical Archives',
       description:
-        'We meticulously transcribe every business document, ensuring accuracy and clarity in every detail.',
+        'We help government agencies maintain accurate historical archives by providing meticulously transcribed records of important events, meetings, and public addresses.',
 
-      imgUrl: '/legal/expertise.svg',
+      imgUrl: '/government_industry/archive.png',
     },
     {
-      name: 'Tailored Flexibility.',
+      name: 'Confidentiality',
       description:
-        'Our transcription solutions are customized to fit your unique requirements, timelines, and budget, offering you the best possible service.',
+        'We adhere to stringent confidentiality protocols and comply with all relevant data protection regulations, ensuring your sensitive government information remains secure and confidential at all times.',
 
-      imgUrl: '/legal/assurance.svg',
+        imgUrl: '/government_industry/confidentiality.png',
+
     },
     {
-      name: 'Time-Saving Efficiency',
+      name: 'Policy Adherence',
       description:
-        'Free up valuable time by letting our expert team handle your transcription needs, so you can focus on what matters most—your business.',
-      imgUrl: '/legal/time.svg',
+        'Our transcription services ensure your documentation aligns with government policies and standards. We provide accurate and regulation-compliant transcripts, simplifying your adherence to necessary guidelines.',
+        imgUrl: '/government_industry/policy.png',
+
     },
     {
-      name: 'Robust Confidentiality.',
+      name: 'Adaptable Solutions',
       description:
-        'We safeguard your sensitive information with top-notch security measures and strict adherence to data protection regulations.',
+        'We understand that every government operation is unique, which is why we tailor our transcription services to meet your specific needs and timelines, providing the flexibility necessary to handle any project size or deadline.',
 
-      imgUrl: '/legal/solutions.svg',
+        imgUrl: '/government_industry/adaptable.png',
+
+    },
+    {
+      name: 'Seamless Integration',
+      description:
+        'Our transcriptions are designed to integrate effortlessly into your existing systems, enhancing your workflow without causing any disruption and allowing for smooth and efficient operations across all government departments.',
+
+        imgUrl: '/government_industry/seamless.png',
+
     },
   ];
 
@@ -81,14 +92,14 @@ export default function Page() {
     <div className='bg-zinc-800  relative'>
       <AppHeader />
 
-      <div className='relative media_landing z-[10] h-auto  px-6 py-20 md:pt-0 pb-10 md:pb-30 md:py-24 lg:py-32 md:px-20 lg:px-28'>
+      <div className='relative government_landing z-[10] h-auto  px-6 py-20 md:pt-0 pb-10 md:pb-30 md:py-24 lg:py-32 md:px-20 lg:px-28'>
         <div className='landing-page-video-wrapper'></div>
 
         {/* <div className='absolute -z-[1] blur-sm bottom-0 right-0 -rotate-180 left-0 why_industry_bg'></div> */}
         <div className='flex flex-wrap  lg:flex-nowrap items-center lg:space-x-10  space-y-10'>
           <div className='max-w-2xl lg:max-w-xl'>
             <h1 className='text-4xl font-bold capitalize  text-gray-900 sm:text-5xl'>
-              Media Production Industry
+              Governnment Industry
             </h1>
 
             <p className='block md:max-w-2xl lg:max-w-3xl xl:max-w-4xl relative z-10 mt-6 text-lg  leading-7 text-gray-800'>
@@ -123,33 +134,32 @@ export default function Page() {
         <PopularPartner />
       </div>
 
-
-
-      <div className='why-media-industry-bg'>
+      <div className='why-government-industry-bg'>
         <div className='mx-auto max-w-7xl py-5 md:py-24 lg:py-32     px-5 md:px-24 lg:px-32'>
           <div className='flex flex-wrap lg:flex-nowrap items-center space-x-6'>
             <div className='lg:max-w-[30rem] text-left'>
               <h2 className='text-xl font-bold leading-7 capitalize secondary-text'>
-                What Benefits gained in your Media Production?
+                What Benefits gained in your Government?
               </h2>
               <p className='mt-2 text-4xl md:text-5xl  font-bold text-left  text-gray-900 section-title'>
+                Public Service,{' '}
                 <span className='relative z-10'>
-                  Transforming{' '}
+                  Perfectly,{' '}
                   <span className='z-10 absolute -bottom-2.5 right-0'>
                     <img src='/svg/lines.svg' className='w-44' alt='' />
                   </span>
                 </span>{' '}
-                your Media Production into Unique Quality.
+                Documented with VerbalScripts
               </p>
             </div>
             <div className='px-6 text-gray-800 text-lg text-left'>
-              We understand the unique needs of the media industry and are
-              dedicated to providing accurate, timely, and secure transcription
-              solutions that enhance your production workflow.
+              Our services ensure that all official records, meetings, and
+              communications are accurately transcribed, supporting
+              transparency, accountability, and efficiency.
             </div>
           </div>
           <div className='py-10 md:py-24'>
-            <dl className='grid max-w-none   place-content-center  grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-4 lg:gap-x-5 lg:gap-y-5'>
+            <dl className='grid max-w-none   place-content-center  grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-x-5 lg:gap-y-5'>
               {features.map((feature) => (
                 <div
                   key={feature.name}
@@ -162,8 +172,8 @@ export default function Page() {
                       className='mb-5'
                       alt={feature.name}
                       src={feature.imgUrl}
-                      height={110}
-                      width={110}
+                      height={85}
+                      width={85}
                     />
                     <span className='text-[1.35rem] text-center'>
                       {feature.name}
@@ -192,48 +202,37 @@ export default function Page() {
         style={{ background: '#FAFAFA' }}
       >
         <div className='mx-auto max-w-6xl text-left md:text-center px-6 md:px-16 lg:px-16 xl:px-28'>
-          <h2 className='text-xl font-semibold leading-7 text-white footer-title'>
-            Our Solutions for Media Production Industry?
+          <h2 className='text-xl font-semibold leading-7 text-white '>
+            Our Solutions for Government Entities?
           </h2>
           <p className='mt-2 text-4xl md:text-5xl font-bold  text-gray-900'>
-            Crafting Perfect Content with Precision Through VerbalScripts For
-            You
+            The VerbalScripts Commitment to Government Transcription
           </p>
         </div>
 
-        <div
-          className='absolute -z-[1] top-0 left-0 w-full h-[15rem] why_media_industry_top'
-        ></div>
+        <div className='absolute -z-[1] top-0 left-0 w-full h-[15rem] why_media_industry_top'></div>
 
         <div className='absolute top-[14rem] left-0  w-full -z-[1] media_industry_pattern'></div>
 
         <div className='absolute bottom-0 left-0 w-full -rotate-180 -z-[1] media_industry_pattern'></div>
 
         <div className='mx-auto max-w-7xl flex flex-col  gap-y-5 lg:gap-y-10 py-10 md:py-24 px-6 md:px-16 lg:px-16 xl:px-28'>
-          <div className='grid max-w-none   place-content-center  grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-x-10 lg:gap-y-10'>
+          <div className='grid max-w-none   items-start  grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-x-10 lg:gap-y-10'>
             <ContentCard
-              title='Post-Production Notes'
+              title='Our Solutions for Government Entities?'
               direction='vertical'
-              description='Detailed transcriptions of post-production notes help streamline the editing process, ensuring that every creative decision is documented and easily accessible for final cuts and reviews. This enhances the efficiency and quality of your production workflow.'
-              imgSrc='/media_industry/postproduction.svg'
+              description='Capture comprehensive records of committee and board meetings to facilitate accurate archiving and public access, ensuring thorough documentation of committee deliberations and board decisions.'
+              imgSrc='/government_industry/137951040_10314658.jpg'
             />
 
-            <div className='space-y-10'>
-              <div className='grid max-w-none   place-content-center  grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-x-10 lg:gap-y-10'>
-                <NoMediaCard
-                  title='Script Transcriptions'
-                  description='Ensure every word in your scripts is captured accurately for seamless production processes.'
-                />
-                <NoMediaCard
-                  title='Footage Logging'
-                  description='Streamline your editing process with detailed logs of raw footage, highlighting key moments and dialogue.'
-                />
-              </div>
-
-              <ContentCard
-                title='Interviews and Documentaries'
-                description='Precisely transcribe interviews and documentaries for content creation and archival purposes.'
-                imgSrc='/media_industry/interviews.svg'
+            <div className='grid max-w-none   place-content-center  grid-cols-1 md:grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-1 lg:gap-x-10 lg:gap-y-10'>
+              <NoMediaCard
+                title='City Council Meetings'
+                description='Document every discussion and decision made during city council meetings to ensure complete transparency and accountability, supporting informed decision-making and public trust.'
+              />
+              <NoMediaCard
+                title='Public Hearings'
+                description='Ensure all public hearings are transcribed verbatim, providing an accurate and complete record of public input, promoting civic engagement by making proceedings easily accessible.'
               />
             </div>
           </div>
@@ -241,94 +240,81 @@ export default function Page() {
 
         <div className='mx-auto max-w-6xl text-left md:text-center px-6 md:px-16 lg:px-16 xl:px-28'>
           <h2 className='text-xl font-semibold leading-7 text-white footer-title'>
-            Broadcast and Digital Media
+            Policy and Legislative Documents
           </h2>
           <p className='mt-2 text-4xl md:text-5xl font-bold  text-gray-900'>
-            Enhancing Broadcasts, Amplifying Reach
+            Documenting Every Decision for Informed Governance
           </p>
         </div>
 
         <div className='mx-auto max-w-7xl flex flex-col  gap-y-5 lg:gap-y-10 py-10 md:py-24 px-6 md:px-16 lg:px-16 xl:px-28'>
-          <div className='grid max-w-none   place-content-center  grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-x-10 lg:gap-y-10'>
-          <div className='space-y-10'>
-              <ContentCard
-                title='Live Events and Shows'
-                description='Accurate transcriptions of live events capture every detail, aiding in post-event analysis, promotional content, and improving audience accessibility and engagement.'
-                imgSrc='/media_industry/liveshow.svg'
+          <div className='grid max-w-none   items-start  grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-x-10 lg:gap-y-10'>
+            <div className='grid max-w-none   place-content-center  grid-cols-1 md:grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-1 lg:gap-x-10 lg:gap-y-10'>
+              <NoMediaCard
+                title='Legislative Sessions'
+                description='Provide precise transcripts of legislative sessions to preserve the historical record and aid in legal and public reference, documenting every legislative decision for review and analysis.'
               />
-              <div className='grid max-w-none   place-content-center  grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-x-10 lg:gap-y-10'>
-                
-                <NoMediaCard
-                  title='News Transcriptions'
-                  description='Get accurate transcriptions of news segments for archiving and repurposing.'
-                />
-                <NoMediaCard
-                  title='Conferences'
-                  description='Document press conferences accurately for media kits, reports, and news articles.'
-                />
-              </div>
-
-             
+              <NoMediaCard
+                title='Press Briefings'
+                description='By transcribing press briefings, you ensure that the information disseminated to the public is accurately recorded and readily available for reference supporting transparent communication.'
+              />
             </div>
-          
-            <ContentCard
-              title='Podcast Transcriptions'
-              direction='vertical'
-              description='Precise transcriptions of your podcasts make your content more accessible, boosting engagement and reach. They provide a written record that can be easily searched, referenced, and repurposed for articles, social media posts, and more, maximizing the impact of each episode.'
-              imgSrc='/media_industry/Podcast.svg'
-            />
 
-           
+            <ContentCard
+              title='Policy Announcements'
+              direction='vertical'
+              description='Accurate transcriptions of policy announcements help ensure that all stakeholders understand the details and implications of policy changes, supporting effective governance and public awareness ensuring that new policies are communicated clearly and effectively.'
+              imgSrc='/government_industry/Conference-rafiki.png'
+            />
           </div>
         </div>
       </div>
 
       <HowItWorks custom_class='legal-how-it-works' />
 
-     
-      <div className='bg-white relative isolate' style={{ background: 'FAFAFA' }}>
-      <div className='relative overflow-hidden transition transform-gpu'>
-       
-         
-        <div className='mx-auto max-w-7xl px-6 lg:px-8 xl:px-14'>
-          <div className='relative isolate py-24   px-6   sm:px-16 md:py-10  lg:flex lg:items-center lg:gap-x-20 lg:px-24 lg:pt-0'>
-            <div className='md:min-w-[28rem] lg:min-w-[30rem]  lg:mx-0 lg:flex-auto lg:py-24 lg:text-left'>
-              <h2 className='text-4xl md:text-[2.8rem] font-bold leading-10 section-title  text-gray-800 '>
-               Ready to enhance your media production with Us?
-              </h2>
-              <p className='mt-6  text-xl leading-8 text-gray-600'>
-                Contact us today to discuss your requirements and discover how
-                our specialized transcription solutions can benefit your legal
-                practice.
-              </p>
+      <div
+        className='bg-white relative isolate'
+        style={{ background: 'FAFAFA' }}
+      >
+        <div className='relative overflow-hidden transition transform-gpu'>
+          <div className='mx-auto max-w-7xl px-6 lg:px-8 xl:px-14'>
+            <div className='relative isolate py-24   px-6   sm:px-16 md:py-10  lg:flex lg:items-center lg:gap-x-20 lg:px-24 lg:pt-0'>
+              <div className='md:min-w-[28rem] lg:min-w-[30rem]  lg:mx-0 lg:flex-auto lg:py-24 lg:text-left'>
+                <h2 className='text-4xl md:text-[2.8rem] font-bold leading-10 section-title  text-gray-800 '>
+                Ready to Enhance Your Government Operations Today with Us? 
+                </h2>
+                <p className='mt-6  text-xl leading-8 text-gray-600'>
+                  Contact us today to discuss your requirements and discover how
+                  our specialized transcription solutions can benefit your legal
+                  practice.
+                </p>
 
-              <div className='mt-10 flex items-center flex-wrap justify-center gap-6 lg:justify-start'>
-                <a
-                  href='/contact-us'
-                  className='rounded-xl btn-vlg px-7 py-2.5 text-lg font-semibold text-white transition focus:ring-4 focus:ring-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white'
-                >
-                 Contact Us
-                </a>
+                <div className='mt-10 flex items-center flex-wrap justify-center gap-6 lg:justify-start'>
+                  <a
+                    href='/contact-us'
+                    className='rounded-xl btn-vlg px-7 py-2.5 text-lg font-semibold text-white transition focus:ring-4 focus:ring-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white'
+                  >
+                    Contact Us
+                  </a>
+                </div>
               </div>
-            </div>
-            <div className='hidden lg:block relative mt-16 h-80 lg:-mt-8 pr-10'>
-              <img
-                className='lg:w-[28rem] xl:w-[32rem] max-w-none'
-                src='/media_industry/set-up-studio-shoot.jpg'
-                alt='Ready to Succeed with our transcription service'
-              />
+              <div className='hidden lg:block relative mt-16 h-80 lg:-mt-8 pr-10'>
+                <img
+                  className='lg:w-[28rem] xl:w-[32rem] max-w-none'
+                  src='/government_industry/people-taking-part-high-protocol-event.jpg'
+                  alt='Ready to Succeed with our transcription service'
+                />
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-
 
       <div className=' py-14 sm:py-12 bg-gray-100'>
         <div className='mx-auto max-w-7xl relative'>
           <div className='mx-auto px-6 md:px-0 md:max-w-2xl text-left lg:text-center'>
             <p className='mt-2 text-4xl font-bold  section-title text-gray-900 md:text-5xl'>
-              Media & Production Frequently asked questions
+             Government Frequently asked questions
             </p>
             {/* <p className="mt-6 text-lg leading-8 text-gray-600">
             Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a elementum

@@ -11,11 +11,10 @@ import Faqs from '@/components/Faqs';
 import { classNames } from '@/utils/classNames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLongArrowRight } from '@fortawesome/free-solid-svg-icons';
-import ContentCard from './components/ContentCard';
 import NoMediaCard from './components/NoMediacard';
 
 export const metadata: Metadata = {
-  title: 'VerbalScripts | Corporate & General Business',
+  title: 'VerbalScripts | Healthcare',
 };
 
 export default function Page() {
@@ -49,29 +48,29 @@ export default function Page() {
 
   const features = [
     {
-      name: 'Unmatched Precision.',
+      name: 'Specialized Medical Vocabulary',
       description:
-        'We meticulously transcribe every business document, ensuring accuracy and clarity in every detail.',
+        'Trust our experts to handle complex medical terminology with precision, ensuring your medical documentation is accurate and reliable.',
 
       imgUrl: '/legal/expertise.svg',
     },
     {
-      name: 'Tailored Flexibility.',
+      name: 'HIPAA Compliance',
       description:
-        'Our transcription solutions are customized to fit your unique requirements, timelines, and budget, offering you the best possible service.',
+        'Our services adhere to strict HIPAA regulations, ensuring the secure handling of sensitive medical information. Trust us to maintain the highest standards of privacy and security for your healthcare documentation needs.',
 
       imgUrl: '/legal/assurance.svg',
     },
     {
-      name: 'Time-Saving Efficiency',
+      name: 'Efficient Documentation',
       description:
-        'Free up valuable time by letting our expert team handle your transcription needs, so you can focus on what matters most—your business.',
+        'By outsourcing transcription, healthcare professionals can focus on patient care while ensuring that all documentation is accurately and efficiently completed.',
       imgUrl: '/legal/time.svg',
     },
     {
-      name: 'Robust Confidentiality.',
+      name: 'Medical Expertise',
       description:
-        'We safeguard your sensitive information with top-notch security measures and strict adherence to data protection regulations.',
+        'Our transcriptionists have experience in the healthcare field, ensuring accurate transcriptions of medical reports, patient interviews, and clinical notes.',
 
       imgUrl: '/legal/solutions.svg',
     },
@@ -81,19 +80,18 @@ export default function Page() {
     <div className='bg-zinc-800  relative'>
       <AppHeader />
 
-      <div className='relative media_landing z-[10] h-auto  px-6 py-20 md:pt-0 pb-10 md:pb-30 md:py-24 lg:py-32 md:px-20 lg:px-28'>
+      <div className='relative health_landing z-[10] h-auto  px-6 py-20 md:pt-0 pb-10 md:pb-30 md:py-24 lg:py-32 md:px-20 lg:px-28'>
         <div className='landing-page-video-wrapper'></div>
 
         {/* <div className='absolute -z-[1] blur-sm bottom-0 right-0 -rotate-180 left-0 why_industry_bg'></div> */}
         <div className='flex flex-wrap  lg:flex-nowrap items-center lg:space-x-10  space-y-10'>
           <div className='max-w-2xl lg:max-w-xl'>
             <h1 className='text-4xl font-bold capitalize  text-gray-900 sm:text-5xl'>
-              Media Production Industry
+              Healthcare Industry
             </h1>
 
             <p className='block md:max-w-2xl lg:max-w-3xl xl:max-w-4xl relative z-10 mt-6 text-lg  leading-7 text-gray-800'>
-              Enhancing Your Media Production for Engaging Content of Your
-              Audience.
+              Premium Transcription Solutions for Your Healthcare Excellence.
             </p>
 
             <div className='mt-10 flex flex-wrap space-y-5 lg:space-y-0  justify-start lg:flex-nowrap md:items-center space-x-5'>
@@ -123,60 +121,62 @@ export default function Page() {
         <PopularPartner />
       </div>
 
-
-
-      <div className='why-media-industry-bg'>
+      <div className='bg-white'>
         <div className='mx-auto max-w-7xl py-5 md:py-24 lg:py-32     px-5 md:px-24 lg:px-32'>
-          <div className='flex flex-wrap lg:flex-nowrap items-center space-x-6'>
-            <div className='lg:max-w-[30rem] text-left'>
-              <h2 className='text-xl font-bold leading-7 capitalize secondary-text'>
-                What Benefits gained in your Media Production?
-              </h2>
-              <p className='mt-2 text-4xl md:text-5xl  font-bold text-left  text-gray-900 section-title'>
-                <span className='relative z-10'>
-                  Transforming{' '}
-                  <span className='z-10 absolute -bottom-2.5 right-0'>
-                    <img src='/svg/lines.svg' className='w-44' alt='' />
-                  </span>
-                </span>{' '}
-                your Media Production into Unique Quality.
-              </p>
-            </div>
-            <div className='px-6 text-gray-800 text-lg text-left'>
-              We understand the unique needs of the media industry and are
-              dedicated to providing accurate, timely, and secure transcription
-              solutions that enhance your production workflow.
+          <div className='mx-auto max-w-4xl'>
+            <h2 className='text-xl text-left md:text-center font-bold leading-7 capitalize secondary-text'>
+              What Benefits gained in the Educational Industry?
+            </h2>
+            <p className='mt-2 text-4xl md:text-5xl  font-bold text-left md:text-center  text-gray-900 section-title'>
+              <span className='relative z-10'>
+                Enhancing{' '}
+                <span className='z-10 absolute -bottom-2.5 right-0'>
+                  <img src='/svg/lines.svg' className='w-44' alt='' />
+                </span>
+              </span>{' '}
+              Patient Care with Premium Solutions
+            </p>
+            <div className='px-6 text-gray-800 text-lg text-left md:text-center'>
+              At VerbalScripts, we understand that accurate documentation is
+              paramount in the healthcare industry. Our transcription services
+              are specifically designed to support healthcare providers by
+              ensuring precision, confidentiality, and efficiency in every
+              transcription project.
             </div>
           </div>
           <div className='py-10 md:py-24'>
-            <dl className='grid max-w-none   place-content-center  grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-4 lg:gap-x-5 lg:gap-y-5'>
+            <dl className='grid max-w-none   place-content-center  grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-x-5 lg:gap-y-5'>
               {features.map((feature) => (
                 <div
                   key={feature.name}
                   className={classNames(
-                    'relative py-8 px-4 lg:px-3 xl:px-5  shadow-sm bg-white rounded-xl',
+                    'relative border border-gray-200 flex space-x-7  py-8 px-4 lg:px-3 xl:px-5  shadow-sm bg-white rounded-xl',
                   )}
                 >
-                  <dt className='flex flex-col items-center text-base font-semibold leading-7 text-gray-900'>
+                  <div>
                     <Image
                       className='mb-5'
                       alt={feature.name}
                       src={feature.imgUrl}
-                      height={110}
-                      width={110}
+                      height={250}
+                      width={250}
                     />
-                    <span className='text-[1.35rem] text-center'>
-                      {feature.name}
-                    </span>
-                  </dt>
-                  <dd className='text-lg text-center mt-2 text-md leading-6 text-gray-500'>
-                    {feature.description}
-                  </dd>
+                  </div>
+                  <div className=''>
+                    <div className='text-base font-semibold '>
+                      <span className='text-[1.35rem] text-left leading-7 text-gray-900'>
+                        {feature.name}
+                      </span>
+                    </div>
+                    <div className='text-lg text-left mt-2 text-md leading-6 text-gray-500'>
+                      {feature.description}
+                    </div>
+                  </div>
                 </div>
               ))}
             </dl>
           </div>
-          <div className='text-center'>
+          <div className='text-center why-health-industry-bg rounded-2xl py-32 md:py-24 lg:py-32'>
             <a
               href='/get-quote'
               className='inline-flex  rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
@@ -192,18 +192,16 @@ export default function Page() {
         style={{ background: '#FAFAFA' }}
       >
         <div className='mx-auto max-w-6xl text-left md:text-center px-6 md:px-16 lg:px-16 xl:px-28'>
-          <h2 className='text-xl font-semibold leading-7 text-white footer-title'>
-            Our Solutions for Media Production Industry?
+          <h2 className='text-xl font-semibold leading-7 text-white'>
+            Our Solutions for Healthcare Industry?
           </h2>
           <p className='mt-2 text-4xl md:text-5xl font-bold  text-gray-900'>
-            Crafting Perfect Content with Precision Through VerbalScripts For
-            You
+            Foster Healthcare Excellence with VerbalScripts’ Precision
+            Transcriptions
           </p>
         </div>
 
-        <div
-          className='absolute -z-[1] top-0 left-0 w-full h-[15rem] why_media_industry_top'
-        ></div>
+        <div className='absolute -z-[1] top-0 left-0 w-full h-[15rem] why_media_industry_top'></div>
 
         <div className='absolute top-[14rem] left-0  w-full -z-[1] media_industry_pattern'></div>
 
@@ -211,29 +209,19 @@ export default function Page() {
 
         <div className='mx-auto max-w-7xl flex flex-col  gap-y-5 lg:gap-y-10 py-10 md:py-24 px-6 md:px-16 lg:px-16 xl:px-28'>
           <div className='grid max-w-none   place-content-center  grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-x-10 lg:gap-y-10'>
-            <ContentCard
-              title='Post-Production Notes'
-              direction='vertical'
-              description='Detailed transcriptions of post-production notes help streamline the editing process, ensuring that every creative decision is documented and easily accessible for final cuts and reviews. This enhances the efficiency and quality of your production workflow.'
-              imgSrc='/media_industry/postproduction.svg'
+            <img
+              src='/healthcare_industry/Medical prescription-bro (1) 1.svg'
+              alt=''
             />
 
-            <div className='space-y-10'>
-              <div className='grid max-w-none   place-content-center  grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-x-10 lg:gap-y-10'>
-                <NoMediaCard
-                  title='Script Transcriptions'
-                  description='Ensure every word in your scripts is captured accurately for seamless production processes.'
-                />
-                <NoMediaCard
-                  title='Footage Logging'
-                  description='Streamline your editing process with detailed logs of raw footage, highlighting key moments and dialogue.'
-                />
-              </div>
-
-              <ContentCard
-                title='Interviews and Documentaries'
-                description='Precisely transcribe interviews and documentaries for content creation and archival purposes.'
-                imgSrc='/media_industry/interviews.svg'
+            <div className='grid max-w-none   place-content-center  grid-cols-1 md:grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-1 lg:gap-x-10 lg:gap-y-10'>
+              <NoMediaCard
+                title='Patient Notes and Histories'
+                description='We transcribe detailed patient notes and medical histories with utmost accuracy, ensuring all vital information is captured for comprehensive patient care. This includes everything from initial consultations to follow-up visits.'
+              />
+              <NoMediaCard
+                title='Consultation and Progress Notes'
+                description='Our team ensures that every detail from patient consultations and progress updates is meticulously documented, maintaining thorough and precise medical records essential for ongoing treatment.'
               />
             </div>
           </div>
@@ -241,94 +229,78 @@ export default function Page() {
 
         <div className='mx-auto max-w-6xl text-left md:text-center px-6 md:px-16 lg:px-16 xl:px-28'>
           <h2 className='text-xl font-semibold leading-7 text-white footer-title'>
-            Broadcast and Digital Media
+            Reports & Summaries
           </h2>
           <p className='mt-2 text-4xl md:text-5xl font-bold  text-gray-900'>
-            Enhancing Broadcasts, Amplifying Reach
+            Clear and Concise Medical Reporting
           </p>
         </div>
 
         <div className='mx-auto max-w-7xl flex flex-col  gap-y-5 lg:gap-y-10 py-10 md:py-24 px-6 md:px-16 lg:px-16 xl:px-28'>
           <div className='grid max-w-none   place-content-center  grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-x-10 lg:gap-y-10'>
-          <div className='space-y-10'>
-              <ContentCard
-                title='Live Events and Shows'
-                description='Accurate transcriptions of live events capture every detail, aiding in post-event analysis, promotional content, and improving audience accessibility and engagement.'
-                imgSrc='/media_industry/liveshow.svg'
+            <div className='grid max-w-none   place-content-center  grid-cols-1 md:grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-1 lg:gap-x-10 lg:gap-y-10'>
+              <NoMediaCard
+                title='Operative and Procedure Reports'
+                description='We provide detailed transcriptions of operative and procedure reports, supporting surgical teams and post-operative care plans with comprehensive and precise documentation.'
               />
-              <div className='grid max-w-none   place-content-center  grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-x-10 lg:gap-y-10'>
-                
-                <NoMediaCard
-                  title='News Transcriptions'
-                  description='Get accurate transcriptions of news segments for archiving and repurposing.'
-                />
-                <NoMediaCard
-                  title='Conferences'
-                  description='Document press conferences accurately for media kits, reports, and news articles.'
-                />
-              </div>
-
-             
+              <NoMediaCard
+                title='Discharge Summaries'
+                description='Our team ensures that every detail from patient consultations and progress updates is meticulously documented, maintaining thorough and precise medical records essential for ongoing treatmentOur accurate transcriptions of discharge summaries facilitate smooth patient transitions and continuous care, ensuring all critical information is communicated effectively to all involved healthcare professionals.'
+              />
             </div>
-          
-            <ContentCard
-              title='Podcast Transcriptions'
-              direction='vertical'
-              description='Precise transcriptions of your podcasts make your content more accessible, boosting engagement and reach. They provide a written record that can be easily searched, referenced, and repurposed for articles, social media posts, and more, maximizing the impact of each episode.'
-              imgSrc='/media_industry/Podcast.svg'
+            <img
+              src='/healthcare_industry/Hospital patient-cuate 1.svg'
+              alt=''
             />
-
-           
           </div>
         </div>
       </div>
 
       <HowItWorks custom_class='legal-how-it-works' />
 
-     
-      <div className='bg-white relative isolate' style={{ background: 'FAFAFA' }}>
-      <div className='relative overflow-hidden transition transform-gpu'>
-       
-         
-        <div className='mx-auto max-w-7xl px-6 lg:px-8 xl:px-14'>
-          <div className='relative isolate py-24   px-6   sm:px-16 md:py-10  lg:flex lg:items-center lg:gap-x-20 lg:px-24 lg:pt-0'>
-            <div className='md:min-w-[28rem] lg:min-w-[30rem]  lg:mx-0 lg:flex-auto lg:py-24 lg:text-left'>
-              <h2 className='text-4xl md:text-[2.8rem] font-bold leading-10 section-title  text-gray-800 '>
-               Ready to enhance your media production with Us?
-              </h2>
-              <p className='mt-6  text-xl leading-8 text-gray-600'>
-                Contact us today to discuss your requirements and discover how
-                our specialized transcription solutions can benefit your legal
-                practice.
-              </p>
+      <div
+        className='bg-white relative isolate'
+        style={{ background: 'FAFAFA' }}
+      >
+        <div className='relative overflow-hidden transition transform-gpu'>
+          <div className='mx-auto max-w-7xl px-6 lg:px-8 xl:px-14'>
+            <div className='relative isolate py-24   px-6   sm:px-16 md:py-10  lg:flex lg:items-center lg:gap-x-20 lg:px-24 lg:pt-0'>
+              <div className='md:min-w-[28rem] lg:min-w-[30rem]  lg:mx-0 lg:flex-auto lg:py-24 lg:text-left'>
+                <h2 className='text-4xl md:text-[2.8rem] font-bold leading-10 section-title  text-gray-800 '>
+                Ready to Elevate your Healthcare Documentation with Us?
+                </h2>
+                <p className='mt-6  text-xl leading-8 text-gray-600'>
+                  Contact us today to discuss your requirements and discover how
+                  our specialized transcription solutions can benefit your legal
+                  practice.
+                </p>
 
-              <div className='mt-10 flex items-center flex-wrap justify-center gap-6 lg:justify-start'>
-                <a
-                  href='/contact-us'
-                  className='rounded-xl btn-vlg px-7 py-2.5 text-lg font-semibold text-white transition focus:ring-4 focus:ring-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white'
-                >
-                 Contact Us
-                </a>
+                <div className='mt-10 flex items-center flex-wrap justify-center gap-6 lg:justify-start'>
+                  <a
+                    href='/contact-us'
+                    className='rounded-xl btn-vlg px-7 py-2.5 text-lg font-semibold text-white transition focus:ring-4 focus:ring-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white'
+                  >
+                    Contact Us
+                  </a>
+                </div>
               </div>
-            </div>
-            <div className='hidden lg:block relative mt-16 h-80 lg:-mt-8 pr-10'>
-              <img
-                className='lg:w-[28rem] xl:w-[32rem] max-w-none'
-                src='/media_industry/set-up-studio-shoot.jpg'
-                alt='Ready to Succeed with our transcription service'
-              />
+              <div className='hidden lg:block relative mt-16 h-80 lg:-mt-8 pr-10'>
+                <img
+                  className='lg:w-[28rem] xl:w-[32rem] max-w-none'
+                  src='/healthcare_industry/why-us.jpg'
+                  alt='Ready to Succeed with our transcription service'
+                />
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-
 
       <div className=' py-14 sm:py-12 bg-gray-100'>
         <div className='mx-auto max-w-7xl relative'>
           <div className='mx-auto px-6 md:px-0 md:max-w-2xl text-left lg:text-center'>
             <p className='mt-2 text-4xl font-bold  section-title text-gray-900 md:text-5xl'>
-              Media & Production Frequently asked questions
+             Healthcare Frequently asked questions
             </p>
             {/* <p className="mt-6 text-lg leading-8 text-gray-600">
             Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a elementum
