@@ -49,7 +49,7 @@ export default function FAQsPage() {
     <div className='bg-zinc-800  relative'>
       <AppHeader />
 
-      <div className='relative mx-auto max-w-7xl  h-auto  px-6 py-20   pb-40 md:py-20 lg:py-20 md:px-20 lg:px-28'>
+      <div className='relative mx-auto max-w-7xl  h-auto  px-6 py-20   pb-40 md:py-28 lg:py-32 md:px-20 lg:px-28'>
         {/* <video className='absolute top-0 right-0 left-0 w-full -z-20 h-full object-cover'  loop autoPlay>
         <source src="landing_prodution.mp4" type='video/mp4' />
       </video> */}
@@ -72,19 +72,9 @@ export default function FAQsPage() {
               Contact Us
             </h1>
             <p className='block md:max-w-2xl lg:max-w-3xl xl:max-w-4xl relative z-10 mt-6 text-lg  leading-7 text-gray-100'>
-              Explore our FAQs to learn how VerbalScripts can meet your
-              transcription needs with precision, efficiency, and unmatched
-              professionalism.
+               Get in touch with us with any queries and our team will respond as soon as possible
             </p>
-            <div className='mt-5'>
-                <a
-                  href='/contact-us'
-                  className='inline-flex flex-nowrap  items-center space-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
-                >
-                  <span className='flex'>Contact Support</span>
-                
-                </a>
-              </div>
+           
           </div>
           <div className='mt-10 lg:mt-0 relative   lg:min-w-[30rem]'>
               <img
