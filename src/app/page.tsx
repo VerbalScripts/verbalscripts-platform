@@ -18,7 +18,7 @@ import TestimonialsV2 from '@/components/TestimonialsV2';
 
 export const metadata: Metadata = {
   title: 'Verbalscripts - 100% Human Transcription Services',
-
+  
   keywords: [
     'verbalscripts',
     'transcription',

@@ -8,7 +8,7 @@ import ContactForm from './components/ContactForm';
 // import FaqsPageTab from './components/FaqsPageTab';
 
 export const metadata: Metadata = {
-  title: 'Verbalscripts - Frequently asked Questions',
+  title: 'Verbalscripts - Contact Us',
 
   keywords: [
     'transcription',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     url: 'https://verbalscripts.com',
-    title: 'Verbalscripts - Frequently asked Questions',
+    title: 'Verbalscripts - Contact Us',
     description:
       'We provide fast and affordable client-ready transcription services tailored to your needs through transcription, reviewing and proofreading.',
 
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
       {
         url: 'https://verbalscripts.com/icons/logo-banner.jpg',
         secureUrl: 'https://verbalscripts.com/icons/logo-banner.jpg',
-        alt: 'Verbalscripts - Frequently asked Questions',
+        alt: 'Verbalscripts - Contact Us',
         type: 'image/jpg',
       },
     ],
