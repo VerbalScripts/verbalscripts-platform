@@ -23,6 +23,10 @@ import CancelOrder from '@/components/modals/CancelOrder';
 import ComponentSpinner from '@/components/ComponentSpinner';
 import VideoPlayer from '@/components/modals/VideoPlayer';
 import SystemProgressPopup from '@/components/dashboard/SystemProgressPopup';
+import { Table } from 'flowbite-react';
+import moment from 'moment';
+import { DurationFromSeconds } from '@/utils/DurationFromSeconds';
+import { bytesToMB } from '@/utils/bytesToMb';
 
 interface PageProps {
   params: { slug: string };
@@ -905,39 +909,60 @@ export default function Page({ params: { slug } }: PageProps) {
                   </div>
                 </div>
                 <div className='space-y-2'>
-                  <div className='grid justify-evenly grid-cols-2 md:grid-cols-3   lg:gap-x-8 gap-y-5  lg:grid-cols-3 lg:gap-y-8  pb-12'>
-                    {order?.files.map((orderFile, index) => (
-                      <div key={index} className='flex items-center'>
-                        <div
-                          key={index}
-                          className='shadow-md rounded-xl overflow-hidden'
+                  <Table hoverable>
+                    <Table.Head className='dark:border-gray-700 dark:bg-zinc-800'>
+                      <Table.HeadCell>Label</Table.HeadCell>
+                      <Table.HeadCell>Duration</Table.HeadCell>
+                      <Table.HeadCell>Duration</Table.HeadCell>
+                      <Table.HeadCell>Created At</Table.HeadCell>
+                    </Table.Head>
+                    <Table.Body className='divide-y'>
+                      {order?.files.map((orderFile) => (
+                        <Table.Row
+                          is='a'
+                          key={order.id}
+                          className={classNames(
+                            'bg-white  dark:border-gray-700 dark:bg-gray-800',
+                          )}
                         >
-                          <div className='bg-gray-50 h-28 flex justify-center items-center'>
-                            <img
-                              src='icons/video.png'
-                              className='h-12 w-12 text-gray-600'
-                            />
-                          </div>
-                          <div className='py-1.5 px-3'>
-                            <div className='text-gray-700 font-semibold text-lg'>
+                          <Table.Cell className='flex gap-x-3 items-center py-2'>
+                            {orderFile.mimetype &&
+                            (orderFile.mimetype.split('/')[0] == 'video' ||
+                              orderFile.mimetype.split('/')[0] == 'audio') ? (
+                              <button
+                                className='cursor-pointer transition-all duration-100 '
+                                onClick={() => setVideoId(orderFile.id)}
+                              >
+                                <PlayIcon className='text-gray-800  dark:text-white w-5' />
+                              </button>
+                            ) : (
+                              <span className=' w-5 text-white'>Not audio</span>
+                            )}
+
+                            <span className='overflow-hidden truncate md:w-[18rem] font-medium text-gray-900 dark:text-white'>
                               {orderFile.label}
-                            </div>
-                            <div className='flex justify-between items-center my-1'>
-                              <div className='text-gray-600 text-sm'>
-                                Caption, Subtitle
-                              </div>
-                              <div className='py-0.5 px-2 bg-gray-50 text-sm rounded-xl text-indigo-600 font-semibold'>
-                                MP4
-                              </div>
-                            </div>
-                          </div>
-                          <button onClick={() => setVideoId(orderFile.id)}>
-                            <PlayIcon className='text-gray-800 w-10' />
-                          </button>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                            </span>
+                          </Table.Cell>
+
+                          <Table.Cell className='py-2'>
+                            {bytesToMB(orderFile.size)} {'MBs'}
+                          </Table.Cell>
+                          <Table.Cell className='py-2'>
+                            <span className='uppercase'>
+                              {orderFile.duration
+                                ? DurationFromSeconds(orderFile.duration)
+                                : '-'}
+                            </span>
+                          </Table.Cell>
+                          <Table.Cell className='py-2'>
+                            <span className='capitalize text-sm text-gray-900 dark:text-white'>
+                              {moment(orderFile.createdAt).format('L')}
+                            </span>
+                          </Table.Cell>
+                        </Table.Row>
+                      ))}
+                    </Table.Body>
+                  </Table>
                 </div>
               </div>
             </div>

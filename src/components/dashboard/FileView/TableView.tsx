@@ -171,7 +171,7 @@ export default function TableView({
   };
 
   return (
-    <div className='overflow-x-auto min-h-0.5'>
+    <div className='overflow-x-auto min-h-1.5'>
       <Table hoverable>
         <Table.Head>
           <Table.HeadCell className='p-4'>
@@ -184,7 +184,6 @@ export default function TableView({
           <Table.HeadCell>Size (MB)s</Table.HeadCell>
           <Table.HeadCell>Duration</Table.HeadCell>
           <Table.HeadCell>Upload Date</Table.HeadCell>
-          <Table.HeadCell>Action</Table.HeadCell>
           <Table.HeadCell>
             <span className='sr-only'>Edit</span>
           </Table.HeadCell>

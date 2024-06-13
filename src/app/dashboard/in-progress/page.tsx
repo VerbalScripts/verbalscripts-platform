@@ -133,9 +133,7 @@ export default function Page() {
                 <Table.HeadCell>Progress</Table.HeadCell>
                 <Table.HeadCell>Payment</Table.HeadCell>
                 <Table.HeadCell>Created At</Table.HeadCell>
-                <Table.HeadCell>
-                  <span className='sr-only'>Edit</span>
-                </Table.HeadCell>
+               
               </Table.Head>
               <Table.Body className='divide-y'>
                 {orders.map((order) => (
@@ -149,7 +147,7 @@ export default function Page() {
                   >
                     <Table.Cell className='flex items-center space-x-3'>
                       <span className='whitespace-nowrap font-medium text-gray-900 dark:text-white'>
-                        {order.id}
+                        {order.orderId || order.id}
                       </span>
                       <span className='bg-indigo-500 flex items-center font-bold justify-center  rounded-full w-5 h-5 text-white'>
                         {order.files.length}
