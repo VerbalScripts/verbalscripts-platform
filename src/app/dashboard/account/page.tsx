@@ -22,6 +22,7 @@ export default function Page() {
       if (response.status == 200) {
         if (response.data.isAuth) {
           setUser({
+            ...user,
             email: response.data.email,
             firstName: response.data.firstName,
             lastName: response.data.lastName,
@@ -41,6 +42,8 @@ export default function Page() {
       setLoading(false);
     }
   };
+
+
 
   useEffect(() => {
     fetchUser();

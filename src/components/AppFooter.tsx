@@ -44,7 +44,7 @@ export default function AppFooter() {
       price: '0.10$ per task',
     },
     {
-      name: 'Video and Audio Transcription services',
+      name: 'Video and Audio Transcription',
       description: 'Speak directly to your customers',
       href: '/services/audio-and-video',
       icon: CursorArrowRaysIcon,
@@ -110,21 +110,23 @@ export default function AppFooter() {
       name: 'Court reporting & Legal',
       description:
         'We convert audio/video content into transcripts quickly and securing to save law firms, investigators, police force, or research firms time and money.',
-      href: '/solutions/legal',
+      href: '/industry/legal',
       icon: NewspaperIcon,
     },
     {
       name: 'Corporate & general business',
       description:
         'Customized for your large volume needs, including a variety of enterprise security requirements.',
-      href: '/solutions/enterprise',
+      href: '/industry/legal',
+
       icon: ChartBarIcon,
     },
     {
       name: 'Media production',
       description:
         'The very best in human intelligence requires top quality training data for speech NLP and computer vision models.',
-      href: '/solutions/ai',
+      href: '/solutions/media',
+
       icon: NewspaperIcon,
     },
     {
@@ -138,21 +140,23 @@ export default function AppFooter() {
       name: 'Digital & online learning',
       description:
         'Transcription that is perfect for all types of qualitative research needs, including focus groups, surveys and in-depth interviews.',
-      href: '/solutions/market-research',
+
+      href: '/solutions/education',
       icon: ChartBarIcon,
     },
     {
       name: 'Government',
       description:
         'Making live events, meetings, ad campaigns and press briefings more accessible and actionable.',
-      href: '/solutions/call-centers',
+      href: '/industry/government',
       icon: MicrophoneIcon,
     },
     {
       name: 'Healthcare',
       description:
         'Making live events, meetings, ad campaigns and press briefings more accessible and actionable.',
-      href: '/solutions/call-centers',
+      href: '/industry/healthcare',
+
       icon: BuildingOffice2Icon,
     },
   ];
@@ -389,22 +393,18 @@ export default function AppFooter() {
 
         <div className='flex justify-between flex-wrap md:flex-nowrap  items-center'>
           <div className='flex mt-3 md:mt-0  items-center flex-wrap'>
-            <a href='#' className='px-1.5  py-0 md:border-r border-gray-300'>
+            <a href='/legal/terms-of-service' className='px-1.5  py-0 md:border-r border-gray-300'>
               <span className='text-gray-300  hover:text-indigo-500'>
                 Terms of service
               </span>
             </a>{' '}
-            <a href='#' className='px-1.5 md:border-r border-gray-300'>
+            <a href='/legal/privacy-policy' className='px-1.5 md:border-r border-gray-300'>
               <span className='text-gray-300  hover:text-indigo-500'>
                 Privacy Policy
               </span>
             </a>
-            <a href='#' className='px-1.5 md:border-r border-gray-300'>
-              <span className='text-gray-300  hover:text-indigo-500'>
-                Accessibility
-              </span>
-            </a>
-            <a href='#' className='px-1.5  '>
+           
+            <a href='/legal' className='px-1.5  '>
               <span className='text-gray-300  hover:text-indigo-500'>
                 Legal
               </span>

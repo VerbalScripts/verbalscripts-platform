@@ -27,6 +27,8 @@ import { Table } from 'flowbite-react';
 import moment from 'moment';
 import { DurationFromSeconds } from '@/utils/DurationFromSeconds';
 import { bytesToMB } from '@/utils/bytesToMb';
+import { useSetRecoilState } from 'recoil';
+import { systemProcessStatus } from '@/store/features/fileUpload';
 
 interface PageProps {
   params: { slug: string };
@@ -58,6 +60,9 @@ export default function Page({ params: { slug } }: PageProps) {
   const instructionsRef = useRef(null);
   const [openPlayer, setOpenPlayer] = useState(false);
   const [videoId, setVideoId] = useState('');
+
+  const setSystemProgressContent = useSetRecoilState(systemProcessStatus);
+
 
   useEffect(() => {
     if (videoId != '') {
@@ -102,6 +107,14 @@ export default function Page({ params: { slug } }: PageProps) {
       await AxiosProxy.patch(`/orders/client/${slug}`, {
         order: { configuration: { instructions } },
       });
+
+      setSystemProgressContent({
+        show: true,
+        message: `User updated success`,
+        title: 'Account Update',
+        success: true,
+      });
+
     } catch (err) {
       // throw new Error('Network Problem');
       console.log(err);
@@ -144,7 +157,7 @@ export default function Page({ params: { slug } }: PageProps) {
         />
 
         {/* cancel order  modal*/}
-        <CancelOrder open={open} setOpen={setOpen} reload={reload} id={slug} />
+        <CancelOrder open={open} setOpen={setOpen} reload={reload} orderId={(order && order!.orderId) || slug} id={slug} />
 
         {loading ? (
           <LoadSpinner />
@@ -165,14 +178,14 @@ export default function Page({ params: { slug } }: PageProps) {
                 /
               </span>
               <span className='font-semibold text-gray-500 dark:text-gray-200'>
-                # {order?.id}
+                # {order?.orderId}
               </span>
             </div>
             <div className='py-5 flex justify-between items-start space-x-5'>
               <div className='flex flex-col space-y-2'>
                 <div className='flex items-center space-x-3'>
                   <span className='font-semibold text-gray-800 dark:text-white text-md lg:text-xl capitalize'>
-                    # {order?.id}
+                    # {order?.orderId}
                   </span>
                   <span
                     className={classNames(

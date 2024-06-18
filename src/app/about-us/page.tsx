@@ -8,7 +8,7 @@ import PopularPartner from '@/components/PopularPartner';
 export const metadata: Metadata = {
   title: 'Verbalscripts - About Us',
   description:
-  'We provide fast and affordable client-ready transcription services tailored to your needs through transcription, reviewing and proofreading.',
+    'We provide fast and affordable client-ready transcription services tailored to your needs through transcription, reviewing and proofreading.',
   openGraph: {
     type: 'website',
     url: 'https://verbalscripts.com',
@@ -32,12 +32,15 @@ export const metadata: Metadata = {
   },
 };
 export default function Page() {
-
   return (
     <div className='bg-zinc-800  relative'>
       <AppHeader />
 
-      <div className='relative about-landing   h-auto  px-6 py-20 md:pt-0 pb-10 md:pb-32 md:py-28  lg:py-20 md:px-20 lg:px-28'>
+      <div className='relative mx-auto max-w-7xl  h-auto  px-6 py-20   pb-40 md:py-20 lg:py-20 md:px-20 lg:px-28'>
+        {/* <video className='absolute top-0 right-0 left-0 w-full -z-20 h-full object-cover'  loop autoPlay>
+        <source src="landing_prodution.mp4" type='video/mp4' />
+      </video> */}
+        <div className='landing-page-video-wrapper'></div>
         <div
           className='absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80'
           aria-hidden='true'
@@ -50,38 +53,30 @@ export default function Page() {
             }}
           />
         </div>
-        {/* <div className='absolute -z-[1] blur-sm bottom-0 right-0 -rotate-180 left-0 why_industry_bg'></div> */}
-
-        <div className='mx-auto max-w-3xl lg:max-w-5xl flex flex-col items-center '>
-          <h1 className='text-5xl font-bold capitalize text-left  md:text-center  text-white sm:text-6xl'>
-            VerbalScripts, Best Partner For Your Industries Transcription Needs.
-          </h1>
-
-          <p className='block md:max-w-2xl lg:max-w-3xl xl:max-w-4xl relative z-10 mt-6 text-lg text-left  md:text-center leading-7 text-gray-100'>
-            We pride ourselves on being at the forefront of the transcription
-            industry, providing comprehensive and cutting-edge solutions
-            tailored to meet the unique needs of our diverse clientele. With a
-            relentless commitment to excellence and client satisfaction, we
-            stand as your trusted partner in transcription services.
-          </p>
-
-          <div className='mt-10 flex space-x-2'>
-            <a
-              href='/upload-files'
-              className='inline-flex rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
-            >
-              <span className='flex'>Get Started</span>
-            </a>
-            <a
-              href='/contact-us'
-              className='inline-flex rounded-lg bg-indigo-500 px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600'
-            >
-              <span className='flex'>Contact us</span>
-            </a>
+        <div className='flex flex-wrap  lg:flex-nowrap items-center gap-x-10 '>
+          <div className='max-w-2xl md:max-w-4xl'>
+            <h1 className='max-w-6xl lg:max-w-4xl xl:max-w-5xl relative z-10 text-5xl font-bold  text-white lg:text-5xl xl:text-6xl'>
+              VerbalScripts, Best Partner For Your Industries Transcription
+              Needs.
+            </h1>
+            <p className='block md:max-w-2xl lg:max-w-3xl xl:max-w-4xl relative z-10 mt-6 text-lg  leading-7 text-gray-100'>
+              We pride ourselves on being at the forefront of the transcription
+              industry, providing comprehensive and cutting-edge solutions
+              tailored to meet the unique needs of our diverse clientele. With a
+              relentless commitment to excellence and client satisfaction, we
+              stand as your trusted partner in transcription services.
+            </p>
+            <div className='mt-5'>
+              <a
+                href='#learnMore'
+                className='inline-flex flex-nowrap  items-center space-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
+              >
+                <span className='flex'>Learn More</span>
+              </a>
+            </div>
           </div>
         </div>
 
-       
         <div
           className='absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]'
           aria-hidden='true'
@@ -95,25 +90,16 @@ export default function Page() {
           />
         </div>
       </div>
-      <div className='bg-white relative pb-56'>
-        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'>
-          <path
-            fill='#f7961f'
-            fill-opacity='1'
-            d='M0,32L48,58.7C96,85,192,139,288,170.7C384,203,480,213,576,202.7C672,192,768,160,864,122.7C960,85,1056,43,1152,48C1248,53,1344,107,1392,133.3L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z'
-          ></path>
-        </svg>
-
-        <div className='absolute flex justify-center left-0 w-full md:-top-[2rem] lg:-top-[2rem]'>
-            <img  src='/about-us/about-us-preview.png' className='object-cover rounded-xl lg:w-[39rem]' alt="" />
-        </div>
-      </div>
 
       <div className='bg-gray-100 py-0'>
         <PopularPartner />
       </div>
 
-      <div className='py-10 md:py-16' style={{ background: '#FAFAFA' }}>
+      <div
+        className='py-10 md:py-16'
+        id='learnMore'
+        style={{ background: '#FAFAFA' }}
+      >
         <div className='mx-auto max-w-7xl px-6 md:px-16 lg:px-16 xl:px-28'>
           <div className='flex flex-wrap lg:flex-nowrap items-center space-x-6'>
             <div className='lg:order-2 lg:max-w-[30rem] text-left'>
@@ -265,11 +251,11 @@ export default function Page() {
                 </h2>
                 <p className='text-md  text-gray-700'>
                   In an ever-evolving landscape, we recognize the importance of
-                  staying ahead of the curve and embracing innovation. That{"'"}s
-                  why we are committed to continuous improvement and investment
-                  in cutting-edge technologies and methodologies that enable us
-                  to deliver even better results for our clients. By staying
-                  abreast of the latest advancements in transcription
+                  staying ahead of the curve and embracing innovation. That{"'"}
+                  s why we are committed to continuous improvement and
+                  investment in cutting-edge technologies and methodologies that
+                  enable us to deliver even better results for our clients. By
+                  staying abreast of the latest advancements in transcription
                   technology, we ensure that you always receive the most
                   efficient, accurate, and cost-effective solutions available.
                 </p>
@@ -310,8 +296,6 @@ export default function Page() {
           </div>
         </div>
       </div>
-
-  
 
       <div className='py-10 md:py-16 about-landing'>
         <div className='mx-auto max-w-7xl px-6 md:px-16 lg:px-16 xl:px-28'>

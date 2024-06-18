@@ -1,11 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 
-import React from 'react';
-import { useRecoilValue } from 'recoil';
-import { userState } from '@/store/configureStore';
-import LocalFilePLoad from '@/components/dashboard/LocalFilePLoad';
+import React, { useEffect, useState } from 'react';
 import SystemProgressUpload from '@/components/dashboard/SystemProgressUpload';
 import SystemProgressPopup from '@/components/dashboard/SystemProgressPopup';
+import AxiosProxy from '@/utils/AxiosProxy';
+import EmptyUploadsPrompt from './components/EmptyUploadsPrompt';
+import SummaryStatsBoard from './components/SummaryStatsBoard';
+import LoadSpinner from '@/components/dashboard/LoadSpinner';
 // import { useRouter } from 'next/navigation';
 
 // import type { Metadata } from 'next';
@@ -18,63 +21,48 @@ import SystemProgressPopup from '@/components/dashboard/SystemProgressPopup';
 // };
 
 export default function Page() {
-  const user = useRecoilValue(userState);
+  const [loading, setLoading] = useState(true);
+  const [isNew, setIsNew] = useState(true);
+
+  const httpHasPrevOrders = async () => {
+    try {
+      const response = await AxiosProxy.get('/files?q=all');
+
+      if (response.data.results && response.data.results.length > 0) {
+        setIsNew(false);
+      }
+    } catch (err: any) {
+      throw new Error(err.message || 'Could Not Process Request');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    httpHasPrevOrders();
+  }, []);
 
   return (
     <div className='min-h-screen'>
       <title>VerbalScripts | Dashboard</title>
       <SystemProgressUpload />
       <SystemProgressPopup />
-      <div className='py-3 px-6 md:px-24'>
-        <div className='py-5 '>
-          {/* fancy welcome if orders are empty */}
-          <div className='pt-10 md:pt-16'>
-            <div className='mb-5 text-5xl md:text-7xl capitalize font-bold footer-title'>
-              Hello, {user.isAuth ? user.firstName : 'Guest'}
-            </div>
-
-            <div className='text-4xl md:text-5xl font-semibold text-gray-600 dark:text-gray-500'>
-              Are you ready to transcript?
-            </div>
-          </div>
-
-          <div className='py-8'>
-            <LocalFilePLoad />
-          </div>
-
-          {/* <div className='my-2 text-gray-600 text-md'>
-            Pending Transcriptions
-          </div>
-          <div className='grid  grid-cols-4 items-center gap-4 sm:max-w-xl sm:grid-cols-4  lg:mx-0 lg:max-w-none lg:grid-cols-4 '>
-            {Array.from(Array(5).keys()).map((item, index) => (
-              <Link
-                key={index}
-                href=''
-                className='shadow-md rounded-xl overflow-hidden'
-              >
-                <div className='bg-gray-50 h-28 flex justify-center items-center'>
-                  <img
-                    src='icons/video.png'
-                    className='h-12 w-12 text-gray-600'
-                  />
-                </div>
-                <div className='py-1.5 px-3'>
-                  <div className='text-gray-700 font-semibold text-lg'>
-                    One thing you should never do in life
-                  </div>
-                  <div className='flex justify-between items-center my-1'>
-                    <div className='text-gray-600 text-sm'>
-                      Caption, Subtitle
-                    </div>
-                    <div className='py-0.5 px-2 bg-gray-50 text-sm rounded-xl text-indigo-600 font-semibold'>
-                      MP4
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div> */}
+      {/* <div className='h-52 bg-indigo-400 flex flex-col justify-center px-24 py-20' style={{ background: '#1c2534'}}>
+        <div className='mb-5 text-4xl md:text-6xl capitalize font-bold footer-title'>
+          Hello, {'Isaac'}
         </div>
+      </div> */}
+
+      <div className='py-3 px-6 md:px-24 '>
+      
+        {isNew && !loading ? (
+          <EmptyUploadsPrompt />
+        ) : !isNew && !loading ? (
+          // <SummaryStatsBoard />
+          <EmptyUploadsPrompt />
+        ) : (
+          <LoadSpinner />
+        )}
       </div>
     </div>
   );

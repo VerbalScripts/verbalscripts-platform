@@ -8,6 +8,7 @@ import { faLongArrowRight } from '@fortawesome/free-solid-svg-icons';
 import PopularPartner from '@/components/PopularPartner';
 
 import HowItWorks from '@/components/HowItWorks';
+import FeatureCard from '@/components/FeatureCard';
 
 export const metadata: Metadata = {
   title: 'VerbalScripts | Services',
@@ -245,18 +246,7 @@ export default function Page() {
           <div className='my-10'>
             <div className='grid max-w-none  grid-cols-1 md:grid-cols-2 gap-5  lg:grid-cols-2 lg:gap-10'>
               {audio_features.map((feature, index) => (
-                <div
-                  key={index}
-                  className='border bg-white z-[2] relative after:absolute after:-z-[1] after:opacity-0  hover:after:opacity-100  after:shadow-xl after:top-0 after:bottom-0 after:translate-y-0 after:transition-all after:left-0 after:w-full after:translate-x-0 hover:after:translate-x-5 hover:after:translate-y-5 after:rounded-md border-gray-200 rounded-xl py-5 px-6 md:py-10 md:px-12'
-                >
-                  <div className='footer-title text-2xl md:text-3xl font-semibold mb-3'>
-                    {feature.title}
-                  </div>
-
-                  <div className='text-gray-600 text-lg'>
-                    {feature.description}
-                  </div>
-                </div>
+              <FeatureCard key={index} title={feature.title} description={feature.description} />
               ))}
             </div>
           </div>

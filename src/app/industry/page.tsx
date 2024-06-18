@@ -17,11 +17,13 @@ export default function Page() {
     {
       imgUrl: '/medical_transcription/patientnotes.svg',
       title: 'Court Reporting & Legal',
+      href: '/industry/legal',
       description:
         'Navigate the legal landscape with confidence. From courtroom proceedings to legal dictations, our meticulous transcripts support legal professionals in their pursuit of justice.',
     },
     {
       imgUrl: '/medical_transcription/operativereport.svg',
+      href: '/industry/enterprise',
 
       title: 'Corporate & General Business',
       description:
@@ -30,19 +32,23 @@ export default function Page() {
     {
       imgUrl: '/medical_transcription/consultation.svg',
 
+      href: '/industry/media-production',
       title: 'Media Production',
       description:
         'Amplify your online presence with our transcription services. Whether it"s podcasts, interviews, or social media content, we transform audio and video into engaging, searchable text that captivates audiences.',
     },
     {
       imgUrl: '/medical_transcription/dischargesummary.svg',
+      href: '/industry/healthcare',
 
-      title: 'Discharge Summaries',
+
+      title: 'Healthcare',
       description:
         'Revolutionize education with accessible transcripts. Our e-learning transcription services ensure that educational content is inclusive and easy to digest, fostering a dynamic learning environment for students worldwide.',
     },
     {
       imgUrl: '/medical_transcription/progressreport.svg',
+      href: '/industry/education',
 
       title: 'Education',
       description:
@@ -51,6 +57,7 @@ export default function Page() {
     {
       imgUrl: '/medical_transcription/medicalhistory.svg',
       title: 'Government',
+      href: '/industry/government',
       description:
         'Uphold transparency and accountability with reliable documentation. From public hearings to policy discussions, our transcripts serve as a cornerstone of governmental integrity and public trust.',
     },
@@ -121,7 +128,7 @@ export default function Page() {
               </p>
               <div className='mt-10'>
                 <a
-                  href='/request-a-quote'
+                  href='/get-a-quote'
                   className='inline-flex  items-center gap-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
                 >
                   <span>Get a Quote</span>
@@ -167,16 +174,20 @@ export default function Page() {
                     {content.description}
                   </div>
                   <div className='mt-5 text-center'>
+                  <span className='my-3 '>
                     <a
-                      href='/upload-files'
-                      className='inline-flex  items-center gap-x-2 rounded-lg btn-vlg px-5 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
+                      href={content.href}
+                      // className='flex items-center text-orange-500 font-semibold text-xl underline underline-offset-4'
+                      className='inline-flex flex-nowrap relative border border-indigo-600 group  py-1.5 px-2.5 text-indigo-600'
                     >
-                      <span>Order Now</span>
+                      <span className='font-semibold'>Learn More</span>
+                      <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-600 group-hover:w-full group-hover:transition-all'></span>
                       <FontAwesomeIcon
-                        className='ml-4 w-5'
+                        className='ml-4 icon-vector w-6'
                         icon={faLongArrowRight}
                       />
                     </a>
+                  </span>
                   </div>
                 </div>
               </div>

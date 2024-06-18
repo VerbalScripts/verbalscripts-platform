@@ -1,7 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import AxiosProxy from '@/utils/AxiosProxy';
 import { classNames } from '@/utils/classNames';
-import { ArrowLongRightIcon, CheckIcon } from '@heroicons/react/24/outline';
+import {
+  ArrowLongRightIcon,
+  CheckCircleIcon,
+  CheckIcon,
+} from '@heroicons/react/24/outline';
 import { Player } from '@lottiefiles/react-lottie-player';
 import { Button } from 'flowbite-react';
 import moment from 'moment';
@@ -85,20 +89,19 @@ export default function NotificationsPreview({
                     className='flex py-3 px-4 border-b hover:bg-gray-100 dark:hover:bg-gray-600 dark:border-gray-600'
                   >
                     <div className='flex-shrink-0'>
-                      <img
-                        className='w-11 h-11 rounded-full'
-                        src='https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png'
-                        alt='Bonnie Green avatar'
-                      />
+                      <div className='flex justify-center items-center w-10 h-10 rounded-full bg-indigo-100 dark:bg-gray-400'>
+                      <CheckCircleIcon className='text-orange-500 w-6 h-6' />
+
+                      </div>
                     </div>
                     <div className='pl-3 w-full text-left'>
-                      <div className='font-semibold text-sm text-gray-600 dark:text-white'>
+                      <div className='font-semibold text-md text-gray-600 dark:text-white'>
                         {notification.title}
                       </div>
-                      <div className='mb-2 text-xs font-medium text-indigo-500 dark:text-indigo-300 dark:text-primary-500'>
+                      {/* <div className='mb-2 text-xs font-medium text-indigo-500 dark:text-indigo-300 dark:text-primary-500'>
                         {moment(notification.createdAt).fromNow()}
-                      </div>
-                      <div className='text-gray-600 dark:text-gray-100 font-normal text-sm mb-1.'>
+                      </div> */}
+                      <div className='text-gray-600 dark:text-gray-300 font-normal text-sm mb-1.'>
                         {notification.content}
                       </div>
                     </div>

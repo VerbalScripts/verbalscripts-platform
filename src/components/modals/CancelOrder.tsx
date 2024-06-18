@@ -5,17 +5,20 @@ import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 import AxiosProxy from '@/utils/AxiosProxy';
 import { systemProcessStatus } from '@/store/features/fileUpload';
 import { useSetRecoilState } from 'recoil';
+import ComponentSpinner from '../ComponentSpinner';
 
 interface CancelOrderProps {
   open: boolean;
   setOpen: (arg0: boolean) => void;
   id: string;
+  orderId: string;
   reload: () => Promise<void>;
 }
 export default function CancelOrder({
   open,
   setOpen,
   id,
+  orderId,
   reload,
 }: CancelOrderProps) {
   const cancelButtonRef = useRef(null);
@@ -24,14 +27,14 @@ export default function CancelOrder({
 
   const httpCancelOrder = async () => {
     try {
+      setLoading(true);
       const response = await AxiosProxy.patch(`/orders/cancel/${id}`);
 
       if (response.status == 200) {
-        setLoading(false);
         await reload();
         setSystemProgressContent({
           show: true,
-          message: `Order with '${id}' has been cancelled`,
+          message: `Order with '${orderId}' has been cancelled`,
           title: 'Order Cancelled',
           success: true,
         });
@@ -41,8 +44,16 @@ export default function CancelOrder({
       if (err.code == 'NETWORK_ERR') {
         throw new Error('There was a problem with Your Internet Connection');
       }
+
+      setSystemProgressContent({
+        show: true,
+        message: `An Unknown error ocurred and request failed`,
+        title: 'Order cancel Failed',
+        success: false,
+      });
     } finally {
       setOpen(false);
+      setLoading(false);
     }
   };
   return (
@@ -94,9 +105,9 @@ export default function CancelOrder({
                       </Dialog.Title>
                       <div className='mt-2'>
                         <p className='text-gray-500'>
-                          Are you sure you want to cancel order{' '}
+                          Are you sure you want to cancel order <br />
                           <span className='font-bold text-gray-700'>
-                            # {id}
+                            # {orderId}
                           </span>
                         </p>
                       </div>
@@ -110,6 +121,7 @@ export default function CancelOrder({
                     className='inline-flex w-full justify-center rounded-md focus:ring-4 focus:outline-none focus:ring-red-200 bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto'
                     onClick={() => httpCancelOrder()}
                   >
+                    {loading ? <ComponentSpinner /> : <span></span>}
                     Cancel Order
                   </button>
                   <button
