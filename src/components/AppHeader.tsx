@@ -126,28 +126,28 @@ export default function AppHeader() {
     {
       name: 'Court reporting & Legal',
       description:
-        'We convert audio/video content into transcripts quickly and securing to save law firms, investigators, police force, or research firms time and money.',
+        'Expert and accurate legal transcription, every time.',
       href: '/industry/legal',
       imgUrl: '/icons/legal-document.png',
     },
     {
       name: 'Corporate & general business',
       description:
-        'Customized for your large volume needs, including a variety of enterprise security requirements.',
+        'Expert transcription for seamless business operations',
       href: '/industry/enterprise',
       imgUrl: '/icons/paper.png',
     },
     {
       name: 'Media production',
       description:
-        'The very best in human intelligence requires top quality training data for speech NLP and computer vision models.',
+        'Capture every word in your media projects',
       href: '/industry/media-production',
       imgUrl: '/icons/video-editor.png',
     },
     {
       name: 'Digital & online learning',
       description:
-        'Fast, easy lecture and dissertation transcripts for students or faculty, compatible with NVivo and other research platforms.',
+        'Enhancing digital education with accurate transcription services.',
       href: '/industry/education',
       imgUrl: '/icons/online-learning.png',
     },
@@ -155,14 +155,14 @@ export default function AppHeader() {
     {
       name: 'Government',
       description:
-        'Making live events, meetings, ad campaigns and press briefings more accessible and actionable.',
+        'Secure and precise transcription for government and public sectors.',
       href: '/industry/government',
       imgUrl: '/icons/policy.png',
     },
     {
       name: 'Healthcare',
       description:
-        'Making live events, meetings, ad campaigns and press briefings more accessible and actionable.',
+        'Accurate and reliable transcriptions that meets healthcare standards.',
       href: '/industry/healthcare',
       icon: BuildingOffice2Icon,
     },
