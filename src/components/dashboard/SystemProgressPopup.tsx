@@ -50,7 +50,7 @@ export default function SystemProgressPopup() {
           statusBarContent.show
             ? 'visible translate-y-0 opacity-1'
             : 'invisible',
-            statusBarContent.success ? '': 'bg-red-50 border-red-300'
+          statusBarContent.success ? '' : 'bg-red-50 border-red-300',
         )}
       >
         <div className='flex items-start '>

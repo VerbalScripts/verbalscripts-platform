@@ -133,7 +133,6 @@ export default function Page() {
                 <Table.HeadCell>Progress</Table.HeadCell>
                 <Table.HeadCell>Payment</Table.HeadCell>
                 <Table.HeadCell>Created At</Table.HeadCell>
-               
               </Table.Head>
               <Table.Body className='divide-y'>
                 {orders.map((order) => (

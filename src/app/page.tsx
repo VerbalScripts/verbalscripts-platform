@@ -18,7 +18,7 @@ import TestimonialsV2 from '@/components/TestimonialsV2';
 
 export const metadata: Metadata = {
   title: 'Verbalscripts - 100% Human Transcription Services',
-  
+
   keywords: [
     'verbalscripts',
     'transcription',
@@ -319,7 +319,6 @@ export default function Home() {
                     className='inline-flex  items-center gap-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
                   >
                     <span>Check Our Services</span>
-                    
                   </a>
                 </div>
               </div>

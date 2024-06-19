@@ -618,8 +618,12 @@ export default function Page() {
           <div className='my-10'>
             <div className='grid max-w-none  grid-cols-1 md:grid-cols-2 gap-5 lg:grid-cols-2 lg:gap-20'>
               {audio_features.map((feature, index) => (
-                <FeatureCard  key={index} title={feature.title} description={feature.description} />
-               ))}
+                <FeatureCard
+                  key={index}
+                  title={feature.title}
+                  description={feature.description}
+                />
+              ))}
             </div>
           </div>
         </div>

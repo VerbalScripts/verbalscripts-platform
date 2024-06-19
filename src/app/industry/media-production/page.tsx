@@ -68,7 +68,6 @@ export default function Page() {
         'Our transcriptionists are familiar with industry-specific jargon used in media production, ensuring that the unique terminology of your content is accurately captured.',
       imgUrl: '/media_industry/industry-specific.png',
     },
-    
   ];
   return (
     <div className='bg-zinc-800  relative'>
@@ -98,7 +97,7 @@ export default function Page() {
               </a>
 
               <a
-                href='/contact-us'
+                href='/get-a-quote'
                 className='inline-flex flex-nowrap lg:space-x-4  text-xl underline underline-offset-4 transition font-semibold text-indigo-600  hover:text-indigo-500 focus-visible:outline focus-visible:outline-2 '
               >
                 <span className='flex'>Request a Quote</span>
@@ -115,8 +114,6 @@ export default function Page() {
       <div className='bg-gray-100 py-0 '>
         <PopularPartner />
       </div>
-
-
 
       <div className='why-media-industry-bg'>
         <div className='mx-auto max-w-7xl py-5 md:py-24 lg:py-32     px-5 md:px-24 lg:px-32'>
@@ -171,7 +168,7 @@ export default function Page() {
           </div>
           <div className='text-center'>
             <a
-              href='/get-quote'
+              href='/get-a-quote'
               className='inline-flex  rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
             >
               <span>Get a Quote</span>
@@ -194,9 +191,7 @@ export default function Page() {
           </p>
         </div>
 
-        <div
-          className='absolute -z-[1] top-0 left-0 w-full h-[15rem] why_media_industry_top'
-        ></div>
+        <div className='absolute -z-[1] top-0 left-0 w-full h-[15rem] why_media_industry_top'></div>
 
         <div className='absolute top-[14rem] left-0  w-full -z-[1] media_industry_pattern'></div>
 
@@ -243,14 +238,13 @@ export default function Page() {
 
         <div className='mx-auto max-w-7xl flex flex-col  gap-y-5 lg:gap-y-10 py-10 md:py-24 px-6 md:px-16 lg:px-16 xl:px-28'>
           <div className='grid max-w-none   place-content-center  grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-x-10 lg:gap-y-10'>
-          <div className='space-y-10'>
+            <div className='space-y-10'>
               <ContentCard
                 title='Live Events and Shows'
                 description='Accurate transcriptions of live events capture every detail, aiding in post-event analysis, promotional content, and improving audience accessibility and engagement.'
                 imgSrc='/media_industry/liveshow.svg'
               />
               <div className='grid max-w-none   place-content-center  grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-x-10 lg:gap-y-10'>
-                
                 <NoMediaCard
                   title='News Transcriptions'
                   description='Get accurate transcriptions of news segments for archiving and repurposing.'
@@ -260,62 +254,57 @@ export default function Page() {
                   description='Document press conferences accurately for media kits, reports, and news articles.'
                 />
               </div>
-
-             
             </div>
-          
+
             <ContentCard
               title='Podcast Transcriptions'
               direction='vertical'
               description='Precise transcriptions of your podcasts make your content more accessible, boosting engagement and reach. They provide a written record that can be easily searched, referenced, and repurposed for articles, social media posts, and more, maximizing the impact of each episode.'
               imgSrc='/media_industry/Podcast.svg'
             />
-
-           
           </div>
         </div>
       </div>
 
       <HowItWorks custom_class='legal-how-it-works' />
 
-     
-      <div className='bg-white relative isolate' style={{ background: 'FAFAFA' }}>
-      <div className='relative overflow-hidden transition transform-gpu'>
-       
-         
-        <div className='mx-auto max-w-7xl px-6 lg:px-8 xl:px-14'>
-          <div className='relative isolate py-24   px-6   sm:px-16 md:py-10  lg:flex lg:items-center lg:gap-x-20 lg:px-24 lg:pt-0'>
-            <div className='md:min-w-[28rem] lg:min-w-[30rem]  lg:mx-0 lg:flex-auto lg:py-24 lg:text-left'>
-              <h2 className='text-4xl md:text-[2.8rem] font-bold leading-10 section-title  text-gray-800 '>
-               Ready to enhance your media production with Us?
-              </h2>
-              <p className='mt-6  text-xl leading-8 text-gray-600'>
-                Contact us today to discuss your requirements and discover how
-                our specialized transcription solutions can benefit your legal
-                practice.
-              </p>
+      <div
+        className='bg-white relative isolate'
+        style={{ background: 'FAFAFA' }}
+      >
+        <div className='relative overflow-hidden transition transform-gpu'>
+          <div className='mx-auto max-w-7xl px-6 lg:px-8 xl:px-14'>
+            <div className='relative isolate py-24   px-6   sm:px-16 md:py-10  lg:flex lg:items-center lg:gap-x-20 lg:px-24 lg:pt-0'>
+              <div className='md:min-w-[28rem] lg:min-w-[30rem]  lg:mx-0 lg:flex-auto lg:py-24 lg:text-left'>
+                <h2 className='text-4xl md:text-[2.8rem] font-bold leading-10 section-title  text-gray-800 '>
+                  Ready to enhance your media production with Us?
+                </h2>
+                <p className='mt-6  text-xl leading-8 text-gray-600'>
+                  Contact us today to discuss your requirements and discover how
+                  our specialized transcription solutions can benefit your legal
+                  practice.
+                </p>
 
-              <div className='mt-10 flex items-center flex-wrap justify-center gap-6 lg:justify-start'>
-                <a
-                  href='/contact-us'
-                  className='rounded-xl btn-vlg px-7 py-2.5 text-lg font-semibold text-white transition focus:ring-4 focus:ring-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white'
-                >
-                 Contact Us
-                </a>
+                <div className='mt-10 flex items-center flex-wrap justify-center gap-6 lg:justify-start'>
+                  <a
+                    href='/contact-us'
+                    className='rounded-xl btn-vlg px-7 py-2.5 text-lg font-semibold text-white transition focus:ring-4 focus:ring-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white'
+                  >
+                    Contact Us
+                  </a>
+                </div>
               </div>
-            </div>
-            <div className='hidden lg:block relative mt-16 h-80 lg:-mt-8 pr-10'>
-              <img
-                className='lg:w-[28rem] xl:w-[32rem] max-w-none'
-                src='/media_industry/set-up-studio-shoot.jpg'
-                alt='Ready to Succeed with our transcription service'
-              />
+              <div className='hidden lg:block relative mt-16 h-80 lg:-mt-8 pr-10'>
+                <img
+                  className='lg:w-[28rem] xl:w-[32rem] max-w-none'
+                  src='/media_industry/set-up-studio-shoot.jpg'
+                  alt='Ready to Succeed with our transcription service'
+                />
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-
 
       <div className=' py-14 sm:py-12 bg-gray-100'>
         <div className='mx-auto max-w-7xl relative'>

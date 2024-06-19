@@ -76,22 +76,21 @@ export default function FAQsPage() {
               professionalism.
             </p>
             <div className='mt-5'>
-                <a
-                  href='/contact-us'
-                  className='inline-flex flex-nowrap  items-center space-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
-                >
-                  <span className='flex'>Contact Support</span>
-                
-                </a>
-              </div>
+              <a
+                href='/contact-us'
+                className='inline-flex flex-nowrap  items-center space-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
+              >
+                <span className='flex'>Contact Support</span>
+              </a>
+            </div>
           </div>
           <div className='mt-10 lg:mt-0 relative   lg:min-w-[30rem]'>
-              <img
-                src='/pics/faqs.jpg'
-                className='w-[90%]  lg:max-w-[90%] lg:absolute object-cover -top-32'
-                alt=''
-              />
-            </div>
+            <img
+              src='/pics/faqs.jpg'
+              className='w-[90%]  lg:max-w-[90%] lg:absolute object-cover -top-32'
+              alt=''
+            />
+          </div>
         </div>
 
         <div
@@ -145,31 +144,31 @@ export default function FAQsPage() {
         <div className='relative mx-auto max-w-7xl '>
           <div className='lg:absolute  left-0 right-0 -top-60 lg:mx-auto '>
             <div className='mx-6 md:mx-16 lg:mx-24 xl:mx-32 bg-gray-200 rounded-xl flex flex-wrap lg:flex-nowrap items-center space-y-10 md:space-y-0 space-x-10 py-10 md:py-16 left-6 right-6 px-8 lg:px-16'>
-            <div className='md:max-w-md'>
-              <p className='mt-2 text-3xl font-bold text-indigo-600 md:text-4xl'>
-                Get Started ?
-              </p>
-              <p className='mt-6 text-lg leading-8 text-gray-700'>
-                Quis tellus eget adipiscing convallis sit sit eget aliquet quis.
-                Suspendisse eget egestas a elementum.
-              </p>
-            </div>
+              <div className='md:max-w-md'>
+                <p className='mt-2 text-3xl font-bold text-indigo-600 md:text-4xl'>
+                  Get Started ?
+                </p>
+                <p className='mt-6 text-lg leading-8 text-gray-700'>
+                  Quis tellus eget adipiscing convallis sit sit eget aliquet
+                  quis. Suspendisse eget egestas a elementum.
+                </p>
+              </div>
 
-            <div className='flex space-x-2 md:space-x-5'>
-              <a
-                href='/upload-files'
-                className='rounded-lg  px-5 py-2.5 text-md transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
-              >
-                <span>Contact us</span>
-              </a>
+              <div className='flex space-x-2 md:space-x-5'>
+                <a
+                  href='/upload-files'
+                  className='rounded-lg  px-5 py-2.5 text-md transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
+                >
+                  <span>Contact us</span>
+                </a>
 
-              <a
-                href='/upload-files'
-                className='rounded-lg px-5 py-2.5 text-md transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
-              >
-                <span>Learn More</span>
-              </a>
-            </div>
+                <a
+                  href='/upload-files'
+                  className='rounded-lg px-5 py-2.5 text-md transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
+                >
+                  <span>Learn More</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>

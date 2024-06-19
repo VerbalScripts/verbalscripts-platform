@@ -393,17 +393,22 @@ export default function AppFooter() {
 
         <div className='flex justify-between flex-wrap md:flex-nowrap  items-center'>
           <div className='flex mt-3 md:mt-0  items-center flex-wrap'>
-            <a href='/legal/terms-of-service' className='px-1.5  py-0 md:border-r border-gray-300'>
+            <a
+              href='/legal/terms-of-service'
+              className='px-1.5  py-0 md:border-r border-gray-300'
+            >
               <span className='text-gray-300  hover:text-indigo-500'>
                 Terms of service
               </span>
             </a>{' '}
-            <a href='/legal/privacy-policy' className='px-1.5 md:border-r border-gray-300'>
+            <a
+              href='/legal/privacy-policy'
+              className='px-1.5 md:border-r border-gray-300'
+            >
               <span className='text-gray-300  hover:text-indigo-500'>
                 Privacy Policy
               </span>
             </a>
-           
             <a href='/legal' className='px-1.5  '>
               <span className='text-gray-300  hover:text-indigo-500'>
                 Legal

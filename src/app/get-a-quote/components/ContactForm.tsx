@@ -8,7 +8,10 @@ import {
   faWhatsapp,
   faXTwitter,
 } from '@fortawesome/free-brands-svg-icons';
-import {  faEnvelopeCircleCheck, faPhoneFlip } from '@fortawesome/free-solid-svg-icons';
+import {
+  faEnvelopeCircleCheck,
+  faPhoneFlip,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import React from 'react';
@@ -26,7 +29,6 @@ export default function ContactForm() {
 
         <p className='mt-2 text-md lg:text-lg leading-7   text-left text-gray-600  00 section-title'>
           Talk to us via our channels.
-          
         </p>
         {/* faqs menu */}
 

@@ -103,7 +103,7 @@ export default function Page() {
               </a>
 
               <a
-                href='/contact-us'
+                href='/get-a-quote'
                 className='inline-flex flex-nowrap lg:space-x-4  text-xl underline underline-offset-4 transition font-semibold text-indigo-600  hover:text-indigo-500 focus-visible:outline focus-visible:outline-2 '
               >
                 <span className='flex'>Request a Quote</span>
@@ -136,39 +136,53 @@ export default function Page() {
               </span>{' '}
               Accurate & Accessible educational content.
             </p>
-            <div className='px-6 text-gray-800 text-lg text-left md:text-center'>
+            <div className='lg:hidden px-6 text-gray-800 text-lg text-left md:text-center'>
               We understand the unique needs of the media industry and are
               dedicated to providing accurate, timely, and secure transcription
               solutions that enhance your production workflow.
             </div>
           </div>
-          <div className='py-10 md:py-24'>
-            <dl className='grid max-w-none   place-content-center  grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-x-5 lg:gap-y-5'>
-              {features.map((feature) => (
-                <div
-                  key={feature.name}
-                  className={classNames(
-                    'relative py-8 px-4 lg:px-3 xl:px-5  border border-gray-200 bg-white rounded-xl',
-                  )}
-                >
-                  <dt className='flex flex-col items-center text-base font-semibold leading-7 text-gray-900 '>
-                    <Image
-                      alt={feature.name}
-                      src={feature.imgUrl}
-                      height={75}
-                      width={75}
-                      className='mb-5'
-                    />
-                    <span className='text-[1.35rem] text-center'>
-                      {feature.name}
-                    </span>
-                  </dt>
-                  <dd className='text-lg text-center mt-2 text-md leading-6 text-gray-500'>
-                    {feature.description}
-                  </dd>
-                </div>
-              ))}
-            </dl>
+          <div className='flex flex-wrap items-center gap-x-10 lg:flex-nowrap'>
+            <div className='hidden lg:block min-w-[20rem]'>
+              <div className='hidden lg:block mb-10 px-6 text-gray-800 text-lg text-left '>
+                We understand the unique needs of the media industry and are
+                dedicated to providing accurate, timely, and secure
+                transcription solutions that enhance your production workflow.
+              </div>
+              <img
+                src='/education_industry/international-day-education-cartoon-style.jpg'
+                className='object-cover rounded-xl'
+                alt=''
+              />
+            </div>
+            <div className='py-10 md:py-24'>
+              <dl className='grid max-w-none   place-content-center  grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-x-5 lg:gap-y-5'>
+                {features.map((feature) => (
+                  <div
+                    key={feature.name}
+                    className={classNames(
+                      'relative py-8 px-4 lg:px-3 xl:px-5  border border-gray-200 bg-white rounded-xl',
+                    )}
+                  >
+                    <dt className='flex flex-col items-center text-base font-semibold leading-7 text-gray-900 '>
+                      <Image
+                        alt={feature.name}
+                        src={feature.imgUrl}
+                        height={75}
+                        width={75}
+                        className='mb-5'
+                      />
+                      <span className='text-[1.35rem] text-center'>
+                        {feature.name}
+                      </span>
+                    </dt>
+                    <dd className='text-lg text-center mt-2 text-md leading-6 text-gray-500'>
+                      {feature.description}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
           </div>
           <div className='text-center why-education-industry-bg rounded-2xl md:py-24 py-32'>
             <a
@@ -229,8 +243,7 @@ export default function Page() {
 
         <div className='mx-auto max-w-7xl flex flex-col  gap-y-5 lg:gap-y-10 py-10 md:py-24 px-6 md:px-16 lg:px-16 xl:px-28'>
           <div className='grid max-w-none   place-content-center  grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-x-10 lg:gap-y-10'>
-            
-          <ContentCard
+            <ContentCard
               title='Interviews and Focus Groups'
               direction='top'
               description='Document research interviews and focus groups meticulously to preserve valuable insights, ensuring that nuanced information is captured for thorough analysis and accurate conclusions.'
@@ -258,7 +271,7 @@ export default function Page() {
             <div className='relative isolate py-24   px-6   sm:px-16 md:py-10  lg:flex lg:items-center lg:gap-x-20 lg:px-24 lg:pt-0'>
               <div className='md:min-w-[28rem] lg:min-w-[30rem]  lg:mx-0 lg:flex-auto lg:py-24 lg:text-left'>
                 <h2 className='text-4xl md:text-[2.8rem] font-bold leading-10 section-title  text-gray-800 '>
-                Ready to enhance your educational content with Us?
+                  Ready to enhance your educational content with Us?
                 </h2>
                 <p className='mt-6  text-xl leading-8 text-gray-600'>
                   Contact us today to discuss your requirements and discover how

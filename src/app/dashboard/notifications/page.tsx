@@ -62,9 +62,7 @@ export default function Page() {
               href='#'
               className='flex py-3 px-4 border-b  dark:border-gray-600'
             >
-              <div className='flex-shrink-0'>
-               
-              </div>
+              <div className='flex-shrink-0'></div>
               <div className='pl-3 w-full text-left'>
                 <div className='font-semibold text-lg text-gray-600 dark:text-white'>
                   {notification.title}

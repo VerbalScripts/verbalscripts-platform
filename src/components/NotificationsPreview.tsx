@@ -90,8 +90,7 @@ export default function NotificationsPreview({
                   >
                     <div className='flex-shrink-0'>
                       <div className='flex justify-center items-center w-10 h-10 rounded-full bg-indigo-100 dark:bg-gray-400'>
-                      <CheckCircleIcon className='text-orange-500 w-6 h-6' />
-
+                        <CheckCircleIcon className='text-orange-500 w-6 h-6' />
                       </div>
                     </div>
                     <div className='pl-3 w-full text-left'>

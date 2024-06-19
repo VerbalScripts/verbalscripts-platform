@@ -465,8 +465,6 @@ export default function TermsOfService() {
               utmost protection of your data.
             </p>
           </div>
-
-         
         </div>
       </div>
 

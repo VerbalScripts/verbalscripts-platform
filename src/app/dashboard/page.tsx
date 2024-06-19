@@ -54,7 +54,6 @@ export default function Page() {
       </div> */}
 
       <div className='py-3 px-6 md:px-24 '>
-      
         {isNew && !loading ? (
           <EmptyUploadsPrompt />
         ) : !isNew && !loading ? (

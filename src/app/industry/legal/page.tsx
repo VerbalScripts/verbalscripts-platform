@@ -11,7 +11,7 @@ import PopularPartner from '@/components/PopularPartner';
 import HowItWorks from '@/components/HowItWorks';
 import Faqs from '@/components/Faqs';
 import { classNames } from '@/utils/classNames';
-import CallToActionBanner from '@/components/CallToActionBanner';
+import CallToActionBanner from '../../../components/CallToActionBanner';
 
 export const metadata: Metadata = {
   title: 'VerbalScripts | Services',
@@ -147,12 +147,13 @@ export default function Page() {
         {/* <div className='absolute -z-[1] blur-sm bottom-0 right-0 -rotate-180 left-0 why_industry_bg'></div> */}
         <div className='flex flex-wrap  lg:flex-nowrap items-center lg:space-x-10  space-y-10'>
           <div className='max-w-2xl lg:max-w-xl'>
-          <h1 className='text-4xl font-bold capitalize  text-gray-900 sm:text-5xl'>
-          Court and Legal Reporting Industry
+            <h1 className='text-4xl font-bold capitalize  text-gray-900 sm:text-5xl'>
+              Court and Legal Reporting Industry
             </h1>
 
             <p className='block md:max-w-2xl lg:max-w-3xl xl:max-w-4xl relative z-10 mt-6 text-lg  leading-7 text-gray-800'>
-            Welcome to Verbalscripts your Trusted Partner for Solutions in the legal Industry
+              Welcome to Verbalscripts your Trusted Partner for Solutions in the
+              legal Industry
             </p>
 
             <div className='mt-10 flex flex-wrap space-y-5 lg:space-y-0  justify-start lg:flex-nowrap md:items-center space-x-5'>
@@ -164,7 +165,7 @@ export default function Page() {
               </a>
 
               <a
-                href='/contact-us'
+                href='/get-a-quote'
                 className='inline-flex flex-nowrap lg:space-x-4  text-xl underline underline-offset-4 transition font-semibold text-indigo-600  hover:text-indigo-500 focus-visible:outline focus-visible:outline-2 '
               >
                 <span className='flex'>Request a Quote</span>

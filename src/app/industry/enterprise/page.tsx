@@ -9,7 +9,7 @@ import PopularPartner from '@/components/PopularPartner';
 import HowItWorks from '@/components/HowItWorks';
 import Faqs from '@/components/Faqs';
 import { classNames } from '@/utils/classNames';
-import CallToActionBanner from '@/components/CallToActionBanner';
+import CallToActionBanner from '../../../components/CallToActionBanner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLongArrowRight } from '@fortawesome/free-solid-svg-icons';
 import ContentCard from './components/ContentCard';
@@ -105,7 +105,7 @@ export default function Page() {
               </a>
 
               <a
-                href='/contact-us'
+                href='/get-a-quote'
                 className='inline-flex flex-nowrap lg:space-x-4  text-xl underline underline-offset-4 transition font-semibold text-indigo-600  hover:text-indigo-500 focus-visible:outline focus-visible:outline-2 '
               >
                 <span className='flex'>Request a Quote</span>

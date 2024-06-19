@@ -103,7 +103,7 @@ export default function Page() {
               </a>
 
               <a
-                href='/contact-us'
+                href='/get-a-quote'
                 className='inline-flex flex-nowrap lg:space-x-4  text-xl underline underline-offset-4 transition font-semibold text-indigo-600  hover:text-indigo-500 focus-visible:outline focus-visible:outline-2 '
               >
                 <span className='flex'>Request a Quote</span>
@@ -267,7 +267,7 @@ export default function Page() {
             <div className='relative isolate py-24   px-6   sm:px-16 md:py-10  lg:flex lg:items-center lg:gap-x-20 lg:px-24 lg:pt-0'>
               <div className='md:min-w-[28rem] lg:min-w-[30rem]  lg:mx-0 lg:flex-auto lg:py-24 lg:text-left'>
                 <h2 className='text-4xl md:text-[2.8rem] font-bold leading-10 section-title  text-gray-800 '>
-                Ready to Elevate your Healthcare Documentation with Us?
+                  Ready to Elevate your Healthcare Documentation with Us?
                 </h2>
                 <p className='mt-6  text-xl leading-8 text-gray-600'>
                   Contact us today to discuss your requirements and discover how
@@ -300,7 +300,7 @@ export default function Page() {
         <div className='mx-auto max-w-7xl relative'>
           <div className='mx-auto px-6 md:px-0 md:max-w-2xl text-left lg:text-center'>
             <p className='mt-2 text-4xl font-bold  section-title text-gray-900 md:text-5xl'>
-             Healthcare Frequently asked questions
+              Healthcare Frequently asked questions
             </p>
             {/* <p className="mt-6 text-lg leading-8 text-gray-600">
             Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a elementum

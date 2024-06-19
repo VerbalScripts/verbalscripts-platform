@@ -72,17 +72,17 @@ export default function FAQsPage() {
               Contact Us
             </h1>
             <p className='block md:max-w-2xl lg:max-w-3xl xl:max-w-4xl relative z-10 mt-6 text-lg  leading-7 text-gray-100'>
-               Get in touch with us with any queries and our team will respond as soon as possible
+              Get in touch with us with any queries and our team will respond as
+              soon as possible
             </p>
-           
           </div>
           <div className='mt-10 lg:mt-0 relative   lg:min-w-[30rem]'>
-              <img
-                src='/pics/contact-us.jpg'
-                className='w-[90%]  lg:max-w-[90%] lg:absolute object-cover -top-32'
-                alt=''
-              />
-            </div>
+            <img
+              src='/pics/contact-us.jpg'
+              className='w-[90%]  lg:max-w-[90%] lg:absolute object-cover -top-32'
+              alt=''
+            />
+          </div>
         </div>
 
         <div
@@ -105,7 +105,6 @@ export default function FAQsPage() {
           <div className='absolute  right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center' />
 
           <ContactForm />
-          
         </div>
       </div>
 
@@ -137,28 +136,27 @@ export default function FAQsPage() {
         <div className='relative mx-auto max-w-7xl '>
           <div className='lg:absolute  left-0 right-0 -top-60 lg:mx-auto '>
             <div className='mx-6 md:mx-16 lg:mx-24 xl:mx-32 bg-gray-200 rounded-xl flex flex-wrap lg:flex-nowrap items-center space-y-10 md:space-y-0 space-x-10 py-10 md:py-16 left-6 right-6 px-8 lg:px-16'>
-            <div className='md:max-w-md'>
-              <p className='mt-2 text-3xl font-bold text-gray-800 md:text-4xl'>
-               Have a Huge Project In Mind?
-              </p>
-             
-            </div>
+              <div className='md:max-w-md'>
+                <p className='mt-2 text-3xl font-bold text-gray-800 md:text-4xl'>
+                  Have a Huge Project In Mind?
+                </p>
+              </div>
 
-            <div className='flex space-x-2 md:space-x-5'>
-              <a
-                href='/get-a-quote'
-                className='rounded-lg  px-5 py-2.5 text-md transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
-              >
-                <span>Request a Quote</span>
-              </a>
+              <div className='flex space-x-2 md:space-x-5'>
+                <a
+                  href='/get-a-quote'
+                  className='rounded-lg  px-5 py-2.5 text-md transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
+                >
+                  <span>Request a Quote</span>
+                </a>
 
-              <a
-                href='/upload-files'
-                className='rounded-lg px-5 bg-indigo-500 py-2.5 text-md transition font-semibold text-white shadow-sm hover:bg-indigo-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 '
-              >
-                <span>Get Started</span>
-              </a>
-            </div>
+                <a
+                  href='/upload-files'
+                  className='rounded-lg px-5 bg-indigo-500 py-2.5 text-md transition font-semibold text-white shadow-sm hover:bg-indigo-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 '
+                >
+                  <span>Get Started</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 
 interface FileUploadFromOtherOptionsProps {
@@ -67,7 +67,9 @@ export default function DashboardUploadPreview({
             alt={iupload.id}
             className='mb-3'
           />
-          <div className='text-gray-600 dark:text-gray-100 font-semibold'>{iupload.title}</div>
+          <div className='text-gray-600 dark:text-gray-100 font-semibold'>
+            {iupload.title}
+          </div>
         </button>
       ))}
     </div>

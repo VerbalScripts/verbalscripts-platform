@@ -63,7 +63,6 @@ export default function Page({ params: { slug } }: PageProps) {
 
   const setSystemProgressContent = useSetRecoilState(systemProcessStatus);
 
-
   useEffect(() => {
     if (videoId != '') {
       setOpenPlayer(true);
@@ -114,7 +113,6 @@ export default function Page({ params: { slug } }: PageProps) {
         title: 'Account Update',
         success: true,
       });
-
     } catch (err) {
       // throw new Error('Network Problem');
       console.log(err);
@@ -157,7 +155,13 @@ export default function Page({ params: { slug } }: PageProps) {
         />
 
         {/* cancel order  modal*/}
-        <CancelOrder open={open} setOpen={setOpen} reload={reload} orderId={(order && order!.orderId) || slug} id={slug} />
+        <CancelOrder
+          open={open}
+          setOpen={setOpen}
+          reload={reload}
+          orderId={(order && order!.orderId) || slug}
+          id={slug}
+        />
 
         {loading ? (
           <LoadSpinner />

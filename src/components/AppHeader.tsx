@@ -125,22 +125,19 @@ export default function AppHeader() {
   const solutions: Array<NavLabel> = [
     {
       name: 'Court reporting & Legal',
-      description:
-        'Expert and accurate legal transcription, every time.',
+      description: 'Expert and accurate legal transcription, every time.',
       href: '/industry/legal',
       imgUrl: '/icons/legal-document.png',
     },
     {
       name: 'Corporate & general business',
-      description:
-        'Expert transcription for seamless business operations',
+      description: 'Expert transcription for seamless business operations',
       href: '/industry/enterprise',
       imgUrl: '/icons/paper.png',
     },
     {
       name: 'Media production',
-      description:
-        'Capture every word in your media projects',
+      description: 'Capture every word in your media projects',
       href: '/industry/media-production',
       imgUrl: '/icons/video-editor.png',
     },
@@ -619,8 +616,7 @@ export default function AppHeader() {
                         </>
                       )}
                     </Disclosure>
-                  ) : null
-                  }
+                  ) : null}
 
                   <div className='border-b py-2 border-gray-200'></div>
                   <button

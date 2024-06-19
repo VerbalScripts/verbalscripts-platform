@@ -47,16 +47,16 @@ export default function SolutionsList() {
 
   const servies: Array<NavLabel> = [
     {
+      name: 'Legal Transcription',
+      description: 'Trusted legal transcription services for all your needs.',
+      href: '/services/legal',
+      imgUrl: '/svg/Privacy-policy-pana.svg',
+    },
+    {
       name: 'General Transcription',
       description: 'Growth Strategies from from acquisition to conversion.',
       href: '/services/general',
       imgUrl: '/svg/Prototyping-process-bro.svg',
-    },
-    {
-      name: 'Legal Transcription',
-      description: 'Brand ambassadors servin customers at all channels',
-      href: '/services/legal',
-      imgUrl: '/svg/Privacy-policy-pana.svg',
     },
     {
       name: 'Video & Audio Transcription',

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import AxiosProxy from '@/utils/AxiosProxy';
 import { bytesToMB } from '@/utils/bytesToMb';
 import { classNames } from '@/utils/classNames';
@@ -23,6 +24,7 @@ interface FeedInfo {
 export default function SummaryStatsBoard() {
   const [ordersFiles, setOrders] = useState<OrderFile[]>([]);
   const [loading, setLoading] = useState(true);
+  const [videoId, setVideoId] = useState('');
 
   const fetchPendingOrders = async ({ flimit, fpage }: FeedInfo) => {
     try {
@@ -59,7 +61,6 @@ export default function SummaryStatsBoard() {
             2
           </span>
           <div className='flex w-full items-start justify-between'>
-            
             <button className='w-[6rem] font-semibold py-0.5 inline-flex justify-center bg-indigo-500 text-white rounded-full'>
               Pay Now
             </button>
@@ -90,7 +91,7 @@ export default function SummaryStatsBoard() {
               In Progress Jobs
             </div>
             <div>
-              <RocketLaunchIcon  className='text-gray-600 dark:text-gray-100 w-8 h-8' />
+              <RocketLaunchIcon className='text-gray-600 dark:text-gray-100 w-8 h-8' />
             </div>
           </div>
           <span className='text-gray-800 dark:text-white text-3xl md:text-4xl font-bold'>
@@ -102,7 +103,6 @@ export default function SummaryStatsBoard() {
             </div>
           </div>
         </div>
-
 
         <div className='flex flex-col items-start bg-gray-100 dark:bg-zinc-700 text-gray-900  px-4 py-3 border border-gray-300 dark:border-gray-500 transition-all hover:bg-zinc-600 rounded-2xl '>
           <div className='flex w-full justify-between'>

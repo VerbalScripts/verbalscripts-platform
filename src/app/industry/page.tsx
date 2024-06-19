@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next';
-import './style.css'
+import './style.css';
 
 import AppHeader from '@/components/AppHeader';
 import AppFooter from '@/components/AppFooter';
@@ -41,7 +41,6 @@ export default function Page() {
       imgUrl: '/medical_transcription/dischargesummary.svg',
       href: '/industry/healthcare',
 
-
       title: 'Healthcare',
       description:
         'Revolutionize education with accessible transcripts. Our e-learning transcription services ensure that educational content is inclusive and easy to digest, fostering a dynamic learning environment for students worldwide.',
@@ -61,7 +60,6 @@ export default function Page() {
       description:
         'Uphold transparency and accountability with reliable documentation. From public hearings to policy discussions, our transcripts serve as a cornerstone of governmental integrity and public trust.',
     },
-    
   ];
 
   return (
@@ -70,7 +68,7 @@ export default function Page() {
 
       <div className='relative industry_landing z-[10] h-auto  px-6 py-20 md:pt-0 pb-10 md:pb-30 md:py-24 lg:py-24 md:px-20 lg:px-28'>
         <div className='landing-page-video-wrapper'></div>
-     
+
         {/* <div className='absolute -z-[1] blur-sm bottom-0 right-0 -rotate-180 left-0 why_industry_bg'></div> */}
         <div className='flex flex-wrap  lg:flex-nowrap items-center lg:space-x-10  space-y-10'>
           <div className='max-w-2xl lg:max-w-4xl'>
@@ -95,7 +93,6 @@ export default function Page() {
             <img src='/industry/industry-landing.jpg' className='' alt='' />
           </div> */}
         </div>
-        
       </div>
 
       <div className='bg-gray-100 py-0'>
@@ -174,20 +171,20 @@ export default function Page() {
                     {content.description}
                   </div>
                   <div className='mt-5 text-center'>
-                  <span className='my-3 '>
-                    <a
-                      href={content.href}
-                      // className='flex items-center text-orange-500 font-semibold text-xl underline underline-offset-4'
-                      className='inline-flex flex-nowrap relative border border-indigo-600 group  py-1.5 px-2.5 text-indigo-600'
-                    >
-                      <span className='font-semibold'>Learn More</span>
-                      <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-600 group-hover:w-full group-hover:transition-all'></span>
-                      <FontAwesomeIcon
-                        className='ml-4 icon-vector w-6'
-                        icon={faLongArrowRight}
-                      />
-                    </a>
-                  </span>
+                    <span className='my-3 '>
+                      <a
+                        href={content.href}
+                        // className='flex items-center text-orange-500 font-semibold text-xl underline underline-offset-4'
+                        className='inline-flex flex-nowrap relative border border-indigo-600 group  py-1.5 px-2.5 text-indigo-600'
+                      >
+                        <span className='font-semibold'>Learn More</span>
+                        <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-600 group-hover:w-full group-hover:transition-all'></span>
+                        <FontAwesomeIcon
+                          className='ml-4 icon-vector w-6'
+                          icon={faLongArrowRight}
+                        />
+                      </a>
+                    </span>
                   </div>
                 </div>
               </div>

@@ -53,15 +53,16 @@ export default function EmptyUploadsPrompt() {
       <YoutubeLinkUpload open={openYoutube} setOpen={setOpenYoutube} />
       {/* fancy welcome if orders are empty */}
       <div className='pt-10 md:pt-16'>
-       <div className='mb-10'>
-       <div className='mb-5 text-4xl md:text-6xl capitalize font-bold footer-title'>
-          Hello, {user.isAuth ? user.firstName : 'Guest'}
-        </div>
+        <div className='mb-10'>
+          <div className='mb-5 text-4xl md:text-6xl capitalize font-bold footer-title'>
+            Hello, {user.isAuth ? user.firstName : 'Guest'}
+          </div>
 
-        <div className='text-3xl md:text-4xl font-semibold text-gray-600 dark:text-gray-500'>
-          Are you ready to transcript? <span className='underline text-blue-500'>Choose An Option</span>
+          <div className='text-3xl md:text-4xl font-semibold text-gray-600 dark:text-gray-500'>
+            Are you ready to transcript?{' '}
+            <span className='underline text-blue-500'>Choose An Option</span>
+          </div>
         </div>
-       </div>
 
         <DashboardUploadPreview
           openDropBoxPicker={launchDropBoxPicker}

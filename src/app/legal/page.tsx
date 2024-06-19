@@ -56,11 +56,10 @@ const legal_documents = [
     name: 'Website Privacy Policy',
     description:
       'Contains certain restrictions on use of verbalscripts products, services and websites',
-      href: '/legal/privacy-policy',
+    href: '/legal/privacy-policy',
 
-      imgUrl: '/icons/accuracy.png',
+    imgUrl: '/icons/accuracy.png',
   },
-  
 ];
 
 export default function LegalPage() {
@@ -88,8 +87,8 @@ export default function LegalPage() {
           </h1>
 
           <p className='mt-5 text-xl  text-gray-200 text-center'>
-            Find documentation related to our Website Terms of Use and
-            Privacy Policy.
+            Find documentation related to our Website Terms of Use and Privacy
+            Policy.
           </p>
         </div>
 
@@ -109,7 +108,7 @@ export default function LegalPage() {
 
       <div className='bg-white '>
         <div className='mx-auto max-w-6xl relative py-32 md:py-24 pb-20 md:pb-56 px-6 md:px-24 lg:px-32'>
-        <h1 className='relative z-10 text-2xl font-bold text-left  text-gray-800'>
+          <h1 className='relative z-10 text-2xl font-bold text-left  text-gray-800'>
             Legal Documents
           </h1>
 

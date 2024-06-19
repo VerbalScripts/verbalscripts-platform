@@ -123,10 +123,10 @@ export default function FaqsPageTab() {
         </p>
         {/* faqs menu */}
 
-        <div className='flex flex-col my-5' >
+        <div className='flex flex-col my-5'>
           {topics.map((faq, index) => (
             <a
-            href='#faq-content-tab'
+              href='#faq-content-tab'
               onClick={() => setActiveTab(faq.id)}
               key={index}
               className={classNames(
@@ -143,7 +143,7 @@ export default function FaqsPageTab() {
         </div>
       </div>
       <div
-      id='faq-content-tab'
+        id='faq-content-tab'
         className='
     lg:order-2 lg:min-w-[40rem] xl:min-w-[50rem] w-full'
       >
@@ -160,8 +160,6 @@ export default function FaqsPageTab() {
             </div>
           </div>
         )}
-
-        
       </div>
     </div>
   );
