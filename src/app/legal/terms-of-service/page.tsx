@@ -177,12 +177,13 @@ export default function TermsOfService() {
 
             <p className='text-md lg:text-lg mb-3 text-gray-700'>
               Orders for Services: Services can be acquired through our platform
-              or, in some cases, via a mutually executed order form ({'"Order Form"'}). During the Term, Verbalscripts grants you a revocable
-              license to access and use the Services as outlined in the Order
-              Form. This includes installing and using our Apps on a device you
-              own, as well as accessing relevant Documentation. Your execution
-              of an Order Form is not contingent on future functionality or
-              features.
+              or, in some cases, via a mutually executed order form (
+              {'"Order Form"'}). During the Term, Verbalscripts grants you a
+              revocable license to access and use the Services as outlined in
+              the Order Form. This includes installing and using our Apps on a
+              device you own, as well as accessing relevant Documentation. Your
+              execution of an Order Form is not contingent on future
+              functionality or features.
             </p>
           </div>
 
@@ -251,9 +252,9 @@ export default function TermsOfService() {
             <p className='text-md lg:text-lg mb-3 text-gray-700'>
               Customers have access to subscribed Services{"'"} functionality as
               of the Order Form{"'"}s effective date. While we may enhance or
-              modify Services, we won{"'"}t materially reduce functionality during
-              the agreed term. Pricing changes will be updated, with customers
-              agreeing to updated fees upon continued use.
+              modify Services, we won{"'"}t materially reduce functionality
+              during the agreed term. Pricing changes will be updated, with
+              customers agreeing to updated fees upon continued use.
             </p>
           </div>
 
@@ -267,9 +268,9 @@ export default function TermsOfService() {
 
             <p className='text-md lg:text-lg mb-3 text-gray-700'>
               Our Services may integrate with or include third-party products,
-              services, or links ({'"Third Party Materials"'}). We do not endorse or
-              assume responsibility for Third Party Materials. Use of such
-              materials is at your own risk, and our Agreement and Privacy
+              services, or links ({'"Third Party Materials"'}). We do not
+              endorse or assume responsibility for Third Party Materials. Use of
+              such materials is at your own risk, and our Agreement and Privacy
               Policy do not apply to third-party sites or services. We are not
               liable for any issues arising from third-party materials use.
             </p>
@@ -285,9 +286,9 @@ export default function TermsOfService() {
 
             <p className='text-md lg:text-lg mb-3 text-gray-700'>
               Verbalscripts obtains a nonexclusive, worldwide license to use,
-              modify, and distribute any content you provide ({'"Your Content"'}) to
-              facilitate Services, including maintenance and improvement of our
-              offerings. You retain ownership of Your Content.
+              modify, and distribute any content you provide ({'"Your Content"'}
+              ) to facilitate Services, including maintenance and improvement of
+              our offerings. You retain ownership of Your Content.
             </p>
           </div>
 
@@ -317,8 +318,8 @@ export default function TermsOfService() {
             <p className='text-md lg:text-lg mb-3 text-gray-700'>
               We reserve the right to remove any content that violates our
               policies or legal requirements, or for service improvement
-              purposes. While we don{"'"}t monitor all content, we may investigate
-              and act upon violations as needed.
+              purposes. While we don{"'"}t monitor all content, we may
+              investigate and act upon violations as needed.
             </p>
           </div>
 
@@ -333,8 +334,8 @@ export default function TermsOfService() {
             <p className='text-md lg:text-lg mb-3 text-gray-700'>
               We reserve the right to remove any content that violates our
               policies or legal requirements, or for service improvement
-              purposes. While we don{"'"}t monitor all content, we may investigate
-              and act upon violations as needed.
+              purposes. While we don{"'"}t monitor all content, we may
+              investigate and act upon violations as needed.
             </p>
           </div>
 
@@ -379,10 +380,11 @@ export default function TermsOfService() {
             </a>
 
             <p className='text-md lg:text-lg mb-3 text-gray-700'>
-              We won{"'"}t disclose or sell User Data except to fulfil our service
-              obligations, comply with laws, with user consent, or as permitted
-              by Data Protection Laws. We may share data with subcontractors
-              under strict confidentiality agreements or when required by law.
+              We won{"'"}t disclose or sell User Data except to fulfil our
+              service obligations, comply with laws, with user consent, or as
+              permitted by Data Protection Laws. We may share data with
+              subcontractors under strict confidentiality agreements or when
+              required by law.
             </p>
           </div>
 
@@ -396,8 +398,8 @@ export default function TermsOfService() {
 
             <p className='text-md lg:text-lg mb-3 text-gray-700'>
               You confirm compliance with Data Protection Laws regarding the
-              collection and sharing of User Data. You won{"'"}t submit User Data
-              that violates our Prohibited Content policy.
+              collection and sharing of User Data. You won{"'"}t submit User
+              Data that violates our Prohibited Content policy.
             </p>
           </div>
 
@@ -411,10 +413,11 @@ export default function TermsOfService() {
 
             <p className='text-md lg:text-lg mb-3 text-gray-700'>
               We may collect and use aggregated and anonymized data related to
-              the Services{"'"} performance. This data, known as anonymized data,
-              doesn{"'"}t contain personal information and won{"'"}t be attributed to
-              specific customers or individuals. We retain the right to use,
-              analyse, and disclose anonymized data for various purposes.
+              the Services{"'"} performance. This data, known as anonymized
+              data, doesn{"'"}t contain personal information and won{"'"}t be
+              attributed to specific customers or individuals. We retain the
+              right to use, analyse, and disclose anonymized data for various
+              purposes.
             </p>
           </div>
 
@@ -796,8 +799,8 @@ export default function TermsOfService() {
             <p className='text-md lg:text-lg mb-3 text-gray-700'>
               Disputes between you and Verbalscripts shall be resolved through
               binding arbitration conducted by the American Arbitration
-              Association ({'"AAA"'}) under its rules. This provision governs all
-              Claims arising from or relating to the Agreement.
+              Association ({'"AAA"'}) under its rules. This provision governs
+              all Claims arising from or relating to the Agreement.
             </p>
           </div>
 

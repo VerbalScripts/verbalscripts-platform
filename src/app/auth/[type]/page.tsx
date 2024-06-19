@@ -59,8 +59,16 @@ export default function AuthPage({ params }: AuthPageProps) {
 
               <div className='mx-auto text-sm text-gray-600 max-w-md mb-3 text-center'>
                 This site is protected by reCAPTCHA and the VerbalScripts{' '}
-                <span className='underline'> Privacy Policy</span> and{'  '}
-                <span className='underline'> Terms of Service</span> apply.
+                <a className='underline text-indigo-500 underline-offset-4' href='/leal/privacy-policy'>
+                  {' '}
+                  Privacy Policy
+                </a>{' '}
+                and{'  '}
+                <a className='underline text-indigo-500 underline-offset-4' href='/leal/terms-of-service'>
+                  {' '}
+                  Terms of Service
+                </a>{' '}
+                apply.
               </div>
             </div>
           </div>

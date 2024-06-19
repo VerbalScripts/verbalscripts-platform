@@ -1,6 +1,11 @@
-import { Fragment } from 'react';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+'use client';
+
+import { Fragment, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
+import ComponentSpinner from './ComponentSpinner';
+import AxiosProxy from '@/utils/AxiosProxy';
 
 interface SliderOverProp {
   open: boolean;
@@ -8,6 +13,33 @@ interface SliderOverProp {
 }
 
 export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+
+  const postQuote = async () => {
+    try {
+      setLoading(true);
+      const response = await AxiosProxy.get('/quotes/add');
+
+      if (response.status == 201) {
+        setSuccess(`Your Quote request has been received successfully, One of our team members will get back to you via ${email} with the response`)
+      }
+    } catch (err) {
+      setError('An Unexpected Error Occurred and Could not process your request. Retry again')
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const services = [
+    'Legal Transcription',
+    'Video and Audio Transcription services',
+    'General Transcription',
+    'Focus groups and Interviews',
+    'Medical Transcription',
+    'Academic & Conference Transcription',
+  ];
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as='div' className='relative z-50' onClose={() => setOpen(false)}>
@@ -59,76 +91,150 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
                   </Transition.Child>
                   <div className='flex h-full flex-col overflow-y-scroll bg-white py-14 shadow-xl'>
                     <div className='px-4 sm:px-6'>
-                      <Dialog.Title className='text-3xl font-semibold leading-6 text-gray-700'>
-                        Request a Quotation
+                      <Dialog.Title className='text-3xl font-semibold leading-6 text-gray-800'>
+                        Get a Quotation
                       </Dialog.Title>
                     </div>
                     <div className='relative flex-1 px-4 sm:px-6'>
                       <div className='sm:mx-auto sm:w-full sm:max-w-sm'>
-                        <div className='my-6 text-gray-600 font-semibold text-2xl'>
+                        <div className='my-6 text-gray-600  text-lg'>
                           Provide Your Contact info so we reach out about your
                           quote
                         </div>
-                        <form className='space-y-6' action='#' method='POST'>
-                          <div>
+                        <form
+                          action='#'
+                          method='POST'
+                          className='mt-5  sm:mt-5 text-left'
+                        >
+                          <div className='sm:col-span-2 mb-5'>
                             <label
-                              htmlFor='username'
-                              className='block text-lg font-medium leading-6 text-gray-900'
+                              htmlFor='first-name'
+                              className='block text-md font-semibold leading-6 text-gray-900 mb-2.5'
                             >
                               Full Name
                             </label>
-                            <div className='mt-2'>
-                              <input
-                                id='username'
-                                name='username'
-                                type='text'
-                                required
-                                className='block w-full rounded-md border-0 px-3 py-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 text-md sm:leading-6'
-                              />
-                            </div>
+
+                            <input
+                              type='text'
+                              id='fullName'
+                              name='fullName'
+                              className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                              required
+                            />
                           </div>
-                          <div>
+
+                          <div className='sm:col-span-2 mb-5'>
                             <label
                               htmlFor='email'
-                              className='block text-lg font-medium leading-6 text-gray-900'
-                            >
-                              Email
-                            </label>
-                            <div className='mt-2'>
-                              <input
-                                id='email'
-                                name='email'
-                                type='email'
-                                required
-                                className='block w-full rounded-md border-0 px-3 py-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 text-md sm:leading-6'
-                              />
-                            </div>
-                          </div>
-                          <div>
-                            <label
-                              htmlFor='company_name'
-                              className='block text-lg font-medium leading-6 text-gray-900'
+                              className='block mb-2 text-md font-medium text-gray-900 dark:text-white'
                             >
                               Company Name
                             </label>
-                            <div className='mt-2'>
-                              <input
-                                id='company_name'
-                                name='company_name'
-                                type='text'
-                                required
-                                className='block w-full rounded-md border-0 px-3 py-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 text-md sm:leading-6'
-                              />
+                            <input
+                              type='text'
+                              id='companyName'
+                              name='companyName'
+                              className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                              required
+                            />
+                          </div>
+
+                          <div className='sm:col-span-2 mb-5'>
+                            <label
+                              htmlFor='email'
+                              className='block mb-2 text-md font-medium text-gray-900 dark:text-white'
+                            >
+                              Choose Type of service
+                            </label>
+                            <div className='my-2 px-6'>
+                              {services.map((service, index) => (
+                                <div
+                                  key={index}
+                                  className='flex items-center mb-4'
+                                >
+                                  <input
+                                    type='radio'
+                                    value=''
+                                    name='service_type'
+                                    className='w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                                  />
+                                  <label
+                                    htmlFor='service_type'
+                                    className='ms-2 text-md font-medium text-gray-900 dark:text-gray-300'
+                                  >
+                                    {service}
+                                  </label>
+                                </div>
+                              ))}
                             </div>
                           </div>
 
-                          <div>
+                          <div className='sm:col-span-2 mb-5'>
+                            <label
+                              htmlFor='email'
+                              className='block mb-2 text-md font-medium text-gray-900 dark:text-white'
+                            >
+                              Your email
+                            </label>
+                            <input
+                              type='email'
+                              id='email'
+                              aria-describedby='helper-text-explanation'
+                              className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                            />
+
+                            <p
+                              id='helper-text-explanation'
+                              className='mt-2 text-sm text-gray-500 dark:text-gray-400'
+                            >
+                              We’ll never share our response via this email . .
+                            </p>
+                          </div>
+
+                          <div className='sm:col-span-2'>
+                            <label
+                              htmlFor='message'
+                              className='block mb-2 text-md font-medium text-gray-900 dark:text-white'
+                            >
+                              Additional Information - be detailed as possible
+                            </label>
+                            <textarea
+                              id='message'
+                              rows={4}
+                              className='block p-2.5 w-full text-lg text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                              placeholder='Project description...'
+                            ></textarea>
+                          </div>
+                          <div className='my-5'>
                             <button
                               type='submit'
-                              className='flex w-full justify-center rounded-md bg-indigo-600 px-3 py-3.5 text-xl font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+                              disabled={loading}
+                              onClick={() => postQuote()}
+                              className=' inline-flex items-center gap-x-3 rounded-xl bg-indigo-500 px-8 py-1.5 text-center text-lg font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
                             >
-                              Next
+                              {loading ? <ComponentSpinner /> : <span />}
+                              <span>Submit</span>
                             </button>
+                          </div>
+                          <div className='text-gray-700'>
+                            We will be collecting data when you complete this
+                            form. By completing this form you consent to us
+                            holding this data solely for the purposes of
+                            providing you with a written quotation by email. For
+                            details of our{' '}
+                            <a
+                              href='/legal/privacy-policy'
+                              className='undeline underline-offset-4 text-indigo-500'
+                            >
+                              privacy policy click here
+                            </a>{' '}
+                            and for information on{' '}
+                            <a
+                              href='/legal/data-protection-policy'
+                              className='undeline underline-offset-4 text-indigo-500'
+                            >
+                              data protection policy click helper
+                            </a>
                           </div>
                         </form>
 
