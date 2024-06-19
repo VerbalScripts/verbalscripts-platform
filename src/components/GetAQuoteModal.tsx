@@ -1,11 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 
-import { Fragment, useState } from 'react';
+import { FormEvent, Fragment, useEffect, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import ComponentSpinner from './ComponentSpinner';
 import AxiosProxy from '@/utils/AxiosProxy';
+import { classNames } from '@/utils/classNames';
+import { Player } from '@lottiefiles/react-lottie-player';
 
 interface SliderOverProp {
   open: boolean;
@@ -15,28 +17,27 @@ interface SliderOverProp {
 export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const [success, setSuccess] = useState(false);
   const [email, setEmail] = useState('');
   const [fullName, setFullName] = useState('');
   const [companyName, setCompanyName] = useState('');
   const [content, setContent] = useState('');
   const [serviceType, setServiceType] = useState('');
 
-  const postQuote = async () => {
+  const postQuote = async (event: FormEvent) => {
     try {
+      event.preventDefault();
       setLoading(true);
       const response = await AxiosProxy.post('/quotes/add', {
         content,
         fullName,
         companyName,
         service_type: serviceType,
-        email
+        email,
       });
 
       if (response.status == 201) {
-        setSuccess(
-          `Your Quote request has been received successfully, One of our team members will get back to you via ${email} with the response`,
-        );
+        setSuccess(true);
       }
     } catch (err) {
       setError(
@@ -46,6 +47,19 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
       setLoading(false);
     }
   };
+  const reset = () => {
+    setSuccess(false);
+    setLoading(false);
+    setEmail('');
+    setServiceType('');
+    setContent('');
+    setCompanyName('');
+    setError('');
+  };
+
+  useEffect(() => {
+    reset();
+  }, [open]);
 
   const services = [
     'Legal Transcription',
@@ -104,171 +118,199 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
                       </button>
                     </div>
                   </Transition.Child>
-                  <div className='flex h-full flex-col overflow-y-scroll bg-white py-14 shadow-xl'>
-                    <div className='px-4 sm:px-6'>
-                      <Dialog.Title className='text-3xl font-semibold leading-6 text-gray-800'>
-                        Get a Quotation
-                      </Dialog.Title>
+                  {success ? (
+                    <div className='flex gap-y-10 h-full flex-col justify-center overflow-y-scroll bg-white py-14 shadow-xl'>
+                      <div>
+                        <Player
+                          autoplay
+                          loop={false}
+                          src='https://lottie.host/0a51c829-7800-4e7e-9e93-61768c37479e/VKuYZcqOtG.json'
+                          style={{ width: '200px', height: '240px' }}
+                        ></Player>
+                      </div>
+                      <div className='text-gray-600 px-10 text-center'>
+                        Your Quotation Review request has been received. We will
+                        get back to you as soon as possible with the amount
+                        estimate.
+                      </div>
                     </div>
-                    <div className='relative flex-1 px-4 sm:px-6'>
-                      <div className='sm:mx-auto sm:w-full sm:max-w-sm'>
-                        <div className='my-6 text-gray-600  text-lg'>
-                          Provide Your Contact info so we reach out about your
-                          quote
-                        </div>
-                        <form
-                          action='#'
-                          method='POST'
-                          className='mt-5  sm:mt-5 text-left'
-                        >
-                          <div className='sm:col-span-2 mb-5'>
-                            <label
-                              htmlFor='first-name'
-                              className='block text-md font-semibold leading-6 text-gray-900 mb-2.5'
-                            >
-                              Full Name
-                            </label>
-
-                            <input
-                              type='text'
-                              id='fullName'
-                              name='fullName'
-                              onChange={(e) => setFullName(e.target.value)}
-                              className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-                              required
-                            />
+                  ) : (
+                    <div className='flex h-full flex-col overflow-y-scroll bg-white py-14 shadow-xl'>
+                      <div className='px-4 sm:px-6'>
+                        <Dialog.Title className='text-3xl font-semibold leading-6 text-gray-800'>
+                          Get a Quotation
+                        </Dialog.Title>
+                      </div>
+                      <div className='relative flex-1 px-4 sm:px-6'>
+                        <div className='sm:mx-auto sm:w-full sm:max-w-sm'>
+                          <div className='my-6 text-gray-600  text-lg'>
+                            Provide Your Contact info so we reach out about your
+                            quote
                           </div>
+                          <form
+                            action='#'
+                            method='POST'
+                            onSubmit={postQuote}
+                            className='mt-5  sm:mt-5 text-left'
+                          >
+                            <div className='sm:col-span-2 mb-5'>
+                              <label
+                                htmlFor='first-name'
+                                className='block text-md font-semibold leading-6 text-gray-900 mb-2.5'
+                              >
+                                Full Name
+                              </label>
 
-                          <div className='sm:col-span-2 mb-5'>
-                            <label
-                              htmlFor='email'
-                              className='block mb-2 text-md font-medium text-gray-900 dark:text-white'
-                            >
-                              Company Name
-                            </label>
-                            <input
-                              type='text'
-                              id='companyName'
-                              name='companyName'
-                              onChange={(e) => setCompanyName(e.target.value)}
-                              className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-                              required
-                            />
-                          </div>
-
-                          <div className='sm:col-span-2 mb-5'>
-                            <label
-                              htmlFor='email'
-                              className='block mb-2 text-md font-medium text-gray-900 dark:text-white'
-                            >
-                              Choose Type of service
-                            </label>
-                            <div className='my-2 px-6'>
-                              {services.map((service, index) => (
-                                <div
-                                  key={index}
-                                  className='flex items-center mb-4'
-                                >
-                                  <input
-                                    type='radio'
-                                    value=''
-                                    onChange={(e) =>
-                                      setServiceType(e.target.value)
-                                    }
-                                    name='service_type'
-                                    className='w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
-                                  />
-                                  <label
-                                    htmlFor='service_type'
-                                    className='ms-2 text-md font-medium text-gray-900 dark:text-gray-300'
-                                  >
-                                    {service}
-                                  </label>
-                                </div>
-                              ))}
+                              <input
+                                type='text'
+                                id='fullName'
+                                name='fullName'
+                                onChange={(e) => setFullName(e.target.value)}
+                                className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                                required
+                              />
                             </div>
-                          </div>
 
-                          <div className='sm:col-span-2 mb-5'>
-                            <label
-                              htmlFor='email'
-                              className='block mb-2 text-md font-medium text-gray-900 dark:text-white'
-                            >
-                              Your email
-                            </label>
-                            <input
-                              type='email'
-                              id='email'
-                              onChange={(e) => setEmail(e.target.value)}
-                              aria-describedby='helper-text-explanation'
-                              className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-                            />
+                            <div className='sm:col-span-2 mb-5'>
+                              <label
+                                htmlFor='email'
+                                className='block mb-2 text-md font-medium text-gray-900 dark:text-white'
+                              >
+                                Company Name
+                              </label>
+                              <input
+                                type='text'
+                                id='companyName'
+                                name='companyName'
+                                onChange={(e) => setCompanyName(e.target.value)}
+                                className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                                required
+                              />
+                            </div>
 
-                            <p
-                              id='helper-text-explanation'
-                              className='mt-2 text-sm text-gray-500 dark:text-gray-400'
-                            >
-                              We’ll never share our response via this email . .
-                            </p>
-                          </div>
+                            <div className='sm:col-span-2 mb-5'>
+                              <label
+                                htmlFor='email'
+                                className='block mb-2 text-md font-medium text-gray-900 dark:text-white'
+                              >
+                                Choose Type of service
+                              </label>
+                              <div className='my-2 px-6'>
+                                {services.map((service, index) => (
+                                  <div
+                                    key={index}
+                                    className='flex items-center mb-4'
+                                  >
+                                    <input
+                                      type='radio'
+                                      value={service}
+                                      onChange={(e) =>
+                                        setServiceType(e.target.value)
+                                      }
+                                      name='service_type'
+                                      className='w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+                                    />
+                                    <label
+                                      htmlFor='service_type'
+                                      className='ms-2 text-md font-medium text-gray-900 dark:text-gray-300'
+                                    >
+                                      {service}
+                                    </label>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
 
-                          <div className='sm:col-span-2'>
-                            <label
-                              htmlFor='message'
-                              className='block mb-2 text-md font-medium text-gray-900 dark:text-white'
-                            >
-                              Additional Information - be detailed as possible
-                            </label>
-                            <textarea
-                              id='description'
-                              rows={4}
-                              onChange={(e) => setContent(e.target.value)}
-                              className='block p-2.5 w-full text-lg text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-                              placeholder='Project description...'
-                            ></textarea>
-                          </div>
-                          <div className='my-5'>
-                            <button
-                              type='submit'
-                              disabled={loading}
-                              onClick={() => postQuote()}
-                              className=' inline-flex items-center gap-x-3 rounded-xl bg-indigo-500 px-8 py-1.5 text-center text-lg font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
-                            >
-                              {loading ? <ComponentSpinner /> : <span />}
-                              <span>Submit</span>
-                            </button>
-                          </div>
-                          <div className='text-gray-700'>
-                            We will be collecting data when you complete this
-                            form. By completing this form you consent to us
-                            holding this data solely for the purposes of
-                            providing you with a written quotation by email. For
-                            details of our{' '}
-                            <a
-                              href='/legal/privacy-policy'
-                              className='undeline underline-offset-4 text-indigo-500'
-                            >
-                              privacy policy click here
-                            </a>{' '}
-                            and for information on{' '}
-                            <a
-                              href='/legal/data-protection-policy'
-                              className='undeline underline-offset-4 text-indigo-500'
-                            >
-                              data protection policy click helper
-                            </a>
-                          </div>
-                        </form>
+                            <div className='sm:col-span-2 mb-5'>
+                              <label
+                                htmlFor='email'
+                                className='block mb-2 text-md font-medium text-gray-900 dark:text-white'
+                              >
+                                Your email
+                              </label>
+                              <input
+                                type='email'
+                                id='email'
+                                required
+                                onChange={(e) => setEmail(e.target.value)}
+                                aria-describedby='helper-text-explanation'
+                                className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                              />
 
-                        {/* <p className="mt-10 text-center text-sm text-gray-500">
+                              <p
+                                id='helper-text-explanation'
+                                className='mt-2 text-sm text-gray-500 dark:text-gray-400'
+                              >
+                                We’ll never share our response via this email .
+                                .
+                              </p>
+                            </div>
+
+                            <div className='sm:col-span-2'>
+                              <label
+                                htmlFor='message'
+                                className='block mb-2 text-md font-medium text-gray-900 dark:text-white'
+                              >
+                                Additional Information - be detailed as possible
+                              </label>
+                              <textarea
+                                id='description'
+                                rows={4}
+                                required
+                                onChange={(e) => setContent(e.target.value)}
+                                className='block p-2.5 w-full text-lg text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                                placeholder='Project description...'
+                              ></textarea>
+                            </div>
+                            <div className='my-5'>
+                              <button
+                                type='submit'
+                                disabled={loading}
+                                className=' inline-flex items-center gap-x-3 rounded-xl bg-indigo-500 px-8 py-1.5 text-center text-lg font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+                              >
+                                {loading ? <ComponentSpinner /> : <span />}
+                                <span>Submit</span>
+                              </button>
+                              {error.length > 0 ? (
+                                <p className='text-red-500 py-2 px-1.5 rounded-xl ring-red-100 ring-1'>
+                                  {error}
+                                </p>
+                              ) : (
+                                ''
+                              )}
+                            </div>
+                            <div className='text-gray-700'>
+                              We will be collecting data when you complete this
+                              form. By completing this form you consent to us
+                              holding this data solely for the purposes of
+                              providing you with a written quotation by email.
+                              For details of our{' '}
+                              <a
+                                href='/legal/privacy-policy'
+                                className='undeline underline-offset-4 text-indigo-500'
+                              >
+                                privacy policy click here
+                              </a>{' '}
+                              and for information on{' '}
+                              <a
+                                href='/legal/data-protection-policy'
+                                className='undeline underline-offset-4 text-indigo-500'
+                              >
+                                data protection policy click helper
+                              </a>
+                            </div>
+                          </form>
+
+                          {/* <p className="mt-10 text-center text-sm text-gray-500">
               Not a member?{' '}
               <a href="#" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
                 Start a 14 day free trial
               </a>
             </p> */}
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  )}
                 </Dialog.Panel>
               </Transition.Child>
             </div>
