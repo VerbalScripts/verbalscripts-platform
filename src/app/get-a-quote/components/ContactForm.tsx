@@ -146,7 +146,7 @@ export default function ContactForm() {
               within 60 minutes (during office hours).
             </p>
           </div>
-          <form action='#' method='POST' className='mt-16  sm:mt-20 text-left'>
+          <form action='#' method='POST' className='mt-10  sm:mt-10 text-left'>
             <div className='sm:col-span-2 mb-5'>
               <label
                 htmlFor='first-name'

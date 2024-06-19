@@ -16,17 +16,32 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [email, setEmail] = useState('');
+  const [fullName, setFullName] = useState('');
+  const [companyName, setCompanyName] = useState('');
+  const [content, setContent] = useState('');
+  const [serviceType, setServiceType] = useState('');
 
   const postQuote = async () => {
     try {
       setLoading(true);
-      const response = await AxiosProxy.get('/quotes/add');
+      const response = await AxiosProxy.post('/quotes/add', {
+        content,
+        fullName,
+        companyName,
+        service_type: serviceType,
+        email
+      });
 
       if (response.status == 201) {
-        setSuccess(`Your Quote request has been received successfully, One of our team members will get back to you via ${email} with the response`)
+        setSuccess(
+          `Your Quote request has been received successfully, One of our team members will get back to you via ${email} with the response`,
+        );
       }
     } catch (err) {
-      setError('An Unexpected Error Occurred and Could not process your request. Retry again')
+      setError(
+        'An Unexpected Error Occurred and Could not process your request. Retry again',
+      );
     } finally {
       setLoading(false);
     }
@@ -118,6 +133,7 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
                               type='text'
                               id='fullName'
                               name='fullName'
+                              onChange={(e) => setFullName(e.target.value)}
                               className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                               required
                             />
@@ -134,6 +150,7 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
                               type='text'
                               id='companyName'
                               name='companyName'
+                              onChange={(e) => setCompanyName(e.target.value)}
                               className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                               required
                             />
@@ -155,6 +172,9 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
                                   <input
                                     type='radio'
                                     value=''
+                                    onChange={(e) =>
+                                      setServiceType(e.target.value)
+                                    }
                                     name='service_type'
                                     className='w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
                                   />
@@ -179,6 +199,7 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
                             <input
                               type='email'
                               id='email'
+                              onChange={(e) => setEmail(e.target.value)}
                               aria-describedby='helper-text-explanation'
                               className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                             />
@@ -199,8 +220,9 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
                               Additional Information - be detailed as possible
                             </label>
                             <textarea
-                              id='message'
+                              id='description'
                               rows={4}
+                              onChange={(e) => setContent(e.target.value)}
                               className='block p-2.5 w-full text-lg text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                               placeholder='Project description...'
                             ></textarea>

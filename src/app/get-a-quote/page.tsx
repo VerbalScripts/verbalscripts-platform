@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function FAQsPage() {
+export default function QuotePage() {
   return (
     <div className='bg-zinc-800  relative'>
       <AppHeader />
