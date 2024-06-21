@@ -43,28 +43,27 @@ export default function CreateProject({ open, setOpen }: CreateProjectProps) {
               leaveTo='opacity-0 -translate-y-28 sm:-translate-y-28 sm:scale-95'
             >
               <Dialog.Panel className='relative flex justify-center items-center transform overflow-hidden h-screen px-24 py-10  bg-gray-100  shadow-xl transition-all max-w-7xl'>
-                
-              <Transition.Child
-                    as={Fragment}
-                    enter='ease-in-out duration-500'
-                    enterFrom='opacity-0'
-                    enterTo='opacity-100'
-                    leave='ease-in-out duration-300'
-                    leaveFrom='opacity-100'
-                    leaveTo='opacity-0'
-                  >
-                    <div className='absolute right-0 top-0 z-50 -ml-8 flex pr-2 pt-4 sm:-ml-10 sm:pr-4'>
-                      <button
-                        type='button'
-                        className='relative rounded-full text-gray-500 hover:text-gray-300 focus:outline-none focus:ring-4 focus:ring-indigo-200'
-                        onClick={() => setOpen(false)}
-                      >
-                        <span className='absolute -inset-2.5' />
-                        <span className='sr-only'>Close panel</span>
-                        <XMarkIcon className='h-10 w-10' aria-hidden='true' />
-                      </button>
-                    </div>
-                  </Transition.Child>
+                <Transition.Child
+                  as={Fragment}
+                  enter='ease-in-out duration-500'
+                  enterFrom='opacity-0'
+                  enterTo='opacity-100'
+                  leave='ease-in-out duration-300'
+                  leaveFrom='opacity-100'
+                  leaveTo='opacity-0'
+                >
+                  <div className='absolute right-0 top-0 z-50 -ml-8 flex pr-2 pt-4 sm:-ml-10 sm:pr-4'>
+                    <button
+                      type='button'
+                      className='relative rounded-full text-gray-500 hover:text-gray-300 focus:outline-none focus:ring-4 focus:ring-indigo-200'
+                      onClick={() => setOpen(false)}
+                    >
+                      <span className='absolute -inset-2.5' />
+                      <span className='sr-only'>Close panel</span>
+                      <XMarkIcon className='h-10 w-10' aria-hidden='true' />
+                    </button>
+                  </div>
+                </Transition.Child>
 
                 <div className='max-auto max-w-4xl'>
                   <div className='mb-5'>

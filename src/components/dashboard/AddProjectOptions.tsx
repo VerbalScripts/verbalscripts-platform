@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import React, {  useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import LocalFilePLoad from '@/components/dashboard/LocalFilePLoad';
 import DropboxUpload from '@/components/uploadOptions/DropboxUpload';
 import GoogleUpload from '@/components/uploadOptions/GoogleUpload';
@@ -46,8 +46,6 @@ export default function AddProjectOptions() {
       <YoutubeLinkUpload open={openYoutube} setOpen={setOpenYoutube} />
       {/* fancy welcome if orders are empty */}
       <div className=''>
-      
-
         <DashboardUploadPreview
           openDropBoxPicker={launchDropBoxPicker}
           openGoogleDrivePicker={launchGoogleDrivePicker}
@@ -55,11 +53,10 @@ export default function AddProjectOptions() {
           openDirectLink={() => setOpenDirectLink(!openDirectLink)}
           openYoutube={() => setOpenYoutube(!openYoutube)}
         />
-      <div className=''>
-        <LocalFilePLoad />
+        <div className=''>
+          <LocalFilePLoad />
+        </div>
       </div>
-      </div>
-
     </div>
   );
 }

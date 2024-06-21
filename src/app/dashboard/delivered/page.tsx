@@ -23,14 +23,13 @@ export default function Page() {
 
   useEffect(() => {
     setTimeout(() => {
-      setLoading(false)
-    }, 2000)
-  }, [])
+      setLoading(false);
+    }, 2000);
+  }, []);
 
   return (
     <div className='bg-white dark:bg-zinc-800  min-h-screen '>
       <SystemProgressPopup />
-     
 
       {loading ? (
         <LoadSpinner />

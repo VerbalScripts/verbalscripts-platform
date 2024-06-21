@@ -185,11 +185,9 @@ export default function ContactForm() {
                 htmlFor='email'
                 className='block mb-2 text-md font-medium text-gray-900 dark:text-white'
               >
-               Choose Type of service
+                Choose Type of service
               </label>
-              <div
-                className='my-2 px-6'
-              >
+              <div className='my-2 px-6'>
                 {services.map((service, index) => (
                   <div key={index} className='flex items-center mb-4'>
                     <input

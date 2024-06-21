@@ -20,7 +20,7 @@ export default function CallToActionBanner() {
 
               <div className='mt-10 flex items-center flex-wrap justify-center gap-6 lg:justify-start'>
                 <a
-                   href='/get-a-quote'
+                  href='/get-a-quote'
                   className='rounded-xl btn-vlg px-7 py-2.5 text-lg font-semibold text-white transition focus:ring-4 focus:ring-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white'
                 >
                   Get a Qoute

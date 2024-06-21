@@ -47,7 +47,6 @@ export default function Page() {
       <title>VerbalScripts | Dashboard</title>
       <SystemProgressUpload />
       <SystemProgressPopup />
-     
 
       <div className=''>
         {isNew && !loading ? (

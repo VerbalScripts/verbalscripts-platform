@@ -92,7 +92,7 @@ export default function Page() {
             </h1>
 
             <p className='block md:max-w-2xl lg:max-w-3xl xl:max-w-4xl relative z-10 mt-6 text-lg  leading-7 text-gray-800'>
-            Precise transcriptions for streamlined business operations.
+              Precise transcriptions for streamlined business operations.
             </p>
 
             <div className='mt-10 flex flex-wrap space-y-5 lg:space-y-0  justify-start lg:flex-nowrap md:items-center space-x-5'>

@@ -12,7 +12,9 @@ export default function Faqs({ faqs }: FaqsPropsIface) {
       {faqs.map((faq: FaqsProp, index: number) => (
         <div className='border-b border-gray-300  mb-3' key={index}>
           <Accordion title={faq.title} id={`faqs-${index}`} active={false}>
-            <p className='text-md text-gray-800 md:text-lg px-5'>{faq.content}</p>
+            <p className='text-md text-gray-800 md:text-lg px-5'>
+              {faq.content}
+            </p>
           </Accordion>
         </div>
       ))}

@@ -174,7 +174,7 @@ export default function AppHeader() {
     },
     {
       name: 'Support',
-      description: 'We\'re here to assist you 24/7.',
+      description: "We're here to assist you 24/7.",
       href: '/support',
       icon: InformationCircleIcon,
     },

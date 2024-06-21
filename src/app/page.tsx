@@ -19,9 +19,9 @@ import TestimonialsV2 from '@/components/TestimonialsV2';
 export const metadata: Metadata = {
   title: 'Verbalscripts - 100% Human Transcription Services',
 
-  icons:  {
+  icons: {
     icon: '/favicon.ico',
-    apple: '/apple-touch-icon.png'
+    apple: '/apple-touch-icon.png',
   },
   keywords: [
     'verbalscripts',
