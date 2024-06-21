@@ -54,7 +54,7 @@ export default function Page() {
       <SystemProgressPopup />
       {!loading && user ? (
         <section className='relative px-6 py-10 md:py-14  lg:px-14'>
-          <div className='mx-auto max-w-7xl text-left'>
+          <div className='max-w-6xl text-left'>
           <div className='mb-10 text-gray-800 text-4xl md:text-5xl font-bold dark:text-white'>
              Your Account 
             </div>

@@ -5,7 +5,7 @@ export default function SecuritySettings() {
     <div>
       <div className='space-y-6 mb-5'>
         <div className='mb-3'>
-          <h2 className='text-2xl font-semibold leading-7 text-gray-900 dark:text-gray-100'>
+          <h2 className='text-2xl py-1 mb-3 border-b border-gray-200 dark:border-gray-500 font-semibold leading-7 text-gray-700 dark:text-gray-100'>
             Reset Account Password
           </h2>
           <p className='mb-5 mt-1 text-md leading-6 text-gray-600 dark:text-gray-200'>
@@ -25,7 +25,7 @@ export default function SecuritySettings() {
 
       <div className='space-y-6 mb-5'>
         <div className='mb-3'>
-          <h2 className='text-2xl font-semibold leading-7 text-gray-900 dark:text-gray-100'>
+          <h2 className='text-2xl py-1 mb-3 border-b border-gray-200 dark:border-gray-500 font-semibold leading-7 text-gray-700 dark:text-gray-100'>
             Change Username
           </h2>
           <p className='mb-5 mt-1 text-md leading-6 text-gray-600 dark:text-gray-200'>
@@ -35,7 +35,7 @@ export default function SecuritySettings() {
         <div className='flex items-center justify-start gap-x-6'>
           <button
             type='submit'
-            className='rounded-full bg-indigo-500 px-7 py-2 text-lg  font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+            className='rounded-full bg-gray-700 px-7 py-2 text-lg  font-semibold text-white shadow-sm hover:bg-gray-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
           >
             Change Username
           </button>
@@ -44,7 +44,7 @@ export default function SecuritySettings() {
 
       <div className='space-y-6 mb-5'>
         <div className='mb-3'>
-          <h2 className='text-2xl font-semibold leading-7 text-gray-900 dark:text-gray-100'>
+          <h2 className='text-2xl py-1 mb-3 border-b border-gray-200 dark:border-gray-500 font-semibold leading-7 text-red-400 dark:text-gray-100'>
             Delete account
           </h2>
           <p className='mb-5 mt-1 text-md leading-6 text-gray-600 dark:text-gray-200'>
