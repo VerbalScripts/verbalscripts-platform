@@ -86,7 +86,7 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
 
         <div className='fixed inset-0 overflow-hidden'>
           <div className='absolute inset-0 overflow-hidden'>
-            <div className='pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10'>
+            <div className='pointer-events-none fixed inset-y-0  flex right-0 left-0  pl-10'>
               <Transition.Child
                 as={Fragment}
                 enter='transform transition ease-in-out duration-500 sm:duration-700'
@@ -96,7 +96,7 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
                 leaveFrom='translate-x-0'
                 leaveTo='translate-x-full'
               >
-                <Dialog.Panel className='pointer-events-auto relative w-screen max-w-md'>
+                <Dialog.Panel className='pointer-events-auto relative w-full md:max-w-md'>
                   <Transition.Child
                     as={Fragment}
                     enter='ease-in-out duration-500'
@@ -106,7 +106,7 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
                     leaveFrom='opacity-100'
                     leaveTo='opacity-0'
                   >
-                    <div className='absolute left-0 top-0 -ml-8 flex pr-2 pt-4 sm:-ml-10 sm:pr-4'>
+                    <div className='absolute left-0 top-0 ml-8 flex pr-2 pt-4 sm:-ml-10 sm:pr-4'>
                       <button
                         type='button'
                         className='relative rounded-md text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white'
@@ -119,7 +119,7 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
                     </div>
                   </Transition.Child>
                   {success ? (
-                    <div className='flex gap-y-10 h-full flex-col justify-center overflow-y-scroll bg-white py-14 shadow-xl'>
+                    <div className='flex gap-y-10 h-full  flex-col justify-center overflow-y-scroll  py-14 shadow-xl'>
                       <div>
                         <Player
                           autoplay
@@ -195,36 +195,24 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
                               >
                                 Choose Type of service
                               </label>
-                              <div className='my-2 px-6'>
-                                {services.map((service, index) => (
-                                  <div
-                                    key={index}
-                                    className='flex items-center mb-4'
-                                  >
-                                    <input
-                                      type='radio'
-                                      value={service}
-                                      onChange={(e) =>
-                                        setServiceType(e.target.value)
-                                      }
-                                      name='service_type'
-                                      className='w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
-                                    />
-                                    <label
-                                      htmlFor='service_type'
-                                      className='ms-2 text-md font-medium text-gray-900 dark:text-gray-300'
-                                    >
+                              <div className='my-2'>
+                                <select required className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'>
+                                  <option selected value='blank'>
+                                    Transcription Type
+                                  </option>
+                                  {services.map((service, index) => (
+                                    <option key={index} value={service}>
                                       {service}
-                                    </label>
-                                  </div>
-                                ))}
+                                    </option>
+                                  ))}
+                                </select>
                               </div>
                             </div>
 
                             <div className='sm:col-span-2 mb-5'>
                               <label
                                 htmlFor='email'
-                                className='block mb-2 text-md font-medium text-gray-900 dark:text-white'
+                                className='block mb-2 text-md font-me dium text-gray-900 dark:text-white'
                               >
                                 Your email
                               </label>
@@ -279,7 +267,7 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
                                 ''
                               )}
                             </div>
-                            <div className='text-gray-700'>
+                            {/* <div className='text-gray-700'>
                               We will be collecting data when you complete this
                               form. By completing this form you consent to us
                               holding this data solely for the purposes of
@@ -298,7 +286,7 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
                               >
                                 data protection policy click helper
                               </a>
-                            </div>
+                            </div> */}
                           </form>
 
                           {/* <p className="mt-10 text-center text-sm text-gray-500">

@@ -566,7 +566,7 @@ span.svg-circles {
   background:
     linear-gradient(to left, transparent, rgba(255, 255, 255, 0.87)),
     linear-gradient(to top, transparent, rgba(255, 252, 252, 0.329)),
-    url('/enterprise_industry/enterprise_landing.jpg') no-repeat top right;
+    url('/corporate_industry/corporate_landing.png') no-repeat top right;
   background-size: cover;
 }
 

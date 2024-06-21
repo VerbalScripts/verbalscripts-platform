@@ -15,50 +15,50 @@ export const metadata: Metadata = {
 export default function Page() {
   const industry_solutions = [
     {
-      imgUrl: '/medical_transcription/patientnotes.svg',
+      imgUrl: '/industry/courtreporting.png',
       title: 'Court Reporting & Legal',
       href: '/industry/legal',
       description:
-        'Navigate the legal landscape with confidence. From courtroom proceedings to legal dictations, our meticulous transcripts support legal professionals in their pursuit of justice.',
+        'Confidential, precise legal transcription for hearings, depositions, and trials. Save time and resources with our affordable, reliable services. Experience unparalleled customer satisfaction and personalized support with Verbalscripts. Choose quality, confidentiality, and efficiency.',
     },
     {
-      imgUrl: '/medical_transcription/operativereport.svg',
+      imgUrl: '/industry/corporate&generalbus.png',
       href: '/industry/enterprise',
 
       title: 'Corporate & General Business',
       description:
-        'Streamline your business operations with efficient transcription solutions. From boardroom meetings to client presentations, our accurate transcripts keep your business communication crystal clear.',
+        'Verbalscripts excels in precise transcription services for boardroom discussions to investor calls, corporate meetings, conferences, interviews, and training sessions. With a commitment to confidentiality and accuracy, we empower businesses with clear, reliable transcripts crucial for informed decision-making and operational efficiency.',
     },
     {
-      imgUrl: '/medical_transcription/consultation.svg',
+      imgUrl: '/industry/mediaproduction.png',
 
       href: '/industry/media-production',
       title: 'Media Production',
       description:
-        'Amplify your online presence with our transcription services. Whether it"s podcasts, interviews, or social media content, we transform audio and video into engaging, searchable text that captivates audiences.',
+        'Seamless transcription excellence: Elevate your content with Verbalscripts, from documentaries to interviews, conferences to podcasts, trust our precision and personalized Services.',
     },
     {
-      imgUrl: '/medical_transcription/dischargesummary.svg',
+      imgUrl: '/industry/healthcasre.jpg',
       href: '/industry/healthcare',
 
       title: 'Healthcare',
       description:
-        'Revolutionize education with accessible transcripts. Our e-learning transcription services ensure that educational content is inclusive and easy to digest, fostering a dynamic learning environment for students worldwide.',
+        'VerbalScripts delivers precise transcription solutions tailored for the healthcare industry. From medical consultations and patient records to research interviews and healthcare conference. Trust VerbalScripts for clear, reliable transcripts that enhance communication and operational efficiency in healthcare settings.',
     },
     {
-      imgUrl: '/medical_transcription/progressreport.svg',
+      imgUrl: '/industry/education.png',
       href: '/industry/education',
 
-      title: 'Education',
+      title: 'Digital & Learning',
       description:
-        'Safeguard patient information with our HIPAA-compliant transcription services. From medical notes to telemedicine consultations, our transcripts ensure accuracy and confidentiality in healthcare communication.',
+        'Verbalscripts excels in precise transcription services tailored for digital and online learning. Whether for virtual seminars, educational videos, online courses, or instructional webinars, we ensure accurate transcripts that enhance comprehension and accessibility. Trust Verbalscripts to deliver clear, reliable transcripts that support seamless knowledge dissemination and educational excellence.',
     },
     {
-      imgUrl: '/medical_transcription/medicalhistory.svg',
+      imgUrl: '/industry/govt.png',
       title: 'Government',
       href: '/industry/government',
       description:
-        'Uphold transparency and accountability with reliable documentation. From public hearings to policy discussions, our transcripts serve as a cornerstone of governmental integrity and public trust.',
+        'Empowering Governance through Precision: Verbalscripts delivers trusted transcription services for government hearings, meetings, and public discourse. With unwavering accuracy, confidentiality, and efficiency, we support transparent communication and informed decision-making.',
     },
   ];
 
@@ -82,7 +82,7 @@ export default function Page() {
 
             <div className='mt-10'>
               <a
-                href='/upload-files'
+                href='/get-a-quote'
                 className='inline-flex rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
               >
                 <span className='flex'>Request a Quote</span>
@@ -155,7 +155,7 @@ export default function Page() {
           <div className='grid justify-evenly grid-cols-1 md:grid-cols-2   lg:gap-x-8 gap-y-16  lg:grid-cols-2 lg:gap-y-5  pb-12'>
             {industry_solutions.map((content) => (
               <div key={content.title}>
-                <div className='max-h-[18rem]'>
+                <div className='h-[15rem] -mb-5 lg:mb-20 xl:mb-32'>
                   <img
                     src={content.imgUrl}
                     className='rounded-sm object-cover'
@@ -167,7 +167,7 @@ export default function Page() {
                     {content.title}
                   </div>
 
-                  <div className='text-gray-600 text-center capitalize'>
+                  <div className='text-gray-600 text-center xl:text-lg capitalize'>
                     {content.description}
                   </div>
                   <div className='mt-5 text-center'>

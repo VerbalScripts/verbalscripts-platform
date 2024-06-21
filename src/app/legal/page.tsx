@@ -46,14 +46,30 @@ export const metadata: Metadata = {
 
 const legal_documents = [
   {
-    name: 'Website Terms of Service',
+    name: 'Verbalscripts Terms of Service',
     description:
       'Terms and restrictions that apply to everyone who visits Verbalscripts',
     href: '/legal/terms-of-service',
     imgUrl: '/icons/accuracy.png',
   },
   {
-    name: 'Website Privacy Policy',
+    name: 'Verbalscripts Privacy Policy',
+    description:
+      'Contains certain restrictions on use of verbalscripts products, services and websites',
+    href: '/legal/privacy-policy',
+
+    imgUrl: '/icons/accuracy.png',
+  },
+  {
+    name: 'Transcriber NDA',
+    description:
+      'Contains certain restrictions on use of verbalscripts products, services and websites',
+    href: '/legal/privacy-policy',
+
+    imgUrl: '/icons/accuracy.png',
+  },
+  {
+    name: 'customer NDA',
     description:
       'Contains certain restrictions on use of verbalscripts products, services and websites',
     href: '/legal/privacy-policy',

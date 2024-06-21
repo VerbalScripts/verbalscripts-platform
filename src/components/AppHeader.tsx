@@ -49,7 +49,7 @@ export default function AppHeader() {
   const services: Array<NavLabel> = [
     {
       name: 'Legal Transcription',
-      description: 'Build strategic funnels that will convert',
+      description: 'Expertise and Precision in every legal transcript',
       href: '/services/legal',
       icon: ArrowPathIcon,
       subtitle: 'Data Labeling customized to your needs',
@@ -61,8 +61,8 @@ export default function AppHeader() {
       price: '0.10$ per task',
     },
     {
-      name: 'Video and Audio Transcription services',
-      description: 'Speak directly to your customers',
+      name: 'Audio and Video Transcription services',
+      description: 'Accurate transcription for audio and video content',
       href: '/services/audio-and-video',
       icon: CursorArrowRaysIcon,
       subtitle: 'Accurate translation in any language',
@@ -75,7 +75,7 @@ export default function AppHeader() {
     },
     {
       name: 'General Transcription',
-      description: 'Build strategic funnels that will convert',
+      description: 'Versatile transcription services for all your needs.',
       href: '/services/general',
       icon: ArrowPathIcon,
       subtitle: 'Data Labeling customized to your needs',
@@ -88,13 +88,13 @@ export default function AppHeader() {
     },
     {
       name: 'Focus groups and Interviews',
-      description: 'Get a better understanding of your traffic',
+      description: 'Enhance your research with precise transcripts',
       href: '/services/focus-groups-and-interviews',
       icon: ChartPieIcon,
     },
     {
       name: 'Medical Transcription',
-      description: 'Your customers’ data will be safe and secure',
+      description: 'Accurate and confidential medical transcription',
       href: '/services/medical',
       icon: FingerPrintIcon,
       subtitle: 'Industry best speech-to-text transcription software',
@@ -107,7 +107,7 @@ export default function AppHeader() {
     },
     {
       name: 'Academic & Conference Transcription',
-      description: 'Connect with third-party tools',
+      description: 'Transcription for academic and conference excellence',
       href: '/services/academic-and-conference',
       icon: SquaresPlusIcon,
       subtitle: 'Create custom datasets for AI model training',
@@ -168,26 +168,26 @@ export default function AppHeader() {
   const resources: Array<NavLabel> = [
     {
       name: 'About Us',
-      description: 'Learn More About Us.',
+      description: 'See how we make a difference.',
       href: '/about-us',
       icon: ChartPieIcon,
     },
     {
       name: 'Support',
-      description: 'Get help and ask queries',
+      description: 'We\'re here to assist you 24/7.',
       href: '/support',
       icon: InformationCircleIcon,
     },
     {
       name: 'FAQs',
-      description: 'Frequently asked questions',
+      description: 'Quick solutions to your concerns.',
       href: '/faqs',
       icon: QuestionMarkCircleIcon,
     },
     {
-      name: 'Terms and Conditions',
-      description: 'Terms, privacy and usage.',
-      href: '/terms-and-conditions',
+      name: 'Legal',
+      description: 'Understand our terms and policies.',
+      href: '/legal',
       icon: FingerPrintIcon,
     },
   ];
@@ -214,7 +214,7 @@ export default function AppHeader() {
     {
       name: 'Delivered Orders',
       description: 'Completed Orders.',
-      href: '/dashboard/pending',
+      href: '/dashboard/delivered',
       icon: ChartPieIcon,
     },
   ];
@@ -459,7 +459,7 @@ export default function AppHeader() {
                       leaveTo='opacity-0 translate-y-1'
                     >
                       <Popover.Panel className='absolute -left-8 top-8 z-10 mt-3 w-screen max-w-xl overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5'>
-                        <div className='p-4 w-full grid  grid-cols-1 gap-x-8 gap-y-3 lg:grid-cols-2'>
+                        <div className='p-4 w-full grid  grid-cols-1 gap-x-3 gap-y-3 lg:grid-cols-2'>
                           {popover.items.map((item: NavLabel) => (
                             <NavItem key={item.name} label={item} />
                           ))}
@@ -654,7 +654,7 @@ export default function AppHeader() {
                   <div className='mx-4 grid grid-cols-1 md:grid-cols-1  gap-y-3 md:gap-x-10 divide-x divide-gray-900/5 bg-gray-50'>
                     <div>
                       <a
-                        href='#'
+                        href='/auth/login'
                         className='-mx-3 block text-center rounded-full ring-1 ring-inset ring-indigo-500  px-3 py-2.5 text-xl font-semibold leading-7 text-indigo-500 hover:ring-indigo-400 hover:text-indigo-400'
                       >
                         Transcriber Login
@@ -662,7 +662,7 @@ export default function AppHeader() {
                     </div>{' '}
                     <div>
                       <a
-                        href='#'
+                        href='/auth/login'
                         className='-mx-3 block text-center rounded-full ring-1 ring-inset ring-indigo-500  px-3 py-2.5 text-xl font-semibold leading-7 text-indigo-500 hover:ring-indigo-400 hover:text-indigo-400'
                       >
                         Client Login

@@ -19,12 +19,12 @@ export default function CallToActionBanner() {
               </p>
 
               <div className='mt-10 flex items-center flex-wrap justify-center gap-6 lg:justify-start'>
-                <button
-                  onClick={() => () => {}}
+                <a
+                   href='/get-a-quote'
                   className='rounded-xl btn-vlg px-7 py-2.5 text-lg font-semibold text-white transition focus:ring-4 focus:ring-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white'
                 >
                   Get a Qoute
-                </button>
+                </a>
               </div>
             </div>
             <div className='hidden lg:block relative mt-16 h-80 lg:-mt-8 pr-10'>

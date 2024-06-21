@@ -155,7 +155,7 @@ export default function Page() {
             </div>
           </div>
           <div className='py-10 md:py-24'>
-            <dl className='grid max-w-none   justify-items-center  grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-x-5 lg:gap-y-5'>
+            <dl className='grid max-w-none  place-items-baseline  grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-x-5 lg:gap-y-5'>
               {features.map((feature) => (
                 <div
                   key={feature.name}

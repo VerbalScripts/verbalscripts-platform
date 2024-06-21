@@ -7,7 +7,7 @@ export default function NavItem({ label }: NavItemProp) {
     if (label.icon != undefined) {
       return (
         <label.icon
-          className='h-6 w-6 text-gray-600 group-hover:text-indigo-600'
+          className='h-5 w-5 text-gray-600 group-hover:text-indigo-600'
           aria-hidden='true'
         />
       );
@@ -19,7 +19,7 @@ export default function NavItem({ label }: NavItemProp) {
   }
 
   return (
-    <div className='group relative flex items-center gap-x-4 rounded-md p-4 text-sm leading-6 hover:bg-orange-100'>
+    <div className='group relative flex items-center gap-x-2 rounded-md p-4 text-sm leading-6 hover:bg-orange-100'>
       <div className='flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white'>
         <RenderNavItem label={label} />
       </div>
