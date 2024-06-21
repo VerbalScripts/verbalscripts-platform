@@ -9,16 +9,16 @@ import {
   FolderPlusIcon,
   TrashIcon,
 } from '@heroicons/react/24/outline';
-import {
-  ArrowUturnLeftIcon,
-  ArrowUturnRightIcon,
-} from '@heroicons/react/16/solid';
+// import {
+//   ArrowUturnLeftIcon,
+//   ArrowUturnRightIcon,
+// } from '@heroicons/react/16/solid';
 import {
   CheckCircleIcon,
   ListBulletIcon,
   Squares2X2Icon,
 } from '@heroicons/react/20/solid';
-import { Breadcrumb } from 'flowbite-react';
+// import { Breadcrumb } from 'flowbite-react';
 
 import { classNames } from '@/utils/classNames';
 import FileUploadFromLocal from '@/components/dashboard/FileUploadFromLocal';
@@ -51,6 +51,7 @@ import RemoveFiles from '@/components/modals/RemoveFiles';
 import VideoPlayer from '@/components/modals/VideoPlayer';
 import Tablepaginate from '@/components/dashboard/Tablepaginate';
 import SystemProgressPopup from '@/components/dashboard/SystemProgressPopup';
+import BreadcrumbRender from '../components/BreadcrumbRender';
 
 interface PageSetupOptions {
   toggleView: 'grid' | 'list';
@@ -184,21 +185,21 @@ export default function Page() {
     }
   };
 
-  const navForward = () => {
-    if (currentFolderIndex + 1 > folderArr.length) {
-      // update index
-      setCurrentFolderIndex(currentFolderIndex + 1);
-      router.push(`?folderId=${folderArr[currentFolderIndex + 1]['id']}`);
-    }
-  };
-  const navBack = () => {
-    if (folderArr.length > 1 && currentFolderIndex > 0) {
-      // update index
-      setCurrentFolderIndex(currentFolderIndex - 1);
-      setFolderArr((prevArr) => [...prevArr.slice(0, prevArr.length - 1)]);
-      router.push(`?folderId=${folderArr[currentFolderIndex - 1]['id']}`);
-    }
-  };
+  // const navForward = () => {
+  //   if (currentFolderIndex + 1 > folderArr.length) {
+  //     // update index
+  //     setCurrentFolderIndex(currentFolderIndex + 1);
+  //     router.push(`?folderId=${folderArr[currentFolderIndex + 1]['id']}`);
+  //   }
+  // };
+  // const navBack = () => {
+  //   if (folderArr.length > 1 && currentFolderIndex > 0) {
+  //     // update index
+  //     setCurrentFolderIndex(currentFolderIndex - 1);
+  //     setFolderArr((prevArr) => [...prevArr.slice(0, prevArr.length - 1)]);
+  //     router.push(`?folderId=${folderArr[currentFolderIndex - 1]['id']}`);
+  //   }
+  // };
 
   const clearSelection = () => {
     setSelectedFiles(() => []);
@@ -438,9 +439,69 @@ export default function Page() {
       {loading ? (
         <LoadSpinner />
       ) : (
-        <div className='px-6  md:px-16 xl:px-16 '>
-          <div className=' sticky top-0 z-10 bg-white dark:bg-zinc-800  py-3'>
-            <div className='flex items-center justify-start gap-x-3'>
+        <div className='px-6 relative z-10  md:px-16 xl:px-24 py-10'>
+          <div className='absolute -z-[1] right-0 left-0  top-0 h-52 bg-gray-50 dark:bg-orange-300 flex flex-col justify-center px-24 py-20'></div>
+          <div className=''>
+            <BreadcrumbRender
+              links={[
+                { name: 'Projects', href: '#' },
+                { name: 'Pending', href: 'pending' },
+              ]}
+            />
+          </div>
+          <div className='my45 flex justify-between'>
+            <p className='text-gray-600 dark:text-gray-600 text-xl font-semibold'>
+              Pending Tasks
+            </p>
+            <div className='flex space-x-2 items-center'>
+              <div className='flex gap-x-3 pr-3 border-r border-gray-400'>
+                <div className=''>
+                  <label
+                    htmlFor='showFolders'
+                    className=' h-6 relative inline-block'
+                  >
+                    <input
+                      id='showFolders'
+                      type='checkbox'
+                      onChange={toggleFolderShow}
+                      className='w-11 h-0 cursor-pointer inline-block focus:outline-0 dark:focus:outline-0 border-0 dark:border-0 focus:ring-offset-transparent dark:focus:ring-offset-transparent focus:ring-transparent dark:focus:ring-transparent focus-within:ring-0 dark:focus-within:ring-0 focus:shadow-none dark:focus:shadow-none after:absolute before:absolute after:top-0 before:top-0  after:block before:inline-block before:rounded-full after:rounded-full after:content-[""] after:w-5 after:h-5 after:mt-0.5 after:ml-0.5 after:shadow-md after:duration-100
+                          before:content-[""] before:w-10 before:h-full before:shadow-[inset_0_0_#000] after:bg-white dark:after:bg-indigo-50
+                          before:bg-indigo-300 dark:before:bg-indigo-500   before:checked:bg-indigo-500 dark:before:checked:bg-indigo-500 checked:after:duration-300 checked:after:translate-x-4 disabled:after:bg-opacity-75 disabled:cursor-not-allowed disabled:checked:before:bg-opacity-40
+                              '
+                      checked={showFolders}
+                    />
+                  </label>
+                </div>
+                <span className='text-gray-500 font-semibold'>
+                  {showFolders ? 'Hide Folders' : 'Show Folders'}
+                </span>
+              </div>
+              <button
+                onClick={() =>
+                  setPageSetup({ ...pageSetup, toggleView: 'grid' })
+                }
+                className={classNames(
+                  'rounded-xl  font-semibold px-4 py-2  focus-within:ring-4 focus-within:ring-indigo-400',
+                  pageSetup.toggleView == 'grid' ? 'bg-indigo-100' : '',
+                )}
+              >
+                <Squares2X2Icon className=' h-5 w-5 text-indigo-600' />
+              </button>
+              <button
+                onClick={() =>
+                  setPageSetup({ ...pageSetup, toggleView: 'list' })
+                }
+                className={classNames(
+                  'rounded-xl  font-semibold px-4 py-2  focus-within:ring-4 focus-within:ring-indigo-400',
+                  pageSetup.toggleView == 'list' ? 'bg-indigo-100' : '',
+                )}
+              >
+                <ListBulletIcon className=' h-5 w-5 text-indigo-600' />
+              </button>
+            </div>
+          </div>
+          <div className=' sticky top-0 z-10   py-3'>
+            <div className='flex items-stretch justify-start gap-x-3'>
               <FileUploadFromOtherOptions
                 openDropBoxPicker={launchDropBoxPicker}
                 openGoogleDrivePicker={launchGoogleDrivePicker}
@@ -451,10 +512,10 @@ export default function Page() {
               <FileUploadFromLocal />
               <button
                 onClick={() => setOpen(true)}
-                className='flex flex-col mb-5 gap-x-2 rounded-sm md:rounded-xl bg-indigo-100 font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
+                className='flex flex-col mb-5  gap-x-2 rounded-sm md:rounded-xl bg-indigo-50 font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
               >
                 <FolderPlusIcon className='h-5 w-5 text-indigo-500' />
-                <span className='text-indigo-500 hidden md:block text-sm md:text-md'>
+                <span className='text-indigo-500 hidden md:block md:text-md'>
                   Create Folder
                 </span>
               </button>
@@ -462,7 +523,7 @@ export default function Page() {
 
             {orders.length > 0 ? (
               <>
-                <div className='flex  justify-between space-y-2 flex-wrap items-center mb-4'>
+                {/* <div className='flex  justify-between space-y-2 flex-wrap items-center mb-4'>
                   <div className='flex space-x-2'>
                     <button
                       disabled={folderArr.length == 1 || loading}
@@ -497,9 +558,7 @@ export default function Page() {
                       </Breadcrumb>
                     </div>
                   </div>
-                  {/* toggles */}
 
-                  {/* manage selected files */}
                   <div className='flex space-x-2 items-center'>
                     <div className='flex gap-x-3 pr-3 border-r border-gray-400'>
                       <div className=''>
@@ -546,7 +605,7 @@ export default function Page() {
                       <ListBulletIcon className=' h-5 w-5 text-indigo-600' />
                     </button>
                   </div>
-                </div>
+                </div> */}
                 <div className='flex items-center justify-between'>
                   <div>
                     <SearchBar cb={searchForFile} clearSearch={reload} />

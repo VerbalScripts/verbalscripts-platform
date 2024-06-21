@@ -69,7 +69,6 @@ export default function FileUploadFromLocal() {
       });
 
       xhr.addEventListener('load', function () {
-        console.log('completed ...', fileToSend.name);
         if (xhr.status === 201) {
           setProgress((prevState) => {
             const updated = [...prevState];

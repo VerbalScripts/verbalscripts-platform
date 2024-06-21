@@ -59,14 +59,14 @@ export default function FileUploadFromOtherOptions({
             {uploadOptions.map((uploadOption) => (
               <Image
                 key={uploadOption.id}
-                height={18}
-                width={18}
+                height={19}
+                width={19}
                 src={uploadOption.logoUrl}
                 alt={uploadOption.title}
               />
             ))}
           </div>
-          <span className='text-indigo-500 text-sm md:text-md'>
+          <span className='text-indigo-500 hidden md:block md:text-md'>
             Import file(s)
           </span>
         </Menu.Button>

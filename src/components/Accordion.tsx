@@ -46,7 +46,7 @@ export default function Accordion({
               />
             </svg>
           </span>
-          <span className='text-gray-800 text-md md:text-lg font-semibold'>
+          <span className='text-gray-900 text-lg md:text-xl font-semibold'>
             {title}
           </span>
         </button>
@@ -55,7 +55,7 @@ export default function Accordion({
         id={`accordion-text-${id}`}
         role='region'
         aria-labelledby={`accordion-title-${id}`}
-        className={`grid text-sm text-slate-600 overflow-hidden transition-all duration-300 ease-in-out ${accordionOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
+        className={`grid text-lg text-slate-700 overflow-hidden transition-all duration-300 ease-in-out ${accordionOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
       >
         <div className='overflow-hidden'>
           <div className='pb-3'>{children}</div>

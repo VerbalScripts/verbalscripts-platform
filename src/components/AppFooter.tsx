@@ -7,18 +7,6 @@ import React from 'react';
 //   LogoInstagram,
 // } from 'react-ionicons';
 
-import {
-  ArrowPathIcon,
-  ChartPieIcon,
-  CursorArrowRaysIcon,
-  FingerPrintIcon,
-  SquaresPlusIcon,
-  NewspaperIcon,
-  AcademicCapIcon,
-  MicrophoneIcon,
-  ChartBarIcon,
-  BuildingOffice2Icon,
-} from '@heroicons/react/24/outline';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faXTwitter,
@@ -34,74 +22,31 @@ export default function AppFooter() {
       name: 'Legal Transcription',
       description: 'Build strategic funnels that will convert',
       href: '/services/legal',
-      icon: ArrowPathIcon,
-      subtitle: 'Data Labeling customized to your needs',
-      features: [
-        'Enhance your artifical intelligence',
-        'Global network of experts',
-        'Highest quality annotated data',
-      ],
-      price: '0.10$ per task',
     },
     {
-      name: 'Video and Audio Transcription',
+      name: 'Audio and Video Transcription',
       description: 'Speak directly to your customers',
       href: '/services/audio-and-video',
-      icon: CursorArrowRaysIcon,
-      subtitle: 'Accurate translation in any language',
-      features: [
-        'Fast Delivery',
-        'Unrivaled Accuracy',
-        'Lowest Priced Anywhere',
-      ],
-      price: '0.11$ per word',
     },
     {
       name: 'General Transcription',
       description: 'Build strategic funnels that will convert',
       href: '/services/general',
-      icon: ArrowPathIcon,
-      subtitle: 'Data Labeling customized to your needs',
-      features: [
-        'Enhance your artifical intelligence',
-        'Global network of experts',
-        'Highest quality annotated data',
-      ],
-      price: '0.10$ per task',
     },
     {
       name: 'Focus groups and Interviews',
       description: 'Get a better understanding of your traffic',
       href: '/services/focus-groups-and-interviews',
-      icon: ChartPieIcon,
     },
     {
       name: 'Medical Transcription',
       description: 'Your customers’ data will be safe and secure',
       href: '/services/medical',
-      icon: FingerPrintIcon,
-      subtitle: 'Industry best speech-to-text transcription software',
-      features: [
-        'Fast Delivery',
-        'Unrivaled Accuracy',
-        'Lowest Priced Anywhere',
-      ],
-      price: '0.07$ per minute',
     },
     {
       name: 'Academic & Conference Transcription',
       description: 'Connect with third-party tools',
       href: '/services/academic-and-conference',
-      icon: SquaresPlusIcon,
-      subtitle: 'Create custom datasets for AI model training',
-      features: [
-        'Customized styles, tagging and speaker names',
-        'Timestamps to the millisecond',
-        'Transcription formats for any AI system',
-        'Highly secure platform & confidential data',
-        'Annotation services available',
-      ],
-      price: '2.00$ per minute',
     },
   ];
 
@@ -111,30 +56,18 @@ export default function AppFooter() {
       description:
         'We convert audio/video content into transcripts quickly and securing to save law firms, investigators, police force, or research firms time and money.',
       href: '/industry/legal',
-      icon: NewspaperIcon,
     },
     {
       name: 'Corporate & general business',
       description:
         'Customized for your large volume needs, including a variety of enterprise security requirements.',
       href: '/industry/legal',
-
-      icon: ChartBarIcon,
     },
     {
       name: 'Media production',
       description:
         'The very best in human intelligence requires top quality training data for speech NLP and computer vision models.',
       href: '/solutions/media',
-
-      icon: NewspaperIcon,
-    },
-    {
-      name: 'Education',
-      description:
-        'Fast, easy lecture and dissertation transcripts for students or faculty, compatible with NVivo and other research platforms.',
-      href: '/solutions/academic',
-      icon: AcademicCapIcon,
     },
     {
       name: 'Digital & online learning',
@@ -142,22 +75,18 @@ export default function AppFooter() {
         'Transcription that is perfect for all types of qualitative research needs, including focus groups, surveys and in-depth interviews.',
 
       href: '/solutions/education',
-      icon: ChartBarIcon,
     },
     {
       name: 'Government',
       description:
         'Making live events, meetings, ad campaigns and press briefings more accessible and actionable.',
       href: '/industry/government',
-      icon: MicrophoneIcon,
     },
     {
       name: 'Healthcare',
       description:
         'Making live events, meetings, ad campaigns and press briefings more accessible and actionable.',
       href: '/industry/healthcare',
-
-      icon: BuildingOffice2Icon,
     },
   ];
 

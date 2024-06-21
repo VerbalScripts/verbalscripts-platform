@@ -19,6 +19,10 @@ import TestimonialsV2 from '@/components/TestimonialsV2';
 export const metadata: Metadata = {
   title: 'Verbalscripts - 100% Human Transcription Services',
 
+  icons:  {
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png'
+  },
   keywords: [
     'verbalscripts',
     'transcription',
@@ -97,21 +101,21 @@ export default function Home() {
     {
       name: 'Precise Transcription',
       description:
-        'We ensure accurate transcription delivered on time by transcribing, reviewing and profreading',
+        'We ensure accurate transcription delivered on time by transcribing, reviewing and profreading.',
 
       imgUrl: '/icons/accuracy.png',
     },
     {
       name: 'One Click Submission',
       description:
-        'Simply give a us a link or upload your file and your will be ready to start working on it in a matter of minutes',
+        'Simply give a us a link or upload your file and your we will be ready to start working on it in a matter of minutes.',
 
       imgUrl: '/Home/upload.png',
     },
     {
       name: 'Affordable Solutions',
       description:
-        'The quality and workflow we have built enable us to deliver the highest quality transcripts concistency at the best industry rates',
+        'The quality and workflow we have built enable us to deliver the highest quality transcripts concistency consistently at the best industry rates.',
 
       imgUrl: '/Home/affordable.png',
     },
@@ -271,15 +275,19 @@ export default function Home() {
             </div>
             <div>
               <p className='mx-auto max-w-2xl mt-6 text-lg leading-8 text-gray-600'>
-                The way we think about data is changing; and now more than ever
-                industry leaders are counting on accurate, reliable
-                transcription and data annotation for their business.
+                In today{"'"}s fast-paced world, accurate and reliable
+                transcription services are crucial for industry leaders. At
+                Verbalscripts, we redefine transcription with our Gold standard
+                services. Our expert team ensures every word is captured
+                precisely, providing the reliability your business needs.
                 <br />
                 <br />
-                By delivering the Gold standard for transcription, VerbalScripts
-                is the best partner to meet your industry needs. Our services
-                can be tailored to meet unique formatting or project
-                requirements you may need.
+                Every project is unique, so our services are customized to meet
+                your specific formatting and project requirements. Trust a
+                partner who understands your industry needs and delivers
+                excellence every time. Experience the Verbalscripts
+                difference—choose us for accuracy, reliability, and exceptional
+                value.
               </p>
             </div>
           </div>
@@ -338,8 +346,8 @@ export default function Home() {
                         Transcribe
                       </div>
                       <p className='text-gray-800 font-semibold text-md'>
-                        Files are split into small chunks and types by our
-                        certified transcribers.
+                        Files are divided into small chunks and typed by our
+                        passionate and experienced transcribers.
                       </p>
                     </div>
                   </div>
@@ -357,8 +365,8 @@ export default function Home() {
                         Review
                       </div>
                       <p className='text-gray-800 font-semibold text-md'>
-                        Reviewers checks the parts, add speaker tracking and
-                        timestamps.
+                        Reviewers check the sections, add speaker labels, and
+                        ensure the transcript is properly aligned.
                       </p>
                     </div>
                   </div>
@@ -376,8 +384,8 @@ export default function Home() {
                         Proofreading
                       </div>
                       <p className='text-gray-800 font-semibold text-md'>
-                        Parts are collated and the combined transcript is
-                        proofreading for concistency and accuracy.
+                        Proofreaders verify word accuracy, spelling,
+                        indiscernible, style, and punctuation.
                       </p>
                     </div>
                   </div>
@@ -391,11 +399,12 @@ export default function Home() {
                     <br />
                     <div className='ml-5  max-w-md'>
                       <div className='leading-8 text-indigo-500 font-bold text-3xl mb-3'>
-                        Quality Check
+                        Formatting
                       </div>
                       <p className='text-gray-800  font-semibold text-md'>
-                        Accuracy is assesed, the files alternates between
-                        Proofreading and Quality till accuracy is 99% +.
+                        We assess accuracy, apply the correct template, and make
+                        final adjustments to ensure the transcript is
+                        client-ready.
                       </p>
                     </div>
                   </div>

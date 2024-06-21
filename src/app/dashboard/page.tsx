@@ -47,18 +47,13 @@ export default function Page() {
       <title>VerbalScripts | Dashboard</title>
       <SystemProgressUpload />
       <SystemProgressPopup />
-      {/* <div className='h-52 bg-indigo-400 flex flex-col justify-center px-24 py-20' style={{ background: '#1c2534'}}>
-        <div className='mb-5 text-4xl md:text-6xl capitalize font-bold footer-title'>
-          Hello, {'Isaac'}
-        </div>
-      </div> */}
+     
 
-      <div className='py-3 px-6 md:px-24 '>
+      <div className=''>
         {isNew && !loading ? (
           <EmptyUploadsPrompt />
         ) : !isNew && !loading ? (
-          // <SummaryStatsBoard />
-          <EmptyUploadsPrompt />
+          <SummaryStatsBoard />
         ) : (
           <LoadSpinner />
         )}
