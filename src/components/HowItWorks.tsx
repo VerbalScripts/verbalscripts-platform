@@ -43,7 +43,7 @@ export default function HowItWorks({
               </div>
 
               <div className='text-gray-900 text-center md:text-left  text-md '>
-                Simply upload your files to our secure platform.
+                Simply upload your files to our secure platform or send us in any way you prefer.
               </div>
             </div>
             <div className='relative shadow-md rounded-xl py-10 px-10 md:py-5 md:px-5 lg:py-10 lg:px-12 bg-white'>

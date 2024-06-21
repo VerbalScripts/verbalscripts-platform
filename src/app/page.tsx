@@ -62,14 +62,14 @@ export default function Home() {
   const testimonials: Array<Testimony> = [
     {
       description:
-        ' “For any law firm seeking a reliable and affordable transcription partner, we highly recommend Verbalscripts. They"ve consistently exceeded our expectations, and we"re confident they can do the same for you." - Jon A. Ballis, P.C., Kirkland & Ellis”',
+        '“For any law firm seeking a reliable and affordable transcription partner, we highly recommend Verbalscripts. They\'ve consistently exceeded our expectations, and we\'re confident they can do the same for you.”',
       name: 'Jon A. Ballis',
       imageUrl: '/testimonials/Jon A. Ballis.png',
       occupation: 'Kirkland & Ellis',
     },
     {
       description:
-        ' “We were impressed with Verbalscripts when they delivered precise transcripts tailored to a specific client"s requirements. Their accuracy and quick turnaround times were outstanding. We strongly recommend their services.”',
+        ' “We were impressed with Verbalscripts when they delivered precise transcripts tailored to a specific client\'s requirements. Their accuracy and quick turnaround times were outstanding. We strongly recommend their services.”',
       name: 'Joseph Baker',
       imageUrl: '/testimonials/Joseph Baker.png',
       occupation: 'Veritext',
@@ -494,7 +494,7 @@ export default function Home() {
                   </div>
                   <div className='ml-5  max-w-md'>
                     <div className='leading-8 text-indigo-600 font-semibold text-xl mb-1 capitalize'>
-                      submit required documents
+                      submit the required documents
                     </div>
                   </div>
                 </div>

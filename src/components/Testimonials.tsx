@@ -111,7 +111,7 @@ export default function Testimonials({ testimonials }: TestimonyProp) {
 
         <div className='mx-auto px-6 md:px-0 md:max-w-2xl text-left lg:text-center'>
           <p className='mt-2 text-4xl font-bold  section-title text-gray-900 md:text-5xl'>
-            What people are saying about{' '}
+            What  are people saying about{' '}
             <span className='text-orange-400'>VerbalScripts</span>
           </p>
           {/* <p className="amt-6 text-lg leading-8 text-gray-600">

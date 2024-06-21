@@ -20,11 +20,11 @@ export default function TestimonialsV2({ testimonials }: TestimonyProp) {
 
         <div className='flex flex-wrap lg:flex-nowrap items-start space-y-16 lg:space-x-6 lg:space-y-0 px-6 md:px-16 lg:px-24'>
           <div className='w-full'>
-            <h2 className='text-xl font-bold leading-7 capitalize footer-title'>
+            <h2 className='text-xl font-bold leading-7 capitalize secondary-text'>
               What our customers say
             </h2>
             <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
-              What people are saying about{' '}
+              What are people  saying about{' '}
               <span className='text-orange-400'>VerbalScripts</span>
             </p>
           </div>
