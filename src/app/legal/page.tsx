@@ -69,7 +69,7 @@ const legal_documents = [
     imgUrl: '/icons/accuracy.png',
   },
   {
-    name: 'customer NDA',
+    name: 'Customer Confidentiality Agreement',
     description:
       'Contains certain restrictions on use of verbalscripts products, services and websites',
     href: '/legal/privacy-policy',
@@ -134,7 +134,7 @@ export default function LegalPage() {
                 <a
                   href={document.href}
                   key={document.name}
-                  className='relative cursor-pointer py-8 px-4 rounded-3xl  shadow-sm bg-white border border-gray-300'
+                  className='relative cursor-pointer flex flex-col justify-between py-8 px-4 rounded-3xl  shadow-sm bg-white border border-gray-300'
                 >
                   <dt className='flex flex-col items-center '>
                     <Image

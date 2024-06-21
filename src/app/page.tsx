@@ -101,21 +101,21 @@ export default function Home() {
     {
       name: 'Precise Transcription',
       description:
-        'We ensure accurate transcription delivered on time by transcribing, reviewing and profreading.',
+        'We ensure accurate transcription delivered on time by transcribing, reviewing and proofreading.',
 
       imgUrl: '/icons/accuracy.png',
     },
     {
       name: 'One Click Submission',
       description:
-        'Simply give a us a link or upload your file and your we will be ready to start working on it in a matter of minutes.',
+        'Simply give a us a link or upload your files and  we will be ready to start working on it in a matter of minutes.',
 
       imgUrl: '/Home/upload.png',
     },
     {
       name: 'Affordable Solutions',
       description:
-        'The quality and workflow we have built enable us to deliver the highest quality transcripts concistency consistently at the best industry rates.',
+        'The quality and workflow we have built enables us to deliver the highest quality transcripts  consistently at the best industry rates.',
 
       imgUrl: '/Home/affordable.png',
     },

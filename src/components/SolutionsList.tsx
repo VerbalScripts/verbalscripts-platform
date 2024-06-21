@@ -75,7 +75,7 @@ export default function SolutionsList() {
     {
       name: 'Medical Transcription',
       description:
-        'Fast, easy lecture and dissertation transcripts for students.',
+        'Accurate and reliable transcriptions that meets healthcare standards.',
       href: '/services/medical',
       imgUrl: '/svg/Researchers-cuate.svg',
     },
