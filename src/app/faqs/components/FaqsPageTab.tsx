@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 'use client';
 
 import React, { useState } from 'react';
@@ -5,20 +6,38 @@ import Faqs from '@/components/Faqs';
 import { classNames } from '@/utils/classNames';
 
 export default function FaqsPageTab() {
-  const pageFaqs: FaqsProp[] = [
+  const human_transcripts: FaqsProp[] = [
     {
-      title: 'What is Verbalscripts’?',
-      content:
-        'Verbalscripts is an online digital platform  that uses crowd-sourced transcriptionists from around the world to transcribe your audio and video files into written transcripts. It is not a stand-alone program and does not require downloading a platform.',
+      title: 'What sets Verbalscripts apart from other transcription services?',
+      content: `<b>Experienced Transcriptionists:</b> Our transcriptionists undergo a thorough recruitment and training process to meet our high standards. They exhibit precise attention to detail, possess a firm grasp of English grammar, and are dedicated to ensuring your transcripts meet the highest standards of quality and accuracy.<br/><br/>
+          <b>Value for Money:</b> Verbalscripts offers a cost-effective solution, ensuring high-quality transcripts at a lower rates compared to competitors, allowing you to save without compromising on quality<br/><br/>        
+          <b>Accuracy Guarantee:</b> Verbalscripts ensures transcript accuracy through four-step process: transcribing, reviewing, proofreading, and formatting, guaranteeing high-quality transcripts.<br/><br/>
+          <b>Dedicated Customer Service:</b> Enjoy personalized support with a dedicated contact person assigned to you, ensuring seamless communication and assistance.<br/><br/>
+          <b>Extensive Experience:</b> With a track record of serving over 500 satisfied customers, Verbalscripts brings extensive experience and expertise to every transcription project.
+          `,
     },
     {
-      title: 'What currencies do we support? ',
-      content: 'Purchases can be made in USD, AUD, NZD, EUR, JPY, and GBP.',
+      title:
+        "What is Verbalscripts' accuracy guarantee and how do you achieve it? ",
+      content:
+        'Verbalscripts is committed to providing accurate transcription services. We achieve this through a meticulous four-step process by our experienced human transcriptionists. This process includes transcribing, reviewing, proofing, and formatting to ensure high-quality transcripts.<br/><br/>In the rare instance that a customer is dissatisfied with their transcript, we offer a comprehensive review process. If any errors are identified that do not meet our stringent standards, we are happy to redo the file to ensure complete satisfaction.',
     },
     {
-      title: 'What are the languages supported?',
+      title: 'Why are humans considered more reliable than AI and software?',
+      content: `Humans possess the ability to grasp context and distinguish voices, even in situations where multiple speakers are talking simultaneously. Conversely, AI and software often struggle to accurately identify speakers and may make erroneous assumptions, particularly with homonyms and similar-sounding words.
+      <br/><br/>At Verbalscripts, your transcripts are 100% crafted by experienced transcriptionists, ensuring unparalleled quality and accuracy that software-generated transcripts cannot match.`,
+    },
+    {
+      title: 'Why do Verbalscripts concentrate on 6 industries? ',
       content:
-        'Verbalscripts support a large variety of languages. Languages including Spanish, French, Italian, German, Portuguese, Chinese and Japanese, to name just a few. If you have a language you don’t see listed here, contact our Sales team and we will provide you with a quote. ',
+        "At Verbalscripts, we prioritize six key industries due to our transcriptionists' expertise and specialized training in these areas. This specialized training, coupled with their background knowledge, enables them to grasp common terminologies and context within these fields, ensuring an exceptional accuracy in every completed file. Despite this focus, our extensive transcription experience allows us to cover a wide range of subject areas. So, even if your subject doesn't fall within our primary industries, rest assured that we likely have an expert suitable for your needs. Contact us today to discover more about our comprehensive transcription services.",
+    },
+
+    {
+      title:
+        "What is Verbalscripts' accuracy guarantee and how do you achieve it? ",
+      content:
+        'Verbalscripts is committed to providing accurate transcription services. We achieve this through a meticulous four-step process by our experienced human transcriptionists. This process includes transcribing, reviewing, proofing, and formatting to ensure high-quality transcripts.<br/><br/>In the rare instance that a customer is dissatisfied with their transcript, we offer a comprehensive review process. If any errors are identified that do not meet our stringent standards, we are happy to redo the file to ensure complete satisfaction.',
     },
   ];
 
@@ -37,7 +56,12 @@ export default function FaqsPageTab() {
       title:
         'I am not happy with the qualuty of my transcript. Can i submit it for review again?',
       content:
-        'It is paramount for us to ensure your satisfaction with the completed transcript and we are sorry to hear if you are not happy with the final output. Please email us with the name of the file, email address used to upload your file, and let us know the exact problem you’re seeing with your transcription.',
+        "We understand the importance of ensuring your satisfaction with our transcript services. If you're dissatisfied with the quality of the delivered transcript, we're here to assist you. To submit it for review, please reach out to us with the file name and details regarding the specific issues you've encountered. Your feedback is invaluable, and we are committed to addressing any concerns to meet your expectations.",
+    },
+    {
+      title:
+        'I am not happy with the qualuty of my transcript. Can i submit it for review again?',
+      content: `We understand the importance of ensuring your satisfaction with our transcript services. If you're dissatisfied with the quality of the delivered transcript, we're here to assist you. To submit it for review, please reach out to us with the file name and details regarding the specific issues you've encountered. Your feedback is invaluable, and we are committed to addressing any concerns to meet your expectations.`,
     },
   ];
 
@@ -77,7 +101,23 @@ export default function FaqsPageTab() {
     {
       id: 'all',
       title: 'All Questions',
-      items: [...service_faqs, ...service_faqs, ...pageFaqs, ...pricing],
+      items: [
+        {
+          id: 'service',
+          title: 'Service Delivery',
+          items: service_faqs,
+        },
+        {
+          id: 'Human',
+          title: 'Human Transcription',
+          items: human_transcripts,
+        },
+        {
+          id: 'pricing',
+          title: 'Pricing & Payment',
+          items: pricing,
+        },
+      ],
     },
     {
       id: 'service',
@@ -85,9 +125,9 @@ export default function FaqsPageTab() {
       items: service_faqs,
     },
     {
-      id: 'legal',
-      title: 'Legal Services',
-      items: pageFaqs,
+      id: 'Human',
+      title: 'Human Transcription',
+      items: human_transcripts,
     },
     {
       id: 'pricing',
@@ -147,19 +187,35 @@ export default function FaqsPageTab() {
         className='
     lg:order-2 lg:min-w-[40rem] xl:min-w-[50rem] w-full'
       >
-        {activeTab && (
-          <div key={displayFaqsTopic(activeTab)?.id} className='mb-3'>
-            <div className='mx-auto px-6 md:px-0 md:max-w-2xl text-left lg:text-center'>
-              <p className='mt-2 text-3xl text-left font-bold  section-title text-gray-900 md:text-4xl'>
-                {displayFaqsTopic(activeTab)?.title}
-              </p>
-            </div>
+        {activeTab && activeTab == 'all'
+          ? displayFaqsTopic('all')?.items.map((faq_topic) => (
+              <div key={faq_topic.id} className='mb-3'>
+                <div className='mx-auto px-6 md:px-0 md:max-w-2xl text-left lg:text-center'>
+                  <p className='mt-2 text-3xl text-left font-bold  section-title text-gray-900 md:text-4xl'>
+                    {faq_topic.title}
+                  </p>
+                </div>
 
-            <div className='md:py-10 md:px-6 mt-5'>
-              <Faqs faqs={displayFaqsTopic(activeTab)?.items || []} />
-            </div>
-          </div>
-        )}
+                <div className='md:py-10 md:px-6 mt-5'>
+                  {/* @ts-ignore */}
+                  <Faqs faqs={faq_topic.items || []} />
+                </div>
+              </div>
+            ))
+          : activeTab && (
+              <div key={displayFaqsTopic(activeTab)?.id} className='mb-3'>
+                <div className='mx-auto px-6 md:px-0 md:max-w-2xl text-left lg:text-center'>
+                  <p className='mt-2 text-3xl text-left font-bold  section-title text-gray-900 md:text-4xl'>
+                    {displayFaqsTopic(activeTab)?.title}
+                  </p>
+                </div>
+
+                <div className='md:py-10 md:px-6 mt-5'>
+                  {/* @ts-ignore */}
+                  <Faqs faqs={displayFaqsTopic(activeTab)?.items || []} />
+                </div>
+              </div>
+            )}
       </div>
     </div>
   );
