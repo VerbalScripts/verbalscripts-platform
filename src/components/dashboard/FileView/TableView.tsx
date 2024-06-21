@@ -180,10 +180,18 @@ export default function TableView({
               onChange={selectAllOnChange}
             />
           </Table.HeadCell>
-          <Table.HeadCell>File Name</Table.HeadCell>
-          <Table.HeadCell>Size (MB)s</Table.HeadCell>
-          <Table.HeadCell>Duration</Table.HeadCell>
-          <Table.HeadCell>Upload Date</Table.HeadCell>
+          <Table.HeadCell>
+            <span className='footer-title'>File Name</span>
+          </Table.HeadCell>
+          <Table.HeadCell>
+            <span className='footer-title'>Size (MB)s</span>
+          </Table.HeadCell>
+          <Table.HeadCell>
+            <span className='footer-title'>Duration</span>
+          </Table.HeadCell>
+          <Table.HeadCell>
+            <span className='footer-title'>Upload Date</span>
+          </Table.HeadCell>
           <Table.HeadCell>
             <span className='sr-only'>Edit</span>
           </Table.HeadCell>

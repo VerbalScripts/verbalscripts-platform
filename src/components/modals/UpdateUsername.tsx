@@ -1,53 +1,64 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Fragment, useRef, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { EnvelopeOpenIcon } from '@heroicons/react/24/outline';
 import AxiosProxy from '@/utils/AxiosProxy';
-import { Spinner } from 'flowbite-react';
+import { systemProcessStatus } from '@/store/features/fileUpload';
+import { useSetRecoilState } from 'recoil';
+import ComponentSpinner from '../ComponentSpinner';
 
-interface ShareFileProps {
+interface ChangeUsernameProps {
   open: boolean;
-  files: string[];
-  reload: () => Promise<void>;
   setOpen: (arg0: boolean) => void;
 }
-
-export default function ShareFile({
-  open,
-  setOpen,
-  reload,
-  files,
-}: ShareFileProps) {
+export default function ChangeUsername({ open, setOpen }: ChangeUsernameProps) {
   const cancelButtonRef = useRef(null);
-  const folderRef = useRef(null);
+  const [loading, setLoading] = useState(false);
+  const setSystemProgressContent = useSetRecoilState(systemProcessStatus);
+  const emailRef = useRef<HTMLInputElement>(null);
 
-  const [loading, setLoading] = useState<boolean>(false);
-
-  const createFolderHttp = async () => {
+  const httpUpdateUsername = async () => {
     try {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       setLoading(true);
-      const response = await AxiosProxy.post('/files/share', {
-        files,
-      });
-      if (response.status == 201) {
-        setOpen(false);
-      } else {
-        setOpen(false);
+
+      if (emailRef.current == null) {
+        return false;
       }
-      await reload();
-    } catch (error) {
-      console.log(error);
+
+      const response = await AxiosProxy.post(`/users/update`, {
+        email: emailRef.current.value,
+      });
+
+      if (response.status == 200) {
+        setSystemProgressContent({
+          show: true,
+          message: `Your account username has been updated`,
+          title: 'Account Email Update',
+          success: true,
+        });
+      }
+    } catch (err) {
+      // @ts-ignore
+      if (err.code == 'NETWORK_ERR') {
+        throw new Error('There was a problem with Your Internet Connection');
+      }
+
+      setSystemProgressContent({
+        show: true,
+        message: `An Unknown error ocurred and request failed`,
+        title: 'Account Email Update Failed',
+        success: false,
+      });
     } finally {
+      setOpen(false);
       setLoading(false);
     }
   };
-
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog
         as='div'
-        className='relative z-[80]'
+        className='relative z-50'
         initialFocus={cancelButtonRef}
         onClose={setOpen}
       >
@@ -88,7 +99,7 @@ export default function ShareFile({
                         as='h3'
                         className='text-xl font-semibold leading-6 text-gray-700'
                       >
-                        Share File(s)
+                        Change Email Account
                       </Dialog.Title>
                       <div className='mt-2'></div>
                     </div>
@@ -100,17 +111,17 @@ export default function ShareFile({
                           id='email-address'
                           name='email'
                           type='email'
-                          ref={folderRef}
+                          ref={emailRef}
                           autoComplete='email'
                           required
-                          placeholder='Enter Recipient Email'
+                          placeholder='Enter New Account Email'
                           className='block w-full rounded-md border-0 py-3.5 text-gray-600 shadow-sm text-lg font-semibold ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600  sm:leading-6'
                         />
                       </div>
                     </div>
                     <div className='text-gray-700 px-3 py-2 bg-gray-100 rounded-md'>
-                      Use folders to organize content, converting files and
-                      downloading files.
+                      Please Note that changing your account email loose your
+                      data.
                     </div>
                   </form>
                 </div>
@@ -119,15 +130,9 @@ export default function ShareFile({
                     type='button'
                     disabled={loading}
                     className='inline-flex w-full justify-center rounded-xl bg-indigo-500 px-7 py-2.5  font-semibold text-white shadow-sm hover:bg-indigo-400 sm:ml-3 sm:w-auto'
-                    onClick={() => createFolderHttp()}
+                    onClick={() => httpUpdateUsername()}
                   >
-                    {!loading ? (
-                      'Share File'
-                    ) : (
-                      <div>
-                        <Spinner color={'pink'} />
-                      </div>
-                    )}
+                    {!loading ? <ComponentSpinner /> : <span>Save</span>}
                   </button>
                   <button
                     type='button'

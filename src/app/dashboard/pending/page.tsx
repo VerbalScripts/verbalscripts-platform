@@ -37,7 +37,6 @@ import RenameFolder from '@/components/modals/RenameFolder';
 import DropboxUpload from '@/components/uploadOptions/DropboxUpload';
 import GoogleUpload from '@/components/uploadOptions/GoogleUpload';
 import OneDrivePicker from '@/components/uploadOptions/OneDrivePicker';
-import SystemProgressUpload from '@/components/dashboard/SystemProgressUpload';
 import { useRecoilValue } from 'recoil';
 import { uploadProgressStats } from '@/store/features/fileUpload';
 import SearchBar from '@/components/dashboard/SearchBar';
@@ -45,11 +44,11 @@ import CopyFile from '@/components/modals/CopyFile';
 import ShareFile from '@/components/modals/ShareFile';
 import DirectFileLinkUpload from '@/components/modals/DirectFileLinkUpload';
 import YoutubeLinkUpload from '@/components/modals/YoutubeLinkUpload';
-import LocalFilePLoad from '@/components/dashboard/LocalFilePLoad';
 import FileDownloader from '@/components/FileDownloader';
 import RemoveFiles from '@/components/modals/RemoveFiles';
 import VideoPlayer from '@/components/modals/VideoPlayer';
 import Tablepaginate from '@/components/dashboard/Tablepaginate';
+import SystemProgressUpload from '@/components/dashboard/SystemProgressUpload';
 import SystemProgressPopup from '@/components/dashboard/SystemProgressPopup';
 import BreadcrumbRender from '../components/BreadcrumbRender';
 
@@ -449,7 +448,7 @@ export default function Page() {
               ]}
             />
           </div>
-          <div className='my45 flex justify-between'>
+          <div className='my-4 flex justify-between'>
             <p className='text-gray-600 dark:text-gray-600 text-xl font-semibold'>
               Pending Tasks
             </p>
@@ -521,9 +520,8 @@ export default function Page() {
               </button>
             </div>
 
-            {orders.length > 0 ? (
-              <>
-                {/* <div className='flex  justify-between space-y-2 flex-wrap items-center mb-4'>
+            <div>
+              {/* <div className='flex  justify-between space-y-2 flex-wrap items-center mb-4'>
                   <div className='flex space-x-2'>
                     <button
                       disabled={folderArr.length == 1 || loading}
@@ -606,46 +604,45 @@ export default function Page() {
                     </button>
                   </div>
                 </div> */}
-                <div className='flex items-center justify-between'>
-                  <div>
-                    <SearchBar cb={searchForFile} clearSearch={reload} />
-                  </div>
-                  {selectedFiles.length != 0 ? (
-                    <div className='flex items-center gap-x-2 p-2 rounded-xl bg-indigo-100'>
-                      <button
-                        onClick={() => createOrder()}
-                        className='flex  gap-x-2 rounded-xl bg-indigo-600 font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
-                      >
-                        <CheckCircleIcon className='h-5 w-5 text-white' />
-                        <span className='text-white'>
-                          Order File({selectedFiles.length})
-                        </span>
-                      </button>
-
-                      <button
-                        disabled={downloadFile}
-                        onClick={() => requestFileDownload()}
-                        className='flex  gap-x-2 rounded-xl bg-indigo-500  font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
-                      >
-                        <ArrowDownCircleIcon className='h-5 w-5 text-white' />
-                        {downloadFile ? (
-                          <span className='text-gray-100'>downloading ...</span>
-                        ) : (
-                          <span className='text-gray-100'>Dowload</span>
-                        )}
-                      </button>
-                      <button
-                        onClick={() => setDeleteFile(true)}
-                        className='flex  gap-x-2 rounded-xl bg-red-100  font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
-                      >
-                        <TrashIcon className='h-5 w-5 text-red-400' />
-                        <span className='text-red-400'>Delete</span>
-                      </button>
-                    </div>
-                  ) : null}
+              <div className='flex items-center justify-between'>
+                <div>
+                  <SearchBar cb={searchForFile} clearSearch={reload} />
                 </div>
-              </>
-            ) : null}
+                {selectedFiles.length != 0 ? (
+                  <div className='flex items-center gap-x-2 p-2 rounded-xl bg-indigo-100'>
+                    <button
+                      onClick={() => createOrder()}
+                      className='flex  gap-x-2 rounded-xl bg-indigo-600 font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
+                    >
+                      <CheckCircleIcon className='h-5 w-5 text-white' />
+                      <span className='text-white'>
+                        Order File({selectedFiles.length})
+                      </span>
+                    </button>
+
+                    <button
+                      disabled={downloadFile}
+                      onClick={() => requestFileDownload()}
+                      className='flex  gap-x-2 rounded-xl bg-indigo-500  font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
+                    >
+                      <ArrowDownCircleIcon className='h-5 w-5 text-white' />
+                      {downloadFile ? (
+                        <span className='text-gray-100'>downloading ...</span>
+                      ) : (
+                        <span className='text-gray-100'>Download</span>
+                      )}
+                    </button>
+                    <button
+                      onClick={() => setDeleteFile(true)}
+                      className='flex  gap-x-2 rounded-xl bg-red-100  font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
+                    >
+                      <TrashIcon className='h-5 w-5 text-red-400' />
+                      <span className='text-red-400'>Delete</span>
+                    </button>
+                  </div>
+                ) : null}
+              </div>
+            </div>
           </div>
 
           <FileDownloader url={downloadUrl} reset={setDownloadUrl} />
@@ -686,10 +683,6 @@ export default function Page() {
               orders={orders}
             />
           )}
-
-          {/* show file and folder upload frame */}
-
-          {orders.length == 0 ? <LocalFilePLoad /> : <div></div>}
 
           {/* paginate */}
           {orders.length == 0 ? (

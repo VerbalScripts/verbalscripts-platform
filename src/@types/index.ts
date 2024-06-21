@@ -92,6 +92,20 @@ interface InprogressOrder {
   orderStatus: string;
 }
 
+
+interface CompletedOrder {
+  configuration: OrderConfiguration;
+  files: string[] | OrderFile[];
+  userId: string;
+  id: string;
+  orderId: string;
+  createdAt: string;
+  orderStatus: string;
+  paymentStatus?: boolean;
+  IvoiceId?: string;
+}
+
+
 type AccordionpProps = {
   children: React.ReactNode;
   title: string;

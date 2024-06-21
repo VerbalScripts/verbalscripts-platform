@@ -4,11 +4,14 @@ export default function page() {
   return (
     <div className='min-h-screen'>
       <section className='relative px-6 py-14 sm:py-20 lg:px-24'>
+        <div className='mb-10 text-gray-800 text-4xl md:text-5xl font-bold dark:text-white'>
+          Your Settings
+        </div>
         <div className='mx-auto max-w-7xl text-left'>
           <div className='border-b border-gray-900/10 pb-12'>
-            <h2 className='text-2xl font-semibold leading-7 text-gray-900 dark:text-white'>
-              Notifications
-            </h2>
+            <div className='mb-1 text-gray-800 text-2xl font-semibold dark:text-white'>
+              Your Notifications
+            </div>
             <p className='mt-1 text-sm leading-6 text-gray-600 dark:text-gray-200'>
               We{"'"}ll always let you know about important changes, but you
               pick what else you want to hear about.

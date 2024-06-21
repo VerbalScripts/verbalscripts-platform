@@ -10,25 +10,17 @@ import { useRouter } from 'next/navigation';
 import TawkMessenger from '@/lib/TawkMessenger';
 import SystemProgressUpload from '@/components/dashboard/SystemProgressUpload';
 import AxiosProxy from '@/utils/AxiosProxy';
-import { ListBulletIcon, Squares2X2Icon } from '@heroicons/react/24/outline';
 import { classNames } from '@/utils/classNames';
 import SearchBar from '@/components/dashboard/SearchBar';
 import moment from 'moment';
 import { Table } from 'flowbite-react';
-
-interface PageSetupOptions {
-  toggleView: 'grid' | 'list';
-}
+import BreadcrumbRender from '../components/BreadcrumbRender';
 
 export default function Page() {
   const router = useRouter();
 
   const [loading, setLoading] = useState(true);
   const [orders, setOrders] = useState<InprogressOrder[]>([]);
-
-  const [pageSetup, setPageSetup] = useState<PageSetupOptions>({
-    toggleView: 'list',
-  });
 
   const openDetails = (id: string) => {
     router.push(`/dashboard/in-progress/${id}`);
@@ -68,71 +60,46 @@ export default function Page() {
         <LoadSpinner />
       ) : (
         <div className=''>
-          <div className='px-6  md:px-16 xl:px-16 sticky top-0 z-10  bg-white dark:bg-zinc-800 py-3'>
-            <div className='flex  justify-between items-center mb-4'>
+          <div className='px-6 relative z-10  md:px-16 xl:px-24 py-10'>
+            <div className='absolute -z-[1] right-0 left-0  top-0 h-52 bg-gray-50 dark:bg-orange-300 flex flex-col justify-center px-24 py-20'></div>
+            <div className=''>
+              <BreadcrumbRender
+                links={[
+                  { name: 'Projects', href: '#' },
+                  { name: 'In-Progress', href: 'in-progress' },
+                ]}
+              />
+            </div>
+            <div className='mb-4 flex justify-between'>
+              <p className='text-gray-600 dark:text-gray-600 text-xl font-semibold'>
+                On-going Projects
+              </p>
+            </div>
+
+            <div className='flex  justify-between items-center mb-2'>
               <div className='flex gap-x-2'>
                 <SearchBar
                   cb={() => new Promise(() => {})}
                   clearSearch={() => new Promise(() => {})}
                 />
               </div>
-              {/* toggles */}
-
-              {/* manage selected files */}
-
-              {/* {selectedFiles.length != 0 ? (
-                <div className='flex items-center gap-x-2 p-2 rounded-xl bg-indigo-100'>
-                  <button
-                    onClick={() => showDetails()}
-                    className='flex  gap-x-2 rounded-xl bg-indigo-500  font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
-                  >
-                    <InformationCircleIcon className='h-5 w-5 text-white' />
-
-                    <span className='text-gray-100 text-md'>Details</span>
-                  </button>
-                  <button
-                    onClick={() => {}}
-                    className='flex  gap-x-2 rounded-xl bg-red-200  font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
-                  >
-                    <XCircleIcon className='h-5 w-5 text-gray-700' />
-                    <span className='text-gray-700 text-md'>Cancel Order</span>
-                  </button>
-                </div>
-              ) : null} */}
-
-              <div className='flex gap-x-2 items-center'>
-                <button
-                  onClick={() =>
-                    setPageSetup({ ...pageSetup, toggleView: 'grid' })
-                  }
-                  className={classNames(
-                    'rounded-xl  font-semibold px-4 py-2  focus-within:ring-4 focus-within:ring-indigo-400',
-                    pageSetup.toggleView == 'grid' ? 'bg-indigo-100' : '',
-                  )}
-                >
-                  <Squares2X2Icon className=' h-5 w-5 text-indigo-600' />
-                </button>
-                <button
-                  onClick={() =>
-                    setPageSetup({ ...pageSetup, toggleView: 'list' })
-                  }
-                  className={classNames(
-                    'rounded-xl  font-semibold px-4 py-2  focus-within:ring-4 focus-within:ring-indigo-400',
-                    pageSetup.toggleView == 'list' ? 'bg-indigo-100' : '',
-                  )}
-                >
-                  <ListBulletIcon className=' h-5 w-5 text-indigo-600' />
-                </button>
-              </div>
             </div>
           </div>
           <div className='px-6 md:px-16 xl:px-16 overflow-x-auto min-h-svh'>
             <Table hoverable>
-              <Table.Head className='dark:border-gray-700 dark:bg-zinc-800'>
-                <Table.HeadCell>Order Id</Table.HeadCell>
-                <Table.HeadCell>Progress</Table.HeadCell>
-                <Table.HeadCell>Payment</Table.HeadCell>
-                <Table.HeadCell>Created At</Table.HeadCell>
+              <Table.Head className='dark:border-gray-700 bg-gray-100 dark:bg-zinc-800'>
+                <Table.HeadCell>
+                  <span className='footer-title'>Order Id</span>
+                </Table.HeadCell>
+                <Table.HeadCell>
+                  <span className='footer-title'>Progress</span>
+                </Table.HeadCell>
+                <Table.HeadCell>
+                  <span className='footer-title'>Payment</span>
+                </Table.HeadCell>
+                <Table.HeadCell>
+                  <span className='footer-title'>Created At</span>
+                </Table.HeadCell>
               </Table.Head>
               <Table.Body className='divide-y'>
                 {orders.map((order) => (

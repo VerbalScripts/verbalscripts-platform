@@ -45,7 +45,7 @@ export default function AddProjectOptions() {
       <OneDrivePicker ref={triggerOneDrivePicker} visible={false} />
       <YoutubeLinkUpload open={openYoutube} setOpen={setOpenYoutube} />
       {/* fancy welcome if orders are empty */}
-      <div className='py-5'>
+      <div className=''>
       
 
         <DashboardUploadPreview
@@ -55,11 +55,11 @@ export default function AddProjectOptions() {
           openDirectLink={() => setOpenDirectLink(!openDirectLink)}
           openYoutube={() => setOpenYoutube(!openYoutube)}
         />
-      </div>
-
       <div className=''>
         <LocalFilePLoad />
       </div>
+      </div>
+
     </div>
   );
 }
