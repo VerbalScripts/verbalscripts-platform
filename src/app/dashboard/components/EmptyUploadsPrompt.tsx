@@ -52,7 +52,7 @@ export default function EmptyUploadsPrompt() {
       <OneDrivePicker ref={triggerOneDrivePicker} visible={false} />
       <YoutubeLinkUpload open={openYoutube} setOpen={setOpenYoutube} />
       {/* fancy welcome if orders are empty */}
-      <div className='pt-10 md:pt-16'>
+      <div className='pt-10 md:pt-16 px-6 md:px-24  py-20 z-[10] relative'>
         <div className='mb-10'>
           <div className='mb-5 text-4xl md:text-6xl capitalize font-bold footer-title'>
             Hello, {user.isAuth ? user.firstName : 'Guest'}
@@ -71,11 +71,11 @@ export default function EmptyUploadsPrompt() {
           openDirectLink={() => setOpenDirectLink(!openDirectLink)}
           openYoutube={() => setOpenYoutube(!openYoutube)}
         />
-      </div>
-
       <div className=''>
         <LocalFilePLoad />
       </div>
+      </div>
+
     </div>
   );
 }
