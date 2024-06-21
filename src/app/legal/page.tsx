@@ -123,13 +123,13 @@ export default function LegalPage() {
       </div>
 
       <div className='bg-white '>
-        <div className='mx-auto max-w-6xl relative py-32 md:py-24 pb-20 md:pb-56 px-6 md:px-24 lg:px-32'>
+        <div className='mx-auto max-w-7xl relative py-32 md:py-24 pb-20 md:pb-56 px-6 md:px-24 lg:px-32'>
           <h1 className='relative z-10 text-2xl font-bold text-left  text-gray-800'>
             Legal Documents
           </h1>
 
           <div className='mt-16  sm:mt-20 lg:mt-24'>
-            <dl className='grid mx-auto max-w-none   content-center grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-y-16'>
+            <dl className='grid mx-auto max-w-none   content-center grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-4 lg:gap-y-16'>
               {legal_documents.map((document) => (
                 <a
                   href={document.href}
