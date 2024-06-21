@@ -39,6 +39,50 @@ export default function FaqsPageTab() {
       content:
         'Verbalscripts is committed to providing accurate transcription services. We achieve this through a meticulous four-step process by our experienced human transcriptionists. This process includes transcribing, reviewing, proofing, and formatting to ensure high-quality transcripts.<br/><br/>In the rare instance that a customer is dissatisfied with their transcript, we offer a comprehensive review process. If any errors are identified that do not meet our stringent standards, we are happy to redo the file to ensure complete satisfaction.',
     },
+    {
+      title: 'What file formats does Verbalscripts accept?',
+      content: `Verbalscripts accommodates any file format required by our customers.`,
+    },
+    {
+      title: 'Does Verbalscripts support transcription for complex topics?',
+      content: `Absolutely. Verbalscripts boasts a team of experienced transcribers equipped with the necessary training and expertise to tackle even the most intricate subjects. Rest assured, whether your project is complex or straightforward, we're here to serve your transcription needs.`,
+    },
+    {
+      title: 'What industries does Verbalscripts specialize in?',
+      content: `Verbalscripts caters to a diverse range of industries. While our primary focus lies in providing legal transcription services for court reporting and legal purposes, we also specialize in transcription for higher education and general business sectors. Additionally, our services extend to conferences and various other industries such as media, entertainment, government, and finance.`,
+    },
+    {
+      title: 'How does Verbalscripts Human transcription service work?',
+      content: `Our human transcription service entails the conversion of audio to text files by our experienced transcribers, all of whom are native English speakers. We guarantee an accuracy of your transcripts. Simply upload or send your files through your preferred method. Our skilled transcribers handle the task, and once our rigorous 3-step process is completed, your transcript will be accessible in your account. Additionally, we'll send you the transcript via email in your preferred format. Any revisions you require will be promptly accommodated.`,
+    },
+    {
+      title: 'What languages do Verbalscripts support?',
+      content: `Currently, we only support English. However, we are working on expanding our language offerings. Stay informed about updates by checking our website.`,
+    },
+    {
+      title: 'Can Verbalscripts transcribe multiple speaker files?',
+      content: `We pride ourselves on transcribing legal transcription, focus groups, panel discussions, and other multiple-speaker files. No additional fees will be incurred for labelling speakers or formatting to your specific requirements.`,
+    },
+    {
+      title: 'Can Verbalscripts provide timestamped transcripts?',
+      content: `Yes. We offer timestamped transcripts upon request. You can indicate your preference for timestamping during the upload process. Additionally, we can provide samples of our completed timestamped transcripts for your review.`,
+    },
+    {
+      title: '. What formats and templates do Verbalscripts accept?',
+      content: `We are flexible and can accommodate almost any request when it comes to formats and templates. We tailor our services to your specific needs, as long as they do not involve proprietary software we cannot access.`,
+    },
+    {
+      title: '. How does Verbalscripts communicate with clients?',
+      content: `We always prefer email. We prefer to use the primary email supplied with the audio file, but we can also copy any other email ID if you specifically instruct us to do so.<br/>
+Based on your comfort, our personnel can also text chat with you to address queries instantaneously if you supply us with your phone number. <br/>
+Sometimes our email might not successfully make it through to your mail server. It might get marked as spam or be turned away by your mail server. You can always log in to our website to download your transcripts. <br/>
+Lastly, we can call you on your landline or mobile, but we always have this as the last resort. We discreetly discourage our production team from making repeated client calls unless & until absolutely necessary or urgent.
+`,
+    },
+    {
+      title: 'Are my transcripts handled by experienced professionals?',
+      content: `Absolutely! At Verbalscripts, your transcripts are meticulously crafted by experienced transcriptionists, ensuring unparalleled quality and accuracy that software-generated transcripts cannot match.`,
+    },
   ];
 
   const service_faqs: FaqsProp[] = [
@@ -63,37 +107,65 @@ export default function FaqsPageTab() {
         'I am not happy with the qualuty of my transcript. Can i submit it for review again?',
       content: `We understand the importance of ensuring your satisfaction with our transcript services. If you're dissatisfied with the quality of the delivered transcript, we're here to assist you. To submit it for review, please reach out to us with the file name and details regarding the specific issues you've encountered. Your feedback is invaluable, and we are committed to addressing any concerns to meet your expectations.`,
     },
+    {
+      title:
+        'I am not happy with the qualuty of my transcript. Can i submit it for review again?',
+      content: `We understand the importance of ensuring your satisfaction with our transcript services. If you're dissatisfied with the quality of the delivered transcript, we're here to assist you. To submit it for review, please reach out to us with the file name and details regarding the specific issues you've encountered. Your feedback is invaluable, and we are committed to addressing any concerns to meet your expectations.`,
+    },
   ];
 
   const pricing: FaqsProp[] = [
     {
-      title: 'How much does it cost for transcription?',
-      content:
-        'Pricing is set at a per minute rate which varies depending on the service that you choose, as well as the options that you choose at checkout. Click ‘Get A Quote’, fill out the selections and we’ll be able to provide a finalized price for bulk orders.',
+      title:
+        'Why are your prices much lower than other transcription services? ',
+      content: `Clients often wonder how Verbalscripts can offer transcription services at a much lower than our competitors while maintaining quality and reliability. Here's the straightforward explanation:<br/><br/>We operate efficiently, we prioritize building long-term relationships with our clients. Unlike some competitors who view clients as one-time transactions, we value customer satisfaction and rely on referrals for continued business success. 
+Therefore, we do not engage in price gouging. Transparency is key to our business model. There are no hidden tricks or bait-and-switch tactics. Our commitment to value-
+Customers like you ensures that we will remain in business for many years to come.
+
+      `,
     },
     {
-      title: 'What currencies do we support? ',
-      content: 'Purchases can be made in USD, AUD, NZD, EUR, JPY, and GBP.',
+      title: 'How do Verbalscripts billing procedures work?',
+      content: `We offer flexible billing options. Depending on your preference, we can bill after each file or on a biweekly basis. Most recurring clients opt for monthly billing for the previous month's work, while one-time or less consistent clients may choose upfront or per-file billing.`,
     },
     {
-      title: 'What payments methods do we offer?',
-      content:
-        'Our standard payment method is by credit card. We accept Visa, Mastercard, American Express, and Discover Card.',
+      title: 'How much does transcription cost?',
+      content: `Verbalscripts offers competitive pricing that is lower than many of our competitors. We guarantee to meet your accuracy requirements at affordable rates and can even customize pricing based on your specific needs. Feel free to contact us with your requirements and budget, and we'll work with you to find the best solution.`,
     },
 
     {
-      title: 'Can I get a refund for my order?',
-      content: `
-    Refunds are typically handled on a case by case basis depending on the situation, here are a couple of frequent scenarios:
-    
-    If you realize that you have uploaded the incorrect audio file for us to transcribe, we’re able to offer a 1 hour cancellation window after purchase, for our Standard and Verbatim service tiers, but not Machine Express or First Draft due to our turnaround times – so please be sure to upload the correct file.
-    You feel that your transcript is inaccurate after it’s been completed – we will conduct a review, depending on the service tier level that you purchased.If it’s First Draft, there is no accuracy guarantee, however we will conduct a review to audit quality and make a determination after the review.If you ordered Standard or Verbatim we will conduct a review using our Word Error Rate (WER) guidelines to determine accuracy and will work with you if there is a discrepancy.For Machine Express orders, there are no refunds and we suggest uploading a sample file to test for this reason.
-    Delivery times are an estimate of what your file should take but are not guaranteed. If you’re having an issue with not getting your files back in time, please contact us to resolve.
-    For rush orders not delivered within our projected turnaround time, please contact us for a partial refund.
-    
-    Anytime you are contacting our customer support please provide the file name, email address used to upload your file, and a summary of the problem.
-    
-            `,
+      title: 'What payment options are available?',
+      content: `We offer various payment methods including <b>direct deposits</b>, <b>wire transfers</b>, <b>PayPal</b>, <b>Payoneer</b>, <b>Wise</b>, <b>Zelle</b>, <b>Venmo</b> and other online payment options which we are currently in the process of integrating.`,
+    },
+    {
+      title:
+        'Are there any additional fees or charges besides the agreed rates?',
+      content: `No, you only incur charges for the work produced either per page or per minute of the agreed rates. There are no extra fees, charges, or costs involved. This includes no overtime fees, rush fees, or minimum usage requirements.`,
+    },
+    {
+      title:
+        'Is there a fee for submitting my work after business hours or on holidays / weekends?',
+      content: `No! You can submit your work any time, any day of the year, and expect to receive it at the agreed TNT. Pricing remains the same!`,
+    },
+    {
+      title:
+        'Can I cancel my order and get a refund if I\'ve already paid for transcription?',
+      content: `Yes, you can cancel your order at any time before the scheduled delivery date if you've already made payment. Refunds are processed within 1 business day. The refund amount is determined by the progress made on the transcription or translation. If the progress is at 0%, you will receive a full refund. However, as progress increases, the refund amount decreases accordingly.`,
+    },
+    {
+      title:
+        'Do you offer refunds after the transcripts has been delivered?',
+      content: `No, we do not offer refunds after the transcripts has been delivered. However, we provide free re-reviews once the transcription has been delivered to ensure your satisfaction.`,
+    },
+    {
+      title:
+        'Is price same for audio and video transcription?',
+      content: `Yes. We treat audio and video files the same way.`,
+    },
+    {
+      title:
+        'Is there any option to make the payment after the transcripts are delivered?',
+      content: `Yes, customers can sign the postpaid agreement to make the payment after delivery.`,
     },
   ];
 

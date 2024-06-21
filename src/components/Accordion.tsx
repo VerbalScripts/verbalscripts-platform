@@ -18,11 +18,14 @@ export default function Accordion({
     <div className='py-2'>
       <h2>
         <button
-          className='flex items-start   space-x-4 md:space-x-7 w-full text-left font-semibold py-2 px-5'
+          className='flex items-start justify-between   space-x-4 md:space-x-7 w-full text-left font-semibold py-2 px-5'
           onClick={() => setAccordionOpen(!accordionOpen)}
           aria-expanded={accordionOpen}
           aria-controls={`accordion-text-${id}`}
         >
+          <span className='text-gray-700 text-md md:text-xl font-semibold'>
+            {title}
+          </span>
           <span className=' h-9 w-9 flex -mt-1  justify-center items-center rounded-full'>
             <svg
               className='fill-orange-500 shrink-0'
@@ -45,9 +48,6 @@ export default function Accordion({
                 className={`transform origin-center rotate-90 transition duration-200 ease-out ${accordionOpen && '!rotate-180'}`}
               />
             </svg>
-          </span>
-          <span className='text-gray-900 text-lg md:text-xl font-semibold'>
-            {title}
           </span>
         </button>
       </h2>
