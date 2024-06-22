@@ -2,13 +2,14 @@
 
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React, { useEffect, useState } from 'react';
-import { BellAlertIcon, MoonIcon, SunIcon } from '@heroicons/react/24/outline';
+import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 
 import DashDialogMenu from '../DashDialogMenu';
 import { classNames } from '@/utils/classNames';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import NotificationsPreview from '../NotificationsPreview';
+import BellIconWrapper from './BellIconWrapper';
 
 export default function DashboardHeader() {
   // const [open, setOpen] = useState(false);
@@ -111,10 +112,7 @@ export default function DashboardHeader() {
               data-dropdown-toggle='notification-dropdown'
               className='flex items-center text-md font-semibold   px-3.5 py-1.5 focus:ring-4 focus:ring-indigo-300 hover:bg-white hover:ring-indigo-400 hover:text-indigo-500 rounded-full'
             >
-              <BellAlertIcon
-                className='h-6 w-6 text-gray-700 dark:text-white'
-                aria-hidden='true'
-              />
+              <BellIconWrapper />
             </button>
 
             <DashDialogMenu />
@@ -145,10 +143,7 @@ export default function DashboardHeader() {
               data-dropdown-toggle='notification-dropdown'
               className='flex items-center text-md font-semibold   px-3.5 py-1.5 focus:ring-4 focus:ring-indigo-300 hover:bg-white hover:ring-indigo-400 hover:text-indigo-500 rounded-full'
             >
-              <BellAlertIcon
-                className='h-6 w-6 text-gray-700 dark:text-white'
-                aria-hidden='true'
-              />
+              <BellIconWrapper />
             </button>
 
             <DashDialogMenu />

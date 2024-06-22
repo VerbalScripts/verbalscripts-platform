@@ -24,10 +24,6 @@ export default function SystemProgressPopup() {
   };
 
   useEffect(() => {
-    console.log(statusBarContent);
-  }, [statusBarContent.message]);
-
-  useEffect(() => {
     if (statusBarContent.show) {
       if (audioPlayer.current != null) {
         audioPlayer.current.volume = 0.2;
