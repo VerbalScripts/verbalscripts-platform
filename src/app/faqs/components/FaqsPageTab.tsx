@@ -87,32 +87,248 @@ Lastly, we can call you on your landline or mobile, but we always have this as t
 
   const service_faqs: FaqsProp[] = [
     {
-      title: 'What is your accuracy guarantee and how to achieve it?',
-      content:
-        'Our Standard and Verbatim service tiers come with an accuracy guarantee of 99% for all audible words in a high quality audio. We monitor the Word Error Rate (WER), which is what our accuracy guarantee is based on. Out of the total number of words, less than 1% of them will be inaccurate.',
+      title: 'What is your turn-around times?',
+      content: `Verbalscripts offer various turnaround options tailored to your needs. Our standard turnaround, the most cost-effective option, typically provides a 24 – 48-hour turn-around time. If you require faster service, inquire about our same-day services. Weekend turnaround is also available at no additional charge.`,
     },
     {
-      title: 'I want only a portion of my audio transcribed. Can I do that? ',
-      content:
-        'No. We transcribe the full duration of media files; however, it is easy to trim your audio or video using free software like Audacity or Quicktime. ',
+      title: 'What quality assurance measures do you implement?',
+      content: `Quality assurance measures we follow include:<br/><br/>
+      - Stringent 3-level quality checking by editors, reviewers and proofreaders.<br/>
+      - Our transcriptionists use software such as Stedman’s Spell check and Webster’s dictionary, along with other legal directories, for error-free results.<br/>
+      - We utilize the latest versions of MS Office and WordPerfect and sound/media players and converters for more accurate transcription. <br/>
+      `,
+    },
+    {
+      title: 'What format do you deliver your transcripts in?',
+      content: `We pride ourselves on offering transcripts in your preferred format. By default, we deliver transcripts via email in Microsoft Word format. However, we can accommodate requests for PDF, Word Perfect, or plain text formats. Please specify your preferred format or send us a template before commencing your project, and we'll gladly meet your needs.`,
+    },
+    {
+      title: 'What are Verbalscripts business days?',
+      content: `Our experienced transcribers operate 24/7. Live chat, SMS, and email support are available both on weekdays and weekends.`,
+    },
+    {
+      title: 'Is the turnaround time in calendar days?',
+      content: `Yes, the turnaround time includes weekends and holidays.`,
     },
     {
       title:
-        'I am not happy with the qualuty of my transcript. Can i submit it for review again?',
-      content:
-        "We understand the importance of ensuring your satisfaction with our transcript services. If you're dissatisfied with the quality of the delivered transcript, we're here to assist you. To submit it for review, please reach out to us with the file name and details regarding the specific issues you've encountered. Your feedback is invaluable, and we are committed to addressing any concerns to meet your expectations.",
+        'I want only a portion of my audio file to be transcribed, can you do that?',
+      content: `Certainly. We can transcribe specific sections of your audio file at no extra cost. Simply inform us before uploading or include instructions during the upload process.`,
     },
     {
       title:
-        'I am not happy with the qualuty of my transcript. Can i submit it for review again?',
-      content: `We understand the importance of ensuring your satisfaction with our transcript services. If you're dissatisfied with the quality of the delivered transcript, we're here to assist you. To submit it for review, please reach out to us with the file name and details regarding the specific issues you've encountered. Your feedback is invaluable, and we are committed to addressing any concerns to meet your expectations.`,
+        'I require a customized transcript for my project, how can I request one?',
+      content: `Verbalscripts offers professional services tailored to your specific requirements. Please contact us with details about your project, and we'll promptly assist you.`,
     },
     {
-      title:
-        'I am not happy with the qualuty of my transcript. Can i submit it for review again?',
-      content: `We understand the importance of ensuring your satisfaction with our transcript services. If you're dissatisfied with the quality of the delivered transcript, we're here to assist you. To submit it for review, please reach out to us with the file name and details regarding the specific issues you've encountered. Your feedback is invaluable, and we are committed to addressing any concerns to meet your expectations.`,
+      title: 'May I partner with a dedicated point person at Verbalscripts?',
+      content: `Yes, we can provide you with a dedicated point of contact. This ensures consistent communication and product delivery from someone who is familiar with the status of your files at all times.`,
+    },
+    {
+      title: 'Is it possible to rush an order?',
+      content: `Yes. We prioritize delivering files swiftly. For no additional fees, orders can be expedited at your request. These rush jobs receive top priority and dedicated attention to ensure swift completion.`,
+    },
+    {
+      title: 'Does Verbalscripts refuse any audio quality?',
+      content: `No, we accept all kinds of audio quality. However, it's important to note that audio quality directly affects transcript quality. To produce transcripts with optimal quality, we need audio with decent volume equal to normal human hearing and very limited recording instrument interference or background noise.`,
+    },
+    {
+      title: 'Does Verbalscripts produce verbatim transcripts?',
+      content: `Yes, we produce verbatim transcripts based on project and specific customer demands. Our verbatim documents will retain every utterance including false starts and filler words like 'Uh', 'duh', 'er', 'um', etc., 'Like', 'I mean', 'you know', 'uh-huh', 'mm-hmm', etc. All slang, e.g., 'kinda', 'sorta', 'gonna', 'cuz', (or 'coz'), 'gotcha', etc. On specific request, all interruptions & crosstalk, laughter, sighs, door closing, system logging in welcome sounds, etc. are also captured as sounds in action within brackets. For example, a speaker laughing at the middle or end of a sentence is captured as '[Laughs]'. You can also decide on specific levels of verbatim by leaving special instructions in the comments box. For example, in a one-to-one conversation, you can leave a comment saying, 'Please remove stutters, but retain all the filler words.' 'Please record ambient sounds like logging on, logging off, and moving from one room to the other, as we want to retain the speakers' actions.`,
     },
   ];
+
+  const security: FaqsProp[] = [
+    {
+      title: "What is Verbalscripts' confidentiality policy?",
+      content: `Verbalscripts prioritizes top-tier security and confidentiality measures. Our process ensures confidentiality by limiting access to your audio and transcript files. Only our Reviewers and Proofers team, who have signed NDAs, have full access to the recordings. Additionally, our platform is built on Amazon Web Services (AWS), renowned for its data security standards. If you have bulk transcription needs requiring a specific NDA, please reach out to us, and we'll gladly accommodate your request.`,
+    },
+    {
+      title: 'Is Confidentiality assured?',
+      content: `Yes, we strictly limit access on a need-to-know basis and bind our transcribers with NDAs outlined in our terms of service. We employ multiple security measures to safeguard your data and never sell or share it with third parties.`,
+    },
+    {
+      title: 'Can Verbalscripts sign an NDA?',
+      content: `Certainly. Contact us, and we'll respond within 1-2 business days to address your request.`,
+    },
+    {
+      title: 'How do Verbalscripts keep my information secure?',
+      content: `We ensure utmost privacy by not sharing your files or personal data with external parties. All personnel working for Verbalscripts are required to sign Non-Disclosure Agreements, preventing discussion of your information with third parties.`,
+    },
+    {
+      title: 'What happens to my material after you’ve completed my job?',
+      content: `Upon completion, your work is securely stored on our servers for 90 days for transcripts and 10 days for audio files, facilitating potential revisions or access to digital copies. After this period, all files are deleted. If you require adjustments to this policy or earlier deletion of your material, please inform us, and we'll accommodate your request promptly.`,
+    },
+  ];
+
+  const career_and_general: FaqsProp[] = [
+    {
+      title: 'How can I sign up as a transcriber?',
+      content: `To embark on your journey as a transcriber with Verbalscripts, please visit our "Become a Transcriber" page for comprehensive instructions on getting started. It's essential to note that applicants must possess a minimum of 5 years of transcription experience and be native English speakers. Additionally, we may request documents such as your ID, Resume, W-9 form, and a video to better understand you better.`,
+    },
+    {
+      title: 'Which businesses need transcription services?',
+      content: `Everyone! Attorneys, paralegals, assistants, business professionals, entrepreneurs, civic leaders, community organizers, counselors, advisors, coaches, educators, professors, teachers, students, support staff, executives, administrators, journalists, editors, authors, writers, screenwriters, reporters, keynote speakers, program producers, media executives, podcasters, radio personnel, office managers, project managers, online video contributors, video editors, producers, physicians, medical technicians, holistic practitioners, politicians, government liaisons, religious leaders, secretaries.`,
+    },
+    {
+      title: 'Is accuracy more important than speed in transcription?',
+      content: `In transcription, accuracy takes precedence over speed, although both are crucial. When seeking transcription services, it's essential to prioritize accuracy and efficiency. At Verbalscripts we deliver transcripts with the highest accuracy while ensuring timely completion of the task.`,
+    },
+    {
+      title: 'What is the purpose of transcription in the legal industry?',
+      content: `In the legal sector, transcription serves the critical function of accurately documenting all courtroom proceedings and internal legal processes. This includes transcribing depositions, testimonies, hearings, interrogations, client letters, briefs, and more to maintain precise records.`,
+    },
+    {
+      title: 'How does transcription help with SEO?',
+      content: `Transcription plays a vital role in enhancing search engine optimization (SEO) efforts. Since search engines rely on text, adding transcripts and captions to audio and video content ensures that it can be indexed and made searchable, thus improving rankings.`,
+    },
+    {
+      title: 'Why is transcription necessary in higher education?',
+      content: `Transcription in higher education is essential for accessibility, comprehension, reference, language support, and note-taking assistance. It ensures all students can access materials, aids in understanding complex subjects, serves as valuable study tools, supports non-native English speakers, and provides an alternative to traditional note-taking methods. It also ensures compliance with accessibility regulations such as the ADA and Sections 504 and 508 of the Rehabilitation Act.`,
+    },
+    {
+      title: 'Do Verbalscripts transcribe sermons and focus groups?',
+      content: `Yes! At Verbalscripts, we specialize in transcribing a wide range of religious content, including sermons, bible study groups, prayer groups, and religious education classes. Additionally, we have extensive experience in transcribing various types and sizes of focus groups. Please also let us know whether you prefer verbatim or semi-verbatim style for your focus group transcription. Verbatim style captures every utterance, including "um"s, filler words, and false starts. On the other hand, semi-verbatim style tidies it up for improved readability.`,
+    },
+    {
+      title: 'Can Verbalscripts partner with my company?',
+      content: `
+Absolutely. At Verbalscripts, we are always open to partnering with like-minded companies. Please feel free to reach out to us at info@verbalscripts.com with your ideas on how we can establish a synergistic relationship. We look forward to exploring potential partnerships with you.`,
+    },
+    {
+      title: 'What factors can affect the quality of the transcript?',
+      content: `The primary factor that can diminish transcript quality is poor sound quality, which includes excessive background noise, recording process disturbances, and inadequate volume. Additionally, challenges arise from multiple speakers, simultaneous speech, group discussions, fast-paced dialogue, and industry-specific terminology. If you believe any of these factors apply to your recording, please reach out to our support team at info@verbalscripts.com for assistance.`,
+    },
+    {
+      title: 'Do you have medical trained transcriptionists?',
+      content: `Yes, we have transcriptionists with extensive work experience in both the legal and medical fields.`,
+    },
+    {
+      title: 'Is Verbalscripts hiring?',
+      content: `Yes, we are always looking for freelance experienced scoopists, transcribers and proofreaders. We have an open, trustworthy, and efficient method of paying wages. You will undergo a very thorough vetting procedure so make sure you have experience we need. We might request for some documents as part of our verification procedure. For more details, please check the 'Become a Transcriber' page. Please do not contact about work.`,
+    },
+    {
+      title: 'What are Legal Transcription Services?',
+      content: `Legal transcription involves converting spoken words from audio or video files into text format, primarily utilized by law firms, paralegals, court reporters, attorneys, and other legal professionals to accurately transcribe various legal proceedings.`,
+    },
+    {
+      title: 'What types of legal documents are transcribed?',
+      content: `Legal transcription services cover a wide range of documents and proceedings, including: Depositions, Testimonies, Pleadings, Subpoenas and Summons, Official court hearings, Interrogations, Sworn statements, Client letters, Licensing Appeals, Arbitration proceedings, Legal briefs, Wiretaps and phone calls, Meetings, Wills/trust documents, Surveillance/investigation reports, Conferences, Memorandums, Attorney dictation, General legal correspondence, and more.`,
+    },
+    {
+      title: 'How is transcription performed?',
+      content: `Transcription can be done from various audio sources, including physical tapes, digital files, or videos, by outsourcing these transcription tasks to Verbalscripts Transcription Service, legal and business entities can save valuable time and focus on their core tasks.`,
+    },
+    {
+      title: 'Can you explain the steps involved in your transcription process?',
+      content: `Once we receive your audio/video files via a secured server, they are decrypted and allocated to our experienced transcribers. After the transcription process, the files are forwarded to our reviewers/proofreaders for review. After the formatting, the work is evaluated by the project manager, and the final copy is sent to you.`,
+    },
+    {
+      title: 'How do I become a Verbalscripts customer?',
+      content: `Getting started with Verbalscripts is easy. Simply reach out to us via email, chat, text, or phone call, and we'll set up your account. You can then begin uploading your audio files securely through our 24x7 online services or discuss your project requirements with us directly.`,
+    },
+  ];
+
+
+  const order_placement: FaqsProp[] = [
+    {
+      title: 'How do I get started?',
+      content: `To commence with, visit our website Verbalscripts and navigate to our services, submit a quote request, or contact us via email, Live chat or phone, you can also directly upload your files. Our team will promptly review your request and provide you with a competitive quote. Should you have any inquiries, feel free to contact us. We eagerly anticipate working with you.`,
+    },
+    {
+      title: 'What if my file is really large?',
+      content: `We have multiple options for handling large files. Our online platform accepts even huge files, or you can use alternative methods that suit your workflow needs.`,
+    },
+    {
+      title: 'Can I email my audio files to you?',
+      content: `Yes, you can utilize any preferred method to send your files to us, whether it's through our secure portal, Email, OneDrive, Dropbox, Sync, Box, or any other means.`,
+    },
+    {
+      title: 'Can I scan and email my handwritten notes and text them to you?',
+      content: `Absolutely. Your files are secure with Verbalscripts. We accept handwritten notes and text! Easily transfer your files securely through our Upload Media feature on our website. Once uploaded, we'll promptly be notified, and one of our sales representatives will reach out to assist you.`,
+    },
+    {
+      title: 'What is the status of my order?',
+      content: `For updates on your order's status, reach out to your sales representative via email or phone. They'll let you with the latest information regarding your order's progress.`,
+    },
+    {
+      title: 'Is it possible to add additional information or instructions to files?',
+      content: `Yes, users can include additional comments when submitting a file, either by typing notes or attaching relevant files for enhanced context. We encourage this practice as more context leads to more accurate technical output.`,
+    },
+    {
+      title: 'Is there a minimum duration for files?',
+      content: `No, we accept files of all lengths. However, for extensive projects, we can offer discounted rates.`,
+    },
+    {
+      title: 'What if my project has unique transcription requirements?',
+      content: `Simply reach out to us and explain your needs. If we can accommodate your request, we will do so. If not, we will provide an explanation and assist you in finding a suitable solution.`,
+    },
+    {
+      title: 'What if I have a project that needs to be completed over the weekend?',
+      content: `We can complete weekend projects with advance notice. Please contact your point of contact via phone or email to inform us of your weekend project, ensuring that we have the necessary resources available to meet your deadline.`,
+    },
+    {
+      title: 'What if I have a project that needs to be completed overnight?',
+      content: `Please contact us to discuss your overnight project. The feasibility of completing it overnight will depend on various factors, including the volume of work, and our current workload.`,
+    },
+
+    {
+      title: 'Do you accept links?',
+      content: `Yes, we accept links to your files from various sources such as YouTube, your organization's website, or any other platform. You can send the link directly to info@verbalscripts.com. We do not charge any conversion fees.`,
+    },
+    {
+      title: 'What kind of work do you transcribe?',
+      content: `We handle a wide range of transcription work, including interviews, dictations, business meetings, conference calls, focus groups, press briefings, lectures, legal depositions, radio shows, video shows, panel discussions, sermons, seminars, and more. Our transcription services cater to professionals across various industries, including professors, teachers, students, insurance professionals, financial professionals, doctors, psychiatrists, preachers, market researchers, corporate meetings, lawyers, and more.`,
+    },
+    {
+      title: 'What is the comments box for in the Quick Get a Quote and Order form?',
+      content: `It is designed for you to provide more information about your project. You can include the speakers’ names, technical jargon, acronyms, or any specific instructions you want the transcriptionist to follow. Additionally, you can add a link to the original video/audio or any reference websites.<br/><br/>
+If there's anything you do not want the transcriptionist to include, you can specify it in this box as well. Please note that the quality of these notes directly impacts the final transcript quality. The more specific your instructions are, the less time you will spend editing or correcting the transcripts once you receive them. Moreover, detailed instructions eliminate the need for rework by us and resubmission by you.
+`,
+    },
+    {
+      title: 'Can I move my order from normal to Rush or Super Rush to speed up?',
+      content: `Yes, you can escalate your transcription order to speed up the turnaround even when your project is under process. Please send us an email, chat or call us to help our customer support personnel take you through the steps.`,
+    },
+    {
+      title: 'What is the quickest way to receive a job estimate?',
+      content: `For a fast estimate, visit our <a
+              class='relative border-b border-indigo-600 group  py-0.5 px-1.5 text-indigo-600'
+              href='/get-a-quote'
+            >
+              <span class='font-semibold'>Get a Quote</span>
+              <span class='absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-600 group-hover:w-full group-hover:transition-all'></span>
+            </a> or 
+            <a
+              class='relative border-b border-indigo-600 group  py-0.5 px-1.5 text-indigo-600'
+              href='/contact-us'
+            >
+              <span class='font-semibold'>Contact Us page</span>
+              <span class='absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-600 group-hover:w-full group-hover:transition-all'></span>
+            </a>
+             or call us at 
+              <a
+              class='relative border-b border-indigo-600 group  py-0.5 px-1.5 text-indigo-600'
+              href='tel:+1 (727) 966-8531'
+            >
+              <span class='font-semibold'>+1 (727) 966-8531</span>
+              <span class='absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-600 group-hover:w-full group-hover:transition-all'></span>
+            </a>
+             . Provide details of your project, and we'll promptly provide a price quote.`,
+    },
+    {
+      title: 'I am working with a client who requires a unique transcript template/format. Do you accommodate such requests?',
+      content: `Certainly! Simply email us with your template specifications, and we'll ensure your transcripts meet your exact requirements.`,
+    },
+    {
+      title: 'What if I don\'t need your services very often?',
+      content: `No problem! Verbalscripts offers on-demand transcription and translation services, allowing you to pay as you go, whether you require our services occasionally or regularly.`,
+    },
+    {
+      title: 'My audio file pertains to a subject area not listed on your website. Will you still transcribe it?',
+      content: `Yes! With our extensive transcription experience and a team of subject-matter experts, we cover almost all subject areas. Even if your subject isn't listed on our website, we likely have an expert suitable for your needs. Contact us to learn more.`,
+    },
+  ]
 
   const pricing: FaqsProp[] = [
     {
@@ -149,17 +365,15 @@ Customers like you ensures that we will remain in business for many years to com
     },
     {
       title:
-        'Can I cancel my order and get a refund if I\'ve already paid for transcription?',
+        "Can I cancel my order and get a refund if I've already paid for transcription?",
       content: `Yes, you can cancel your order at any time before the scheduled delivery date if you've already made payment. Refunds are processed within 1 business day. The refund amount is determined by the progress made on the transcription or translation. If the progress is at 0%, you will receive a full refund. However, as progress increases, the refund amount decreases accordingly.`,
     },
     {
-      title:
-        'Do you offer refunds after the transcripts has been delivered?',
+      title: 'Do you offer refunds after the transcripts has been delivered?',
       content: `No, we do not offer refunds after the transcripts has been delivered. However, we provide free re-reviews once the transcription has been delivered to ensure your satisfaction.`,
     },
     {
-      title:
-        'Is price same for audio and video transcription?',
+      title: 'Is price same for audio and video transcription?',
       content: `Yes. We treat audio and video files the same way.`,
     },
     {
@@ -189,6 +403,21 @@ Customers like you ensures that we will remain in business for many years to com
           title: 'Pricing & Payment',
           items: pricing,
         },
+        {
+          id: 'security',
+          title: 'Security & Confidentiality',
+          items: security,
+        },
+        {
+          id: 'career',
+          title: 'Career and General Questions',
+          items: career_and_general,
+        },
+        {
+          id: 'order_placement',
+          title: 'Order Placement',
+          items: order_placement,
+        },
       ],
     },
     {
@@ -206,6 +435,21 @@ Customers like you ensures that we will remain in business for many years to com
       title: 'Pricing & Payment',
       items: pricing,
     },
+    {
+      id: 'security',
+      title: 'Security & Confidentiality',
+      items: security,
+    },
+    {
+      id: 'career',
+      title: 'Career and General Questions',
+      items: career_and_general,
+    },
+    {
+      id: 'order_placement',
+      title: 'Order Placement',
+      items: order_placement,
+    },
   ];
 
   const [activeTab, setActiveTab] = useState<string>('all');
@@ -215,7 +459,7 @@ Customers like you ensures that we will remain in business for many years to com
 
   return (
     <div className='flex flex-wrap lg:flex-nowrap items-start space-y-16 lg:space-x-6 lg:space-y-0 px-6 md:px-16 lg:px-24 xl:px-32'>
-      <div className='w-full xl:w-[40%] lg:sticky top-[20%]'>
+      <div className='w-full xl:w-[40%] lg:sticky top-[12%]'>
         <h2 className='text-xl font-bold leading-7 capitalize footer-title'>
           What are Your Frequently Asked Questions?
         </h2>

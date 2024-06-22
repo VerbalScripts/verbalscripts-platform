@@ -693,7 +693,7 @@ span.svg-circles {
   border-radius: 100% 50%;
   width: 55%;
   height: 100%;
-  background-color: #3c31dd;
+  background-color: #3c31dd; 
   transform: translate(-4%, 40%);
   z-index: -1;
 }
