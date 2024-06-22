@@ -101,12 +101,12 @@ export default function Page() {
         style={{ background: '#FAFAFA' }}
       >
         <div className='mx-auto max-w-7xl px-6 md:px-16 lg:px-16 xl:px-28'>
-          <div className='flex flex-wrap lg:flex-nowrap items-center space-x-6'>
-            <div className='lg:order-2 lg:max-w-[30rem] text-left'>
+          <div className='mx-auto max-w-4xl space-x-6'>
+            <div className='text-left  lg:text-center'>
               <h2 className='text-xl font-bold leading-7 capitalize secondary-text'>
                 What is Our Mission ?
               </h2>
-              <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
+              <p className='mt-2 text-4xl md:text-5xl  font-bold text-left lg:text-center text-gray-900 section-title'>
                 <span className='relative z-10'>
                   Redefining{' '}
                   <span className='z-10 absolute -bottom-5 right-0'>
@@ -116,7 +116,7 @@ export default function Page() {
                 your Enterprise Needs into Transcription Excellence.
               </p>
 
-              <p className='text-gray-700 text-md md:text-lg'>
+              <p className='text-gray-700 text-md md:text-lg mt-5'>
                 Our mission is clear: to redefine transcription excellence by
                 delivering unparalleled accuracy, efficiency, and innovation in
                 every project we undertake. Through a combination of advanced
@@ -134,13 +134,7 @@ export default function Page() {
                 </a>
               </div>
             </div>
-            <div className=' order-1 mt-10 lg:mt-0 relative w-full'>
-              <img
-                src='/about-us/light-bulb-wooden-table.jpg'
-                className='lg:absolute -top-24 -left-10 lg:-top-64  w-[90%] -ml-7 lg:-ml-0 md:w-[28rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10'
-                alt=''
-              />
-            </div>
+            
           </div>
         </div>
       </div>
