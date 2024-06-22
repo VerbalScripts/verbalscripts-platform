@@ -1,7 +1,6 @@
 import { Fragment, useEffect, useRef } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import AxiosProxy from '@/utils/AxiosProxy';
-import axios, { CancelTokenSource } from 'axios';
+import { hostUrl } from '../../../config';
 
 interface VideoPlayerProps {
   fileId: string;
@@ -10,7 +9,6 @@ interface VideoPlayerProps {
   setOpen: (arg0: boolean) => void;
 }
 
-let cancelTokenSource: CancelTokenSource | undefined;
 
 export default function VideoPlayer({
   open,
@@ -23,7 +21,7 @@ export default function VideoPlayer({
   const videoPlayerRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    if (fileId) {
+    if (fileId != '') {
       filePreviewBlob();
     }
   }, [fileId]);
@@ -34,40 +32,18 @@ export default function VideoPlayer({
     }
   }, [open]);
 
-  const filePreviewBlob = async () => {
-    try {
-      const downloadUrl = `/files/download?files=${fileId}`;
-      cancelTokenSource = axios.CancelToken.source();
+  const filePreviewBlob =  async () => {
+      setTimeout(() => {
+        const sourceBlob = `${hostUrl}/files/stream/${fileId}`
+  
+        if (videoPlayerRef.current != null) {
+          videoPlayerRef.current.src = sourceBlob;
+          videoPlayerRef.current.load(); // To load the new video source
+          videoPlayerRef.current.play();
+        }
 
-      const response = await AxiosProxy({
-        url: downloadUrl, // Adjust the URL according to your setup
-        method: 'GET',
-        responseType: 'blob',
-        cancelToken: cancelTokenSource.token,
-      });
-
-      //   const filename = response.headers['content-disposition']
-      //     .split('filename=')[1]
-      //     .split(';')[0];
-
-      const sourceBlob = window.URL.createObjectURL(new Blob([response.data]));
-
-      if (videoPlayerRef.current != null) {
-        videoPlayerRef.current.src = sourceBlob;
-        videoPlayerRef.current.play(); // To load the new video source
-      }
-
-      // Cleanup
-      // window.URL.revokeObjectURL(url);
-
+      }, 500)
       // Reset downloading state
-    } catch (error) {
-      if (axios.isCancel(error)) {
-        console.log('Request canceled', error.message);
-      } else {
-        console.error('Error downloading file:', error);
-      }
-    }
   };
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -108,7 +84,7 @@ export default function VideoPlayer({
                     autoPlay
                     controls
                   >
-                    <source src={''} type='video/mp4' />
+                    <source src={''} />
                     Your browser does not support the video tag.
                   </video>
                 </div>

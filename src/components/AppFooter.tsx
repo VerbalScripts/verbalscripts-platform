@@ -251,7 +251,7 @@ export default function AppFooter() {
 
               <div className='-m-1.5 mt-3 p-1.5  inline-flex '>
                 <a
-                  href='/contact-us'
+                  href='/get-a-quote'
                   aria-label='Contact Us'
                   className='bg-indigo-600 text-white font-semibold text-md rounded-full px-5 py-2.5 hover:bg-indigo-500 '
                 >
