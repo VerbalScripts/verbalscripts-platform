@@ -61,20 +61,20 @@ export default function AppFooter() {
       name: 'Corporate & general business',
       description:
         'Customized for your large volume needs, including a variety of enterprise security requirements.',
-      href: '/industry/legal',
+      href: '/industry/enterprise',
     },
     {
       name: 'Media production',
       description:
         'The very best in human intelligence requires top quality training data for speech NLP and computer vision models.',
-      href: '/solutions/media',
+      href: '/industry/media-production',
     },
     {
       name: 'Digital & online learning',
       description:
         'Transcription that is perfect for all types of qualitative research needs, including focus groups, surveys and in-depth interviews.',
 
-      href: '/solutions/education',
+      href: '/industry/education',
     },
     {
       name: 'Government',
