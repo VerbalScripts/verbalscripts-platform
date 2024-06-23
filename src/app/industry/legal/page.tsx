@@ -14,20 +14,20 @@ import { classNames } from '@/utils/classNames';
 import CallToActionBanner from '../../../components/CallToActionBanner';
 
 export const metadata: Metadata = {
-  title: 'VerbalScripts | Services',
+  title: 'VerbalScripts | Court and Legal Reporting',
 };
 
 export default function Page() {
   const faqs: FaqsProp[] = [
     {
-      title: 'How much does legal trascription cost?',
+      title: 'What is the purpose of transcription in the legal industry?',
       content:
-        'Legal transcription rates vary depending on the amount of customization, size, and timeline of your project. Please contact us so we can create a custom quote for you.',
+        'In the legal sector, transcription serves the critical function of accurately documenting all courtroom proceedings and internal legal processes. This includes transcribing depositions, testimonies, hearings, interrogations, client letters, briefs, and more to maintain precise records.',
     },
     {
-      title: 'What type of transcription should i purchase?',
+      title: 'What are Legal Transcription Services?',
       content:
-        'If you just need a plain text transcript to be used for research of submitted as evidence in a proceeding, you can order directly here. Our Standard transcription product is the most widely requested. Here’s a link to the different products we offer.<br></br>If you need specific legally formatted documents, such as a deposition transcription or court proceeding transcript, then you can contact us for a quote, and a member of our team will reach out immediately.',
+        'Legal transcription involves converting spoken words from audio or video files into text format, primarily utilized by law firms, paralegals, court reporters, attorneys, and other legal professionals to accurately transcribe various legal proceedings.',
     },
     {
       title: 'What are our working hours?',
@@ -35,14 +35,20 @@ export default function Page() {
         'We transcribe 24/7, however, our account and project managers are available 9am-5pm PST Monday through Friday. Our support team is also available 24/7 if an emergency should arise.',
     },
     {
-      title: 'What are legal transcription services?',
+      title: 'What types of legal documents are transcribed?',
       content:
-        'Legal transcription is the process of taking different audio and video from legal proceedings and creating a true and accurate representation of the official record, formatted to specific jurisdictional requirements.<br><br>At Verbalscripts, we’ll work with you to provide the transcripts you need, in your required format.',
+        'Legal transcription services cover a wide range of documents and proceedings, including: <b>Depositions</b>, <b>Testimonies</b>, <b>Pleadings</b>, <b>Subpoenas</b> and <b>Summons</b>, Official court hearings, Interrogations, Sworn statements, Client letters, Licensing Appeals, Arbitration proceedings, Legal briefs, Wiretaps and phone calls, Meetings, Wills/trust documents, Surveillance/investigation reports, Conferences, Memorandums, Attorney dictation, General legal correspondence, and more.',
     },
     {
-      title: 'How long does a transcription process take?',
+      title: "How do I get started with Verbalscripts' transcription services?",
       content:
-        'The time that it takes to finish a transcript will depend on the duration and the audio quality. We strive to have most audio files that are 90 minutes or less, completed within 2-3 business days. ',
+        'Starting with Verbalscripts is straightforward. Contact us via Email, Chat, Text, WhatsApp, or Call, and we will assist you promptly. You can also securely upload your audio files through our 24/7 online services or discuss your project requirements directly with our team.',
+    },
+    {
+      title:
+        'Do you assign a dedicated project manager to always contact concerning my transcription needs?',
+      content:
+        'Yes, we can provide you with a dedicated point of contact. This ensures consistent communication and projects delivery from someone who is familiar with the status, and requirements of your files at all times.',
     },
   ];
   const audio_video_theme = [
