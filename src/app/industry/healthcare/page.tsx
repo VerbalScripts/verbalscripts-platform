@@ -52,27 +52,27 @@ export default function Page() {
       description:
         'Trust our experts to handle complex medical terminology with precision, ensuring your medical documentation is accurate and reliable.',
 
-      imgUrl: '/legal/expertise.svg',
+      imgUrl: '/healthcare_industry/specialized.png',
     },
     {
       name: 'HIPAA Compliance',
       description:
         'Our services adhere to strict HIPAA regulations, ensuring the secure handling of sensitive medical information. Trust us to maintain the highest standards of privacy and security for your healthcare documentation needs.',
 
-      imgUrl: '/legal/assurance.svg',
+      imgUrl: '/healthcare_industry/hipaa.png',
     },
     {
       name: 'Efficient Documentation',
       description:
         'By outsourcing transcription, healthcare professionals can focus on patient care while ensuring that all documentation is accurately and efficiently completed.',
-      imgUrl: '/legal/time.svg',
+      imgUrl: '/healthcare_industry/efficient.png',
     },
     {
       name: 'Medical Expertise',
       description:
         'Our transcriptionists have experience in the healthcare field, ensuring accurate transcriptions of medical reports, patient interviews, and clinical notes.',
 
-      imgUrl: '/legal/solutions.svg',
+      imgUrl: '/healthcare_industry/expertise.png',
     },
   ];
 
@@ -153,13 +153,12 @@ export default function Page() {
                     'relative border border-gray-200 flex space-x-7  py-8 px-4 lg:px-3 xl:px-5  shadow-sm bg-white rounded-xl',
                   )}
                 >
-                  <div>
+                  <div className='min-w-[5rem] w-[5rem] h-[5rem] flex items-center justify-center rounded-xl bg-gray-100'>
                     <Image
-                      className='mb-5'
                       alt={feature.name}
                       src={feature.imgUrl}
-                      height={250}
-                      width={250}
+                      height={50}
+                      width={50}
                     />
                   </div>
                   <div className=''>
