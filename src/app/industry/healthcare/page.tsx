@@ -20,29 +20,29 @@ export const metadata: Metadata = {
 export default function Page() {
   const faqs: FaqsProp[] = [
     {
-      title: 'How much does legal trascription cost?',
+      title: 'What is medical transcription?',
       content:
-        'Legal transcription rates vary depending on the amount of customization, size, and timeline of your project. Please contact us so we can create a custom quote for you.',
+        'Medical transcription involves converting voice-recorded medical reports dictated by healthcare professionals into written text format, ensuring accurate documentation of patient information.',
     },
     {
-      title: 'What type of transcription should i purchase?',
+      title: 'What types of healthcare documents do Verbalscripts transcribe?',
       content:
-        'If you just need a plain text transcript to be used for research of submitted as evidence in a proceeding, you can order directly here. Our Standard transcription product is the most widely requested. Here’s a link to the different products we offer.<br></br>If you need specific legally formatted documents, such as a deposition transcription or court proceeding transcript, then you can contact us for a quote, and a member of our team will reach out immediately.',
+        'Verbalscripts specializes in transcribing a variety of healthcare files, including patient histories, discharge summaries, operative reports, consultation notes, progress notes, radiology reports, and pathology reports.',
     },
     {
-      title: 'What are our working hours?',
+      title: 'Why should I choose Verbalscripts for my medical transcription needs?',
       content:
-        'We transcribe 24/7, however, our account and project managers are available 9am-5pm PST Monday through Friday. Our support team is also available 24/7 if an emergency should arise.',
+        'Verbalscripts stands out for its accurate, timely, and confidential transcription services. Our team comprises experienced transcriptionists proficient in medical terminology, dedicated to delivering high-quality results.',
     },
     {
-      title: 'What are legal transcription services?',
+      title: 'How do I get started with Verbalscripts\' transcription services?',
       content:
-        'Legal transcription is the process of taking different audio and video from legal proceedings and creating a true and accurate representation of the official record, formatted to specific jurisdictional requirements.<br><br>At Verbalscripts, we’ll work with you to provide the transcripts you need, in your required format.',
+        'Starting with Verbalscripts is straightforward. Contact us via Email, Chat, Text, WhatsApp, or Call, and we will assist you promptly. You can also securely upload your audio files through our 24/7 online services or discuss your project requirements directly with our team.',
     },
     {
-      title: 'How long does a transcription process take?',
+      title: 'How does Verbalscripts manage large volume transcription projects?',
       content:
-        'The time that it takes to finish a transcript will depend on the duration and the audio quality. We strive to have most audio files that are 90 minutes or less, completed within 2-3 business days. ',
+        'Verbalscripts efficiently handles large volume transcription projects with a scalable team and streamlined workflow processes, ensuring timely and accurate delivery regardless of the project size.',
     },
   ];
 
@@ -178,7 +178,7 @@ export default function Page() {
           </div>
           <div className='text-center why-health-industry-bg rounded-2xl py-32 md:py-24 lg:py-32'>
             <a
-              href='/get-quote'
+              href='/get-a-quote'
               className='inline-flex  rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
             >
               <span>Get a Quote</span>
