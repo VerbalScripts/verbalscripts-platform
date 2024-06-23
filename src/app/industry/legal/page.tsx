@@ -29,11 +29,6 @@ export default function Page() {
         'Legal transcription involves converting spoken words from audio or video files into text format, primarily utilized by law firms, paralegals, court reporters, attorneys, and other legal professionals to accurately transcribe various legal proceedings.',
     },
     {
-      title: 'What are our working hours?',
-      content:
-        'We transcribe 24/7, however, our account and project managers are available 9am-5pm PST Monday through Friday. Our support team is also available 24/7 if an emergency should arise.',
-    },
-    {
       title: 'What types of legal documents are transcribed?',
       content:
         'Legal transcription services cover a wide range of documents and proceedings, including: <b>Depositions</b>, <b>Testimonies</b>, <b>Pleadings</b>, <b>Subpoenas</b> and <b>Summons</b>, Official court hearings, Interrogations, Sworn statements, Client letters, Licensing Appeals, Arbitration proceedings, Legal briefs, Wiretaps and phone calls, Meetings, Wills/trust documents, Surveillance/investigation reports, Conferences, Memorandums, Attorney dictation, General legal correspondence, and more.',
