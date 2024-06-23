@@ -63,13 +63,13 @@ export default function SolutionsList() {
       name: 'Audio & Video Transcription',
       description:
         'Efficient transcription for all your audio and video content.',
-      href: '/services/vide&audio',
+      href: '/services/audio-and-video',
       imgUrl: '/svg/Web-devices-amico.svg',
     },
     {
       name: 'Focus Groups & Interviews',
       description: 'Detailed transcription for focus groups and interviews.',
-      href: '/services/interviews',
+      href: '/services/focus-groups-and-interviews',
       imgUrl: '/svg/Telecommuting-rafiki.svg',
     },
     {
@@ -84,7 +84,7 @@ export default function SolutionsList() {
       name: 'Academic & Conference Transcription',
       description:
         'Precise transcription for educational and professional events.',
-      href: '/services/academic',
+      href: '/services/academic-and-conference',
       imgUrl: '/svg/Conference-pana.svg',
     },
   ];
