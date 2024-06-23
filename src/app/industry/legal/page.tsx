@@ -306,7 +306,7 @@ export default function Page() {
         <div className='mx-auto max-w-7xl relative'>
           <div className='mx-auto px-6 md:px-0 md:max-w-2xl text-left lg:text-center'>
             <p className='mt-2 text-4xl font-bold  section-title text-gray-900 md:text-5xl'>
-              Legal Frequently asked questions
+              Legal & Court Reporting FAQs
             </p>
             {/* <p className="mt-6 text-lg leading-8 text-gray-600">
             Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a elementum

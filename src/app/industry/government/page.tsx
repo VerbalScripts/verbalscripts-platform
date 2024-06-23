@@ -21,30 +21,30 @@ export const metadata: Metadata = {
 export default function Page() {
   const faqs: FaqsProp[] = [
     {
-      title: 'How much does legal trascription cost?',
+      title: 'Can I receive a sample transcription before committing to a large project?',
       content:
-        'Legal transcription rates vary depending on the amount of customization, size, and timeline of your project. Please contact us so we can create a custom quote for you.',
-    },
+      `Yes, at Verbalascripts, we understand the importance of ensuring our transcription services meet your expectations. That's why we offer sample transcriptions for new clients. These samples allow you to evaluate the quality of our work before committing to a larger project. If you need further assurance, we can also conduct a test transcription as a demonstration of our capabilities. Please contact our us to request a sample transcription or to discuss your specific needs. We're here to help you make an informed decision about our services.
+`},
     {
-      title: 'What type of transcription should i purchase?',
+      title: 'What types of transcription services does Verbalscripts offer for government agencies?',
       content:
-        'If you just need a plain text transcript to be used for research of submitted as evidence in a proceeding, you can order directly here. Our Standard transcription product is the most widely requested. Here’s a link to the different products we offer.<br></br>If you need specific legally formatted documents, such as a deposition transcription or court proceeding transcript, then you can contact us for a quote, and a member of our team will reach out immediately.',
-    },
+        `Verbalscripts specializes in providing accurate and confidential transcription services tailored for government agencies. We transcribe a variety of documents critical to government operations, including meetings, hearings, interviews, reports, and official correspondence. Our services ensure that all recorded information is meticulously documented in text format, meeting the stringent requirements of government processes.
+` },
     {
-      title: 'What are our working hours?',
+      title: 'How does Verbalscripts ensure the security and confidentiality of sensitive and classified government transcripts?',
       content:
-        'We transcribe 24/7, however, our account and project managers are available 9am-5pm PST Monday through Friday. Our support team is also available 24/7 if an emergency should arise.',
-    },
+   `At Verbalscripts, we prioritize the security and confidentiality of government-related transcripts. All files undergo encryption during both transfer and storage to safeguard sensitive information. Our transcriptionists follow strict confidentiality guidelines, including signing non-disclosure agreements (NDAs) to uphold the confidentiality of government content. We also adhere to industry-standard security practices and are ready to comply with any additional security measures or protocols required by government agencies to protect their information effectively.
+`  },
     {
-      title: 'What are legal transcription services?',
+      title: 'Can Verbalscripts handle large-scale transcription projects for government agencies?',
       content:
-        'Legal transcription is the process of taking different audio and video from legal proceedings and creating a true and accurate representation of the official record, formatted to specific jurisdictional requirements.<br><br>At Verbalscripts, we’ll work with you to provide the transcripts you need, in your required format.',
-    },
+      `Yes. Verbalscripts has extensive experience in managing large-scale transcription projects for government agencies. We utilize a scalable team and streamlined workflow processes to ensure timely delivery without compromising on accuracy. Whether it's a comprehensive archive digitization project or ongoing transcription needs, we are equipped to handle the volume efficiently.
+`  },
     {
-      title: 'How long does a transcription process take?',
+      title: 'How does Verbalscripts handle quality assurance for government transcription projects?',
       content:
-        'The time that it takes to finish a transcript will depend on the duration and the audio quality. We strive to have most audio files that are 90 minutes or less, completed within 2-3 business days. ',
-    },
+       `Quality assurance is integral to our transcription process at Verbalscripts. We have a dedicated team responsible for reviewing and proofreading transcripts to ensure accuracy and consistency. Each transcript undergoes a multi-step quality control process, including transcription, reviewing, proofreading, and formatting. We also welcome client feedback and make revisions as needed to ensure complete satisfaction with the final deliverables.
+` },
   ];
 
   const features = [
@@ -155,7 +155,7 @@ export default function Page() {
             </div>
           </div>
           <div className='py-10 md:py-24'>
-            <dl className='grid max-w-none  place-items-baseline  grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-x-5 lg:gap-y-5'>
+            <dl className='grid max-w-none place-content-center  grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-x-5 lg:gap-y-5'>
               {features.map((feature) => (
                 <div
                   key={feature.name}
@@ -184,7 +184,7 @@ export default function Page() {
           </div>
           <div className='text-center'>
             <a
-              href='/get-quote'
+              href='/get-a-quote'
               className='inline-flex  rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
             >
               <span>Get a Quote</span>
