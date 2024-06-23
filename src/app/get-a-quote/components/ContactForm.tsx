@@ -243,7 +243,7 @@ export default function ContactForm() {
                 placeholder='Project description...'
               ></textarea>
             </div>
-            <div className='my-5'>
+            <div className='my-5 flex flex-end'>
               <button
                 type='submit'
                 className='rounded-xl bg-indigo-500 px-8 py-1.5 text-center text-lg font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
