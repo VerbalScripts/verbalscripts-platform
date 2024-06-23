@@ -342,9 +342,9 @@ export default function ContactForm() {
             <div className='my-5 flex justify-end'>
               <button
                 type='submit'
-                className='rounded-xl bg-indigo-500 px-8 py-1.5 text-center text-lg font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+                className='rounded-xl inline-flex items-center gap-x2 bg-indigo-500 px-8 py-1.5 text-center text-lg font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
               >
-                {loading ? <ComponentSpinner /> : <span />}
+                {loading ? <ComponentSpinner /> : null}
                 <span>Submit</span>
               </button>
             </div>
