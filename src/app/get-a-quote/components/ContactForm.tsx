@@ -55,7 +55,6 @@ export default function ContactForm() {
 
       if (response.status == 201) {
         setSuccess(true);
-
         reset();
       }
     } catch (err) {
@@ -68,7 +67,8 @@ export default function ContactForm() {
   };
 
   const reset = () => {
-    setSuccess(false);
+    setTimeout(() => {
+      setSuccess(false);
     setLoading(false);
     setEmail('');
     setServiceType('');
@@ -77,6 +77,7 @@ export default function ContactForm() {
     setError('');
     setDuration('');
     setPhone('');
+    }, 10000)
   };
 
   return (
@@ -348,8 +349,18 @@ export default function ContactForm() {
               </button>
             </div>
             {error.length > 0 ? (
-              <p className='text-red-500 py-2 px-1.5 bg-red-100 rounded-xl ring-red-500 ring-1'>
+              <p className='text-red-500 p-2.5 font-semibold my-2 bg-red-100 rounded-xl ring-red-500 ring-1'>
                 {error}
+              </p>
+            ) : (
+              ''
+            )}
+
+            {success ? (
+              <p className='text-indigo-500 p-2.5 bg-indigo-100 font-semibold my-2 rounded-xl ring-indigo-500 ring-1'>
+                Thank you for your quotation request. We appreciate your
+                interest and will review the details promptly. Expect a response
+                from us soon with all the necessary information.
               </p>
             ) : (
               ''

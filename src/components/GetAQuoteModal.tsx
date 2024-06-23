@@ -128,7 +128,7 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
                     </div>
                   </Transition.Child>
                   {success ? (
-                    <div className='flex gap-y-10 h-full  flex-col justify-center overflow-y-scroll  py-14 shadow-xl'>
+                    <div className='flex gap-y-10 h-full bg-white flex-col justify-center overflow-y-scroll  py-14 shadow-xl'>
                       <div>
                         <Player
                           autoplay
@@ -300,6 +300,7 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
                                 {loading ? <ComponentSpinner /> : <span />}
                                 <span>Submit</span>
                               </button>
+                            </div>
                               {error.length > 0 ? (
                                 <p className='text-red-500 py-2 px-1.5 rounded-xl ring-red-100 ring-1'>
                                   {error}
@@ -307,7 +308,6 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
                               ) : (
                                 ''
                               )}
-                            </div>
                             <div className='text-gray-700'>
                               We will be collecting data when you complete this
                               form. By completing this form you consent to us
