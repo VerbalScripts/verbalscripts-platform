@@ -50,7 +50,7 @@ const legal_documents = [
     description:
       'Terms and restrictions that apply to everyone who visits Verbalscripts',
     href: '/legal/terms-of-service',
-    imgUrl: '/icons/accuracy.png',
+    imgUrl: '/legal/termsofservicecolored.png',
   },
   {
     name: 'Verbalscripts Privacy Policy',
@@ -58,7 +58,7 @@ const legal_documents = [
       'Contains certain restrictions on use of verbalscripts products, services and websites',
     href: '/legal/privacy-policy',
 
-    imgUrl: '/icons/accuracy.png',
+    imgUrl: '/legal/privacypolicycolored.png',
   },
   {
     name: 'Transcriber NDA',
@@ -66,15 +66,15 @@ const legal_documents = [
       'Contains certain restrictions on use of verbalscripts products, services and websites',
     href: '/legal/privacy-policy',
 
-    imgUrl: '/icons/accuracy.png',
+    imgUrl: '/legal/NDA.png',
   },
   {
-    name: 'Customer Confidentiality Agreement',
+    name: 'Client Confidentiality Agreement',
     description:
       'Contains certain restrictions on use of verbalscripts products, services and websites',
     href: '/legal/privacy-policy',
 
-    imgUrl: '/icons/accuracy.png',
+    imgUrl: '/legal/customerAgreement.png',
   },
 ];
 
