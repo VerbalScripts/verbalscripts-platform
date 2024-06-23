@@ -19,7 +19,7 @@ export default function BreadcrumbRender({ links }: BreadcrumbRenderProps) {
             <div className='flex items-center'>
               {index > 0 ? (
                 <svg
-                  className='rtl:rotate-180 block w-7 h-7 mx-1 text-gray-400 '
+                  className='rtl:rotate-180 block w-5 h-5 mx-1 text-gray-400 '
                   aria-hidden='true'
                   xmlns='http://www.w3.org/2000/svg'
                   fill='none'
@@ -38,7 +38,7 @@ export default function BreadcrumbRender({ links }: BreadcrumbRenderProps) {
               )}
               <Link
                 href='#'
-                className='ms-1 text-gray-800 text-xl md:text-5xl font-bold  hover:text-blue-600 md:ms-2 dark:text-gray-100 dark:hover:orange-500'
+                className='ms-1 text-gray-800 text-xl md:text-3xl font-bold  hover:text-blue-600 md:ms-2 dark:text-gray-100 dark:hover:orange-500'
               >
                 {link.name}
               </Link>

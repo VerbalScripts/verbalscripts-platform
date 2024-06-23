@@ -21,7 +21,7 @@ import {
 // import { Breadcrumb } from 'flowbite-react';
 
 import { classNames } from '@/utils/classNames';
-import FileUploadFromLocal from '@/components/dashboard/FileUploadFromLocal';
+// import FileUploadFromLocal from '@/components/dashboard/FileUploadFromLocal';
 import FileUploadFromOtherOptions from '@/components/dashboard/FileUploadFromOtherOptions';
 import AddFolder from '@/components/modals/AddFolder';
 import AxiosProxy from '@/utils/AxiosProxy';
@@ -439,7 +439,7 @@ export default function Page() {
         <LoadSpinner />
       ) : (
         <div className='px-6 relative z-10  md:px-16 xl:px-24 py-10'>
-          <div className='absolute -z-[1] right-0 left-0  top-0 h-52 bg-gray-50 dark:bg-orange-300 flex flex-col justify-center px-24 py-20'></div>
+          <div className='absolute -z-[1] right-0 left-0  top-0 h-44 bg-gray-50 dark:bg-teal-950 flex flex-col justify-center px-24 py-20'></div>
           <div className=''>
             <BreadcrumbRender
               links={[
@@ -448,8 +448,8 @@ export default function Page() {
               ]}
             />
           </div>
-          <div className='my-4 flex justify-between'>
-            <p className='text-gray-600 dark:text-gray-600 text-xl font-semibold'>
+          <div className='my-2 flex justify-between'>
+            <p className='text-gray-600 dark:text-gray-400 text-xl font-semibold'>
               Pending Tasks
             </p>
             <div className='flex space-x-2 items-center'>
@@ -499,8 +499,8 @@ export default function Page() {
               </button>
             </div>
           </div>
-          <div className=' sticky top-0 z-10   py-3'>
-            <div className='flex items-stretch justify-start gap-x-3'>
+          <div className='py-3 '>
+            <div className='flex items-center justify-start gap-x-3 mb-5'>
               <FileUploadFromOtherOptions
                 openDropBoxPicker={launchDropBoxPicker}
                 openGoogleDrivePicker={launchGoogleDrivePicker}
@@ -508,10 +508,10 @@ export default function Page() {
                 openDirectLink={() => setOpenDirectLink(!openDirectLink)}
                 openYoutube={() => setOpenYoutube(!openYoutube)}
               />
-              <FileUploadFromLocal />
+              {/* <FileUploadFromLocal /> */}
               <button
                 onClick={() => setOpen(true)}
-                className='flex flex-col mb-5  gap-x-2 rounded-sm md:rounded-xl bg-indigo-50 font-semibold px-4 py-1.5  focus-within:ring-4 focus-within:ring-indigo-400'
+                className='inline-flex items-center   gap-x-2 rounded-sm md:rounded-md bg-indigo-50 font-semibold px-4 py-2  focus-within:ring-4 focus-within:ring-indigo-400'
               >
                 <FolderPlusIcon className='h-5 w-5 text-indigo-500' />
                 <span className='text-indigo-500 hidden md:block md:text-md'>

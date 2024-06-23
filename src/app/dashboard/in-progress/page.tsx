@@ -61,7 +61,8 @@ export default function Page() {
       ) : (
         <div className=''>
           <div className='px-6 relative z-10  md:px-16 xl:px-24 py-10'>
-            <div className='absolute -z-[1] right-0 left-0  top-0 h-52 bg-gray-50 dark:bg-orange-300 flex flex-col justify-center px-24 py-20'></div>
+            <div className='absolute -z-[1] right-0 left-0  top-0 h-44 bg-gray-50 dark:bg-teal-950 flex flex-col justify-center px-24 py-20'></div>
+
             <div className=''>
               <BreadcrumbRender
                 links={[
@@ -70,13 +71,13 @@ export default function Page() {
                 ]}
               />
             </div>
-            <div className='mb-4 flex justify-between'>
-              <p className='text-gray-600 dark:text-gray-600 text-xl font-semibold'>
+            <div className='mb-5 flex justify-between'>
+              <p className='text-gray-600 dark:text-gray-400 text-xl font-semibold'>
                 On-going Projects
               </p>
             </div>
 
-            <div className='flex  justify-between items-center mb-2'>
+            <div className='flex  justify-between items-center'>
               <div className='flex gap-x-2'>
                 <SearchBar
                   cb={() => new Promise(() => {})}
@@ -84,8 +85,7 @@ export default function Page() {
                 />
               </div>
             </div>
-          </div>
-          <div className='px-6 md:px-16 xl:px-16 overflow-x-auto min-h-svh'>
+          <div className='mt-2 overflow-x-auto min-h-svh'>
             <Table hoverable>
               <Table.Head className='dark:border-gray-700 bg-gray-100 dark:bg-zinc-800'>
                 <Table.HeadCell>
@@ -140,6 +140,7 @@ export default function Page() {
                 ))}
               </Table.Body>
             </Table>
+          </div>
           </div>
         </div>
       )}

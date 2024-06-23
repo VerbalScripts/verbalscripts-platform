@@ -1,64 +1,45 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Fragment, useRef, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { EnvelopeOpenIcon } from '@heroicons/react/24/outline';
 import AxiosProxy from '@/utils/AxiosProxy';
-import { systemProcessStatus } from '@/store/features/fileUpload';
-import { useSetRecoilState } from 'recoil';
 import ComponentSpinner from '../ComponentSpinner';
 
-interface UpdateUsernameProps {
+interface ResetAccountPasswordProps {
   open: boolean;
   setOpen: (arg0: boolean) => void;
 }
-export default function UpdateUsername({ open, setOpen }: UpdateUsernameProps) {
-  const cancelButtonRef = useRef<HTMLButtonElement | null>(null);
-  const [loading, setLoading] = useState(false);
-  const setSystemProgressContent = useSetRecoilState(systemProcessStatus);
-  const emailRef = useRef<HTMLInputElement>(null);
 
-  const httpUpdateUsername = async () => {
+export default function ResetAccountPassword({
+  open,
+  setOpen,
+}: ResetAccountPasswordProps) {
+  const cancelButtonRef = useRef(null);
+
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const createFolderHttp = async () => {
     try {
-      setLoading(true);
-
-      if (emailRef.current == null || (emailRef.current != null && emailRef.current.value.length > 10)) {
-        return false;
-      }
-
-      const response = await AxiosProxy.post(`/users/update`, {
-        email: emailRef.current.value,
-      });
-
-      if (response.status == 200) {
-        setSystemProgressContent({
-          show: true,
-          message: `Your account username has been updated`,
-          title: 'Account Email Update',
-          success: true,
-        });
-      }
-    } catch (err) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      if (err.code == 'NETWORK_ERR') {
-        throw new Error('There was a problem with Your Internet Connection');
+      setLoading(true);
+      const response = await AxiosProxy.post('/user/reset-account');
+      if (response.status == 201) {
+        setOpen(false);
+      } else {
+        setOpen(false);
       }
-
-      setSystemProgressContent({
-        show: true,
-        message: `An Unknown error ocurred and request failed`,
-        title: 'Account Email Update Failed',
-        success: false,
-      });
+    } catch (error) {
+      console.log(error);
     } finally {
-      setOpen(false);
       setLoading(false);
     }
   };
+
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog
         as='div'
-        className='relative z-50'
+        className='relative z-[80]'
         initialFocus={cancelButtonRef}
         onClose={setOpen}
       >
@@ -97,44 +78,32 @@ export default function UpdateUsername({ open, setOpen }: UpdateUsernameProps) {
                     <div className='text-center sm:ml-4 sm:mt-0 sm:text-left'>
                       <Dialog.Title
                         as='h3'
-                        className='text-xl font-semibold leading-6 text-gray-700'
+                        className='text-2xl font-semibold leading-6 text-gray-700'
                       >
-                        Change Email Account
+                        Request a Reset
                       </Dialog.Title>
                       <div className='mt-2'></div>
                     </div>
                   </div>
-                  <form className='space-y-6' action='#' method='POST'>
-                    <div>
-                      <div className='mt-2 w-full'>
-                        <input
-                          id='email-address'
-                          name='email'
-                          type='email'
-                          ref={emailRef}
-                          autoComplete='email'
-                          required
-                          placeholder='Enter New Account Email'
-                          className='block w-full rounded-md border-0 py-3.5 text-gray-600 shadow-sm text-lg font-semibold ring-1 ring-inset ring-gray-300 placeholder:text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600  sm:leading-6'
-                        />
-                      </div>
-                    </div>
-                   
-                  </form>
+                  <div className='text-center text-gray-600 text-lg sm:ml-4 sm:mt-0 sm:text-center'>
+                    If you need to reset your account we will send an email with
+                    instructions on how to reset your password.
+                  </div>
                 </div>
-                <div className=' px-4 py-3 flex gap-y-2 flex-col sm:px-6 mb-5'>
+                <div className=' px-4 py-3 flex flex-col gap-y-2 sm:px-6 mb-5'>
                   <button
                     type='button'
                     disabled={loading}
-                    className='inline-flex w-full justify-center rounded-xl bg-indigo-500 px-4 py-2.5  font-semibold text-white shadow-sm hover:bg-indigo-400  sm:w-auto'
-                    onClick={() => httpUpdateUsername()}
+                    className='inline-flex w-full justify-center rounded-xl bg-indigo-500 px-7 py-2.5 text-lg  font-semibold text-white shadow-sm hover:bg-indigo-400 sm:ml-3 sm:w-auto'
+                    onClick={() => createFolderHttp()}
                   >
-                    {loading ? <ComponentSpinner /> : null} <span>Save</span>
+                    {loading ? <ComponentSpinner /> : null}
+                    <span>Reset Password</span>
                   </button>
                   <button
                     type='button'
                     disabled={loading}
-                    className='mt-3 inline-flex w-full justify-center rounded-xl px-3 py-2.5  font-semibold text-gray-800 sm:mt-0 sm:w-auto'
+                    className='mt-3 inline-flex w-full justify-center rounded-xl px-4 py-2.5  font-semibold text-gray-800 hover:bg-gray-100  sm:mt-0 sm:w-auto'
                     onClick={() => setOpen(false)}
                     ref={cancelButtonRef}
                   >

@@ -2,6 +2,7 @@ import { classNames } from '@/utils/classNames';
 import { Menu, Transition } from '@headlessui/react';
 import React, { Fragment } from 'react';
 import Image from 'next/image';
+import { ChevronDownIcon } from '@heroicons/react/20/solid';
 
 interface FileUploadFromOtherOptionsProps {
   openDropBoxPicker: () => void;
@@ -54,8 +55,8 @@ export default function FileUploadFromOtherOptions({
   return (
     <Menu as='div' className='relative inline-block text-left'>
       <div>
-        <Menu.Button className='flex items-start flex-col mb-5 gap-y-2 rounded-sm md:rounded-xl  bg-indigo-50 font-semibold px-4 py-2  focus-within:ring-3 focus-within:ring-indigo-400'>
-          <div className='hidden md:flex items-center gap-x-1 overflow-clip'>
+        <Menu.Button className='btn-vlg flex items-start flex-col  gap-y-2 rounded-sm md:rounded-md  bg-indigo-50 font-semibold px-4 py-2  focus-within:ring-3 focus-within:ring-indigo-400'>
+          {/* <div className='hidden md:flex items-center gap-x-1 overflow-clip'>
             {uploadOptions.map((uploadOption) => (
               <Image
                 key={uploadOption.id}
@@ -65,10 +66,13 @@ export default function FileUploadFromOtherOptions({
                 alt={uploadOption.title}
               />
             ))}
+          </div> */}
+          <div className='md:inline-flex items-center gap-x-3 text-white font-semibold hidden  md:text-md'>
+            <span>
+            Import files
+            </span>
+            <ChevronDownIcon className='w-7 h-7  text-gray-100' />
           </div>
-          <span className='text-indigo-500 hidden md:block md:text-md'>
-            Import file(s)
-          </span>
         </Menu.Button>
       </div>
 

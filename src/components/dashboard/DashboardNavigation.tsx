@@ -2,7 +2,6 @@
 
 import { classNames } from '@/utils/classNames';
 import { Disclosure } from '@headlessui/react';
-import { CogIcon } from '@heroicons/react/20/solid';
 import {
   RocketLaunchIcon,
   CheckBadgeIcon,
@@ -108,11 +107,6 @@ export default function DashboardNavigation({
       name: 'Account',
       icon: UserIcon,
       href: '/dashboard/account',
-    },
-    {
-      name: 'Settings',
-      icon: CogIcon,
-      href: '/dashboard/settings',
     },
     {
       name: 'Invoice',
