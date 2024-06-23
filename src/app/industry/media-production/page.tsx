@@ -15,36 +15,37 @@ import ContentCard from './components/ContentCard';
 import NoMediaCard from './components/NoMediacard';
 
 export const metadata: Metadata = {
-  title: 'VerbalScripts | Corporate & General Business',
+  title: 'VerbalScripts | Media Production',
 };
 
 export default function Page() {
   const faqs: FaqsProp[] = [
     {
-      title: 'How much does legal trascription cost?',
+      title: 'What formats and templates do Verbalscripts accept?',
       content:
-        'Legal transcription rates vary depending on the amount of customization, size, and timeline of your project. Please contact us so we can create a custom quote for you.',
+        `We are flexible and can accommodate almost any request when it comes to formats and templates. We tailor our services to your specific needs, as long as they do not involve proprietary software we cannot access. Please specify your preferred format or send us a template before commencing your project, and we'll gladly meet your needs.`,
     },
     {
-      title: 'What type of transcription should i purchase?',
+      title: 'What is your turn-around times?',
       content:
-        'If you just need a plain text transcript to be used for research of submitted as evidence in a proceeding, you can order directly here. Our Standard transcription product is the most widely requested. Here’s a link to the different products we offer.<br></br>If you need specific legally formatted documents, such as a deposition transcription or court proceeding transcript, then you can contact us for a quote, and a member of our team will reach out immediately.',
-    },
+        `Verbalscripts offer various turnaround options tailored to your needs. Our standard turnaround, the most cost-effective option, typically provides a 24 – 48-hour turn-around time. If you require faster service, inquire about our same-day services. Weekend turnaround is also available at no additional charge.
+`  },
     {
-      title: 'What are our working hours?',
+      title: 'What are our working hours?How do you ensure the confidentiality of my files?',
       content:
-        'We transcribe 24/7, however, our account and project managers are available 9am-5pm PST Monday through Friday. Our support team is also available 24/7 if an emergency should arise.',
-    },
+        `We take confidentiality and security very seriously. All files are encrypted during transfer and storage. Our transcribers sign non-disclosure agreements (NDAs) to ensure your information remains private and secure. If you would like us to sign NDA prior to uploading your files, let us know and we will oblige. 
+`},
     {
-      title: 'What are legal transcription services?',
+      title: 'Do you offer any discounts for bulk orders?',
       content:
-        'Legal transcription is the process of taking different audio and video from legal proceedings and creating a true and accurate representation of the official record, formatted to specific jurisdictional requirements.<br><br>At Verbalscripts, we’ll work with you to provide the transcripts you need, in your required format.',
-    },
+    `Yes, we offer discounts for bulk orders and long-term contracts. Please contact our sales team to discuss your specific needs and receive a customized quote. We look forward to working with you!
+` },
     {
-      title: 'How long does a transcription process take?',
+      title: 'Can I request revisions to my transcript?',
       content:
-        'The time that it takes to finish a transcript will depend on the duration and the audio quality. We strive to have most audio files that are 90 minutes or less, completed within 2-3 business days. ',
-    },
+        `At Verbalscripts, we are dedicated to delivering precise and high-quality transcription services through a four-step process that includes transcribing, reviewing, proofing, and formatting. This ensures that our transcripts meet the highest standards of accuracy.<br /><br />
+In the rare instance that you are not fully satisfied with the transcript, we offer a thorough review process. If any errors are found that do not meet your requirements, we will gladly correct them to ensure your complete satisfaction. Your feedback is important to us, and we are committed to delivering a final product that meets your expectations.
+`    },
   ];
 
   const features = [

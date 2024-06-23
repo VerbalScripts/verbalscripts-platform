@@ -9,7 +9,6 @@ import PopularPartner from '@/components/PopularPartner';
 import HowItWorks from '@/components/HowItWorks';
 import Faqs from '@/components/Faqs';
 import { classNames } from '@/utils/classNames';
-import CallToActionBanner from '../../../components/CallToActionBanner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLongArrowRight } from '@fortawesome/free-solid-svg-icons';
 import ContentCard from './components/ContentCard';
@@ -21,30 +20,57 @@ export const metadata: Metadata = {
 export default function Page() {
   const faqs: FaqsProp[] = [
     {
-      title: 'How much does legal trascription cost?',
+      title: 'What is general business transcription, and what documents does Verbalscripts transcribe?',
       content:
-        'Legal transcription rates vary depending on the amount of customization, size, and timeline of your project. Please contact us so we can create a custom quote for you.',
+        `General transcription for the business industry involves converting audio or video recordings into written transcripts. This service is essential for accurately documenting various business communications such as meetings, interviews, conferences, and other events, ensuring that information is easily accessible and well-recorded.<br /><br />
+Verbalscripts specializes in transcribing a wide range of business documents, including but not limited to meeting minutes, conference call recordings, interviews, webinars, podcasts, training sessions, and customer service calls. Our transcription services are tailored to meet the unique requirements of corporate clients, providing accurate, timely, and confidential transcripts to support your business operations.
+` },
+    {
+      title: 'How do I start using Verbalscripts\' transcription services for my business?',
+      content:
+   `Starting with Verbalscripts is straightforward. Contact us via <a
+              class='relative border-b border-indigo-600 group  py-0.5 px-1.5 text-indigo-600'
+              href='mailto:support@verbalscripts.com'
+            >
+              <span class='font-semibold'>Email</span>
+              <span class='absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-600 group-hover:w-full group-hover:transition-all'></span>
+            </a>, <a
+              class='relative border-b border-indigo-600 group  py-0.5 px-1.5 text-indigo-600'
+              href='/contact-us '
+            >
+              <span class='font-semibold'>Chat</span>
+              <span class='absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-600 group-hover:w-full group-hover:transition-all'></span>
+            </a>, <a
+              class='relative border-b border-indigo-600 group  py-0.5 px-1.5 text-indigo-600'
+              href='https://wa.me/17279668531'
+            >
+              <span class='font-semibold'>Whatsapp</span>
+              <span class='absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-600 group-hover:w-full group-hover:transition-all'></span>
+            </a>, or 
+            <a
+              class='relative border-b border-indigo-600 group  py-0.5 px-1.5 text-indigo-600'
+              href='tel:+1 (727) 966-8531'
+            >
+              <span class='font-semibold'>Call</span>
+              <span class='absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-600 group-hover:w-full group-hover:transition-all'></span>
+            </a>
+            , and we will assist you promptly. You can securely <a
+              class='relative border-b border-indigo-600 group  py-0.5 px-1.5 text-indigo-600'
+              href='/upload-files'
+            >
+              <span class='font-semibold'>Upload </span>
+              <span class='absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-600 group-hover:w-full group-hover:transition-all'></span>
+            </a> your audio or video files through our 24/7 online services. Discuss your project requirements directly with our team to ensure we meet your needs.
+`
     },
     {
-      title: 'What type of transcription should i purchase?',
+      title: 'What measures does Verbalscripts have in place to ensure confidentiality and security?',
       content:
-        'If you just need a plain text transcript to be used for research of submitted as evidence in a proceeding, you can order directly here. Our Standard transcription product is the most widely requested. Here’s a link to the different products we offer.<br></br>If you need specific legally formatted documents, such as a deposition transcription or court proceeding transcript, then you can contact us for a quote, and a member of our team will reach out immediately.',
-    },
+        `At Verbalscripts, we take confidentiality and security very seriously. All files are encrypted during transfer and storage. Our transcribers sign non-disclosure agreements (NDAs) to ensure your information remains private and secure. We can also sign specific confidentiality agreements provided by clients.`   },
     {
-      title: 'What are our working hours?',
+      title: 'What format do you deliver your transcripts in?',
       content:
-        'We transcribe 24/7, however, our account and project managers are available 9am-5pm PST Monday through Friday. Our support team is also available 24/7 if an emergency should arise.',
-    },
-    {
-      title: 'What are legal transcription services?',
-      content:
-        'Legal transcription is the process of taking different audio and video from legal proceedings and creating a true and accurate representation of the official record, formatted to specific jurisdictional requirements.<br><br>At Verbalscripts, we’ll work with you to provide the transcripts you need, in your required format.',
-    },
-    {
-      title: 'How long does a transcription process take?',
-      content:
-        'The time that it takes to finish a transcript will depend on the duration and the audio quality. We strive to have most audio files that are 90 minutes or less, completed within 2-3 business days. ',
-    },
+      `We pride ourselves on offering transcripts in your preferred format. By default, we deliver transcripts via email in Microsoft Word format. However, we can accommodate requests for PDF, Word Perfect, or plain text formats. Please specify your preferred format or send us a template before commencing your project, and we'll gladly meet your needs.` },
   ];
 
   const features = [
@@ -263,7 +289,45 @@ export default function Page() {
 
       <HowItWorks custom_class='legal-how-it-works' />
 
-      <CallToActionBanner />
+     
+      <div
+        className='bg-white relative isolate'
+        style={{ background: 'FAFAFA' }}
+      >
+        <div className='relative overflow-hidden transition transform-gpu'>
+          <div className='mx-auto max-w-7xl px-6 lg:px-8 xl:px-14'>
+            <div className='relative isolate py-24   px-6   sm:px-16 md:py-10  lg:flex lg:items-center lg:gap-x-20 lg:px-24 lg:pt-0'>
+              <div className='md:min-w-[28rem] lg:min-w-[30rem]  lg:mx-0 lg:flex-auto lg:py-24 lg:text-left'>
+                <h2 className='text-4xl md:text-[2.8rem] font-bold leading-10 section-title  text-gray-800 '>
+                  Ready to enhance your corporate business with Us?
+                </h2>
+                <p className='mt-6  text-xl leading-8 text-gray-600'>
+                  Contact us today to discuss your requirements and discover how
+                  our specialized transcription solutions can benefit your legal
+                  practice.
+                </p>
+
+                <div className='mt-10 flex items-center flex-wrap justify-center gap-6 lg:justify-start'>
+                  <a
+                    href='/contact-us'
+                    className='rounded-xl btn-vlg px-7 py-2.5 text-lg font-semibold text-white transition focus:ring-4 focus:ring-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white'
+                  >
+                    Contact Us
+                  </a>
+                </div>
+              </div>
+              <div className='hidden lg:block relative mt-16 h-80 lg:-mt-8 pr-10'>
+                <img
+                  className='lg:w-[28rem] xl:w-[32rem] max-w-none'
+                  src='/corporate_industry/businessman-with-cv.jpg'
+                  alt='Ready to Succeed with our transcription service'
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className=' py-14 sm:py-12 bg-gray-100'>
         <div className='mx-auto max-w-7xl relative'>
           <div className='mx-auto px-6 md:px-0 md:max-w-2xl text-left lg:text-center'>
