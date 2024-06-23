@@ -284,6 +284,7 @@ export default function ContactForm() {
               </label>
               <input
                 type='number'
+                min={1}
                 id='duration'
                 name='duration'
                 required

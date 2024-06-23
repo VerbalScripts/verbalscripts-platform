@@ -37,7 +37,7 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
         service_type: serviceType,
         email,
         duration,
-        phone
+        phone,
       });
 
       if (response.status == 201) {
@@ -59,8 +59,8 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
     setContent('');
     setCompanyName('');
     setError('');
-    setDuration('')
-    setPhone('')
+    setDuration('');
+    setPhone('');
   };
 
   useEffect(() => {
@@ -120,7 +120,10 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
                       >
                         <span className='absolute -inset-2.5' />
                         <span className='sr-only'>Close panel</span>
-                        <XMarkIcon className='h-8 w-8 text-red-500 ' aria-hidden='true' />
+                        <XMarkIcon
+                          className='h-8 w-8 text-red-500 '
+                          aria-hidden='true'
+                        />
                       </button>
                     </div>
                   </Transition.Child>
@@ -149,7 +152,9 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
                       </div>
                       <div className='relative flex-1 px-4 sm:px-6'>
                         <div className='sm:mx-auto sm:w-full sm:max-w-sm'>
-                        <div className='text-gray-700 text-lg mt-2'>Fill the form below and we will get back to you.</div>
+                          <div className='text-gray-700 text-lg mt-2'>
+                            Fill the form below and we will get back to you.
+                          </div>
                           <form
                             action='#'
                             method='POST'
@@ -179,7 +184,7 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
                                 htmlFor='email'
                                 className='block mb-2 text-md font-medium text-gray-900 dark:text-white'
                               >
-                                Company Name
+                                Company Name (optional)
                               </label>
                               <input
                                 type='text'
@@ -187,7 +192,6 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
                                 name='companyName'
                                 onChange={(e) => setCompanyName(e.target.value)}
                                 className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-                                required
                               />
                             </div>
 
@@ -219,6 +223,7 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
                               <input
                                 type='tel'
                                 id='phoneNumber'
+                                min={1}
                                 name='phoneNumber'
                                 onChange={(e) => setPhone(e.target.value)}
                                 className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
@@ -253,7 +258,9 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
                               <div className='my-2'>
                                 <select
                                   required
-                                  onChange={(e) => setServiceType(e.target.value)}
+                                  onChange={(e) =>
+                                    setServiceType(e.target.value)
+                                  }
                                   className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                                 >
                                   <option selected value='blank'>
