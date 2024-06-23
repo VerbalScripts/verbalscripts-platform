@@ -51,7 +51,7 @@ export default function AppHeader() {
       name: 'Legal Transcription',
       description: 'Expertise and Precision in every legal transcript',
       href: '/services/legal',
-      icon: ArrowPathIcon,
+      imgUrl: '/app/legal.png',
       subtitle: 'Data Labeling customized to your needs',
       features: [
         'Enhance your artifical intelligence',
@@ -64,7 +64,7 @@ export default function AppHeader() {
       name: 'Audio and Video Transcription services',
       description: 'Accurate transcription for audio and video content',
       href: '/services/audio-and-video',
-      icon: CursorArrowRaysIcon,
+      imgUrl: '/app/video-audio.png',
       subtitle: 'Accurate translation in any language',
       features: [
         'Fast Delivery',
@@ -77,7 +77,7 @@ export default function AppHeader() {
       name: 'General Transcription',
       description: 'Versatile transcription services for all your needs.',
       href: '/services/general',
-      icon: ArrowPathIcon,
+      imgUrl: '/app/general.png',
       subtitle: 'Data Labeling customized to your needs',
       features: [
         'Enhance your artifical intelligence',
@@ -90,13 +90,13 @@ export default function AppHeader() {
       name: 'Focus groups and Interviews',
       description: 'Enhance your research with precise transcripts',
       href: '/services/focus-groups-and-interviews',
-      icon: ChartPieIcon,
+      imgUrl: '/app/interviews.png',
     },
     {
       name: 'Medical Transcription',
       description: 'Accurate and confidential medical transcription',
       href: '/services/medical',
-      icon: FingerPrintIcon,
+      imgUrl: '/app/medical.png',
       subtitle: 'Industry best speech-to-text transcription software',
       features: [
         'Fast Delivery',
@@ -109,7 +109,7 @@ export default function AppHeader() {
       name: 'Academic & Conference Transcription',
       description: 'Transcription for academic and conference excellence',
       href: '/services/academic-and-conference',
-      icon: SquaresPlusIcon,
+      imgUrl: '/app/academic.png',
       subtitle: 'Create custom datasets for AI model training',
       features: [
         'Customized styles, tagging and speaker names',
@@ -127,26 +127,26 @@ export default function AppHeader() {
       name: 'Court reporting & Legal',
       description: 'Expert and accurate legal transcription, every time.',
       href: '/industry/legal',
-      imgUrl: '/icons/legal-document.png',
+      imgUrl: '/app/legal-and-court.png',
     },
     {
       name: 'Corporate & general business',
       description: 'Expert transcription for seamless business operations',
       href: '/industry/enterprise',
-      imgUrl: '/icons/paper.png',
+      imgUrl: '/app/corporate.png',
     },
     {
       name: 'Media production',
       description: 'Capture every word in your media projects',
       href: '/industry/media-production',
-      imgUrl: '/icons/video-editor.png',
+      imgUrl: '/app/media-production.png',
     },
     {
       name: 'Digital & online learning',
       description:
         'Enhancing digital education with accurate transcription services.',
       href: '/industry/education',
-      imgUrl: '/icons/online-learning.png',
+      imgUrl: '/app/digital-learning.png',
     },
 
     {
@@ -154,14 +154,14 @@ export default function AppHeader() {
       description:
         'Secure and precise transcription for government and public sectors.',
       href: '/industry/government',
-      imgUrl: '/icons/policy.png',
+      imgUrl: '/app/government.png',
     },
     {
       name: 'Healthcare',
       description:
         'Accurate and reliable transcriptions that meets healthcare standards.',
       href: '/industry/healthcare',
-      icon: BuildingOffice2Icon,
+      imgUrl: '/app/healthcare.png',
     },
   ];
 
@@ -170,25 +170,25 @@ export default function AppHeader() {
       name: 'About Us',
       description: 'See how we make a difference.',
       href: '/about-us',
-      icon: ChartPieIcon,
+      imgUrl: '/app/about-us.png',
     },
     {
       name: 'Support',
       description: "We're here to assist you 24/7.",
       href: '/support',
-      icon: InformationCircleIcon,
+      imgUrl: '/app/support.png',
     },
     {
       name: 'FAQs',
       description: 'Quick solutions to your concerns.',
       href: '/faqs',
-      icon: QuestionMarkCircleIcon,
+      imgUrl: '/app/faqs.png',
     },
     {
       name: 'Legal',
       description: 'Understand our terms and policies.',
       href: '/legal',
-      icon: FingerPrintIcon,
+      imgUrl: '/app/policy.png',
     },
   ];
 

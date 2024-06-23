@@ -23,6 +23,8 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
   const [companyName, setCompanyName] = useState('');
   const [content, setContent] = useState('');
   const [serviceType, setServiceType] = useState('');
+  const [duration, setDuration] = useState('');
+  const [phone, setPhone] = useState('');
 
   const postQuote = async (event: FormEvent) => {
     try {
@@ -34,6 +36,8 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
         companyName,
         service_type: serviceType,
         email,
+        duration,
+        phone
       });
 
       if (response.status == 201) {
@@ -55,6 +59,8 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
     setContent('');
     setCompanyName('');
     setError('');
+    setDuration('')
+    setPhone('')
   };
 
   useEffect(() => {
@@ -86,7 +92,7 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
 
         <div className='fixed inset-0 overflow-hidden'>
           <div className='absolute inset-0 overflow-hidden'>
-            <div className='pointer-events-none fixed inset-y-0  flex right-0 left-0  pl-10'>
+            <div className='pointer-events-none fixed inset-y-0  flex right-0   pl-10'>
               <Transition.Child
                 as={Fragment}
                 enter='transform transition ease-in-out duration-500 sm:duration-700'
@@ -106,15 +112,15 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
                     leaveFrom='opacity-100'
                     leaveTo='opacity-0'
                   >
-                    <div className='absolute left-0 top-0 ml-8 flex pr-2 pt-4 sm:-ml-10 sm:pr-4'>
+                    <div className='absolute right-0 top-0  z-[20] flex pr-2 pt-4  sm:pr-4'>
                       <button
                         type='button'
-                        className='relative rounded-md text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white'
+                        className='relative rounded-full w-10 h-10 bg-red-100 flex justify-center items-center text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white'
                         onClick={() => setOpen(false)}
                       >
                         <span className='absolute -inset-2.5' />
                         <span className='sr-only'>Close panel</span>
-                        <XMarkIcon className='h-6 w-6' aria-hidden='true' />
+                        <XMarkIcon className='h-8 w-8 text-red-500 ' aria-hidden='true' />
                       </button>
                     </div>
                   </Transition.Child>
@@ -143,17 +149,14 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
                       </div>
                       <div className='relative flex-1 px-4 sm:px-6'>
                         <div className='sm:mx-auto sm:w-full sm:max-w-sm'>
-                          <div className='my-6 text-gray-600  text-lg'>
-                            Provide Your Contact info so we reach out about your
-                            quote
-                          </div>
+                        <div className='text-gray-700 text-lg mt-2'>Fill the form below and we will get back to you.</div>
                           <form
                             action='#'
                             method='POST'
                             onSubmit={postQuote}
                             className='mt-5  sm:mt-5 text-left'
                           >
-                            <div className='sm:col-span-2 mb-5'>
+                            <div className='sm:col-span-2 mb-2'>
                               <label
                                 htmlFor='first-name'
                                 className='block text-md font-semibold leading-6 text-gray-900 mb-2.5'
@@ -171,7 +174,7 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
                               />
                             </div>
 
-                            <div className='sm:col-span-2 mb-5'>
+                            <div className='sm:col-span-2 mb-2'>
                               <label
                                 htmlFor='email'
                                 className='block mb-2 text-md font-medium text-gray-900 dark:text-white'
@@ -188,7 +191,59 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
                               />
                             </div>
 
-                            <div className='sm:col-span-2 mb-5'>
+                            <div className='sm:col-span-2 mb-2'>
+                              <label
+                                htmlFor='email'
+                                className='block mb-2 text-md font-me dium text-gray-900 dark:text-white'
+                              >
+                                Your email
+                              </label>
+                              <input
+                                type='email'
+                                name='email'
+                                id='email'
+                                required
+                                onChange={(e) => setEmail(e.target.value)}
+                                aria-describedby='helper-text-explanation'
+                                className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                              />
+                            </div>
+
+                            <div className='sm:col-span-2 mb-2'>
+                              <label
+                                htmlFor='phoneNumber'
+                                className='block mb-2 text-md font-medium text-gray-900 dark:text-white'
+                              >
+                                Phone Number (optional)
+                              </label>
+                              <input
+                                type='tel'
+                                id='phoneNumber'
+                                name='phoneNumber'
+                                onChange={(e) => setPhone(e.target.value)}
+                                className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                              />
+                            </div>
+
+                            <div className='sm:col-span-2 mb-2'>
+                              <label
+                                htmlFor='duration'
+                                className='block mb-2 text-md font-me dium text-gray-900 dark:text-white'
+                              >
+                                Duration In Hours.
+                              </label>
+                              <input
+                                type='number'
+                                id='duration'
+                                name='duration'
+                                required
+                                onChange={(e) => setDuration(e.target.value)}
+                                aria-describedby='helper-text-explanation'
+                                className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                              />
+                            </div>
+
+                            <div className='sm:col-span-2 mb-2'>
                               <label
                                 htmlFor='email'
                                 className='block mb-2 text-md font-medium text-gray-900 dark:text-white'
@@ -198,6 +253,7 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
                               <div className='my-2'>
                                 <select
                                   required
+                                  onChange={(e) => setServiceType(e.target.value)}
                                   className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                                 >
                                   <option selected value='blank'>
@@ -212,37 +268,12 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
                               </div>
                             </div>
 
-                            <div className='sm:col-span-2 mb-5'>
-                              <label
-                                htmlFor='email'
-                                className='block mb-2 text-md font-me dium text-gray-900 dark:text-white'
-                              >
-                                Your email
-                              </label>
-                              <input
-                                type='email'
-                                id='email'
-                                required
-                                onChange={(e) => setEmail(e.target.value)}
-                                aria-describedby='helper-text-explanation'
-                                className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-                              />
-
-                              <p
-                                id='helper-text-explanation'
-                                className='mt-2 text-sm text-gray-500 dark:text-gray-400'
-                              >
-                                We’ll never share our response via this email .
-                                .
-                              </p>
-                            </div>
-
                             <div className='sm:col-span-2'>
                               <label
                                 htmlFor='message'
                                 className='block mb-2 text-md font-medium text-gray-900 dark:text-white'
                               >
-                                Additional Information - be detailed as possible
+                                Project Summary
                               </label>
                               <textarea
                                 id='description'
@@ -253,7 +284,7 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
                                 placeholder='Project description...'
                               ></textarea>
                             </div>
-                            <div className='my-5'>
+                            <div className='my-5 flex justify-end'>
                               <button
                                 type='submit'
                                 disabled={loading}
@@ -270,7 +301,7 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
                                 ''
                               )}
                             </div>
-                            {/* <div className='text-gray-700'>
+                            <div className='text-gray-700'>
                               We will be collecting data when you complete this
                               form. By completing this form you consent to us
                               holding this data solely for the purposes of
@@ -289,7 +320,7 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
                               >
                                 data protection policy click helper
                               </a>
-                            </div> */}
+                            </div>
                           </form>
 
                           {/* <p className="mt-10 text-center text-sm text-gray-500">

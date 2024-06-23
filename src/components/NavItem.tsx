@@ -13,14 +13,14 @@ export default function NavItem({ label }: NavItemProp) {
       );
     } else if (label.imgUrl != undefined) {
       return (
-        <Image src={label.imgUrl} alt={label.name} height={35} width={35} />
+        <Image src={label.imgUrl} alt={label.name} height={42} width={42} />
       );
     }
   }
 
   return (
     <div className='group relative flex items-center gap-x-2 rounded-md p-4 text-sm leading-6 hover:bg-orange-100'>
-      <div className='flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white'>
+      <div className='flex h-12  w-12 flex-none items-center px-1 justify-center rounded-lg bg-white group-hover:bg-white'>
         <RenderNavItem label={label} />
       </div>
       <div className='flex-auto'>

@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 
+import ComponentSpinner from '@/components/ComponentSpinner';
+import AxiosProxy from '@/utils/AxiosProxy';
 import { classNames } from '@/utils/classNames';
 import {
   faFacebook,
@@ -13,7 +16,7 @@ import {
   faPhoneFlip,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { FormEvent, useState } from 'react';
 
 export default function ContactForm() {
   const services = [
@@ -24,6 +27,58 @@ export default function ContactForm() {
     'Medical Transcription',
     'Academic & Conference Transcription',
   ];
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
+  const [email, setEmail] = useState('');
+  const [fullName, setFullName] = useState('');
+  const [companyName, setCompanyName] = useState('');
+  const [content, setContent] = useState('');
+  const [serviceType, setServiceType] = useState('');
+  const [duration, setDuration] = useState('');
+  const [phone, setPhone] = useState('');
+
+  const postQuote = async (event: FormEvent) => {
+    try {
+      event.preventDefault();
+      setLoading(true);
+      const response = await AxiosProxy.post('/quotes/add', {
+        content,
+        fullName,
+        companyName,
+        service_type: serviceType,
+        email,
+        duration,
+        phone,
+      });
+
+      if (response.status == 201) {
+        setSuccess(true);
+
+        reset();
+      }
+    } catch (err) {
+      setError(
+        'An Unexpected Error Occurred and Could not process your request. Retry again',
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const reset = () => {
+    setSuccess(false);
+    setLoading(false);
+    setEmail('');
+    setServiceType('');
+    setContent('');
+    setCompanyName('');
+    setError('');
+    setDuration('');
+    setPhone('');
+  };
+
   return (
     <div className='flex flex-wrap lg:flex-nowrap items-start space-y-16 lg:space-x-6 lg:space-y-0 px-6 md:px-16 lg:px-24 xl:px-32'>
       <div className='w-full xl:w-[40%] lg:sticky top-[20%]'>
@@ -80,8 +135,8 @@ export default function ContactForm() {
         </div>
 
         {/* social media */}
-        <p className='mt-2 text-3xl md:text-4xl  font-bold text-left text-gray-800  00 section-title'>
-          Follow Us on Media ?
+        <p className='mt-2 text-2xl md:text-4xl capitalize  font-bold text-left text-gray-800  00 section-title'>
+          Follow Us on Social Media ?
         </p>
         <div className='flex items-center mt-5 gap-x-3'>
           <a
@@ -146,7 +201,12 @@ export default function ContactForm() {
               within 60 minutes (during office hours).
             </p>
           </div>
-          <form action='#' method='POST' className='mt-10  sm:mt-10 text-left'>
+          <form
+            action='#'
+            method='POST'
+            onSubmit={postQuote}
+            className='mt-10  sm:mt-10 text-left'
+          >
             <div className='sm:col-span-2 mb-5'>
               <label
                 htmlFor='first-name'
@@ -159,6 +219,7 @@ export default function ContactForm() {
                 type='text'
                 id='fullName'
                 name='fullName'
+                onChange={(e) => setFullName(e.target.value)}
                 className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                 required
               />
@@ -175,8 +236,8 @@ export default function ContactForm() {
                 type='text'
                 id='companyName'
                 name='companyName'
+                onChange={(e) => setCompanyName(e.target.value)}
                 className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-               
               />
             </div>
 
@@ -190,11 +251,11 @@ export default function ContactForm() {
               <input
                 type='email'
                 id='email'
+                name='email'
+                onChange={(e) => setEmail(e.target.value)}
                 aria-describedby='helper-text-explanation'
                 className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
               />
-
-              
             </div>
 
             <div className='sm:col-span-2 mb-5'>
@@ -209,8 +270,26 @@ export default function ContactForm() {
                 maxLength={12}
                 id='phoneNumber'
                 name='phoneNumber'
+                onChange={(e) => setPhone(e.target.value)}
                 className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-                
+              />
+            </div>
+
+            <div className='sm:col-span-2 mb-2'>
+              <label
+                htmlFor='duration'
+                className='block mb-2 text-md font-me dium text-gray-900 dark:text-white'
+              >
+                Duration In Hours.
+              </label>
+              <input
+                type='number'
+                id='duration'
+                name='duration'
+                required
+                onChange={(e) => setDuration(e.target.value)}
+                aria-describedby='helper-text-explanation'
+                className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
               />
             </div>
 
@@ -229,6 +308,7 @@ export default function ContactForm() {
                       value={service}
                       required
                       name='service_type'
+                      onChange={(e) => setServiceType(e.target.value)}
                       className='w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
                     />
                     <label
@@ -242,18 +322,17 @@ export default function ContactForm() {
               </div>
             </div>
 
-            
-
             <div className='sm:col-span-2'>
               <label
                 htmlFor='message'
                 className='block mb-2 text-md font-medium text-gray-900 dark:text-white'
               >
-                Additional Information - be detailed as possible
+                Project Summary
               </label>
               <textarea
                 id='message'
                 rows={4}
+                onChange={(e) => setContent(e.target.value)}
                 className='block p-2.5 w-full text-lg text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                 placeholder='Project description...'
               ></textarea>
@@ -263,9 +342,18 @@ export default function ContactForm() {
                 type='submit'
                 className='rounded-xl bg-indigo-500 px-8 py-1.5 text-center text-lg font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
               >
-                Submit
+                {loading ? <ComponentSpinner /> : <span />}
+                <span>Submit</span>
               </button>
             </div>
+            {error.length > 0 ? (
+              <p className='text-red-500 py-2 px-1.5 bg-red-100 rounded-xl ring-red-500 ring-1'>
+                {error}
+              </p>
+            ) : (
+              ''
+            )}
+
             <div className='text-gray-700'>
               We will be collecting data when you complete this form. By
               completing this form you consent to us holding this data solely
