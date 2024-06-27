@@ -151,18 +151,18 @@ Verbalscripts specializes in transcribing a wide range of business documents, in
       <div className='why-corporate-industry-bg'>
         <div className='mx-auto max-w-7xl py-5 md:py-24 lg:py-32     px-5 md:px-16 lg:px-10'>
           <div className=''>
-            <div className='mx-auto max-w-2xl lg:max-w-4xl text-left md:text-center'>
+            <div className='mx-auto max-w-2xl lg:max-w-4xl text-left md:text-center bg-white rounded-xl py-10 px-10'>
               <h2 className='text-xl font-bold leading-7 capitalize secondary-text'>
-                What Benefits gained in your Media Production?
+                What Benefits gained in your Business Industry?
               </h2>
               <p className='mt-2 text-4xl md:text-5xl  font-bold text-left md:text-center text-gray-900 section-title'>
                 <span className='relative z-10'>
-                  Transforming{' '}
+                  Unique{' '}
                   <span className='z-10 absolute -bottom-2.5 right-0'>
                     <img src='/svg/lines.svg' className='w-44' alt='' />
                   </span>
                 </span>{' '}
-                your Media Production into Unique Quality.
+               benefits VerbalScripts offers to corporate professionals.
               </p>
             </div>
             <div className='py-10 md:py-24'>
