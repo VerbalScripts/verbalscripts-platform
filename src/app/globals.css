@@ -155,7 +155,7 @@ body {
     linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.158)),
     linear-gradient(to top, transparent, rgba(255, 252, 252, 0.37)),
     url('/focus_groups_interview/advert.jpg') no-repeat top right;
-  background-size: contain;
+  background-size: cover;
   background-position: center;
   background-attachment: fixed;
 }
@@ -175,8 +175,8 @@ body {
     linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.158)),
     linear-gradient(to top, transparent, rgba(255, 252, 252, 0.37)),
     url('/academic_conference/why-us.jpg') no-repeat top right;
-  background-size: contain;
-  background-position: center;
+  background-size: cover;
+  background-position: top left;
   background-attachment: fixed;
 }
 

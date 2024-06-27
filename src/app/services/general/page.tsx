@@ -11,7 +11,7 @@ import HowItWorks from '@/components/HowItWorks';
 import FeatureCard from '@/components/FeatureCard';
 
 export const metadata: Metadata = {
-  title: 'VerbalScripts | Services',
+  title: 'VerbalScripts | General Services',
 };
 
 export default function Page() {

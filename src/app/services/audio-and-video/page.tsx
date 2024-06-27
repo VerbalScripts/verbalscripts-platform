@@ -11,7 +11,7 @@ import HowItWorks from '@/components/HowItWorks';
 import FeatureCard from '@/components/FeatureCard';
 
 export const metadata: Metadata = {
-  title: 'VerbalScripts | Services',
+  title: 'VerbalScripts | Audio and Video Services',
 };
 
 export default function Page() {
@@ -413,10 +413,10 @@ export default function Page() {
               </div>
               <div className='mt-10'>
                 <a
-                  href='/upload-files'
+                  href='/contact-us'
                   className='inline-flex  items-center gap-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
                 >
-                  <span>Order Now</span>
+                  <span>Contact Sales</span>
                 </a>
               </div>
             </div>
@@ -438,19 +438,35 @@ export default function Page() {
               <div className='flex flex-col gap-y-10'>
                 <div>
                   <h2 className='text-xl font-bold leading-7 capitalize secondary-text'>
-                    Supported audio formats
+                    Supported Audio Formats?
                   </h2>
-                  <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
-                    Audio Formats that We Offer for
+                  <p className='mt-2 text-3xl md:text-4xl font-bold text-left text-gray-900 section-title'>
+                    We support the following audio formats:
                   </p>
                 </div>
                 <div>
                   <h2 className='text-xl font-bold leading-7 capitalize secondary-text'>
-                    Unupported Audio formats?
+                    Unsupported Audio Formats?
                   </h2>
-                  <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
-                    We’ll Assist You
+                  <p className='mt-2 text-lg   text-left text-gray-700 section-title'>
+                    Have an audio format that isn’t listed? No problem! We’re
+                    here to help. Contact us, and we’ll assist you with your
+                    specific needs.
                   </p>
+                </div>
+                <div className='flex flex-wrap items-center space-x-5 space-y-3 md:space-y-0'>
+                  <a
+                    href='/contact-us'
+                    className='inline-flex bg-indigo-500   items-center gap-x-2 rounded-lg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-indigo-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600'
+                  >
+                    <span>Contact Sales</span>
+                  </a>
+                  <a
+                    href='/get-a-quote'
+                    className='inline-flex  items-center gap-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
+                  >
+                    <span>Get a quote</span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -470,23 +486,39 @@ export default function Page() {
           </div>
 
           <div className='flex gap-y-10 bg-white  rounded-xl px-8 py-10  flex-wrap lg:flex-nowrap items-start justify-between gap-x-6 mb-10'>
-            <div className='md:min-w-[25rem] lg:min-w-[30rem] text-left'>
+            <div className='md:min-w-[25rem] lg:max-w-[30rem] text-left'>
               <div className='flex flex-col gap-y-10'>
                 <div>
                   <h2 className='text-xl font-bold leading-7 capitalize secondary-text'>
                     Supported video formats?
                   </h2>
-                  <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
-                    Video Formats that We Offer for
+                  <p className='mt-2  text-3xl md:text-4xl  font-bold text-left text-gray-900 section-title'>
+                    We support the following video formats:
                   </p>
                 </div>
                 <div>
                   <h2 className='text-xl font-bold leading-7 capitalize secondary-text'>
                     Unupported video formats?
                   </h2>
-                  <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
-                    We’ll Assist You
+                  <p className='mt-2 text-lg text-left text-gray-700 section-title'>
+                    Have an Video format that isn’t listed? No problem! We’re
+                    here to help. Contact us, and we’ll assist you with your
+                    specific needs.
                   </p>
+                  <div className='mt-5 flex flex-wrap items-center space-x-5 space-y-3 md:space-y-0'>
+                    <a
+                      href='/contact-us'
+                      className='inline-flex bg-indigo-500   items-center gap-x-2 rounded-lg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-indigo-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600'
+                    >
+                      <span>Contact Sales</span>
+                    </a>
+                    <a
+                      href='/get-a-quote'
+                      className='inline-flex  items-center gap-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
+                    >
+                      <span>Get a quote</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -521,7 +553,7 @@ export default function Page() {
           <div className='grid justify-evenly grid-cols-1 md:grid-cols-2   lg:gap-x-8 gap-y-12  lg:grid-cols-2 lg:gap-y-5  pb-12'>
             {audio_video_theme.map((content) => (
               <div key={content.title}>
-                <div className='max-h-[18rem]'>
+                <div className='h-[15rem] -mb-5 lg:mb-20 xl:mb-28'>
                   <img
                     src={content.imgUrl}
                     className='rounded-sm object-cover'

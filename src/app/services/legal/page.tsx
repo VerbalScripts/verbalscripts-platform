@@ -12,7 +12,7 @@ import HowItWorks from '@/components/HowItWorks';
 import { classNames } from '@/utils/classNames';
 
 export const metadata: Metadata = {
-  title: 'VerbalScripts | Services',
+  title: 'VerbalScripts |  Legal Services',
 };
 
 export default function Page() {
@@ -72,6 +72,27 @@ export default function Page() {
   ];
 
   const features = [
+    {
+      name: 'Competitive page rates.',
+      description:
+        'Our team of transcriptionists possesses a deep understanding of legal terminology, procedures, and documentation standards, ensuring accurate and reliable transcription services.',
+
+      imgUrl: '/legal/expertise.svg',
+    },
+    {
+      name: 'Value for Money.',
+      description:
+        'Our team of transcriptionists possesses a deep understanding of legal terminology, procedures, and documentation standards, ensuring accurate and reliable transcription services.',
+
+      imgUrl: '/legal/expertise.svg',
+    },
+    {
+      name: 'Cost-effective page rates.',
+      description:
+        'Our team of transcriptionists possesses a deep understanding of legal terminology, procedures, and documentation standards, ensuring accurate and reliable transcription services.',
+
+      imgUrl: '/legal/expertise.svg',
+    },
     {
       name: 'Legal Expertise.',
       description:
@@ -264,14 +285,7 @@ export default function Page() {
                   </li>
                 </ul>
               </div>
-              <div className='mt-10'>
-                <a
-                  href='/upload-files'
-                  className='inline-flex  items-center gap-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
-                >
-                  <span>Order Now</span>
-                </a>
-              </div>
+              
             </div>
             <div className='mt-10 lg:mt-0 relative w-full'>
               <img
@@ -303,20 +317,16 @@ export default function Page() {
               </p>
             </div>
             <div>
-              <p className='mx-auto max-w-2xl mt-6 text-lg leading-8 text-gray-600'>
+              <p className='mx-auto max-w-2xl mt-6 text-lg md:text-xl font-semibold leading-8 text-gray-700'>
                 Your legal interactions and documents are transformed into
                 powerful tools for advocacy, analysis, and decision-making.
               </p>
               <div className='mt-10'>
                 <a
-                  href='/upload-files'
+                  href='/contact-us'
                   className='inline-flex  items-center gap-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
                 >
-                  <span>Order Now</span>
-                  <FontAwesomeIcon
-                    className='ml-4 w-6'
-                    icon={faLongArrowRight}
-                  />
+                  <span>Contact Sales</span>
                 </a>
               </div>
             </div>
@@ -371,19 +381,34 @@ export default function Page() {
                 <div className={classNames(index % 2 == 0 ? '' : 'md:order-2')}>
                   <img
                     src={content.imgUrl}
-                    className='lg:max-w-[30rem] rounded-sm object-cover'
+                    className='lg:max-w-[35rem] rounded-sm object-cover'
                     alt=''
                   />
                 </div>
                 <div className='px-8'>
-                  <div className='mb-5 text-center text-3xl md:text-3xl text-gray-900 capitalize font-bold mt-5'>
+                  <div className={
+                    classNames(
+                      'mb-5  text-3xl md:text-4xl text-gray-900 capitalize font-bold mt-5',
+                      index % 2 == 0 ? 'text-right' : 'text-left'
+                    )
+                  }>
                     {content.title}
                   </div>
 
-                  <div className='text-gray-600 text-center capitalize'>
+                  <div className={
+                    classNames(
+                      'text-gray-700 text-md md:text-lg capitalize',
+                      index % 2 == 0 ? 'text-right' : 'text-left'
+                    )
+                  }>
                     {content.description}
                   </div>
-                  <div className='mt-5 text-center'>
+                  <div className={
+                    classNames(
+                      'mt-5',
+                      index % 2 == 0 ? 'text-right' : 'text-left'
+                    )
+                  }>
                     <a
                       href='/upload-files'
                       className='inline-flex  items-center gap-x-2 rounded-lg btn-vlg px-5 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'

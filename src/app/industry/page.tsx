@@ -159,7 +159,7 @@ export default function Page() {
                   <img
                     src={content.imgUrl}
                     className='rounded-sm object-cover'
-                    alt=''
+                    alt={content.title}
                   />
                 </div>
                 <div className='px-8'>

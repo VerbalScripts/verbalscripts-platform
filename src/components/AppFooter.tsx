@@ -179,7 +179,7 @@ export default function AppFooter() {
                   sizes='(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw'
                   className='w-[13rem] md:w-[11rem] lg:w-[10rem] '
                   alt='verbalscript footer logo'
-                  width={150}
+                  width={140}
                   height={140}
                 />
               </a>
@@ -338,9 +338,21 @@ export default function AppFooter() {
                 Privacy Policy
               </span>
             </a>
-            <a href='/legal' className='px-1.5  '>
+            <a href='/legal' className='px-1.5  md:border-r border-gray-300'>
               <span className='text-gray-300  hover:text-indigo-500'>
                 Legal
+              </span>
+            </a>
+
+            <a href='/legal/transcriber-nda' className='px-1.5  md:border-r border-gray-300'>
+              <span className='text-gray-300  hover:text-indigo-500'>
+                Transcriber NDA
+              </span>
+            </a>
+
+            <a href='/legal/customer-nda' className='px-1.5  '>
+              <span className='text-gray-300  hover:text-indigo-500'>
+                Customer Confidential Agreement
               </span>
             </a>
           </div>

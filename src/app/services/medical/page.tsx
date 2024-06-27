@@ -10,7 +10,7 @@ import PopularPartner from '@/components/PopularPartner';
 import HowItWorks from '@/components/HowItWorks';
 
 export const metadata: Metadata = {
-  title: 'VerbalScripts | Services',
+  title: 'VerbalScripts | Medical Services',
 };
 
 export default function Page() {

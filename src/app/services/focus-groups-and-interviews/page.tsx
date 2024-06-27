@@ -10,7 +10,7 @@ import PopularPartner from '@/components/PopularPartner';
 import HowItWorks from '@/components/HowItWorks';
 
 export const metadata: Metadata = {
-  title: 'VerbalScripts | Services',
+  title: 'VerbalScripts | Focus Groups and Interviews',
 };
 
 export default function Page() {
@@ -222,7 +222,7 @@ export default function Page() {
 
       <div className='py-10 md:py-16 why-groups-section-bg '>
         <div className='mx-auto max-w-7xl    px-6 md:px-16 lg:px-16 xl:px-24'>
-          <div className='flex flex-wrap lg:flex-nowrap items-center gap-x-6 rounded-md md:px-8 md:py-10 bg-white/50 ring-1 ring-white/20'>
+          <div className='flex flex-wrap lg:flex-nowrap items-center gap-x-6 rounded-md md:px-8 md:py-16 bg-white/70 ring-1 ring-white/20'>
             <div className='lg:max-w-[30rem] text-left'>
               <h2 className='text-xl font-bold leading-7 capitalize secondary-text'>
                 Academic & Conference Transcription?
@@ -239,7 +239,7 @@ export default function Page() {
               </p>
             </div>
             <div>
-              <ul className='mx-auto max-w-2xl mt-6 text-lg font-semibold  leading-8 text-gray-900 list-disc flex flex-col gap-y-5'>
+              <ul className='mx-auto max-w-2xl mt-6 text-xl font-semibold  leading-8 text-gray-900 list-disc flex flex-col gap-y-5'>
                 <li>
                   We meticulously transcribe focus group discussions and
                   interviews, ensuring every nuance is accurately captured.
@@ -279,7 +279,7 @@ export default function Page() {
           <div className='grid justify-evenly grid-cols-1 md:grid-cols-2   lg:gap-x-8 gap-y-5  lg:grid-cols-2 lg:gap-y-5  pb-12'>
             {audio_video_theme.map((content) => (
               <div key={content.title}>
-                <div className='max-h-[18rem]'>
+                <div className='h-[15rem] -mb-5 lg:mb-20 xl:mb-28'>
                   <img
                     src={content.imgUrl}
                     className='rounded-sm object-cover'
@@ -313,10 +313,10 @@ export default function Page() {
         </div>
       </div>
 
-      <div className='py-10 md:py-16' style={{ background: '#FAFAFA' }}>
+      <div className='py-10 md:py-24' style={{ background: '#FAFAFA' }}>
         <div className='mx-auto max-w-7xl px-6 md:px-16 lg:px-16 xl:px-28'>
-          <div className='flex flex-wrap lg:flex-nowrap items-center space-x-6'>
-            <div className='lg:order-2 lg:max-w-[30rem] text-left'>
+          <div className='flex flex-wrap lg:flex-nowrap items-start space-x-6'>
+            <div className='lg:order-1 lg:max-w-[30rem] text-left'>
               <h2 className='text-xl font-bold leading-7 capitalize secondary-text'>
                 Why choose us?
               </h2>
@@ -330,16 +330,9 @@ export default function Page() {
                 Forward Your Research Objectives with Clarity and Precision
               </p>
 
-              <div className='mt-10'>
-                <a
-                  href='/upload-files'
-                  className='inline-flex  items-center gap-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
-                >
-                  <span>Order Now</span>
-                </a>
-              </div>
+              
             </div>
-            <div className='px-6 md:px-12'>
+            <div className='px-6 md:px-12 order-2'>
               <ul className='lg:mx-auto max-w-2xl mt-6 text-lg leading-8 text-gray-800 list-disc flex flex-col space-y-2'>
                 <li>
                   Dive into your data with confidence, knowing our precise
@@ -362,6 +355,16 @@ export default function Page() {
                   smooth sailing from start to finish.
                 </li>
               </ul>
+
+              <div className='mt-10'>
+                <a
+                  href='/get-a-quote'
+                  className='inline-flex  items-center gap-x-2 rounded-lg btn-vlg px-8 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'
+                >
+                  <span>Get a Quote</span>
+                </a>
+              </div>
+
             </div>
           </div>
         </div>
