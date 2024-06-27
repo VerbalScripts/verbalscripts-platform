@@ -64,7 +64,7 @@ const legal_documents = [
     name: 'Transcriber NDA',
     description:
       'Contains certain restrictions on use of verbalscripts products, services and websites',
-    href: '/legal/privacy-policy',
+    href: '/legal/transcriber-nda',
 
     imgUrl: '/legal/NDA.png',
   },
@@ -72,7 +72,7 @@ const legal_documents = [
     name: 'Client Confidentiality Agreement',
     description:
       'Contains certain restrictions on use of verbalscripts products, services and websites',
-    href: '/legal/privacy-policy',
+    href: '/legal/customer-nda',
 
     imgUrl: '/legal/customerAgreement.png',
   },

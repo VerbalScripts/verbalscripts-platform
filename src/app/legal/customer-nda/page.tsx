@@ -3,7 +3,6 @@ import React from 'react';
 import AppHeader from '@/components/AppHeader';
 import AppFooter from '@/components/AppFooter';
 import { Metadata } from 'next';
-import moment from 'moment';
 
 export const metadata: Metadata = {
   title: 'Verbalscripts - Customers Confidentiality Agreement',
@@ -128,148 +127,176 @@ export default function TermsOfService() {
               1. Definition of Confidential Information.
             </a>
 
-            <ol className='text-md lg:text-lg mb-3 text-gray-700 list-[decimal] ml-10'>
+            <ol className='text-md lg:text-lg mb-3 text-gray-700 list-[lower-alpha] ml-10'>
               <li>
-                <b>Strict Confidentiality</b>: I will hold in the strictest
-                confidence any information received and the identity of any
-                individual inadvertently revealed during the performance of the
-                requested services.
+                <span>
+                  For purposes of this Agreement, “Confidential Information”
+                  means any data or information that is proprietary to the
+                  Client and not generally known to the public, whether in
+                  tangible or intangible form, whenever and however disclosed,
+                  including, but not limited to:
+                </span>
+                <ol className='text-md lg:text-lg mb-3 text-gray-700 list-[lower-roman] ml-5 my-5'>
+                  <li>Information contained in audio and video recordings;</li>
+                  <li>Transcripts of audio and video recordings;</li>
+                  <li>Documents aiding the transcription process;</li>
+                  <li>
+                    Any other information that should reasonably be recognized
+                    as confidential information of the Client.
+                  </li>
+                </ol>
               </li>
               <li>
-                <b>No Unauthorized Copies</b>: I will not make copies of any
-                materials or transcriptions unless specifically requested to do
-                so by the Verbalscripts.
+                <span>
+                  Notwithstanding the above, Confidential Information shall not
+                  include information which:
+                </span>
+                <ol className='text-md lg:text-lg mb-3 text-gray-700 list-[lower-roman] ml-5 my-5'>
+                  <li>
+                    Was known by the Contractor prior to receiving the
+                    Confidential Information from the Client;
+                  </li>
+                  <li>
+                    Becomes rightfully known to the Contractor from a
+                    third-party source not known (after diligent inquiry) by the
+                    Contractor to be under an obligation to the Client to
+                    maintain confidentiality;
+                  </li>
+
+                  <li>
+                    Is or becomes publicly available through no fault of, or
+                    failure to act by, the Contractor in breach of this
+                    Agreement;
+                  </li>
+                  <li>
+                    Is required to be disclosed in a judicial or administrative
+                    proceeding, or is otherwise requested or required to be
+                    disclosed by law or regulation
+                  </li>
+                </ol>
               </li>
-              <li>
-                <b>Secure Storage</b>: I will store all materials and
-                transcriptions in a safe and secure location while in my
-                possession.
-              </li>
-              <li>
-                <b>Timely Return or Deletion</b>: I will return all materials
-                and transcriptions in a complete and timely manner to the
-                Verbalscripts upon request or once all transcriptions are
-                finished. Additionally, I will delete all electronic files
-                containing materials or transcriptions from any electronic
-                device on which such files are stored.
-              </li>
+              
             </ol>
           </div>
 
           <div className='mb-5' id='how-we-collect-data'>
             <a
-              href='#data-handling-and-protection'
+              href='#disclosure-of-confidential-information'
               className='max-w-4xl block after:content-["#"] cursor-pointer after:text-gray-100 after:transition-all transition-all after:ml-5 after:hover:text-gray-300 mb-5 lg:max-w-4xl xl:max-w-5xl relative z-10 text-2xl font-bold  text-gray-600  hover:text-gray-700 lg:text-2xl '
             >
-              Data Handling and Protection
+              2. Disclosure of Confidential Information.
             </a>
 
-            <ol className='text-md lg:text-lg mb-3 text-gray-700 list-[decimal] ml-10'>
+            <p className='text-md lg:text-lg text-gray-700'>
+              In accordance with seeking transcription services the Client may
+              disclose Confidential Information to the Contractor. The
+              Contractor will:
+            </p>
+
+            <ol className='text-md lg:text-lg mb-3 text-gray-700 list-[decimal] ml-10 my-5'>
               <li>
-                <b>Full Confidentiality of Transcription Data</b>: I will
-                maintain full confidentiality of all transcription data received
-                from the transcription team related to this study.
+                Limit disclosure of any Confidential Information to its
+                transcribers, proofreaders, or team members (collectively
+                “Representatives”) who have a need to know such Confidential
+                Information in order to provide the transcription services to
+                which this Agreement relates, and only for that purpose;
               </li>
               <li>
-                <b>Strict Confidence of Individual Identities</b>: I will hold
-                in strictest confidence the identity of any individual revealed
-                during my access to the data, whether it be for transcription,
-                proofreading, or any other purpose related to data collection.
+                Advise its Representatives of the very private and very
+                confidential nature of the Confidential Information and of the
+                obligations set forth in this Agreement and require their
+                Representatives to sign similar legally binding Confidentiality
+                Agreements with the Contractor;
               </li>
               <li>
-                <b>No Unauthorized Copies of Recordings</b>: I will not make
-                copies of any audio recordings, video recordings, or other
-                transcription data unless specifically requested to do so by the
-                Verbalscripts.
+                Shall keep all Confidential Information strictly confidential by
+                using a high degree of care and security; and
               </li>
               <li>
-                <b>No Third-Party Disclosure</b>: I will not provide the
-                transcription data to any third parties without the
-                transcription team’s consent.
+                Not disclose any Confidential Information received by it to any
+                third parties (except as otherwise provided for herein).
               </li>
-              <li>
-                <b>Secure Storage of Study Data</b>: I will store all
-                study-related data in a safe, secure location while in my
-                possession. All video and audio recordings will be stored in an
-                encrypted format.
-              </li>
-              <li>
-                <b>Return or Permanent Deletion of Data</b>: I will return all
-                data provided or created for purposes of this agreement,
-                including any backup records, to the transcription team or
-                permanently delete them, as instructed by the transcription
-                team.
-              </li>
-              <li>
-                <b>Legal Consequences for Breach</b>: I understand that the
-                University of New South Wales has the right to take legal action
-                against any breach of confidentiality that occurs in my handling
-                of the transcription data.
-              </li>
+              
             </ol>
           </div>
 
           <div className='mb-5' id='how-we-use-your-data'>
             <a
-              href='#additional-points'
+              href='#use-of-confidential-information'
               className='max-w-4xl block after:content-["#"] cursor-pointer after:text-gray-100 after:transition-all transition-all after:ml-5 after:hover:text-gray-300 mb-5 lg:max-w-4xl xl:max-w-5xl relative z-10 text-2xl font-bold  text-gray-600  hover:text-gray-700 lg:text-2xl '
             >
-              Additional Points
+              3. Use of Confidential Information.
             </a>
 
-            <ol className='text-md lg:text-lg mb-3 text-gray-700 list-[decimal] ml-10'>
+            <p className='text-md lg:text-lg text-gray-700'>
+              The Contractor agrees to use the Confidential Information solely
+              in connection with the provision of transcription services and not
+              for any purpose other than as authorized by this Agreement without
+              the prior written consent of an authorized representative of the
+              Client. No other right or license, whether expressed or implied,
+              in the Confidential Information is granted to the Contractor
+              hereunder. Title to the Confidential Information will remain
+              solely in the Client. All use of Confidential Information by the
+              Contractor shall be for the benefit of the Client and any
+              modifications and improvements thereof by the Contractor shall be
+              the sole property of the Client.
+            </p>
+          </div>
+
+          <div className='mb-5' id='how-we-use-your-data'>
+            <a
+              href='#Return-of-confidential-information'
+              className='max-w-4xl block after:content-["#"] cursor-pointer after:text-gray-100 after:transition-all transition-all after:ml-5 after:hover:text-gray-300 mb-5 lg:max-w-4xl xl:max-w-5xl relative z-10 text-2xl font-bold  text-gray-600  hover:text-gray-700 lg:text-2xl '
+            >
+              4. Return of Confidential Information.
+            </a>
+
+            <p className='text-md lg:text-lg text-gray-700'>
+              The Contractor shall return, delete, or destroy all recordings
+              containing the Confidential Information provided, including all
+              transcripts and audio and video recordings, upon the earlier of:
+            </p>
+
+            <ol className='text-md lg:text-lg mb-3 text-gray-700 list-[decimal] ml-10 my-5'>
               <li>
-                <b>Definition of Confidential Information</b>: Confidential
-                information includes but is not limited to all research data,
-                materials, transcriptions, audio and video recordings, and the
-                identities of any individuals involved in the research.
+                The completion or termination of the project between the parties
+                as contemplated herein;
               </li>
+              <li>The termination of this Agreement;</li>
+              <li>At such time as the Client may request;</li>
+              <li>In accordance with privacy terms.</li>
+            </ol>
+          </div>
+
+          <div className='mb-5' id='how-we-use-your-data'>
+            <a
+              href='#Return-of-confidential-information'
+              className='max-w-4xl block after:content-["#"] cursor-pointer after:text-gray-100 after:transition-all transition-all after:ml-5 after:hover:text-gray-300 mb-5 lg:max-w-4xl xl:max-w-5xl relative z-10 text-2xl font-bold  text-gray-600  hover:text-gray-700 lg:text-2xl '
+            >
+              5. Miscellaneous
+            </a>
+
+
+            <ol className='text-md lg:text-lg mb-3 text-gray-700 list-[lower-alpha] ml-10'>
               <li>
-                <b>Duration of Confidentiality</b>: The confidentiality
-                obligations will remain in effect indefinitely, even after the
-                termination of this agreement.
+               This Agreement constitutes the entire understanding between the parties and supersedes any and all prior understandings and agreements, whether oral or written, between the parties, with respect to the subject matter hereof. This Agreement can only be modified by a written amendment signed by the party against whom enforcement of such modification is sought. 
               </li>
-              <li>
-                <b>Permitted Disclosures</b>: 14.Disclosure of confidential
-                information is only permitted by law or with prior written
-                consent from the Researcher.
-              </li>
-              <li>
-                <b>Consequences of Breach</b>: Breaching this agreement may
-                result in legal action, financial penalties, and other
-                disciplinary actions.
-              </li>
-              <li>
-                <b>Acknowledgment of Training</b>: I acknowledge having received
-                adequate training or instructions on how to handle and protect
-                confidential information.
-              </li>
-              <li>
-                <b>Reporting Breaches</b>: In the event of a suspected or actual
-                breach of confidentiality, I will immediately contact
-                Verbalscripts cybersecurity team at{' '}
-                <a
-                  className='relative border-b border-indigo-600 group  py-0.5 px-1.5 text-indigo-600'
-                  href='mailto:info@verbalscripts.com'
-                >
-                  <span className='font-semibold'>info@verbalscripts.com</span>
-                  <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-600 group-hover:w-full group-hover:transition-all'></span>
-                </a>
-              </li>
-              <li>
-                <b>Acknowledgment of Responsibilities</b>: I acknowledge
-                understanding my responsibilities and agree to adhere to all
-                outlined protocols and procedures.
-              </li>
-              <li>
-                <b>Conflict of Interes</b>: I declare that I have no conflicts
-                of interest that could affect my impartiality or confidentiality
-                in handling the research data.
-              </li>
-              <li>
-                <b>Amendments</b>: This agreement can only be amended with the
-                mutual consent of both parties, provided in writing.
-              </li>
+              <li>The validity, construction and performance of this Agreement shall be governed and construed in accordance with the law applicable to contracts made and to be wholly performed within such state, without giving effect to any conflict of laws provisions thereof. The court shall have sole and exclusive jurisdiction over any disputes arising under the terms of this Agreement.</li>
+              <li>In the event of any controversy or claim arising out of or relating to this agreement, or the breach thereof, the parties shall:</li>
+              <ol className='text-md lg:text-lg mb-3 text-gray-700 list-[decimal] ml-5 my-5'>
+                  <li>
+                    <b>Negotiation</b>:
+                    Enter into negotiation with each other, recognizing their mutual interests, and attempt to reach a solution satisfactory to both parties. If a settlement is not reached within 7 days, then either party may proceed to mediation.
+                  </li>
+                  <li>
+                   <b>Mediation</b>: By notice to the other party and an online-based recognized mediator, demand mediation under the Mediation Rules of the International Centre for Dispute Resolution. If a settlement is not reached within 7 days after the written demand for mediation, either party may proceed to arbitration.
+                  </li>
+
+                  <li>
+                   <b>Arbitration</b>: Any unresolved controversy or claim arising out of or relating to this contract shall be settled by arbitration administered by the law.
+                  </li>
+                 
+                </ol>
             </ol>
           </div>
 
@@ -279,25 +306,23 @@ export default function TermsOfService() {
             </h4>
 
             <p className='text-md lg:text-lg text-gray-700 mb-5'>
-              I am aware that I can be held legally liable for any breach of
-              this confidentiality agreement, any for any harm incurred by
-              individuals if I disclose confidential and identifiable
-              information contained in the materials to which I will have
-              access.
+            Paragraph headings used in this Agreement are for reference only and shall not be used or relied upon in the interpretation of this Agreement. 
+            <br/>
+            <br/>
+            IN WITNESS WHEREOF, the parties hereto have executed this Agreement as of the date first above written.
             </p>
+
 
             <ul className='text-gray-800 space-y-2'>
               <li>
-                <span>Transcribers Name:</span>
-                ______________
+                <span>CONTRACTOR:</span>
+                 <span className='ml-3 font-bold'>VerbalScripts</span>
               </li>
-              <li className='inline-flex text-gray-800'>
-                <span>Date:</span>
-                <span className='font-bold'>
-                  {' '}
-                  {moment(Date.now()).format('ll')}
-                </span>
+              <li>
+                <span>CLIENT:</span>
+                 <span className='ml-3 font-bold'>{"auto name"}</span>
               </li>
+             
             </ul>
           </div>
         </div>
