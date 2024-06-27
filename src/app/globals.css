@@ -584,7 +584,7 @@ span.svg-circles {
     linear-gradient(to top, transparent, rgba(255, 252, 252, 0.329)),
     url('/education_industry/bg-landing.jpg') no-repeat;
   background-size: cover;
-  background-position: bottom right;
+  background-position: bottom 50% right;
 }
 
 .government_landing {

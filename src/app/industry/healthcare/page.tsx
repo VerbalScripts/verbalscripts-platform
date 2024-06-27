@@ -125,7 +125,7 @@ export default function Page() {
         <div className='mx-auto max-w-7xl py-5 md:py-24 lg:py-32     px-5 md:px-24 lg:px-32'>
           <div className='mx-auto max-w-4xl'>
             <h2 className='text-xl text-left md:text-center font-bold leading-7 capitalize secondary-text'>
-              What Benefits gained in the Educational Industry?
+              What Benefits gained in the HealthCare Industry?
             </h2>
             <p className='mt-2 text-4xl md:text-5xl  font-bold text-left md:text-center  text-gray-900 section-title'>
               <span className='relative z-10'>

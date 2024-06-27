@@ -126,7 +126,7 @@ Transcription ensures an accurate and thorough record of the proceedings, which 
       <div className='bg-white'>
         <div className='mx-auto max-w-7xl py-5 md:py-24 lg:py-32     px-5 md:px-24 lg:px-32'>
           <div className='mx-auto max-w-4xl'>
-            <h2 className='text-xl font-bold leading-7 text-left md:text-center capitalize secondary-text'>
+            <h2 className='text-xl font-bold leading-7 text-left md:text-center text-white capitalize secondary-text'>
               What Benefits gained in the Educational Industry?
             </h2>
             <p className='mt-2 text-4xl md:text-5xl  font-bold text-left md:text-center text-gray-900 section-title'>

@@ -133,7 +133,7 @@ In the rare instance that you are not fully satisfied with the transcript, we of
                 your Media Production into Unique Quality.
               </p>
             </div>
-            <div className='px-6 text-gray-800 text-lg text-left'>
+            <div className='px-6 text-gray-800 font-semibold text-xl text-left'>
               We understand the unique needs of the media industry and are
               dedicated to providing accurate, timely, and secure transcription
               solutions that enhance your production workflow.
@@ -183,7 +183,7 @@ In the rare instance that you are not fully satisfied with the transcript, we of
         style={{ background: '#FAFAFA' }}
       >
         <div className='mx-auto max-w-6xl text-left md:text-center px-6 md:px-16 lg:px-16 xl:px-28'>
-          <h2 className='text-xl font-semibold leading-7 text-white footer-title'>
+          <h2 className='text-xl font-semibold leading-7 text-white'>
             Our Solutions for Media Production Industry?
           </h2>
           <p className='mt-2 text-4xl md:text-5xl font-bold  text-gray-900'>
