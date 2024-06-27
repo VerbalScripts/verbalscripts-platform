@@ -39,19 +39,30 @@ export default function ContactForm() {
   const [duration, setDuration] = useState('');
   const [phone, setPhone] = useState('');
 
+  const [sample, setSample] = useState<File | null>(null);
+
   const postQuote = async (event: FormEvent) => {
     try {
       event.preventDefault();
       setLoading(true);
-      const response = await AxiosProxy.post('/quotes/add', {
-        content,
-        fullName,
-        companyName,
-        service_type: serviceType,
-        email,
-        duration,
-        phone,
-      });
+
+      const formdata = new FormData();
+
+      formdata.append('content', content);
+      formdata.append('fullName', fullName);
+      formdata.append('companyName', companyName);
+      formdata.append('service_type', serviceType);
+      formdata.append('duration', duration);
+      formdata.append('phone', phone);
+      formdata.append('email', email);
+
+      // add file sample if exists
+      if (sample != null) {
+        formdata.append('quote-sample', sample);
+      }
+
+
+      const response = await AxiosProxy.post('/quotes/add', formdata);
 
       if (response.status == 201) {
         setSuccess(true);
@@ -69,16 +80,25 @@ export default function ContactForm() {
   const reset = () => {
     setTimeout(() => {
       setSuccess(false);
-    setLoading(false);
-    setEmail('');
-    setServiceType('');
-    setContent('');
-    setCompanyName('');
-    setError('');
-    setDuration('');
-    setPhone('');
-    }, 10000)
+      setLoading(false);
+      setEmail('');
+      setServiceType('');
+      setContent('');
+      setCompanyName('');
+      setError('');
+      setDuration('');
+      setPhone('');
+    }, 10000);
   };
+
+  function updateFileSample ( e: React.ChangeEvent<HTMLInputElement> ): void {
+    const target = e.target as HTMLInputElement & {
+      files: FileList;
+    };
+
+    if (target.files.length == 0) return;
+    setSample(target.files[0])
+  }
 
   return (
     <div className='flex flex-wrap lg:flex-nowrap items-start space-y-16 lg:space-x-6 lg:space-y-0 px-6 md:px-16 lg:px-24 xl:px-32'>
@@ -322,6 +342,25 @@ export default function ContactForm() {
                   </div>
                 ))}
               </div>
+            </div>
+
+            <div className='sm:col-span-2 mb-2'>
+              <label
+                htmlFor='quote-sample'
+                className='block mb-2 text-md font-me dium text-gray-900 dark:text-white'
+              >
+                Add Sample File (Optional)
+              </label>
+              <input
+                type='file'
+                id='quote-sample'
+                name='quote-sample'
+                accept='jpeg,mpeg,png,jpg'
+                required
+                onChange={(e) => updateFileSample(e)}
+                aria-describedby='helper-text-explanation'
+                className='bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full   dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+              />
             </div>
 
             <div className='sm:col-span-2'>

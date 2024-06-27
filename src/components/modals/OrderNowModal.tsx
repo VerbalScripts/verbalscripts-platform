@@ -87,18 +87,14 @@ export default function OrderNowModal({
     };
 
     const formData = new FormData();
-    console.log('ceate payload', payload);
 
     formData.append('order', JSON.stringify(payload));
     // add files if any
-    console.log(samples);
     if (samples.length > 0) {
       samples.forEach((sample) => {
         formData.append('samples', sample);
       });
     }
-
-    console.log(formData);
 
     const xhr = new XMLHttpRequest();
 
@@ -123,7 +119,6 @@ export default function OrderNowModal({
 
     xhr.addEventListener('load', function () {
       clearSelection();
-      console.log('loaded');
     });
 
     xhr.addEventListener('error', function () {
