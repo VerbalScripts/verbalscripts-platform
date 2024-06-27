@@ -31,6 +31,7 @@ export const metadata: Metadata = {
     'speech to text',
     'academic transcription',
     'proofreading',
+    'transcribe',
   ],
   description:
     'We provide fast and affordable client-ready transcription services tailored to your needs through transcription, reviewing and proofreading.',

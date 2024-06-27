@@ -1,93 +1,93 @@
 import React from 'react';
 import type { Metadata } from 'next';
 
-import { ClockIcon, CalendarIcon } from '@heroicons/react/24/outline';
-
-import { StarIcon } from '@heroicons/react/20/solid';
-
 import FreelancingHeader from '@/components/FreelancingHeader';
 import AppFooter from '@/components/AppFooter';
 
 export const metadata: Metadata = {
   title: 'VerbalScripts | Freelancers',
+  keywords: [
+    'work from home',
+    'remote work',
+    'audio transcription',
+    'video transcription',
+    'speech to text',
+    'proofreading',
+    'transcribe',
+  ],
+  description:
+    'Join the larget community of transcribers and start working on transcription projects from anywhere transcription.',
 };
 
-interface FeatureLabel {
-  name: string;
-  description: string;
-  subtitle: string;
-  icon: React.ElementType;
-}
-
 export default function Page() {
-  const features: Array<FeatureLabel> = [
-    {
-      name: 'Starting At',
-      description: '$15-22',
-      subtitle: 'per audio hour',
-      icon: ClockIcon,
-    },
-    {
-      name: 'Average',
-      description: '$250',
-      subtitle: 'monthly earnings',
-      icon: CalendarIcon,
-    },
-    {
-      name: 'Special Teams',
-      description: '$60-70+',
-      subtitle: 'per audio hour',
-      icon: StarIcon,
-    },
-  ];
+  // const features: Array<FeatureLabel> = [
+  //   {
+  //     name: 'Starting At',
+  //     description: '$15-22',
+  //     subtitle: 'per audio hour',
+  //     icon: ClockIcon,
+  //   },
+  //   {
+  //     name: 'Average',
+  //     description: '$250',
+  //     subtitle: 'monthly earnings',
+  //     icon: CalendarIcon,
+  //   },
+  //   {
+  //     name: 'Special Teams',
+  //     description: '$60-70+',
+  //     subtitle: 'per audio hour',
+  //     icon: StarIcon,
+  //   },
+  // ];
 
-  const testimonials: Array<FreelancerTestimony> = [
-    {
-      description:
-        ' “TranscribeMe has allowed me to maintain a flexible schedule...this gives me the freedom to be able to work when I want to.” ',
-      name: 'Rebecca Gallant',
-      imageUrl:
-        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-      state: 'Tennessee',
-      years: '3',
-    },
-    {
-      description:
-        ' “I can work my work around what I need to do for myself which is fantastic...TranscribeMe is the perfect place for me to work.” ',
-      name: 'Suzanne Thomas',
-      imageUrl:
-        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-      state: 'Florida',
+  // const testimonials: Array<FreelancerTestimony> = [
+  //   {
+  //     description:
+  //       ' “TranscribeMe has allowed me to maintain a flexible schedule...this gives me the freedom to be able to work when I want to.” ',
+  //     name: 'Rebecca Gallant',
+  //     imageUrl:
+  //       'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+  //     state: 'Tennessee',
+  //     years: '3',
+  //   },
+  //   {
+  //     description:
+  //       ' “I can work my work around what I need to do for myself which is fantastic...TranscribeMe is the perfect place for me to work.” ',
+  //     name: 'Suzanne Thomas',
+  //     imageUrl:
+  //       'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+  //     state: 'Florida',
 
-      years: '3',
-    },
-    {
-      description:
-        ' “I’ve loved every second of it. I love to work when I want to work and not work when I don’t feel like working.” ',
-      name: 'Shadrack Ndjate',
-      imageUrl:
-        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-      state: 'South Africa',
+  //     years: '3',
+  //   },
+  //   {
+  //     description:
+  //       ' “I’ve loved every second of it. I love to work when I want to work and not work when I don’t feel like working.” ',
+  //     name: 'Shadrack Ndjate',
+  //     imageUrl:
+  //       'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+  //     state: 'South Africa',
 
-      years: '2',
-    },
-    {
-      description:
-        ' “The community’s really supportive, it feels like kind of an online family and it’s really nice to be a part of.”',
-      name: 'Nicole Shafer',
-      imageUrl:
-        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-      state: 'Utah',
-      years: '4',
-    },
-  ];
+  //     years: '2',
+  //   },
+  //   {
+  //     description:
+  //       ' “The community’s really supportive, it feels like kind of an online family and it’s really nice to be a part of.”',
+  //     name: 'Nicole Shafer',
+  //     imageUrl:
+  //       'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+  //     state: 'Utah',
+  //     years: '4',
+  //   },
+  // ];
 
   return (
     <div className='bg-zinc-800 max-h-screen overflow-y-scroll relative'>
       <FreelancingHeader />
-      <div className='relative bg-teal-600 h-auto isolate px-6 pt-14 lg:px-8'>
+      <div className='relative bg-zinc-900 h-auto isolate px-6 pt-14 lg:px-8'>
         <div className='landing-page-video-wrapper'></div>
-        <div
+        {/* <div
           className='absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80'
           aria-hidden='true'
         >
@@ -98,27 +98,36 @@ export default function Page() {
                 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
             }}
           />
-        </div>
-        <div className='max-w-3xl pb-48 pt-0 md:py-32 lg:py-32 md:mx-20 lg:mx-40'>
-          <div className='text-left'>
-            <h1 className='text-4xl font-bold md:tracking-tight text-white sm:text-6xl'>
-              Become a Freelancer & Start Earning Anywhere
-            </h1>
-            <p className='mt-6 text-2xl leading-8 text-gray-100'>
-              Join the TranscribeMe professional freelancer community and start
-              working on projects from anywhere, anytime.
-            </p>
-            <div className='mt-10 flex flex-col md:flex-row items-start md:items-center justify-start gap-6'>
-              <a
-                href='#'
-                className='rounded-md bg-indigo-600 px-7 py-3 text-lg font-bold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
-              >
-                Start Freelancing
-              </a>
+        </div> */}
+        <div className='flex flex-wrap  lg:flex-nowrap items-center gap-x-10 '>
+          <div className='max-w-2xl pb-48 pt-0 md:py-32 lg:py-32 md:mx-20 lg:mx-40'>
+            <div className='text-left'>
+              <h1 className='text-4xl font-bold md:tracking-tight text-white sm:text-6xl'>
+                Work From Home
+              </h1>
+              <p className='mt-6 text-2xl leading-8 text-gray-100'>
+                Be part of the community of Verbalscripts professionals and
+                start earning big remotely.
+              </p>
+              <div className='mt-10 flex flex-col md:flex-row items-start md:items-center justify-start gap-6'>
+                <a
+                  href='#'
+                  className='rounded-md bg-indigo-600 px-7 py-3 text-lg font-bold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+                >
+                  Coming Soon!
+                </a>
+              </div>
             </div>
           </div>
+          <div className='mt-10 lg:mt-0 relative   lg:min-w-[35rem] bg-red-100'>
+            <img
+              src='/transcriber.svg'
+              className='max-w-[90%]  lg:w-[100%]  lg:max-w-[100%] lg:absolute object-cover -top-44'
+              alt='Feelance Remote work.'
+            />
+          </div>
         </div>
-        <div
+        {/* <div
           className='absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]'
           aria-hidden='true'
         >
@@ -129,11 +138,11 @@ export default function Page() {
                 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
             }}
           />
-        </div>
+        </div> */}
       </div>
 
       {/* testimonials */}
-      <div className='bg-white py-14 md:py-24'>
+      {/* <div className='bg-white py-14 md:py-24'>
         <div className='mx-auto max-w-2xl lg:text-center px-6 sm:py-32 lg:px-8'>
           <p className='text-4xl font-bold leading-10  text-gray-800'>
             Monetize Your Downtime with the Industry’s Highest Pay
@@ -179,14 +188,11 @@ export default function Page() {
             Learn More About Freelancing
           </a>
         </div>
-      </div>
+      </div> */}
 
-      <div className='bg-gray-200'>
+      {/* <div className='bg-gray-200'>
         <div className='py-24 px-6 sm:py-32 lg:px-8'>
           <div className='mx-auto max-w-2xl text-center'>
-            {/* <h2 className="text-base font-semibold leading-7 text-indigo-600">
-            You did{ "'"}nt Hear it from us
-          </h2> */}
             <p className='mt-2 text-4xl font-bold leading-10 text-gray-900 sm:text-4xl'>
               Flexibility & Career Growth
             </p>
@@ -272,10 +278,6 @@ export default function Page() {
               <p className='mt-2 text-3xl font-bold  text-gray-900 sm:text-4xl'>
                 Our Happy Freelancers
               </p>
-              {/* <p className="mt-6 text-lg leading-8 text-gray-600">
-            Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a elementum
-            pulvinar et feugiat blandit at. In mi viverra elit nunc.
-          </p> */}
             </div>
 
             <div className='mx-auto mt-16 max-w-3xl sm:mt-20 lg:mt-24 lg:max-w-5xl'>
@@ -331,14 +333,12 @@ export default function Page() {
             </div>
           </div>
         </div>
-      </div>
-
+      </div> */}
+      {/* 
       <div className='bg-white'>
         <div className='py-24 px-6 sm:py-32 lg:px-8'>
           <div className='mx-auto max-w-2xl text-center'>
-            {/* <h2 className="text-base font-semibold leading-7 text-indigo-600">
-            You did{ "'"}nt Hear it from us
-          </h2> */}
+            
             <p className='mt-2 text-4xl font-bold leading-10 text-gray-900 sm:text-4xl'>
               Getting Started as a Freelancer is Simple
             </p>
@@ -427,9 +427,6 @@ export default function Page() {
           </svg>
           <div className='mx-auto  py-24  sm:px-6  lg:px-8'>
             <div className='mx-auto max-w-2xl text-center'>
-              {/* <h2 className="text-base font-semibold leading-7 text-indigo-600">
-            You did{ "'"}nt Hear it from us
-          </h2> */}
               <p className='mt-2 text-4xl font-bold leading-10 text-white sm:text-4xl'>
                 Ready to Join the Team?
               </p>
@@ -450,7 +447,7 @@ export default function Page() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <AppFooter />
     </div>

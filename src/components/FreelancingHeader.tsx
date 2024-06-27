@@ -38,14 +38,20 @@ export default function FreelancingHeader() {
         )}
       >
         <nav
-          className='mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8'
-          aria-label='Global'
+          className='mx-auto flex max-w-7xl items-center justify-between px-6 py-1 lg:px-8'
+          aria-label='App Header'
         >
           <div className='flex lg:flex-1'>
-            <a href='#' className='-m-1.5 p-1.5'>
-              <span className='text-gray-800 font-bold text-2xl'>
-                VerbalScripts
-              </span>
+          <a
+              href='/'
+              aria-label='Verbalscripts Logo'
+              className='-m-1.5 p-1.5 text-2xl font-bold'
+            > 
+              <img
+                className='h-[4.0rem] w-[100%] md:h-[4.0rem] lg:h-[4.8rem]'
+                src='/icons/logo-png.png'
+                alt='Logo Image'
+              />
             </a>
           </div>
           <div className='flex lg:hidden'>
@@ -61,20 +67,20 @@ export default function FreelancingHeader() {
 
           <Popover.Group className='hidden lg:flex md:items-center lg:gap-x-8'>
             <a
-              href='/'
+              href='#'
               className='text-md font-semibold leading-6 text-gray-900'
             >
               Joining VerbalScripts
             </a>
             <a
-              href='/'
+              href='#'
               className='text-md font-semibold leading-6 text-gray-900'
             >
               What’s Work Like?
             </a>
 
             <a
-              href='/'
+              href='#'
               className='text-md font-semibold leading-6 text-gray-900'
             >
               Freelancer FAQs
