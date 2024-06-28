@@ -96,6 +96,119 @@ export default function Page() {
           <p className='mt-6 text-lg leading-8 text-gray-600'>
             Quis tellus eget adipiscing convallis sit sit eget aliquet quis.
           </p>
+
+          <svg width='200' height='200' xmlns='http://www.w3.org/2000/svg'>
+            {/* <!-- Original Logo --> */}
+            <g transform='translate(30, 30)'>
+              <rect x='0' y='0' width='140' height='140' fill='black' />
+              <path d='M20,120 L60,20 L80,20 L40,120 Z' fill='#FF5722' />
+              <circle cx='100' cy='30' r='20' fill='#FF5722' />
+              <rect x='80' y='50' width='40' height='10' fill='#FF5722' />
+              <rect x='80' y='70' width='40' height='10' fill='#FF5722' />
+              <rect x='80' y='90' width='40' height='10' fill='#FF5722' />
+            </g>
+
+            {/* <!-- Globe illusion --> */}
+            <g transform='translate(100, 100)'>
+              <circle
+                cx='0'
+                cy='0'
+                r='80'
+                stroke='#3b5998'
+                stroke-width='5'
+                fill='none'
+              />
+              <circle
+                cx='0'
+                cy='0'
+                r='70'
+                stroke='#3b5998'
+                stroke-width='1'
+                fill='none'
+              />
+              <circle
+                cx='0'
+                cy='0'
+                r='60'
+                stroke='#3b5998'
+                stroke-width='1'
+                fill='none'
+              />
+              <circle
+                cx='0'
+                cy='0'
+                r='50'
+                stroke='#3b5998'
+                stroke-width='1'
+                fill='none'
+              />
+              <circle
+                cx='0'
+                cy='0'
+                r='40'
+                stroke='#3b5998'
+                stroke-width='1'
+                fill='none'
+              />
+              <line
+                x1='-80'
+                y1='0'
+                x2='80'
+                y2='0'
+                stroke='#3b5998'
+                stroke-width='1'
+              />
+              <line
+                x1='0'
+                y1='-80'
+                x2='0'
+                y2='80'
+                stroke='#3b5998'
+                stroke-width='1'
+              />
+              <line
+                x1='-56'
+                y1='-56'
+                x2='56'
+                y2='56'
+                stroke='#3b5998'
+                stroke-width='1'
+              />
+              <line
+                x1='-56'
+                y1='56'
+                x2='56'
+                y2='-56'
+                stroke='#3b5998'
+                stroke-width='1'
+              />
+            </g>
+
+            {/* <!-- Belt with icons --> */}
+            <g transform='translate(100, 100)'>
+              <circle
+                cx='0'
+                cy='0'
+                r='90'
+                stroke='#FF5722'
+                stroke-width='10'
+                fill='none'
+              />
+              {/* <!-- Video icon --> */}
+              <rect x='-50' y='-10' width='20' height='20' fill='#FFFFFF' />
+              <polygon points='-40,-10 -30,0 -40,10' fill='#FF5722' />
+              {/* <!-- Audio icon --> */}
+              <rect x='30' y='-10' width='20' height='20' fill='#FFFFFF' />
+              <path d='M40,-5 L40,5 L45,10 L45,-10 Z' fill='#FF5722' />
+              {/* <!-- File upload icon --> */}
+              <rect x='-10' y='30' width='20' height='20' fill='#FFFFFF' />
+              <path
+                d='M0,35 L0,50 M-5,45 L0,40 L5,45'
+                stroke='#FF5722'
+                stroke-width='2'
+              />
+            </g>
+          </svg>
         </div>
         <div className='mx-auto max-w-2xl text-left lg:text-center'>
           <div className='mt-6 flex flex-col md:flex-row  gap-5 '>

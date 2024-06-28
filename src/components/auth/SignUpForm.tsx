@@ -36,6 +36,9 @@ export default function SignUpForm() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [error_message, setShowErrors] = useState('');
   const [loading, setLoading] = useState(false);
+  const [signAgreement, setSignedAgreement] = useState(false);
+  const [signNda, setSignedNda] = useState(false);
+  const [termsError, setTermsError] = useState(false);
 
   // google auth
   const [user, setUser] = useState<GoogleUser | null>(null);
@@ -90,6 +93,11 @@ export default function SignUpForm() {
 
   const apiHttpServerRegister = async (data: RegiterUser, client = 'local') => {
     try {
+
+      if (!signAgreement || !signNda) {
+        setTermsError(true);
+        return false;
+      }
       setLoading(true);
 
       const response = await AxiosProxy.post(
@@ -152,7 +160,7 @@ export default function SignUpForm() {
           </div>
         ) : null}
         <form
-          className='space-y-6'
+          className='space-y-2'
           onSubmit={handleSubmit(onSubmit)}
           action='#'
           method='POST'
@@ -207,7 +215,7 @@ export default function SignUpForm() {
                 id='companyName'
                 onFocus={() => onFocusIn()}
                 type='text'
-                autoComplete='email'
+                autoComplete='companyName'
                 {...register('companyName', { required: false, maxLength: 80 })}
                 className='block w-full rounded-md border-0 py-2.5 px-3 text-gray-600  ring-1 ring-inset ring-gray-300 placeholder:text-grey-900  md:text-xl focus:ring-2 focus:ring-inset  focus:ring-dark sm:text-sm sm:leading-6'
               />
@@ -267,6 +275,75 @@ export default function SignUpForm() {
               </span>
             </div>
           </div>
+          <div className='py-4'>
+            <div className='flex items-start mb-4 '>
+              <input
+                type='radio'
+                value='cacheck'
+                required
+                name='cacheck'
+                onChange={() => setSignedAgreement(true)}
+                className='w-4 h-4 mt-1 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+              />
+              <label
+                htmlFor='service_type'
+                className='ml-2 text-md font-medium text-gray-900 dark:text-gray-300'
+              >
+                Confirm that you agree to comply with our{' '}
+                <a
+                  className='relative border-b border-indigo-600 group  py-0.5 px-1.5 text-indigo-600'
+                  href='/legal/terms-of-service'
+                  target='_blank'
+                >
+                  <span className='font-semibold'>Terms of Usage</span>
+                  <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-600 group-hover:w-full group-hover:transition-all'></span>
+                </a>{' '}
+                and{' '}
+                <a
+                  className='relative border-b border-indigo-600 group  py-0.5 px-1.5 text-indigo-600'
+                  href='/legal/privacy-policy'
+                  target='_blank'
+                >
+                  <span className='font-semibold'>Privacy Policy</span>
+                  <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-600 group-hover:w-full group-hover:transition-all'></span>
+                </a>
+              </label>
+            </div>
+
+            <div className='flex items-start mb-4'>
+              <input
+                type='radio'
+                value='ndacheck'
+                required
+                name='nda_check'
+                onChange={() => setSignedNda(true)}
+                className='w-4 h-4 mt-1 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
+              />
+              <label
+                htmlFor='service_type'
+                className='ml-2 text-md font-medium text-gray-900 dark:text-gray-300'
+              >
+                Confirm that you agree to comply with our{' '}
+                <a
+                  className='relative border-b border-indigo-600 group  py-0.5 px-1.5 text-indigo-600'
+                  href='/legal/customer-nda'
+                  target='_blank'
+                >
+                  <span className='font-semibold'>
+                    Customer Confidentiality Agreement
+                  </span>
+                  <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-600 group-hover:w-full group-hover:transition-all'></span>
+                </a>
+              </label>
+            </div>
+
+            {termsError ? (
+              <div className='flex items-start mb-4 border-b bg-red-200 text-red-700 border-red-600 font-semibold px-5 py-2'>
+                Oops! You need to accept our company terms, conditions and
+                customer agreement policy before creating your account.
+              </div>
+            ) : null}
+          </div>
 
           <div>
             <button
@@ -275,36 +352,38 @@ export default function SignUpForm() {
               className='flex space-x-3 w-full items-center disabled:bg-indigo-400 focus:ring-4 focus:ring-indigo-300 justify-center rounded-full bg-indigo-600 px-3 py-2.5  leading-6 hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
             >
               {loading ? <ComponentSpinner /> : null}
-              <span className='text-lg text-white'>Create Accout</span>
+              <span className='text-lg text-white font-semibold'>
+                Create Accout
+              </span>
             </button>
           </div>
+
+          <div className='mx-auto max-w-md border-b border-gray-300 my-5'></div>
+
+          <div className='mx-auto max-w-md '>
+            <button
+              onClick={() => UseGoogelLogin()}
+              disabled={loading}
+              className='mb-3 text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 text-center flex w-full justify-center items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 '
+            >
+              <GoogleIcon />{' '}
+              <span className='ml-3 text-lg text-gray-600'>
+                Continue with Google
+              </span>
+            </button>
+          </div>
+          <div className='mb-5'>
+            <p className='mt-10 text-center text-md text-gray-500'>
+              Already a member?{' '}
+              <Link
+                href='/auth/login'
+                className='text-md font-semibold leading-6 text-indigo-600 hover:text-indigo-500'
+              >
+                Login
+              </Link>
+            </p>
+          </div>
         </form>
-      </div>
-
-      <div className='mx-auto max-w-md border-b border-gray-300 my-5'></div>
-
-      <div className='mx-auto max-w-md '>
-        <button
-          onClick={() => UseGoogelLogin()}
-          disabled={loading}
-          className='mb-3 text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 text-center flex w-full justify-center items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 '
-        >
-          <GoogleIcon />{' '}
-          <span className='ml-3 text-lg text-gray-600'>
-            Continue with Google
-          </span>
-        </button>
-      </div>
-      <div className='mb-5'>
-        <p className='mt-10 text-center text-md text-gray-500'>
-          Already a member?{' '}
-          <Link
-            href='/auth/login'
-            className='text-md leading-6 text-indigo-600 hover:text-indigo-500'
-          >
-            Login
-          </Link>
-        </p>
       </div>
     </>
   );
