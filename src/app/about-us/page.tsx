@@ -300,7 +300,7 @@ export default function Page() {
               </p>
 
               <p className='text-gray-50 text-md md:text-lg'>
-                Discover the difference that [Company Name] can make for your
+                Discover the difference that Verbalscripts can make for your
                 transcription needs. Experience unmatched accuracy, reliability,
                 and professionalism delivered with a personal touch that sets us
                 apart from the rest. Join the ranks of satisfied clients who
