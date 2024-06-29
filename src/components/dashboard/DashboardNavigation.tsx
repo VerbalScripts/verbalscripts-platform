@@ -1,7 +1,7 @@
 'use client';
 
 import { classNames } from '@/utils/classNames';
-import { Disclosure } from '@headlessui/react';
+import { Dialog, Disclosure } from '@headlessui/react';
 import {
   RocketLaunchIcon,
   CheckBadgeIcon,
@@ -12,6 +12,7 @@ import {
   QuestionMarkCircleIcon,
   CreditCardIcon,
   SquaresPlusIcon,
+  XMarkIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import React from 'react';
@@ -35,10 +36,14 @@ interface NavItemProp {
 
 interface DashboardNavigationProps {
   expanded: boolean;
+  open: boolean;
+  setOpen: (arg0: boolean) => void;
 }
 
 export default function DashboardNavigation({
   expanded = true,
+  open,
+  setOpen
 }: DashboardNavigationProps) {
   const NavigationItemLink = ({ item, expanded }: NavItemProp) => {
     const pathname = usePathname();
@@ -139,101 +144,225 @@ export default function DashboardNavigation({
 
   const globalUser = useRecoilValue(userState);
 
+
   return (
     <aside
-      className={classNames(
-        'py-5   bg-zinc-900    min-h-screen flex flex-col justify-between max-h-screen overflow-x-hidden overflow-y-auto',
-        expanded ? 'px-8' : 'px-0 md:px-1',
-      )}
+      className=' '
     >
       {/* title */}
-
-      <div>
+      <div className={
+        classNames(
+          'bg-zinc-900  min-h-screen  max-h-screen overflow-x-hidden overflow-y-auto',
+          'hidden md:flex flex-col justify-between',
+          'py-5     ',
+        expanded ? 'px-8' : 'px-0 md:px-1',
+        )
+      }>
         <div>
-          <AppTitle />
-        </div>
-        <div className={classNames(expanded ? 'hidden' : 'block py-10')}></div>
-        {appRoutes.map((item) => {
-          if (typeof item.routes != 'undefined' && item.routes.length > 0) {
-            return (
-              <Disclosure key={item.name} as='div'>
-                {({ open }) => (
-                  <>
-                    <Disclosure.Button className='flex w-full items-center justify-between rounded-full  hover:bg-gray-50'>
-                      <NavigationItemLink expanded={expanded} item={item} />
+          <div>
+            <AppTitle />
+          </div>
+          <div
+            className={classNames(expanded ? 'hidden' : 'block py-10')}
+          ></div>
+          {appRoutes.map((item) => {
+            if (typeof item.routes != 'undefined' && item.routes.length > 0) {
+              return (
+                <Disclosure key={item.name} as='div'>
+                  {({ open }) => (
+                    <>
+                      <Disclosure.Button className='flex w-full items-center justify-between rounded-full  hover:bg-gray-50'>
+                        <NavigationItemLink expanded={expanded} item={item} />
 
-                      <ChevronDownIcon
-                        className={classNames(
-                          'h-5 w-5 transition-all flex-none text-gray-600',
-                          open ? 'rotate-180' : '',
-                        )}
-                        aria-hidden='true'
-                      />
-                    </Disclosure.Button>
-                    <Disclosure.Panel className='ml-2 p-3 space-y-2 bg-gray-200'>
-                      <Disclosure.Button>
-                        {item.routes!.map((route) => (
-                          <NavigationItemLink
-                            expanded={expanded}
-                            key={route.name}
-                            item={route}
-                          />
-                        ))}
+                        <ChevronDownIcon
+                          className={classNames(
+                            'h-5 w-5 transition-all flex-none text-gray-600',
+                            open ? 'rotate-180' : '',
+                          )}
+                          aria-hidden='true'
+                        />
                       </Disclosure.Button>
-                    </Disclosure.Panel>
-                  </>
-                )}
-              </Disclosure>
+                      <Disclosure.Panel className='ml-2 p-3 space-y-2 bg-gray-200'>
+                        <Disclosure.Button>
+                          {item.routes!.map((route) => (
+                            <NavigationItemLink
+                              expanded={expanded}
+                              key={route.name}
+                              item={route}
+                            />
+                          ))}
+                        </Disclosure.Button>
+                      </Disclosure.Panel>
+                    </>
+                  )}
+                </Disclosure>
+              );
+            }
+            return (
+              <NavigationItemLink
+                expanded={expanded}
+                key={item.name}
+                item={item}
+              />
             );
-          }
-          return (
-            <NavigationItemLink
-              expanded={expanded}
-              key={item.name}
-              item={item}
-            />
-          );
-        })}
+          })}
+        </div>
+
+        {/* routes */}
+
+        {/* routes end */}
+
+        {/* bottom section */}
+        <div>
+          {!globalUser.isAuth ? (
+            <div
+              className={classNames(
+                ' bg-indigo-500/15 rounded-xl px-2 py-4 text-center',
+                expanded ? '' : 'hidden',
+              )}
+            >
+              <div className=' dark:text-indigo-200'>
+                You have not signed in yet!. Click the button to continue
+              </div>
+              <div className='mt-5'>
+                <Link
+                  href={'/auth/login'}
+                  className='rounded-full  px-4 py-2.5 bg-indigo-500 text-md font-semibold focus:ring-4 focus:outline-none focus:ring-indigo-300'
+                >
+                  Login
+                </Link>
+              </div>
+            </div>
+          ) : null}
+
+          {/* bottom routes */}
+          <div className='mt-10'>
+            {bottomRoutes.map((item) => (
+              <NavigationItemLink
+                expanded={expanded}
+                key={item.name}
+                item={item}
+              />
+            ))}
+          </div>
+        </div>
       </div>
 
-      {/* routes */}
+      <Dialog as='div' className='md:hidden'  onClose={setOpen} open={open}>
+        <div className='fixed inset-0 z-10 bg-white-300' />
 
-      {/* routes end */}
+        <Dialog.Panel className='fixed inset-y-0 right-0 z-30 w-full  bg-zinc-900   overflow-x-hidden overflow-y-auto px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10'>
+          <div className='flex items-center justify-end'>
+           
+            <button
+              type='button'
+              className='-m-1.5 rounded-md p-2.5 '
+              onClick={() => setOpen(false)}
+            >
+              <span className='sr-only'>Close menu</span>
+              <XMarkIcon className='h-8 w-8 text-white' aria-hidden='true' />
+            </button>
+          </div>
+          <div className='mt-6 flow-root'>
+            <div className='-my-6 divide-y divide-gray-500/10'>
+              <div>
+                <div>
+                  <AppTitle />
+                </div>
+                <div
+                  className={classNames(expanded ? 'hidden' : 'block py-10')}
+                ></div>
+                {appRoutes.map((item) => {
+                  if (
+                    typeof item.routes != 'undefined' &&
+                    item.routes.length > 0
+                  ) {
+                    return (
+                      <Disclosure key={item.name} as='div'>
+                        {({ open }) => (
+                          <>
+                            <Disclosure.Button className='flex w-full items-center justify-between rounded-full  hover:bg-gray-50'>
+                              <NavigationItemLink
+                                expanded={expanded}
+                                item={item}
+                              />
 
-      {/* bottom section */}
-      <div>
-        {!globalUser.isAuth ? (
-          <div
-            className={classNames(
-              ' bg-indigo-500/15 rounded-xl px-2 py-4 text-center',
-              expanded ? '' : 'hidden',
-            )}
-          >
-            <div className=' dark:text-indigo-200'>
-              You have not signed in yet!. Click the button to continue
-            </div>
-            <div className='mt-5'>
-              <Link
-                href={'/auth/login'}
-                className='rounded-full  px-4 py-2.5 bg-indigo-500 text-md font-semibold focus:ring-4 focus:outline-none focus:ring-indigo-300'
-              >
-                Login
-              </Link>
+                              <ChevronDownIcon
+                                className={classNames(
+                                  'h-5 w-5 transition-all flex-none text-gray-600',
+                                  open ? 'rotate-180' : '',
+                                )}
+                                aria-hidden='true'
+                              />
+                            </Disclosure.Button>
+                            <Disclosure.Panel className='ml-2 p-3 space-y-2 bg-gray-200'>
+                              <Disclosure.Button>
+                                {item.routes!.map((route) => (
+                                  <NavigationItemLink
+                                    expanded={expanded}
+                                    key={route.name}
+                                    item={route}
+                                  />
+                                ))}
+                              </Disclosure.Button>
+                            </Disclosure.Panel>
+                          </>
+                        )}
+                      </Disclosure>
+                    );
+                  }
+                  return (
+                    <NavigationItemLink
+                      expanded={expanded}
+                      key={item.name}
+                      item={item}
+                    />
+                  );
+                })}
+              </div>
+
+              {/* routes */}
+
+              {/* routes end */}
+
+              {/* bottom section */}
+              <div>
+                {!globalUser.isAuth ? (
+                  <div
+                    className={classNames(
+                      ' bg-indigo-500/15 rounded-xl px-2 py-4 text-center',
+                      expanded ? '' : 'hidden',
+                    )}
+                  >
+                    <div className=' dark:text-indigo-200'>
+                      You have not signed in yet!. Click the button to continue
+                    </div>
+                    <div className='mt-5'>
+                      <Link
+                        href={'/auth/login'}
+                        className='rounded-full  px-4 py-2.5 bg-indigo-500 text-md font-semibold focus:ring-4 focus:outline-none focus:ring-indigo-300'
+                      >
+                        Login
+                      </Link>
+                    </div>
+                  </div>
+                ) : null}
+
+                {/* bottom routes */}
+                <div className='mt-10'>
+                  {bottomRoutes.map((item) => (
+                    <NavigationItemLink
+                      expanded={expanded}
+                      key={item.name}
+                      item={item}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
-        ) : null}
-
-        {/* bottom routes */}
-        <div className='mt-10'>
-          {bottomRoutes.map((item) => (
-            <NavigationItemLink
-              expanded={expanded}
-              key={item.name}
-              item={item}
-            />
-          ))}
-        </div>
-      </div>
+        </Dialog.Panel>
+      </Dialog>
     </aside>
   );
 }

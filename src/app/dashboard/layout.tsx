@@ -25,6 +25,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }>) {
   const [expanded, setExpanded] = useState<boolean>(true);
+  const [open, setOpen] = useState<boolean>(false);
 
   return (
     // @ts-ignore
@@ -43,23 +44,25 @@ export default function DashboardLayout({
               <div className='relative h-full'>
                 <div
                   className={classNames(
-                    'absolute transition-all z-50 bg-white  duration-300 left-0 top-0',
+                    'absolute hidden md:inline-block transition-all z-40 bg-white  duration-300 left-0 top-0',
                     expanded ? 'w-[16rem]' : 'w-0 md:w-[5rem]',
                   )}
                 >
                   <button
                     onClick={() => setExpanded(!expanded)}
-                    className='absolute bg-indigo-500 border-0  md:bg-white top-[0.5rem] md:top-[3rem] -right-10 md:-right-[1rem] z-50 rounded-r-lg md:rounded-full h-10 w-10 md:border  border-gray-300'
+                    className='absolute  border-0  md:bg-white top-[0.5rem] md:top-[3rem] -right-10 md:-right-[1rem] z-50 rounded-r-lg md:rounded-full h-10 w-10 md:border  border-gray-300'
                   >
                     <FontAwesomeIcon
                       icon={faAngleDoubleLeft}
                       className={classNames(
-                        'h-6 w-6 md:h-5 md:w-5 transition-all  mt-1 text-white md:text-gray-700',
+                        'h-6 w-6 md:h-5 md:w-5 transition-all  mt-1 text-white md:text-gray-700 hidden md:inline-block',
                         expanded ? '' : '-rotate-180',
                       )}
                     />
+
                   </button>
-                  <DashboardNavigation expanded={expanded} />
+                   
+                  <DashboardNavigation open={open} setOpen={setOpen} expanded={expanded} />
                 </div>
                 {/* @ts-ignore */}
                 <ErrorBoundary fallback={<Error />}>
@@ -71,7 +74,7 @@ export default function DashboardLayout({
                         : 'w-[calc(100%)] md:w-[calc(100%-5rem)]',
                     )}
                   >
-                    <DashboardHeader />
+                    <DashboardHeader setOpen={setOpen} />
                     {children}
                   </div>
                 </ErrorBoundary>

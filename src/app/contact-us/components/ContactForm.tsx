@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 
+import ComponentSpinner from '@/components/ComponentSpinner';
+import AxiosProxy from '@/utils/AxiosProxy';
 import { classNames } from '@/utils/classNames';
 import {
   faFacebook,
@@ -13,9 +16,43 @@ import {
   faPhoneFlip,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useState, FormEvent } from 'react';
 
 export default function ContactForm() {
+  const [email, setEmail] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [companyName, setCompanyName] = useState('');
+  const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);
+
+  const postMessage = async (event: FormEvent) => {
+    try {
+      event.preventDefault();
+      setLoading(true);
+
+      const response = await AxiosProxy.post('/contact/add', {
+        companyName,
+        email,
+        firstName,
+        lastName,
+        content: message,
+      });
+
+      if (response.status == 201) {
+        setSuccess(true)
+      }
+    } catch (err) {
+      setError(
+        'An Unexpected Error Occurred and Could not process your request. Retry again',
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className='flex flex-wrap lg:flex-nowrap items-start space-y-16 lg:space-x-6 lg:space-y-0 px-6 md:px-16 lg:px-24 xl:px-32'>
       <div className='w-full xl:w-[40%] lg:sticky top-[20%]'>
@@ -138,10 +175,11 @@ export default function ContactForm() {
         <form
           action='#'
           method='POST'
+          onSubmit={postMessage}
           className='mx-auto mt-16 max-w-xl sm:mt-20'
         >
           <div className='grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2 mb-2'>
-          <div className=''>
+            <div className=''>
               <label
                 htmlFor='first-name'
                 className='block text-md font-semibold leading-6 text-gray-900 mb-2.5'
@@ -151,8 +189,9 @@ export default function ContactForm() {
 
               <input
                 type='text'
-                id='fullName'
-                name='fullName'
+                id='firstName'
+                name='firstName'
+                onChange={(e) => setFirstName(e.target.value)}
                 className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                 required
               />
@@ -169,12 +208,13 @@ export default function ContactForm() {
                 type='text'
                 id='lastName'
                 name='lastName'
+                onChange={(e) => setLastName(e.target.value)}
                 className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                 required
               />
             </div>
             <div className='sm:col-span-2'>
-            <label
+              <label
                 htmlFor='first-name'
                 className='block text-md font-semibold leading-6 text-gray-900 mb-2.5'
               >
@@ -185,8 +225,8 @@ export default function ContactForm() {
                 type='text'
                 id='companyName'
                 name='companyName'
+                onChange={(e) => setCompanyName(e.target.value)}
                 className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-                required
               />
             </div>
             <div className='sm:col-span-2'>
@@ -199,11 +239,11 @@ export default function ContactForm() {
               <input
                 type='email'
                 id='email'
+                name='email'
+                onChange={(e) => setEmail(e.target.value)}
                 aria-describedby='helper-text-explanation'
                 className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
               />
-
-             
             </div>
             <div className='sm:col-span-2'>
               <label
@@ -214,6 +254,7 @@ export default function ContactForm() {
               </label>
               <textarea
                 id='message'
+                onChange={(e) => setMessage(e.target.value)}
                 rows={4}
                 className='block p-2.5 w-full text-lg text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                 placeholder='I want ...'
@@ -221,13 +262,14 @@ export default function ContactForm() {
             </div>
           </div>
           <div className='my-5 flex justify-end'>
-              <button
-                type='submit'
-                className='rounded-xl bg-indigo-500 px-8 py-1.5 text-center text-lg font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
-              >
-                Let{"'"}s Talk.
-              </button>
-            </div>
+            <button
+              type='submit'
+              className='rounded-xl bg-indigo-500 px-8 py-1.5 text-center text-lg font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+            >
+              {loading ? <ComponentSpinner /> : null}
+              <span>Let{"'"}s Talk</span>
+            </button>
+          </div>
         </form>
       </div>
     </div>

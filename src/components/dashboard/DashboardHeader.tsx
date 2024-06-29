@@ -2,7 +2,11 @@
 
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React, { useEffect, useState } from 'react';
-import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
+import {
+  Bars3Icon,
+  MoonIcon,
+  SunIcon,
+} from '@heroicons/react/24/outline';
 
 import DashDialogMenu from '../DashDialogMenu';
 import { classNames } from '@/utils/classNames';
@@ -11,7 +15,11 @@ import { classNames } from '@/utils/classNames';
 import NotificationsPreview from '../NotificationsPreview';
 import BellIconWrapper from './BellIconWrapper';
 
-export default function DashboardHeader() {
+interface DashboardHeaderProps {
+  setOpen: (arg0: boolean) => void;
+}
+
+export default function DashboardHeader({ setOpen }: DashboardHeaderProps) {
   // const [open, setOpen] = useState(false);
 
   const [preview, setPreview] = useState<boolean>(false);
@@ -118,35 +126,46 @@ export default function DashboardHeader() {
             <DashDialogMenu />
           </div>
 
-          <div className='flex w-full flex-1 justify-end gap-x-5 md:hidden'>
+          <div className='flex w-full flex-1 justify-between  md:hidden'>
             {/* <AppTitle/> */}
 
             <button
-              // href='/dashboard/notifications'
-              onClick={() => setDark(!isDark)}
-              data-dropdown-toggle='notification-dropdown'
-              className='flex items-center text-md font-semibold  px-3.5 py-1.5 focus:ring-4 focus:ring-indigo-300 hover:bg-white hover:ring-indigo-400 hover:text-indigo-500 rounded-full'
+              type='button'
+              className='-m-2.5 inline-flex md:hidden items-center justify-center rounded-md p-2.5 text-gray-700'
+              onClick={() => setOpen(true)}
             >
-              {isDark ? (
-                <SunIcon className='h-6 w-6 text-white' aria-hidden='true' />
-              ) : (
-                <MoonIcon
-                  className='h-6 w-6 text-gray-700'
-                  aria-hidden='true'
-                />
-              )}
+              <span className='sr-only'>Open main menu</span>
+              <Bars3Icon className='h-8 w-8' aria-hidden='true' />
             </button>
 
-            <button
-              // href='/dashboard/notifications'
-              onClick={() => setPreview(true)}
-              data-dropdown-toggle='notification-dropdown'
-              className='flex items-center text-md font-semibold   px-3.5 py-1.5 focus:ring-4 focus:ring-indigo-300 hover:bg-white hover:ring-indigo-400 hover:text-indigo-500 rounded-full'
-            >
-              <BellIconWrapper />
-            </button>
+            <div className='flex  gap-x-5'>
+              <button
+                // href='/dashboard/notifications'
+                onClick={() => setDark(!isDark)}
+                data-dropdown-toggle='notification-dropdown'
+                className='flex items-center text-md font-semibold  px-3.5 py-1.5 focus:ring-4 focus:ring-indigo-300 hover:bg-white hover:ring-indigo-400 hover:text-indigo-500 rounded-full'
+              >
+                {isDark ? (
+                  <SunIcon className='h-6 w-6 text-white' aria-hidden='true' />
+                ) : (
+                  <MoonIcon
+                    className='h-6 w-6 text-gray-700'
+                    aria-hidden='true'
+                  />
+                )}
+              </button>
 
-            <DashDialogMenu />
+              <button
+                // href='/dashboard/notifications'
+                onClick={() => setPreview(true)}
+                data-dropdown-toggle='notification-dropdown'
+                className='flex items-center text-md font-semibold   px-3.5 py-1.5 focus:ring-4 focus:ring-indigo-300 hover:bg-white hover:ring-indigo-400 hover:text-indigo-500 rounded-full'
+              >
+                <BellIconWrapper />
+              </button>
+
+              <DashDialogMenu />
+            </div>
           </div>
         </nav>
 
