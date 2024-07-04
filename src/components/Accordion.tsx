@@ -23,7 +23,7 @@ export default function Accordion({
           aria-expanded={accordionOpen}
           aria-controls={`accordion-text-${id}`}
         >
-          <span className='text-gray-700 text-md md:text-xl font-semibold'>
+          <span className='text-gray-700 dark:text-white text-md md:text-xl font-semibold'>
             {title}
           </span>
           <span className=' h-9 w-9 flex -mt-1  justify-center items-center rounded-full'>

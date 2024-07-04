@@ -10,9 +10,9 @@ export default function Faqs({ faqs }: FaqsPropsIface) {
   return (
     <div className='mx-auto max-w-2xl lg:max-w-4xl'>
       {faqs.map((faq: FaqsProp, index: number) => (
-        <div className='border-b border-gray-300  mb-3' key={index}>
+        <div className='border-b border-gray-300 dark:border-gray-400 mb-3' key={index}>
           <Accordion title={faq.title} id={`faqs-${index}`} active={false}>
-            <p className='text-md text-gray-800 md:text-lg px-5'  dangerouslySetInnerHTML={{ __html: faq.content }}>
+            <p className='text-md text-gray-800 dark:text-gray-300 md:text-lg px-5'  dangerouslySetInnerHTML={{ __html: faq.content }}>
               
             </p>
           </Accordion>
