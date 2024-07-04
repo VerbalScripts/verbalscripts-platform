@@ -31,7 +31,6 @@ export default function BellIconWrapper() {
 
   useEffect(() => {
     if (Isnote) {
-      console.log('show toast ...');
       setshowNote(true);
       if (audioPlayer.current != null) {
         audioPlayer.current.volume = 0.2;
@@ -69,11 +68,13 @@ export default function BellIconWrapper() {
       </div>
       <div
         className={classNames(
-          'absolute  pointer-events-none top-12  right-0 transition-all rounded-xl bg-blue-500 text-gray-50 w-[10rem] p-1 leading-6',
+          'absolute  pointer-events-none top-12 text-left  -right-4 transition-all rounded-lg bg-blue-500  w-[15rem] py-1.5 leading-6 px-3',
           showNote ? 'visible opacity-100' : 'invisible opacity-0',
         )}
       >
-        You have new notifications.
+        <span className='absolute w-7 h-7 rotate-45 -z-[1] right-4 -top-2 bg-blue-500'></span>
+        <div className='text-gray-50 font-bold'>New Notifications</div>
+        <div className='text-gray-200'>You have new notifications.</div>
       </div>
     </div>
   );

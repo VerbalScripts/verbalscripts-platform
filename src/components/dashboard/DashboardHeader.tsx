@@ -102,7 +102,7 @@ export default function DashboardHeader({ setOpen }: DashboardHeaderProps) {
               // href='/dashboard/notifications'
               onClick={() => setDark(!isDark)}
               data-dropdown-toggle='notification-dropdown'
-              className='flex items-center text-md font-semibold  px-3.5 py-1.5 focus:ring-4 focus:ring-indigo-300 hover:bg-white hover:ring-indigo-400 hover:text-indigo-500 rounded-full'
+              className='flex items-center text-md font-semibold  px-3.5 py-1.5 focus:ring-4 focus:ring-indigo-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:ring-indigo-400 hover:text-indigo-500 rounded-full'
             >
               {isDark ? (
                 <SunIcon className='h-6 w-6 text-white' aria-hidden='true' />
@@ -118,7 +118,7 @@ export default function DashboardHeader({ setOpen }: DashboardHeaderProps) {
               // href='/dashboard/notifications'
               onClick={() => setPreview(true)}
               data-dropdown-toggle='notification-dropdown'
-              className='flex items-center text-md font-semibold   px-3.5 py-1.5 focus:ring-4 focus:ring-indigo-300 hover:bg-white hover:ring-indigo-400 hover:text-indigo-500 rounded-full'
+              className='flex items-center text-md font-semibold   px-3.5 py-1.5 focus:ring-4 focus:ring-indigo-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:ring-indigo-400 hover:text-indigo-500 rounded-full'
             >
               <BellIconWrapper />
             </button>
