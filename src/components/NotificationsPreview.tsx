@@ -11,6 +11,8 @@ import { Button } from 'flowbite-react';
 import moment from 'moment';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
+import ComponentSpinner from './ComponentSpinner';
+import { CogIcon } from '@heroicons/react/20/solid';
 
 interface NotificationPreviewProps {
   open: boolean;
@@ -22,24 +24,48 @@ export default function NotificationsPreview({
   setOpen,
 }: NotificationPreviewProps) {
   const [notifications, setNotifications] = useState<UserNotification[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const fetchNotifications = async () => {
     try {
-      const response = await AxiosProxy.get(
-        '/notification?read=false&content=true',
-      );
+      const response = await AxiosProxy.get('/notification', {
+        headers: {
+          'Cache-Control': 'no-cache',
+          Pragma: 'no-cache',
+          Expires: '0',
+        },
+      });
 
       if (response.status == 200) {
         setNotifications(response.data.results || []);
       }
     } catch (err) {
       console.log(err);
+    } finally {
+      setLoading(false);
     }
+  };
+
+  const markAllAsRead = async () => {
+    try {
+      const response = await AxiosProxy.patch('/notification/mark-all-read');
+
+      if (response.status == 201) {
+        setNotifications(response.data.results || []);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const handleFeeds = async () => {
+    return Promise.all([markAllAsRead(), fetchNotifications()]);
   };
 
   useEffect(() => {
     if (open) {
-      fetchNotifications();
+      handleFeeds();
+    }else {
+      setLoading(false)
     }
   }, [open]);
 
@@ -53,26 +79,32 @@ export default function NotificationsPreview({
     >
       <div
         className={classNames(
-          'fixed  z-[100] top-14 h-auto  right-5 ',
+          'fixed  z-[100] top-14 h-auto  right-16 ',
           open ? 'block toast-render' : 'hidden toast-hide',
         )}
       >
         <div className='flex  items-stretch justify-center text-center md:items-center bg-white dark:bg-zinc-700 rounded-xl border border-gray-200 dark:border-0'>
           <div
-            className='max-w-sm text-base list-none  divide-y divide-gray-100 shadow-lg dark:divide-gray-600  '
+            className='max-w-sm lg:max-w-md text-base list-none  divide-y divide-gray-100 shadow-lg dark:divide-gray-600  '
             id='notification-dropdown'
           >
-            <div className='py-2 text-left px-4 text-base font-bold  text-gray-700   dark:text-white'>
-              Notifications
+            <div className='py-2 text-left px-4 flex justify-between items-center'>
+              <span className='text-lg font-bold  text-gray-700   dark:text-white'>
+                Notifications
+              </span>
+
+              <Link href={'/settings#manage-notifications'}>
+                <CogIcon className='text-gray-700 dark:text-white w-6 h-6' />
+              </Link>
             </div>
 
-            <div className='max-h-[20rem]  overflow-y-auto'>
-              {notifications.length == 0 ? (
+            <div className='min-w-md max-h-[20rem] h-[20rem]  overflow-y-auto'>
+              {notifications.length == 0 && !loading ? (
                 <div className='h-full w-full flex flex-col items-center justify-center px-10'>
                   {/* add lottie animation here */}
                   <Player
                     autoplay
-                    loop={false}
+                    loop={true}
                     src='https://lottie.host/0a51c829-7800-4e7e-9e93-61768c37479e/VKuYZcqOtG.json'
                     style={{ width: '180px', height: '200px' }}
                   ></Player>
@@ -81,7 +113,7 @@ export default function NotificationsPreview({
                     No new Notifications
                   </div>
                 </div>
-              ) : (
+              ) : notifications.length > 0 && !loading ? (
                 notifications.map((notification) => (
                   <a
                     key={notification.id}
@@ -106,14 +138,14 @@ export default function NotificationsPreview({
                     </div>
                   </a>
                 ))
+              ) : (
+                <div className='h-full min-w-md flex items-center justify-center'>
+                  <ComponentSpinner size='md' />
+                </div>
               )}
             </div>
-            <div className='flex items-center justify-between py-2 px-4 '>
-              <div className=''>
-                <Button className='text-xs rounded-xl bg-none text-indigo-500 py-0.5'>
-                  <CheckIcon className='w-5 text-indigo-500' /> Mark as read
-                </Button>
-              </div>
+            <div className='flex items-center justify-end py-2 px-4 '>
+              
 
               <Link
                 href='/dashboard/notifications'

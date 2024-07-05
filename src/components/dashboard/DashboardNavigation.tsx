@@ -21,6 +21,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import AppTitle from '../AppTitle';
 import { useRecoilValue } from 'recoil';
 import { userState } from '@/store/configureStore';
+import { CogIcon } from '@heroicons/react/20/solid';
 
 type NavItem = {
   name: string;
@@ -117,6 +118,11 @@ export default function DashboardNavigation({
       name: 'Invoice',
       icon: CreditCardIcon,
       href: '/dashboard/invoice',
+    },
+    {
+      name: 'Settings',
+      icon: CogIcon,
+      href: '/dashboard/settings',
     },
   ];
 

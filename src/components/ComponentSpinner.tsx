@@ -1,9 +1,26 @@
+import { classNames } from '@/utils/classNames';
 import React from 'react';
 
-export default function ComponentSpinner() {
+type spinner_size = 'xl' | 'md' | 'sm';
+interface ComponentSpinnerProps {
+  size?: spinner_size;
+}
+
+export default function ComponentSpinner({
+  size = 'sm',
+}: ComponentSpinnerProps) {
   return (
     <svg
-      className='animate-spin -ml-1 mr-3 h-5 w-5 text-white'
+      className={classNames(
+        'animate-spin -ml-1 mr-3  text-gray-500  dark:text-white',
+        size == 'sm'
+          ? 'h-5 w-5'
+          : size == 'md'
+            ? 'h-10 w-10'
+            : size == 'xl'
+              ? 'w-16 h-16'
+              : 'h-5 w-5',
+      )}
       xmlns='http://www.w3.org/2000/svg'
       fill='none'
       viewBox='0 0 24 24'

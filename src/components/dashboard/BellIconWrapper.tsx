@@ -7,6 +7,7 @@ export default function BellIconWrapper() {
   const [showNote, setshowNote] = useState(false);
   const [Isnote, setIsnote] = useState(false);
   const audioPlayer = useRef<HTMLAudioElement | null>(null);
+  const [loading, setLoading] = useState(true)
 
   const httpNotifications = async () => {
     try {
@@ -21,12 +22,15 @@ export default function BellIconWrapper() {
     } catch (err) {
       console.log(err);
     }
+    finally {
+      setLoading(false)
+    }
   };
 
   const closeToast = () => {
     setTimeout(() => {
       setshowNote(false);
-    }, 7000);
+    }, 5000);
   };
 
   useEffect(() => {
@@ -41,10 +45,12 @@ export default function BellIconWrapper() {
   }, [Isnote]);
 
   useEffect(() => {
-    setTimeout(() => {
-      httpNotifications();
-    }, 5000);
-  }, []);
+    if (loading) {
+      setTimeout(() => {
+        httpNotifications();
+      }, 5000);
+    }
+  }, [loading]);
 
   return (
     <div className='relative z-10'>
