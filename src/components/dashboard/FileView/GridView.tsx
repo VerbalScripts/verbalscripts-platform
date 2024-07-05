@@ -7,6 +7,8 @@ import { classNames } from '@/utils/classNames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 import AxiosProxy from '@/utils/AxiosProxy';
+import moment from 'moment';
+import { DurationFromSeconds } from '@/utils/DurationFromSeconds';
 
 interface GridViewProps {
   folders: OrderFolder[];
@@ -175,7 +177,7 @@ export default function GridView({
           </span>
         </span>
       ) : null} */}
-      <div className='grid max-w-none  content-center grid-cols-2 md:grid-cols-3 gap-4 lg:max-w-none lg:grid-cols-4 '>
+      <div className='grid max-w-none  content-center grid-cols-1 md:grid-cols-3 gap-3 lg:max-w-none lg:grid-cols-3 '>
         {showFolders &&
           folders.map((folder, index) => (
             <div
@@ -217,50 +219,56 @@ export default function GridView({
             onDragEnd={handleDragEnd}
             key={order.fileId}
             className={classNames(
-              'rounded-xl gap-x-5  w-full  items-start gap-y-3 px-3 md:px-5 py-4 shadow-md',
+              'rounded-xl gap-x-5  w-full  items-start gap-y-5 px-3 md:px-5 py-4 border border-gray-200 dark:border-gray-600 shadow-md',
               draggedRowIndex == index ? 'bg-gray-200' : '',
             )}
           >
-            <div className='flex justify-between items-center'>
+            <div className='flex justify-between items-center mb-1.5  '>
               <span>
                 <Checkbox
                   onChange={(event) => addSelected(event, order.id)}
                   checked={isSelected(order.id)}
                 />
               </span>
-              <span className='bg-indigo-100 rounded-xl px-3 py-1 text-indigo-600'>
-                {order.status}
-              </span>
+              <TableMenuDropDown
+                remove={() => removeFile(order.id)}
+                rename={() => renameFile(order.id)}
+                duplicate={() => copyFile(order.id)}
+                share={() => shareFile(order.id)}
+                isGrid={true}
+              />
             </div>
-            <div className='flex items-center justify-between'>
-              <DocumentIcon className='text-gray-700 h-7 w-7' />
-
-              <div className='flex flex-col items-start '>
-                <div className='max-w-[8rem]'>
-                  <span className='text-gray-600 text-base font-semibold  line-clamp-2'>
+            <div className='flex items-start gap-x-10 '>
+              <div className='w-[1rem]'>
+                <DocumentIcon className='text-gray-700 h-7 w-7' />
+              </div>
+              <div className='flex flex-col items-start flex-grow'>
+                <div className=''>
+                  <span className='text-gray-600 text-lg footer-title font-semibold  line-clamp-2'>
                     {order.label}
                   </span>
                 </div>
-                <div className='mt-1 flex'>
-                  <span className='text-gray-600 text-sm'>
-                    {bytesToMB(order.size)} {'MBs'}
-                  </span>
-                  |
-                  <span className='text-gray-600 text-sm uppercase'>
-                    {order.mimetype.split('/')[1]}
-                  </span>
-                </div>
+                <div className='text-sm text-gray-400 dark:text-gray-200'>{moment(order.createdAt).format('llll')}</div>
               </div>
-
-              <div>
-                <TableMenuDropDown
-                  remove={() => removeFile(order.id)}
-                  rename={() => renameFile(order.id)}
-                  duplicate={() => copyFile(order.id)}
-                  share={() => shareFile(order.id)}
-                  isGrid={true}
-                />
-              </div>
+            </div>
+            <div className='mt-1.5 flex justify-between'>
+              <span className='text-gray-600 dark:text-gray-200 text-sm uppercase'>
+                <b>size</b>: {bytesToMB(order.size)} {'MBs'}
+              </span>
+              <span className='text-gray-600 dark:text-gray-200 text-sm uppercase'>
+                <b>File Type</b>: {order.mimetype.split('/')[1]}
+              </span>
+            </div>
+            <div className='mt-1.5 flex justify-between'>
+              <span className='capitalize  text-indigo-600'>
+                <b>Duration</b> {order.duration ? DurationFromSeconds(order.duration) : 'Null'}
+              </span>
+              <span className='capitalize  text-indigo-600'>
+                <b>Status: </b>
+                <span className='bg-indigo-100 rounded-xl capitalize px-1.5 py-1 text-indigo-600'>
+                  {order.status}
+                </span>
+              </span>
             </div>
           </div>
         ))}
