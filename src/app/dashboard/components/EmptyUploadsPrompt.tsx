@@ -60,7 +60,6 @@ export default function EmptyUploadsPrompt() {
 
           <div className='text-3xl md:text-4xl font-semibold text-gray-600 dark:text-gray-500'>
             Are you ready to transcript?{' '}
-            <span className='underline text-blue-500'>Choose An Option</span>
           </div>
         </div>
 

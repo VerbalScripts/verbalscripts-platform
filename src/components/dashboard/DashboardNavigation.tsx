@@ -56,7 +56,7 @@ export default function DashboardNavigation({
             href={item.href}
             className={classNames(
               'flex items-center gap-x-4 px-3 py-2.5 font-semibold hover:bg-orange-300/50 text-white  rounded-full ',
-              pathname == item.href ? 'bg-orange-300 text-white' : '',
+              pathname == item.href ? 'bg-orange-400 text-white' : '',
               expanded ? '' : 'justify-center',
             )}
           >
