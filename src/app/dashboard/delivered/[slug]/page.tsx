@@ -9,11 +9,12 @@ import LoadSpinner from '@/components/dashboard/LoadSpinner';
 import SystemProgressUpload from '@/components/dashboard/SystemProgressUpload';
 import AxiosProxy from '@/utils/AxiosProxy';
 import {
-  ArrowDownOnSquareIcon,
+  ArrowDownTrayIcon,
   ArrowPathIcon,
   CheckBadgeIcon,
   ClockIcon,
   ExclamationCircleIcon,
+  PhotoIcon,
   PlayIcon,
 } from '@heroicons/react/24/outline';
 import { ArrowLeftIcon, GiftIcon } from '@heroicons/react/20/solid';
@@ -29,6 +30,7 @@ import { DurationFromSeconds } from '@/utils/DurationFromSeconds';
 import { bytesToMB } from '@/utils/bytesToMb';
 import { useSetRecoilState } from 'recoil';
 import { systemProcessStatus } from '@/store/features/fileUpload';
+import FileDownloader from '@/components/FileDownloader';
 
 interface PageProps {
   params: { slug: string };
@@ -133,6 +135,14 @@ export default function Page({ params: { slug } }: PageProps) {
     }
   }, [statusOrder]);
 
+  const [downloadUrl, setDownloadUrl] = useState('blank');
+
+  const requestFileDownload = async (sample_url: string) => {
+    // setDownloadFile(true);
+    const url = `/orders/download-sample?file=${sample_url}`;
+    setDownloadUrl(url);
+  };
+
   useEffect(() => {
     if (slug) {
       fetchOrderInfo();
@@ -153,6 +163,8 @@ export default function Page({ params: { slug } }: PageProps) {
           fileId={videoId}
           resetPlayer={setVideoId}
         />
+
+        <FileDownloader url={downloadUrl} reset={setDownloadUrl} />
 
         {/* cancel order  modal*/}
         <CancelOrder
@@ -899,19 +911,39 @@ export default function Page({ params: { slug } }: PageProps) {
                     FILE SAMPLES
                   </div>
                 </div>
-                <div className='space-y-2'>
-                  {order?.configuration.samples.map((sample, index) => (
-                    <div key={index} className='flex items-center'>
-                      <ArrowDownOnSquareIcon className='w-5 text-gray-600 dark:text-white' />
-                      <a
-                        href=''
-                        download={sample}
-                        className='text-indigo-500 underline underline-offset-4 hover:text-indigo-400'
+                <div className='max-w-2xl'>
+                  <div className='space-y-2   '>
+                    {order?.configuration.samples.map((sample, index) => (
+                      <div
+                        key={index}
+                        className='flex items-center gap-x-10 bg-gray-50 dark:bg-gray-700 rounded-xl p-2'
                       >
-                        {sample}
-                      </a>
-                    </div>
-                  ))}
+                        <div className='flex gap-x-2 items-start justify-between'>
+                          <span className='w-12 h-12 bg-orange-100 dark:bg-zinc-700 rounded-xl flex justify-center items-center'>
+                            <PhotoIcon className='text-indigo-600 h-8 w-8' />
+                          </span>
+                          <button
+                            onClick={() => requestFileDownload(sample.url)}
+                            className='flex flex-col gap-y-1 text-left'
+                          >
+                            <span className='text-indigo-500 underline underline-offset-4 hover:text-indigo-400'>
+                              {sample.label}
+                            </span>
+                            <span className='text-sm text-gray-400 dark:text-gray-200'>
+                              Click to download file
+                            </span>
+                          </button>
+                        </div>
+
+                        <button
+                          onClick={() => requestFileDownload(sample.url)}
+                          className='text-indigo-500 underline underline-offset-4 bg-red-100 dark:bg-red-200 hover:text-indigo-400  flex items-center justify-center h-10 w-10 rounded-full'
+                        >
+                          <ArrowDownTrayIcon className=' text-gray-600 dark:text-gray-200 h-7 w-7' />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
               {/* show files preview */}
