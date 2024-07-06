@@ -21,7 +21,7 @@ import {
 // import { Breadcrumb } from 'flowbite-react';
 
 import { classNames } from '@/utils/classNames';
-// import FileUploadFromLocal from '@/components/dashboard/FileUploadFromLocal';
+import FileUploadFromLocal from '@/components/dashboard/FileUploadFromLocal';
 import FileUploadFromOtherOptions from '@/components/dashboard/FileUploadFromOtherOptions';
 import AddFolder from '@/components/modals/AddFolder';
 import AxiosProxy from '@/utils/AxiosProxy';
@@ -508,7 +508,7 @@ export default function Page() {
                 openDirectLink={() => setOpenDirectLink(!openDirectLink)}
                 openYoutube={() => setOpenYoutube(!openYoutube)}
               />
-              {/* <FileUploadFromLocal /> */}
+              <FileUploadFromLocal />
               <button
                 onClick={() => setOpen(true)}
                 className='inline-flex items-center   gap-x-2 rounded-sm md:rounded-md bg-indigo-50 font-semibold px-4 py-2  focus-within:ring-4 focus-within:ring-indigo-400'

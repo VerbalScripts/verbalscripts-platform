@@ -70,7 +70,10 @@ interface OrderConfiguration {
   instructions?: string;
   turn_around_time: string;
   text_format: string;
-  samples: string[];
+  samples: {
+    label: string;
+    url: string;
+  }[];
   language: string;
   apply_timestamps: string;
   service: string;

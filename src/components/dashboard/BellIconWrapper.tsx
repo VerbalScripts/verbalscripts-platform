@@ -16,13 +16,15 @@ export default function BellIconWrapper() {
       );
 
       if (response.status == 200) {
-        console.log('called it tracing ... ');
-        setIsnote(true);
+        if (response.data.results.length > 0) {
+          setIsnote(true);
+        }
       }
     } catch (err) {
       console.log(err);
     } finally {
       setLoading(false);
+      backgroundNotificationsCheck()
     }
   };
 
@@ -30,6 +32,12 @@ export default function BellIconWrapper() {
     setTimeout(() => {
       setshowNote(false);
     }, 5000);
+  };
+
+  const backgroundNotificationsCheck = () => {
+    setInterval(() => {
+      httpNotifications();
+    }, 20000);
   };
 
   useEffect(() => {

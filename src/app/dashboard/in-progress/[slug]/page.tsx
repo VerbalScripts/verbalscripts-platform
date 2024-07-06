@@ -9,12 +9,14 @@ import LoadSpinner from '@/components/dashboard/LoadSpinner';
 import SystemProgressUpload from '@/components/dashboard/SystemProgressUpload';
 import AxiosProxy from '@/utils/AxiosProxy';
 import {
-  ArrowDownOnSquareIcon,
+  ArrowDownTrayIcon,
   ArrowPathIcon,
   CheckBadgeIcon,
   ClockIcon,
   ExclamationCircleIcon,
+  PhotoIcon,
   PlayIcon,
+  TrashIcon,
 } from '@heroicons/react/24/outline';
 import { ArrowLeftIcon, GiftIcon } from '@heroicons/react/20/solid';
 import { useRouter } from 'next/navigation';
@@ -29,6 +31,8 @@ import { DurationFromSeconds } from '@/utils/DurationFromSeconds';
 import { bytesToMB } from '@/utils/bytesToMb';
 import { useSetRecoilState } from 'recoil';
 import { systemProcessStatus } from '@/store/features/fileUpload';
+import FileDownloader from '@/components/FileDownloader';
+import RemoveOrderFileModal from '../components/RemoveOrderFileModal';
 
 interface PageProps {
   params: { slug: string };
@@ -133,6 +137,22 @@ export default function Page({ params: { slug } }: PageProps) {
     }
   }, [statusOrder]);
 
+  const [downloadUrl, setDownloadUrl] = useState('blank');
+  const [openRemove, setOpenRemove] = useState(false);
+  const [removeId, setRemoveId] = useState('');
+
+  const requestFileDownload = async (sample_url: string) => {
+    // setDownloadFile(true);
+    const url = `/orders/download-sample?file=${sample_url}`;
+    setDownloadUrl(url);
+  };
+
+
+  const removeOrderFile = (id: string) => {
+    setRemoveId(id)
+    setOpenRemove(true)
+  }
+
   useEffect(() => {
     if (slug) {
       fetchOrderInfo();
@@ -163,10 +183,17 @@ export default function Page({ params: { slug } }: PageProps) {
           id={slug}
         />
 
+        <FileDownloader url={downloadUrl} reset={setDownloadUrl} />
+
+
+<RemoveOrderFileModal fileId={removeId} open={openRemove} setOpen={setOpenRemove} reload={fetchOrderInfo} />
         {loading ? (
           <LoadSpinner />
         ) : (
           <div className='px-6  md:px-16 xl:px-16  py-3'>
+            <div className='text-3xl lg:text-4xl text-gray-800 dark:text-white mb-5 font-semibold'>
+              Order #{order?.orderId} Summary
+            </div>
             {/* back button */}
             <div className='flex items-center space-x-3'>
               <button
@@ -245,7 +272,7 @@ export default function Page({ params: { slug } }: PageProps) {
                         </span>
                         <span
                           id='success-icon'
-                          className='hidden inline-flex items-center'
+                          className='hidden lg:inline-flex items-center'
                         >
                           <svg
                             className='w-3.5 h-3.5 text-blue-700 dark:text-blue-500'
@@ -899,19 +926,37 @@ export default function Page({ params: { slug } }: PageProps) {
                     FILE SAMPLES
                   </div>
                 </div>
-                <div className='space-y-2'>
+                <div className='max-w-2xl'>
+                <div className='space-y-2   '>
                   {order?.configuration.samples.map((sample, index) => (
-                    <div key={index} className='flex items-center'>
-                      <ArrowDownOnSquareIcon className='w-5 text-gray-600 dark:text-white' />
-                      <a
-                        href=''
-                        download={sample}
-                        className='text-indigo-500 underline underline-offset-4 hover:text-indigo-400'
+                    <div key={index} className='flex items-center gap-x-10 bg-gray-50 dark:bg-gray-700 rounded-xl p-2'>
+                      <div className='flex gap-x-2 items-start justify-between'>
+                        <span className='w-12 h-12 bg-orange-100 dark:bg-zinc-700 rounded-xl flex justify-center items-center'>
+                          <PhotoIcon className='text-indigo-600 h-8 w-8' />
+                        </span>
+                        <button
+                          onClick={() => requestFileDownload(sample.url)}
+                          className='flex flex-col gap-y-1 text-left'
+                        >
+                          <span className='text-indigo-500 underline underline-offset-4 hover:text-indigo-400'>
+                          {sample.label}
+                          </span>
+                          <span className='text-sm text-gray-400 dark:text-gray-200'>
+                            Click to download file
+                          </span>
+                        </button>
+                      </div>
+
+                      <button
+                        onClick={() => requestFileDownload(sample.url)}
+                        className='text-indigo-500 underline underline-offset-4 bg-red-100 dark:bg-red-200 hover:text-indigo-400  flex items-center justify-center h-10 w-10 rounded-full'
                       >
-                        {sample}
-                      </a>
+                        <ArrowDownTrayIcon className=' text-gray-600 dark:text-gray-200 h-7 w-7' />
+                      </button>
                     </div>
                   ))}
+                </div>
+
                 </div>
               </div>
               {/* show files preview */}
@@ -932,6 +977,7 @@ export default function Page({ params: { slug } }: PageProps) {
                       <Table.HeadCell>Duration</Table.HeadCell>
                       <Table.HeadCell>Duration</Table.HeadCell>
                       <Table.HeadCell>Created At</Table.HeadCell>
+                      <Table.HeadCell>Actions</Table.HeadCell>
                     </Table.Head>
                     <Table.Body className='divide-y'>
                       {order?.files.map((orderFile) => (
@@ -975,6 +1021,11 @@ export default function Page({ params: { slug } }: PageProps) {
                             <span className='capitalize text-sm text-gray-900 dark:text-white'>
                               {moment(orderFile.createdAt).format('L')}
                             </span>
+                          </Table.Cell>
+                          <Table.Cell className='py-2'>
+                           <button onClick={() => removeOrderFile(orderFile.id)}>
+                            <TrashIcon  className='w-6 h-6 text-red-400 dark:text-red-300' />
+                           </button>
                           </Table.Cell>
                         </Table.Row>
                       ))}

@@ -1,6 +1,6 @@
 import { classNames } from '@/utils/classNames';
 import { Menu, Transition } from '@headlessui/react';
-import { ArrowUpTrayIcon } from '@heroicons/react/24/outline';
+import {  ChevronDownIcon } from '@heroicons/react/24/outline';
 import React, { DragEvent, Fragment, useEffect, useRef, useState } from 'react';
 
 import { v4 as uuid } from 'uuid';
@@ -69,7 +69,7 @@ export default function FileUploadFromLocal() {
       });
 
       xhr.addEventListener('load', function () {
-        if (xhr.status === 201) {
+        if (xhr.status === 200) {
           setProgress((prevState) => {
             const updated = [...prevState];
 
@@ -376,17 +376,14 @@ export default function FileUploadFromLocal() {
         >
           <Menu.Button
             className={classNames(
-              'flex flex-col mb-5 gap-x-2 rounded-sm md:rounded-xl border-2 border-dashed border-indigo-300 hover:border-indigo-500 hover:bg-indigo-100 bg-indigo-50 font-semibold px-4 py-1.5  md:py-2  focus-within:ring-indigo-400',
+              'flex flex-col  gap-x-2 rounded-sm md:rounded-md  border border-gray-300 hover:border-gray-200 hover:bg-gray-50 bg-white dark:bg-zinc-600 dark:hover:bg-zinc-500 dark:hover:border-zinc-500 font-semibold px-4 py-1.5  md:py-2  focus-within:ring-indigo-400',
               dragEnter ? 'border-indigo-500 bg-gray-200' : '',
             )}
           >
-            <ArrowUpTrayIcon
-              className='-mr-1 h-5 w-5 text-indigo-500'
-              aria-hidden='true'
-            />
-            <span className='text-indigo-500 hidden md:block md:text-md'>
-              Tap or Drop
-            </span>
+            <div className='md:inline-flex items-center gap-x-3 text-gray-700 dark:text-white font-semibold hidden  md:text-md'>
+              <span>Upload File/Folder</span>
+              <ChevronDownIcon className='w-5 h-5  text-gray-700 dark:text-white' />
+            </div>
           </Menu.Button>
         </div>
 
@@ -399,7 +396,7 @@ export default function FileUploadFromLocal() {
           leaveFrom='transform opacity-100 scale-100'
           leaveTo='transform opacity-0 scale-95'
         >
-          <Menu.Items className='absolute left-0 -mt-2 z-10  w-44 origin-top divide-y  rounded-md bg-indigo-50 shadow-sm ring-1 ring-black ring-opacity-5 focus:outline-none'>
+          <Menu.Items className='absolute left-0  mt-2 z-10  w-44 origin-top divide-y  rounded-md bg-indigo-50 shadow-sm ring-1 ring-black ring-opacity-5 focus:outline-none'>
             <div className='py-1 w-full'>
               <Menu.Item>
                 {({ active }) => (
