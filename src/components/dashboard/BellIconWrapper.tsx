@@ -24,7 +24,7 @@ export default function BellIconWrapper() {
       console.log(err);
     } finally {
       setLoading(false);
-      backgroundNotificationsCheck()
+      backgroundNotificationsCheck();
     }
   };
 

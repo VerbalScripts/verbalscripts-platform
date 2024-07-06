@@ -147,11 +147,10 @@ export default function Page({ params: { slug } }: PageProps) {
     setDownloadUrl(url);
   };
 
-
   const removeOrderFile = (id: string) => {
-    setRemoveId(id)
-    setOpenRemove(true)
-  }
+    setRemoveId(id);
+    setOpenRemove(true);
+  };
 
   useEffect(() => {
     if (slug) {
@@ -185,8 +184,12 @@ export default function Page({ params: { slug } }: PageProps) {
 
         <FileDownloader url={downloadUrl} reset={setDownloadUrl} />
 
-
-<RemoveOrderFileModal fileId={removeId} open={openRemove} setOpen={setOpenRemove} reload={fetchOrderInfo} />
+        <RemoveOrderFileModal
+          fileId={removeId}
+          open={openRemove}
+          setOpen={setOpenRemove}
+          reload={fetchOrderInfo}
+        />
         {loading ? (
           <LoadSpinner />
         ) : (
@@ -927,36 +930,38 @@ export default function Page({ params: { slug } }: PageProps) {
                   </div>
                 </div>
                 <div className='max-w-2xl'>
-                <div className='space-y-2   '>
-                  {order?.configuration.samples.map((sample, index) => (
-                    <div key={index} className='flex items-center gap-x-10 bg-gray-50 dark:bg-gray-700 rounded-xl p-2'>
-                      <div className='flex gap-x-2 items-start justify-between'>
-                        <span className='w-12 h-12 bg-orange-100 dark:bg-zinc-700 rounded-xl flex justify-center items-center'>
-                          <PhotoIcon className='text-indigo-600 h-8 w-8' />
-                        </span>
+                  <div className='space-y-2   '>
+                    {order?.configuration.samples.map((sample, index) => (
+                      <div
+                        key={index}
+                        className='flex items-center gap-x-10 bg-gray-50 dark:bg-gray-700 rounded-xl p-2'
+                      >
+                        <div className='flex gap-x-2 items-start justify-between'>
+                          <span className='w-12 h-12 bg-orange-100 dark:bg-zinc-700 rounded-xl flex justify-center items-center'>
+                            <PhotoIcon className='text-indigo-600 h-8 w-8' />
+                          </span>
+                          <button
+                            onClick={() => requestFileDownload(sample.url)}
+                            className='flex flex-col gap-y-1 text-left'
+                          >
+                            <span className='text-indigo-500 underline underline-offset-4 hover:text-indigo-400'>
+                              {sample.label}
+                            </span>
+                            <span className='text-sm text-gray-400 dark:text-gray-200'>
+                              Click to download file
+                            </span>
+                          </button>
+                        </div>
+
                         <button
                           onClick={() => requestFileDownload(sample.url)}
-                          className='flex flex-col gap-y-1 text-left'
+                          className='text-indigo-500 underline underline-offset-4 bg-red-100 dark:bg-red-200 hover:text-indigo-400  flex items-center justify-center h-10 w-10 rounded-full'
                         >
-                          <span className='text-indigo-500 underline underline-offset-4 hover:text-indigo-400'>
-                          {sample.label}
-                          </span>
-                          <span className='text-sm text-gray-400 dark:text-gray-200'>
-                            Click to download file
-                          </span>
+                          <ArrowDownTrayIcon className=' text-gray-600 dark:text-gray-200 h-7 w-7' />
                         </button>
                       </div>
-
-                      <button
-                        onClick={() => requestFileDownload(sample.url)}
-                        className='text-indigo-500 underline underline-offset-4 bg-red-100 dark:bg-red-200 hover:text-indigo-400  flex items-center justify-center h-10 w-10 rounded-full'
-                      >
-                        <ArrowDownTrayIcon className=' text-gray-600 dark:text-gray-200 h-7 w-7' />
-                      </button>
-                    </div>
-                  ))}
-                </div>
-
+                    ))}
+                  </div>
                 </div>
               </div>
               {/* show files preview */}
@@ -1023,9 +1028,11 @@ export default function Page({ params: { slug } }: PageProps) {
                             </span>
                           </Table.Cell>
                           <Table.Cell className='py-2'>
-                           <button onClick={() => removeOrderFile(orderFile.id)}>
-                            <TrashIcon  className='w-6 h-6 text-red-400 dark:text-red-300' />
-                           </button>
+                            <button
+                              onClick={() => removeOrderFile(orderFile.id)}
+                            >
+                              <TrashIcon className='w-6 h-6 text-red-400 dark:text-red-300' />
+                            </button>
                           </Table.Cell>
                         </Table.Row>
                       ))}

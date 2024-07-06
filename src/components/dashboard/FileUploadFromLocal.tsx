@@ -1,6 +1,6 @@
 import { classNames } from '@/utils/classNames';
 import { Menu, Transition } from '@headlessui/react';
-import {  ChevronDownIcon } from '@heroicons/react/24/outline';
+import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import React, { DragEvent, Fragment, useEffect, useRef, useState } from 'react';
 
 import { v4 as uuid } from 'uuid';
