@@ -268,12 +268,15 @@ export default function TermsOfService() {
 
             <ul className='text-gray-800 space-y-2'>
               <li>
-              <span>Transcribers Name:</span>
+                <span>Transcribers Name:</span>
                 ______________
               </li>
               <li className='inline-flex text-gray-800'>
                 <span>Date:</span>
-                <span className='font-bold'> {' '} {moment(Date.now()).format('ll')}</span>
+                <span className='font-bold'>
+                  {' '}
+                  {moment(Date.now()).format('ll')}
+                </span>
               </li>
             </ul>
           </div>

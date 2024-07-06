@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 interface SettingsTabProps {
   config: OrderConfiguration;
@@ -7,22 +7,37 @@ interface SettingsTabProps {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function SettingsTab({ config, setConfig }: SettingsTabProps) {
-  const languages = new Map([
-    ['English', 'en'],
-    ['Spanish', 'es'],
-    ['French', 'fr'],
-    ['German', 'de'],
-    ['Chinese (Mandarin)', 'zh-CN'],
-    ['Japanese', 'ja'],
-    ['Hindi', 'hi'],
-    ['Arabic', 'ar'],
-    ['Portuguese', 'pt'],
-    ['Russian', 'ru'],
-    ['Italian', 'it'],
-    ['Korean', 'ko'],
-    ['Bengali', 'bn'],
-    ['Indonesian', 'id'],
-    ['Swahili', 'sw'],
+  // const languages = new Map([
+  //   ['English', 'en'],
+  //   ['Spanish', 'es'],
+  //   ['French', 'fr'],
+  //   ['German', 'de'],
+  //   ['Chinese (Mandarin)', 'zh-CN'],
+  //   ['Japanese', 'ja'],
+  //   ['Hindi', 'hi'],
+  //   ['Arabic', 'ar'],
+  //   ['Portuguese', 'pt'],
+  //   ['Russian', 'ru'],
+  //   ['Italian', 'it'],
+  //   ['Korean', 'ko'],
+  //   ['Bengali', 'bn'],
+  //   ['Indonesian', 'id'],
+  //   ['Swahili', 'sw'],
+  // ]);
+
+  const services = new Map([
+    ['Legal Transcription', 'Legal Transcription'],
+    [
+      'Video and Audio Transcription services',
+      'Video and Audio Transcription services',
+    ],
+    ['General Transcription', 'General Transcription'],
+    ['Focus groups and Interviews', 'Focus groups and Interviews'],
+    ['Medical Transcription', 'Medical Transcription'],
+    [
+      'Academic & Conference Transcription',
+      'Academic & Conference Transcription',
+    ],
   ]);
 
   const text_formats = new Map([
@@ -45,37 +60,32 @@ export default function SettingsTab({ config, setConfig }: SettingsTabProps) {
   const timestamping = new Map([
     ['Not Required', 'Not Required'],
     ['On Speaker Change', 'speaker'],
-    ['Every 10 Seconds', '10s'],
-    ['Every 30 Seconds', '30s'],
-    ['Every 2 Minutes', '2min'],
   ]);
 
-  useEffect(() => {
-    console.log(config);
-  }, [config]);
-
   return (
-    <section className='flex flex-col gap-10    divide-gray-400'>
-      <div className='flex justify-between items-center'>
-        <div className='flex text-gray-600 text-md font-semibold'>Language</div>
+    <section className='flex flex-col space-y-4 divide-gray-400'>
+      <div className='flex flex-col  '>
+        <div className='flex text-gray-600 text-md font-semibold mb-1'>
+          Transcription Service
+        </div>
         <div>
           <div className='block w-full'>
             <select
-              id='countries'
-              defaultValue={config.language}
-              className='h-12 border border-gray-300 text-gray-600 text-base rounded-full block w-full py-2.5 px-4 focus:outline-none'
+              id='service'
+              defaultValue={config.service}
+              className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
             >
-              {Array.from(languages.entries()).map(([language, code]) => (
+              {Array.from(services.entries()).map(([service, code]) => (
                 <option key={code} value={code}>
-                  {language}
+                  {service}
                 </option>
               ))}
             </select>
           </div>
         </div>
       </div>
-      <div className='flex justify-between items-center'>
-        <div className='flex text-gray-600 text-md font-semibold'>
+      <div className='flex flex-col'>
+        <div className='flex text-gray-600 text-md font-semibold mb-1'>
           Text Format{' '}
         </div>
         <div>
@@ -131,8 +141,8 @@ export default function SettingsTab({ config, setConfig }: SettingsTabProps) {
         </div>
       </div> */}
 
-      <div className='flex justify-between items-center'>
-        <div className='flex text-gray-600 text-md font-semibold'>
+      <div className='flex flex-col'>
+        <div className='flex text-gray-600 text-md font-semibold mb-1'>
           Turn Around time
         </div>
         <div>
@@ -165,8 +175,8 @@ export default function SettingsTab({ config, setConfig }: SettingsTabProps) {
         </div>
       </div>
 
-      <div className='flex justify-between items-center'>
-        <div className='flex text-gray-600 text-md font-semibold'>
+      <div className='flex flex-col'>
+        <div className='flex text-gray-600 text-md font-semibold mb-1'>
           Number of speakers
         </div>
         <div>
@@ -197,8 +207,8 @@ export default function SettingsTab({ config, setConfig }: SettingsTabProps) {
         </div>
       </div>
 
-      <div className='flex justify-between items-center'>
-        <div className='flex text-gray-600 text-md font-semibold'>
+      <div className='flex flex-col'>
+        <div className='flex text-gray-600 text-md font-semibold mb-1'>
           Use Timestamps
         </div>
         <div>
@@ -206,7 +216,7 @@ export default function SettingsTab({ config, setConfig }: SettingsTabProps) {
             <select
               id='timestamps'
               defaultValue={config.apply_timestamps}
-              className='h-12 border border-gray-300 text-gray-600 text-base rounded-full block w-full py-2.5 px-4 focus:outline-none'
+              className='bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
             >
               {Array.from(timestamping.entries()).map(([ts_opt, code]) => (
                 <option key={code} value={code}>

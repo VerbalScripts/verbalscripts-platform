@@ -2,11 +2,7 @@
 
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React, { useEffect, useState } from 'react';
-import {
-  Bars3Icon,
-  MoonIcon,
-  SunIcon,
-} from '@heroicons/react/24/outline';
+import { Bars3Icon, MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 
 import DashDialogMenu from '../DashDialogMenu';
 import { classNames } from '@/utils/classNames';

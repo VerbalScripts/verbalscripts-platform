@@ -19,7 +19,6 @@ interface TalkToUsProps {
 
 export default function TalkToUs({ open, setOpen }: TalkToUsProps) {
   const cancelButtonRef = useRef(null);
-  const folderRef = useRef(null);
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -53,17 +52,16 @@ export default function TalkToUs({ open, setOpen }: TalkToUsProps) {
         });
       }
     } catch (err) {
-        setSystemProgressContent({
-            show: true,
-            message: `Could Not Reach our contact`,
-            title: 'Message Transmit Failed',
-            success: false,
-          });
+      setSystemProgressContent({
+        show: true,
+        message: `Could Not Reach our contact`,
+        title: 'Message Transmit Failed',
+        success: false,
+      });
     } finally {
       setLoading(false);
     }
   };
-
 
   return (
     <Transition.Root show={open} as={Fragment}>

@@ -9,7 +9,6 @@ interface VideoPlayerProps {
   setOpen: (arg0: boolean) => void;
 }
 
-
 export default function VideoPlayer({
   open,
   setOpen,
@@ -32,18 +31,17 @@ export default function VideoPlayer({
     }
   }, [open]);
 
-  const filePreviewBlob =  async () => {
-      setTimeout(() => {
-        const sourceBlob = `${hostUrl}/files/stream/${fileId}`
-  
-        if (videoPlayerRef.current != null) {
-          videoPlayerRef.current.src = sourceBlob;
-          videoPlayerRef.current.load(); // To load the new video source
-          videoPlayerRef.current.play();
-        }
+  const filePreviewBlob = async () => {
+    setTimeout(() => {
+      const sourceBlob = `${hostUrl}/files/stream/${fileId}`;
 
-      }, 500)
-      // Reset downloading state
+      if (videoPlayerRef.current != null) {
+        videoPlayerRef.current.src = sourceBlob;
+        videoPlayerRef.current.load(); // To load the new video source
+        videoPlayerRef.current.play();
+      }
+    }, 500);
+    // Reset downloading state
   };
   return (
     <Transition.Root show={open} as={Fragment}>

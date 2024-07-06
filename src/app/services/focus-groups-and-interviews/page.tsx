@@ -329,8 +329,6 @@ export default function Page() {
                 </span>{' '}
                 Forward Your Research Objectives with Clarity and Precision
               </p>
-
-              
             </div>
             <div className='px-6 md:px-12 order-2'>
               <ul className='lg:mx-auto max-w-2xl mt-6 text-lg leading-8 text-gray-800 list-disc flex flex-col space-y-2'>
@@ -364,7 +362,6 @@ export default function Page() {
                   <span>Get a Quote</span>
                 </a>
               </div>
-
             </div>
           </div>
         </div>

@@ -59,10 +59,13 @@ export default function DashboardLayout({
                         expanded ? '' : '-rotate-180',
                       )}
                     />
-
                   </button>
-                   
-                  <DashboardNavigation open={open} setOpen={setOpen} expanded={expanded} />
+
+                  <DashboardNavigation
+                    open={open}
+                    setOpen={setOpen}
+                    expanded={expanded}
+                  />
                 </div>
                 {/* @ts-ignore */}
                 <ErrorBoundary fallback={<Error />}>

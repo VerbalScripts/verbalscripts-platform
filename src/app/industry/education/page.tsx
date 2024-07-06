@@ -20,32 +20,35 @@ export const metadata: Metadata = {
 export default function Page() {
   const faqs: FaqsProp[] = [
     {
-      title: 'What is academic transcription and why is it important for education?',
-      content:
-    `Academic transcription involves converting audio or video recordings of academic content, such as lectures, seminars, and interviews, into written transcripts. This service is beneficial for students and educators, providing a written record that can be reviewed and referenced to enhance learning and research.<br/><br/>
+      title:
+        'What is academic transcription and why is it important for education?',
+      content: `Academic transcription involves converting audio or video recordings of academic content, such as lectures, seminars, and interviews, into written transcripts. This service is beneficial for students and educators, providing a written record that can be reviewed and referenced to enhance learning and research.<br/><br/>
 Academic transcription enhances accessibility, allowing students with hearing impairments or those who prefer reading over listening to access lecture content. It also supports better comprehension and retention of material by providing a text version that students can review at their own pace.
-` },
+`,
+    },
     {
       title: 'What types of academic content can be transcribed?',
-      content:
-     `We transcribe a wide range of academic content, including lectures, seminars, workshops, interviews, research recordings, dissertations, and conference presentations. This helps in creating comprehensive study materials and improving accessibility for all students.
-`  },
+      content: `We transcribe a wide range of academic content, including lectures, seminars, workshops, interviews, research recordings, dissertations, and conference presentations. This helps in creating comprehensive study materials and improving accessibility for all students.
+`,
+    },
     {
-      title: 'What measures are in place to ensure the confidentiality of academic transcripts?',
-      content:
-       `We take confidentiality seriously. All files are encrypted during transfer and storage. Our transcribers sign non-disclosure agreements (NDAs) to ensure your information remains private and secure. We can also sign additional NDAs as per your institution's requirements.
-` },
+      title:
+        'What measures are in place to ensure the confidentiality of academic transcripts?',
+      content: `We take confidentiality seriously. All files are encrypted during transfer and storage. Our transcribers sign non-disclosure agreements (NDAs) to ensure your information remains private and secure. We can also sign additional NDAs as per your institution's requirements.
+`,
+    },
     {
       title: 'What is conference transcription and why is it important?',
-      content:
-       `Conference transcription involves transforming recordings of conferences, seminars, and workshops into written text. It is invaluable for both attendees and those unable to attend, offering a detailed account of the event.<br /> <br />
+      content: `Conference transcription involves transforming recordings of conferences, seminars, and workshops into written text. It is invaluable for both attendees and those unable to attend, offering a detailed account of the event.<br /> <br />
 Transcription ensures an accurate and thorough record of the proceedings, which can be utilized for future reference, distribution among participants, and improving content accessibility. It guarantees that important discussions and presentations are meticulously documented and preserved for posterity.
-` },
+`,
+    },
     {
-      title: 'How do I ensure my transcription project meets academic standards?',
-      content:
-        `Verbalscripts assigns a dedicated project manager to each client, ensuring consistent communication and project delivery from someone familiar with the status and requirements of your files at all times. We adhere to strict quality control processes to ensure that our transcripts meet the highest academic standards.
-` },
+      title:
+        'How do I ensure my transcription project meets academic standards?',
+      content: `Verbalscripts assigns a dedicated project manager to each client, ensuring consistent communication and project delivery from someone familiar with the status and requirements of your files at all times. We adhere to strict quality control processes to ensure that our transcripts meet the highest academic standards.
+`,
+    },
   ];
 
   const features = [

@@ -68,9 +68,7 @@ export default function FileUploadFromOtherOptions({
             ))}
           </div> */}
           <div className='md:inline-flex items-center gap-x-3 text-white font-semibold hidden  md:text-md'>
-            <span>
-            Import files
-            </span>
+            <span>Import files</span>
             <ChevronDownIcon className='w-7 h-7  text-gray-100' />
           </div>
         </Menu.Button>

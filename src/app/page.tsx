@@ -63,14 +63,14 @@ export default function Home() {
   const testimonials: Array<Testimony> = [
     {
       description:
-        '“For any law firm seeking a reliable and affordable transcription partner, we highly recommend Verbalscripts. They\'ve consistently exceeded our expectations, and we\'re confident they can do the same for you.”',
+        "“For any law firm seeking a reliable and affordable transcription partner, we highly recommend Verbalscripts. They've consistently exceeded our expectations, and we're confident they can do the same for you.”",
       name: 'Jon A. Ballis',
       imageUrl: '/testimonials/Jon A. Ballis.png',
       occupation: 'Kirkland & Ellis',
     },
     {
       description:
-        ' “We were impressed with Verbalscripts when they delivered precise transcripts tailored to a specific client\'s requirements. Their accuracy and quick turnaround times were outstanding. We strongly recommend their services.”',
+        " “We were impressed with Verbalscripts when they delivered precise transcripts tailored to a specific client's requirements. Their accuracy and quick turnaround times were outstanding. We strongly recommend their services.”",
       name: 'Joseph Baker',
       imageUrl: '/testimonials/Joseph Baker.png',
       occupation: 'Veritext',

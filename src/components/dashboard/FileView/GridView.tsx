@@ -1,4 +1,3 @@
-import { DocumentIcon } from '@heroicons/react/24/outline';
 import { Checkbox } from 'flowbite-react';
 import React, { useState } from 'react';
 import TableMenuDropDown from '../TableMenuDropDown';
@@ -9,6 +8,7 @@ import { faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 import AxiosProxy from '@/utils/AxiosProxy';
 import moment from 'moment';
 import { DurationFromSeconds } from '@/utils/DurationFromSeconds';
+import { PlayIcon } from '@heroicons/react/24/outline';
 
 interface GridViewProps {
   folders: OrderFolder[];
@@ -28,6 +28,7 @@ interface GridViewProps {
   shareFile: (id: string) => void;
   copyFile: (id: string) => void;
   isNavigating: boolean;
+  setVideoId: (id: string) => void;
   selectedFolderId: string;
 }
 
@@ -44,6 +45,7 @@ export default function GridView({
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   renameFolder,
   removeFile,
+  setVideoId,
   callback,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   isNavigating,
@@ -238,9 +240,40 @@ export default function GridView({
                 isGrid={true}
               />
             </div>
-            <div className='flex items-start gap-x-10 '>
-              <div className='w-[1rem]'>
-                <DocumentIcon className='text-gray-700 h-7 w-7' />
+            <div className='flex items-start gap-x-3 '>
+              <div className='flex-shrink-0'>
+                {order.mimetype.split('/')[0] == 'video' ? (
+                  <img
+                    src='/dashboard/icons/video.png'
+                    className='w-7 h-7'
+                    alt='video file'
+                  />
+                ) : order.mimetype.split('/')[0] == 'audio' ? (
+                  <img
+                    src='/dashboard/icons/audio.png'
+                    className='w-7 h-7'
+                    alt='video file'
+                  />
+                ) : order.mimetype.split('/')[0] == 'text' ? (
+                  <img
+                    src='/dashboard/icons/txt.png'
+                    className='w-7 h-7'
+                    alt='text file'
+                  />
+                ) : order.mimetype.split('/')[0] == 'application' &&
+                  order.mimetype.split('/')[1] == 'pdf' ? (
+                  <img
+                    src='/dashboard/icons/pdf.png'
+                    className='w-7 h-7'
+                    alt='pdf file'
+                  />
+                ) : (
+                  <img
+                    src='/dashboard/icons/doc.png'
+                    className='w-7 h-7'
+                    alt='document file'
+                  />
+                )}
               </div>
               <div className='flex flex-col items-start flex-grow'>
                 <div className=''>
@@ -248,24 +281,49 @@ export default function GridView({
                     {order.label}
                   </span>
                 </div>
-                <div className='text-sm text-gray-400 dark:text-gray-200'>{moment(order.createdAt).format('llll')}</div>
+                <div className='text-sm text-gray-400 dark:text-gray-200'>
+                  <span>{moment(order.createdAt).format('llll')}</span> {' |'}{' '}
+                  <span className='bg-indigo-500 px-1 py-0.5 rounded-md text-white font-semibold text-xs uppercase'>
+                    {order.mimetype.split('/')[1]}
+                  </span>
+                </div>
               </div>
             </div>
             <div className='mt-1.5 flex justify-between'>
               <span className='text-gray-600 dark:text-gray-200 text-sm uppercase'>
                 <b>size</b>: {bytesToMB(order.size)} {'MBs'}
               </span>
-              <span className='text-gray-600 dark:text-gray-200 text-sm uppercase'>
-                <b>File Type</b>: {order.mimetype.split('/')[1]}
-              </span>
+
+              {/* preview buttons */}
+              <div>
+                {order.mimetype.split('/')[0] == 'video' ||
+                order.mimetype.split('/')[0] == 'audio' ? (
+                  <button
+                    onClick={() => setVideoId(order.id)}
+                    className=' border border-gray-200 dark:border-gray-500 px-1.5 rounded-md bg-teal-100 inline-flex items-center gap-x-2 text-xs font-semibold text-gray-700 dark:text-white'
+                  >
+                    <span>Preview</span>
+                    <PlayIcon className='text-gray-700 dark:text-white w-5 h-5' />
+                  </button>
+                ) : null}
+              </div>
             </div>
-            <div className='mt-1.5 flex justify-between'>
-              <span className='capitalize  text-indigo-600'>
-                <b>Duration</b> {order.duration ? DurationFromSeconds(order.duration) : 'Null'}
-              </span>
+            <div
+              className={classNames(
+                'mt-1.5 flex ',
+                order.duration ? 'justify-between' : 'justify-end',
+              )}
+            >
+              {order.duration ? (
+                <span className='capitalize  text-indigo-600'>
+                  <b>Duration</b> {DurationFromSeconds(order.duration)}
+                </span>
+              ) : (
+                <span></span>
+              )}
               <span className='capitalize  text-indigo-600'>
                 <b>Status: </b>
-                <span className='bg-indigo-100 rounded-xl capitalize px-1.5 py-1 text-indigo-600'>
+                <span className='bg-indigo-100 rounded-xl text-xs font-semibold capitalize px-1.5 py-1 text-indigo-600'>
                   {order.status}
                 </span>
               </span>

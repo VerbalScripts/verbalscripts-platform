@@ -296,10 +296,8 @@ export default function Page() {
         </div>
       </div>
 
-      
       <HowItWorks custom_class='legal-how-it-works' />
 
-    
       <div
         className='bg-white relative isolate'
         style={{ background: 'FAFAFA' }}
@@ -355,7 +353,6 @@ export default function Page() {
           </div>
         </div>
       </div>
-
 
       <AppFooter />
     </div>

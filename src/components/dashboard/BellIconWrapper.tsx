@@ -7,7 +7,7 @@ export default function BellIconWrapper() {
   const [showNote, setshowNote] = useState(false);
   const [Isnote, setIsnote] = useState(false);
   const audioPlayer = useRef<HTMLAudioElement | null>(null);
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
   const httpNotifications = async () => {
     try {
@@ -21,9 +21,8 @@ export default function BellIconWrapper() {
       }
     } catch (err) {
       console.log(err);
-    }
-    finally {
-      setLoading(false)
+    } finally {
+      setLoading(false);
     }
   };
 

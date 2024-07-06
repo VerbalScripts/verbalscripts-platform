@@ -26,7 +26,7 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
   const [duration, setDuration] = useState('');
   const [phone, setPhone] = useState('');
 
-  const [sample, setSample] = useState<File | null>(null)
+  const [sample, setSample] = useState<File | null>(null);
 
   const postQuote = async (event: FormEvent) => {
     try {
@@ -73,13 +73,13 @@ export default function GetAQuoteModal({ open, setOpen }: SliderOverProp) {
     setPhone('');
   };
 
-  function updateFileSample ( e: React.ChangeEvent<HTMLInputElement> ): void {
+  function updateFileSample(e: React.ChangeEvent<HTMLInputElement>): void {
     const target = e.target as HTMLInputElement & {
       files: FileList;
     };
 
     if (target.files.length == 0) return;
-    setSample(target.files[0])
+    setSample(target.files[0]);
   }
 
   useEffect(() => {

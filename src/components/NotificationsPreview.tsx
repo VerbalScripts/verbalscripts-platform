@@ -64,8 +64,8 @@ export default function NotificationsPreview({
   useEffect(() => {
     if (open) {
       handleFeeds();
-    }else {
-      setLoading(false)
+    } else {
+      setLoading(false);
     }
   }, [open]);
 
@@ -93,7 +93,7 @@ export default function NotificationsPreview({
                 Notifications
               </span>
 
-              <Link href={'/settings#manage-notifications'}>
+              <Link href={'/dashboard/settings#manage-notifications'}>
                 <CogIcon className='text-gray-700 dark:text-white w-6 h-6' />
               </Link>
             </div>
@@ -145,8 +145,6 @@ export default function NotificationsPreview({
               )}
             </div>
             <div className='flex items-center justify-end py-2 px-4 '>
-              
-
               <Link
                 href='/dashboard/notifications'
                 className='flex items-center space-x-2 font-semibold py-2 px-2 bg-indigo-500 rounded-xl'

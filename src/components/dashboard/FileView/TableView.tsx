@@ -1,6 +1,4 @@
-import {
-  PlayIcon,
-} from '@heroicons/react/24/outline';
+import { PlayIcon } from '@heroicons/react/24/outline';
 import { Checkbox, Table } from 'flowbite-react';
 import React, { useState } from 'react';
 import TableMenuDropDown from '../TableMenuDropDown';
@@ -225,7 +223,11 @@ export default function TableView({
                     }
                   >
                     <span className='w-7'></span>
-                  <img src='/dashboard/icons/folder.png' className='w-7 h-7' alt='video file' />
+                    <img
+                      src='/dashboard/icons/folder.png'
+                      className='w-7 h-7'
+                      alt='video file'
+                    />
 
                     <span className='whitespace-nowrap font-medium text-gray-900 dark:text-white'>
                       {folder.label}
@@ -291,16 +293,36 @@ export default function TableView({
                   <span className=' w-5'></span>
                 )}
                 {order.mimetype.split('/')[0] == 'video' ? (
-                  <img src='/dashboard/icons/video.png' className='w-7 h-7' alt='video file' />
+                  <img
+                    src='/dashboard/icons/video.png'
+                    className='w-7 h-7'
+                    alt='video file'
+                  />
                 ) : order.mimetype.split('/')[0] == 'audio' ? (
-                  <img src='/dashboard/icons/audio.png' className='w-7 h-7' alt='video file' />
+                  <img
+                    src='/dashboard/icons/audio.png'
+                    className='w-7 h-7'
+                    alt='video file'
+                  />
                 ) : order.mimetype.split('/')[0] == 'text' ? (
-                  <img src='/dashboard/icons/txt.png' className='w-7 h-7' alt='text file' />
+                  <img
+                    src='/dashboard/icons/txt.png'
+                    className='w-7 h-7'
+                    alt='text file'
+                  />
                 ) : order.mimetype.split('/')[0] == 'application' &&
                   order.mimetype.split('/')[1] == 'pdf' ? (
-                  <img src='/dashboard/icons/pdf.png' className='w-7 h-7' alt='pdf file' />
+                  <img
+                    src='/dashboard/icons/pdf.png'
+                    className='w-7 h-7'
+                    alt='pdf file'
+                  />
                 ) : (
-                  <img src='/dashboard/icons/doc.png' className='w-7 h-7' alt='document file' />
+                  <img
+                    src='/dashboard/icons/doc.png'
+                    className='w-7 h-7'
+                    alt='document file'
+                  />
                 )}
                 <span className='overflow-hidden truncate md:w-[18rem] font-medium text-gray-900 dark:text-white'>
                   {order.label}

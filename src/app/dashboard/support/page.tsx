@@ -1,4 +1,3 @@
-
 import React from 'react';
 import FaqsGroupingCard from './components/FaqsGroupingCard';
 import ContactSection from './components/ContactSection';
@@ -457,12 +456,15 @@ Customers like you ensures that we will remain in business for many years to com
         <div className='mx-auto max-w-4xl lg:max-w-5xl border-b border-gray-300/10 px-6 py-20'>
           <dl className='grid  grid-cols-1 md:grid-cols-2   gap-5  pb-12'>
             {topics.map((faqs) => (
-              <FaqsGroupingCard key={faqs.id} title={faqs.title} faqs={faqs.items} />
+              <FaqsGroupingCard
+                key={faqs.id}
+                title={faqs.title}
+                faqs={faqs.items}
+              />
             ))}
           </dl>
         </div>
       </section>
-
 
       <ContactSection />
     </div>

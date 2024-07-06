@@ -343,13 +343,14 @@ export default function AppFooter() {
                 Legal
               </span>
             </a>
-
-            <a href='/legal/transcriber-nda' className='px-1.5  md:border-r border-gray-300'>
+            <a
+              href='/legal/transcriber-nda'
+              className='px-1.5  md:border-r border-gray-300'
+            >
               <span className='text-gray-300  hover:text-indigo-500'>
                 Transcriber NDA
               </span>
             </a>
-
             <a href='/legal/customer-nda' className='px-1.5  '>
               <span className='text-gray-300  hover:text-indigo-500'>
                 Customer Confidential Agreement

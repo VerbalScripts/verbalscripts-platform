@@ -2,13 +2,12 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 // import AxiosProxy from '@/utils/AxiosProxy';
 import {
-  CheckBadgeIcon,
   DocumentCheckIcon,
-  RectangleGroupIcon,
-  WrenchScrewdriverIcon,
+  TrashIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline';
 import { useRouter } from 'next/navigation';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import { classNames } from '@/utils/classNames';
 import SettingsTab from '../dashboard/Tabs/SettingsTab';
@@ -17,6 +16,7 @@ import { hostUrl } from '../../../config';
 import { GetOrStoreAuthToken } from '@/utils/GetOrStoreAuthToken';
 import ComponentSpinner from '../ComponentSpinner';
 import { Player } from '@lottiefiles/react-lottie-player';
+import { bytesToMB } from '@/utils/bytesToMb';
 
 interface OrderNowProps {
   open: boolean;
@@ -45,6 +45,7 @@ export default function OrderNowModal({
       text_format: 'clean',
       speakers: '1-2',
       samples: [],
+      service: 'General Transcription',
       apply_timestamps: 'Not Required',
       turn_around_time: '2_days',
     });
@@ -58,6 +59,11 @@ export default function OrderNowModal({
     message: '',
   });
   const sectionArray: tabValues[] = ['settings', 'instructions', 'finish'];
+  const sectionImages: string[] = [
+    '/dashboard/checklist.png',
+    '/dashboard/additional-info.png',
+    '/dashboard/confirm.png',
+  ];
 
   // const includedFeatures = [
   //   'Private forum access',
@@ -197,106 +203,119 @@ export default function OrderNowModal({
                   <div className='flex h-full  flex-col bg-white  shadow-xl'>
                     <div className='relative '>
                       <div className='flex justify-between'>
-                        <div className='max-w-md bg-indigo-500 h-screen'>
-                          <img
-                            src='/svg/create-order.svg'
-                            className='min-w-[28rem] mt-32'
-                            alt=''
-                          />
+                        <div className='max-w-md h-screen order-2 px-6 py-16'>
+                          <div
+                            style={{ background: '#8568F533' }}
+                            className={classNames(
+                              'shadow-2xl max-h-[70%] overflow-hidden',
+                            )}
+                          >
+                            <AnimatePresence>
+                              <motion.img
+                                key={sectionImages[position]}
+                                src={sectionImages[position]}
+                                alt='Switching Image'
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.4 }}
+                                className='min-w-[28rem] h-full object-cover'
+                              />
+                            </AnimatePresence>
+                            {/* <img
+                              
+                              className='min-w-[28rem] toggle-images'
+                              alt=''
+                            /> */}
+                          </div>
+
+                          <div className='mt-5 bg-red-100 rounded-md px-6 py-3'>
+                            <h1 className='text-2xl text-gray-700 font-semibold'>
+                              Disclaimer
+                            </h1>
+                            <p className='text-md text-gray-600 mt-2'>
+                              We understand the importance of your projects and
+                              are working diligently to deliver your transcripts
+                              on time. Thank you for choosing VerbalScripts!
+                            </p>
+                          </div>
                         </div>
                         {!status.complete ? (
-                          <div className='py-[5rem] px-6 md:px-24 w-[100%] max-h-screen overflow-y-auto'>
-                            <div className='mx-auto max-w-2xl py-6 px-5 rounded-full bg-indigo-50'>
+                          <div className='sticky top-10 order-1 py-[2rem] px-6 md:px-24 w-[100%] max-h-screen overflow-y-auto'>
+                            <div className='mx-auto max-w-2xl py-6 pb-16 px-14 border-b border-orange-400'>
+                              <div className='text-center text-3xl text-gray-700 font-semibold mb-5'>
+                                Checkout
+                              </div>
                               <ol className='flex items-center w-full'>
                                 <li
                                   className={classNames(
-                                    "flex w-full items-center text-indigo-600 dark:text-indigo-500 after:content-[''] after:w-full after:h-1 after:border-b  after:border-4 after:inline-block dark:after:border-blue-800",
-                                    position >= 1
-                                      ? 'after:border-indigo-500'
-                                      : 'after:border-indigo-100',
+                                    "flex w-full items-center after:content-[''] after:mb-0.5 after:ml-5 after:mr-5 after:w-full after:h-1 after:border-b  after:border-1 after:inline-block",
                                   )}
+                                  style={{ borderColor: '#EFE7EC' }}
                                 >
-                                  <span className='flex items-center justify-center w-10 h-10 bg-indigo-500 rounded-full lg:h-12 lg:w-12 dark:bg-indigo-800 shrink-0'>
-                                    {position > 0 ? (
-                                      <svg
-                                        className='w-3.5 h-3.5 text-white lg:w-4 lg:h-4 dark:text-indigo-300'
-                                        aria-hidden='true'
-                                        xmlns='http://www.w3.org/2000/svg'
-                                        fill='none'
-                                        viewBox='0 0 16 12'
-                                      >
-                                        <path
-                                          stroke='currentColor'
-                                          stroke-linecap='round'
-                                          stroke-linejoin='round'
-                                          stroke-width='2'
-                                          d='M1 5.917 5.724 10.5 15 1.5'
-                                        />
-                                      </svg>
-                                    ) : (
-                                      <RectangleGroupIcon className='w-6 text-white' />
+                                  <div
+                                    className={classNames(
+                                      'relative z-10 flex items-center before:absolute before:border-b before:border-r before:-rotate-45 before:border-gray-300 before:top-0 before:left-0 before:w-full before:h-full before:translate-x-2.5 before:mb-1  justify-center font-bold text-lg after:-z-[1] after:border-2 w-6 h-6 after:absolute after:left-0 after:w-full after:top-0 after:h-full bg-white after:rounded-md after:rotate-45 lg:h-8 lg:w-8 dark:bg-indigo-800 shrink-0',
+                                      position == 0
+                                        ? 'pending-border text-tab-pending after:bg-white'
+                                        : 'complete-tab-indicator text-white ',
                                     )}
-                                  </span>
+                                  >
+                                    <span>1</span>
+                                    <span className='absolute -bottom-10  text-gray-500 font-semibold text-lg'>
+                                      Checklist
+                                    </span>
+                                  </div>
                                 </li>
                                 <li
                                   className={classNames(
-                                    "flex w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-100 after:border-4 after:inline-block dark:after:border-gray-700",
-                                    position == 2
-                                      ? 'after:border-indigo-500'
-                                      : 'after:border-indigo-100',
+                                    "flex w-full items-center after:content-[''] after:mb-0.5 after:ml-5 after:mr-5 after:w-full after:h-1 after:border-b  after:border-1 after:inline-block",
                                   )}
+                                  style={{ borderColor: '#EFE7EC' }}
                                 >
-                                  <span
+                                  <div
                                     className={classNames(
-                                      'flex items-center justify-center w-10 h-10  rounded-full lg:h-12 lg:w-12 dark:bg-gray-700 shrink-0',
-                                      position >= 1
-                                        ? 'bg-indigo-500'
-                                        : 'bg-indigo-200',
+                                      'relative z-10 flex items-center before:absolute before:border-b before:border-r before:-rotate-45 before:border-gray-300 before:top-0 before:left-0 before:w-full before:h-full before:translate-x-2.5 before:mb-1  justify-center font-bold text-lg after:-z-[1] after:border-2 w-6 h-6 after:absolute after:left-0 after:w-full after:top-0 after:h-full bg-white after:rounded-md after:rotate-45 lg:h-8 lg:w-8 dark:bg-indigo-800 shrink-0',
+                                      position > 1
+                                        ? 'complete-tab-indicator text-white '
+                                        : 'pending-border text-tab-pending after:bg-white',
                                     )}
                                   >
-                                    {position > 1 ? (
-                                      <svg
-                                        className='w-3.5 h-3.5 text-white lg:w-4 lg:h-4 dark:text-blue-300'
-                                        aria-hidden='true'
-                                        xmlns='http://www.w3.org/2000/svg'
-                                        fill='none'
-                                        viewBox='0 0 16 12'
-                                      >
-                                        <path
-                                          stroke='currentColor'
-                                          stroke-linecap='round'
-                                          stroke-linejoin='round'
-                                          stroke-width='2'
-                                          d='M1 5.917 5.724 10.5 15 1.5'
-                                        />
-                                      </svg>
-                                    ) : (
-                                      <WrenchScrewdriverIcon className='w-6 text-white-600' />
-                                    )}
-                                  </span>
+                                    <span className='absolute  border-b border-l rotate-45 border-gray-300 top-0 left-0 w-full h-full -translate-x-2.5 mb-1'></span>
+                                    <span>2</span>
+                                    <span className='absolute -bottom-10  text-gray-500 font-semibold text-lg'>
+                                      Instructions
+                                    </span>
+                                  </div>
                                 </li>
                                 <li className='flex items-center'>
-                                  <span
+                                  <div
                                     className={classNames(
-                                      'flex items-center justify-center w-10 h-10  rounded-full lg:h-12 lg:w-12 dark:bg-gray-700 shrink-0',
+                                      'relative z-10 flex items-center before:absolute before:border-b before:border-l before:rotate-45 before:border-gray-300 before:top-0 before:left-0 before:w-full before:h-full before:-translate-x-2.5 before:mb-1  justify-center font-bold text-lg after:-z-[1] after:border-2 w-6 h-6 after:absolute after:left-0 after:w-full after:top-0 after:h-full bg-white after:rounded-md after:rotate-45 lg:h-8 lg:w-8 dark:bg-indigo-800 shrink-0',
                                       position == 2
-                                        ? 'bg-indigo-500'
-                                        : 'bg-indigo-200',
+                                        ? 'complete-tab-indicator text-white '
+                                        : 'pending-border text-tab-pending after:bg-white',
                                     )}
                                   >
-                                    <CheckBadgeIcon className='w-6 text-white' />
-                                  </span>
+                                    <span>3</span>
+                                    <span className='absolute -bottom-10  text-gray-500 font-semibold text-lg'>
+                                      Summary
+                                    </span>
+                                  </div>
                                 </li>
                               </ol>
                             </div>
 
                             {/* tab content */}
-                            <div className='mt-20 w-full '>
+                            <div className='mt-10 mx-auto max-w-2xl '>
                               <div
                                 className={classNames(
                                   activeTab == 'settings' ? '' : 'hidden',
                                 )}
                               >
+                                <h1 className='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-10'>
+                                  General Information
+                                </h1>
                                 <SettingsTab
                                   config={orderConfiuration}
                                   setConfig={setOrderConfiuration}
@@ -307,6 +326,9 @@ export default function OrderNowModal({
                                   activeTab == 'instructions' ? '' : 'hidden',
                                 )}
                               >
+                                <h1 className='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-10'>
+                                  Additional Information
+                                </h1>
                                 <InstructionsTab
                                   setFiles={setFiles}
                                   samples={samples}
@@ -324,22 +346,21 @@ export default function OrderNowModal({
                                   <div className=''>
                                     <div className='flex flex-col items-center'>
                                       <div className=''>
-                                        <div className='flex flex-col items-center'>
-                                          <div className='mx-auto max-w-2xl sm:text-center'>
+                                        <div className='flex flex-col'>
+                                          <div className='mx-auto max-w-2xl sm:text-left'>
                                             <h2 className='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>
-                                              Place Your Order
+                                              Order Summary
                                             </h2>
                                             <p className='mt-6 text-lg leading-8 text-gray-600'>
-                                              Distinctio et nulla eum soluta et
-                                              neque labore quibusdam. Saepe et
-                                              quasi iusto modi velit ut non
-                                              voluptas in. Explicabo id ut
-                                              laborum.
+                                              Confirm the configuration or
+                                              presets that you have chosen are
+                                              correct, then place your file.
                                             </p>
                                           </div>
 
-                                          <div className='mx-auto max-w-lg mb-20'>
-                                            <div className='mt-10 flex items-center gap-x-4'>
+                                          {/* preview files */}
+                                          <div className=' mb-2'>
+                                            <div className='mt-3 flex items-center gap-x-4'>
                                               <h4 className='flex-none text-sm font-semibold leading-6 text-indigo-600'>
                                                 Files Preview
                                               </h4>
@@ -347,66 +368,92 @@ export default function OrderNowModal({
                                             </div>
                                             <ul
                                               role='list'
-                                              className='mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-gray-600 sm:grid-cols-1 sm:gap-6'
+                                              className='mt-8 bg-gray-200 rounded-xl p-4 grid grid-cols-1 gap-4 text-sm leading-6 text-gray-600 sm:grid-cols-1 sm:gap-6'
                                             >
-                                              {files.map((file, index) => (
+                                              {files.map((file) => (
                                                 <li
                                                   key={file.id}
-                                                  className='flex gap-x-3 text-lg'
+                                                  className='flex gap-x-3 text-lg justify-between items-center'
                                                 >
-                                                  {index + 1} {' . '}
-                                                  <DocumentCheckIcon
-                                                    className='h-6 w-5 flex-none text-indigo-600'
-                                                    aria-hidden='true'
-                                                  />
-                                                  {file.label}
+                                                  <div className='flex gap-x-3 items-start'>
+                                                    <DocumentCheckIcon
+                                                      className='h-6 w-5 flex-none text-indigo-600'
+                                                      aria-hidden='true'
+                                                    />
+                                                    <div className='flex flex-col'>
+                                                      <div className='text-gray-700 font-semibold text-lg'>
+                                                        {file.label}
+                                                      </div>
+                                                      <div className='text-gray-600'>
+                                                        <span>
+                                                          {bytesToMB(file.size)}{' '}
+                                                          {'MBs. | '}{' '}
+                                                        </span>
+
+                                                        <span className='bg-indigo-500 px-1 py-0.5 rounded-md text-white font-semibold text-xs uppercase'>
+                                                          {
+                                                            file.mimetype.split(
+                                                              '/',
+                                                            )[1]
+                                                          }
+                                                        </span>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                  <button onClick={() => {}}>
+                                                    <TrashIcon className='w-7 h-7 text-gray-800' />
+                                                  </button>
                                                 </li>
                                               ))}
                                             </ul>
                                           </div>
 
-                                          {/* <div className='mx-auto max-w-lg'>
-                                            <div className='mt-10 flex items-center gap-x-4'>
-                                              <h4 className='flex-none text-sm font-semibold leading-6 text-indigo-600'>
-                                                What’s included
+                                          {/* configuration confirm */}
+                                          <div className=' mb-2'>
+                                            <div className='mt-5 flex items-center gap-x-4'>
+                                              <h4 className='flex-none text-sm font-semibold leading-6 text-indigo-600 mb-4'>
+                                                Settings
                                               </h4>
                                               <div className='h-px flex-auto bg-gray-100' />
                                             </div>
-                                            <ul
-                                              role='list'
-                                              className='mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-gray-600 sm:grid-cols-1 sm:gap-6'
-                                            >
-                                              {includedFeatures.map(
-                                                (feature) => (
-                                                  <li
-                                                    key={feature}
-                                                    className='flex gap-x-3'
-                                                  >
-                                                    <CheckIcon
-                                                      className='h-6 w-5 flex-none text-indigo-600'
-                                                      aria-hidden='true'
-                                                    />
-                                                    {feature}
-                                                  </li>
-                                                ),
-                                              )}
-                                            </ul>
-                                          </div> */}
 
-                                          <div className='mt-10 p-2 lg:mt-0 lg:w-full lg:max-w-md'>
+                                            <SettingsTab
+                                              config={orderConfiuration}
+                                              setConfig={setOrderConfiuration}
+                                            />
+                                          </div>
+
+                                          {/* additional information */}
+
+                                          <div className=' mb-2'>
+                                            <div className='mt-5 flex items-center gap-x-4'>
+                                              <h4 className='flex-none text-sm font-semibold leading-6 text-indigo-600 mb-4'>
+                                                Instructions
+                                              </h4>
+                                              <div className='h-px flex-auto bg-gray-100' />
+                                            </div>
+                                            <InstructionsTab
+                                              setFiles={setFiles}
+                                              samples={samples}
+                                              instructions={instructions}
+                                              setInstructions={setInstructions}
+                                            />
+                                          </div>
+
+                                          {/* <div className='mt-10 p-2 lg:mt-0 lg:w-full lg:max-w-md'>
                                             <div className='rounded-2xl bg-gray-50 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16'>
                                               <div className='mx-auto max-w-xs px-8 flex flex-col items-center'>
-                                                {/* <p className='text-base font-semibold text-gray-600'>
+                                                <p className='text-base font-semibold text-gray-600'>
                                                   Pay once, own it forever
-                                                </p> */}
-                                                {/* <p className='mt-6 flex items-baseline justify-center gap-x-2'>
+                                                </p>
+                                                <p className='mt-6 flex items-baseline justify-center gap-x-2'>
                                                   <span className='text-5xl font-bold tracking-tight text-gray-900'>
                                                     $349
                                                   </span>
                                                   <span className='text-sm font-semibold leading-6 tracking-wide text-gray-600'>
                                                     USD
                                                   </span>
-                                                </p> */}
+                                                </p>
                                                 <button
                                                   onClick={() => createOrder()}
                                                   disabled={loading}
@@ -426,7 +473,7 @@ export default function OrderNowModal({
                                                 </p>
                                               </div>
                                             </div>
-                                          </div>
+                                          </div> */}
                                         </div>
                                       </div>
                                     </div>
@@ -434,11 +481,11 @@ export default function OrderNowModal({
                                 </div>
                               </div>
 
-                              <div className='mt-8 md:mt-16 flex justify-end gap-x-4'>
+                              <div className='mt-8 md:mt-5 flex justify-end gap-x-4'>
                                 {position > 0 ? (
                                   <button
                                     onClick={() => setPosition(position - 1)}
-                                    className='rounded-full font-semibold capitalize ring-1 ring-inset ring-gray-400 py-2.5 px-7 text-gray-600'
+                                    className='rounded-lg font-semibold capitalize ring-1 ring-inset ring-gray-400 py-2.5 px-7 text-gray-700'
                                   >
                                     Prev: {sectionArray[position - 1]}
                                   </button>
@@ -446,11 +493,24 @@ export default function OrderNowModal({
                                 {position < sectionArray.length - 1 ? (
                                   <button
                                     onClick={() => setPosition(position + 1)}
-                                    className='rounded-full font-semibold capitalize bg-indigo-500 py-2.5 px-7 text-white'
+                                    className='rounded-lg font-semibold capitalize bg-indigo-600 text-lg py-2.5 px-7 text-white'
                                   >
                                     Next: {sectionArray[position + 1]}
                                   </button>
-                                ) : null}
+                                ) : (
+                                  <button
+                                    onClick={() => createOrder()}
+                                    disabled={loading}
+                                    className='inline-flex space-x-3  items-center disabled:bg-indigo-400 btn-vlg text-lg  justify-center rounded-lg bg-indigo-600 px-3 md:px-10 py-2.5 font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+                                  >
+                                    {loading ? (
+                                      <ComponentSpinner />
+                                    ) : (
+                                      <div></div>
+                                    )}
+                                    <span>Place Your Order</span>
+                                  </button>
+                                )}
                               </div>
                             </div>
                           </div>

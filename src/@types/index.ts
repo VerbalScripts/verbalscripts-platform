@@ -73,6 +73,7 @@ interface OrderConfiguration {
   samples: string[];
   language: string;
   apply_timestamps: string;
+  service: string;
 }
 interface Order {
   configuration: OrderConfiguration;

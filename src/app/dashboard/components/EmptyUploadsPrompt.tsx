@@ -71,11 +71,10 @@ export default function EmptyUploadsPrompt() {
           openDirectLink={() => setOpenDirectLink(!openDirectLink)}
           openYoutube={() => setOpenYoutube(!openYoutube)}
         />
-      <div className=''>
-        <LocalFilePLoad />
+        <div className=''>
+          <LocalFilePLoad />
+        </div>
       </div>
-      </div>
-
     </div>
   );
 }

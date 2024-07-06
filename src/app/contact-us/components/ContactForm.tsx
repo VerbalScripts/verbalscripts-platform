@@ -42,7 +42,7 @@ export default function ContactForm() {
       });
 
       if (response.status == 201) {
-        setSuccess(true)
+        setSuccess(true);
       }
     } catch (err) {
       setError(

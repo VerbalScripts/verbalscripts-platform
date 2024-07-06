@@ -42,11 +42,11 @@ export default function FreelancingHeader() {
           aria-label='App Header'
         >
           <div className='flex lg:flex-1'>
-          <a
+            <a
               href='/'
               aria-label='Verbalscripts Logo'
               className='-m-1.5 p-1.5 text-2xl font-bold'
-            > 
+            >
               <img
                 className='h-[4.0rem] w-[100%] md:h-[4.0rem] lg:h-[4.8rem]'
                 src='/icons/logo-png.png'

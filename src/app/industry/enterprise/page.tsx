@@ -20,15 +20,16 @@ export const metadata: Metadata = {
 export default function Page() {
   const faqs: FaqsProp[] = [
     {
-      title: 'What is general business transcription, and what documents does Verbalscripts transcribe?',
-      content:
-        `General transcription for the business industry involves converting audio or video recordings into written transcripts. This service is essential for accurately documenting various business communications such as meetings, interviews, conferences, and other events, ensuring that information is easily accessible and well-recorded.<br /><br />
+      title:
+        'What is general business transcription, and what documents does Verbalscripts transcribe?',
+      content: `General transcription for the business industry involves converting audio or video recordings into written transcripts. This service is essential for accurately documenting various business communications such as meetings, interviews, conferences, and other events, ensuring that information is easily accessible and well-recorded.<br /><br />
 Verbalscripts specializes in transcribing a wide range of business documents, including but not limited to meeting minutes, conference call recordings, interviews, webinars, podcasts, training sessions, and customer service calls. Our transcription services are tailored to meet the unique requirements of corporate clients, providing accurate, timely, and confidential transcripts to support your business operations.
-` },
+`,
+    },
     {
-      title: 'How do I start using Verbalscripts\' transcription services for my business?',
-      content:
-   `Starting with Verbalscripts is straightforward. Contact us via <a
+      title:
+        "How do I start using Verbalscripts' transcription services for my business?",
+      content: `Starting with Verbalscripts is straightforward. Contact us via <a
               class='relative border-b border-indigo-600 group  py-0.5 px-1.5 text-indigo-600'
               href='mailto:support@verbalscripts.com'
             >
@@ -61,16 +62,17 @@ Verbalscripts specializes in transcribing a wide range of business documents, in
               <span class='font-semibold'>Upload </span>
               <span class='absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-600 group-hover:w-full group-hover:transition-all'></span>
             </a> your audio or video files through our 24/7 online services. Discuss your project requirements directly with our team to ensure we meet your needs.
-`
+`,
     },
     {
-      title: 'What measures does Verbalscripts have in place to ensure confidentiality and security?',
-      content:
-        `At Verbalscripts, we take confidentiality and security very seriously. All files are encrypted during transfer and storage. Our transcribers sign non-disclosure agreements (NDAs) to ensure your information remains private and secure. We can also sign specific confidentiality agreements provided by clients.`   },
+      title:
+        'What measures does Verbalscripts have in place to ensure confidentiality and security?',
+      content: `At Verbalscripts, we take confidentiality and security very seriously. All files are encrypted during transfer and storage. Our transcribers sign non-disclosure agreements (NDAs) to ensure your information remains private and secure. We can also sign specific confidentiality agreements provided by clients.`,
+    },
     {
       title: 'What format do you deliver your transcripts in?',
-      content:
-      `We pride ourselves on offering transcripts in your preferred format. By default, we deliver transcripts via email in Microsoft Word format. However, we can accommodate requests for PDF, Word Perfect, or plain text formats. Please specify your preferred format or send us a template before commencing your project, and we'll gladly meet your needs.` },
+      content: `We pride ourselves on offering transcripts in your preferred format. By default, we deliver transcripts via email in Microsoft Word format. However, we can accommodate requests for PDF, Word Perfect, or plain text formats. Please specify your preferred format or send us a template before commencing your project, and we'll gladly meet your needs.`,
+    },
   ];
 
   const features = [
@@ -162,7 +164,7 @@ Verbalscripts specializes in transcribing a wide range of business documents, in
                     <img src='/svg/lines.svg' className='w-44' alt='' />
                   </span>
                 </span>{' '}
-               benefits VerbalScripts offers to corporate professionals.
+                benefits VerbalScripts offers to corporate professionals.
               </p>
             </div>
             <div className='py-10 md:py-24'>
@@ -289,7 +291,6 @@ Verbalscripts specializes in transcribing a wide range of business documents, in
 
       <HowItWorks custom_class='legal-how-it-works' />
 
-     
       <div
         className='bg-white relative isolate'
         style={{ background: 'FAFAFA' }}

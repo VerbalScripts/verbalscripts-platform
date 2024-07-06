@@ -30,17 +30,19 @@ export default function Page() {
         'Verbalscripts specializes in transcribing a variety of healthcare files, including patient histories, discharge summaries, operative reports, consultation notes, progress notes, radiology reports, and pathology reports.',
     },
     {
-      title: 'Why should I choose Verbalscripts for my medical transcription needs?',
+      title:
+        'Why should I choose Verbalscripts for my medical transcription needs?',
       content:
         'Verbalscripts stands out for its accurate, timely, and confidential transcription services. Our team comprises experienced transcriptionists proficient in medical terminology, dedicated to delivering high-quality results.',
     },
     {
-      title: 'How do I get started with Verbalscripts\' transcription services?',
+      title: "How do I get started with Verbalscripts' transcription services?",
       content:
         'Starting with Verbalscripts is straightforward. Contact us via Email, Chat, Text, WhatsApp, or Call, and we will assist you promptly. You can also securely upload your audio files through our 24/7 online services or discuss your project requirements directly with our team.',
     },
     {
-      title: 'How does Verbalscripts manage large volume transcription projects?',
+      title:
+        'How does Verbalscripts manage large volume transcription projects?',
       content:
         'Verbalscripts efficiently handles large volume transcription projects with a scalable team and streamlined workflow processes, ensuring timely and accurate delivery regardless of the project size.',
     },

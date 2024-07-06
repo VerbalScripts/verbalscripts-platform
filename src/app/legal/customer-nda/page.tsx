@@ -175,7 +175,6 @@ export default function TermsOfService() {
                   </li>
                 </ol>
               </li>
-              
             </ol>
           </div>
 
@@ -216,7 +215,6 @@ export default function TermsOfService() {
                 Not disclose any Confidential Information received by it to any
                 third parties (except as otherwise provided for herein).
               </li>
-              
             </ol>
           </div>
 
@@ -276,27 +274,52 @@ export default function TermsOfService() {
               5. Miscellaneous
             </a>
 
-
             <ol className='text-md lg:text-lg mb-3 text-gray-700 list-[lower-alpha] ml-10'>
               <li>
-               This Agreement constitutes the entire understanding between the parties and supersedes any and all prior understandings and agreements, whether oral or written, between the parties, with respect to the subject matter hereof. This Agreement can only be modified by a written amendment signed by the party against whom enforcement of such modification is sought. 
+                This Agreement constitutes the entire understanding between the
+                parties and supersedes any and all prior understandings and
+                agreements, whether oral or written, between the parties, with
+                respect to the subject matter hereof. This Agreement can only be
+                modified by a written amendment signed by the party against whom
+                enforcement of such modification is sought.
               </li>
-              <li>The validity, construction and performance of this Agreement shall be governed and construed in accordance with the law applicable to contracts made and to be wholly performed within such state, without giving effect to any conflict of laws provisions thereof. The court shall have sole and exclusive jurisdiction over any disputes arising under the terms of this Agreement.</li>
-              <li>In the event of any controversy or claim arising out of or relating to this agreement, or the breach thereof, the parties shall:</li>
+              <li>
+                The validity, construction and performance of this Agreement
+                shall be governed and construed in accordance with the law
+                applicable to contracts made and to be wholly performed within
+                such state, without giving effect to any conflict of laws
+                provisions thereof. The court shall have sole and exclusive
+                jurisdiction over any disputes arising under the terms of this
+                Agreement.
+              </li>
+              <li>
+                In the event of any controversy or claim arising out of or
+                relating to this agreement, or the breach thereof, the parties
+                shall:
+              </li>
               <ol className='text-md lg:text-lg mb-3 text-gray-700 list-[decimal] ml-5 my-5'>
-                  <li>
-                    <b>Negotiation</b>:
-                    Enter into negotiation with each other, recognizing their mutual interests, and attempt to reach a solution satisfactory to both parties. If a settlement is not reached within 7 days, then either party may proceed to mediation.
-                  </li>
-                  <li>
-                   <b>Mediation</b>: By notice to the other party and an online-based recognized mediator, demand mediation under the Mediation Rules of the International Centre for Dispute Resolution. If a settlement is not reached within 7 days after the written demand for mediation, either party may proceed to arbitration.
-                  </li>
+                <li>
+                  <b>Negotiation</b>: Enter into negotiation with each other,
+                  recognizing their mutual interests, and attempt to reach a
+                  solution satisfactory to both parties. If a settlement is not
+                  reached within 7 days, then either party may proceed to
+                  mediation.
+                </li>
+                <li>
+                  <b>Mediation</b>: By notice to the other party and an
+                  online-based recognized mediator, demand mediation under the
+                  Mediation Rules of the International Centre for Dispute
+                  Resolution. If a settlement is not reached within 7 days after
+                  the written demand for mediation, either party may proceed to
+                  arbitration.
+                </li>
 
-                  <li>
-                   <b>Arbitration</b>: Any unresolved controversy or claim arising out of or relating to this contract shall be settled by arbitration administered by the law.
-                  </li>
-                 
-                </ol>
+                <li>
+                  <b>Arbitration</b>: Any unresolved controversy or claim
+                  arising out of or relating to this contract shall be settled
+                  by arbitration administered by the law.
+                </li>
+              </ol>
             </ol>
           </div>
 
@@ -306,23 +329,24 @@ export default function TermsOfService() {
             </h4>
 
             <p className='text-md lg:text-lg text-gray-700 mb-5'>
-            Paragraph headings used in this Agreement are for reference only and shall not be used or relied upon in the interpretation of this Agreement. 
-            <br/>
-            <br/>
-            IN WITNESS WHEREOF, the parties hereto have executed this Agreement as of the date first above written.
+              Paragraph headings used in this Agreement are for reference only
+              and shall not be used or relied upon in the interpretation of this
+              Agreement.
+              <br />
+              <br />
+              IN WITNESS WHEREOF, the parties hereto have executed this
+              Agreement as of the date first above written.
             </p>
-
 
             <ul className='text-gray-800 space-y-2'>
               <li>
                 <span>CONTRACTOR:</span>
-                 <span className='ml-3 font-bold'>VerbalScripts</span>
+                <span className='ml-3 font-bold'>VerbalScripts</span>
               </li>
               <li>
                 <span>CLIENT:</span>
-                 <span className='ml-3 font-bold'>{"auto name"}</span>
+                <span className='ml-3 font-bold'>{'auto name'}</span>
               </li>
-             
             </ul>
           </div>
         </div>

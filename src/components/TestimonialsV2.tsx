@@ -24,7 +24,7 @@ export default function TestimonialsV2({ testimonials }: TestimonyProp) {
               What our customers say
             </h2>
             <p className='mt-2 text-4xl md:text-5xl  font-bold text-left text-gray-900 section-title'>
-              What are people  saying about{' '}
+              What are people saying about{' '}
               <span className='text-orange-400'>VerbalScripts</span>
             </p>
           </div>

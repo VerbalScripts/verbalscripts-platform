@@ -21,30 +21,35 @@ export const metadata: Metadata = {
 export default function Page() {
   const faqs: FaqsProp[] = [
     {
-      title: 'Can I receive a sample transcription before committing to a large project?',
-      content:
-      `Yes, at Verbalascripts, we understand the importance of ensuring our transcription services meet your expectations. That's why we offer sample transcriptions for new clients. These samples allow you to evaluate the quality of our work before committing to a larger project. If you need further assurance, we can also conduct a test transcription as a demonstration of our capabilities. Please contact our us to request a sample transcription or to discuss your specific needs. We're here to help you make an informed decision about our services.
-`},
+      title:
+        'Can I receive a sample transcription before committing to a large project?',
+      content: `Yes, at Verbalascripts, we understand the importance of ensuring our transcription services meet your expectations. That's why we offer sample transcriptions for new clients. These samples allow you to evaluate the quality of our work before committing to a larger project. If you need further assurance, we can also conduct a test transcription as a demonstration of our capabilities. Please contact our us to request a sample transcription or to discuss your specific needs. We're here to help you make an informed decision about our services.
+`,
+    },
     {
-      title: 'What types of transcription services does Verbalscripts offer for government agencies?',
-      content:
-        `Verbalscripts specializes in providing accurate and confidential transcription services tailored for government agencies. We transcribe a variety of documents critical to government operations, including meetings, hearings, interviews, reports, and official correspondence. Our services ensure that all recorded information is meticulously documented in text format, meeting the stringent requirements of government processes.
-` },
+      title:
+        'What types of transcription services does Verbalscripts offer for government agencies?',
+      content: `Verbalscripts specializes in providing accurate and confidential transcription services tailored for government agencies. We transcribe a variety of documents critical to government operations, including meetings, hearings, interviews, reports, and official correspondence. Our services ensure that all recorded information is meticulously documented in text format, meeting the stringent requirements of government processes.
+`,
+    },
     {
-      title: 'How does Verbalscripts ensure the security and confidentiality of sensitive and classified government transcripts?',
-      content:
-   `At Verbalscripts, we prioritize the security and confidentiality of government-related transcripts. All files undergo encryption during both transfer and storage to safeguard sensitive information. Our transcriptionists follow strict confidentiality guidelines, including signing non-disclosure agreements (NDAs) to uphold the confidentiality of government content. We also adhere to industry-standard security practices and are ready to comply with any additional security measures or protocols required by government agencies to protect their information effectively.
-`  },
+      title:
+        'How does Verbalscripts ensure the security and confidentiality of sensitive and classified government transcripts?',
+      content: `At Verbalscripts, we prioritize the security and confidentiality of government-related transcripts. All files undergo encryption during both transfer and storage to safeguard sensitive information. Our transcriptionists follow strict confidentiality guidelines, including signing non-disclosure agreements (NDAs) to uphold the confidentiality of government content. We also adhere to industry-standard security practices and are ready to comply with any additional security measures or protocols required by government agencies to protect their information effectively.
+`,
+    },
     {
-      title: 'Can Verbalscripts handle large-scale transcription projects for government agencies?',
-      content:
-      `Yes. Verbalscripts has extensive experience in managing large-scale transcription projects for government agencies. We utilize a scalable team and streamlined workflow processes to ensure timely delivery without compromising on accuracy. Whether it's a comprehensive archive digitization project or ongoing transcription needs, we are equipped to handle the volume efficiently.
-`  },
+      title:
+        'Can Verbalscripts handle large-scale transcription projects for government agencies?',
+      content: `Yes. Verbalscripts has extensive experience in managing large-scale transcription projects for government agencies. We utilize a scalable team and streamlined workflow processes to ensure timely delivery without compromising on accuracy. Whether it's a comprehensive archive digitization project or ongoing transcription needs, we are equipped to handle the volume efficiently.
+`,
+    },
     {
-      title: 'How does Verbalscripts handle quality assurance for government transcription projects?',
-      content:
-       `Quality assurance is integral to our transcription process at Verbalscripts. We have a dedicated team responsible for reviewing and proofreading transcripts to ensure accuracy and consistency. Each transcript undergoes a multi-step quality control process, including transcription, reviewing, proofreading, and formatting. We also welcome client feedback and make revisions as needed to ensure complete satisfaction with the final deliverables.
-` },
+      title:
+        'How does Verbalscripts handle quality assurance for government transcription projects?',
+      content: `Quality assurance is integral to our transcription process at Verbalscripts. We have a dedicated team responsible for reviewing and proofreading transcripts to ensure accuracy and consistency. Each transcript undergoes a multi-step quality control process, including transcription, reviewing, proofreading, and formatting. We also welcome client feedback and make revisions as needed to ensure complete satisfaction with the final deliverables.
+`,
+    },
   ];
 
   const features = [

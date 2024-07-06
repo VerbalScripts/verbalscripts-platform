@@ -22,30 +22,30 @@ export default function Page() {
   const faqs: FaqsProp[] = [
     {
       title: 'What formats and templates do Verbalscripts accept?',
-      content:
-        `We are flexible and can accommodate almost any request when it comes to formats and templates. We tailor our services to your specific needs, as long as they do not involve proprietary software we cannot access. Please specify your preferred format or send us a template before commencing your project, and we'll gladly meet your needs.`,
+      content: `We are flexible and can accommodate almost any request when it comes to formats and templates. We tailor our services to your specific needs, as long as they do not involve proprietary software we cannot access. Please specify your preferred format or send us a template before commencing your project, and we'll gladly meet your needs.`,
     },
     {
       title: 'What is your turn-around times?',
-      content:
-        `Verbalscripts offer various turnaround options tailored to your needs. Our standard turnaround, the most cost-effective option, typically provides a 24 – 48-hour turn-around time. If you require faster service, inquire about our same-day services. Weekend turnaround is also available at no additional charge.
-`  },
+      content: `Verbalscripts offer various turnaround options tailored to your needs. Our standard turnaround, the most cost-effective option, typically provides a 24 – 48-hour turn-around time. If you require faster service, inquire about our same-day services. Weekend turnaround is also available at no additional charge.
+`,
+    },
     {
-      title: 'What are our working hours?How do you ensure the confidentiality of my files?',
-      content:
-        `We take confidentiality and security very seriously. All files are encrypted during transfer and storage. Our transcribers sign non-disclosure agreements (NDAs) to ensure your information remains private and secure. If you would like us to sign NDA prior to uploading your files, let us know and we will oblige. 
-`},
+      title:
+        'What are our working hours?How do you ensure the confidentiality of my files?',
+      content: `We take confidentiality and security very seriously. All files are encrypted during transfer and storage. Our transcribers sign non-disclosure agreements (NDAs) to ensure your information remains private and secure. If you would like us to sign NDA prior to uploading your files, let us know and we will oblige. 
+`,
+    },
     {
       title: 'Do you offer any discounts for bulk orders?',
-      content:
-    `Yes, we offer discounts for bulk orders and long-term contracts. Please contact our sales team to discuss your specific needs and receive a customized quote. We look forward to working with you!
-` },
+      content: `Yes, we offer discounts for bulk orders and long-term contracts. Please contact our sales team to discuss your specific needs and receive a customized quote. We look forward to working with you!
+`,
+    },
     {
       title: 'Can I request revisions to my transcript?',
-      content:
-        `At Verbalscripts, we are dedicated to delivering precise and high-quality transcription services through a four-step process that includes transcribing, reviewing, proofing, and formatting. This ensures that our transcripts meet the highest standards of accuracy.<br /><br />
+      content: `At Verbalscripts, we are dedicated to delivering precise and high-quality transcription services through a four-step process that includes transcribing, reviewing, proofing, and formatting. This ensures that our transcripts meet the highest standards of accuracy.<br /><br />
 In the rare instance that you are not fully satisfied with the transcript, we offer a thorough review process. If any errors are found that do not meet your requirements, we will gladly correct them to ensure your complete satisfaction. Your feedback is important to us, and we are committed to delivering a final product that meets your expectations.
-`    },
+`,
+    },
   ];
 
   const features = [

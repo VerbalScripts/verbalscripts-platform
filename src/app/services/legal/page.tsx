@@ -285,7 +285,6 @@ export default function Page() {
                   </li>
                 </ul>
               </div>
-              
             </div>
             <div className='mt-10 lg:mt-0 relative w-full'>
               <img
@@ -386,29 +385,29 @@ export default function Page() {
                   />
                 </div>
                 <div className='px-8'>
-                  <div className={
-                    classNames(
+                  <div
+                    className={classNames(
                       'mb-5  text-3xl md:text-4xl text-gray-900 capitalize font-bold mt-5',
-                      index % 2 == 0 ? 'text-right' : 'text-left'
-                    )
-                  }>
+                      index % 2 == 0 ? 'text-right' : 'text-left',
+                    )}
+                  >
                     {content.title}
                   </div>
 
-                  <div className={
-                    classNames(
+                  <div
+                    className={classNames(
                       'text-gray-700 text-md md:text-lg capitalize',
-                      index % 2 == 0 ? 'text-right' : 'text-left'
-                    )
-                  }>
+                      index % 2 == 0 ? 'text-right' : 'text-left',
+                    )}
+                  >
                     {content.description}
                   </div>
-                  <div className={
-                    classNames(
+                  <div
+                    className={classNames(
                       'mt-5',
-                      index % 2 == 0 ? 'text-right' : 'text-left'
-                    )
-                  }>
+                      index % 2 == 0 ? 'text-right' : 'text-left',
+                    )}
+                  >
                     <a
                       href='/upload-files'
                       className='inline-flex  items-center gap-x-2 rounded-lg btn-vlg px-5 py-2.5 text-xl transition font-semibold text-white shadow-sm hover:bg-orange-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 btn-vlg'

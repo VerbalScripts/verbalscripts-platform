@@ -21,7 +21,10 @@ export default function UpdateUsername({ open, setOpen }: UpdateUsernameProps) {
     try {
       setLoading(true);
 
-      if (emailRef.current == null || (emailRef.current != null && emailRef.current.value.length > 10)) {
+      if (
+        emailRef.current == null ||
+        (emailRef.current != null && emailRef.current.value.length > 10)
+      ) {
         return false;
       }
 
@@ -119,7 +122,6 @@ export default function UpdateUsername({ open, setOpen }: UpdateUsernameProps) {
                         />
                       </div>
                     </div>
-                   
                   </form>
                 </div>
                 <div className=' px-4 py-3 flex gap-y-2 flex-col sm:px-6 mb-5'>

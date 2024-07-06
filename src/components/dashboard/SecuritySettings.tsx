@@ -13,9 +13,13 @@ export default function SecuritySettings() {
 
   return (
     <div>
-      <ChangeUsername openUpdate={setChangeUsername} open={warnUsername} setOpen={setWarnUsername} />
-      <UpdateUsername  open={changeUsername} setOpen={setChangeUsername} />
-      <ResetAccountPassword  open={resetAccount} setOpen={setResetAccount}  />
+      <ChangeUsername
+        openUpdate={setChangeUsername}
+        open={warnUsername}
+        setOpen={setWarnUsername}
+      />
+      <UpdateUsername open={changeUsername} setOpen={setChangeUsername} />
+      <ResetAccountPassword open={resetAccount} setOpen={setResetAccount} />
 
       <div className='space-y-6 mb-10'>
         <div className='mb-3'>

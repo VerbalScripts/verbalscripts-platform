@@ -6,13 +6,16 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { EyeSlashIcon } from '@heroicons/react/20/solid';
 import { EyeIcon } from '@heroicons/react/24/outline';
-import GoogleIcon from '../GoogleIcon';
 import { FieldValues, useForm } from 'react-hook-form';
+
+import GoogleIcon from '../GoogleIcon';
 import AxiosProxy from '@/utils/AxiosProxy';
 import { GetOrStoreAuthToken } from '@/utils/GetOrStoreAuthToken';
 import AuthGuard from './AuthGuard';
 import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
+import { EMAIL_REGEX, PASSWORD_VALID_REGEX } from '@/utils/validationRule';
+import ComponentSpinner from '../ComponentSpinner';
 
 interface GoogleUser {
   access_token: string;
@@ -25,13 +28,11 @@ interface LoginUser {
 }
 
 export default function SignInForm() {
-  // const validation = {};
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  // @ts-ignore
 
   const [is_visible, toggleVisible] = useState(true);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -111,9 +112,9 @@ export default function SignInForm() {
     event?: React.BaseSyntheticEvent,
   ) => {
     event?.preventDefault();
-    // check for errors
     if (errors.email || errors.password) {
-      showErrors(true);
+      // @ts-ignore
+      setShowErrors(errors.email | errors.password);
     } else {
       await apiHttpServerRegister(data as LoginUser);
     }
@@ -170,10 +171,15 @@ export default function SignInForm() {
 
           <div className='mt-2'>
             <input
+              id='email'
               onFocus={() => onFocusIn()}
               type='email'
-              {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
-              className='block w-full rounded-md border-0 py-2.5 px-3 text-gray-600  ring-1 ring-inset ring-gray-300 placeholder:text-grey-900  md:text-xl focus:ring-2 focus:ring-inset  focus:ring-dark sm:text-sm sm:leading-6'
+              autoComplete='email'
+              {...register('email', {
+                required: true,
+                pattern: EMAIL_REGEX,
+              })}
+              className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
             />
           </div>
         </div>
@@ -187,15 +193,15 @@ export default function SignInForm() {
           <div className='mt-2 relative'>
             <input
               id='password'
-              onFocus={() => onFocusIn()}
               type={is_visible ? 'password' : 'text'}
+              onFocus={() => onFocusIn()}
+              autoComplete='password'
               {...register('password', {
                 required: true,
                 maxLength: 16,
-                pattern:
-                  /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!-%*#?&])[A-Za-z\d@!$%*#?&]{8,}/,
+                pattern: PASSWORD_VALID_REGEX,
               })}
-              className='block w-full rounded-md border-0  py-2.5 px-3 text-gray-600 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-grey-900  md:text-xl focus:ring-2 focus:ring-inset  focus:ring-dark sm:text-sm sm:leading-6'
+              className=' bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
             />
             <span
               className='absolute top-2.5 right-4 cursor-pointer'
@@ -222,19 +228,9 @@ export default function SignInForm() {
         <div>
           <button
             type='submit'
-            disabled={loading}
             className='flex gap-x-5 w-full items-center disabled:bg-indigo-400  justify-center rounded-full bg-indigo-600 px-3 py-2.5 text-xl font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
           >
-            {loading ? (
-              <div
-                className='inline-block h-5 w-5 animate-spin rounded-full border-2 border-solid border-current border-e-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]'
-                role='status'
-              >
-                <span className='!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]'>
-                  Loading...
-                </span>
-              </div>
-            ) : null}
+            {loading ? <ComponentSpinner /> : null}
             Sign In
           </button>
         </div>

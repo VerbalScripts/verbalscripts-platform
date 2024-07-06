@@ -44,7 +44,7 @@ interface DashboardNavigationProps {
 export default function DashboardNavigation({
   expanded = true,
   open,
-  setOpen
+  setOpen,
 }: DashboardNavigationProps) {
   const NavigationItemLink = ({ item, expanded }: NavItemProp) => {
     const pathname = usePathname();
@@ -150,20 +150,17 @@ export default function DashboardNavigation({
 
   const globalUser = useRecoilValue(userState);
 
-
   return (
-    <aside
-      className=' '
-    >
+    <aside className=' '>
       {/* title */}
-      <div className={
-        classNames(
+      <div
+        className={classNames(
           'bg-zinc-900  min-h-screen  max-h-screen overflow-x-hidden overflow-y-auto',
           'hidden md:flex flex-col justify-between',
           'py-5     ',
-        expanded ? 'px-8' : 'px-0 md:px-1',
-        )
-      }>
+          expanded ? 'px-8' : 'px-0 md:px-1',
+        )}
+      >
         <div>
           <div>
             <AppTitle />
@@ -254,12 +251,11 @@ export default function DashboardNavigation({
         </div>
       </div>
 
-      <Dialog as='div' className='md:hidden'  onClose={setOpen} open={open}>
+      <Dialog as='div' className='md:hidden' onClose={setOpen} open={open}>
         <div className='fixed inset-0 z-10 bg-white-300' />
 
         <Dialog.Panel className='fixed inset-y-0 right-0 z-30 w-full  bg-zinc-900   overflow-x-hidden overflow-y-auto px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10'>
           <div className='flex items-center justify-end'>
-           
             <button
               type='button'
               className='-m-1.5 rounded-md p-2.5 '

@@ -229,7 +229,10 @@ export default function SummaryStatsBoard() {
         setOpen={setDeleteFile}
       />
 
-      <div className='absolute -z-[1] right-0 left-0  top-0 h-52 bg-gray-50 dark:bg-orange-200 flex flex-col justify-center px-24 py-20' style={{background: '#8468f5'}}></div>
+      <div
+        className='absolute -z-[1] right-0 left-0  top-0 h-52 bg-gray-50 dark:bg-orange-200 flex flex-col justify-center px-24 py-20'
+        style={{ background: '#8468f5' }}
+      ></div>
 
       <div className='flex justify-between items-start'>
         <div>

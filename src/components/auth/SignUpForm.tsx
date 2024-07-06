@@ -12,6 +12,8 @@ import { GetOrStoreAuthToken } from '@/utils/GetOrStoreAuthToken';
 import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import ComponentSpinner from '../ComponentSpinner';
+import { EMAIL_REGEX, PASSWORD_VALID_REGEX } from '@/utils/validationRule';
+import PasswordChecklist from './PasswordChecklist';
 
 interface GoogleUser {
   access_token: string;
@@ -39,6 +41,8 @@ export default function SignUpForm() {
   const [signAgreement, setSignedAgreement] = useState(false);
   const [signNda, setSignedNda] = useState(false);
   const [termsError, setTermsError] = useState(false);
+
+  const [password, setPassword] = useState('');
 
   // google auth
   const [user, setUser] = useState<GoogleUser | null>(null);
@@ -93,7 +97,6 @@ export default function SignUpForm() {
 
   const apiHttpServerRegister = async (data: RegiterUser, client = 'local') => {
     try {
-
       if (!signAgreement || !signNda) {
         setTermsError(true);
         return false;
@@ -180,7 +183,7 @@ export default function SignUpForm() {
                   onFocus={() => onFocusIn()}
                   autoComplete='firstName'
                   {...register('firstName', { required: true, maxLength: 80 })}
-                  className='block w-full rounded-md border-0 py-2.5 px-3 text-gray-600  ring-1 ring-inset ring-gray-300 placeholder:text-grey-900  md:text-xl focus:ring-2 focus:ring-inset  focus:ring-dark sm:text-sm sm:leading-6'
+                  className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                 />
               </div>
             </div>
@@ -198,7 +201,7 @@ export default function SignUpForm() {
                   type='text'
                   autoComplete='lastName'
                   {...register('lastName', { required: true, maxLength: 80 })}
-                  className='block w-full rounded-md border-0 py-2.5 px-3 text-gray-600  ring-1 ring-inset ring-gray-300 placeholder:text-grey-900  md:text-xl focus:ring-2 focus:ring-inset  focus:ring-dark sm:text-sm sm:leading-6'
+                  className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
                 />
               </div>
             </div>
@@ -217,7 +220,7 @@ export default function SignUpForm() {
                 type='text'
                 autoComplete='companyName'
                 {...register('companyName', { required: false, maxLength: 80 })}
-                className='block w-full rounded-md border-0 py-2.5 px-3 text-gray-600  ring-1 ring-inset ring-gray-300 placeholder:text-grey-900  md:text-xl focus:ring-2 focus:ring-inset  focus:ring-dark sm:text-sm sm:leading-6'
+                className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
               />
             </div>
           </div>
@@ -236,9 +239,9 @@ export default function SignUpForm() {
                 autoComplete='email'
                 {...register('email', {
                   required: true,
-                  pattern: /^\S+@\S+$/i,
+                  pattern: EMAIL_REGEX,
                 })}
-                className='block w-full rounded-md border-0 py-2.5 px-3 text-gray-600  ring-1 ring-inset ring-gray-300 placeholder:text-grey-900  md:text-xl focus:ring-2 focus:ring-inset  focus:ring-dark sm:text-sm sm:leading-6'
+                className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
               />
             </div>
           </div>
@@ -258,10 +261,12 @@ export default function SignUpForm() {
                 {...register('password', {
                   required: true,
                   maxLength: 16,
-                  pattern:
-                    /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@!$%*#?&]{8,}/,
+                  pattern: PASSWORD_VALID_REGEX,
+                  onChange(event) {
+                    setPassword(event.target.value);
+                  },
                 })}
-                className='block w-full rounded-md border-0 py-2.5 px-3 text-gray-600  ring-1 ring-inset ring-gray-300 placeholder:text-grey-900  md:text-xl focus:ring-2 focus:ring-inset  focus:ring-dark sm:text-sm sm:leading-6'
+                className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
               />
               <span
                 className='absolute top-2 right-4 cursor-pointer'
@@ -274,6 +279,8 @@ export default function SignUpForm() {
                 )}
               </span>
             </div>
+
+            <PasswordChecklist value={password} />
           </div>
           <div className='py-4'>
             <div className='flex items-start mb-4 '>

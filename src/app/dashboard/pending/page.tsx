@@ -659,6 +659,7 @@ export default function Page() {
               callback={updateOrders}
               isNavigating={navigating}
               shareFile={_shareFile}
+              setVideoId={setVideoId}
               copyFile={_copyFile}
               selectedFolderId={selectedFolderId}
               showFolders={showFolders}

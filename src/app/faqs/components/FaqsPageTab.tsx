@@ -220,7 +220,8 @@ Absolutely. At Verbalscripts, we are always open to partnering with like-minded 
       content: `Transcription can be done from various audio sources, including physical tapes, digital files, or videos, by outsourcing these transcription tasks to Verbalscripts Transcription Service, legal and business entities can save valuable time and focus on their core tasks.`,
     },
     {
-      title: 'Can you explain the steps involved in your transcription process?',
+      title:
+        'Can you explain the steps involved in your transcription process?',
       content: `Once we receive your audio/video files via a secured server, they are decrypted and allocated to our experienced transcribers. After the transcription process, the files are forwarded to our reviewers/proofreaders for review. After the formatting, the work is evaluated by the project manager, and the final copy is sent to you.`,
     },
     {
@@ -228,7 +229,6 @@ Absolutely. At Verbalscripts, we are always open to partnering with like-minded 
       content: `Getting started with Verbalscripts is easy. Simply reach out to us via email, chat, text, or phone call, and we'll set up your account. You can then begin uploading your audio files securely through our 24x7 online services or discuss your project requirements with us directly.`,
     },
   ];
-
 
   const order_placement: FaqsProp[] = [
     {
@@ -252,7 +252,8 @@ Absolutely. At Verbalscripts, we are always open to partnering with like-minded 
       content: `For updates on your order's status, reach out to your sales representative via email or phone. They'll let you with the latest information regarding your order's progress.`,
     },
     {
-      title: 'Is it possible to add additional information or instructions to files?',
+      title:
+        'Is it possible to add additional information or instructions to files?',
       content: `Yes, users can include additional comments when submitting a file, either by typing notes or attaching relevant files for enhanced context. We encourage this practice as more context leads to more accurate technical output.`,
     },
     {
@@ -264,7 +265,8 @@ Absolutely. At Verbalscripts, we are always open to partnering with like-minded 
       content: `Simply reach out to us and explain your needs. If we can accommodate your request, we will do so. If not, we will provide an explanation and assist you in finding a suitable solution.`,
     },
     {
-      title: 'What if I have a project that needs to be completed over the weekend?',
+      title:
+        'What if I have a project that needs to be completed over the weekend?',
       content: `We can complete weekend projects with advance notice. Please contact your point of contact via phone or email to inform us of your weekend project, ensuring that we have the necessary resources available to meet your deadline.`,
     },
     {
@@ -281,13 +283,15 @@ Absolutely. At Verbalscripts, we are always open to partnering with like-minded 
       content: `We handle a wide range of transcription work, including interviews, dictations, business meetings, conference calls, focus groups, press briefings, lectures, legal depositions, radio shows, video shows, panel discussions, sermons, seminars, and more. Our transcription services cater to professionals across various industries, including professors, teachers, students, insurance professionals, financial professionals, doctors, psychiatrists, preachers, market researchers, corporate meetings, lawyers, and more.`,
     },
     {
-      title: 'What is the comments box for in the Quick Get a Quote and Order form?',
+      title:
+        'What is the comments box for in the Quick Get a Quote and Order form?',
       content: `It is designed for you to provide more information about your project. You can include the speakers’ names, technical jargon, acronyms, or any specific instructions you want the transcriptionist to follow. Additionally, you can add a link to the original video/audio or any reference websites.<br/><br/>
 If there's anything you do not want the transcriptionist to include, you can specify it in this box as well. Please note that the quality of these notes directly impacts the final transcript quality. The more specific your instructions are, the less time you will spend editing or correcting the transcripts once you receive them. Moreover, detailed instructions eliminate the need for rework by us and resubmission by you.
 `,
     },
     {
-      title: 'Can I move my order from normal to Rush or Super Rush to speed up?',
+      title:
+        'Can I move my order from normal to Rush or Super Rush to speed up?',
       content: `Yes, you can escalate your transcription order to speed up the turnaround even when your project is under process. Please send us an email, chat or call us to help our customer support personnel take you through the steps.`,
     },
     {
@@ -317,18 +321,20 @@ If there's anything you do not want the transcriptionist to include, you can spe
              . Provide details of your project, and we'll promptly provide a price quote.`,
     },
     {
-      title: 'I am working with a client who requires a unique transcript template/format. Do you accommodate such requests?',
+      title:
+        'I am working with a client who requires a unique transcript template/format. Do you accommodate such requests?',
       content: `Certainly! Simply email us with your template specifications, and we'll ensure your transcripts meet your exact requirements.`,
     },
     {
-      title: 'What if I don\'t need your services very often?',
+      title: "What if I don't need your services very often?",
       content: `No problem! Verbalscripts offers on-demand transcription and translation services, allowing you to pay as you go, whether you require our services occasionally or regularly.`,
     },
     {
-      title: 'My audio file pertains to a subject area not listed on your website. Will you still transcribe it?',
+      title:
+        'My audio file pertains to a subject area not listed on your website. Will you still transcribe it?',
       content: `Yes! With our extensive transcription experience and a team of subject-matter experts, we cover almost all subject areas. Even if your subject isn't listed on our website, we likely have an expert suitable for your needs. Contact us to learn more.`,
     },
-  ]
+  ];
 
   const pricing: FaqsProp[] = [
     {

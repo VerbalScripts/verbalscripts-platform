@@ -61,7 +61,6 @@ export default function ContactForm() {
         formdata.append('quote-sample', sample);
       }
 
-
       const response = await AxiosProxy.post('/quotes/add', formdata);
 
       if (response.status == 201) {
@@ -91,13 +90,13 @@ export default function ContactForm() {
     }, 10000);
   };
 
-  function updateFileSample ( e: React.ChangeEvent<HTMLInputElement> ): void {
+  function updateFileSample(e: React.ChangeEvent<HTMLInputElement>): void {
     const target = e.target as HTMLInputElement & {
       files: FileList;
     };
 
     if (target.files.length == 0) return;
-    setSample(target.files[0])
+    setSample(target.files[0]);
   }
 
   return (

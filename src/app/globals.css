@@ -697,3 +697,32 @@ span.svg-circles {
   transform: translate(-4%, 40%);
   z-index: -1;
 }
+
+/* modal completed tab */
+.complete-tab-indicator::after {
+  background: #e15113;
+}
+
+.text-tab-pending {
+  color: #e15113;
+}
+
+.pending-border::after {
+  border: 1px solid #e15113;
+}
+
+.toggle-images {
+  animation: animate_img 1s forwards;
+}
+
+@keyframes animate_img {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 50%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
