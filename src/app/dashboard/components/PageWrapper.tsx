@@ -19,7 +19,7 @@ export default function PageWrapper() {
       if (response.data.results && response.data.results.length > 0) {
         setIsNew(false);
       }
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       throw new Error(err.message || 'Could Not Process Request');
     } finally {

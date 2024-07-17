@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-'use client'
+'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
 import LoadSpinner from '@/components/dashboard/LoadSpinner';
@@ -53,367 +53,367 @@ import SystemProgressPopup from '@/components/dashboard/SystemProgressPopup';
 import BreadcrumbRender from '../../components/BreadcrumbRender';
 
 interface PageSetupOptions {
-    toggleView: 'grid' | 'list';
-  }
-  
-  interface FolderTracker {
-    id: string;
-    label: string;
-  }
+  toggleView: 'grid' | 'list';
+}
+
+interface FolderTracker {
+  id: string;
+  label: string;
+}
 
 export default function PendingWrapper() {
-    const router = useRouter();
-    const searchParams = useSearchParams();
-    const [orders, setOrders] = useState<OrderFile[]>([]);
-    const [folders, setFolders] = useState<OrderFolder[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
-  
-    // files o order
-    const [fileToOrder, setFilesToOrder] = useState<OrderFile[]>([]);
-    const [downloadUrl, setDownloadUrl] = useState('blank');
-  
-    // modal toggles
-    const [open, setOpen] = useState(false);
-    const [deleteFile, setDeleteFile] = useState(false);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [orders, setOrders] = useState<OrderFile[]>([]);
+  const [folders, setFolders] = useState<OrderFolder[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  // files o order
+  const [fileToOrder, setFilesToOrder] = useState<OrderFile[]>([]);
+  const [downloadUrl, setDownloadUrl] = useState('blank');
+
+  // modal toggles
+  const [open, setOpen] = useState(false);
+  const [deleteFile, setDeleteFile] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [downloadFile, setDownloadFile] = useState(false);
+  const [orderNow, setOrderNow] = useState(false);
+  const [openFileRename, setOpenFileRename] = useState(false);
+  const [copyFile, setCopyFile] = useState(false);
+  const [shareFile, setShareFile] = useState(false);
+  const [openFolderRename, setOpenFolderRename] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [openRemoveFile, setOpenRemoveFile] = useState(false);
+  // upload options
+  const [openYoutube, setOpenYoutube] = useState(false);
+  const [openDirectLink, setOpenDirectLink] = useState(false);
+
+  // setters
+  const [currentFile, setCurrentFile] = useState<string>('');
+  const [currentFolder, setCurrentFolder] = useState<string>('');
+
+  // selected files
+  const [selectedFiles, setSelectedFiles] = useState<string[]>([]);
+
+  const [showFolders, setShowFolders] = useState<boolean>(false);
+  // track folders
+  const [folderArr, setFolderArr] = useState<FolderTracker[]>([
+    { id: '', label: '..' },
+  ]);
+  const [currentFolderIndex, setCurrentFolderIndex] = useState<number>(0);
+  // track api call within folder navigation
+  const [navigating, setNavigating] = useState<boolean>(false);
+  const [selectedFolderId, setSelectedFolderId] = useState<string>('');
+
+  const { complete } = useRecoilValue(uploadProgressStats);
+  // watch for query changes
+  const folderId = searchParams.get('folderId');
+
+  const [pageSetup, setPageSetup] = useState<PageSetupOptions>({
+    toggleView: 'list',
+  });
+
+  const _renameFile = (id: string) => {
+    setOpenFileRename(true);
+    setCurrentFile(id);
+  };
+
+  const _shareFile = (id: string) => {
+    setShareFile(true);
+    setCurrentFile(id);
+  };
+
+  const _copyFile = (id: string) => {
+    setCopyFile(true);
+    setCurrentFile(id);
+  };
+
+  // const downloadFile = async () => {}
+
+  const _renameFolder = (id: string) => {
+    setOpenFolderRename(true);
+    setCurrentFolder(id);
+  };
+
+  const _removeFile = (id: string) => {
+    console.log('called this');
+    setOpenRemoveFile(true);
+    setCurrentFile(id);
+  };
+
+  // toggle folder visibility
+  const toggleFolderShow = (
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [downloadFile, setDownloadFile] = useState(false);
-    const [orderNow, setOrderNow] = useState(false);
-    const [openFileRename, setOpenFileRename] = useState(false);
-    const [copyFile, setCopyFile] = useState(false);
-    const [shareFile, setShareFile] = useState(false);
-    const [openFolderRename, setOpenFolderRename] = useState(false);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [openRemoveFile, setOpenRemoveFile] = useState(false);
-    // upload options
-    const [openYoutube, setOpenYoutube] = useState(false);
-    const [openDirectLink, setOpenDirectLink] = useState(false);
-  
-    // setters
-    const [currentFile, setCurrentFile] = useState<string>('');
-    const [currentFolder, setCurrentFolder] = useState<string>('');
-  
-    // selected files
-    const [selectedFiles, setSelectedFiles] = useState<string[]>([]);
-  
-    const [showFolders, setShowFolders] = useState<boolean>(false);
-    // track folders
-    const [folderArr, setFolderArr] = useState<FolderTracker[]>([
-      { id: '', label: '..' },
-    ]);
-    const [currentFolderIndex, setCurrentFolderIndex] = useState<number>(0);
-    // track api call within folder navigation
-    const [navigating, setNavigating] = useState<boolean>(false);
-    const [selectedFolderId, setSelectedFolderId] = useState<string>('');
-  
-    const { complete } = useRecoilValue(uploadProgressStats);
-    // watch for query changes
-    const folderId = searchParams.get('folderId');
-  
-    const [pageSetup, setPageSetup] = useState<PageSetupOptions>({
-      toggleView: 'list',
+    _event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    setShowFolders(!showFolders);
+  };
+
+  const createOrder = () => {
+    setFilesToOrder(() => {
+      const files: OrderFile[] = [];
+      selectedFiles.forEach((id) => {
+        const orderFile = orders.find((od) => od.id == id);
+        if (orderFile != undefined) {
+          files.push(orderFile);
+        }
+      });
+      return [...files];
     });
-  
-    const _renameFile = (id: string) => {
-      setOpenFileRename(true);
-      setCurrentFile(id);
-    };
-  
-    const _shareFile = (id: string) => {
-      setShareFile(true);
-      setCurrentFile(id);
-    };
-  
-    const _copyFile = (id: string) => {
-      setCopyFile(true);
-      setCurrentFile(id);
-    };
-  
-    // const downloadFile = async () => {}
-  
-    const _renameFolder = (id: string) => {
-      setOpenFolderRename(true);
-      setCurrentFolder(id);
-    };
-  
-    const _removeFile = (id: string) => {
-      console.log('called this');
-      setOpenRemoveFile(true);
-      setCurrentFile(id);
-    };
-  
-    // toggle folder visibility
-    const toggleFolderShow = (
+    // show modal
+    setOrderNow(true);
+  };
+
+  // updated selected files
+  const updateSelectedFiles = (
+    id: string,
+    remove: boolean,
+    clearAll: boolean,
+  ) => {
+    if (clearAll && remove) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      _event: React.ChangeEvent<HTMLInputElement>,
-    ) => {
-      setShowFolders(!showFolders);
-    };
-  
-    const createOrder = () => {
-      setFilesToOrder(() => {
-        const files: OrderFile[] = [];
-        selectedFiles.forEach((id) => {
-          const orderFile = orders.find((od) => od.id == id);
-          if (orderFile != undefined) {
-            files.push(orderFile);
-          }
-        });
-        return [...files];
-      });
-      // show modal
-      setOrderNow(true);
-    };
-  
-    // updated selected files
-    const updateSelectedFiles = (
-      id: string,
-      remove: boolean,
-      clearAll: boolean,
-    ) => {
-      if (clearAll && remove) {
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        setSelectedFiles((prevFiles) => []);
-      } else if (clearAll && !remove) {
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        setSelectedFiles((_prevFiles) => orders.map((order) => order.id));
-      } else if (remove) {
-        setSelectedFiles((prevFiles) => [
-          ...prevFiles.filter((_id) => _id != id),
-        ]);
-      } else if (!remove) {
-        setSelectedFiles((prevFiles) => [...prevFiles, id]);
-      }
-    };
-  
-    // const navForward = () => {
-    //   if (currentFolderIndex + 1 > folderArr.length) {
-    //     // update index
-    //     setCurrentFolderIndex(currentFolderIndex + 1);
-    //     router.push(`?folderId=${folderArr[currentFolderIndex + 1]['id']}`);
-    //   }
-    // };
-    // const navBack = () => {
-    //   if (folderArr.length > 1 && currentFolderIndex > 0) {
-    //     // update index
-    //     setCurrentFolderIndex(currentFolderIndex - 1);
-    //     setFolderArr((prevArr) => [...prevArr.slice(0, prevArr.length - 1)]);
-    //     router.push(`?folderId=${folderArr[currentFolderIndex - 1]['id']}`);
-    //   }
-    // };
-  
-    const clearSelection = () => {
-      setSelectedFiles(() => []);
-    };
-  
-    // paginate counters
-    const [total, setTotal] = useState<number>(0);
-    const [page, setPage] = useState<number>(1);
-    const [perPageCount, setPerPageCount] = useState<number>(10);
-  
-    // update showfolders toggle
-    useEffect(() => {
-      if (folders.length > orders.length) {
-        setShowFolders(true);
-      }
-    }, [orders, folders]);
-  
-    // check for uplaod completion
-  
-    useEffect(() => {
-      // reload for every update
-      if (complete > 0) {
-        reload();
-      }
-    }, [complete]);
-  
-    useEffect(() => {
-      if (folderId != null) {
-        fetchPendingOrders({ folderId, flimit: perPageCount, fpage: page });
-        fetchPendingFolderOrders(folderId);
-      }
-    }, [folderId]);
-  
-    interface FeedInfo {
-      folderId?: string;
-      flimit: number;
-      fpage: number;
-    }
-  
-    const fetchPendingOrders = async ({ folderId, flimit, fpage }: FeedInfo) => {
-      try {
-        setNavigating(true);
-  
-        const response = await AxiosProxy.get(
-          folderId
-            ? `/files/folder/${folderId}?page=${fpage}&limit=${flimit}`
-            : `/files?page=${fpage}&limit=${flimit}`,
-        );
-        if (response.status == 200) {
-          setOrders(response.data.results || []);
-          setPerPageCount(response.data.paginate.limit);
-          setPage(response.data.paginate.page);
-          setTotal(response.data.paginate.total);
-        }
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setNavigating(false);
-      }
-    };
-  
-    const reload = async () => {
-      if (folderId != null) {
-        await Promise.all([
-          fetchPendingFolderOrders(folderId),
-          fetchPendingOrders({ folderId, flimit: perPageCount, fpage: page }),
-        ]);
-      } else {
-        await Promise.all([
-          fetchPendingFolderOrders(),
-          fetchPendingOrders({ flimit: perPageCount, fpage: page }),
-        ]);
-      }
-    };
-  
-    const updateOrders = (index: number) => {
-      setOrders((prevArr) => {
-        const update = prevArr;
-        update.splice(index, 1);
-        return [...update];
-      });
-    };
-  
-    const requestFileDownload = async () => {
-      // setDownloadFile(true);
-      const url = `/files/download?files=${selectedFiles.join(',')}`;
-      setDownloadUrl(url);
-      //   setDownloadFile(false);
-  
-      // try {
-      //   const response = await AxiosProxy.post('/files/download', {
-      //     files: [...selectedFiles],
-      //   });
-  
-      //   FileDownload(response.data, 'folder-archive.zip');
-      // } catch (err) {
-      //   console.log(err);
-      // } finally {
-      //   setDownloadFile(false);
-      // }
-    };
-  
-    const openFolder = (route: { id: string; label: string }) => {
-      // console.log(currentFolderIndex)
-      if (folderArr[currentFolderIndex].id == route.id) return;
-      setFolderArr((prevArr) => [
-        ...prevArr,
-        { id: route.id, label: route.label },
+      setSelectedFiles((prevFiles) => []);
+    } else if (clearAll && !remove) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      setSelectedFiles((_prevFiles) => orders.map((order) => order.id));
+    } else if (remove) {
+      setSelectedFiles((prevFiles) => [
+        ...prevFiles.filter((_id) => _id != id),
       ]);
-      // set clicked folder
-      setSelectedFolderId(route.id);
-      // update count
-      setCurrentFolderIndex(currentFolderIndex + 1);
-      router.push(`?folderId=${route.id}`);
-    };
-  
-    const fetchPendingFolderOrders = async (folderId?: string) => {
-      try {
-        setNavigating(true);
-        const response = await AxiosProxy.get(
-          folderId ? `/folders/${folderId}` : '/folders',
-        );
-        if (response.status == 200) {
-          setFolders(response.data);
-        }
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setNavigating(false);
+    } else if (!remove) {
+      setSelectedFiles((prevFiles) => [...prevFiles, id]);
+    }
+  };
+
+  // const navForward = () => {
+  //   if (currentFolderIndex + 1 > folderArr.length) {
+  //     // update index
+  //     setCurrentFolderIndex(currentFolderIndex + 1);
+  //     router.push(`?folderId=${folderArr[currentFolderIndex + 1]['id']}`);
+  //   }
+  // };
+  // const navBack = () => {
+  //   if (folderArr.length > 1 && currentFolderIndex > 0) {
+  //     // update index
+  //     setCurrentFolderIndex(currentFolderIndex - 1);
+  //     setFolderArr((prevArr) => [...prevArr.slice(0, prevArr.length - 1)]);
+  //     router.push(`?folderId=${folderArr[currentFolderIndex - 1]['id']}`);
+  //   }
+  // };
+
+  const clearSelection = () => {
+    setSelectedFiles(() => []);
+  };
+
+  // paginate counters
+  const [total, setTotal] = useState<number>(0);
+  const [page, setPage] = useState<number>(1);
+  const [perPageCount, setPerPageCount] = useState<number>(10);
+
+  // update showfolders toggle
+  useEffect(() => {
+    if (folders.length > orders.length) {
+      setShowFolders(true);
+    }
+  }, [orders, folders]);
+
+  // check for uplaod completion
+
+  useEffect(() => {
+    // reload for every update
+    if (complete > 0) {
+      reload();
+    }
+  }, [complete]);
+
+  useEffect(() => {
+    if (folderId != null) {
+      fetchPendingOrders({ folderId, flimit: perPageCount, fpage: page });
+      fetchPendingFolderOrders(folderId);
+    }
+  }, [folderId]);
+
+  interface FeedInfo {
+    folderId?: string;
+    flimit: number;
+    fpage: number;
+  }
+
+  const fetchPendingOrders = async ({ folderId, flimit, fpage }: FeedInfo) => {
+    try {
+      setNavigating(true);
+
+      const response = await AxiosProxy.get(
+        folderId
+          ? `/files/folder/${folderId}?page=${fpage}&limit=${flimit}`
+          : `/files?page=${fpage}&limit=${flimit}`,
+      );
+      if (response.status == 200) {
+        setOrders(response.data.results || []);
+        setPerPageCount(response.data.paginate.limit);
+        setPage(response.data.paginate.page);
+        setTotal(response.data.paginate.total);
       }
-    };
-  
-    useEffect(() => {
-      if (showFolders) {
-        fetchPendingFolderOrders();
-      }
-    }, [showFolders]);
-  
-    const initialFeedsFetch = async () => {
-      setLoading(true);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setNavigating(false);
+    }
+  };
+
+  const reload = async () => {
+    if (folderId != null) {
       await Promise.all([
+        fetchPendingFolderOrders(folderId),
+        fetchPendingOrders({ folderId, flimit: perPageCount, fpage: page }),
+      ]);
+    } else {
+      await Promise.all([
+        fetchPendingFolderOrders(),
         fetchPendingOrders({ flimit: perPageCount, fpage: page }),
       ]);
-  
-      setLoading(false);
-    };
-  
-    useEffect(() => {
-      // fetchPendingOrders();
-      initialFeedsFetch();
-    }, []);
-  
-    const searchForFile = async (filename: string) => {
-      try {
-        const response = await AxiosProxy.get(
-          `/files/search?status=pending&q=${filename}`,
-        );
-        if (response.status == 200) {
-          const orders = response.data || [];
-          setOrders(() => [...orders]);
-        }
-      } catch (err) {
-        console.log(err);
+    }
+  };
+
+  const updateOrders = (index: number) => {
+    setOrders((prevArr) => {
+      const update = prevArr;
+      update.splice(index, 1);
+      return [...update];
+    });
+  };
+
+  const requestFileDownload = async () => {
+    // setDownloadFile(true);
+    const url = `/files/download?files=${selectedFiles.join(',')}`;
+    setDownloadUrl(url);
+    //   setDownloadFile(false);
+
+    // try {
+    //   const response = await AxiosProxy.post('/files/download', {
+    //     files: [...selectedFiles],
+    //   });
+
+    //   FileDownload(response.data, 'folder-archive.zip');
+    // } catch (err) {
+    //   console.log(err);
+    // } finally {
+    //   setDownloadFile(false);
+    // }
+  };
+
+  const openFolder = (route: { id: string; label: string }) => {
+    // console.log(currentFolderIndex)
+    if (folderArr[currentFolderIndex].id == route.id) return;
+    setFolderArr((prevArr) => [
+      ...prevArr,
+      { id: route.id, label: route.label },
+    ]);
+    // set clicked folder
+    setSelectedFolderId(route.id);
+    // update count
+    setCurrentFolderIndex(currentFolderIndex + 1);
+    router.push(`?folderId=${route.id}`);
+  };
+
+  const fetchPendingFolderOrders = async (folderId?: string) => {
+    try {
+      setNavigating(true);
+      const response = await AxiosProxy.get(
+        folderId ? `/folders/${folderId}` : '/folders',
+      );
+      if (response.status == 200) {
+        setFolders(response.data);
       }
-    };
-  
-    // drag and drop files and folders
-  
-    const triggerDropBoxPicker = useRef(null);
-    const triggerGooglePicker = useRef(null);
-    const triggerOneDrivePicker = useRef(null);
-  
-    const launchDropBoxPicker = () => {
-      if (triggerDropBoxPicker.current) {
-        // @ts-ignore
-        triggerDropBoxPicker.current.initFilePicker();
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setNavigating(false);
+    }
+  };
+
+  useEffect(() => {
+    if (showFolders) {
+      fetchPendingFolderOrders();
+    }
+  }, [showFolders]);
+
+  const initialFeedsFetch = async () => {
+    setLoading(true);
+    await Promise.all([
+      fetchPendingOrders({ flimit: perPageCount, fpage: page }),
+    ]);
+
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    // fetchPendingOrders();
+    initialFeedsFetch();
+  }, []);
+
+  const searchForFile = async (filename: string) => {
+    try {
+      const response = await AxiosProxy.get(
+        `/files/search?status=pending&q=${filename}`,
+      );
+      if (response.status == 200) {
+        const orders = response.data || [];
+        setOrders(() => [...orders]);
       }
-    };
-  
-    const launchGoogleDrivePicker = () => {
-      if (triggerGooglePicker.current) {
-        // @ts-ignore
-        triggerGooglePicker.current.handleAuthClick();
-      }
-    };
-    const launchOneDrivePicker = () => {
-      if (triggerGooglePicker.current) {
-        // @ts-ignore
-        triggerGooglePicker.current.initPicker();
-      }
-    };
-  
-    // video player controls
-    const [openPlayer, setOpenPlayer] = useState(false);
-    const [videoId, setVideoId] = useState('');
-  
-    useEffect(() => {
-      if (videoId != '') {
-        setOpenPlayer(true);
-      }
-    }, [videoId]);
-  
-    // watch query changes
-    const queryLimit = searchParams.get('limit');
-    const queryPage = searchParams.get('page');
-  
-    useEffect(() => {
-      if (queryLimit && queryPage) {
-        fetchPendingOrders({
-          flimit: parseInt(queryLimit, 10),
-          fpage: parseInt(queryPage, 10),
-        });
-      }
-    }, [queryLimit, queryPage]);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // drag and drop files and folders
+
+  const triggerDropBoxPicker = useRef(null);
+  const triggerGooglePicker = useRef(null);
+  const triggerOneDrivePicker = useRef(null);
+
+  const launchDropBoxPicker = () => {
+    if (triggerDropBoxPicker.current) {
+      // @ts-ignore
+      triggerDropBoxPicker.current.initFilePicker();
+    }
+  };
+
+  const launchGoogleDrivePicker = () => {
+    if (triggerGooglePicker.current) {
+      // @ts-ignore
+      triggerGooglePicker.current.handleAuthClick();
+    }
+  };
+  const launchOneDrivePicker = () => {
+    if (triggerGooglePicker.current) {
+      // @ts-ignore
+      triggerGooglePicker.current.initPicker();
+    }
+  };
+
+  // video player controls
+  const [openPlayer, setOpenPlayer] = useState(false);
+  const [videoId, setVideoId] = useState('');
+
+  useEffect(() => {
+    if (videoId != '') {
+      setOpenPlayer(true);
+    }
+  }, [videoId]);
+
+  // watch query changes
+  const queryLimit = searchParams.get('limit');
+  const queryPage = searchParams.get('page');
+
+  useEffect(() => {
+    if (queryLimit && queryPage) {
+      fetchPendingOrders({
+        flimit: parseInt(queryLimit, 10),
+        fpage: parseInt(queryPage, 10),
+      });
+    }
+  }, [queryLimit, queryPage]);
   return (
     <>
       <VideoPlayer
@@ -742,5 +742,5 @@ export default function PendingWrapper() {
         </div>
       )}
     </>
-  )
+  );
 }

@@ -78,13 +78,9 @@ export default function OrderNowModal({
     }
   }, [position]);
 
-  useEffect(() => {
-    console.log(samples);
-  }, [samples]);
-
   const createOrder = async () => {
     // set payload
-    const payload: Order = {
+    const payload = {
       configuration: {
         ...orderConfiuration,
         instructions,

@@ -4,8 +4,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import LoadSpinner from '@/components/dashboard/LoadSpinner';
 
-// import Link from 'next/link';
-// import { useSearchParams } from 'next/navigation';
 import SystemProgressUpload from '@/components/dashboard/SystemProgressUpload';
 import AxiosProxy from '@/utils/AxiosProxy';
 import {
@@ -16,7 +14,6 @@ import {
   ExclamationCircleIcon,
   PhotoIcon,
   PlayIcon,
-  TrashIcon,
 } from '@heroicons/react/24/outline';
 import { ArrowLeftIcon, GiftIcon } from '@heroicons/react/20/solid';
 import { useRouter } from 'next/navigation';
@@ -32,7 +29,10 @@ import { bytesToMB } from '@/utils/bytesToMb';
 import { useSetRecoilState } from 'recoil';
 import { systemProcessStatus } from '@/store/features/fileUpload';
 import FileDownloader from '@/components/FileDownloader';
-import RemoveOrderFileModal from './RemoveOrderFileModal';
+
+interface PageProps {
+  slug: string;
+}
 
 type OrderStatus =
   | 'Received'
@@ -41,11 +41,7 @@ type OrderStatus =
   | 'completed'
   | 'cancelled';
 
-interface Props {
-  slug: string;
-}
-
-export default function DetailsWrapper({ slug }: Props) {
+export default function DeliveredWrapper({ slug }: PageProps) {
   const router = useRouter();
 
   const [loading, setLoading] = useState(true);
@@ -138,18 +134,11 @@ export default function DetailsWrapper({ slug }: Props) {
   }, [statusOrder]);
 
   const [downloadUrl, setDownloadUrl] = useState('blank');
-  const [openRemove, setOpenRemove] = useState(false);
-  const [removeId, setRemoveId] = useState('');
 
   const requestFileDownload = async (sample_url: string) => {
     // setDownloadFile(true);
     const url = `/orders/download-sample?file=${sample_url}`;
     setDownloadUrl(url);
-  };
-
-  const removeOrderFile = (id: string) => {
-    setRemoveId(id);
-    setOpenRemove(true);
   };
 
   useEffect(() => {
@@ -173,6 +162,8 @@ export default function DetailsWrapper({ slug }: Props) {
           resetPlayer={setVideoId}
         />
 
+        <FileDownloader url={downloadUrl} reset={setDownloadUrl} />
+
         {/* cancel order  modal*/}
         <CancelOrder
           open={open}
@@ -182,21 +173,10 @@ export default function DetailsWrapper({ slug }: Props) {
           id={slug}
         />
 
-        <FileDownloader url={downloadUrl} reset={setDownloadUrl} />
-
-        <RemoveOrderFileModal
-          fileId={removeId}
-          open={openRemove}
-          setOpen={setOpenRemove}
-          reload={fetchOrderInfo}
-        />
         {loading ? (
           <LoadSpinner />
         ) : (
           <div className='px-6  md:px-16 xl:px-16  py-3'>
-            <div className='text-3xl lg:text-4xl text-gray-800 dark:text-white mb-5 font-semibold'>
-              Order #{order?.orderId} Summary
-            </div>
             {/* back button */}
             <div className='flex items-center space-x-3'>
               <button
@@ -275,7 +255,7 @@ export default function DetailsWrapper({ slug }: Props) {
                         </span>
                         <span
                           id='success-icon'
-                          className='hidden lg:inline-flex items-center'
+                          className='hidden inline-flex items-center'
                         >
                           <svg
                             className='w-3.5 h-3.5 text-blue-700 dark:text-blue-500'
@@ -982,7 +962,6 @@ export default function DetailsWrapper({ slug }: Props) {
                       <Table.HeadCell>Duration</Table.HeadCell>
                       <Table.HeadCell>Duration</Table.HeadCell>
                       <Table.HeadCell>Created At</Table.HeadCell>
-                      <Table.HeadCell>Actions</Table.HeadCell>
                     </Table.Head>
                     <Table.Body className='divide-y'>
                       {order?.files.map((orderFile) => (
@@ -1026,13 +1005,6 @@ export default function DetailsWrapper({ slug }: Props) {
                             <span className='capitalize text-sm text-gray-900 dark:text-white'>
                               {moment(orderFile.createdAt).format('L')}
                             </span>
-                          </Table.Cell>
-                          <Table.Cell className='py-2'>
-                            <button
-                              onClick={() => removeOrderFile(orderFile.id)}
-                            >
-                              <TrashIcon className='w-6 h-6 text-red-400 dark:text-red-300' />
-                            </button>
                           </Table.Cell>
                         </Table.Row>
                       ))}

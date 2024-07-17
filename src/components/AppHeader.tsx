@@ -500,7 +500,7 @@ export default function AppHeader() {
               onClick={() => setShowQuote(true)}
               className=' text-lg font-semibold  px-5 py-2 bg-indigo-600 transition text-center  hover:-translate-y-1 hover:shadow-xl rounded-full text-gray-100'
             >
-              Get a Qoute
+              Get a Quote
             </button>
             <a
               href='/upload-files'
@@ -702,7 +702,7 @@ export default function AppHeader() {
             onClick={() => setShowQuote(true)}
             className=' rounded-full ring-1 ring-inset ring-indigo-500  px-6 py-2.5 text-xl font-semibold leading-7 text-indigo-500 hover:ring-indigo-400 hover:text-indigo-400'
           >
-            Get a Qoute
+            Get a Quote
           </button>
         </div>
 

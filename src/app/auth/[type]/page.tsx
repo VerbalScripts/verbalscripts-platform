@@ -10,9 +10,7 @@ interface AuthPageProps {
   params: { type: string };
 }
 
-export async function generateMetadata({
-  params,
-}: AuthPageProps): Promise<Metadata> {
+export function generateMetadata({ params }: AuthPageProps): Metadata {
   if (params.type == 'login') {
     return { title: 'VerbalScripts | Sign In' };
   }
@@ -28,6 +26,16 @@ export async function generateMetadata({
   }
 
   return { title: 'VerbalScripts | Authenticate' };
+}
+
+export function generateStaticParams() {
+  // Define the possible values for [type]
+  const types = ['login', 'register', 'reset-password', 'reset-account'];
+
+  // Return an array of params
+  return types.map((type) => ({
+    type,
+  }));
 }
 
 export default function AuthPage({ params }: AuthPageProps) {

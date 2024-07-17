@@ -23,7 +23,7 @@ export default function AuthGuard() {
         GetOrStoreAuthToken(response.data.access_token);
         window.localStorage.setItem('rft-btt', response.data.refresh_token);
 
-        window.location.href = '/dashboard/pending';
+        window.location.href = '/dashboard';
       }
     } catch (err) {
       // @ts-ignore
