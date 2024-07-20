@@ -108,12 +108,7 @@ interface CompletedOrder {
   IvoiceId?: string;
 }
 
-type AccordionpProps = {
-  children: React.ReactNode;
-  title: string;
-  id: string;
-  active?: boolean;
-};
+
 
 type FaqsProp = {
   title: string;

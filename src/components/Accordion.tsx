@@ -1,6 +1,12 @@
-'use c';
 
 import { useState, useEffect } from 'react';
+
+interface AccordionpProps {
+  children: React.ReactNode;
+  title: string;
+  id: string;
+  active?: boolean;
+};
 
 export default function Accordion({
   children,
