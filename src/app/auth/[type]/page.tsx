@@ -28,15 +28,15 @@ export function generateMetadata({ params }: AuthPageProps): Metadata {
   return { title: 'VerbalScripts | Authenticate' };
 }
 
-export function generateStaticParams() {
-  // Define the possible values for [type]
-  const types = ['login', 'register', 'reset-password', 'reset-account'];
+// export function generateStaticParams() {
+//   // Define the possible values for [type]
+//   const types = ['login', 'register', 'reset-password', 'reset-account'];
 
-  // Return an array of params
-  return types.map((type) => ({
-    type,
-  }));
-}
+//   // Return an array of params
+//   return types.map((type) => ({
+//     type,
+//   }));
+// }
 
 export default function AuthPage({ params }: AuthPageProps) {
   return (

@@ -9,15 +9,15 @@ interface Props {
   params: { slug: string };
 }
 
-export async function generateStaticParams() {
-  const orders = await fetch(
-    `https://1eca-105-161-175-143.ngrok-free.app/orders/frontend?status=completed`,
-  ).then((res) => res.json());
+// export async function generateStaticParams() {
+//   const orders = await fetch(
+//     `https://1eca-105-161-175-143.ngrok-free.app/orders/frontend?status=completed`,
+//   ).then((res) => res.json());
 
-  return orders.map((order) => ({
-    slug: order.slug,
-  }));
-}
+//   return orders.map((order) => ({
+//     slug: order.slug,
+//   }));
+// }
 
 export default function Page({ params }: Props) {
   return (
